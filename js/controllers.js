@@ -17,6 +17,60 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'
   ];
 })
+.controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("profile");
+  $scope.menutitle = NavigationService.makeactive("Profile");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
+.controller('OrdersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("orders");
+  $scope.menutitle = NavigationService.makeactive("Orders");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
+.controller('WishlistCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("wishlist");
+  $scope.menutitle = NavigationService.makeactive("Wishlist");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
+.controller('AddressCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("address");
+  $scope.menutitle = NavigationService.makeactive("Address");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
+.controller('ChangepasswordCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("changepassword");
+  $scope.menutitle = NavigationService.makeactive("Changepassword");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
+.controller('CartCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("cart");
+  $scope.menutitle = NavigationService.makeactive("Cart");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
 
 .controller('headerctrl', function($scope, TemplateService,$uibModal) {
   $scope.template = TemplateService;
