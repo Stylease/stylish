@@ -10,6 +10,8 @@ $brand-success: #84ce3c !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
 $brand-info: #000072 !default;
+$brand-facebook: #3b5998 !default;
+$brand-google: #d34836 !default;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 @mixin placeholder {
   $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
@@ -91,6 +93,19 @@ a {
 .text-bold {
   font-weight: 700;
 }
+.text-underline { text-decoration: underline; }
+// btn-classes
+.btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+.btn-facebook {
+  @include button-variant(white, $brand-facebook, $brand-facebook );
+}
+.btn-google {
+  @include button-variant(white, $brand-google, $brand-google );
+}
+// end btn-classes
 // end of classess
 //bootstrap forms
 .input-lg,

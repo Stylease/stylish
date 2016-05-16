@@ -18,11 +18,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   ];
 })
 
-.controller('headerctrl', function($scope, TemplateService) {
+.controller('headerctrl', function($scope, TemplateService,$uibModal) {
   $scope.template = TemplateService;
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
+  $scope.signUp = function() {
+    $uibModal.open({
+      animation: true,
+      templateUrl: "views/modal/signup.html",
+      controller: "headerctrl"
+    });
+  };
+  $scope.logIn = function() {
+    $uibModal.open({
+      animation: true,
+      templateUrl: "views/modal/login.html",
+      controller: "headerctrl"
+    });
+  };
+  $scope.emailSignup = function() {
+    $uibModal.open({
+      animation: true,
+      templateUrl: "views/modal/email-signup.html",
+      controller: "headerctrl"
+    });
+  };
+  $scope.forgot = function() {
+    $uibModal.open({
+      animation: true,
+      templateUrl: "views/modal/forgotpassword.html",
+      controller: "headerctrl"
+    });
+  };
 })
 
 .controller('languageCtrl', function($scope, TemplateService,$translate,$rootScope) {
