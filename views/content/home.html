@@ -1,5 +1,84 @@
-<flex-slider flex-slide="s in mySlides" prev-text="" next-text="" direction-nav="false">
-  <li>
-    <img ng-src="{{s}}" class="img-responsive">
-  </li>
-</flex-slider>
+<div class="home-slider">
+  <flex-slider flex-slide="s in mySlides" prev-text="" next-text="" direction-nav="false">
+    <li>
+      <img ng-src="{{s}}" class="img-responsive">
+    </li>
+  </flex-slider>
+  <div class="talk-us">
+    <span class="text-uppercase">talk to us</span>
+  </div>
+</div>
+<div class="how-works">
+  <div class="container">
+    <div class="row-flex">
+      <div class="relate">
+        <!-- <img src="" alt="" class="img-responsive"> -->
+        <div class="image-name">
+          <h4 class="m-clear text-uppercase">wedding</h4>
+        </div>
+      </div>
+    </div>
+    <div class="row-flex">
+      <div class="col-flex">
+        <div class="relate">
+          <!-- <img src="" alt="" class="img-responsive"> -->
+          <div class="image-name">
+            <h4 class="m-clear text-uppercase">sangeet</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-flex">
+        <div class="relate">
+          <!-- <img src="" alt="" class="img-responsive"> -->
+          <div class="image-name">
+            <h4 class="m-clear text-uppercase">mehendi</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-flex">
+      <div class="relate">
+        <!-- <img src="" alt="" class="img-responsive"> -->
+        <div class="image-name">
+          <h4 class="m-clear text-uppercase">cocktail</h4>
+        </div>
+      </div>
+    </div>
+    <div class="row-flex">
+      <div class="col-flex">
+        <div class="relate">
+          <!-- <img src="" alt="" class="img-responsive"> -->
+          <div class="image-name">
+            <h4 class="m-clear text-uppercase">reception</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-flex">
+        <div class="relate">
+          <!-- <img src="" alt="" class="img-responsive"> -->
+          <div class="image-name">
+            <h4 class="m-clear text-uppercase">engagement</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-flex">
+      <div class="relate">
+        <!-- <img src="" alt="" class="img-responsive"> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="customerspeak-slider">
+  <h4 class="text-center">Our Customer Speak</h4>
+  <div class="container">
+    <flex-slider class="carousel" flex-slide="speak in client track by $index">
+      <li>
+        <div class="client-speak">
+          <p>{{detail.speak}}</p>
+          <h5 class="pull-right">{{name.speak}}</h5>
+        </div>
+      </li>
+    </flex-slider>
+  </div>
+</div>
