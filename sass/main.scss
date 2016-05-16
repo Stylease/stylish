@@ -11,6 +11,14 @@ $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
 $brand-info: #000072 !default;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
 body {
   padding-top: 70px;
 }
@@ -33,7 +41,57 @@ nav li:hover .dropdown-menu {
 a {
   cursor: pointer;
   @include transition(all ease 300ms);
+  &:hover {
+    @include transition(all ease 300ms);
+    text-decoration: none;
+  }
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
 }
+// classess
+.relate {
+  position: relative;
+}
+.get-center {
+  @include position(absolute,50% null null 50%);
+  @include transform(translate(-50%,-50%));
+}
+.row-flex {
+  @include display(flex);
+}
+.col-flex {
+  @include flex(1);
+}
+.m-center {
+  margin: 0 auto;
+}
+.m-clear {
+  margin: 0;
+}
+.pad-zero {
+  padding: 0;
+}
+.pointer {
+  cursor: pointer;
+}
+.block {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
+.text-light {
+  font-weight: 300;
+}
+.text-medium {
+  font-weight: 500;
+}
+.text-bold {
+  font-weight: 700;
+}
+// end of classess
 //bootstrap forms
 .input-lg,
 .input-group-lg > .form-control,
@@ -50,5 +108,6 @@ a {
   @include box-shadow(none);
 }
 //bootstrap forms
+
 /* Start writing sass here */
 @import "fancybox-override";
