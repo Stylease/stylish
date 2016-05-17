@@ -1,4 +1,4 @@
-<ul class="nav navbar-nav">
+<!-- <ul class="nav navbar-nav">
   <li ng-repeat="menu in navigation" class="{{menu.classis}}">
     <a ui-sref="{{menu.anchor}}" ng-if="menu.anchor">{{menu.name}}</a>
     <a href="{{menu.link}}" ng-if="menu.link">{{menu.name}}</a>
@@ -8,4 +8,16 @@
       </li>
     </ul>
   </li>
-</ul>
+</ul> -->
+<uib-accordion close-others="oneAtATime">
+  <uib-accordion-group ng-repeat="menu in navigation track by $index" class="{{menu.classis}}">
+    <uib-accordion-heading ui-sref="{{menu.anchor}}">{{menu.name}}
+      <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open, 'fa-chevron-down': !status.open}"></i>
+    </uib-accordion-heading>
+    <ul class="" ng-if="menu.subnav!='';">
+      <li ng-repeat="submenu in menu.subnav">
+        <a href="" ui-sref="{{submenu.link}}">{{submenu.name}}</a>
+      </li>
+    </ul>
+  </uib-accordion-group>
+</uib-accordion>

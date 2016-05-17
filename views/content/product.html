@@ -32,41 +32,154 @@
             <span class="text-uppercase">filter</span>
             <div class="filter-dropdown">
               <div class="search-by-filter">
-                <uib-accordion close-others="oneAtATime">
-                  <uib-accordion-group is-open="status.open1">
-                    <uib-accordion-heading>Occasion
-                      <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open1, 'fa-chevron-down': !status.open1}"></i>
-                    </uib-accordion-heading>
-                  </uib-accordion-group>
-                  <uib-accordion-group is-open="status.open2">
-                    <uib-accordion-heading>Dresses
-                      <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i>
-                    </uib-accordion-heading>
-                  </uib-accordion-group>
-                  <uib-accordion-group is-open="status.open3">
-                    <uib-accordion-heading>Rental Price
-                      <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open3, 'fa-chevron-down': !status.open3}"></i>
-                    </uib-accordion-heading>
-                    <div class="price-rangeslider">
-                      
-                    </div>
-                  </uib-accordion-group>
-                  <uib-accordion-group is-open="status.open4">
-                    <uib-accordion-heading>Delivery / Return Dates
-                      <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open4, 'fa-chevron-down': !status.open4}"></i>
-                    </uib-accordion-heading>
-                  </uib-accordion-group>
-                  <uib-accordion-group is-open="status.open5">
-                    <uib-accordion-heading>Size
-                      <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open5, 'fa-chevron-down': !status.open5}"></i>
-                    </uib-accordion-heading>
-                  </uib-accordion-group>
-                  <uib-accordion-group is-open="status.open6">
-                    <uib-accordion-heading>Colour
-                      <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open6, 'fa-chevron-down': !status.open6}"></i>
-                    </uib-accordion-heading>
-                  </uib-accordion-group>
-                </uib-accordion>
+                <form action="">
+                  <uib-accordion close-others="oneAtATime">
+                    <uib-accordion-group is-open="status.open1">
+                      <uib-accordion-heading>Occasion
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open1, 'fa-chevron-down': !status.open1}"></i>
+                      </uib-accordion-heading>
+                      <div class="occasion">
+                        <div class="radio-button">
+                          <input type="radio" name="occasion" id="wed">
+                          <label for="wed"><span></span> Wedding</label>
+                        </div>
+                        <div class="radio-button">
+                          <input type="radio" name="occasion" id="mehendi">
+                          <label for="mehendi"><span></span> Mehendi</label>
+                        </div>
+                        <div class="radio-button">
+                          <input type="radio" name="occasion" id="recp">
+                          <label for="recp"><span></span> Reception</label>
+                        </div>
+                        <div class="radio-button">
+                          <input type="radio" name="occasion" id="sangeet">
+                          <label for="sangeet"><span></span> Sangeet</label>
+                        </div>
+                        <div class="radio-button">
+                          <input type="radio" name="occasion" id="cocktail">
+                          <label for="cocktail"><span></span> Cocktail</label>
+                        </div>
+                        <div class="radio-button">
+                          <input type="radio" name="occasion" id="engage">
+                          <label for="engagement"><span></span> Engagement</label>
+                        </div>
+                      </div>
+                    </uib-accordion-group>
+                    <uib-accordion-group is-open="status.open2">
+                      <uib-accordion-heading>Dresses
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i>
+                      </uib-accordion-heading>
+                      <div class="dresses">
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="wed">
+                          <label for="wed"><span></span> Wedding</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="mehendi">
+                          <label for="mehendi"><span></span> Mehendi</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="recp">
+                          <label for="recp"><span></span> Reception</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="sangeet">
+                          <label for="sangeet"><span></span> Sangeet</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="cocktail">
+                          <label for="cocktail"><span></span> Cocktail</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="engage">
+                          <label for="engagement"><span></span> Engagement</label>
+                        </div>
+                      </div>
+                    </uib-accordion-group>
+                    <uib-accordion-group is-open="status.open3">
+                      <uib-accordion-heading>Rental Price
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open3, 'fa-chevron-down': !status.open3}"></i>
+                      </uib-accordion-heading>
+                      <div class="price-rangeslider">
+                        <div range-slider min="demo2.range.min" max="demo2.range.max" model-min="demo2.minPrice" model-max="demo2.maxPrice" filter="currency:'‎₹'" step="100"></div>
+                      </div>
+                    </uib-accordion-group>
+                    <uib-accordion-group is-open="status.open4">
+                      <uib-accordion-heading>Delivery / Return Dates
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open4, 'fa-chevron-down': !status.open4}"></i>
+                      </uib-accordion-heading>
+                      <div class="dates">
+                        <div class="radio-button">
+                          <input type="radio" name="date" id="four">
+                          <label for="four"><span></span> 4 Days</label>
+                        </div>
+                        <div class="radio-button">
+                          <input type="radio" name="date" id="eight">
+                          <label for="eight"><span></span> 8 Days</label>
+                        </div>
+                        <div class="calendar">
+                          <input type="date" class="form-control">
+                        </div>
+                      </div>
+                    </uib-accordion-group>
+                    <uib-accordion-group is-open="status.open5">
+                      <uib-accordion-heading>Size
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open5, 'fa-chevron-down': !status.open5}"></i>
+                      </uib-accordion-heading>
+                      <div class="product-size">
+                        <ul class="list-inline">
+                          <li><a href="">S</a></li>
+                          <li><a href="">M</a></li>
+                          <li><a href="">L</a></li>
+                          <li><a href="">XL</a></li>
+                        </ul>
+                      </div>
+                    </uib-accordion-group>
+                    <uib-accordion-group is-open="status.open6">
+                      <uib-accordion-heading>Colour
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open6, 'fa-chevron-down': !status.open6}"></i>
+                      </uib-accordion-heading>
+                      <div class="color">
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="black">
+                          <label for="black"><span></span> Black</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="white">
+                          <label for="white"><span></span> White</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="red">
+                          <label for="red"><span></span> Red</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="pink">
+                          <label for="pink"><span></span> Pink</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="orange">
+                          <label for="orange"><span></span> Orange</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="yellow">
+                          <label for="yellow"><span></span> Yellow</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="green">
+                          <label for="green"><span></span> Green</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="turquoise">
+                          <label for="turquoise"><span></span> Turquoise</label>
+                        </div>
+                        <div class="checkbox-custom">
+                          <input type="checkbox" id="blue">
+                          <label for="blue"><span></span> Blue</label>
+                        </div>
+                      </div>
+                    </uib-accordion-group>
+                  </uib-accordion>
+                </form>
               </div>
             </div>
           </div>

@@ -6,6 +6,7 @@ var jsArray = [
     './bower_components/angular/angular.min.js',
     './bower_components/angular-sanitize/angular-sanitize.min.js',
     './bower_components/angular-animate/angular-animate.min.js',
+    './bower_components/angular-rangeslider/angular.rangeSlider.js',
     './bower_components/angular-bootstrap/ui-bootstrap.min.js',
     './bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
     './bower_components/ui-router/release/angular-ui-router.min.js',
