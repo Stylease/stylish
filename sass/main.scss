@@ -6,7 +6,7 @@
 @import "../bower_components/fancyBox/source/jquery.fancybox.css";
 /* Bootstrap Variables Goes Here */
 $brand-dark-blue: #2c2d3d !default;
-$brand-orange: #84ce3c !default;
+$brand-orange: #ef8168 !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
 $brand-info: #000072 !default;
@@ -20,9 +20,6 @@ $brand-google: #d34836 !default;
       @content;
     }
   }
-}
-body {
-  padding-top: 70px;
 }
 img.loading {
   text-align: center;

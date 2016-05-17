@@ -1,21 +1,48 @@
 <header ng-controller="headerctrl">
-   <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-heade r text-center">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-bran d" href="#/home"><img src="img/logo.png" alt="Stylease" class="m-center"> </a>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="hamburger" ng-click="showMenu();">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </div>
-        <!-- just for checking click functn and delete afterwards  -->
+      </div>
+      <div class="col-xs-6">
+        <div class="logo">
+          <h1>
+            <a href=""><img src="img/logo.png" alt="Stylease" class="m-center img-responsive"></a>
+          </h1>
+        </div>
+      </div>
+      <div class="col-xs-3">
         <div class="pull-right">
-          <span ng-click="signUp();">Signup</span>
-          <span ng-click="logIn();">Login</span>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="signin">
+                <img src="img/profile.png" alt="" class="img-responsive">
+                <span ng-click="signUp();">Sign in</span>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="cart">
+                <img src="img/cart.png" alt="" class="img-responsive">
+                <span>Cart</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- end -->
+      </div>
     </div>
-</nav>
+
+    <!-- just for checking click functn and delete afterwards
+    <div class="pull-right">
+      <span ng-click="signUp();">Signup</span>
+      <span ng-click="logIn();">Login</span>
+    </div>
+    end -->
+  </div>
+  <nav class="{{showMe}}">
+    <div ng-include="template.menu" class="template menu"></div>
+  </nav>
 </header>

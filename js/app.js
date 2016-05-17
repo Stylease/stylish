@@ -45,6 +45,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'CartCtrl'
   })
+    .state('product', {
+    url: "/product",
+    templateUrl: "views/template.html",
+    controller: 'ProductCtrl'
+  })
+    .state('productdetail', {
+    url: "/productdetail",
+    templateUrl: "views/template.html",
+    controller: 'ProductdetailCtrl'
+  })
   ;
   $urlRouterProvider.otherwise("/home");
   $locationProvider.html5Mode(isproduction);

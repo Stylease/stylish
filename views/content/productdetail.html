@@ -1,0 +1,93 @@
+<div class="product-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="productdetail-slider">
+          <flex-slider class="carousel" flex-slide="slide in product">
+            <li>
+              <img ng-src="" alt="" class="img-responsive">
+            </li>
+          </flex-slider>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="product-descp">
+          <div class="name-section">
+            <h3 class="product-name">The Mashq Suit</h3>
+            <p>Retail Price : Rs. <span>3,50,000</span></p>
+          </div>
+          <div class="product-price">
+            <p>Rental amount : Rs. <span>6,700</span>/-</p>
+            <p>Refundable Security Deposit: Rs.<span>4,599</span>/-</p>
+            <!-- <i class="">question mark</i> -->
+          </div>
+          <div class="product-size">
+            <span>Size :</span>
+            <ul class="list-inline">
+              <li><a href="">S</a></li>
+              <li><a href="">M</a></li>
+              <li><a href="">L</a></li>
+              <li><a href="">XL</a></li>
+            </ul>
+          </div>
+          <div class="delivery">
+            <span>Delivery / Return Dates :</span>
+            <form action="">
+              <div class="radio-button">
+                <input type="radio" name="date" id="four">
+                <label for="four"><span></span> 4 Days</label>
+              </div>
+              <div class="radio-button">
+                <input type="radio" name="date" id="eight">
+                <label for="eight"><span></span> 8 Days</label>
+              </div>
+              <div class="calendar">
+                <input type="date" class="form-control">
+              </div>
+            </form>
+          </div>
+          <div class="buttons">
+            <button class="btn btn-outline text-uppercase">add to cart</button>
+            <button class="btn btn-outline text-uppercase">add to wishlist</button>
+          </div>
+          <div class="product-more-detail">
+            <uib-accordion close-others="oneAtATime">
+              <uib-accordion-group is-open="status.open1">
+                <uib-accordion-heading>Details <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open1, 'fa-chevron-down': !status.open1}"></i>
+                </uib-accordion-heading>
+              </uib-accordion-group>
+              <uib-accordion-group is-open="status.open2">
+                <uib-accordion-heading>Material &amp; Care <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i>
+                </uib-accordion-heading>
+              </uib-accordion-group>
+              <uib-accordion-group is-open="status.open3">
+                <uib-accordion-heading>Stylist Notes <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open3, 'fa-chevron-down': !status.open3}"></i>
+                </uib-accordion-heading>
+              </uib-accordion-group>
+            </uib-accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="suggested">
+      <div class="suggested-slider">
+        <flex-slider class="carousel" flex-slide="products in suggested" control-nav="false">
+          <li>
+            <div class="suggested-product">
+              <div class="suggested-imgholder">
+                <img ng-src="{{products.img}}" alt="" class="img-responsive">
+              </div>
+              <h4 class="name-suggestprd">{{products.name}} by <span>{{products.designer}}</span></h4>
+              <p>Rent : Rs {{products.price}}</p>
+              <div class="view-button">
+                <button class="btn btn-outline">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </li>
+        </flex-slider>
+      </div>
+    </div>
+  </div>
+</div>

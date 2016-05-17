@@ -29,7 +29,8 @@
     "lodash": "~4.0.0",
     "ui-router": "~0.2.15",
     "angular": "^1.5.0",
-    "fancyBox": "fancybox#^2.1.5"
+    "angular-rangeslider": "^0.0.14",
+    "fancyBox": "fancybox#^2.1.5",
   },
   "devDependencies": {
     "angular-translate": "^2.11.0"
