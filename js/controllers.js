@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap','ngAnimate', 'ngSanitize', 'angular-flexslider'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap','ngAnimate', 'ngSanitize', 'angular-flexslider','ui-rangeSlider'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file
@@ -11,10 +11,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 
   $scope.mySlides = [
-    'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg',
-    'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg',
-    'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
-    'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'
+    'img/home-slider.jpg',
+    'img/home-slider.jpg',
+    'img/home-slider.jpg'
+  ];
+  $scope.client = [
+    {
+      detail: "I can now wear a new outfit for every occasion, thanks to their super quick service, and access to a huge selection of outfits by some of my favourite designers!",
+      name: "Riya shah"
+    },
+    {
+      detail: "I can now wear a new outfit for every occasion, thanks to their super quick service, and access to a huge selection of outfits by some of my favourite designers!",
+      name: "Riya shah"
+    }
   ];
 })
 .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -31,6 +40,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.template = TemplateService.changecontent("orders");
   $scope.menutitle = NavigationService.makeactive("Orders");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
+.controller('OrderdetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("orderdetail");
+  $scope.menutitle = NavigationService.makeactive("Orderdetail");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
@@ -71,6 +89,54 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 
 })
+.controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("product");
+  $scope.menutitle = NavigationService.makeactive("Product");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+  // $scope.added = "fa-heart-o";
+  // $scope.addProduct = function(){
+  //   if($scope.added == "fa-heart"){
+  //     $scope.added = "fa-heart-o";
+  //   }else {
+  //     $scope.added = "fa-heart";
+  //   }
+  // };
+
+  $scope.demo2 = {
+    range: {
+        min: 0,
+        max: 10050
+    },
+    minPrice: 1000,
+    maxPrice: 4000
+};
+
+  $scope.shopping = [
+    {
+      img: "img/logo.png",
+      name: "The Mashq Suit",
+      price: "4500"
+    },
+    {
+      img: "img/logo.png",
+      name: "The Mashq Suit",
+      price: "4500"
+    }
+  ];
+})
+.controller('ProductdetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("productdetail");
+  $scope.menutitle = NavigationService.makeactive("Productdetail");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.oneAtATime = true;
+})
 
 .controller('headerctrl', function($scope, TemplateService,$uibModal) {
   $scope.template = TemplateService;
@@ -105,6 +171,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       controller: "headerctrl"
     });
   };
+  $scope.oneAtATime = true;
+
+  $scope.showMe = "menu-out";
+  $scope.showMenu = function() {
+    if($scope.showMe == "menu-in"){
+      $scope.showMe = "menu-out";
+    }else {
+      $scope.showMe = "menu-in";
+    }
+  }
 })
 
 .controller('languageCtrl', function($scope, TemplateService,$translate,$rootScope) {

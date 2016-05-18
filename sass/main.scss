@@ -7,13 +7,13 @@
 @import "../bower_components/angular-rangeslider/angular.rangeSlider.css";
 /* Bootstrap Variables Goes Here */
 $brand-dark-blue: #2c2d3d !default;
-$brand-orange: #ef8168 !default;
-$brand-warning: #ffec39 !default;
-$brand-danger: #fc483f !default;
-$brand-info: #000072 !default;
+$brand-dark-pink: #e87b65 !default;
+$brand-pink: #fdd3be !default;
+$brand-light-pink: #fff6f1 !default;
 $brand-facebook: #3b5998 !default;
 $brand-google: #d34836 !default;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,100,800,700,500,600,200,300);
 @mixin placeholder {
   $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
   @each $placeholder in $placeholders {
@@ -21,6 +21,14 @@ $brand-google: #d34836 !default;
       @content;
     }
   }
+}
+@font-face {
+  font-family: "fine-serif";
+  src: url('../fonts/fine-serif.ttf');
+}
+@font-face {
+  font-family: "fine-style";
+  src: url('../fonts/fine-style.TTF');
 }
 img.loading {
   text-align: center;
@@ -184,10 +192,50 @@ a {
 .text-underline {
   text-decoration: underline;
 }
+// color classess
+.dark-blue {
+  color: $brand-dark-blue;
+}
+.dark-pink {
+  color: $brand-dark-pink;
+}
+.color-pink {
+  color: $brand-pink;
+}
+.light-pink {
+  color: $brand-light-pink;
+}
+// end color classess
+// background classess
+.bg-dark-blue {
+  background-color: $brand-dark-blue;
+}
+.bg-dark-pink {
+  background-color: $brand-dark-pink;
+}
+.bg-pink {
+  background-color: $brand-pink;
+}
+.bg-light-pink {
+  background-color: $brand-light-pink;
+}
+// end background classess
 // btn-classes
-.btn:focus {
+.btn {
+  @include transition(all 300ms linear);
+  &:focus {
   box-shadow: none;
   outline: none;
+  }
+  &:hover {
+    @include transition(all 300ms linear);
+  }
+}
+.btn-outline {
+  @include button-variant($brand-dark-blue, transparent, $brand-dark-blue);
+  &:hover {
+    @include button-variant($brand-pink, $brand-dark-blue, $brand-dark-blue);
+  }
 }
 .btn-facebook {
   @include button-variant(white, $brand-facebook, $brand-facebook );
@@ -213,5 +261,9 @@ a {
   @include box-shadow(none);
 }
 //bootstrap forms
+.flexslider {
+  border: none;
+  margin: 0;
+}
 /* Start writing sass here */
 @import "fancybox-override";
