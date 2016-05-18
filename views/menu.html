@@ -9,15 +9,18 @@
     </ul>
   </li>
 </ul> -->
-<uib-accordion close-others="oneAtATime">
-  <uib-accordion-group ng-repeat="menu in navigation track by $index" class="{{menu.classis}}">
-    <uib-accordion-heading ui-sref="{{menu.anchor}}">{{menu.name}}
-      <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open, 'fa-chevron-down': !status.open}"></i>
-    </uib-accordion-heading>
-    <ul class="" ng-if="menu.subnav!='';">
-      <li ng-repeat="submenu in menu.subnav">
-        <a href="" ui-sref="{{submenu.link}}">{{submenu.name}}</a>
-      </li>
-    </ul>
-  </uib-accordion-group>
-</uib-accordion>
+<div class="accordion-custom">
+  <uib-accordion close-others="oneAtATime">
+    <uib-accordion-group is-open="status.open" ng-repeat="menu in navigation track by $index" class="{{menu.classis}}" is-disabled="menu.disabled">
+      <uib-accordion-heading >
+        <i class="pull-right fa dark-blue" ng-class="{'fa-chevron-up':( status.open && !menu.disabled), 'fa-chevron-down': (!status.open && !menu.disabled)}"></i>
+        <a ui-sref="{{menu.anchor}}" class="block dark-blue menu-name">{{menu.name}}</a>
+      </uib-accordion-heading>
+      <ul class="menu-dropdown" >
+        <li ng-repeat="submenu in menu.subnav">
+          <a href="" ui-sref="{{submenu.link}}" class="dark-blue">{{submenu.name}}</a>
+        </li>
+      </ul>
+    </uib-accordion-group>
+  </uib-accordion>
+</div>

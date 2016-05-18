@@ -12,11 +12,13 @@ var navigationservice = angular.module('navigationservice', [])
     {
       name: "Home",
       classis: "active",
+      disabled:true,
       anchor: "home"
     },
      {
       name: "Occasion",
       classis: "active",
+      disabled:false,
       anchor: "occasion",
       subnav: [
         {
@@ -53,6 +55,7 @@ var navigationservice = angular.module('navigationservice', [])
     }, {
       name: "Accessories",
       classis: "active",
+      disabled:false,
       anchor: "accessories",
       subnav: [
         {
@@ -69,18 +72,22 @@ var navigationservice = angular.module('navigationservice', [])
     }, {
       name: "Celebrities Choice",
       classis: "active",
-      anchor: "celebritieschoice"
+      disabled:true,
+      anchor: "profile"
     }, {
       name: "Media",
       classis: "active",
+      disabled:true,
       anchor: "Media"
     }, {
       name: "Contact Us",
       classis: "active",
+      disabled:true,
       anchor: "contactus"
     }, {
       name: "Help",
       classis: "active",
+      disabled:false,
       anchor: "help",
       subnav: [
         {
@@ -94,7 +101,7 @@ var navigationservice = angular.module('navigationservice', [])
         link: "#/how-it-works"
       },
         {
-        name: "Terms &amp; Conditions",
+        name: "Terms & Conditions",
         classis: "active",
         link: "#/termsconditions"
       },

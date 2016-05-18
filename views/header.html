@@ -2,16 +2,16 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-3">
-        <div class="hamburger" ng-click="showMenu();">
+        <div class="hamburger {{showCross}}" ng-click="showMenu();">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </div>
       </div>
       <div class="col-xs-6">
-        <div class="logo">
+        <div class="logo relate">
           <h1>
-            <a href="" ui-sref="home"><img src="img/logo.png" alt="Stylease" class="m-center img-responsive"></a>
+            <a href="" ui-sref="home"><img src="img/logo.png" alt="Stylease" class="img-responsive"></a>
           </h1>
         </div>
       </div>
@@ -42,7 +42,7 @@
     </div>
     end -->
   </div>
-  <nav class="{{showMe}}">
+  <nav class="{{showMe}} bg-pink">
     <div ng-include="template.menu" class="template menu"></div>
   </nav>
 </header>

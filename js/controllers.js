@@ -173,12 +173,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
   $scope.oneAtATime = true;
 
+  $scope.showCross = "";
   $scope.showMe = "menu-out";
   $scope.showMenu = function() {
     if($scope.showMe == "menu-in"){
       $scope.showMe = "menu-out";
+      $scope.showCross = "";
     }else {
       $scope.showMe = "menu-in";
+      $scope.showCross = "cross-ham";
     }
   }
 })

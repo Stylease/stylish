@@ -30,6 +30,9 @@ $brand-google: #d34836 !default;
   font-family: "fine-style";
   src: url('../fonts/fine-style.TTF');
 }
+body {
+  font-family: "Work Sans";
+}
 img.loading {
   text-align: center;
   opacity: 1;
@@ -205,6 +208,9 @@ a {
 .light-pink {
   color: $brand-light-pink;
 }
+.color-white {
+  color: white;
+}
 // end color classess
 // background classess
 .bg-dark-blue {
@@ -264,6 +270,179 @@ a {
 .flexslider {
   border: none;
   margin: 0;
+  background-color: transparent;
 }
 /* Start writing sass here */
+
+// header
+header {
+  padding: 5px 0;
+}
+.hamburger {
+  margin: 10px 0px 5px;
+  cursor: pointer;
+  display: inline-block;
+  .icon-bar {
+    margin: 7px 0;
+    @include size(40px,3px);
+    display: block;
+    background-color: $brand-pink;
+    @include transition(all 300ms linear);
+  }
+}
+.cross-ham {
+  span:first-child {
+    @include position(relative, 10px null null null);
+    @include transform(rotate(45deg));
+    @include transition(all 300ms linear);
+  }
+  span:nth-child(2) {
+    opacity: 0;
+    @include transition(all 300ms linear);
+  }
+  span:last-child {
+    @include position(relative, -10px null null null);
+    @include transform(rotate(-45deg));
+    @include transition(all 300ms linear);
+  }
+}
+.menu-out {
+  @include transform(translateX(-350px));
+  @include transition(all 300ms linear);
+}
+.menu-in {
+  @include transform(translateX(0px));
+  @include transition(all 300ms linear);
+}
+.logo h1 {
+  margin: 0;
+  @include position(absolute, 4px null null 50%);
+  @include transform(translateX(-50%));
+  z-index: 20;
+}
+nav {
+  @include size(350px,100%);
+  padding: 20px;
+  @include transition(all 300ms linear);
+  position: fixed;
+  top: 67px;
+  z-index: 11;
+  .menu-name {
+    font-size: 18px;
+    font-weight: 500;
+    &:hover { color: $brand-dark-blue; }
+  }
+  .menu-dropdown {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style-type: none;
+      a {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(61, 60, 62, 0.2);
+        display: block;
+        font-size: 16px;
+        &:hover { color: $brand-dark-pink; }
+      }
+      &:last-child a {
+        border-bottom: none;
+      }
+    }
+  }
+}
+.accordion-custom {
+  .panel,
+  .panel-default > .panel-heading {
+    border: none;
+    border-top: 1px solid $brand-dark-blue;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    &:first-child {
+      border-top: none;
+    }
+  }
+  .panel-default > .panel-heading { padding: 10px 0; }
+  .panel-default > .panel-heading + .panel-collapse > .panel-body {
+    padding: 10px 0 0;
+    border: none;
+  }
+}
+// header end
+
+// home
+.home-slider {
+  .flex-control-nav {
+    bottom: 60px;
+    z-index: 2;
+  }
+  .flex-control-paging li a.flex-active {
+    background-color: $brand-dark-pink;
+    opacity: 1;
+  }
+  .flex-control-paging li a {
+    background-color: $brand-pink;
+    opacity: 0.7;
+  }
+}
+.customerspeak-slider {
+  background: url('../img/anchor.png') #dc795e;
+  h4 {
+    border-bottom: 1px solid $brand-dark-blue;
+    padding-bottom: 5px;
+    font-size: 35px;
+  }
+  .client-speak {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 400;
+    h5 {
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 200;
+     }
+  }
+}
+// home end
+
+// footer
+.links {
+  ul {
+    padding: 0;
+    li {
+      list-style-type: none;
+      a {
+        color: $brand-light-pink;
+        font-size: 16px;
+        &:hover { color: $brand-light-pink; }
+      }
+    }
+  }
+}
+.footer-head {
+  padding-bottom: 3px;
+  border-bottom: 1px solid $brand-dark-pink;
+  display: inline-block;
+  font-size: 17px;
+}
+.social-links {
+  a {
+    @include square(25px);
+    border-radius: 100%;
+    display: inline-block;
+    background-color: $brand-dark-pink;
+    line-height: 25px;
+    text-align: center;
+    i { color: $brand-light-pink; }
+    @include transition(all 300ms linear);
+    &:hover {
+      @include transition(all 300ms linear);
+      background-color: $brand-light-pink;
+      i { color: $brand-dark-pink; }
+    }
+  }
+}
+// footer
+
 @import "fancybox-override";
