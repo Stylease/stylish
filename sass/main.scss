@@ -30,6 +30,11 @@ $brand-google: #d34836 !default;
   font-family: "fine-style";
   src: url('../fonts/fine-style.TTF');
 }
+.font-serif { font-family: "fine-serif"; }
+
+.font-finestyle { font-family: "fine-style"; }
+
+.content { background-color: $brand-light-pink; }
 body {
   font-family: "Work Sans";
 }
@@ -279,7 +284,7 @@ header {
   padding: 5px 0;
 }
 .hamburger {
-  margin: 10px 0px 5px;
+  margin: 12px 0px 6px;
   cursor: pointer;
   display: inline-block;
   .icon-bar {
@@ -320,12 +325,16 @@ header {
   @include transform(translateX(-50%));
   z-index: 20;
 }
+.user-detail {
+  margin: 5px 0;
+  img { margin-bottom: 5px; }
+}
 nav {
   @include size(350px,100%);
   padding: 20px;
   @include transition(all 300ms linear);
   position: fixed;
-  top: 67px;
+  top: 72px;
   z-index: 11;
   .menu-name {
     font-size: 18px;
@@ -386,11 +395,42 @@ nav {
   }
 }
 .customerspeak-slider {
+  padding: 110px 0px 50px;
+  margin-top: -110px;
   background: url('../img/anchor.png') #dc795e;
   h4 {
     border-bottom: 1px solid $brand-dark-blue;
     padding-bottom: 5px;
     font-size: 35px;
+  }
+  .flex-direction-nav a { top: 20%; }
+  .flexslider:hover .flex-direction-nav .flex-prev {
+    left: 100px;
+    opacity: 1;
+   }
+  .flexslider:hover .flex-direction-nav .flex-next {
+    right: 100px;
+    opacity: 1;
+   }
+  .flex-direction-nav a.flex-next {
+    right: 100px;
+    opacity: 1;
+    &:before {
+    content: "\f105";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 50px;
+    color: $brand-dark-blue;
+  }
+}
+  .flex-direction-nav a.flex-prev{
+    left: 100px;
+    opacity: 1;
+    &:before {
+    content: "\f104";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 50px;
+    color: $brand-dark-blue;
+    }
   }
   .client-speak {
     width: 50%;
@@ -404,10 +444,29 @@ nav {
      }
   }
 }
+.how-it-works {
+  min-height: 350px;
+  margin-top: -40px;
+  z-index: 2;
+  background: url('../img/work-bg.jpg');
+  cursor: pointer;
+}
+.play { font-size: 50px; }
+.talk-us {
+  padding: 10px 20px;
+  position: absolute;
+  top: 40%;
+  right: -43px;
+  z-index: 2;
+  @include transform(rotate(-90deg));
+  background-color: $brand-pink;
+  color: $brand-dark-blue;
+  span { font-size: 15px; }
+}
 // home end
 
 // footer
-footer { padding: 70px 0 20px; }
+footer { padding: 50px 0 20px; }
 .links {
   ul {
     padding: 0;
@@ -458,6 +517,14 @@ footer { padding: 70px 0 20px; }
   .footer-head { font-size: 21px; }
   font-size: 17px;
 }
+.read-more {
+  @include button-variant(#dc795e, transparent, #dc795e);
+  &:hover {
+    background-color: #d35634;
+    color: $brand-dark-blue;
+  }
+}
+.ting:hover { color: $brand-pink; }
 // footer
 
 @import "fancybox-override";
