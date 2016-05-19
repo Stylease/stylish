@@ -407,10 +407,12 @@ nav {
 // home end
 
 // footer
+footer { padding: 70px 0 20px; }
 .links {
   ul {
     padding: 0;
     li {
+      margin-bottom: 8px;
       list-style-type: none;
       a {
         color: $brand-light-pink;
@@ -442,6 +444,19 @@ nav {
       i { color: $brand-dark-pink; }
     }
   }
+}
+.follow { margin: 20px 0; }
+.question {
+  margin-top: 40px;
+  font-size: 17px;
+  a {
+    color: #fff;
+    &:hover { color: $brand-dark-pink; }
+  }
+}
+.about {
+  .footer-head { font-size: 21px; }
+  font-size: 17px;
 }
 // footer
 
