@@ -3,52 +3,69 @@
 </div>
 <div class="profile">
   <div class="container">
+    <h3 class="dark-blue text-uppercase">my account</h3>
     <div class="row">
-      <div class="col-md-5">
-        <form action="">
-          <div class="relate">
-            <input type="text" class="form-control" placeholder="First Name">
-          </div>
-          <div class="relate">
-            <input type="text" class="form-control" placeholder="Last Name">
-          </div>
-          <div class="relate">
-            <input type="tel" class="form-control" placeholder="Mobile No">
-          </div>
-          <div class="relate">
-            <input type="email" class="form-control" placeholder="Email-id">
-          </div>
-          <div class="bank-detail">
-            <h3>Bank Account Details :</h3>
+      <div class="col-md-4">
+        <div class="profile-tab">
+          <ul>
+            <li><a href="" ng-click="tabchange('profile',1);">My Profile</a></li>
+            <li><a href="" ng-click="tabchange('orders',2);">My Orders</a></li>
+            <li><a href="" ng-click="tabchange('wishlist',3);">My Wishlist</a></li>
+            <li><a href="" ng-click="tabchange('address',4);">Saved Addressess</a></li>
+            <li><a href="">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="{{showPro}}" ng-if="tab=='profile'">
+          <form action="">
             <div class="relate">
-              <input type="text" class="form-control" placeholder="Bank Name">
+              <input type="text" class="form-control" placeholder="First Name">
             </div>
             <div class="relate">
-              <input type="text" class="form-control" placeholder="Account Number">
+              <input type="text" class="form-control" placeholder="Last Name">
             </div>
             <div class="relate">
-              <span>Account Type - </span>
-              <div class="radio-button">
-                <input type="radio" class="" name="account" id="current">
-                <label for="current"><span></span> Current</label>
+              <input type="tel" class="form-control" placeholder="Mobile No">
+            </div>
+            <div class="relate">
+              <input type="email" class="form-control" placeholder="Email-id">
+            </div>
+            <div class="bank-detail">
+              <h3>Bank Account Details :</h3>
+              <div class="relate">
+                <input type="text" class="form-control" placeholder="Bank Name">
               </div>
-              <div class="radio-button">
-                <input type="radio" class="" name="account" id="saving">
-                <label for="saving"><span></span> Saving</label>
+              <div class="relate">
+                <input type="text" class="form-control" placeholder="Account Number">
+              </div>
+              <div class="relate">
+                <span>Account Type - </span>
+                <div class="radio-button">
+                  <input type="radio" class="" name="account" id="current">
+                  <label for="current"><span></span> Current</label>
+                </div>
+                <div class="radio-button">
+                  <input type="radio" class="" name="account" id="saving">
+                  <label for="saving"><span></span> Saving</label>
+                </div>
+              </div>
+              <div class="relate">
+                <input type="text" class="form-control" placeholder="IFSC Code">
+              </div>
+              <div class="tex-center">
+                <button class="btn btn-outline">Edit</button>
+                <div class="on-edit">
+                  <button class="btn btn-outline">Reset Details</button>
+                  <button class="btn btn-outline">Save Changes</button>
+                </div>
               </div>
             </div>
-            <div class="relate">
-              <input type="text" class="form-control" placeholder="IFSC Code">
-            </div>
-            <div class="tex-center">
-              <button class="btn btn-outline">Edit</button>
-              <div class="on-edit">
-                <button class="btn btn-outline">Reset Details</button>
-                <button class="btn btn-outline">Save Changes</button>
-              </div>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
+        <div class="{{showOrder}}" ng-if="tab=='orders'"></div>
+        <div class="{{showWish}}" ng-if="tab=='wishlist'"></div>
+        <div class="{{showAdd}}" ng-if="tab=='address'"></div>
       </div>
     </div>
   </div>

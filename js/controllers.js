@@ -34,6 +34,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
+  $scope.tab = 'profile';
+  $scope.showPro = "active";
+  $scope.showOrder = "";
+  $scope.showWish = "";
+  $scope.showAdd = "";
+
+  $scope.tabchange = function(getTab, a) {
+    $scope.tab = getTab;
+    if(a == 1){
+      $scope.showPro = "active";
+      $scope.showOrder = "";
+      $scope.showWish = "";
+      $scope.showAdd = "";
+    }else if(a == 2){
+      $scope.showPro = "";
+      $scope.showOrder = "active";
+      $scope.showWish = "";
+      $scope.showAdd = "";
+    }else if(a == 3){
+      $scope.showPro = "";
+      $scope.showOrder = "";
+      $scope.showWish = "active";
+      $scope.showAdd = "";
+    }else if(a == 4){
+      $scope.showPro = "";
+      $scope.showOrder = "";
+      $scope.showWish = "";
+      $scope.showAdd = "active";
+    }
+  };
+
 })
 .controller('OrdersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file
