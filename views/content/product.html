@@ -1,36 +1,26 @@
 <div class="heading-bar">
-  <h3 class="heading">Shop</h3>
-  <span class="found">107 items</span>
+  <div class="container text-center">
+    <div class="pull-right">
+      <form action="">
+        <input type="search" placeholder="Find what you're looking for !">
+        <button type="submit">
+          <!-- <img src="" alt="" class="img-responsive"> -->
+        </button>
+      </form>
+    </div>
+    <h3 class="heading">Shop</h3>
+    <span class="found">107 items</span>
+  </div>
 </div>
 <div class="shop">
   <div class="container">
-    <form action="">
-      <input type="search" placeholder="Find what you're looking for !">
-      <button type="submit">
-        <!-- <img src="" alt="" class="img-responsive"> -->
-      </button>
-    </form>
-    <div class="filters">
+    <div class="products">
       <div class="row">
-        <div class="col-xs-2">
-          <div class="sort">
-            <!-- <img src="" alt="" class="img-responsive"> -->
-            <span class="text-uppercase">sort</span>
-            <div class="filter-dropdown">
-              <ul>
-                <li><a href="">Popularity</a></li>
-                <li><a href="">Price : High - Low</a></li>
-                <li><a href="">Price : Low - High</a></li>
-                <li><a href="">Recent Addition</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-2">
+        <div class="col-md-3">
           <div class="filter-product">
             <!-- <img src="" alt="" class="img-responsive"> -->
             <span class="text-uppercase">filter</span>
-            <div class="filter-dropdown">
+            <div class="filter-dropdown accordion-custom">
               <div class="search-by-filter">
                 <form action="">
                   <uib-accordion close-others="oneAtATime">
@@ -184,54 +174,30 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-offset-6 col-xs-2">
-          <div class="view">
+        <div class="col-md-9">
+          <div class="sort-product">
             <!-- <img src="" alt="" class="img-responsive"> -->
-            <!-- <img src="" alt="" class="img-responsive"> -->
-            <span class="text-uppercase">view</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="product-view">
-    <div class="container">
-      <div class="list-view">
-        <div class="row">
-          <div class="col-md-12 col-xs-12" ng-repeat="product in shopping">
-            <div class="view-product relate">
-              <div class="wishlist" ng-click="addProduct();">
-                <span class="">add <i class="fa {{added}}"></i></span>
-              </div>
-              <div class="row">
-                <div class="col-md-6 col-xs-5">
-                  <div class="product-imgholder">
-                    <img ng-src="{{product.img}}" alt="" class="img-responsive">
-                  </div>
-                </div>
-                <div class="col-md-6 col-xs-7">
-                  <div class="product-detail">
-                    <h4 class="product-name">{{product.name}}</h4>
-                    <p>Rent : Rs {{product.price}}/-</p>
-                  </div>
-                </div>
-              </div>
+            <span class="text-uppercase">sort</span>
+            <div class="filter-dropdown">
+              <ul>
+                <li><a href="">Popularity</a></li>
+                <li><a href="">Price : High - Low</a></li>
+                <li><a href="">Price : Low - High</a></li>
+                <li><a href="">Recent Addition</a></li>
+              </ul>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="box-view">
-        <div class="row">
-          <div class="col-md-6 col-xs-6" ng-repeat="product in shopping">
-            <div class="view-product relate">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="product-imgholder">
-                    <img ng-src="{{product.img}}" alt="" class="img-responsive">
+          <div class="shop-product">
+            <div class="row">
+              <div class="col-md-4" ng-repeat="product in shopping">
+                <div class="view-product relate">
+                  <div class="wishlist" ng-click="addProduct();">
+                    <span class=""><i class="fa {{added}}"></i></span>
                   </div>
-                </div>
-                <div class="col-md-6 ">
                   <div class="product-detail">
+                    <div class="product-imgholder">
+                      <img ng-src="{{product.img}}" alt="" class="img-responsive">
+                    </div>
                     <h4 class="product-name">{{product.name}}</h4>
                     <p>Rent : Rs {{product.price}}/-</p>
                   </div>

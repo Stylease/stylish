@@ -1,0 +1,35 @@
+<div class="heading-bar text-center">
+  <h3 class="heading">my cart</h3>
+</div>
+<div class="cart">
+  <div class="container">
+    <div class="cart-list" ng-repeat="product in cart">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="cart-imgholder">
+            <img ng-src="{{product.img}}" alt="" class="img-responsive">
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="product-cart-detail clearfix">
+            <div class="pull-right">
+              <a href="">Edit</a>
+            </div>
+            <h4 class="prd-name">{{product.name}}</h4>
+            <h5>by : <span>{{product.desginername}}</span></h5>
+            <div class="product-all-detail">
+              <p>RENT : INR <span>{{product.rental}}/-</span></p>
+              <p><span>Size</span> <span>{{product.size}}</span></p>
+              <p><span>Rental</span> <span>INR {{product.price}}</span></p>
+              <p><span>Delivery Date</span> <span>{{product.date}}</span></p>
+              <p><span>Duration</span> <span>{{product.duration}} Days</span></p>
+            </div>
+            <div class="pull-right">
+              <a href="">Remove Item <i class="fa fa-close"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

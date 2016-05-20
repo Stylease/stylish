@@ -272,6 +272,91 @@ a {
   @include box-shadow(none);
 }
 //bootstrap forms
+.custom-checkbox {
+  /* Base for label styling */
+  [type="checkbox"]:not(:checked),
+  [type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+  }
+  [type="checkbox"]:not(:checked) + label,
+  [type="checkbox"]:checked + label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* checkbox aspect */
+  [type="checkbox"]:not(:checked) + label:before,
+  [type="checkbox"]:checked + label:before {
+    content: '';
+    @include position(absolute, 0 null null 0);
+    @include square(18px);
+    border: 1px solid $brand-dark-blue;
+    background: transparent;
+  }
+  /* checked mark aspect */
+  [type="checkbox"]:not(:checked) + label:after,
+  [type="checkbox"]:checked + label:after {
+    content: '✔';
+    @include position(absolute, 3px null null 4px);
+    font-size: 15px;
+    line-height: 0.8;
+    color: $brand-dark-pink;
+    @include transition(all 300ms linear);
+  }
+  /* checked mark aspect changes */
+  [type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+    transform: scale(0);
+  }
+  [type="checkbox"]:checked + label:after {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.radio-button {
+  input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"] + label {
+    font-size: 13px;
+    padding-left: 10px;
+  }
+  input[type="radio"] + label span {
+    display: inline-block;
+    @include square(18px);
+    border-radius: 100%;
+    margin: -2px 4px 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid $brand-dark-blue;
+    @include transition(all 300ms linear);
+    &:after {
+      content: "";
+      @include square(12px);
+      border-radius: 100%;
+      margin: 2px 1px 1px 2px;
+      display: block;
+      background-color: $brand-dark-pink;
+      opacity: 0;
+      @include transition(all 300ms linear);
+    }
+  }
+  input[type="radio"]:checked + label span {
+    @include transition(all 300ms linear);
+    &:after {
+      opacity: 1;
+      @include transition(all 300ms linear);
+    }
+  }
+  input[type="radio"] + label span,
+  input[type="radio"]:checked + label span {
+    @include transition(all 0.4s linear);
+  }
+}
 .flexslider {
   border: none;
   margin: 0;
@@ -298,7 +383,7 @@ header {
 .cross-ham {
   span:first-child {
     @include position(relative, 10px null null null);
-    @include transform(rotate(45deg));
+    @include transform(rotate(-135deg));
     @include transition(all 300ms linear);
   }
   span:nth-child(2) {
@@ -307,7 +392,7 @@ header {
   }
   span:last-child {
     @include position(relative, -10px null null null);
-    @include transform(rotate(-45deg));
+    @include transform(rotate(135deg));
     @include transition(all 300ms linear);
   }
 }
@@ -455,9 +540,9 @@ nav {
 .talk-us {
   padding: 10px 20px;
   position: absolute;
-  top: 40%;
+  top: 50%;
   right: -43px;
-  z-index: 2;
+  z-index: 20;
   @include transform(rotate(-90deg));
   background-color: $brand-pink;
   color: $brand-dark-blue;
@@ -466,65 +551,123 @@ nav {
 // home end
 
 // footer
-footer { padding: 50px 0 20px; }
-.links {
-  ul {
-    padding: 0;
-    li {
-      margin-bottom: 8px;
-      list-style-type: none;
-      a {
-        color: $brand-light-pink;
-        font-size: 16px;
-        &:hover { color: $brand-light-pink; }
+.home-footer {
+  background-color: $brand-dark-blue;
+  color: white;
+  .links {
+    ul {
+      padding: 0;
+      li {
+        margin-bottom: 8px;
+        list-style-type: none;
+        a {
+          color: $brand-light-pink;
+          font-size: 16px;
+          &:hover { color: $brand-dark-pink; }
+        }
       }
     }
   }
-}
-.footer-head {
-  padding-bottom: 3px;
-  border-bottom: 1px solid $brand-dark-pink;
-  display: inline-block;
-  font-size: 17px;
-}
-.social-links {
-  a {
-    @include square(25px);
-    border-radius: 100%;
+  .footer-head {
+    padding-bottom: 3px;
+    border-bottom: 1px solid $brand-dark-pink;
     display: inline-block;
-    background-color: $brand-dark-pink;
-    line-height: 25px;
-    text-align: center;
-    i { color: $brand-light-pink; }
-    @include transition(all 300ms linear);
-    &:hover {
+    font-size: 17px;
+  }
+  .social-links {
+    a {
+      @include square(25px);
+      border-radius: 100%;
+      display: inline-block;
+      background-color: $brand-dark-pink;
+      line-height: 25px;
+      text-align: center;
+      i { color: $brand-light-pink; }
       @include transition(all 300ms linear);
-      background-color: $brand-light-pink;
-      i { color: $brand-dark-pink; }
+      &:hover {
+        @include transition(all 300ms linear);
+        background-color: $brand-light-pink;
+        i { color: $brand-dark-pink; }
+      }
+    }
+  }
+  .follow { margin: 20px 0; }
+  .question {
+    margin-top: 40px;
+    font-size: 17px;
+    a {
+      color: #fff;
+      &:hover { color: $brand-dark-pink; }
+    }
+  }
+  .about {
+    .footer-head { font-size: 21px; }
+    font-size: 17px;
+  }
+  .read-more {
+    @include button-variant(#dc795e, transparent, #dc795e);
+    &:hover {
+      background-color: #d35634;
+      color: $brand-dark-blue;
+    }
+  }
+  .ting {
+    color: white;
+    &:hover { color: $brand-pink; }
+  }
+}
+
+footer {
+  padding: 50px 0 20px;
+  background-color: $brand-pink;
+  color: $brand-dark-blue;
+  @extend .home-footer;
+  .links ul li a {
+    color: $brand-dark-blue;
+  }
+  .question a { color: $brand-dark-blue; }
+  .ting {
+    color: $brand-dark-blue;
+    &:hover {
+      color: $brand-dark-pink;
+    }
+  }
+  .read-more {
+    @include button-variant($brand-dark-blue, transparent, $brand-dark-blue);
+    &:hover {
+      @include button-variant($brand-dark-pink, $brand-dark-blue, $brand-dark-blue);
     }
   }
 }
-.follow { margin: 20px 0; }
-.question {
-  margin-top: 40px;
-  font-size: 17px;
-  a {
-    color: #fff;
-    &:hover { color: $brand-dark-pink; }
-  }
-}
-.about {
-  .footer-head { font-size: 21px; }
-  font-size: 17px;
-}
-.read-more {
-  @include button-variant(#dc795e, transparent, #dc795e);
-  &:hover {
-    background-color: #d35634;
-    color: $brand-dark-blue;
-  }
-}
-.ting:hover { color: $brand-pink; }
 // footer
+
+.heading-bar {
+  padding: 80px 0px 30px;
+  background-color: $brand-pink;
+  font-family: "fine-style";
+  text-transform: uppercase;
+  text-align: center;
+  h3 {
+    margin: 0;
+    font-size: 45px;
+  }
+}
+input.form-control {
+  height: 40px;
+  padding: 8px 0;
+  border: none;
+  border-bottom: 1px solid $brand-dark-blue;
+  background-color: transparent;
+  font-size: 16px;
+  @include placeholder {
+    color: $brand-dark-blue;
+  };
+  @include transition(all 300ms linear);
+   &:focus {
+      border-color: $brand-dark-pink;
+      @include placeholder { color: $brand-dark-pink; };
+      @include transition(all 300ms linear);
+    }
+}
 
 @import "fancybox-override";

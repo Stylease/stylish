@@ -1,0 +1,30 @@
+<div class="heading-bar text-center">
+  <h3 class="heading">wishlist</h3>
+</div>
+<div class="wishlist">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="" ng-include="template.account"></div>
+      </div>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-4" ng-repeat="prd in wishlist">
+            <div class="wishlist-product">
+              <div class="remove-wishlist">
+                <span class=""><i class="fa fa-times"></i></span>
+              </div>
+              <div class="wish-imgholder">
+                <img ng-src="{{prd.img}}" alt="" class="img-responsive">
+              </div>
+              <div class="">
+                <h5 class="wishprd-name">{{prd.name}}</h5>
+                <span>Rent : Rs, {{prd.price}}/-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

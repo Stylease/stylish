@@ -9,6 +9,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Home");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.footerColor = "home-footer";
 
   $scope.mySlides = [
     'img/home-slider.jpg',
@@ -33,37 +34,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Profile");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
-
-  $scope.tab = 'profile';
-  $scope.showPro = "active";
-  $scope.showOrder = "";
-  $scope.showWish = "";
-  $scope.showAdd = "";
-
-  $scope.tabchange = function(getTab, a) {
-    $scope.tab = getTab;
-    if(a == 1){
-      $scope.showPro = "active";
-      $scope.showOrder = "";
-      $scope.showWish = "";
-      $scope.showAdd = "";
-    }else if(a == 2){
-      $scope.showPro = "";
-      $scope.showOrder = "active";
-      $scope.showWish = "";
-      $scope.showAdd = "";
-    }else if(a == 3){
-      $scope.showPro = "";
-      $scope.showOrder = "";
-      $scope.showWish = "active";
-      $scope.showAdd = "";
-    }else if(a == 4){
-      $scope.showPro = "";
-      $scope.showOrder = "";
-      $scope.showWish = "";
-      $scope.showAdd = "active";
-    }
-  };
 
 })
 .controller('OrdersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -92,12 +62,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
+  $scope.wishlist = [
+    {
+      img: "img/logo.png",
+      name: "The Mashq Suit",
+      price: "4500"
+    },
+    {
+      img: "img/logo.png",
+      name: "The Mashq Suit",
+      price: "4500"
+    },
+    {
+      img: "img/logo.png",
+      name: "The Mashq Suit",
+      price: "4500"
+    }
+  ];
+
 })
 .controller('AddressCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file
 
   $scope.template = TemplateService.changecontent("address");
   $scope.menutitle = NavigationService.makeactive("Address");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
+.controller('SaveaddressCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("saveaddress");
+  $scope.menutitle = NavigationService.makeactive("Saveaddress");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
@@ -118,6 +115,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Cart");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.cart = [
+    {
+      img: "img/logo.png",
+      name: "The Nawishtah Jacket and Gown",
+      desginername: "anita dongre",
+      rental: "6700",
+      size: "M",
+      price: "9,999",
+      date: "04 May 2016",
+      duration: "07"
+    },
+    {
+      img: "img/logo.png",
+      name: "The Nawishtah Jacket and Gown",
+      desginername: "anita dongre",
+      rental: "6700",
+      size: "M",
+      price: "9,999",
+      date: "04 May 2016",
+      duration: "07"
+    }
+  ];
 
 })
 .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -137,6 +156,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   //   }
   // };
 
+  $scope.oneAtATime = true;
+
   $scope.demo2 = {
     range: {
         min: 0,
@@ -147,6 +168,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 };
 
   $scope.shopping = [
+    {
+      img: "img/logo.png",
+      name: "The Mashq Suit",
+      price: "4500"
+    },
     {
       img: "img/logo.png",
       name: "The Mashq Suit",
