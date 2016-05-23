@@ -46,16 +46,16 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="relate">
-                    <span>Account Type - </span>
                     <div class="row">
                       <div class="col-md-6">
-                        <div class="radio-button">
+                        <div class="radio-button profile-radio">
+                          <span class="account-type">Account Type - </span>
                           <input type="radio" class="" name="account" id="current">
                           <label for="current"><span></span> Current</label>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="radio-button">
+                        <div class="radio-button profile-radio">
                           <input type="radio" class="" name="account" id="saving">
                           <label for="saving"><span></span> Saving</label>
                         </div>
@@ -68,10 +68,10 @@
                 </div>
               </div>
               <div class="text-center">
-                <button class="btn btn-outline">Edit</button>
-                <div class="on-edit">
-                  <button class="btn btn-outline">Reset Details</button>
-                  <button class="btn btn-outline">Save Changes</button>
+                <button class="btn btn-outline mt20 mb20 btn-full text-medium" ng-hide="setProfile" ng-click="setProfile=true">Edit</button>
+                <div class="on-edit mt20 mb20" ng-show="setProfile">
+                  <button type="reset" class="btn btn-outline text-medium btn-full" >Reset Details</button>
+                  <button class="btn btn-outline text-medium btn-full">Save Changes</button>
                 </div>
               </div>
             </div>

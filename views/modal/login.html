@@ -1,26 +1,29 @@
 <div class="popup">
-  <div class="bg pop-heading-bar">
+  <div class="pop-heading-bar bg-dark-blue">
   <span class="close" ng-click="$close();"><i class="fa fa-close"></i></span>
-    <h2 class="text-uppercase text-center">Login</h2>
+    <h2 class="text-uppercase text-center color-pink m-clear font-finestyle pd10">Login</h2>
   </div>
-  <div class="pop-body text-center">
-    <div class="block text-center">
-      <button class="btn btn-google"><i class="fa fa-google-plus"></i>Sign in with Google+</button>
-    </div>
-    <div class="block text-center">
-      <button class="btn btn-facebook"><i class="fa fa-google-plus"></i>Login with Facebook</button>
-    </div>
-    <div class="or relate">
-      <span>OR</span>
-    </div>
+  <div class="pop-body text-center bg-light-pink pd20">
     <div class="row">
-      <div class="col-md-offset-1 col-md-10">
-        <form action="">
-          <input type="email" class="form-control" placeholder="Email Id">
-          <input type="password" class="form-control" placeholder="Password">
-          <span class="pull-right pointer" ng-click="forgot();">Forgot Password ?</span>
-          <div class="login">
-            <button class="btn btn-outline">Log In</button>
+      <div class="col-md-offset-2 col-md-8">
+        <form action="" name="formLogin">
+          <div class="relate">
+            <input type="email" class="form-control" placeholder="Email Id" ng-model="email" name="email" required>
+            <div class="form-error" ng-show="formLogin.email.$touched && formLogin.email.$error.required">
+              Please enter your Email Id.
+            </div>
+          </div>
+          <div class="relate">
+            <input type="password" class="form-control" placeholder="Password" ng-model="pswd" name="pswd" required>
+            <div class="form-error" ng-show="formLogin.pswd.$touched && formLogin.pswd.$error.required">
+              Please enter your password.
+            </div>
+          </div>
+          <div class="clearfix">
+            <span class="pull-right pointer mt10 mb10" ng-click="forgot();">Forgot Password ?</span>
+          </div>
+          <div class="login mb10 mt10">
+            <button class="btn btn-outline btn-full text-medium">Log In</button>
           </div>
           <div class="">
             <span>New User ?</span>
@@ -28,6 +31,15 @@
           </div>
         </form>
       </div>
+    </div>
+    <div class="or relate mb20 mt20">
+      <span>OR</span>
+    </div>
+    <div class="block text-center mb10">
+      <button class="btn btn-google"><i class="fa fa-google-plus mr10"></i>Sign in with Google+</button>
+    </div>
+    <div class="block text-center">
+      <button class="btn btn-facebook"><i class="fa fa-facebook mr10"></i>Login with Facebook</button>
     </div>
   </div>
 </div>

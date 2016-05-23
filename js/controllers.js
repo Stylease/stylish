@@ -43,6 +43,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Orders");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.oneAtATime = true;
 
 })
 .controller('OrderdetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -64,18 +65,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.wishlist = [
     {
-      img: "img/logo.png",
+      img: "img/product1.png",
+      name: "The Nawishtah Jacket and Gown",
+      price: "4500"
+    },
+    {
+      img: "img/product2.png",
       name: "The Mashq Suit",
       price: "4500"
     },
     {
-      img: "img/logo.png",
-      name: "The Mashq Suit",
-      price: "4500"
-    },
-    {
-      img: "img/logo.png",
-      name: "The Mashq Suit",
+      img: "img/product3.png",
+      name: "Raw Silk Gold Choli",
       price: "4500"
     }
   ];
@@ -241,6 +242,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.showCross = "cross-ham";
     }
   }
+
 })
 
 .controller('languageCtrl', function($scope, TemplateService,$translate,$rootScope) {

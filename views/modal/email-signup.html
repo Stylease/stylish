@@ -1,36 +1,39 @@
 <div class="popup">
-  <div class="bg pop-heading-bar">
+  <div class="bg pop-heading-bar bg-dark-blue">
   <span class="close" ng-click="$close();"><i class="fa fa-close"></i></span>
-    <h2 class="text-uppercase text-center">Sign Up</h2>
+    <h2 class="text-uppercase text-center m-clear pd10 color-pink font-finestyle">Sign Up</h2>
   </div>
-  <div class="pop-body text-center">
+  <div class="pop-body text-center bg-light-pink pd20">
     <div class="row">
       <div class="col-md-offset-1 col-md-10">
         <form action="" name="emailSignup">
           <div class="relate">
             <input type="text" class="form-control" name="name" placeholder="Name" ng-model="name" required>
-            <div class="" ng-show="emailSignup.name.$error.required && emailSignup.name.$touched">Please enter your name.</div>
+            <div class="form-error" ng-show="emailSignup.name.$error.required && emailSignup.name.$touched">Please enter your name.</div>
           </div>
           <div class="relate">
             <input type="email" name="email" class="form-control" placeholder="Email Id" ng-model="mail" required>
-            <div class="" ng-show="emailSignup.email.$error.required && emailSignup.email.$touched">
+            <div class="form-error" ng-show="emailSignup.email.$error.required && emailSignup.email.$touched">
               Please enter a valid email id.
             </div>
           </div>
           <div class="relate">
             <input type="password" name="password" class="form-control" placeholder="Password"  ng-model="password" required>
-            <div class="" ng-show="emailSignup.password.$error.required && emailSignup.password.$touched">
+            <div class="form-error" ng-show="emailSignup.password.$error.required && emailSignup.password.$touched">
               Please enter your password.
             </div>
           </div>
           <div class="relate">
             <input type="password" name="confirmpswd" class="form-control" placeholder="Confirm Password" ng-model="confirmpswd" required>
-            <div class="" ng-show="emailSignup.confirmpswd.$error.required && emailSignup.confirmpswd.$touched">
+            <div class="form-error" ng-show="emailSignup.confirmpswd.$error.required && emailSignup.confirmpswd.$touched">
               Passwords do not match.
             </div>
           </div>
-          <div class="checkbox-custom"><input type="checkbox" id="accept">
-            <label for="accept"><span></span>I Accept the <a href="" class="text-underline" target="_blank">TERMS &amp; CONDITIONS</a> And Privacy Policy</label>
+          <div class="relate">
+            <div class="custom-checkbox text-left mt10 mb10"><input type="checkbox" id="accept" name="accept" ng-model="accept" required>
+              <label for="accept" class="dark-blue"><span></span>I Accept the <a href="" class="font-bold dark-blue text-underline" target="_blank">TERMS &amp; CONDITIONS</a> And Privacy Policy</label>
+            </div>
+            <div class="form-error tnc-error" ng-show="emailSignup.accept.$error.required && emailSignup.accept.$touched">Please accept Terms and Conditions to get started.</div>
           </div>
           <div class="submit">
             <button class="btn btn-outline" type="submit">Get Started !</button>

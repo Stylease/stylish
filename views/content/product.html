@@ -60,27 +60,27 @@
                         <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i>
                       </uib-accordion-heading>
                       <div class="dresses">
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="wed">
                           <label for="wed"><span></span> Wedding</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="mehendi">
                           <label for="mehendi"><span></span> Mehendi</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="recp">
                           <label for="recp"><span></span> Reception</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="sangeet">
                           <label for="sangeet"><span></span> Sangeet</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="cocktail">
                           <label for="cocktail"><span></span> Cocktail</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="engage">
                           <label for="engagement"><span></span> Engagement</label>
                         </div>
@@ -130,39 +130,39 @@
                         <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open6, 'fa-chevron-down': !status.open6}"></i>
                       </uib-accordion-heading>
                       <div class="color">
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="black">
                           <label for="black"><span></span> Black</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="white">
                           <label for="white"><span></span> White</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="red">
                           <label for="red"><span></span> Red</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="pink">
                           <label for="pink"><span></span> Pink</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="orange">
                           <label for="orange"><span></span> Orange</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="yellow">
                           <label for="yellow"><span></span> Yellow</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="green">
                           <label for="green"><span></span> Green</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="turquoise">
                           <label for="turquoise"><span></span> Turquoise</label>
                         </div>
-                        <div class="checkbox-custom">
+                        <div class="custom-checkbox">
                           <input type="checkbox" id="blue">
                           <label for="blue"><span></span> Blue</label>
                         </div>
@@ -175,31 +175,33 @@
           </div>
         </div>
         <div class="col-md-9">
-          <div class="sort-product">
-            <!-- <img src="" alt="" class="img-responsive"> -->
-            <span class="text-uppercase">sort</span>
-            <div class="filter-dropdown">
-              <ul>
-                <li><a href="">Popularity</a></li>
-                <li><a href="">Price : High - Low</a></li>
-                <li><a href="">Price : Low - High</a></li>
-                <li><a href="">Recent Addition</a></li>
-              </ul>
+          <div class="product-holder">
+            <div class="sort-product">
+              <!-- <img src="" alt="" class="img-responsive"> -->
+              <span class="text-uppercase" ng-click="showShortlist = (showShortlist == true)? false:true;">sort</span>
+              <div class="filter-dropdown" ng-show="showShortlist">
+                <ul>
+                  <li><a href="">Popularity</a></li>
+                  <li><a href="">Price : High - Low</a></li>
+                  <li><a href="">Price : Low - High</a></li>
+                  <li><a href="">Recent Addition</a></li>
+                </ul>
+              </div>
             </div>
-          </div>
-          <div class="shop-product">
-            <div class="row">
-              <div class="col-md-4" ng-repeat="product in shopping">
-                <div class="view-product relate">
-                  <div class="wishlist" ng-click="addProduct();">
-                    <span class=""><i class="fa {{added}}"></i></span>
-                  </div>
-                  <div class="product-detail">
-                    <div class="product-imgholder">
-                      <img ng-src="{{product.img}}" alt="" class="img-responsive">
+            <div class="shop-product">
+              <div class="row">
+                <div class="col-md-4" ng-repeat="product in shopping">
+                  <div class="view-product relate">
+                    <div class="wishlist" ng-click="addProduct();">
+                      <span class=""><i class="fa {{added}}"></i></span>
                     </div>
-                    <h4 class="product-name">{{product.name}}</h4>
-                    <p>Rent : Rs {{product.price}}/-</p>
+                    <div class="product-detail">
+                      <div class="product-imgholder relate">
+                        <img ng-src="{{product.img}}" alt="" class="img-responsive">
+                      </div>
+                      <h4 class="product-name">{{product.name}}</h4>
+                      <p>Rent : Rs {{product.price}}/-</p>
+                    </div>
                   </div>
                 </div>
               </div>

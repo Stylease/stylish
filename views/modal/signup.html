@@ -1,20 +1,22 @@
 <div class="popup">
-  <div class="bg pop-heading-bar">
+  <div class="pop-heading-bar bg-dark-blue">
   <span class="close" ng-click="$close();"><i class="fa fa-close"></i></span>
-    <h2 class="text-uppercase text-center">Sign Up</h2>
+    <h2 class="text-uppercase text-center color-pink m-clear font-finestyle pd10">Sign Up</h2>
   </div>
-  <div class="pop-body text-center">
-    <p class="text-center"><span class="block">Once You've Log In,</span>Your Wardrobe Will Never Be The Same Again.</p>
-    <div class="block text-center">
-      <button class="btn btn-google"><i class="fa fa-google-plus"></i>Signup with Google+</button>
+  <div class="pop-body text pd20 bg-light-pink ">
+    <p class="text-center msg"><span class="block text-medium">Once You've Signed Up,</span>Your Wardrobe Will Never Be The Same Again.</p>
+    <div class="block text-center mb10">
+      <button class="btn btn-google"><i class="fa fa-google-plus mr10"></i>Signup with Google+</button>
     </div>
     <div class="block text-center">
-      <button class="btn btn-facebook"><i class="fa fa-google-plus"></i>Signup with Facebook</button>
+      <button class="btn btn-facebook"><i class="fa fa-facebook mr10"></i>Signup with Facebook</button>
     </div>
     <div class="or relate">
       <span>OR</span>
     </div>
-    <button class="btn btn-outline" ng-click="emailSignup();">Signup with email</button>
-    <p>Already Have An Account ? <a href="">Log-in</a></p>
+    <div class="text-center">
+      <button class="btn btn-outline text-medium mt10 mb10" ng-click="emailSignup();">Create Account !</button>
+      <p>Already Have An Account ? <a href="" class="dark-blue text-medium text-underline" ng-click="logIn();">Log-in</a></p>
+    </div>
   </div>
 </div>
