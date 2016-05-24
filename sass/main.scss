@@ -249,6 +249,12 @@ a {
     @include button-variant($brand-pink, $brand-dark-blue, $brand-dark-blue);
   }
 }
+.btn-pink-outline {
+  @include button-variant($brand-dark-pink, transparent, $brand-dark-pink);
+  &:hover {
+    @include button-variant($brand-dark-blue, $brand-dark-pink, $brand-dark-pink);
+  }
+}
 .btn-facebook {
   @include button-variant(white, $brand-facebook, $brand-facebook );
 }
@@ -711,6 +717,42 @@ input.form-control {
   top: 30px;
   left: -20px;
 }
+.change-pswd {
+  padding: 50px 0;
+}
+.successfully  {
+  padding: 20px;
+  border-radius: 0;
+  border: 1px solid $brand-dark-pink;
+  p {
+    font-size: 25px;
+  }
+}
+// thankyou
+.thankyou {
+  padding: 10% 0;
+  background: url('../img/thankyou.png');
+  h2 {
+    margin: 0;
+    font-size: 50px;
+  }
+  span {
+    font-size: 24px;
+  }
+  .hope {
+    padding-top: 2px;
+    border-top: 2px solid $brand-dark-pink;
+    margin-top: 5px;
+    display: inline-block;
+    font-size: 16px;
+  }
+  .transaction-detail {
+    margin-top: 50px;
+    p,span { font-size: 16px; }
+  }
+  button { font-size: 18px; }
+}
+.sorry { padding: 12% 0; }
 // end pop ups
 // my account
 .profile-tab {

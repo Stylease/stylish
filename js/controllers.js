@@ -130,13 +130,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 
 })
-.controller('ChangepasswordCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('ChangepasswordCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
   //Used to name the .html file
 
   $scope.template = TemplateService.changecontent("changepassword");
   $scope.menutitle = NavigationService.makeactive("Changepassword");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.changePassowrd = function() {
+    $uibModal.open({
+      animation: true,
+      templateUrl: "views/modal/passwordchange.html",
+      controller: "ChangepasswordCtrl"
+    });
+  };
 
 })
 .controller('CartCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -254,6 +261,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     'img/product-detail.png',
     'img/product-detail.png'
   ];
+})
+.controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("thankyou");
+  $scope.menutitle = NavigationService.makeactive("Thankyou");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.oneAtATime = true;
+  TemplateService.footer = "";
+})
+.controller('SorryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("sorry");
+  $scope.menutitle = NavigationService.makeactive("Sorry");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.oneAtATime = true;
+  TemplateService.footer = "";
 })
 
 .controller('headerctrl', function($scope, TemplateService,$uibModal) {

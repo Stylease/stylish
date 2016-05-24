@@ -191,11 +191,11 @@
             <div class="shop-product">
               <div class="row">
                 <div class="col-md-4" ng-repeat="product in shopping">
-                  <div class="view-product relate pointer" ui-sref="productdetail">
+                  <div class="view-product relate pointer">
                     <div class="wishlist text-right" ng-click="addTowishlist(product);">
                       <span class="pointer wishlist-heart"><i class="fa {{product.heart}}"></i></span>
                     </div>
-                    <div class="product-detail text-center">
+                    <div class="product-detail text-center" ui-sref="productdetail">
                       <div class="product-imgholder relate">
                         <img ng-src="{{product.img}}" alt="" class="get-center img-responsive">
                       </div>
