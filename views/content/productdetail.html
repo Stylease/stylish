@@ -3,9 +3,11 @@
     <div class="row">
       <div class="col-md-7">
         <div class="productdetail-slider">
-          <flex-slider class="carousel" flex-slide="slide in product">
+          <flex-slider class="carousel" flex-slide="slide in product track by $index" direction-nav="false">
             <li>
-              <img ng-src="" alt="" class="img-responsive">
+              <div class="prd-slide-imgholder relate m-center">
+                <img ng-src="{{slide}}" alt="" class="get-center">
+              </div>
             </li>
           </flex-slider>
         </div>
@@ -22,26 +24,26 @@
             <!-- <i class="">question mark</i> -->
           </div>
           <div class="product-size">
-            <span>Size :</span>
-            <ul class="list-inline">
+            <span class="mr20 text-medium">Size :</span>
+            <ul class="list-inline inline-block m-clear">
               <li><a href="">S</a></li>
               <li><a href="">M</a></li>
               <li><a href="">L</a></li>
               <li><a href="">XL</a></li>
             </ul>
           </div>
-          <div class="delivery-date">
-            <span>Delivery / Return Dates :</span>
+          <div class="delivery-date dates">
+            <span class="text-medium">Delivery / Return Dates :</span>
             <form action="">
               <div class="radio-button">
                 <input type="radio" name="date" id="four">
-                <label for="four"><span></span> 4 Days</label>
+                <label for="four" class="text-medium"><span></span> 4 Days</label>
               </div>
               <div class="radio-button">
                 <input type="radio" name="date" id="eight">
-                <label for="eight"><span></span> 8 Days</label>
+                <label for="eight" class="text-medium"><span></span> 8 Days</label>
               </div>
-              <div class="calendar">
+              <div class="calendar inline-block">
                 <input type="date" class="form-control">
               </div>
             </form>

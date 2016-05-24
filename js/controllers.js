@@ -244,6 +244,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.oneAtATime = true;
+  $scope.product = [
+    'img/product-detail.png',
+    'img/product-detail.png',
+    'img/product-detail.png',
+    'img/product-detail.png',
+    'img/product-detail.png',
+    'img/product-detail.png',
+    'img/product-detail.png',
+    'img/product-detail.png'
+  ];
 })
 
 .controller('headerctrl', function($scope, TemplateService,$uibModal) {
