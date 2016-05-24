@@ -1,0 +1,77 @@
+@media (max-width: 1200px) {
+.play { font-size: 45px; }
+}
+@media (max-width: $screen-sm-max) {
+.how-it-works { min-height: 250px; }
+.play {
+  font-size: 30px;
+  img { width: 45px; }
+}
+.customerspeak-slider {
+  .client-speak {
+    width: 80%;
+  }
+  .flexslider:hover .flex-direction-nav .flex-prev { left: 0; }
+  .flexslider:hover .flex-direction-nav .flex-next { right: 0; }
+  .flex-direction-nav a.flex-prev { left: 0; }
+  .flex-direction-nav a.flex-next { right: 0; }
+}
+}
+@media (max-width: $screen-xs-max) {
+  .user-detail {
+    .signin { margin: 0; }
+    .cart { margin-left: 10px; }
+  }
+  .logo h1 {
+     img {
+    width: 120px;
+    max-width: 150px;
+  }
+  }
+  .how-it-works { min-height: 200px; }
+  .play {
+    font-size: 25px;
+    img { width: 30px; }
+  }
+}
+@media (max-width: 480px) {
+  header { padding: 0; }
+  .logo h1 {
+    top: 20px;
+    img { width: 100px; }
+  }
+  .signin {
+    img { width: 20px; }
+    span { font-size: 12px; }
+  }
+  .cart {
+    img { width: 25px; }
+    span { font-size: 12px; }
+  }
+  .user-detail { margin: 7px 0px 0; }
+  .hamburger {
+    margin: 7px 0;
+    .icon-bar {
+      width: 30px;
+    }
+  }
+  nav {
+    width: 320px;
+    top: 56px;
+  }
+  .how-it-works { min-height: 120px; }
+  .play {
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    img { width: 25px; }
+  }
+  .customerspeak-slider {
+    padding: 70px 0px 50px;
+    margin-top: -70px;
+    h4 { font-size: 27px; }
+    .client-speak p {
+      font-size: 16px;
+    }
+  }
+}
