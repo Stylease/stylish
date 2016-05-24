@@ -324,8 +324,7 @@ a {
     display: none;
   }
   input[type="radio"] + label {
-    font-size: 13px;
-    padding-left: 10px;
+    font-size: 14px;
   }
   input[type="radio"] + label span {
     display: inline-block;
@@ -823,6 +822,9 @@ input.form-control {
     max-height: 100%;
   }
 }
+.view-product {
+  margin: 20px 0;
+}
 .wishlisted-product .col-md-4:nth-child(3n-1) .wishlist-product {
   border-left: 1px solid $brand-dark-pink;
   border-right: 1px solid $brand-dark-pink;
@@ -839,6 +841,10 @@ input.form-control {
     font-size: 18px;
     font-weight: 500;
   }
+}
+.wishlist-heart {
+  font-size: 18px;
+  .fa-heart { color: $brand-dark-pink; }
 }
 // save address
 .billingsave-add {
@@ -880,13 +886,15 @@ input.form-control {
 .product-holder {
   border-left: 1px solid $brand-dark-pink;
 }
+.filter-heading { font-size: 18px; }
 .sort-product {
   border-bottom: 1px solid $brand-dark-pink;
+  span { font-size: 18px; }
 }
 .sort-filter-dropdown {
   width: 250px;
   padding: 20px;
-  @include position(absolute, 20px null null 20px);
+  @include position(absolute, 46px null null 16px);
   background-color: $brand-pink;
   z-index: 5;
   ul { padding: 0; }
@@ -919,6 +927,64 @@ input.form-control {
   p {
     font-size: 18px;
     font-weight: 500;
+  }
+}
+.price-rangeslider {
+  .ngrs-range-slider {
+    @include size(100%,1px);
+    margin: 10px 0px 50px;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background-color: $brand-dark-blue;
+    .ngrs-runner {
+      top: -8px;
+    }
+    .ngrs-join {
+      height: 2px;
+      top: 60%;
+      background-color: $brand-dark-pink;
+      background-image: none;
+    }
+    .ngrs-handle {
+      border-radius: 100%;
+      border: none;
+      background-color: $brand-dark-pink;
+    }
+  }
+  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+    margin: 15px 0;
+    font-size: 14px;
+    color: $brand-dark-pink;
+    display: block !important;
+  }
+}
+.calendar {
+  input.form-control {
+    padding: 8px 20px;
+    border: 1px solid $brand-dark-blue;
+    margin-bottom: 10px;
+  }
+}
+.dates {
+  .radio-button {
+    margin: 10px 30px 10px 0;
+    display: inline-block;
+  }
+}
+.search-by-filter {
+  .custom-checkbox,
+  .radio-button {
+    margin-bottom: 10px;
+  }
+}
+.occasion {
+.radio-button input[type="radio"] + label { font-weight: 500; }
+}
+// product detail page
+.product-info {
+  .added-cart {
+    padding: 8px 65px;
   }
 }
 // end product page
