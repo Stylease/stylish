@@ -78,6 +78,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       img: "img/product3.png",
       name: "Raw Silk Gold Choli",
       price: "4500"
+    },
+    {
+      img: "img/product1.png",
+      name: "The Nawishtah Jacket and Gown",
+      price: "4500"
+    },
+    {
+      img: "img/product2.png",
+      name: "The Mashq Suit",
+      price: "4500"
+    },
+    {
+      img: "img/product3.png",
+      name: "Raw Silk Gold Choli",
+      price: "4500"
+    },
+    {
+      img: "img/product1.png",
+      name: "The Nawishtah Jacket and Gown",
+      price: "4500"
+    },
+    {
+      img: "img/product2.png",
+      name: "The Mashq Suit",
+      price: "4500"
+    },
+    {
+      img: "img/product3.png",
+      name: "Raw Silk Gold Choli",
+      price: "4500"
     }
   ];
 
@@ -148,14 +178,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
-  // $scope.added = "fa-heart-o";
-  // $scope.addProduct = function(){
-  //   if($scope.added == "fa-heart"){
-  //     $scope.added = "fa-heart-o";
-  //   }else {
-  //     $scope.added = "fa-heart";
-  //   }
-  // };
+  $scope.addTowishlist = function(product){
+    if(product.heart == "fa-heart"){
+        product.heart = "fa-heart-o";
+    }else {
+        product.heart = "fa-heart";
+    }
+  };
 
   $scope.oneAtATime = true;
 
@@ -170,19 +199,40 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.shopping = [
     {
-      img: "img/logo.png",
-      name: "The Mashq Suit",
-      price: "4500"
+      img: "img/product1.png",
+      name: "The Nawishtah Jacket and Gown",
+      price: "4500",
+      heart: "fa-heart-o"
     },
     {
-      img: "img/logo.png",
+      img: "img/product2.png",
       name: "The Mashq Suit",
-      price: "4500"
+      price: "4500",
+      heart: "fa-heart-o"
     },
     {
-      img: "img/logo.png",
+      img: "img/product3.png",
+      name: "Raw Silk Gold Choli",
+      price: "4500",
+      heart: "fa-heart-o"
+    },
+    {
+      img: "img/product1.png",
+      name: "The Nawishtah Jacket and Gown",
+      price: "4500",
+      heart: "fa-heart-o"
+    },
+    {
+      img: "img/product2.png",
       name: "The Mashq Suit",
-      price: "4500"
+      price: "4500",
+      heart: "fa-heart-o"
+    },
+    {
+      img: "img/product3.png",
+      name: "Raw Silk Gold Choli",
+      price: "4500",
+      heart: "fa-heart-o"
     }
   ];
 })

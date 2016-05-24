@@ -178,8 +178,8 @@
           <div class="product-holder">
             <div class="sort-product">
               <!-- <img src="" alt="" class="img-responsive"> -->
-              <span class="text-uppercase" ng-click="showShortlist = (showShortlist == true)? false:true;">sort</span>
-              <div class="filter-dropdown" ng-show="showShortlist">
+              <span class="text-uppercase pointer" ng-click="showShortlist = (showShortlist == true)? false:true;">sort</span>
+              <div class="sort-filter-dropdown" ng-show="showShortlist">
                 <ul>
                   <li><a href="">Popularity</a></li>
                   <li><a href="">Price : High - Low</a></li>
@@ -191,13 +191,13 @@
             <div class="shop-product">
               <div class="row">
                 <div class="col-md-4" ng-repeat="product in shopping">
-                  <div class="view-product relate">
-                    <div class="wishlist" ng-click="addProduct();">
-                      <span class=""><i class="fa {{added}}"></i></span>
+                  <div class="view-product relate mt20 mb20" >
+                    <div class="wishlist text-right" ng-click="addTowishlist(product);">
+                      <span class="pointer"><i class="fa {{product.heart}}"></i></span>
                     </div>
-                    <div class="product-detail">
+                    <div class="product-detail text-center">
                       <div class="product-imgholder relate">
-                        <img ng-src="{{product.img}}" alt="" class="img-responsive">
+                        <img ng-src="{{product.img}}" alt="" class="get-center img-responsive">
                       </div>
                       <h4 class="product-name">{{product.name}}</h4>
                       <p>Rent : Rs {{product.price}}/-</p>
