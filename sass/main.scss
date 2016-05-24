@@ -17,7 +17,7 @@ $brand-google: #d34836 !default;
 @mixin placeholder {
   $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
   @each $placeholder in $placeholders {
-    &:#{$placeholder}-placeholder {
+    &:#{$placeholder}-placeholder { 
       @content;
     }
   }
@@ -1047,7 +1047,7 @@ input.form-control {
       font-size: 15px;
       font-weight: 300;
     }
-  } 
+  }
   .delivery-date,.product-size,.buttons {
     padding: 20px 0;
     border-bottom: 1px solid $brand-dark-blue;

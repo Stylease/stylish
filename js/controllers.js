@@ -192,6 +192,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         product.heart = "fa-heart";
     }
   };
+  $scope.selectSize = "";
+  $scope.setSize = function() {
+    if($scope.selectSize == "size-is") {
+      $scope.selectSize = "";
+    }else {
+      $scope.selectSize = "size-is";
+    }
+  }
 
   $scope.oneAtATime = true;
 
