@@ -25,11 +25,11 @@
           </div>
           <div class="product-size">
             <span class="mr20 text-medium">Size :</span>
-            <ul class="list-inline inline-block m-clear">
-              <li><a href="">S</a></li>
-              <li><a href="">M</a></li>
-              <li><a href="">L</a></li>
-              <li><a href="">XL</a></li>
+            <ul class="list-inline inline-block m-clear"  ng-init="size=''">
+              <li><a href="" ng-class="{'select-size' : size=='s'}" ng-click="size='s'">S</a></li>
+              <li><a href="" ng-class="{'select-size' : size=='m'}" ng-click="size='m'">M</a></li>
+              <li><a href="" ng-class="{'select-size' : size=='l'}" ng-click="size='l'">L</a></li>
+              <li><a href="" ng-class="{'select-size' : size=='xl'}" ng-click="size='xl'">XL</a></li>
             </ul>
           </div>
           <div class="delivery-date dates">

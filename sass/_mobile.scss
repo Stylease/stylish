@@ -1,67 +1,129 @@
 @media (max-width: 1200px) {
-.play { font-size: 45px; }
+  .play {
+    font-size: 45px;
+  }
 }
 @media (max-width: $screen-sm-max) {
-.how-it-works { min-height: 250px; }
-.play {
-  font-size: 30px;
-  img { width: 45px; }
-}
-.customerspeak-slider {
-  .client-speak {
-    width: 80%;
+  .how-it-works {
+    min-height: 250px;
   }
-  .flexslider:hover .flex-direction-nav .flex-prev { left: 0; }
-  .flexslider:hover .flex-direction-nav .flex-next { right: 0; }
-  .flex-direction-nav a.flex-prev { left: 0; }
-  .flex-direction-nav a.flex-next { right: 0; }
-}
-// footer
-.home-footer {
-  .follow {
-    margin: 0;
+  .play {
+    font-size: 30px;
+    img {
+      width: 45px;
+    }
   }
-  .question { margin: 30px 0; }
-}
-.question {
-  span {
-    margin: 0 20px 0 0;
-    display: inline-block;
+  .customerspeak-slider {
+    .client-speak {
+      width: 80%;
+    }
+    .flexslider:hover .flex-direction-nav .flex-prev {
+      left: 0;
+    }
+    .flexslider:hover .flex-direction-nav .flex-next {
+      right: 0;
+    }
+    .flex-direction-nav a.flex-prev {
+      left: 0;
+    }
+    .flex-direction-nav a.flex-next {
+      right: 0;
+    }
   }
-}
+  // footer
+  .home-footer {
+    .follow {
+      margin: 0;
+    }
+    .question {
+      margin: 30px 0;
+    }
+  }
+  .question {
+    span {
+      margin: 0 20px 0 0;
+      display: inline-block;
+    }
+  }
+  .profile-main {
+    margin-top: 50px;
+  }
+  .order-summary { padding: 0px 10px; }
 }
 @media (max-width: $screen-xs-max) {
   .user-detail {
-    .signin { margin: 0; }
-    .cart { margin-left: 10px; }
+    .signin {
+      margin: 0;
+    }
+    .cart {
+      margin-left: 10px;
+    }
   }
   .logo h1 {
-     img {
-    width: 120px;
-    max-width: 150px;
+    img {
+      width: 120px;
+      max-width: 150px;
+    }
   }
+  .how-it-works {
+    min-height: 200px;
   }
-  .how-it-works { min-height: 200px; }
   .play {
     font-size: 25px;
-    img { width: 30px; }
+    img {
+      width: 30px;
+    }
   }
+  .account-type {
+    margin: 10px 0;
+    display: block;
+  }
+  .orders-dropdown { top: -10px; }
+  .order-summary {
+    .item-num { font-size: 20px; }
+  }
+  .delivery {
+    padding: 15px 0;
+    border-right: none;
+    border-bottom: 1px solid $brand-dark-pink;
+    address { font-size: 15px; }
+  }
+  .order-detail-summary .delivery {
+    border-right: none;
+    border-bottom: 1px solid $brand-dark-blue;
+  }
+  .product-all-detail { font-size: 15px; }
+  .order-detail-heading { text-align: center; }
 }
 @media (max-width: 480px) {
-  header { padding: 0; }
+  header {
+    padding: 0;
+  }
   .logo h1 {
     top: 20px;
-    img { width: 100px; }
+    img {
+      width: 100px;
+    }
   }
   .signin {
-    img { width: 20px; }
-    span { font-size: 12px; }
+    img {
+      width: 20px;
+    }
+    span {
+      font-size: 12px;
+    }
   }
   .cart {
-    img { width: 25px; }
-    span { font-size: 12px; }
+    img {
+      width: 25px;
+    }
+    span {
+      font-size: 12px;
+    }
   }
-  .user-detail { margin: 7px 0px 0; }
+  .user-detail {
+    margin: 7px 0 0;
+  }
   .hamburger {
     margin: 7px 0;
     .icon-bar {
@@ -72,19 +134,41 @@
     width: 320px;
     top: 56px;
   }
-  .how-it-works { min-height: 120px; }
+  .how-it-works {
+    min-height: 120px;
+  }
   .play {
     width: 100%;
     font-size: 18px;
     text-align: center;
-    img { width: 25px; }
+    img {
+      width: 25px;
+    }
   }
   .customerspeak-slider {
-    padding: 70px 0px 50px;
+    padding: 70px 0 50px;
     margin-top: -70px;
-    h4 { font-size: 27px; }
+    h4 {
+      font-size: 27px;
+    }
     .client-speak p {
       font-size: 16px;
     }
+  }
+  .order-heading {
+    font-size: 14px;
+    .col-xs-1,.col-xs-4,.col-xs-3 { padding-right: 0; }
+  }
+  .order-body {
+    .panel-title { font-size: 13px; }
+    .col-xs-1 { padding-right: 0; }
+    .col-xs-4,.col-xs-3 { padding: 0; }
+  }
+  .orders-dropdown { display: none; }
+  .order-address { padding: 0; }
+  .order-summary .item-num { font-size: 18px; }
+  .billing-detail { font-size: 14px; }
+  .on-edit {
+    button { margin: 0 0 10px 0; }
   }
 }

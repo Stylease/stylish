@@ -1,12 +1,14 @@
 <div class="heading-bar">
   <div class="container text-center">
-    <div class="pull-right">
-      <form action="">
-        <input type="search" placeholder="Find what you're looking for !">
-        <button type="submit">
-          <!-- <img src="" alt="" class="img-responsive"> -->
-        </button>
-      </form>
+    <div class="relate">
+      <div class="search-product">
+        <form action="">
+          <input type="search" placeholder="Find what you're looking for !">
+          <button type="submit" class="bg-dark-pink">
+            <img src="img/search.png" alt="" class="img-responsive">
+          </button>
+        </form>
+      </div>
     </div>
     <h3 class="heading">Shop</h3>
     <span class="found">107 items</span>
@@ -112,12 +114,12 @@
                       <uib-accordion-heading>Size
                         <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open5, 'fa-chevron-down': !status.open5}"></i>
                       </uib-accordion-heading>
-                      <div class="product-size">
+                      <div class="product-size" ng-init="size=''">
                         <ul class="list-inline">
-                          <li><a href="" class="{{selectSize}}" ng-click="setSize();">S</a></li>
-                          <li><a href="" class="{{selectSize}}">M</a></li>
-                          <li><a href="" class="{{selectSize}}">L</a></li>
-                          <li><a href="" class="{{selectSize}}">XL</a></li>
+                          <li><a href="" ng-class="{'select-size': size=='s' }" ng-click="size='s';">S</a></li>
+                          <li><a href="" ng-class="{'select-size': size=='m' }" ng-click="size='m';">M</a></li>
+                          <li><a href="" ng-class="{'select-size': size=='l' }" ng-click="size='l';">L</a></li>
+                          <li><a href="" ng-class="{'select-size': size=='xl' }" ng-click="size='xl';">XL</a></li>
                         </ul>
                       </div>
                     </uib-accordion-group>

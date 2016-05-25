@@ -6,26 +6,60 @@
     <div class="cart-list" ng-repeat="product in cart">
       <div class="row">
         <div class="col-md-3">
-          <div class="cart-imgholder">
-            <img ng-src="{{product.img}}" alt="" class="img-responsive">
+          <div class="cart-imgholder relate">
+            <img ng-src="{{product.img}}" alt="" class="get-center img-responsive">
           </div>
         </div>
         <div class="col-md-7">
-          <div class="product-cart-detail clearfix">
             <div class="pull-right">
-              <a href="">Edit</a>
+              <a href="" class="text-medium dark-blue text-underline" ng-click="editCart=true">Edit</a>
             </div>
+          <div class="product-cart-detail clearfix">
             <h4 class="prd-name">{{product.name}}</h4>
             <h5>by : <span>{{product.desginername}}</span></h5>
-            <div class="product-all-detail">
+            <div class="product-all-detail"  ng-hide="editCart">
               <p>RENT : INR <span>{{product.rental}}/-</span></p>
-              <p><span>Size</span> <span>{{product.size}}</span></p>
-              <p><span>Rental</span> <span>INR {{product.price}}</span></p>
-              <p><span>Delivery Date</span> <span>{{product.date}}</span></p>
-              <p><span>Duration</span> <span>{{product.duration}} Days</span></p>
+              <p class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
+              <p class="mb5"><span class="edit-cart">Rental</span> <span>INR {{product.price}}</span></p>
+              <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.date}}</span></p>
+              <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
+            </div>
+            <div class="edit-product-detail product-all-detail" ng-show="editCart">
+              <form action="">
+                <div class="edit-size">
+                  <span class="edit-cart">Size</span>
+                  <div class="custom-select">
+                    <select name="" id="">
+                      <option value="">S</option>
+                      <option value="">M</option>
+                      <option value="">L</option>
+                      <option value="">XL</option>
+                    </select>
+                  </div>
+                </div>
+                <p><span class="edit-cart">Rental</span> <span>INR {{product.price}}</span></p>
+                <p><span class="edit-cart">Delivery Date</span> <span>{{product.date}}</span> <span class="dark-pink text-underline text-underline ml20 pointer">Change ?</span></p>
+                <div>
+                  <span class="edit-cart">Duration</span>
+                  <div class="dates inline-block">
+                    <div class="radio-button">
+                      <input type="radio" name="date" id="four">
+                      <label for="four" class="text-medium"><span></span> 4 Days</label>
+                    </div>
+                    <div class="radio-button">
+                      <input type="radio" name="date" id="eight">
+                      <label for="eight" class="text-medium"><span></span> 8 Days</label>
+                    </div>
+                  </div>
+                  <div class="mt10 mb10 on-edit">
+                    <button class="btn btn-outline btn-full text-medium" type="reset">Reset</button>
+                    <button class="btn btn-outline btn-full text-medium" ng-click="editCart=false;">Confirm</button>
+                  </div>
+              </form>
+               </div>
             </div>
             <div class="pull-right">
-              <a href="">Remove Item <i class="fa fa-close"></i></a>
+              <a href="" class="text-medium dark-blue">Remove Item <i class="fa fa-close"></i></a>
             </div>
           </div>
         </div>

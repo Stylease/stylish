@@ -155,7 +155,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
   $scope.cart = [
     {
-      img: "img/logo.png",
+      img: "img/product1.png",
       name: "The Nawishtah Jacket and Gown",
       desginername: "anita dongre",
       rental: "6700",
@@ -165,7 +165,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       duration: "07"
     },
     {
-      img: "img/logo.png",
+      img: "img/product2.png",
       name: "The Nawishtah Jacket and Gown",
       desginername: "anita dongre",
       rental: "6700",
@@ -192,14 +192,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         product.heart = "fa-heart";
     }
   };
-  $scope.selectSize = "";
-  $scope.setSize = function() {
-    if($scope.selectSize == "size-is") {
-      $scope.selectSize = "";
-    }else {
-      $scope.selectSize = "size-is";
-    }
-  }
 
   $scope.oneAtATime = true;
 
