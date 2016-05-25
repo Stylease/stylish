@@ -607,7 +607,7 @@ nav {
       border-radius: 100%;
       display: inline-block;
       background-color: $brand-dark-pink;
-      line-height: 25px;
+      line-height: 27px; 
       text-align: center;
       i { color: $brand-light-pink; }
       @include transition(all 300ms linear);
@@ -873,7 +873,7 @@ input.form-control {
   img {
     max-height: 100%;
   }
-} 
+}
 .order-heading {
   margin-bottom: 30px;
 }
@@ -890,7 +890,7 @@ input.form-control {
   }
 }
 .view-product {
-  margin: 20px 0;
+  padding: 20px 0;
 }
 .wishlisted-product .col-md-4:nth-child(3n-1) .wishlist-product {
   border-left: 1px solid $brand-dark-pink;
