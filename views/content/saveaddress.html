@@ -3,12 +3,13 @@
 </div>
 <div class="saved-address">
   <div class="container">
+    <h3 class="dark-blue text-uppercase">my account</h3>
     <div class="row">
       <div class="col-md-3">
         <div class="" ng-include="template.account"></div>
       </div>
       <div class="col-md-9">
-        <div class="billingsave-add">
+        <div class="billingsave-add" ng-hide="billingAdd">
           <h4 class="text-center dark-blue">Billing Address</h4>
           <div class="row">
             <div class="col-md-6">
@@ -27,7 +28,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="add-address relate">
+              <div class="add-address relate pointer" ng-click="billingAdd=true">
                 <div class="new-add get-center dark-pink text-center">
                   <span class="block"><i class="fa fa-plus-circle fa-2x dark-pink"></i></span>
                   <span>Add New Address</span>
@@ -36,7 +37,32 @@
             </div>
           </div>
         </div>
-        <div class="billingsave-add shippingsave-add">
+        <div class="add-billing-add" ng-show="billingAdd">
+          <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+              <form action="">
+                <input type="text" class="form-control" placeholder="Title Of Address">
+                <input type="text" class="form-control" placeholder="Flat Number, Building Number">
+                <input type="text" class="form-control" placeholder="Street Address">
+                <input type="text" class="form-control" placeholder="Nearest Landmark">
+                <input type="text" class="form-control" placeholder="Pin Code">
+                <input type="text" class="form-control fixed-add" value="Mumbai">
+                <input type="text" class="form-control fixed-add" value="Maharashtra">
+                <input type="text" class="form-control fixed-add" value="India">
+                <div class="same-billing mg20">
+                  <div class="custom-checkbox">
+                    <input type="checkbox" id="bill">
+                    <label for="bill"> Use the same for shipping address.</label>
+                  </div>
+                </div>
+                <div class="text-center mt20 mb20 save ">
+                  <button class="btn btn-outline btn-full text-medium" ng-click="billingAdd=false">Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="billingsave-add shippingsave-add" ng-hide="shippingAdd">
           <h4 class="text-center dark-blue">Shipping Address</h4>
           <div class="row">
             <div class="col-md-6">
@@ -55,12 +81,37 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="add-address relate">
+              <div class="add-address relate pointer" ng-click="shippingAdd=true;">
                 <div class="new-add get-center dark-pink text-center">
                   <span class="block"><i class="fa fa-plus-circle fa-2x dark-pink"></i></span>
                   <span>Add New Address</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="add-billing-add add-shipping-add" ng-show="shippingAdd">
+          <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+              <form action="">
+                <input type="text" class="form-control" placeholder="Title Of Address">
+                <input type="text" class="form-control" placeholder="Flat Number, Building Number">
+                <input type="text" class="form-control" placeholder="Street Address">
+                <input type="text" class="form-control" placeholder="Nearest Landmark">
+                <input type="text" class="form-control" placeholder="Pin Code">
+                <input type="text" class="form-control fixed-add" value="Mumbai">
+                <input type="text" class="form-control fixed-add" value="Maharashtra">
+                <input type="text" class="form-control fixed-add" value="India">
+                <div class="same-billing mg20">
+                  <div class="custom-checkbox">
+                    <input type="checkbox" id="ship">
+                    <label for="ship"> Use the same for billing address.</label>
+                  </div>
+                </div>
+                <div class="text-center mt20 mb20 save ">
+                  <button class="btn btn-outline btn-full text-medium" ng-click="shippingAdd=false">Save</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

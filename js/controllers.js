@@ -261,6 +261,44 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     'img/product-detail.png',
     'img/product-detail.png'
   ];
+  $scope.suggested = [
+    {
+      img: "img/suggest1.png",
+      name: "Bridal polki jewellery",
+      designer: "Anita Dongre's ",
+      price: "4,500"
+    },
+    {
+      img: "img/suggest2.png",
+      name: "Bridal polki jewellery",
+      designer: "Anita Dongre's ",
+      price: "4,500"
+    },
+    {
+      img: "img/suggest2.png",
+      name: "Bridal polki jewellery",
+      designer: "Anita Dongre's ",
+      price: "4,500"
+    },
+    {
+      img: "img/suggest1.png",
+      name: "Bridal polki jewellery",
+      designer: "Anita Dongre's ",
+      price: "4,500"
+    },
+    {
+      img: "img/suggest1.png",
+      name: "Bridal polki jewellery",
+      designer: "Anita Dongre's ",
+      price: "4,500"
+    },
+    {
+      img: "img/suggest1.png",
+      name: "Bridal polki jewellery",
+      designer: "Anita Dongre's ",
+      price: "4,500"
+    }
+  ];
 })
 .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file
@@ -288,6 +326,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
+  $scope.cart = function() {
+    $uibModal.open({
+      animation: true,
+      templateUrl: "views/modal/hello.html",
+      controller: "headerctrl"
+    });
+  };
   $scope.signUp = function() {
     $uibModal.open({
       animation: true,
