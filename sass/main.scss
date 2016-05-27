@@ -1168,7 +1168,7 @@ input.form-control {
    }
   .flex-direction-nav a.flex-next {
     right: -40px;
-    opacity: 1;
+    opacity: 1; 
     &:before {
     content: "\f105";
     font: normal normal normal 14px/1 FontAwesome;
@@ -1176,7 +1176,7 @@ input.form-control {
     color: $brand-dark-blue;
   }
 }
-  .flex-direction-nav a.flex-prev{
+  .flex-direction-nav a.flex-prev {
     left: -40px;
     opacity: 1;
     &:before {

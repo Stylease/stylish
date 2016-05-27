@@ -2,6 +2,20 @@
   .play {
     font-size: 45px;
   }
+  .suggested-imgholder  {
+    @include square(250px);
+    margin: 0 auto;
+  }
+  .suggested-slider {
+    .flexslider {
+      width: 80%;
+      margin: 0 auto;
+    }
+    .flexslider:hover .flex-direction-nav .flex-prev,
+    .flex-direction-nav a.flex-prev { left: 0; }
+    .flexslider:hover .flex-direction-nav .flex-next,
+    .flex-direction-nav a.flex-next { right: 0; }
+  }
 }
 @media (max-width: $screen-sm-max) {
   .how-it-works {
@@ -77,6 +91,19 @@
   }
   .add-billing-add { padding: 30px 0 0; }
   .billingsave-add { padding: 30px 0px 0px; }
+  // prodcut -detail
+  .suggested-imgholder {
+    @include square(220px);
+  }
+  .suggested-slider {
+    .flexslider {
+      width: 100%;
+    }
+    .flexslider:hover .flex-direction-nav .flex-next,
+    .flex-direction-nav a.flex-next { right: 10px; }
+    .flexslider:hover .flex-direction-nav .flex-prev,
+    .flex-direction-nav a.flex-prev { left: 45px; }
+  }
 }
 @media (max-width: $screen-xs-max) {
   .user-detail {
@@ -129,6 +156,8 @@
     margin: 15px 0 10px;
   }
   .search-product input { width: 89%; }
+  // product detail
+  .suggested-imgholder { @include square(200px); }
 }
 @media (max-width: 480px) {
   body { padding: 56px 0px 0px 0px; }
@@ -211,6 +240,15 @@
   .product-info { padding: 20px 0px 10px; }
   .product-descp { margin: 80px 0px 0; }
   // product-detail
+  .suggested-imgholder {
+    @include square(180px);
+  }
+  .name-suggestprd { font-size: 16px; }
+  .rent { font-size: 17px; }
+  .suggested-slider {
+    .flexslider:hover .flex-direction-nav .flex-prev,
+    .flex-direction-nav a.flex-prev { left: 5px; }
+  }
   .productdetail-slider .prd-slide-imgholder {
     @include square(280px);
   }
