@@ -718,7 +718,21 @@ input.form-control {
   }
 }
 // pop ups
+.close-popup {
+  position: relative;
+  .close {
+    text-shadow: none;
+    opacity: 1;
+    @include position(absolute,15px 10px null null);
+    &:hover { opacity: 0.8; }
+  }
+}
+.close-header {
+  padding: 20px;
+  .close { top: -15px; }
+}
 .pop-heading-bar {
+  position: relative;
   h2 { font-size: 40px; }
 }
 .msg { font-size: 20px; }
@@ -793,7 +807,25 @@ input.form-control {
     &:first-child { border-bottom: none; }
   }
 }
-
+// cart pop
+.change-delivery-date {
+  padding: 20px;
+  border: 1px solid $brand-dark-pink;
+  background-color: $brand-light-pink;
+  text-align: center;
+  p { font-size: 18px; }
+}
+// remove-item
+.remove-item {
+  p { font-size: 25px; }
+}
+.remove-accept {
+  border: 1px solid $brand-dark-blue;
+  font-size: 25px;
+  .col-flex:first-child {
+    border-right: 1px solid $brand-dark-blue;
+  }
+}
 // end pop ups
 // my account
 .profile-tab {
@@ -1168,7 +1200,7 @@ input.form-control {
    }
   .flex-direction-nav a.flex-next {
     right: -40px;
-    opacity: 1; 
+    opacity: 1;
     &:before {
     content: "\f105";
     font: normal normal normal 14px/1 FontAwesome;

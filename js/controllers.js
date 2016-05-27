@@ -146,7 +146,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 
 })
-.controller('CartCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('CartCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
   //Used to name the .html file
 
   $scope.template = TemplateService.changecontent("cart");
@@ -175,6 +175,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       duration: "07"
     }
   ];
+
+  $scope.date = function() {
+    $uibModal.open({
+      animation: true,
+      templateUrl: "views/modal/changedate.html",
+      controller: "CartCtrl"
+    })
+  };
+  $scope.remove = function() {
+    $uibModal.open({
+      animation: true,
+      templateUrl: "views/modal/removeitem.html",
+      controller: "CartCtrl"
+    })
+  };
 
 })
 .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout) {
