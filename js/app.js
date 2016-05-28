@@ -75,6 +75,21 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'SorryCtrl'
   })
+  .state('checkoutorder', {
+  url: "/checkout-orderdetail",
+  templateUrl: "views/template.html",
+  controller: 'CheckoutOrderCtrl'
+})
+    .state('checkoutlogin', {
+    url: "/checkout-login",
+    templateUrl: "views/template.html",
+    controller: 'CheckoutLoginCtrl'
+  })
+    .state('checkoutsignin', {
+    url: "/checkout-signin",
+    templateUrl: "views/template.html",
+    controller: 'CheckoutSigninCtrl'
+  })
   ;
   $urlRouterProvider.otherwise("/home");
   $locationProvider.html5Mode(isproduction);

@@ -158,12 +158,27 @@
   .search-product input { width: 89%; }
   // product detail
   .suggested-imgholder { @include square(200px); }
+
+  // popups
+  .or {
+    &:after, &:before {
+      width: 70px;
+    }
+    &:after {
+      right: 33%;
+    }
+    &:before {
+      left: 33%;
+    }
+  }
+  // popups ends
 }
 @media (max-width: 480px) {
   body { padding: 56px 0px 0px 0px; }
   header {
     padding: 0;
   }
+  .heading-bar h3 { font-size: 35px; }
   .logo h1 {
     top: 20px;
     img {
@@ -259,4 +274,43 @@
     .product-price { font-size: 15px; }
   }
   .search-product input { width: 83%; }
+  // popups
+  .or {
+    &:after, &:before {
+      width: 50px;
+    }
+    &:after {
+      right: 25%;
+    }
+    &:before {
+      left: 25%;
+    }
+  }
+  .right-reserved {
+    p {
+      margin: 5px 0;
+      display: block;
+    }
+  }
+  // popups ends
+  // footer
+  .social-links {
+    .list-inline > li { padding: 0 2px; }
+  }
+
+  .links ul li a { font-size: 15px; }
+  .home-footer {
+    .footer-head,.about { font-size: 16px; }
+    .question {
+      font-size: 16px;
+      span {
+        margin: 5px 0;
+      }
+    }
+    .about .footer-head {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+  }
+  // footer end
 }

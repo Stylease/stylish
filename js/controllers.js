@@ -130,6 +130,33 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 
 })
+.controller('CheckoutSigninCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("checkout-signin");
+  $scope.menutitle = NavigationService.makeactive("CheckoutSignin");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
+.controller('CheckoutLoginCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("checkout-login");
+  $scope.menutitle = NavigationService.makeactive("CheckoutLogin");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
+.controller('CheckoutOrderCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  //Used to name the .html file
+
+  $scope.template = TemplateService.changecontent("checkout-orderdetail");
+  $scope.menutitle = NavigationService.makeactive("Checkoutorder");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
+})
 .controller('ChangepasswordCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
   //Used to name the .html file
 

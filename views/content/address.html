@@ -1,0 +1,112 @@
+<div class="heading-bar text-center">
+  <h3 class="heading">address</h3>
+</div>
+<div class="address-main">
+  <div class="container">
+    <form action="" name="formcheckout">
+      <div class="mt20 mb20">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="relate">
+              <input type="text" name="first" ng-model="first" class="form-control" placeholder="First Name" required>
+              <div class="form-error" ng-show="formcheckout.first.$error.required && formcheckout.first.$touched">Please enter your First Name</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="relate">
+              <input type="text" name="last" ng-model="last" class="form-control" placeholder="Last Name" required>
+              <div class="form-error" ng-show="formcheckout.last.$error.required && formcheckout.last.$touched">Please enter your Last Name</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="relate">
+              <input type="tel" name="number" ng-model="number" class="form-control" placeholder="Mobile No" required>
+              <div class="form-error" ng-show="formcheckout.number.$error.required && formcheckout.number.$touched">Please enter your Mobile No</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="relate">
+              <input type="email" name="mail" ng-model="mail" class="form-control" placeholder="Email-id" required>
+              <div class="form-error" ng-show="formcheckout.mail.$error.required && formcheckout.mail.$touched">Please enter your Email</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="addressess">
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="dark-blue mb20">Billing Address</h3>
+            <div class="row">
+              <div class="col-md-10">
+                <div class="add-billing-add">
+                  <div class="relate">
+                    <input type="text" ng-model="flat" name="flat" class="form-control" placeholder="Flat Number, Building Number" required>
+                    <div class="form-error" ng-show="formcheckout.flat.$error.required && formcheckout.flat.$touched">Please enter your Flat Number, Building Number.</div>
+                  </div>
+                  <div class="relate">
+                    <input type="text" name="street" ng-model="street" class="form-control" placeholder="Street Address" required>
+                    <div class="form-error" ng-show="formcheckout.street.$error.required && formcheckout.street.$touched">Please enter your Street Address.</div>
+                  </div>
+                  <div class="relate">
+                    <input type="text" ng-model="landmark" name="landmark" class="form-control" placeholder="Nearest Landmark" required>
+                    <div class="form-error" ng-show="formcheckout.landmark.$error.required && formcheckout.landmark.$touched">Please enter your Nearest Landmark.</div>
+                  </div>
+                  <div class="relate">
+                    <input type="text" name="code" ng-model="code" class="form-control" placeholder="Pin Code" required>
+                    <div class="form-error" ng-show="formcheckout.code.$error.required && formcheckout.code.$touched">Please enter your Pin Code.</div>
+                  </div>
+                  <div class="relate">
+                    <input type="text" class="form-control fixed-add" value="Mumbai">
+                  </div>
+                  <div class="relate">
+                    <input type="text" class="form-control fixed-add" value="Maharashtra">
+                  </div>
+                  <div class="relate">
+                    <input type="text" class="form-control fixed-add" value="India">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h3 class="dark-blue">Shipping Address</h3>
+            <div class="add-billing-add">
+              <div class="row">
+                <div class="col-md-10">
+                  <div class="same-billing mt10 mb10">
+                    <div class="custom-checkbox">
+                      <input type="checkbox" id="bill">
+                      <label for="bill"> Use the same for billing address.</label>
+                    </div>
+                  </div>
+                  <div class="relate">
+                    <input type="text" class="form-control" placeholder="Flat Number, Building Number" name="bldg" ng-model="bldg" required>
+                    <div class="form-error" ng-show="formcheckout.bldg.$error.required && formcheckout.bldg.$touched">Please enter your Flat Number, Building Number</div>
+                  </div>
+                  <div class="relate">
+                    <input type="text" class="form-control" placeholder="Street Address" name="streetadd" ng-model="streetadd" required>
+                    <div class="form-error" ng-show="formcheckout.streetadd.$error.required && formcheckout.streetadd.$touched">Please enter your Street Address</div>
+                  </div>
+                  <div class="relate">
+                    <input type="text" class="form-control" placeholder="Nearest Landmark" name="nearest" ng-model="nearest" required>
+                    <div class="form-error" ng-show="formcheckout.nearest.$error.required && formcheckout.nearest.$touched">Please enter your Nearest Landmark</div>
+                  </div>
+                  <div class="relate">
+                    <input type="text" class="form-control" placeholder="Pin Code" name="pincode" ng-model="pincode" required>
+                    <div class="form-error" ng-show="formcheckout.pincode.$error.required && formcheckout.pincode.$touched">Please enter your Pin Code</div>
+                  </div>
+                  <input type="text" class="form-control fixed-add" value="Mumbai">
+                  <input type="text" class="form-control fixed-add" value="Maharashtra">
+                  <input type="text" class="form-control fixed-add" value="India">
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt20 mb20 save">
+              <button class="btn btn-outline btn-full text-medium">Continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
