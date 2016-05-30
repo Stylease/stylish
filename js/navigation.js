@@ -24,32 +24,32 @@ var navigationservice = angular.module('navigationservice', [])
         {
         name: "Wedding",
         classis: "active",
-        link: "#/wedding"
+        link: "product"
       },
       {
         name: "Sangeet",
         classis: "active",
-        link: "#/Sangeet"
+        link: "product"
       },
       {
         name: "Mehendi",
         classis: "active",
-        link: "#/mehendi"
+        link: "product"
       },
       {
         name: "Cocktail",
         classis: "active",
-        link: "#/cocktail"
+        link: "product"
       },
       {
         name: "Reception",
         classis: "active",
-        link: "#/reception"
+        link: "product"
       },
       {
         name: "Engagement",
         classis: "active",
-        link: "#/engagement"
+        link: "product"
       }
     ]
     }, {
@@ -61,19 +61,19 @@ var navigationservice = angular.module('navigationservice', [])
         {
         name: "Bags",
         classis: "active",
-        link: "#/bags"
+        link: "product"
       },
         {
         name: "Jewellery",
         classis: "active",
-        link: "#/jewellery"
+        link: "product"
       },
     ]
     }, {
       name: "Celebrities Choice",
       classis: "active",
       disabled:true,
-      anchor: "profile"
+      anchor: "product"
     }, {
       name: "Media",
       classis: "active",

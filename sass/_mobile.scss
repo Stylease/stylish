@@ -16,6 +16,10 @@
     .flexslider:hover .flex-direction-nav .flex-next,
     .flex-direction-nav a.flex-next { right: 0; }
   }
+  // sorry-page
+  .sorry, .thankyou {
+    padding: 16% 0;
+  }
 }
 @media (max-width: $screen-sm-max) {
   .how-it-works {
@@ -104,6 +108,27 @@
     .flexslider:hover .flex-direction-nav .flex-prev,
     .flex-direction-nav a.flex-prev { left: 45px; }
   }
+  // cart
+  .cart-imgholder { margin-bottom: 20px; }
+  .prd-name {
+    text-align: center;
+  }
+  .prd-name + h5 { text-align: center; }
+  // wishlist
+  .wishlisted-product .col-md-4:nth-child(2n+1) .wishlist-product:after {
+    content: '';
+    @include size(1px, 90%);
+    @include position(absolute, 30px 0 null null);
+    background-color: $brand-dark-pink;
+  }
+  .wishlisted-product .col-md-4:nth-child(3n-1) .wishlist-product {
+    border-right: none;
+    border-left: none;
+  }
+  // sorry-page
+  .sorry, .thankyou {
+    padding: 20% 0;
+  }
 }
 @media (max-width: $screen-xs-max) {
   .user-detail {
@@ -172,6 +197,24 @@
     }
   }
   // popups ends
+  // cart
+  .prd-name {
+    font-size: 17px;
+  }
+  // wishlist
+  .wishlisted-product .col-md-4:nth-child(2n+1) .wishlist-product:after { display: none; }
+  .wishlist-product { border-bottom: 1px solid $brand-dark-pink  ; }
+  // talk to us
+  .talk-us {
+    right: -41px;
+    span {
+      font-size: 14px;
+    }
+  }
+  // sorry-page
+  .sorry, .thankyou {
+    padding: 30% 0;
+  }
 }
 @media (max-width: 480px) {
   body { padding: 56px 0px 0px 0px; }
@@ -252,7 +295,7 @@
     button { margin: 0 0 10px 0; }
   }
   // product
-  .product-info { padding: 20px 0px 10px; }
+  .product-info { padding: 20px 0px 30px; }
   .product-descp { margin: 80px 0px 0; }
   // product-detail
   .suggested-imgholder {
@@ -313,4 +356,29 @@
     }
   }
   // footer end
+  // pop ups
+  .pop-heading-bar h2 { font-size: 35px; }
+  .msg { font-size: 17px; }
+  .close img { width: 15px; }
+  .close-header { padding: 10px 0; }
+  .hello {
+    h3 { font-size: 30px; }
+    .message { font-size: 15px; }
+  }
+  .continue-shop .outfit { padding: 0; }
+  // end pop ups
+  // sorry-page, thankyou
+  .sorry, .thankyou {
+    padding: 65% 0;
+  }
+  .thankyou {
+    h2 { font-size: 40px; }
+    span { font-size: 16px; }
+    .transaction-detail { margin-top: 20px; }
+    button {
+      padding: 8px 14px;
+      font-size: 16px;
+    }
+    .hope { font-size: 15px; }
+  }
 }

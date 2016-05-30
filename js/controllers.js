@@ -285,7 +285,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
   ];
 })
-.controller('ProductdetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('ProductdetailCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
   //Used to name the .html file
 
   $scope.template = TemplateService.changecontent("productdetail");
@@ -341,6 +341,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       price: "4,500"
     }
   ];
+  $scope.shop = function() {
+    $uibModal.open({
+      animation: true,
+      templateUrl: "views/modal/shop.html",
+      controller: "ProductdetailCtrl"
+    })
+  };
+  $scope.productFull = function() {
+    $uibModal.open({
+      animation: true,
+      templateUrl: "views/modal/product-full.html",
+      controller: "ProductdetailCtrl"
+    })
+  };
 })
 .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file

@@ -37,6 +37,7 @@ $brand-google: #d34836 !default;
 .content { background-color: $brand-light-pink; }
 body {
   padding: 72px 0 0 0;
+  padding-right: 0 !important;
   font-family: "Work Sans";
 }
 img.loading {
@@ -65,6 +66,7 @@ a {
   &:focus {
     outline: none;
     text-decoration: none;
+    color: inherit;
   }
 }
 // classess
@@ -247,7 +249,7 @@ a {
 .btn-outline {
   @include button-variant($brand-dark-blue, transparent, $brand-dark-blue);
   &:hover {
-    @include button-variant($brand-pink, $brand-dark-blue, $brand-dark-blue);
+    @include button-variant($brand-dark-blue, $brand-light-pink, $brand-dark-blue);
   }
 }
 .btn-pink-outline {
@@ -773,6 +775,7 @@ input.form-control {
     font-size: 25px;
   }
 }
+.forgotpswd-pop .pop-heading-bar h2 { font-size: 28px; }
 // thankyou
 .thankyou {
   padding: 10% 0;
@@ -832,8 +835,19 @@ input.form-control {
     border-right: 1px solid $brand-dark-blue;
   }
 }
+// shop
+.continue-shop {
+  padding: 20px;
+  border: 1px solid $brand-dark-pink;
+  .outfit { padding: 0px 14%; }
+  .close { top: -10px; }
+}
 // end pop ups
 // my account
+.prof-tab .profile-tab .profile-active { color: $brand-dark-pink; }
+.order-tab .profile-tab .order-active { color: $brand-dark-pink; }
+.wishlist-tab .profile-tab .wishlist-active { color: $brand-dark-pink; }
+.save-add-tab .profile-tab .save-active { color: $brand-dark-pink; }
 .profile-tab {
   ul {
     padding: 0 30px 0 0;
