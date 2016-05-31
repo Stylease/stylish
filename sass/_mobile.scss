@@ -177,7 +177,7 @@
   // product
   .product-imgholder { height: 250px; }
   .product-detail h4 {
-    min-height: auto;
+    min-height: 35px; 
     margin: 15px 0 10px;
   }
   .search-product input { width: 89%; }
@@ -257,8 +257,14 @@
     width: 320px;
     top: 56px;
   }
+  // home
+  .home-slider {
+    .flex-control-nav { bottom: 20px; }
+    .flex-control-paging li a { @include square(8px); }
+  }
   .how-it-works {
     min-height: 120px;
+    margin-top: -20px;
   }
   .play {
     width: 100%;
@@ -275,7 +281,7 @@
       font-size: 27px;
     }
     .client-speak p {
-      font-size: 16px;
+      font-size: 15px;
     }
   }
   .order-heading {
@@ -297,6 +303,18 @@
   // product
   .product-info { padding: 20px 0px 30px; }
   .product-descp { margin: 80px 0px 0; }
+  .product-imgholder {
+    height: 170px;
+  }
+  .product-detail {
+    h4 {
+      min-height: 50px;
+      padding: 0;
+      font-size: 15px;
+    }
+    p { font-size: 15px; }
+  }
+  .list-view .product-detail h4 { min-height: 25px; }
   // product-detail
   .suggested-imgholder {
     @include square(180px);
@@ -335,6 +353,9 @@
       display: block;
     }
   }
+  // remove
+  .remove-item p { font-size: 18px; }
+  .remove-accept { font-size: 18px; }
   // popups ends
   // footer
   .social-links {
@@ -366,6 +387,7 @@
     .message { font-size: 15px; }
   }
   .continue-shop .outfit { padding: 0; }
+  .change-delivery-date p { font-size: 16px; }
   // end pop ups
   // sorry-page, thankyou
   .sorry, .thankyou {
@@ -381,4 +403,6 @@
     }
     .hope { font-size: 15px; }
   }
+  // cart
+  .remove-cart img { width: 10px; }
 }

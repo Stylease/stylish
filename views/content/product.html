@@ -28,15 +28,15 @@
       <div class="row">
         <div class="col-md-3">
           <div class="filter-product">
-            <img src="img/filter.png" alt=""  width="20" class="img-responsive inline-block mr5">
+            <img src="img/filter.png" alt="" width="20" class="img-responsive inline-block mr5">
             <span class="text-uppercase filter-heading inline-block mt10 mb10">filter</span>
             <div class="filter-dropdown accordion-custom">
               <div class="search-by-filter">
                 <form action="">
                   <uib-accordion close-others="oneAtATime">
                     <uib-accordion-group is-open="status.open1">
-                      <uib-accordion-heading>Occasion
-                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open1, 'fa-chevron-down': !status.open1}"></i>
+                      <uib-accordion-heading>
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open1, 'fa-chevron-down': !status.open1}"></i><span class="block">Occasion</span>
                       </uib-accordion-heading>
                       <div class="occasion">
                         <div class="radio-button">
@@ -66,8 +66,8 @@
                       </div>
                     </uib-accordion-group>
                     <uib-accordion-group is-open="status.open2">
-                      <uib-accordion-heading>Dresses
-                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i>
+                      <uib-accordion-heading>
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i><span class="block">Dresses</span>
                       </uib-accordion-heading>
                       <div class="dresses">
                         <div class="custom-checkbox">
@@ -93,16 +93,16 @@
                       </div>
                     </uib-accordion-group>
                     <uib-accordion-group is-open="status.open3">
-                      <uib-accordion-heading>Rental Price
-                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open3, 'fa-chevron-down': !status.open3}"></i>
+                      <uib-accordion-heading>
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open3, 'fa-chevron-down': !status.open3}"></i><span class="block">Rental Price</span>
                       </uib-accordion-heading>
                       <div class="price-rangeslider">
                         <div range-slider min="demo2.range.min" max="demo2.range.max" model-min="demo2.minPrice" model-max="demo2.maxPrice" filter="currency:'‎₹'" step="100"></div>
                       </div>
                     </uib-accordion-group>
                     <uib-accordion-group is-open="status.open4">
-                      <uib-accordion-heading>Delivery / Return Dates
-                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open4, 'fa-chevron-down': !status.open4}"></i>
+                      <uib-accordion-heading>
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open4, 'fa-chevron-down': !status.open4}"></i> <span class="block">Delivery / Return Dates</span>
                       </uib-accordion-heading>
                       <div class="dates">
                         <div class="radio-button">
@@ -119,8 +119,8 @@
                       </div>
                     </uib-accordion-group>
                     <uib-accordion-group is-open="status.open5">
-                      <uib-accordion-heading>Size
-                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open5, 'fa-chevron-down': !status.open5}"></i>
+                      <uib-accordion-heading>
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open5, 'fa-chevron-down': !status.open5}"></i> <span class="block">Size</span>
                       </uib-accordion-heading>
                       <div class="product-size" ng-init="size=''">
                         <ul class="list-inline">
@@ -132,8 +132,8 @@
                       </div>
                     </uib-accordion-group>
                     <uib-accordion-group is-open="status.open6">
-                      <uib-accordion-heading>Colour
-                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open6, 'fa-chevron-down': !status.open6}"></i>
+                      <uib-accordion-heading>
+                        <i class="pull-right fa" ng-class="{'fa-chevron-up': status.open6, 'fa-chevron-down': !status.open6}"></i> <span class="block">Colour</span>
                       </uib-accordion-heading>
                       <div class="color">
                         <div class="custom-checkbox">
@@ -182,7 +182,7 @@
         </div>
         <div class="col-md-9">
           <div class="product-holder">
-            <div class="sort-product pd10">
+            <div class="sort-product pd10 clearfix">
               <img src="img/sort.png" alt="" class="inline-block mr5 img-responsive">
               <span class="text-uppercase pointer" ng-click="showShortlist = (showShortlist == true)? false:true;">sort</span>
               <div class="sort-filter-dropdown" ng-show="showShortlist">
@@ -193,10 +193,41 @@
                   <li><a href="">Recent Addition</a></li>
                 </ul>
               </div>
+              <div class="product-view pull-right hidden-md hidden-lg" ng-init="viewProduct=true">
+                <!-- <img src="img/grid.png" alt="view grid"> -->
+                <!-- <img src="img/list.png" alt="list grid"> -->
+                <i class="fa fa-th-large pointer " ng-class="{'active-view': viewProduct==true }" ng-click="viewProduct=true"></i>
+                <i class="fa fa-bars pointer" ng-class="{'active-view': viewProduct==false}" ng-click="viewProduct=false"></i>
+                <span class="dark-blue">VIEW</span>
+              </div>
             </div>
-            <div class="shop-product">
+            <div class="shop-product list-view hidden-md visible-sm visible-xs" ng-hide="viewProduct">
               <div class="row">
                 <div class="col-md-4" ng-repeat="product in shopping">
+                  <div class="view-product relate pointer">
+                    <div class="wishlist text-right">
+                      <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa {{product.heart}}"></i></span>
+                        <div class="product-detail text-center" ui-sref="productdetail">
+                        <div class="row">
+                          <div class="col-md-12 col-sm-5 col-xs-5">
+                            <div class="product-imgholder relate">
+                              <img ng-src="{{product.img}}" alt="" class="get-center img-responsive">
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-sm-7 col-xs-7">
+                            <h4 class="product-name">{{product.name}}</h4>
+                            <p>Rent : Rs {{product.price}}/-</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="shop-product grid-view" ng-show="viewProduct">
+              <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-6" ng-repeat="product in shopping">
                   <div class="view-product relate pointer">
                     <div class="wishlist text-right">
                       <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa {{product.heart}}"></i></span>

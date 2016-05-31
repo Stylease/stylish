@@ -8,7 +8,7 @@
 /* Bootstrap Variables Goes Here */
 $brand-dark-blue: #2c2d3d !default;
 $brand-dark-pink: #e87b65 !default;
-$brand-pink: #fdd3be !default;
+$brand-pink: #fdd3be !default; 
 $brand-light-pink: #fff6f1 !default;
 $brand-facebook: #3b5998 !default;
 $brand-google: #d34836 !default;
@@ -1074,6 +1074,23 @@ input.form-control {
     color: $brand-dark-blue;
     font-weight: 500;
     &:hover { color: $brand-dark-pink; }
+  }
+}
+.product-view {
+  i {
+    margin: 0px 5px;
+    font-size: 18px;
+    @include transform(all 300ms linear);
+    opacity: 0.8;
+    &:hover {
+      @include transform(scale(1.2));
+      @include transform(all 300ms linear);
+      opacity: 1;
+    }
+  }
+  .active-view {
+    @include transform(scale(1.2));
+    opacity: 1;
   }
 }
 .product-imgholder {
