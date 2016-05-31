@@ -20,6 +20,8 @@
   .sorry, .thankyou {
     padding: 16% 0;
   }
+  // productdetail
+  .grid-view .col-xs-6:nth-last-child(-n+2) .view-product { border: none; }
 }
 @media (max-width: $screen-sm-max) {
   .how-it-works {
@@ -177,7 +179,7 @@
   // product
   .product-imgholder { height: 250px; }
   .product-detail h4 {
-    min-height: 35px; 
+    min-height: 35px;
     margin: 15px 0 10px;
   }
   .search-product input { width: 89%; }

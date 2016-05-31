@@ -8,7 +8,7 @@
 /* Bootstrap Variables Goes Here */
 $brand-dark-blue: #2c2d3d !default;
 $brand-dark-pink: #e87b65 !default;
-$brand-pink: #fdd3be !default; 
+$brand-pink: #fdd3be !default;
 $brand-light-pink: #fff6f1 !default;
 $brand-facebook: #3b5998 !default;
 $brand-google: #d34836 !default;
@@ -1145,6 +1145,7 @@ input.form-control {
     padding: 8px 20px;
     border: 1px solid $brand-dark-blue;
     margin-bottom: 10px;
+    background: url('../img/calendar.png') no-repeat 95% 50%;
   }
 }
 .dates {
@@ -1158,6 +1159,10 @@ input.form-control {
   .radio-button {
     margin-bottom: 10px;
   }
+}
+.filter-button {
+  text-align: center;
+  button { padding: 8px 34px; }
 }
 .occasion {
 .radio-button input[type="radio"] + label { font-weight: 500; }
