@@ -326,15 +326,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $uibModal.open({
         animation: true,
         templateUrl: "views/modal/shop.html",
-        controller: "ProductdetailCtrl"
+        scope: $scope
       })
     };
     $scope.productFull = function() {
       $uibModal.open({
         animation: true,
         templateUrl: "views/modal/product-full.html",
-        controller: "ProductdetailCtrl"
+        scope: $scope
       })
+    };
+    $scope.addTowishlist = function() {
+      $uibModal.open({
+        animation: true,
+        templateUrl: 'views/modal/added-wishlist.html',
+      });
     };
   })
   .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout) {

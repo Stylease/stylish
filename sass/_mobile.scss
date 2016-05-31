@@ -72,6 +72,7 @@
   // product
   .product-holder {
     border: none;
+    margin-top: 30px;
   }
   // product-detail
   .productdetail-slider {
@@ -355,9 +356,15 @@
       display: block;
     }
   }
+  .forgotpswd-pop .pop-heading-bar h2 { font-size: 28px; }
   // remove
   .remove-item p { font-size: 18px; }
   .remove-accept { font-size: 18px; }
+  // wishlist
+  .added-wishist {
+    h4 { padding: 10px 5px 0; }
+    button { margin: 10px 0; }
+  }
   // popups ends
   // footer
   .social-links {
