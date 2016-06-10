@@ -1,0 +1,50 @@
+<div class="heading-bar text-center">
+  <h3 class="heading">Bank Details</h3>
+</div>
+<div class="bankdetails">
+  <div class="container">
+    <h3 class="dark-blue text-uppercase">My Account</h3>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="bank-tab" ng-include="template.account"></div>
+      </div>
+      <div class="col-md-8">
+        <div class="bankdetail-main">
+          <form action="">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="relate">
+                  <input type="text" class="form-control" placeholder="Beneficiary Name">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="relate">
+                  <input type="text" class="form-control" placeholder="Account Number">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="relate">
+                  <input type="text" class="form-control" placeholder="Bank Name">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="relate">
+                  <input type="text" class="form-control" placeholder="IFSC Code">
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-outline mt20 mb20 btn-full text-medium" ng-hide="setProfile" ng-click="setProfile=true">Edit</button>
+              <div class="on-edit mt20 mb20" ng-show="setProfile">
+                <button type="reset" class="btn btn-outline text-medium btn-full">Reset Details</button>
+                <button class="btn btn-outline text-medium btn-full">Save Changes</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

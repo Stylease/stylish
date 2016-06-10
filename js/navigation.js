@@ -15,6 +15,39 @@ var navigationservice = angular.module('navigationservice', [])
       disabled:true,
       anchor: "home"
     },
+    {
+      name: "Dresses",
+      classis: "active",
+      disabled:false,
+      anchor: "dresses",
+      subnav: [
+      {
+        name: "Lehengas",
+        classis: "active",
+        link: "product"
+      },
+      {
+        name: "Sarees",
+        classis: "active",
+        link: "product"
+      },
+      {
+        name: "Jumpsuit",
+        classis: "active",
+        link: "product"
+      },
+      {
+        name: "Anakalis",
+        classis: "active",
+        link: "product"
+      },
+      {
+        name: "Gown",
+        classis: "active",
+        link: "product"
+      }
+      ]
+    },
      {
       name: "Occasion",
       classis: "active",

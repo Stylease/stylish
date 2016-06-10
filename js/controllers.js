@@ -117,6 +117,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 
   })
+  .controller('BankdetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    $scope.template = TemplateService.changecontent("bankdetail");
+    $scope.menutitle = NavigationService.makeactive("Bankdetail");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+  })
   .controller('CheckoutSigninCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
 
@@ -290,6 +299,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       'img/product-detail.png',
       'img/product-detail.png',
       'img/product-detail.png'
+    ];
+    $scope.relatedProduct = [
+      'img/suggest1.png',
+      'img/suggest2.png',
+      'img/suggest1.png',
+      'img/suggest2.png',
+      'img/suggest1.png',
+      'img/suggest2.png',
     ];
     $scope.suggested = [{
       img: "img/suggest1.png",
