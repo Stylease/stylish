@@ -444,7 +444,14 @@ header {
   margin: 0;
   @include position(absolute, 4px null null 50%);
   @include transform(translateX(-50%));
+   @include transition(all 800ms ease-in-out);
   z-index: 20;
+.small-logo {
+  h1 { top: 0; }
+  img {
+    width: 88px;
+    @include transition(all 800ms linear);
+  }
 }
 .user-detail {
   margin: 5px 0;
@@ -1028,6 +1035,13 @@ input.form-control {
   padding: 30px;
   font-size: 16px;
   font-weight: 500;
+  .custom-checkbox {
+    font-size: 12px;
+    [type="checkbox"]:not(:checked) + label:before,
+    [type="checkbox"]:checked + label:before {
+      padding-left: 13px;
+    }
+  }
 }
 .first-address,
 .add-address {
@@ -1043,10 +1057,10 @@ input.form-control {
     color: $brand-dark-pink;
   }
 }
-.add-shipping-add {
-  padding-top: 30px;
-  border-top: 2px solid $brand-dark-blue;
-}
+// .add-shipping-add {
+//   padding-top: 30px;
+//   border-top: 2px solid $brand-dark-blue;
+// }
 // end my account
 // checkout
 .addressess {
@@ -1293,6 +1307,24 @@ input.form-control {
     font: normal normal normal 14px/1 FontAwesome;
     font-size: 50px;
     color: $brand-dark-blue;
+    }
+  }
+}
+.product-related-slider {
+  position: absolute;
+  top: 45%;
+  left: -123px;
+  z-index: 10;
+  .flexslider {
+    width: 50%;
+    @include transform(rotate(90deg));
+    .flexslider .slides > li { width: 70px!important; }
+  }
+  .related-imgholder {
+    @include square(70px);
+    img {
+      min-height: 100%;
+      @include transform(translate(-50%,-50%) rotate(-90deg));
     }
   }
 }

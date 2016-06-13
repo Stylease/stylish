@@ -307,6 +307,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       'img/suggest2.png',
       'img/suggest1.png',
       'img/suggest2.png',
+      'img/suggest2.png',
+      'img/suggest1.png',
+      'img/suggest2.png',
+      'img/suggest1.png',
+      'img/suggest2.png',
     ];
     $scope.suggested = [{
       img: "img/suggest1.png",
@@ -360,6 +365,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       });
     };
   })
+  .controller('CelebrityChoiceCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    //Used to name the .html file
+
+    $scope.template = TemplateService.changecontent("celebrity-choice");
+    $scope.menutitle = NavigationService.makeactive("CelebrityChoice");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.oneAtATime = true;
+  })
   .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
 
@@ -386,6 +400,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
+  $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 70) {
+        $(".logo-view").addClass("small-logo");
+    } else {
+        $(".logo-view").removeClass("small-logo");
+    }
+});
   var modal1 = "";
   var modal2 = "";
   var modal3 = "";

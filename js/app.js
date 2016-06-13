@@ -70,6 +70,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'ProductdetailCtrl'
   })
+    .state('celebritychoice', {
+    url: "/celebrity-choice",
+    templateUrl: "views/template.html",
+    controller: 'CelebrityChoiceCtrl'
+  })
     .state('thankyou', {
     url: "/thankyou",
     templateUrl: "views/template.html",

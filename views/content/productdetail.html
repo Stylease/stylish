@@ -4,19 +4,22 @@
       <div class="col-md-6">
         <div class="relate">
           <div class="productdetail-slider">
-            <flex-slider class="carousel" flex-slide="slide in product track by $index" direction-nav="false">
+            <!-- <flex-slider class="carousel" flex-slide="slide in product track by $index" direction-nav="false">
               <li>
                 <div class="prd-slide-imgholder relate m-center">
                   <img ng-src="{{slide}}" alt="" class="get-center">
                 </div>
               </li>
-            </flex-slider>
+            </flex-slider> -->
+            <div class="prd-slide-imgholder relate m-center">
+              <img src="img/product-detail.png" alt="" class="get-center img-responsive">
+            </div>
           </div>
           <div class="product-related-slider">
-            <flex-slider class="carousel" flex-slide="relate in relatedProduct track by $index" animation="slide" control-nav="false" item-width="80" item-margin="20">
+            <flex-slider class="carousel" flex-slide="relate in relatedProduct track by $index" animation="slide" control-nav="false" item-width="70" item-margin="20">
               <li>
-                <div class="related-imgholder">
-                  <img ng-src="{{relate}}" alt="" class="img-responsive">
+                <div class="related-imgholder relate">
+                  <img ng-src="{{relate}}" alt="" class="get-center img-responsive">
                 </div>
               </li>
             </flex-slider>
