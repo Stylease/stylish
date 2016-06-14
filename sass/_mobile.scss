@@ -22,6 +22,16 @@
   }
   // productdetail
   .grid-view .col-xs-6:nth-last-child(-n+2) .view-product { border: none; }
+
+  // celebrity page
+  .celebrity-imgholder {
+    height: 350px;
+  }
+  .shop-name { font-size: 18px; }
+  .celebrity-name { font-size: 16px; }
+  .celebrity-heart { margin: 5px 50px 0px 0px; }
+  .celebrity-holder .designer-name { font-size: 16px; }
+  .celebrity-price { font-size: 20px; }
 }
 @media (max-width: $screen-sm-max) {
   .how-it-works {
@@ -79,7 +89,7 @@
     margin: 50px 0;
   }
   .product-descp {
-    margin: 100px 0 0;
+    margin: 0;
     .name-section { text-align: center; }
     .product-price {
       padding: 30px 0;
@@ -135,6 +145,9 @@
   .sorry, .thankyou {
     padding: 20% 0;
   }
+  // bank detail account
+  .bankdetail-main { margin: 50px 0px 0; }
+  .account-change-pswd { margin: 50px 0px 0; }
 }
 @media (max-width: $screen-xs-max) {
   .user-detail {
@@ -189,7 +202,13 @@
   .search-product input { width: 89%; }
   // product detail
   .suggested-imgholder { @include square(200px); }
-
+  .product-related-slider {
+    margin: 0 auto;
+    position: static;
+    @include transform(rotate(0deg));
+    .related-imgholder img { @include transform(rotate(0deg)); }
+  }
+  .product-descp { margin: 50px 0px 0; }
   // popups
   .or {
     &:after, &:before {
@@ -221,9 +240,17 @@
   .sorry, .thankyou {
     padding: 30% 0;
   }
+  // celebrity page
+  .celebrity-choice-main .col-md-6:nth-child(2n+1) .celebrity-holder { border-right: none; }
+  .celebrity-imgholder {
+    height: 320px;
+    margin: 30px 0px 15px;
+  }
+  .celebrity-holder { border-bottom: 1px solid $brand-pink; }
+  .celebrity-price { font-size: 18px; }
 }
 @media (max-width: 480px) {
-  body { padding: 56px 0px 0px 0px; }
+  body { padding: 53px 0px 0px 0px !important; }
   header {
     padding: 0;
   }
@@ -308,7 +335,7 @@
   }
   // product
   .product-info { padding: 20px 0px 30px; }
-  .product-descp { margin: 80px 0px 0; }
+  .product-descp { margin: 30px 0px 0; }
   .product-imgholder {
     height: 170px;
   }
@@ -341,6 +368,17 @@
     .product-price { font-size: 15px; }
   }
   .search-product input { width: 83%; }
+  .product-related-slider {
+    width: 262px;
+    .flexslider:hover .flex-direction-nav .flex-prev {
+      left: -15px;
+    }
+    .flexslider:hover .flex-direction-nav .flex-next {
+      right: -15px;
+    }
+    .flex-direction-nav a.flex-prev { left: -15px; }
+    .flex-direction-nav a.flex-next { right: -15px; }
+  }
   // popups
   .or {
     &:after, &:before {
@@ -417,4 +455,9 @@
   }
   // cart
   .remove-cart img { width: 10px; }
+  // celebrity page
+  .celebrity-imgholder {
+    height: 250px;
+    margin: 30px 0px 10px;
+  }
 }

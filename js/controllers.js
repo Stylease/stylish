@@ -365,7 +365,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       });
     };
   })
-  .controller('CelebrityChoiceCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  .controller('CelebrityChoiceCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
     //Used to name the .html file
 
     $scope.template = TemplateService.changecontent("celebrity-choice");
@@ -373,6 +373,63 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.oneAtATime = true;
+
+
+    $scope.addCelebrity = function(celebrity){
+      if(celebrity.heart == "fa-heart") {
+        celebrity.heart = "fa-heart-o";
+      } else {
+        celebrity.heart = "fa-heart";
+      }
+      $uibModal.open({
+        animation: true,
+        templateUrl: "views/modal/added-wishlist.html",
+        scope: $scope
+      })
+    };
+
+    $scope.celebrityChoice = [
+      {
+          shopName : "Choker Kundan",
+          celebrityName : "Sonam Kapoor",
+          img : "img/celebrities.jpg",
+          designerName : "Anita Dongre",
+          price: "4,500",
+          heart: "fa-heart-o"
+      },
+      {
+          shopName : "Choker Kundan",
+          celebrityName : "Sonam Kapoor",
+          img : "img/celebrities.jpg",
+          designerName : "Anita Dongre",
+          price: "4,500",
+          heart: "fa-heart-o"
+      },
+      {
+          shopName : "Choker Kundan",
+          celebrityName : "Sonam Kapoor",
+          img : "img/celebrities.jpg",
+          designerName : "Anita Dongre",
+          price: "4,500",
+          heart: "fa-heart-o"
+      },
+      {
+          shopName : "Choker Kundan",
+          celebrityName : "Sonam Kapoor",
+          img : "img/celebrities.jpg",
+          designerName : "Anita Dongre",
+          price: "4,500",
+          heart: "fa-heart-o"
+      },
+      {
+          shopName : "Choker Kundan",
+          celebrityName : "Sonam Kapoor",
+          img : "img/celebrities.jpg",
+          designerName : "Anita Dongre",
+          price: "4,500",
+          heart: "fa-heart-o"
+      }
+    ];
   })
   .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file

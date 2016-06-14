@@ -16,10 +16,12 @@
             </div>
           </div>
           <div class="product-related-slider">
-            <flex-slider class="carousel" flex-slide="relate in relatedProduct track by $index" animation="slide" control-nav="false" item-width="70" item-margin="20">
+            <!-- relate in relatedProduct -->
+            <!-- related-imgholder -->
+            <flex-slider class="carousel" flex-slide="relate in relatedProduct track by $index" item-width="70" animation="slide" item-margin="20" control-nav="false">
               <li>
-                <div class="related-imgholder relate">
-                  <img ng-src="{{relate}}" alt="" class="get-center img-responsive">
+                <div class="related-imgholder pointer">
+                  <img ng-src="{{relate}}" alt="" class="img-responsive">
                 </div>
               </li>
             </flex-slider>
@@ -61,9 +63,9 @@
               </div>
             </form>
           </div>
-          <div class="buttons">
-            <button class="btn btn-outline text-uppercase btn-full m-center block added-cart mb10" ng-click="shop();">add to cart</button>
-            <button class="btn btn-outline text-uppercase btn-full m-center block" ng-click="addTowishlist();">add to wishlist</button>
+          <div class="buttons on-edit text-center">
+            <button class="btn btn-outline text-uppercase btn-full m-center added-cart" ng-click="shop();">add to cart</button>
+            <button class="btn btn-outline text-uppercase btn-full m-center" ng-click="addTowishlist();">add to wishlist</button>
           </div>
           <div class="product-more-detail accordion-custom">
             <uib-accordion close-others="oneAtATime">

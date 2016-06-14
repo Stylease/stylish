@@ -30,17 +30,20 @@ $brand-google: #d34836 !default;
   font-family: "fine-style";
   src: url('../fonts/fine-style.TTF');
 }
-.font-serif { font-family: "fine-serif"; }
-
-.font-finestyle { font-family: "fine-style"; }
-
-.content { background-color: $brand-light-pink; }
+.font-serif {
+  font-family: "fine-serif";
+}
+.font-finestyle {
+  font-family: "fine-style";
+}
+.content {
+  background-color: $brand-light-pink;
+}
 body {
-  padding: 72px 0 0 0;
-  padding-right: 0 !important;
+  padding: 72px 0 0 !important;
   font-family: "Work Sans";
   -webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
 }
 img.loading {
   text-align: center;
@@ -72,7 +75,9 @@ a {
   }
 }
 // classess
-.no-border { border: none !important; }
+.no-border {
+  border: none !important;
+}
 .relate {
   position: relative;
 }
@@ -241,8 +246,8 @@ a {
 .btn {
   @include transition(all 300ms linear);
   &:focus {
-  box-shadow: none;
-  outline: none;
+    box-shadow: none;
+    outline: none;
   }
   &:hover {
     @include transition(all 300ms linear);
@@ -266,7 +271,9 @@ a {
 .btn-google {
   @include button-variant(white, $brand-google, $brand-google );
 }
-.btn-full { padding: 8px 50px; }
+.btn-full {
+  padding: 8px 50px;
+}
 // end btn-classes
 // end of classess
 //bootstrap forms
@@ -290,12 +297,14 @@ a {
   select {
     @include appearance(none);
     @include size(100%,40px);
-    padding: 0px 5px;
+    padding: 0 5px;
     border: 1px solid $brand-dark-pink;
     background-color: transparent;
     position: relative;
     z-index: 10;
-    &:focus { outline: none; }
+    &:focus {
+      outline: none;
+    }
   }
   &:after {
     content: "\f107";
@@ -320,7 +329,6 @@ a {
     font-weight: 500;
     margin: 0;
   }
-
   /* checkbox aspect */
   [type="checkbox"]:not(:checked) + label:before,
   [type="checkbox"]:checked + label:before {
@@ -395,7 +403,6 @@ a {
   background-color: transparent;
 }
 /* Start writing sass here */
-
 // header
 header {
   width: 100%;
@@ -405,7 +412,7 @@ header {
   z-index: 100;
 }
 .hamburger {
-  margin: 18px 0px 6px;
+  margin: 18px 0 6px;
   cursor: pointer;
   display: inline-block;
   .icon-bar {
@@ -444,18 +451,21 @@ header {
   margin: 0;
   @include position(absolute, 4px null null 50%);
   @include transform(translateX(-50%));
-   @include transition(all 800ms ease-in-out);
   z-index: 20;
+}
 .small-logo {
-  h1 { top: 0; }
+  h1 {
+    top: 0;
+  }
   img {
     width: 88px;
-    @include transition(all 800ms linear);
   }
 }
 .user-detail {
   margin: 5px 0;
-  img { margin-bottom: 5px; }
+  img {
+    margin-bottom: 5px;
+  }
 }
 nav {
   @include size(350px,100%);
@@ -467,7 +477,9 @@ nav {
   .menu-name {
     font-size: 18px;
     font-weight: 500;
-    &:hover { color: $brand-dark-blue; }
+    &:hover {
+      color: $brand-dark-blue;
+    }
   }
   .menu-dropdown {
     margin: 0;
@@ -479,7 +491,9 @@ nav {
         border-bottom: 1px solid rgba(61, 60, 62, 0.2);
         display: block;
         font-size: 16px;
-        &:hover { color: $brand-dark-pink; }
+        &:hover {
+          color: $brand-dark-pink;
+        }
       }
       &:last-child a {
         border-bottom: none;
@@ -499,14 +513,15 @@ nav {
       border-top: none;
     }
   }
-  .panel-default > .panel-heading { padding: 10px 0; }
+  .panel-default > .panel-heading {
+    padding: 10px 0;
+  }
   .panel-default > .panel-heading + .panel-collapse > .panel-body {
     padding: 10px 0 0;
     border: none;
   }
 }
 // header end
-
 // home
 .home-slider {
   .flex-control-nav {
@@ -523,7 +538,7 @@ nav {
   }
 }
 .customerspeak-slider {
-  padding: 110px 0px 50px;
+  padding: 110px 0 50px;
   margin-top: -110px;
   background: url('../img/anchor.png') #dc795e;
   h4 {
@@ -531,33 +546,35 @@ nav {
     padding-bottom: 5px;
     font-size: 35px;
   }
-  .flex-direction-nav a { top: 20%; }
+  .flex-direction-nav a {
+    top: 20%;
+  }
   .flexslider:hover .flex-direction-nav .flex-prev {
     left: 100px;
     opacity: 1;
-   }
+  }
   .flexslider:hover .flex-direction-nav .flex-next {
     right: 100px;
     opacity: 1;
-   }
+  }
   .flex-direction-nav a.flex-next {
     right: 100px;
     opacity: 1;
     &:before {
-    content: "\f105";
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 50px;
-    color: $brand-dark-blue;
+      content: "\f105";
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 50px;
+      color: $brand-dark-blue;
+    }
   }
-}
-  .flex-direction-nav a.flex-prev{
+  .flex-direction-nav a.flex-prev {
     left: 100px;
     opacity: 1;
     &:before {
-    content: "\f104";
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 50px;
-    color: $brand-dark-blue;
+      content: "\f104";
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 50px;
+      color: $brand-dark-blue;
     }
   }
   .client-speak {
@@ -569,7 +586,7 @@ nav {
       font-size: 18px;
       font-style: italic;
       font-weight: 200;
-     }
+    }
   }
 }
 .how-it-works {
@@ -579,7 +596,9 @@ nav {
   background: url('../img/work-bg.jpg');
   cursor: pointer;
 }
-.play { font-size: 50px; }
+.play {
+  font-size: 50px;
+}
 .talk-us {
   padding: 10px 20px;
   position: absolute;
@@ -589,11 +608,14 @@ nav {
   @include transform(rotate(-90deg));
   background-color: $brand-pink;
   color: $brand-dark-blue;
-  span { font-size: 15px; }
+  span {
+    font-size: 15px;
+  }
 }
 .client-descp {
   position: relative;
-  &:before,&:after {
+  &:before,
+  &:after {
     @include size(16px,10px);
     position: absolute;
   }
@@ -611,7 +633,6 @@ nav {
   }
 }
 // home end
-
 // footer
 .home-footer {
   background-color: $brand-dark-blue;
@@ -626,7 +647,9 @@ nav {
         a {
           color: $brand-light-pink;
           font-size: 16px;
-          &:hover { color: $brand-dark-pink; }
+          &:hover {
+            color: $brand-dark-pink;
+          }
         }
       }
     }
@@ -645,26 +668,36 @@ nav {
       background-color: $brand-dark-pink;
       line-height: 27px;
       text-align: center;
-      i { color: $brand-light-pink; }
+      i {
+        color: $brand-light-pink;
+      }
       @include transition(all 300ms linear);
       &:hover {
         @include transition(all 300ms linear);
         background-color: $brand-light-pink;
-        i { color: $brand-dark-pink; }
+        i {
+          color: $brand-dark-pink;
+        }
       }
     }
   }
-  .follow { margin: 20px 0; }
+  .follow {
+    margin: 20px 0;
+  }
   .question {
     margin-top: 40px;
     font-size: 17px;
     a {
       color: #fff;
-      &:hover { color: $brand-dark-pink; }
+      &:hover {
+        color: $brand-dark-pink;
+      }
     }
   }
   .about {
-    .footer-head { font-size: 21px; }
+    .footer-head {
+      font-size: 21px;
+    }
     font-size: 17px;
   }
   .read-more {
@@ -676,10 +709,11 @@ nav {
   }
   .ting {
     color: white;
-    &:hover { color: $brand-pink; }
+    &:hover {
+      color: $brand-pink;
+    }
   }
 }
-
 footer {
   padding: 50px 0 20px;
   background-color: $brand-pink;
@@ -688,7 +722,9 @@ footer {
   .links ul li a {
     color: $brand-dark-blue;
   }
-  .question a { color: $brand-dark-blue; }
+  .question a {
+    color: $brand-dark-blue;
+  }
   .ting {
     color: $brand-dark-blue;
     &:hover {
@@ -704,18 +740,20 @@ footer {
 }
 // footer
 .heading-bar {
-  padding: 65px 0px 30px;
+  padding: 65px 0 30px;
   background-color: $brand-pink;
   font-family: "fine-style";
   text-align: center;
   h3 {
-    margin: 0 0 5px 0;
+    margin: 0 0 5px;
     display: inline-block;
     color: $brand-dark-blue;
     font-size: 55px;
     text-transform: uppercase;
   }
-  .heading-underline { border-bottom: 2px solid $brand-dark-blue; }
+  .heading-underline {
+    border-bottom: 2px solid $brand-dark-blue;
+  }
   span {
     text-transform: none;
     font-family: "Work Sans";
@@ -732,11 +770,13 @@ input.form-control {
     color: $brand-dark-blue;
   };
   @include transition(all 300ms linear);
-   &:focus {
-      border-color: $brand-dark-pink;
-      @include placeholder { color: $brand-dark-pink; };
-      @include transition(all 300ms linear);
-    }
+  &:focus {
+    border-color: $brand-dark-pink;
+    @include placeholder {
+      color: $brand-dark-pink;
+    };
+    @include transition(all 300ms linear);
+  }
 }
 .form-error {
   padding: 5px 15px;
@@ -764,18 +804,26 @@ input.form-control {
     text-shadow: none;
     opacity: 1;
     @include position(absolute,15px 10px null null);
-    &:hover { opacity: 0.8; }
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 .close-header {
   padding: 20px;
-  .close { top: -15px; }
+  .close {
+    top: -15px;
+  }
 }
 .pop-heading-bar {
   position: relative;
-  h2 { font-size: 40px; }
+  h2 {
+    font-size: 40px;
+  }
 }
-.msg { font-size: 20px; }
+.msg {
+  font-size: 20px;
+}
 .or {
   font-size: 20px;
   text-align: center;
@@ -799,7 +847,7 @@ input.form-control {
 .change-pswd {
   padding: 50px 0;
 }
-.successfully  {
+.successfully {
   padding: 20px;
   border-radius: 0;
   border: 1px solid $brand-dark-pink;
@@ -827,24 +875,34 @@ input.form-control {
   }
   .transaction-detail {
     margin-top: 50px;
-    p,span { font-size: 16px; }
+    p,
+    span {
+      font-size: 16px;
+    }
   }
-  button { font-size: 18px; }
+  button {
+    font-size: 18px;
+  }
 }
-.sorry { padding: 12% 0; }
-
+.sorry {
+  padding: 12% 0;
+}
 // hello msg
 .hello {
   h3 {
-    margin: 0 0 20px 0;
+    margin: 0 0 20px;
     font-family: "fine-serif";
     font-size: 35px;
   }
-  .message { font-size: 16px; }
+  .message {
+    font-size: 16px;
+  }
   input {
     padding: 8px 14px;
     border: 1px solid $brand-dark-blue;
-    &:first-child { border-bottom: none; }
+    &:first-child {
+      border-bottom: none;
+    }
   }
 }
 // cart pop
@@ -853,11 +911,15 @@ input.form-control {
   border: 1px solid $brand-dark-pink;
   background-color: $brand-light-pink;
   text-align: center;
-  p { font-size: 18px; }
+  p {
+    font-size: 18px;
+  }
 }
 // remove-item
 .remove-item {
-  p { font-size: 25px; }
+  p {
+    font-size: 25px;
+  }
 }
 .remove-accept {
   border: 1px solid $brand-dark-blue;
@@ -870,17 +932,33 @@ input.form-control {
 .continue-shop {
   padding: 20px;
   border: 1px solid $brand-dark-pink;
-  .outfit { padding: 0px 14%; }
-  .close { top: -10px; }
+  .outfit {
+    padding: 0 14%;
+  }
+  .close {
+    top: -10px;
+  }
 }
 // end pop ups
 // my account
-.prof-tab .profile-tab .profile-active { color: $brand-dark-pink; }
-.order-tab .profile-tab .order-active { color: $brand-dark-pink; }
-.wishlist-tab .profile-tab .wishlist-active { color: $brand-dark-pink; }
-.save-add-tab .profile-tab .save-active { color: $brand-dark-pink; }
-.bank-tab .profile-tab .bank-active { color: $brand-dark-pink }
-.pswd-tab .profile-tab .password-active { color: $brand-dark-pink }
+.prof-tab .profile-tab .profile-active {
+  color: $brand-dark-pink;
+}
+.order-tab .profile-tab .order-active {
+  color: $brand-dark-pink;
+}
+.wishlist-tab .profile-tab .wishlist-active {
+  color: $brand-dark-pink;
+}
+.save-add-tab .profile-tab .save-active {
+  color: $brand-dark-pink;
+}
+.bank-tab .profile-tab .bank-active {
+  color: $brand-dark-pink;
+}
+.pswd-tab .profile-tab .password-active {
+  color: $brand-dark-pink;
+}
 .profile-tab {
   ul {
     padding: 0 30px 0 0;
@@ -891,7 +969,9 @@ input.form-control {
       list-style-type: none;
       a {
         color: $brand-dark-blue;
-        &:hover { color: $brand-dark-pink }
+        &:hover {
+          color: $brand-dark-pink;
+        }
       }
     }
   }
@@ -905,7 +985,9 @@ input.form-control {
   font-weight: 400;
 }
 .on-edit {
-  button { margin-right: -5px; }
+  button {
+    margin-right: -5px;
+  }
 }
 .bank-detail {
   margin-top: 60px;
@@ -923,10 +1005,10 @@ input.form-control {
 }
 .orders-dropdown {
   position: absolute;
-  right: 0px;
+  right: 0;
 }
 .order-summary {
-  padding: 0px 50px;
+  padding: 0 50px;
   color: $brand-dark-blue;
   .item-num {
     padding: 10px 0;
@@ -934,7 +1016,9 @@ input.form-control {
     border-bottom: 1px solid $brand-dark-pink;
   }
 }
-.order-address { padding: 20px 0; }
+.order-address {
+  padding: 20px 0;
+}
 .delivery {
   border-right: 1px solid $brand-dark-pink;
   address {
@@ -946,20 +1030,27 @@ input.form-control {
 .billing-detail {
   padding: 20px 0;
   border-top: 1px solid $brand-dark-pink;
-  border-bottom : 1px solid $brand-dark-pink;
+  border-bottom: 1px solid $brand-dark-pink;
   font-size: 16px;
   font-weight: 500;
-  .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  .table > thead > tr > th,
+  .table > thead > tr > td,
+  .table > tbody > tr > th,
+  .table > tbody > tr > td,
+  .table > tfoot > tr > th,
+  .table > tfoot > tr > td {
     padding: 5px 0;
     border: none;
   }
 }
-.buttons-orders { padding: 20px 0; }
- // order-detail
+.buttons-orders {
+  padding: 20px 0;
+}
+// order-detail
 .order-detail-summary {
   .billing-detail {
     border-top: 1px solid $brand-dark-blue;
-    border-bottom : 1px solid $brand-dark-blue;
+    border-bottom: 1px solid $brand-dark-blue;
   }
   .delivery {
     border-right: 1px solid $brand-dark-blue;
@@ -968,7 +1059,9 @@ input.form-control {
     border-top: 1px solid $brand-dark-blue;
   }
 }
-.order-detail-heading { font-size: 18px; }
+.order-detail-heading {
+  font-size: 18px;
+}
 .order-prd-detail {
   @extend .product-all-detail;
 }
@@ -982,7 +1075,6 @@ input.form-control {
 .order-heading {
   margin-bottom: 30px;
 }
-
 // wishlist
 .wishlist-product {
   padding: 20px;
@@ -1001,12 +1093,14 @@ input.form-control {
   border-left: 1px solid $brand-dark-pink;
   border-right: 1px solid $brand-dark-pink;
 }
-.wishlisted-product { padding: 20px 0; }
+.wishlisted-product {
+  padding: 20px 0;
+}
 .wishlist-prd-detail {
   margin: 40px 0 10px;
   h5 {
     min-height: 40px;
-    padding: 0px 10px;
+    padding: 0 10px;
     font-size: 16px;
   }
   span {
@@ -1016,7 +1110,9 @@ input.form-control {
 }
 .wishlist-heart {
   font-size: 18px;
-  .fa-heart { color: $brand-dark-pink; }
+  .fa-heart {
+    color: $brand-dark-pink;
+  }
 }
 // save address
 .billingsave-add {
@@ -1029,7 +1125,9 @@ input.form-control {
   border-top: 2px solid $brand-dark-blue;
 }
 .add-head {
-  h5 { font-size: 18px; }
+  h5 {
+    font-size: 18px;
+  }
 }
 .add-body {
   padding: 30px;
@@ -1090,10 +1188,14 @@ input.form-control {
 .product-holder {
   border-left: 1px solid $brand-pink;
 }
-.filter-heading { font-size: 18px; }
+.filter-heading {
+  font-size: 18px;
+}
 .sort-product {
   border-bottom: 1px solid $brand-pink;
-  span { font-size: 18px; }
+  span {
+    font-size: 18px;
+  }
 }
 .sort-filter-dropdown {
   width: 250px;
@@ -1101,10 +1203,12 @@ input.form-control {
   @include position(absolute, 46px null null 16px);
   background-color: $brand-pink;
   z-index: 5;
-  ul { padding: 0; }
+  ul {
+    padding: 0;
+  }
   li {
     border-bottom: 1px solid $brand-dark-blue;
-    padding: 7px 0 ;
+    padding: 7px 0;
     margin-bottom: 10px;
     font-size: 16px;
     list-style-type: none;
@@ -1113,12 +1217,14 @@ input.form-control {
     display: block;
     color: $brand-dark-blue;
     font-weight: 500;
-    &:hover { color: $brand-dark-pink; }
+    &:hover {
+      color: $brand-dark-pink;
+    }
   }
 }
 .product-view {
   i {
-    margin: 0px 5px;
+    margin: 0 5px;
     font-size: 18px;
     @include transform(all 300ms linear);
     opacity: 0.8;
@@ -1135,13 +1241,15 @@ input.form-control {
 }
 .product-imgholder {
   height: 300px;
-  img { max-height: 100%; }
+  img {
+    max-height: 100%;
+  }
 }
 .product-detail {
   h4 {
     min-height: 40px;
-    padding: 0px 30px;
-    margin: 20px 0px 0;
+    padding: 0 30px;
+    margin: 20px 0 0;
     font-size: 16px;
     font-weight: 400;
   }
@@ -1153,7 +1261,7 @@ input.form-control {
 .price-rangeslider {
   .ngrs-range-slider {
     @include size(100%,1px);
-    margin: 10px 0px 50px;
+    margin: 10px 0 50px;
     padding: 0;
     border: none;
     box-shadow: none;
@@ -1173,7 +1281,13 @@ input.form-control {
       background-color: $brand-dark-pink;
     }
   }
-  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+  [ng\:cloak],
+  [ng-cloak],
+  [data-ng-cloak],
+  [x-ng-cloak],
+  .ng-cloak,
+  .x-ng-cloak,
+  .ng-hide:not(.ng-hide-animate) {
     margin: 15px 0;
     font-size: 14px;
     color: $brand-dark-pink;
@@ -1202,10 +1316,14 @@ input.form-control {
 }
 .filter-button {
   text-align: center;
-  button { padding: 8px 34px; }
+  button {
+    padding: 8px 34px;
+  }
 }
 .occasion {
-.radio-button input[type="radio"] + label { font-weight: 500; }
+  .radio-button input[type="radio"] + label {
+    font-weight: 500;
+  }
 }
 .search-product {
   @include position(absolute,null 0 null null);
@@ -1228,13 +1346,19 @@ input.form-control {
   }
 }
 // product detail page
-.product-info { padding: 100px 0px 30px; }
+.product-info {
+  padding: 100px 0 30px;
+}
 .productdetail-slider {
   .prd-slide-imgholder {
     @include square(400px);
-    img { max-height: 100%; }
+    img {
+      max-height: 100%;
+    }
   }
-  .flexslider .slides img { width: auto; }
+  .flexslider .slides img {
+    width: auto;
+  }
   .flex-control-paging li a {
     @include square(9px);
     border: none;
@@ -1242,7 +1366,9 @@ input.form-control {
     border-radius: 100%;
     background-color: $brand-pink;
   }
-  .flex-control-paging li a.flex-active { background-color: $brand-dark-blue; }
+  .flex-control-paging li a.flex-active {
+    background-color: $brand-dark-blue;
+  }
 }
 .product-descp {
   .name-section {
@@ -1252,7 +1378,9 @@ input.form-control {
       font-weight: 300;
     }
   }
-  .delivery-date,.product-size,.buttons {
+  .delivery-date,
+  .product-size,
+  .buttons {
     padding: 20px 0;
     border-bottom: 1px solid $brand-dark-blue;
   }
@@ -1264,67 +1392,102 @@ input.form-control {
     border-bottom: 1px solid $brand-dark-blue;
     font-size: 16px;
     font-weight: 500;
-    p { margin: 0; }
+    p {
+      margin: 0;
+    }
   }
 }
 .suggested {
-  h3 { font-size: 30px; }
+  h3 {
+    font-size: 30px;
+  }
 }
 .suggested-product {
-  margin: 0px 20px;
+  margin: 0 20px;
   text-align: center;
 }
 .suggested-imgholder {
   height: 280px;
-  img { max-height: 100%; }
+  img {
+    max-height: 100%;
+  }
 }
 .suggested-slider {
   margin-top: 50px;
-  .rent { font-size: 20px; }
+  .rent {
+    font-size: 20px;
+  }
   .flexslider:hover .flex-direction-nav .flex-prev {
     left: -40px;
     opacity: 1;
-   }
+  }
   .flexslider:hover .flex-direction-nav .flex-next {
     right: -40px;
     opacity: 1;
-   }
+  }
   .flex-direction-nav a.flex-next {
     right: -40px;
     opacity: 1;
     &:before {
-    content: "\f105";
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 50px;
-    color: $brand-dark-blue;
+      content: "\f105";
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 50px;
+      color: $brand-dark-blue;
+    }
   }
-}
   .flex-direction-nav a.flex-prev {
     left: -40px;
     opacity: 1;
     &:before {
-    content: "\f104";
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 50px;
-    color: $brand-dark-blue;
+      content: "\f104";
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 50px;
+      color: $brand-dark-blue;
     }
   }
 }
 .product-related-slider {
-  position: absolute;
-  top: 45%;
-  left: -123px;
-  z-index: 10;
-  .flexslider {
-    width: 50%;
-    @include transform(rotate(90deg));
-    .flexslider .slides > li { width: 70px!important; }
+  width: 342px;
+  @include position(absolute, 42% null null -130px);
+  @include transform(rotate(90deg));
+  .flexslider:hover .flex-direction-nav .flex-prev {
+    left: -25px;
+    opacity: 1;
+  }
+  .flexslider:hover .flex-direction-nav .flex-next {
+    right: -25px;
+    opacity: 1;
+  }
+  .flex-direction-nav a.flex-next {
+    right: -25px;
+    opacity: 1;
+    &:before {
+      content: "\f105";
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 30px;
+      color: $brand-dark-blue;
+    }
+  }
+  .flex-direction-nav a.flex-prev {
+    left: -25px;
+    opacity: 1;
+    &:before {
+      content: "\f104";
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 30px;
+      color: $brand-dark-blue;
+    }
+  }
+  .flex-direction-nav a {
+    color: transparent;
+    text-shadow: none;
+    top: 53%;
   }
   .related-imgholder {
     @include square(70px);
     img {
       min-height: 100%;
-      @include transform(translate(-50%,-50%) rotate(-90deg));
+      @include transform(rotate(-90deg));
     }
   }
 }
@@ -1332,15 +1495,21 @@ input.form-control {
 // cart page
 .cart-imgholder {
   height: 250px;
-  img { max-height: 100%; }
+  img {
+    max-height: 100%;
+  }
 }
 .cart-list {
   padding: 30px 0;
   border-bottom: 1px solid $brand-dark-pink;
-  &:last-child { border: none; }
+  &:last-child {
+    border: none;
+  }
   a {
     font-size: 15px;
-    &:hover { color: $brand-dark-blue; }
+    &:hover {
+      color: $brand-dark-blue;
+    }
   }
 }
 .product-all-detail {
@@ -1357,10 +1526,53 @@ input.form-control {
   .custom-select {
     @include size(70px,30px);
     display: inline-block;
-    select { height: 30px; }
+    select {
+      height: 30px;
+    }
   }
 }
-
 // cart end page
+// celebrity page
+.celebrity-choice-main .col-md-6:nth-child(2n+1) .celebrity-holder {
+  border-right: 1px solid $brand-pink;
+}
+.celebrity-holder {
+  margin: 30px 0;
+  .designer-name {
+    font-size: 18px;
+  }
+  // &:after {
+  //   content: "";
+  //   @include size(1px,100%);
+  //   @include position(absolute,0 -16px null null);
+  //   background-color: $brand-pink;
+  // }
+}
+.sort-by {
+  padding: 15px 0;
+  border-bottom: 1px solid $brand-pink;
+  .sort-filter-dropdown {
+    top: 35px;
+    left: 0;
+  }
+}
+.celebrity-imgholder {
+  height: 500px;
+  margin: 30px 0;
+  img {
+    max-height: 100%;
+  }
+}
+.celebrity-heart {
+  margin: 10px 50px 0 0;
+  font-size: 20px;
+  .fa {
+    @include transition(all 300ms linear);
+  }
+  .fa-heart {
+    color: $brand-dark-pink;
+  }
+}
+// celebrity page end
 @import "fancybox-override";
 @import "mobile";

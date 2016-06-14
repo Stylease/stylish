@@ -1,6 +1,6 @@
 <div class="heading-bar">
   <div class="container text-center">
-    <div class="relate hidden-sm hidden-xs">
+    <div class="relate hidden-md hidden-sm hidden-xs">
       <div class="search-product">
         <form action="">
           <input type="search" placeholder="Find what you're looking for !">
@@ -23,6 +23,49 @@
           <img src="img/search.png" alt="" class="img-responsive">
         </button>
       </form>
+    </div>
+  </div>
+  <div class="sort-by">
+    <div class="container">
+      <div class=" relate">
+        <img src="img/sort.png" alt="" class="inline-block mr5 img-responsive">
+        <span class="text-uppercase pointer" ng-click="showShortlist = (showShortlist == true)? false:true;">sort</span>
+        <div class="sort-filter-dropdown" ng-show="showShortlist">
+          <ul>
+            <li><a href="">Popularity</a></li>
+            <li><a href="">Price : High - Low</a></li>
+            <li><a href="">Price : Low - High</a></li>
+            <li><a href="">Recent Addition</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="celebrity-choice-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6" ng-repeat="celebrity in celebrityChoice track by $index">
+          <div class="celebrity-holder relate">
+            <div class="clearfix">
+              <div class="pull-left">
+                <h3 class="shop-name m-clear mb5">{{celebrity.shopName}}</h3>
+                <h4 class="celebrity-name m-clear">{{celebrity.celebrityName}}</h4>
+              </div>
+              <div class="pull-right">
+                <span class="pointer celebrity-heart inline-block" ng-click="addCelebrity(celebrity);"><i class="fa {{celebrity.heart}}"></i></span>
+              </div>
+            </div>
+            <div class="celebrity-imgholder relate">
+              <img ng-src="{{celebrity.img}}" alt="{{celebrity.celebrityName}}" class="get-center img-responsive">
+            </div>
+            <div class="text-center">
+              <span class="designer-name inline-block mb5 text-medium">By : {{celebrity.designerName}}</span>
+              <h3 class="celebrity-price m-clear">Rent : Rs.{{celebrity.price}}/-</h3>
+              <button class="btn btn-outline btn-full text-medium mt20 mb20">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
