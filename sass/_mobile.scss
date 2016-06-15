@@ -336,8 +336,10 @@
   .order-summary .item-num { font-size: 18px; }
   .billing-detail { font-size: 14px; }
   .on-edit {
-    button { margin: 0 0 10px 0; }
-    button:first-child { margin-left: 5px; }
+    button {
+      margin: 0 auto 10px;
+      display: block;
+    }
   }
   // product
   .product-info { padding: 20px 0px 30px; }
