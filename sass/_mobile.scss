@@ -337,6 +337,7 @@
   .billing-detail { font-size: 14px; }
   .on-edit {
     button { margin: 0 0 10px 0; }
+    button:first-child { margin-left: 5px; }
   }
   // product
   .product-info { padding: 20px 0px 30px; }
