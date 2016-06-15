@@ -36,7 +36,8 @@
           </div>
           <div class="product-price">
             <p>Rental amount : Rs. <span>6,700</span>/-</p>
-            <p>Refundable Security Deposit: Rs.<span>4,599</span>/- <span class="refund ml5" data-toggle="modal" data-target="#refund"><i class="dark-pink pointer fa fa-question-circle-o"></i></span></p>
+            <p class="inline-block">Refundable Security Deposit: Rs.<span>4,599</span>/-</p>
+            <p class="refund ml5 inline-block" ng-click="tooltipIsOpen = !tooltipIsOpen"><i class="dark-pink pointer fa fa-question-circle-o"></i><span class="change" uib-tooltip="Your deposit will be refunded on return of the outfit." tooltip-is-open="tooltipIsOpen" tooltip-placement="bottom"></span></p>
           </div>
           <div class="product-size">
             <span class="mr20 text-medium">Size :</span>
@@ -62,6 +63,38 @@
                 <input type="text" class="form-control">
               </div>
             </form>
+          </div>
+          <div class="order-time">
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+              <div class="time">
+                  <label for="delivery-time" class="inline-block">Delivery Time</label>
+                <div class="custom-select inline-block">
+                  <select name="" id="delivery-time">
+                    <option value="">10 am</option>
+                    <option value="">11 am</option>
+                    <option value="">12 am</option>
+                    <option value="">01 pm</option>
+                    <option value="">20 pm</option>
+                  </select>
+                </div>
+              </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="time">
+                  <label for="pickup-time" class="inline-block">Pickup Time</label>
+                  <div class="custom-select inline-block">
+                    <select name="" id="pickup-time">
+                      <option value="">10 am</option>
+                      <option value="">11 am</option>
+                      <option value="">12 am</option>
+                      <option value="">01 pm</option>
+                      <option value="">02 pm</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="buttons on-edit text-center">
             <button class="btn btn-outline text-uppercase btn-full m-center added-cart" ng-click="shop();">add to cart</button>
@@ -98,7 +131,7 @@
     <div class="suggested">
       <h3 class="dark-blue text-center">Suggested</h3>
       <div class="suggested-slider">
-        <flex-slider class="carousel" flex-slide="products in suggested track by $index" control-nav="false" item-width="380" item-margin="0" animation="slide">
+        <flex-slider class="carousel" flex-slide="products in suggested track by $index" control-nav="false" item-width="230" item-margin="0" animation="slide">
           <li>
             <div class="suggested-product">
               <div class="suggested-imgholder relate">
@@ -114,15 +147,6 @@
             </div>
           </li>
         </flex-slider>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="refund" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body text-center bg-light-pink">
-        <p class="m-clear">Your deposit will be refunded on return of the outfit.</p>
       </div>
     </div>
   </div>
