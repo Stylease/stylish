@@ -365,7 +365,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       });
     };
   })
-  .controller('CelebrityChoiceCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
+  .controller('CelebrityChoiceCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
     //Used to name the .html file
 
     $scope.template = TemplateService.changecontent("celebrity-choice");
@@ -375,8 +375,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.oneAtATime = true;
 
 
-    $scope.addCelebrity = function(celebrity){
-      if(celebrity.heart == "fa-heart") {
+    $scope.addCelebrity = function(celebrity) {
+      if (celebrity.heart == "fa-heart") {
         celebrity.heart = "fa-heart-o";
       } else {
         celebrity.heart = "fa-heart";
@@ -388,53 +388,47 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       })
     };
 
-    $scope.celebrityChoice = [
-      {
-          shopName : "Choker Kundan",
-          celebrityName : "Sonam Kapoor",
-          img : "img/celebrities.jpg",
-          secImg: "img/celebrity-choice.jpg",
-          designerName : "Anita Dongre",
-          price: "4,500",
-          heart: "fa-heart-o"
-      },
-      {
-          shopName : "Choker Kundan",
-          celebrityName : "Sonam Kapoor",
-          img : "img/celebrities.jpg",
-          secImg: "img/celebrity-choice.jpg",
-          designerName : "Anita Dongre",
-          price: "4,500",
-          heart: "fa-heart-o"
-      },
-      {
-          shopName : "Choker Kundan",
-          celebrityName : "Sonam Kapoor",
-          img : "img/celebrities.jpg",
-          secImg: "img/celebrity-choice.jpg",
-          designerName : "Anita Dongre",
-          price: "4,500",
-          heart: "fa-heart-o"
-      },
-      {
-          shopName : "Choker Kundan",
-          celebrityName : "Sonam Kapoor",
-          img : "img/celebrities.jpg",
-          secImg: "img/celebrity-choice.jpg",
-          designerName : "Anita Dongre",
-          price: "4,500",
-          heart: "fa-heart-o"
-      },
-      {
-          shopName : "Choker Kundan",
-          celebrityName : "Sonam Kapoor",
-          img : "img/celebrities.jpg",
-          secImg: "img/celebrity-choice.jpg",
-          designerName : "Anita Dongre",
-          price: "4,500",
-          heart: "fa-heart-o"
-      }
-    ];
+    $scope.celebrityChoice = [{
+      shopName: "Choker Kundan",
+      celebrityName: "Sonam Kapoor",
+      img: "img/celebrities.jpg",
+      secImg: "img/celebrity-choice.jpg",
+      designerName: "Anita Dongre",
+      price: "4,500",
+      heart: "fa-heart-o"
+    }, {
+      shopName: "Choker Kundan",
+      celebrityName: "Sonam Kapoor",
+      img: "img/celebrities.jpg",
+      secImg: "img/celebrity-choice.jpg",
+      designerName: "Anita Dongre",
+      price: "4,500",
+      heart: "fa-heart-o"
+    }, {
+      shopName: "Choker Kundan",
+      celebrityName: "Sonam Kapoor",
+      img: "img/celebrities.jpg",
+      secImg: "img/celebrity-choice.jpg",
+      designerName: "Anita Dongre",
+      price: "4,500",
+      heart: "fa-heart-o"
+    }, {
+      shopName: "Choker Kundan",
+      celebrityName: "Sonam Kapoor",
+      img: "img/celebrities.jpg",
+      secImg: "img/celebrity-choice.jpg",
+      designerName: "Anita Dongre",
+      price: "4,500",
+      heart: "fa-heart-o"
+    }, {
+      shopName: "Choker Kundan",
+      celebrityName: "Sonam Kapoor",
+      img: "img/celebrities.jpg",
+      secImg: "img/celebrity-choice.jpg",
+      designerName: "Anita Dongre",
+      price: "4,500",
+      heart: "fa-heart-o"
+    }];
   })
   .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -459,6 +453,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('headerctrl', function($scope, TemplateService, $uibModal) {
   $scope.template = TemplateService;
+  $scope.template.backClass = "";
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
@@ -466,11 +461,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     var scroll = $(window).scrollTop();
 
     if (scroll >= 70) {
-        $(".logo-view").addClass("small-logo");
+      $(".logo-view").addClass("small-logo");
     } else {
-        $(".logo-view").removeClass("small-logo");
+      $(".logo-view").removeClass("small-logo");
     }
-});
+  });
   var modal1 = "";
   var modal2 = "";
   var modal3 = "";
@@ -519,9 +514,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     if ($scope.showMe == "menu-in") {
       $scope.showMe = "menu-out";
       $scope.showCross = "";
+      $scope.template.backClass = "";
     } else {
       $scope.showMe = "menu-in";
       $scope.showCross = "cross-ham";
+      $scope.template.backClass = "backdrop";
     }
   }
 

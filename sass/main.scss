@@ -74,6 +74,12 @@ a {
     color: inherit;
   }
 }
+.backdrop:after {
+  content: "";
+  @include position(fixed, 0);
+  background-color: rgba(0,0,0,0.7);
+  z-index: 99;
+}
 // classess
 .no-border {
   border: none !important;
