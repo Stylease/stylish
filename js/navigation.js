@@ -106,7 +106,7 @@ var navigationservice = angular.module('navigationservice', [])
       name: "Celebrities Choice",
       classis: "active",
       disabled:true,
-      anchor: "product"
+      anchor: "celebritychoice"
     }, {
       name: "Media",
       classis: "active",

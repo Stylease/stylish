@@ -402,11 +402,15 @@ a {
   margin: 0;
   background-color: transparent;
 }
+.modal-dialog  {
+  @include transform(translateY(50%)!important);
+}
 /* Start writing sass here */
 // header
 header {
   width: 100%;
   padding: 5px 0;
+  box-shadow: 1px 1px 5px $brand-dark-blue;
   position: fixed;
   top: 0;
   z-index: 100;
@@ -525,6 +529,7 @@ nav {
     padding: 10px 0 0;
     border: none;
   }
+  .icon { font-size: 25px; }
 }
 // header end
 // home
@@ -801,14 +806,15 @@ input.form-control {
 }
 // pop ups
 .social-btn {
-  width: 250px;
+  width: 280px;
 }
 .close-popup {
   position: relative;
   .close {
+    width: 20px;
     text-shadow: none;
     opacity: 1;
-    @include position(absolute,15px 10px null null);
+    @include position(absolute,20px 10px null null);
     &:hover {
       opacity: 0.8;
     }
@@ -923,12 +929,12 @@ input.form-control {
 // remove-item
 .remove-item {
   p {
-    font-size: 25px;
+    font-size: 20px;
   }
 }
 .remove-accept {
-  border: 1px solid $brand-dark-blue;
-  font-size: 25px;
+  border-top: 1px solid $brand-dark-blue;
+  font-size: 20px;
   .col-flex:first-child {
     border-right: 1px solid $brand-dark-blue;
   }
@@ -1050,7 +1056,9 @@ input.form-control {
 }
 .buttons-orders {
   padding: 20px 0;
+  button:first-child { margin-right: -4px; }
 }
+
 // order-detail
 .order-detail-summary {
   .billing-detail {
@@ -1094,10 +1102,10 @@ input.form-control {
 .view-product {
   padding: 20px 0;
 }
-.wishlisted-product .col-md-4:nth-child(3n-1) .wishlist-product {
-  border-left: 1px solid $brand-dark-pink;
-  border-right: 1px solid $brand-dark-pink;
-}
+// .wishlisted-product .col-md-4:nth-child(3n-1) .wishlist-product {
+//   border-left: 1px solid $brand-dark-pink;
+//   border-right: 1px solid $brand-dark-pink;
+// }
 .wishlisted-product {
   padding: 20px 0;
 }
@@ -1152,6 +1160,7 @@ input.form-control {
   margin: 30px 0;
   background-color: #fff0e8;
 }
+.office { margin-top: 68px; }
 .add-billing-add {
   input.form-control {
     padding: 8px 20px;
@@ -1318,6 +1327,7 @@ input.form-control {
   .radio-button {
     margin-bottom: 10px;
   }
+  .icon { font-size: 25px; }
 }
 .filter-button {
   text-align: center;
@@ -1356,7 +1366,7 @@ input.form-control {
 }
 .productdetail-slider {
   .prd-slide-imgholder {
-    @include square(400px);
+    @include square(450px);
     img {
       max-height: 100%;
     }
@@ -1394,7 +1404,7 @@ input.form-control {
     border-bottom: 1px solid $brand-dark-blue;
     label {
       margin-right: 5px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 400;
     }
     .custom-select {
@@ -1569,6 +1579,13 @@ input.form-control {
     }
   }
 }
+.order-delivery-time {
+  .custom-select {
+    width: 85px;
+    select { height: 30px; }
+  }
+  label { margin-right: 10px; }
+}
 // cart end page
 // celebrity page
 .celebrity-choice-main .col-md-6:nth-child(2n+1) .celebrity-holder {
@@ -1599,6 +1616,13 @@ input.form-control {
   margin: 30px 0;
   img {
     max-height: 100%;
+  }
+  .choice {
+    @include square(120px);
+    position: absolute;
+    bottom: 0;
+    right: 110px;
+    z-index: 1;
   }
 }
 .celebrity-heart {

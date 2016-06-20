@@ -128,16 +128,16 @@
   }
   .prd-name + h5 { text-align: center; }
   // wishlist
-  .wishlisted-product .col-md-4:nth-child(2n+1) .wishlist-product:after {
-    content: '';
-    @include size(1px, 90%);
-    @include position(absolute, 30px 0 null null);
-    background-color: $brand-dark-pink;
-  }
-  .wishlisted-product .col-md-4:nth-child(3n-1) .wishlist-product {
-    border-right: none;
-    border-left: none;
-  }
+  // .wishlisted-product .col-md-4:nth-child(2n+1) .wishlist-product:after {
+  //   content: '';
+  //   @include size(1px, 90%);
+  //   @include position(absolute, 30px 0 null null);
+  //   background-color: $brand-dark-pink;
+  // }
+  // .wishlisted-product .col-md-4:nth-child(3n-1) .wishlist-product {
+  //   border-right: none;
+  //   border-left: none;
+  // }
   // sorry-page
   .sorry, .thankyou {
     padding: 20% 0;
@@ -145,6 +145,12 @@
   // bank detail account
   .bankdetail-main { margin: 50px 0px 0; }
   .account-change-pswd { margin: 50px 0px 0; }
+  // celebrity-choice
+  .celebrity-imgholder {
+    .choice {
+      right: 55px;
+    }
+  }
 }
 @media (max-width: $screen-xs-max) {
   .user-detail {
@@ -208,6 +214,7 @@
   }
   .product-descp { margin: 50px 0px 0; }
   .order-time .time { margin-bottom: 10px; }
+  .product-descp .order-time label { width: 120px; }
   .suggested-slider {
     .flexslider {
       width: 66%;
@@ -233,6 +240,13 @@
   // wishlist
   .wishlisted-product .col-md-4:nth-child(2n+1) .wishlist-product:after { display: none; }
   .wishlist-product { border-bottom: 1px solid $brand-dark-pink  ; }
+  .order-delivery-time {
+    .time { margin-bottom: 10px; }
+    label {
+      width: 120px;
+      margin-right: 0;
+    }
+  }
   // talk to us
   .talk-us {
     right: -41px;
@@ -249,15 +263,24 @@
   .celebrity-imgholder {
     height: 320px;
     margin: 30px 0px 15px;
+    .choice {
+      @include square(100px);
+      right: 250px;
+    }
   }
   .celebrity-holder { border-bottom: 1px solid $brand-pink; }
   .celebrity-price { font-size: 18px; }
 }
 @media (max-width: 480px) {
+  .social-btn {
+    width: auto;
+    padding: 8px 30px;
+  }
   body { padding: 53px 0px 0px 0px !important; }
   header {
     padding: 0;
   }
+  .heading-bar { padding: 50px 0 30px; }
   .heading-bar h3 { font-size: 35px; }
   .logo h1 {
     top: 0px;
@@ -480,5 +503,9 @@
   .celebrity-imgholder {
     height: 250px;
     margin: 30px 0px 10px;
+    .choice {
+      @include square(70px);
+      right: 120px;
+    }
   }
 }

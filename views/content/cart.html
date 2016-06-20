@@ -12,18 +12,20 @@
           </div>
         </div>
         <div class="col-md-7">
-            <div class="pull-right">
-              <a href="" class="text-medium dark-blue text-underline" ng-click="editCart=true">Edit</a>
-            </div>
+          <div class="pull-right">
+            <a href="" class="text-medium dark-blue text-underline" ng-click="editCart=true">Edit</a>
+          </div>
           <div class="product-cart-detail clearfix">
             <h4 class="prd-name">{{product.name}}</h4>
             <h5>by : <span>{{product.desginername}}</span></h5>
-            <div class="product-all-detail"  ng-hide="editCart">
+            <div class="product-all-detail" ng-hide="editCart">
               <p>RENT : INR <span>{{product.rental}}/-</span></p>
               <p class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
               <p class="mb5"><span class="edit-cart">Rental</span> <span>INR {{product.price}}</span></p>
               <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.date}}</span></p>
               <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
+              <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>10 am</span></p>
+              <p class="mb5"><span class="edit-cart">Pickup Time</span> <span>10 am</span></p>
             </div>
             <div class="edit-product-detail product-all-detail" ng-show="editCart">
               <form action="">
@@ -52,12 +54,44 @@
                       <label for="eight" class="text-medium"><span></span> 8 Days</label>
                     </div>
                   </div>
+                  <div class="order-delivery-time mb20">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6">
+                        <div class="time">
+                          <label for="delivery-time" class="inline-block text-medium">Delivery Time</label>
+                          <div class="custom-select inline-block">
+                            <select name="" id="delivery-time">
+                              <option value="">10 am</option>
+                              <option value="">11 am</option>
+                              <option value="">12 am</option>
+                              <option value="">01 pm</option>
+                              <option value="">20 pm</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="time">
+                          <label for="pickup-time" class="inline-block text-medium">Pickup Time</label>
+                          <div class="custom-select inline-block">
+                            <select name="" id="pickup-time">
+                              <option value="">10 am</option>
+                              <option value="">11 am</option>
+                              <option value="">12 am</option>
+                              <option value="">01 pm</option>
+                              <option value="">02 pm</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="mt10 mb10 on-edit">
                     <button class="btn btn-outline btn-full text-medium" type="reset">Reset</button>
                     <button class="btn btn-outline btn-full text-medium" ng-click="editCart=false;">Confirm</button>
                   </div>
               </form>
-               </div>
+              </div>
             </div>
             <div class="pull-right">
               <a href="" class="remove-cart text-medium dark-blue" ng-click="remove();">Remove Item <img src="img/cross.png" width="12" alt="" class="v-top ml5"></a>
@@ -68,15 +102,15 @@
     </div>
     <div class="text-center mt20 on-edit">
       <button class="btn btn-outline btn-full text-medium" ui-sref="product">Continue Shopping</button>
-      <button class="btn btn-outline btn-full text-medium" ui-sref="checkoutlogin">Checkout</button>
+      <button class="btn btn-outline btn-full text-medium" ui-sref="checkoutsignin">Checkout</button>
       <p class="dark-pink m-clear pd10 "><i>The minimum order value on TheStylease.com is Rs.8000/-</i></p>
     </div>
   </div>
 </div>
 <div class="cart-empty text-center hide">
   <div class="container">
-      <h4>No Girl Likes An Empty Wardrobe. Time To Start Styling !</h4>
-      <img src="img/no-cart.png" alt="" class="img-responsive m-center">
-      <button class="btn btn-outline text-medium btn-full" ui-sref="product">Start Shopping</button>
+    <h4>No Girl Likes An Empty Wardrobe. Time To Start Styling !</h4>
+    <img src="img/no-cart.png" alt="" class="img-responsive m-center">
+    <button class="btn btn-outline text-medium btn-full" ui-sref="product">Start Shopping</button>
   </div>
 </div>

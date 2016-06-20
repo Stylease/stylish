@@ -393,6 +393,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           shopName : "Choker Kundan",
           celebrityName : "Sonam Kapoor",
           img : "img/celebrities.jpg",
+          secImg: "img/celebrity-choice.jpg",
           designerName : "Anita Dongre",
           price: "4,500",
           heart: "fa-heart-o"
@@ -401,6 +402,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           shopName : "Choker Kundan",
           celebrityName : "Sonam Kapoor",
           img : "img/celebrities.jpg",
+          secImg: "img/celebrity-choice.jpg",
           designerName : "Anita Dongre",
           price: "4,500",
           heart: "fa-heart-o"
@@ -409,6 +411,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           shopName : "Choker Kundan",
           celebrityName : "Sonam Kapoor",
           img : "img/celebrities.jpg",
+          secImg: "img/celebrity-choice.jpg",
           designerName : "Anita Dongre",
           price: "4,500",
           heart: "fa-heart-o"
@@ -417,6 +420,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           shopName : "Choker Kundan",
           celebrityName : "Sonam Kapoor",
           img : "img/celebrities.jpg",
+          secImg: "img/celebrity-choice.jpg",
           designerName : "Anita Dongre",
           price: "4,500",
           heart: "fa-heart-o"
@@ -425,6 +429,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           shopName : "Choker Kundan",
           celebrityName : "Sonam Kapoor",
           img : "img/celebrities.jpg",
+          secImg: "img/celebrity-choice.jpg",
           designerName : "Anita Dongre",
           price: "4,500",
           heart: "fa-heart-o"
