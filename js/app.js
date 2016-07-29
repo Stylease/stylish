@@ -61,12 +61,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'CartCtrl'
   })
     .state('product', {
-    url: "/product",
+    url: "/product/:name",
     templateUrl: "views/template.html",
     controller: 'ProductCtrl'
   })
     .state('productdetail', {
-    url: "/productdetail",
+    url: "/productdetail/:id",
     templateUrl: "views/template.html",
     controller: 'ProductdetailCtrl'
   })
@@ -125,7 +125,16 @@ firstapp.directive('img', function($compile, $parse) {
     }
   };
 });
+firstapp.filter('serverimage', function() {
+    return function(image) {
+      if (image && image !== null) {
 
+        return adminURL + "upload/readFile?file=" + image;
+      } else {
+        return undefined;
+      }
+    };
+  });
 firstapp.directive('fancyboxBox', function($document) {
     return {
         restrict: 'EA',

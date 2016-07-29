@@ -2,12 +2,12 @@ var adminURL = "";
 if (isproduction) {
   adminURL = "http://www.wohlig.co.in/demo/index.php";
 } else {
-  adminURL = "http://localhost/demo/index.php";
+  adminURL = "http://192.168.1.122:1337/";
 }
 
 var navigationservice = angular.module('navigationservice', [])
 
-.factory('NavigationService', function() {
+.factory('NavigationService', function($http) {
   var navigation = [
     {
       name: "Home",
@@ -162,6 +162,28 @@ var navigationservice = angular.module('navigationservice', [])
       }
       return menuname;
     },
+    getProduct: function(productname, pagenumber, callback, errCallback) {
+        var data = {
+          'name': productname,
+          'pagenumber': pagenumber,
+          'pagesize': "10"
+        };
+        return $http({
+          url: adminURL + "product/getProductByCatName",
+          method: "POST",
+          data: data
+        }).success(callback).error(errCallback);
+      },
+      getProductDetail: function(productid, callback, errCallback) {
+          var data = {
+            '_id': productid
+          };
+          return $http({
+            url: adminURL + "product/getProductById",
+            method: "POST",
+            data: data
+          }).success(callback).error(errCallback);
+        },
 
   };
 });

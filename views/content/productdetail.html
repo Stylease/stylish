@@ -12,16 +12,16 @@
               </li>
             </flex-slider> -->
             <div class="prd-slide-imgholder relate m-center">
-              <img src="img/product-detail.png" alt="" class="get-center img-responsive">
+              <img ng-src="{{mainImage|serverimage}}" alt="" class="get-center img-responsive">
             </div>
           </div>
           <div class="product-related-slider">
             <!-- relate in relatedProduct -->
             <!-- related-imgholder -->
-            <flex-slider class="carousel" flex-slide="relate in relatedProduct track by $index" item-width="70" animation="slide" item-margin="20" control-nav="false">
+            <flex-slider class="carousel" flex-slide="relate in product.images track by $index" item-width="70" animation="slide" item-margin="20" control-nav="false">
               <li>
                 <div class="related-imgholder pointer">
-                  <img ng-src="{{relate}}" alt="" class="img-responsive">
+                  <img ng-src="{{relate.image|serverimage}}" alt="" class="img-responsive" ng-click="selectImage(relate.image)">
                 </div>
               </li>
             </flex-slider>
@@ -31,12 +31,12 @@
       <div class="col-md-5">
         <div class="product-descp">
           <div class="name-section">
-            <h3 class="product-name">The Mashq Suit</h3>
-            <p>Retail Price : Rs. <span>3,50,000</span></p>
+            <h3 class="product-name">{{product.name}}</h3>
+            <p>Retail Price : Rs. <span>{{product.price}}</span></p>
           </div>
           <div class="product-price">
-            <p>Rental amount : Rs. <span>6,700</span>/-</p>
-            <p class="inline-block">Refundable Security Deposit: Rs.<span>4,599</span>/-</p>
+            <p>Rental amount : Rs. <span>{{product.rentalamount}}</span>/-</p>
+            <p class="inline-block">Refundable Security Deposit: Rs.<span>{{product.securitydeposit}}</span>/-</p>
             <p class="refund ml5 inline-block" ng-click="tooltipIsOpen = !tooltipIsOpen">
               <!-- <i class="dark-pink pointer fa fa-question-circle-o"></i> -->
               <img src="img/change.png" alt="" width="15">
@@ -45,10 +45,10 @@
           <div class="product-size">
             <span class="mr20 text-medium">Size :</span>
             <ul class="list-inline inline-block m-clear"  ng-init="size=''">
-              <li><a href="" ng-class="{'select-size' : size=='s'}" ng-click="size='s'">S</a></li>
-              <li><a href="" ng-class="{'select-size' : size=='m'}" ng-click="size='m'">M</a></li>
+              <li ng-repeat="size in product.size"><a ng-class="{'select-size' : size==size.name}" ng-click="size={{size.name}}">{{size.name}}</a></li>
+              <!-- <li><a href="" ng-class="{'select-size' : size=='m'}" ng-click="size='m'">M</a></li>
               <li><a href="" ng-class="{'select-size' : size=='l'}" ng-click="size='l'">L</a></li>
-              <li><a href="" ng-class="{'select-size' : size=='xl'}" ng-click="size='xl'">XL</a></li>
+              <li><a href="" ng-class="{'select-size' : size=='xl'}" ng-click="size='xl'">XL</a></li> -->
             </ul>
           </div>
           <div class="delivery-date dates">
@@ -109,21 +109,21 @@
                 <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open1, 'fa-chevron-down': !status.open1}"></i> <span class="block">Details</span>
                 </uib-accordion-heading>
                 <div class="descp">
-                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                  <p ng-bind-html="product.details"></p>
                 </div>
               </uib-accordion-group>
               <uib-accordion-group is-open="status.open2">
                 <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i> <span class="block">Material &amp; Care</span>
                 </uib-accordion-heading>
                 <div class="descp">
-                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                  <p ng-bind-html="product.care"></p>
                 </div>
               </uib-accordion-group>
               <uib-accordion-group is-open="status.open3">
                 <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open3, 'fa-chevron-down': !status.open3}"></i> <span class="block">Stylist Notes</span>
                 </uib-accordion-heading>
                 <div class="descp">
-                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                  <p ng-bind-html="product.notes"></p>
                 </div>
               </uib-accordion-group>
             </uib-accordion>
@@ -131,17 +131,17 @@
         </div>
       </div>
     </div>
-    <div class="suggested">
+    <div class="suggested" ng-show="{{product.suggestedProduct!=''}}">
       <h3 class="dark-blue text-center">Suggested</h3>
       <div class="suggested-slider">
-        <flex-slider class="carousel" flex-slide="products in suggested track by $index" control-nav="false" item-width="230" item-margin="0" animation="slide">
+        <flex-slider class="carousel" flex-slide="sProducts in product.suggestedProduct track by $index" control-nav="false" item-width="230" item-margin="0" animation="slide">
           <li>
             <div class="suggested-product">
               <div class="suggested-imgholder relate">
-                <img ng-src="{{products.img}}" alt="" class="get-center img-responsive">
+                <img ng-src="{{sProducts.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
               </div>
-              <h4 class="name-suggestprd">{{products.name}}<span class="block"> by {{products.designer}}</span></h4>
-              <p class="rent text-medium">Rent : Rs {{products.price}}</p>
+              <h4 class="name-suggestprd">{{sProducts.name}}<span class="block"> by {{products.designer}}</span></h4>
+              <p class="rent text-medium">Rent : Rs {{sProducts.price}}</p>
               <div class="view-button">
                 <button class="btn btn-outline text-medium btn-full">
                   View Details

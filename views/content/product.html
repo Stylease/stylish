@@ -215,7 +215,7 @@
                         <div class="row">
                           <div class="col-md-12 col-sm-5 col-xs-5">
                             <div class="product-imgholder relate">
-                              <img ng-src="{{product.img}}" alt="" class="get-center img-responsive">
+                              <img ng-src="{{product.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
                             </div>
                           </div>
                           <div class="col-md-12 col-sm-7 col-xs-7">
@@ -236,12 +236,12 @@
                     <div class="wishlist text-right">
                       <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa {{product.heart}}"></i></span>
                     </div>
-                    <div class="product-detail text-center" ui-sref="productdetail">
+                    <div class="product-detail text-center" ui-sref="productdetail({'id':product._id})">
                       <div class="product-imgholder relate">
-                        <img ng-src="{{product.img}}" alt="" class="get-center img-responsive">
+                        <img ng-src="{{product.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
                       </div>
                       <h4 class="product-name">{{product.name}}</h4>
-                      <p>Rent : Rs {{product.price}}/-</p>
+                      <p>Rent : Rs {{product.rentalamount}}/-</p>
                     </div>
                   </div>
                 </div>

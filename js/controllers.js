@@ -219,13 +219,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
   })
-  .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+  .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
     //Used to name the .html file
 
     $scope.template = TemplateService.changecontent("product");
     $scope.menutitle = NavigationService.makeactive("Product");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    console.log(adminURL);
+    $scope.pageno = 1;
 
     $scope.addTowishlist = function(product) {
       if (product.heart == "fa-heart") {
@@ -250,39 +252,48 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       maxPrice: 4000
     };
 
-    $scope.shopping = [{
-      img: "img/product1.png",
-      name: "The Nawishtah Jacket and Gown",
-      price: "4500",
-      heart: "fa-heart-o"
-    }, {
-      img: "img/product2.png",
-      name: "The Mashq Suit",
-      price: "4500",
-      heart: "fa-heart-o"
-    }, {
-      img: "img/product3.png",
-      name: "Raw Silk Gold Choli",
-      price: "4500",
-      heart: "fa-heart-o"
-    }, {
-      img: "img/product1.png",
-      name: "The Nawishtah Jacket and Gown",
-      price: "4500",
-      heart: "fa-heart-o"
-    }, {
-      img: "img/product2.png",
-      name: "The Mashq Suit",
-      price: "4500",
-      heart: "fa-heart-o"
-    }, {
-      img: "img/product3.png",
-      name: "Raw Silk Gold Choli",
-      price: "4500",
-      heart: "fa-heart-o"
-    }];
+    // GET ALL PRODUCT BY CATEGORY NAME
+    console.log($state.params);
+    NavigationService.getProduct($state.params.name, $scope.pageno, function(data){
+      console.log(data);
+      $scope.shopping = data.data.data;
+    },function(err){
+
+    });
+
+    // $scope.shopping = [{
+    //   img: "img/product1.png",
+    //   name: "The Nawishtah Jacket and Gown",
+    //   price: "4500",
+    //   heart: "fa-heart-o"
+    // }, {
+    //   img: "img/product2.png",
+    //   name: "The Mashq Suit",
+    //   price: "4500",
+    //   heart: "fa-heart-o"
+    // }, {
+    //   img: "img/product3.png",
+    //   name: "Raw Silk Gold Choli",
+    //   price: "4500",
+    //   heart: "fa-heart-o"
+    // }, {
+    //   img: "img/product1.png",
+    //   name: "The Nawishtah Jacket and Gown",
+    //   price: "4500",
+    //   heart: "fa-heart-o"
+    // }, {
+    //   img: "img/product2.png",
+    //   name: "The Mashq Suit",
+    //   price: "4500",
+    //   heart: "fa-heart-o"
+    // }, {
+    //   img: "img/product3.png",
+    //   name: "Raw Silk Gold Choli",
+    //   price: "4500",
+    //   heart: "fa-heart-o"
+    // }];
   })
-  .controller('ProductdetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+  .controller('ProductdetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
     //Used to name the .html file
 
     $scope.template = TemplateService.changecontent("productdetail");
@@ -290,6 +301,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.oneAtATime = true;
+    $scope.product = {};
+    $scope.mainImage = "";
+
+    //PRODUCT DETAIL ON SELECTED PRODUCT
+    NavigationService.getProductDetail($state.params.id, function(data){
+      console.log(data);
+      $scope.product = data.data;
+      $scope.mainImage = data.data.images[0].image;
+    }, function(err){
+
+    });
+
+$scope.selectImage = function(img){
+  $scope.mainImage = img;
+};
     $scope.product = [
       'img/product-detail.png',
       'img/product-detail.png',
