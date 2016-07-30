@@ -16,6 +16,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             'img/home-slider.jpg',
             'img/home-slider.jpg'
         ];
+
+        NavigationService.getSubcategory(function(data) {
+            console.log(data);
+            $scope.subcategory = data.data;
+
+        }, function(err) {
+
+        });
+
         $scope.client = [{
             detail: "I can now wear a new outfit for every occasion, thanks to their super quick service, and access to a huge selection of outfits by some of my favourite designers!",
             name: "Riya shah"
@@ -267,20 +276,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         });
         $scope.getMyProducts = function() {
-            NavigationService.getProduct($state.params.name, $scope.pagenumber, function(data) {
-                console.log(data);
-                // $scope.shopping = data.data.data;
-                _.each(data.data.data, function(n) {
+                NavigationService.getProduct($state.params.name, $scope.pagenumber, function(data) {
+                    console.log(data);
+                    // $scope.shopping = data.data.data;
+                    _.each(data.data.data, function(n) {
 
-                    $scope.shopping.push(n);
-                      console.log('esdfghjdghj',n);
+                        $scope.shopping.push(n);
+                        console.log('esdfghjdghj', n);
+
+                    });
+                }, function(err) {
 
                 });
-            }, function(err) {
-
-            });
-        }
-        // $scope.getMyProducts();
+            }
+            // $scope.getMyProducts();
         $scope.loadMore = function() {
             console.log('inside loadmore');
             if (lastpage > $scope.pagenumber) {

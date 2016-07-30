@@ -17,23 +17,27 @@
 </div>
 <div class="occasion-main">
   <div class="container-fluid">
-    <div class="row-flex">
-      <div class="relate mt20 mb20 pointer" ui-sref="product">
-        <img src="img/wedding.jpg" alt="" class="img-responsive">
+    <div ng-repeat="subcat in subcategory">
+      <div class="row-flex" ng-if="subcat.imagetype=='big'">
+      <div class="relate mt20 mb20 pointer" ui-sref="product({'name':subcat.name})">
+        <img ng-src="{{subcat.image|serverimage}}" alt="" class="img-responsive">
       </div>
     </div>
+
     <div class="row-flex">
-      <div class="col-flex">
-        <div class="relate mr10 pointer" ui-sref="product">
-          <img src="img/sangeet.jpg" alt="" class="img-responsive">
+      <div class="col-flex" ng-if="subcat.imagetype=='small'">
+        <div class="relate mr10 pointer" ui-sref="product({'name':subcat.name})">
+          <img ng-src="{{subcat.image|serverimage}}" alt="" class="img-responsive">
         </div>
       </div>
-      <div class="col-flex">
+      <!-- <div class="col-flex">
         <div class="relate ml10 pointer" ui-sref="product">
           <img src="img/mehendi.jpg" alt="" class="img-responsive">
         </div>
-      </div>
+      </div> -->
     </div>
+  </div>
+
     <div class="row-flex">
       <div class="relate mt20 mb20 pointer" ui-sref="product">
         <img src="img/cocktail.jpg" alt="" class="img-responsive">

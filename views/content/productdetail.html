@@ -44,7 +44,7 @@
           </div>
           <div class="product-size">
             <span class="mr20 text-medium">Size :</span>
-            <ul class="list-inline inline-block m-clear"  ng-init="size=''">
+            <ul class="list-inline inline-block m-clear" ng-init="size=''">
               <li ng-repeat="size in product.size"><a ng-class="{'select-size' : size==size.name}" ng-click="size={{size.name}}">{{size.name}}</a></li>
               <!-- <li><a href="" ng-class="{'select-size' : size=='m'}" ng-click="size='m'">M</a></li>
               <li><a href="" ng-class="{'select-size' : size=='l'}" ng-click="size='l'">L</a></li>
@@ -70,18 +70,18 @@
           <div class="order-time">
             <div class="row">
               <div class="col-md-6 col-sm-6">
-              <div class="time">
+                <div class="time">
                   <label for="delivery-time" class="inline-block">Delivery Time</label>
-                <div class="custom-select inline-block">
-                  <select name="" id="delivery-time">
-                    <option value="">10 am</option>
-                    <option value="">11 am</option>
-                    <option value="">12 am</option>
-                    <option value="">01 pm</option>
-                    <option value="">20 pm</option>
-                  </select>
+                  <div class="custom-select inline-block">
+                    <select name="" id="delivery-time">
+                      <option value="">10 am</option>
+                      <option value="">11 am</option>
+                      <option value="">12 am</option>
+                      <option value="">01 pm</option>
+                      <option value="">20 pm</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
               </div>
               <div class="col-md-6 col-sm-6">
                 <div class="time">
@@ -131,7 +131,7 @@
         </div>
       </div>
     </div>
-    <div class="suggested" ng-show="{{product.suggestedProduct!=''}}">
+    <div class="suggested" ng-if="product.suggestedProduct && product.suggestedProduct.length>0">
       <h3 class="dark-blue text-center">Suggested</h3>
       <div class="suggested-slider">
         <flex-slider class="carousel" flex-slide="sProducts in product.suggestedProduct track by $index" control-nav="false" item-width="230" item-margin="0" animation="slide">
@@ -140,9 +140,9 @@
               <div class="suggested-imgholder relate">
                 <img ng-src="{{sProducts.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
               </div>
-              <h4 class="name-suggestprd">{{sProducts.name}}<span class="block"> by {{products.designer}}</span></h4>
-              <p class="rent text-medium">Rent : Rs {{sProducts.price}}</p>
-              <div class="view-button">
+              <h4 class="name-suggestprd">{{sProducts.name}}<span class="block"> by {{sproducts.designer}}</span></h4>
+              <p class="rent text-medium">Rent : Rs {{sProducts.rentalamount}}</p>
+              <div class="view-button" ui-sref="productdetail({'id':sProducts._id})">
                 <button class="btn btn-outline text-medium btn-full">
                   View Details
                 </button>
