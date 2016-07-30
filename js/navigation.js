@@ -166,7 +166,7 @@ var navigationservice = angular.module('navigationservice', [])
         var data = {
           'name': productname,
           'pagenumber': pagenumber,
-          'pagesize': "10"
+          'pagesize': "5"
         };
         return $http({
           url: adminURL + "product/getProductByCatName",

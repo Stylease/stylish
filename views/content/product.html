@@ -205,22 +205,25 @@
                 <span class="dark-blue">VIEW</span>
               </div>
             </div>
-            <div class="shop-product list-view hidden-md visible-sm visible-xs" ng-hide="viewProduct">
-              <div class="row">
-                <div class="col-md-4" ng-repeat="product in shopping">
-                  <div class="view-product relate pointer">
-                    <div class="wishlist text-right">
-                      <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa {{product.heart}}"></i></span>
+
+              <div class="shop-product list-view hidden-md visible-sm visible-xs" ng-hide="viewProduct">
+
+                <div class="row">
+                  <div class="col-md-4" ng-repeat="product in shopping">
+                    <div class="view-product relate pointer">
+                      <div class="wishlist text-right">
+                        <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa {{product.heart}}"></i></span>
                         <div class="product-detail text-center" ui-sref="productdetail">
-                        <div class="row">
-                          <div class="col-md-12 col-sm-5 col-xs-5">
-                            <div class="product-imgholder relate">
-                              <img ng-src="{{product.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
+                          <div class="row">
+                            <div class="col-md-12 col-sm-5 col-xs-5">
+                              <div class="product-imgholder relate">
+                                <img ng-src="{{product.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
+                              </div>
                             </div>
-                          </div>
-                          <div class="col-md-12 col-sm-7 col-xs-7">
-                            <h4 class="product-name">{{product.name}}</h4>
-                            <p>Rent : Rs {{product.price}}/-</p>
+                            <div class="col-md-12 col-sm-7 col-xs-7">
+                              <h4 class="product-name">{{product.name}}</h4>
+                              <p>Rent : Rs {{product.price}}/-</p>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -228,7 +231,8 @@
                   </div>
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
+              <div infinite-scroll='loadMore()' infinite-scroll-disabled="shouldscroll">
             <div class="shop-product grid-view" ng-show="viewProduct">
               <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-6" ng-repeat="product in shopping">
@@ -247,6 +251,7 @@
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
