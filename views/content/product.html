@@ -34,7 +34,19 @@
               <div class="search-by-filter">
                 <form action="">
                   <uib-accordion close-others="oneAtATime">
-                    <uib-accordion-group is-open="status.open1">
+                    <uib-accordion-group is-open="status.open1" ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
+                      <uib-accordion-heading>
+                        <i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i><span class="block">{{cat}}</span>
+                      </uib-accordion-heading>
+                      <div class="occasion">
+                        <div class="custom-checkbox" ng-repeat="subcat in value">
+                          <input type="checkbox" name="{{cat}}" id="{{subcat.name}}">
+                          <label for="{{subcat.name}}"><span></span> {{subcat.name}}</label>
+                        </div>
+
+                      </div>
+                    </uib-accordion-group>
+                    <!-- <uib-accordion-group is-open="status.open1">
                       <uib-accordion-heading>
                         <i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i><span class="block">Occasion</span>
                       </uib-accordion-heading>
@@ -64,8 +76,8 @@
                           <label for="engagement"><span></span> Engagement</label>
                         </div>
                       </div>
-                    </uib-accordion-group>
-                    <uib-accordion-group is-open="status.open2">
+                    </uib-accordion-group> -->
+                    <!-- <uib-accordion-group is-open="status.open2">
                       <uib-accordion-heading>
                         <i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open2, 'fa-angle-down': !status.open2}"></i><span class="block">Dresses</span>
                       </uib-accordion-heading>
@@ -91,7 +103,7 @@
                           <label for="Gown"><span></span> Gown</label>
                         </div>
                       </div>
-                    </uib-accordion-group>
+                    </uib-accordion-group> -->
                     <uib-accordion-group is-open="status.open3">
                       <uib-accordion-heading>
                         <i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i><span class="block">Rental Price</span>
@@ -206,24 +218,23 @@
               </div>
             </div>
 
-              <div class="shop-product list-view hidden-md visible-sm visible-xs" ng-hide="viewProduct">
+            <div class="shop-product list-view hidden-md visible-sm visible-xs" ng-hide="viewProduct">
 
-                <div class="row">
-                  <div class="col-md-4" ng-repeat="product in shopping">
-                    <div class="view-product relate pointer">
-                      <div class="wishlist text-right">
-                        <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa {{product.heart}}"></i></span>
-                        <div class="product-detail text-center" ui-sref="productdetail">
-                          <div class="row">
-                            <div class="col-md-12 col-sm-5 col-xs-5">
-                              <div class="product-imgholder relate">
-                                <img ng-src="{{product.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
-                              </div>
+              <div class="row">
+                <div class="col-md-4" ng-repeat="product in shopping">
+                  <div class="view-product relate pointer">
+                    <div class="wishlist text-right">
+                      <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa {{product.heart}}"></i></span>
+                      <div class="product-detail text-center" ui-sref="productdetail">
+                        <div class="row">
+                          <div class="col-md-12 col-sm-5 col-xs-5">
+                            <div class="product-imgholder relate">
+                              <img ng-src="{{product.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
                             </div>
-                            <div class="col-md-12 col-sm-7 col-xs-7">
-                              <h4 class="product-name">{{product.name}}</h4>
-                              <p>Rent : Rs {{product.price}}/-</p>
-                            </div>
+                          </div>
+                          <div class="col-md-12 col-sm-7 col-xs-7">
+                            <h4 class="product-name">{{product.name}}</h4>
+                            <p>Rent : Rs {{product.price}}/-</p>
                           </div>
                         </div>
                       </div>
@@ -231,27 +242,28 @@
                   </div>
                 </div>
               </div>
+            </div>
             <!-- </div> -->
-              <div infinite-scroll='loadMore()' infinite-scroll-disabled="shouldscroll">
-            <div class="shop-product grid-view" ng-show="viewProduct">
-              <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-6" ng-repeat="product in shopping">
-                  <div class="view-product relate pointer">
-                    <div class="wishlist text-right">
-                      <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa {{product.heart}}"></i></span>
-                    </div>
-                    <div class="product-detail text-center" ui-sref="productdetail({'id':product._id})">
-                      <div class="product-imgholder relate">
-                        <img ng-src="{{product.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
+            <div infinite-scroll='loadMore()' infinite-scroll-disabled="shouldscroll">
+              <div class="shop-product grid-view" ng-show="viewProduct">
+                <div class="row">
+                  <div class="col-md-4 col-sm-6 col-xs-6" ng-repeat="product in shopping">
+                    <div class="view-product relate pointer">
+                      <div class="wishlist text-right">
+                        <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa {{product.heart}}"></i></span>
                       </div>
-                      <h4 class="product-name">{{product.name}}</h4>
-                      <p>Rent : Rs {{product.rentalamount}}/-</p>
+                      <div class="product-detail text-center" ui-sref="productdetail({'id':product._id})">
+                        <div class="product-imgholder relate">
+                          <img ng-src="{{product.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
+                        </div>
+                        <h4 class="product-name">{{product.name}}</h4>
+                        <p>Rent : Rs {{product.rentalamount}}/-</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>

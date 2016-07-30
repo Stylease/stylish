@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll','angular.filter'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
@@ -272,6 +272,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             lastpage = data.data.totalpages;
             console.log(lastpage);
+        }, function(err) {
+
+        });
+        NavigationService.getSubcategory(function(data) {
+            console.log(data.data);
+            $scope.subcategory = data.data;
         }, function(err) {
 
         });
