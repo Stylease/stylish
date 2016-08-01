@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll','angular.filter'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
@@ -10,16 +10,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.footerColor = "home-footer";
+        $scope.subcategory = [];
 
         $scope.mySlides = [
             'img/home-slider.jpg',
             'img/home-slider.jpg',
             'img/home-slider.jpg'
         ];
-
+        var temp = [];
         NavigationService.getSubcategory(function(data) {
             console.log(data);
-            $scope.subcategory = data.data;
+            _.each(data.data, function(key) {
+                // body...
+                if (key.imagetype == 'big') {
+                    if (temp.length !== 0) {
+                        temp = _.chunk(temp, 2);
+                        $scope.subcategory.push(temp);
+                        temp = [];
+                    }
+                    $scope.subcategory.push(key);
+                } else if (key.imagetype == 'small') {
+                    temp.push(key);
+                }
+            });
+
+            if (temp.length !== 0) {
+                temp = _.chunk(temp, 2);
+                $scope.subcategory.push(temp);
+                temp = [];
+            }
+            console.log($scope.subcategory);
 
         }, function(err) {
 
@@ -237,7 +257,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         console.log(adminURL);
         $scope.pagenumber = 1;
-
+        $scope.filter = {};
+        $scope.checkIt = {}
+        $scope.filter.subcategory = [];
+        $scope.pushSubCategory = function(flag, id) {
+            if (flag) {
+                $scope.filter.subcategory.push(id);
+                console.log($scope.filter.subcategory);
+            } else {
+                $scope.filter.subcategory.splice(_.findIndex($scope.filter.subcategory, function(key) {
+                    return key == id;
+                }), 1);
+            }
+        };
         $scope.addTowishlist = function(product) {
             if (product.heart == "fa-heart") {
                 product.heart = "fa-heart-o";
@@ -282,20 +314,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         });
         $scope.getMyProducts = function() {
-                NavigationService.getProduct($state.params.name, $scope.pagenumber, function(data) {
-                    console.log(data);
-                    // $scope.shopping = data.data.data;
-                    _.each(data.data.data, function(n) {
+            NavigationService.getProduct($state.params.name, $scope.pagenumber, function(data) {
+                console.log(data);
+                // $scope.shopping = data.data.data;
+                _.each(data.data.data, function(n) {
 
-                        $scope.shopping.push(n);
-                        console.log('esdfghjdghj', n);
-
-                    });
-                }, function(err) {
+                    $scope.shopping.push(n);
+                    console.log('esdfghjdghj', n);
 
                 });
-            }
-            // $scope.getMyProducts();
+            }, function(err) {
+
+            });
+        }
+
         $scope.loadMore = function() {
             console.log('inside loadmore');
             if (lastpage > $scope.pagenumber) {

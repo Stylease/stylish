@@ -19,57 +19,33 @@ var navigationservice = angular.module('navigationservice', [])
             disabled: false,
             anchor: "dresses",
             subnav: []
-            // subnav: [{
-            //     name: "Lehengas",
-            //     classis: "active",
-            //     link: "product"
-            // }, {
-            //     name: "Sarees",
-            //     classis: "active",
-            //     link: "product"
-            // }, {
-            //     name: "Jumpsuit",
-            //     classis: "active",
-            //     link: "product"
-            // }, {
-            //     name: "Anakalis",
-            //     classis: "active",
-            //     link: "product"
-            // }, {
-            //     name: "Gown",
-            //     classis: "active",
-            //     link: "product"
-            // }]
+                // subnav: [{
+                //     name: "Lehengas",
+                //     classis: "active",
+                //     link: "product"
+                // }, {
+                //     name: "Sarees",
+                //     classis: "active",
+                //     link: "product"
+                // }, {
+                //     name: "Jumpsuit",
+                //     classis: "active",
+                //     link: "product"
+                // }, {
+                //     name: "Anakalis",
+                //     classis: "active",
+                //     link: "product"
+                // }, {
+                //     name: "Gown",
+                //     classis: "active",
+                //     link: "product"
+                // }]
         }, {
             name: "Occasion",
             classis: "active",
             disabled: false,
             anchor: "occasion",
-            subnav: [{
-                name: "Wedding",
-                classis: "active",
-                link: "product"
-            }, {
-                name: "Sangeet",
-                classis: "active",
-                link: "product"
-            }, {
-                name: "Mehendi",
-                classis: "active",
-                link: "product"
-            }, {
-                name: "Cocktail",
-                classis: "active",
-                link: "product"
-            }, {
-                name: "Reception",
-                classis: "active",
-                link: "product"
-            }, {
-                name: "Engagement",
-                classis: "active",
-                link: "product"
-            }]
+            subnav: []
         }, {
             name: "Accessories",
             classis: "active",
@@ -126,28 +102,40 @@ var navigationservice = angular.module('navigationservice', [])
     ];
 
     return {
-      getnav: function() {
-        var subnavGen  = [];
-        $http({
-            url: adminURL + 'subcategory/getAllCat',
-            method: "POST"
-        }).success(function (data) {
-          console.log(data.data);
-// $scope.mydata=_.groupBy(data.data, Math.floor);
-          if(data){
-            _.each (data.data,function (key) {
-                subnavGen.push({
-                  name : key.name,
-                  classis:"active",
-                  link: "product({name:'"+key.name+"'})"
-                  // link: "product({id:"+key.id+",name:'"+key.name"'})"
-                });
+        getnav: function() {
+            var subnavGen = [];
+            var subnavGen1 = [];
+            $http({
+                url: adminURL + 'subcategory/getAllCat',
+                method: "POST"
+            }).success(function(data) {
+                console.log(data.data);
+                if (data) {
+
+                    _.each(data.data, function(key) {
+
+                        if (key.category.name == 'Occasion') {
+                            console.log("oc");
+                            subnavGen.push({
+                                name: key.name,
+                                classis: "active",
+                                link: "product({name:'" + key.name + "'})"
+                            });
+                        } else {
+                            subnavGen1.push({
+                                name: key.name,
+                                classis: "active",
+                                link: "product({name:'" + key.name + "'})"
+                            });
+                        }
+
+                    });
+                    navigation[1].subnav = subnavGen;
+                    navigation[2].subnav = subnavGen1;
+                }
             });
-            navigation[1].subnav = subnavGen;
-          }
-        });
-        return navigation;
-      },
+            return navigation;
+        },
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {
