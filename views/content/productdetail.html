@@ -42,7 +42,7 @@
               <img src="img/change.png" alt="" width="15">
               <span class="change" uib-tooltip="Your deposit will be refunded on return of the outfit." tooltip-is-open="tooltipIsOpen" tooltip-placement="bottom"></span></p>
           </div>
-          <div class="product-size">
+            <div class="product-size" ng-if="product.size.length > 0">
             <span class="mr20 text-medium">Size :</span>
             <ul class="list-inline inline-block m-clear" ng-init="size=''">
               <li ng-repeat="size in product.size"><a ng-class="{'select-size' : size==size.name}" ng-click="size={{size.name}}">{{size.name}}</a></li>
@@ -105,21 +105,21 @@
           </div>
           <div class="product-more-detail accordion-custom">
             <uib-accordion close-others="oneAtATime">
-              <uib-accordion-group is-open="status.open1">
+              <uib-accordion-group is-open="status.open1" ng-if="product.details !== ''">
                 <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open1, 'fa-chevron-down': !status.open1}"></i> <span class="block">Details</span>
                 </uib-accordion-heading>
                 <div class="descp">
                   <p ng-bind-html="product.details"></p>
                 </div>
               </uib-accordion-group>
-              <uib-accordion-group is-open="status.open2">
+              <uib-accordion-group is-open="status.open2" ng-if="product.care !== ''">
                 <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i> <span class="block">Material &amp; Care</span>
                 </uib-accordion-heading>
                 <div class="descp">
                   <p ng-bind-html="product.care"></p>
                 </div>
               </uib-accordion-group>
-              <uib-accordion-group is-open="status.open3">
+              <uib-accordion-group is-open="status.open3" ng-if="product.notes !== ''">
                 <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open3, 'fa-chevron-down': !status.open3}"></i> <span class="block">Stylist Notes</span>
                 </uib-accordion-heading>
                 <div class="descp">

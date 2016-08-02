@@ -1,4 +1,4 @@
-var adminURL = "";
+// var adminURL = "http://104.199.151.75/";
 if (isproduction) {
     adminURL = "http://www.wohlig.co.in/demo/index.php";
 } else {
