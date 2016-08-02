@@ -32,7 +32,7 @@
             <span class="text-uppercase filter-heading inline-block mt10 mb10">filter</span>
             <div class="filter-dropdown accordion-custom">
               <div class="search-by-filter">
-                <form action="">
+                <form>
                   <uib-accordion close-others="oneAtATime">
                     <uib-accordion-group is-open="status.open1" ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                       <uib-accordion-heading>
@@ -136,10 +136,10 @@
                       </uib-accordion-heading>
                       <div class="product-size" ng-init="size=''">
                         <ul class="list-inline">
-                          <li><a href="" ng-class="{'select-size': size=='s' }" ng-click="size='s';">S</a></li>
-                          <li><a href="" ng-class="{'select-size': size=='m' }" ng-click="size='m';">M</a></li>
-                          <li><a href="" ng-class="{'select-size': size=='l' }" ng-click="size='l';">L</a></li>
-                          <li><a href="" ng-class="{'select-size': size=='xl' }" ng-click="size='xl';">XL</a></li>
+                          <li><a href="" ng-class="{'select-size': filter.size=='S' }" ng-click="filter.size='S';">S</a></li>
+                          <li><a href="" ng-class="{'select-size': filter.size=='M' }" ng-click="filter.size='M';">M</a></li>
+                          <li><a href="" ng-class="{'select-size': filter.size=='L' }" ng-click="filter.size='L';">L</a></li>
+                          <li><a href="" ng-class="{'select-size': filter.size=XL' }" ng-click="filter.size='XL';">XL</a></li>
                         </ul>
                       </div>
                     </uib-accordion-group>
@@ -263,6 +263,9 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div ng-if="shopping.length == 0">
+              <h4 class="text-center">Products not found</h4>
             </div>
           </div>
         </div>

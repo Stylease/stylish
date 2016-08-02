@@ -260,6 +260,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.filter = {};
         $scope.checkIt = {}
         $scope.filter.subcategory = [];
+        $scope.filter.size = '';
+        console.log($scope.filter.size);
         $scope.pushSubCategory = function(flag, id) {
             if (flag) {
                 $scope.filter.subcategory.push(id);
@@ -310,6 +312,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         NavigationService.getSubcategory(function(data) {
             console.log(data.data);
             $scope.subcategory = data.data;
+
         }, function(err) {
 
         });
@@ -331,10 +334,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.loadMore = function() {
             console.log('inside loadmore');
             if (lastpage > $scope.pagenumber) {
-                // console.log('lastpageeee: ', lastpage)
                 ++$scope.pagenumber;
-                // $scope.pages.push($scope.pagenumber);
-                // console.log('pages:', $scope.pages);
                 $scope.getMyProducts();
             }
         };
