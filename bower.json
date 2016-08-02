@@ -33,7 +33,8 @@
     "fancyBox": "fancybox#^2.1.5",
     "coverflow": "^1.3.0",
     "ng-infinite-scroll": "^0.0.1",
-    "angular-filter": "^0.5.9"
+    "angular-filter": "^0.5.9",
+    "ngInfiniteScroll": "https://github.com/sroze/ngInfiniteScroll.git#^1.3.0"
   },
   "devDependencies": {
     "angular-translate": "^2.11.0"
