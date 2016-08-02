@@ -237,35 +237,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 animation: true,
                 templateUrl: "views/modal/changedate.html",
                 controller: "CartCtrl"
-            })
+            });
         };
         $scope.remove = function() {
             $uibModal.open({
                 animation: true,
                 templateUrl: "views/modal/removeitem.html",
                 controller: "CartCtrl"
-            })
+            });
         };
 
     })
     .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
-
+        $scope.letIn= true;
         $scope.template = TemplateService.changecontent("product");
         $scope.menutitle = NavigationService.makeactive("Product");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        console.log(adminURL);
-        $scope.pagenumber = 1;
         $scope.filter = {};
+        $scope.filter.pagenumber = 1;
         $scope.checkIt = {};
         $scope.filter.subcategory = [];
         $scope.filter.size = '';
-        console.log($scope.filter.size);
+        $scope.filter.pricefrom = 0;
+        $scope.filter.priceto = 100000;
+      $scope.shopping = [];
         $scope.pushSubCategory = function(flag, id) {
             if (flag) {
                 $scope.filter.subcategory.push(id);
-                console.log($scope.filter.subcategory);
             } else {
                 $scope.filter.subcategory.splice(_.findIndex($scope.filter.subcategory, function(key) {
                     return key == id;
@@ -289,59 +289,60 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.demo2 = {
             range: {
                 min: 0,
-                max: 10050
-            },
-            minPrice: 1000,
-            maxPrice: 4000
+                max: 100000
+            }
         };
 
         // GET ALL PRODUCT BY CATEGORY NAME
         console.log($state.params);
         $scope.pages = [];
         var lastpage = 1;
-        $scope.pagenumber = 1;
-        NavigationService.getProduct($state.params.name, $scope.pagenumber, function(data) {
-            console.log(data);
-            $scope.shopping = data.data.data;
-
-            lastpage = data.data.totalpages;
-            console.log(lastpage);
-        }, function(err) {
-
-        });
         NavigationService.getSubcategory(function(data) {
-            console.log(data.data);
             $scope.subcategory = data.data;
-            if($state.params.name){
-              $scope.filter.subcategory.push(_.find($scope.subcategory,function (key) {
-                return key.name == $state.params.name;
-              })._id);
-              $scope.checkIt[$state.params.name]=true;
+            if ($state.params.name) {
+                $scope.filter.subcategory.push(_.find($scope.subcategory, function(key) {
+                    return key.name == $state.params.name;
+                })._id);
+                $scope.checkIt[$state.params.name] = true;
+                $scope.loadMore();
             }
         }, function(err) {
 
         });
-        $scope.getMyProducts = function() {
-            NavigationService.getProduct($state.params.name, $scope.pagenumber, function(data) {
-                console.log(data);
-                // $scope.shopping = data.data.data;
-                _.each(data.data.data, function(n) {
+        $scope.getMyProducts = function(filter) {
+            console.log("in get products");
+            if($scope.letIn){
+              $scope.letIn = false;
+              NavigationService.getProduct(filter, function(data) {
+                if(data.value){
 
-                    $scope.shopping.push(n);
-                    console.log('esdfghjdghj', n);
+                  _.each(data.data.data, function(n) {
+                      $scope.shopping.push(n);
+                  });
+                  lastpage = data.data.totalpages;
+                  ++$scope.filter.pagenumber;
+                  $scope.letIn = true;
+                }
+              }, function(err) {
 
-                });
-            }, function(err) {
+              });
+            }
+        };
+        $scope.applyFilter = function() {
+            // $.jStorage.set("filter",)
+            $scope.filter.pagenumber = 1;
+            $scope.shopping = [];
+            $scope.getMyProducts($scope.filter);
 
-            });
-        }
+        };
 
         $scope.loadMore = function() {
             console.log('inside loadmore');
-            if (lastpage > $scope.pagenumber) {
-                ++$scope.pagenumber;
-                $scope.getMyProducts();
-            }
+                if (lastpage >= $scope.filter.pagenumber) {
+                  $scope.$broadcast('scroll.infiniteScrollComplete');
+                  $scope.getMyProducts($scope.filter);
+
+                }
         };
 
 

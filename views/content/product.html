@@ -109,7 +109,7 @@
                         <i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i><span class="block">Rental Price</span>
                       </uib-accordion-heading>
                       <div class="price-rangeslider">
-                        <div range-slider min="demo2.range.min" max="demo2.range.max" model-min="demo2.minPrice" model-max="demo2.maxPrice" filter="currency:'‎₹'" step="100"></div>
+                        <div range-slider min="demo2.range.min" max="demo2.range.max" model-min="filter.pricefrom" model-max="filter.priceto" filter="currency:'‎₹'" step="100"></div>
                       </div>
                     </uib-accordion-group>
                     <uib-accordion-group is-open="status.open4">
@@ -139,7 +139,7 @@
                           <li><a href="" ng-class="{'select-size': filter.size=='S' }" ng-click="filter.size='S';">S</a></li>
                           <li><a href="" ng-class="{'select-size': filter.size=='M' }" ng-click="filter.size='M';">M</a></li>
                           <li><a href="" ng-class="{'select-size': filter.size=='L' }" ng-click="filter.size='L';">L</a></li>
-                          <li><a href="" ng-class="{'select-size': filter.size=XL' }" ng-click="filter.size='XL';">XL</a></li>
+                          <li><a href="" ng-class="{'select-size': filter.size=='XL' }" ng-click="filter.size='XL';">XL</a></li>
                         </ul>
                       </div>
                     </uib-accordion-group>
@@ -189,7 +189,7 @@
                   </uib-accordion>
                   <div class="on-edit filter-button">
                     <button class="btn btn-outline text-medium">Reset</button>
-                    <button class="btn btn-outline text-medium">Apply</button>
+                    <button class="btn btn-outline text-medium" ng-click= "applyFilter()" >Apply</button>
                   </div>
                 </form>
               </div>
@@ -264,7 +264,7 @@
                 </div>
               </div>
             </div>
-            <div ng-if="shopping.length == 0">
+            <div ng-if="shopping.length == 0" style="min-height:667px;">
               <h4 class="text-center">Products not found</h4>
             </div>
           </div>

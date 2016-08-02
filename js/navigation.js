@@ -146,16 +146,19 @@ var navigationservice = angular.module('navigationservice', [])
             }
             return menuname;
         },
-        getProduct: function(productname, pagenumber, callback, errCallback) {
-            var data = {
-                'name': productname,
-                'pagenumber': pagenumber,
-                'pagesize': "5"
+        getProduct: function(request, callback, errCallback) {
+            var filter = {
+                'subcategory': request.subcategory,
+                'pricefrom': request.pricefrom,
+                'priceto': request.priceto,
+                'size': request.size,
+                'pagenumber': request.pagenumber,
+                'pagesize': 5
             };
             return $http({
-                url: adminURL + "product/getProductByCatName",
+                url: adminURL + "product/getProductByCat",
                 method: "POST",
-                data: data
+                data: filter
             }).success(callback).error(errCallback);
         },
         getProductDetail: function(productid, callback, errCallback) {
