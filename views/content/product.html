@@ -40,7 +40,7 @@
                       </uib-accordion-heading>
                       <div class="occasion">
                         <div class="custom-checkbox" ng-repeat="subcat in value">
-                          <input type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name+$index]" ng-change = "pushSubCategory(checkIt[subcat.name+$index],subcat._id)" id="{{subcat.name}}">
+                          <input type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change = "pushSubCategory(checkIt[subcat.name],subcat._id)" id="{{subcat.name}}">
                           <label for="{{subcat.name}}"><span></span> {{subcat.name}}</label>
                         </div>
 
