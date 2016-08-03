@@ -40,7 +40,7 @@
                       </uib-accordion-heading>
                       <div class="occasion">
                         <div class="custom-checkbox" ng-repeat="subcat in value">
-                          <input type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change = "pushSubCategory(checkIt[subcat.name],subcat._id)" id="{{subcat.name}}">
+                          <input type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="{{subcat.name}}">
                           <label for="{{subcat.name}}"><span></span> {{subcat.name}}</label>
                         </div>
 
@@ -148,48 +148,16 @@
                         <i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open6, 'fa-angle-down': !status.open6}"></i> <span class="block">Colour</span>
                       </uib-accordion-heading>
                       <div class="color">
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="black">
-                          <label for="black"><span></span> Black</label>
-                        </div>
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="white">
-                          <label for="white"><span></span> White</label>
-                        </div>
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="red">
-                          <label for="red"><span></span> Red</label>
-                        </div>
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="pink">
-                          <label for="pink"><span></span> Pink</label>
-                        </div>
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="orange">
-                          <label for="orange"><span></span> Orange</label>
-                        </div>
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="yellow">
-                          <label for="yellow"><span></span> Yellow</label>
-                        </div>
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="green">
-                          <label for="green"><span></span> Green</label>
-                        </div>
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="turquoise">
-                          <label for="turquoise"><span></span> Turquoise</label>
-                        </div>
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="blue">
-                          <label for="blue"><span></span> Blue</label>
+                        <div class="custom-checkbox" ng-repeat="c in color">
+                          <input type="checkbox" id="{{c._id}}">
+                          <label for="{{c._id}}"><span></span> {{c.name}}</label>
                         </div>
                       </div>
                     </uib-accordion-group>
                   </uib-accordion>
                   <div class="on-edit filter-button">
                     <button class="btn btn-outline text-medium">Reset</button>
-                    <button class="btn btn-outline text-medium" ng-click= "applyFilter()" >Apply</button>
+                    <button class="btn btn-outline text-medium" ng-click="applyFilter()">Apply</button>
                   </div>
                 </form>
               </div>

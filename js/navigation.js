@@ -1,9 +1,9 @@
-// var adminURL = "http://104.199.151.75/";
-if (isproduction) {
-    adminURL = "http://www.wohlig.co.in/demo/index.php";
-} else {
-    adminURL = "http://192.168.1.122:1337/";
-}
+var adminURL = "http://104.199.151.75/";
+// if (isproduction) {
+//     adminURL = "http://www.wohlig.co.in/demo/index.php";
+// } else {
+//     adminURL = "http://192.168.0.112:1337/";
+// }
 
 var navigationservice = angular.module('navigationservice', [])
 
@@ -19,27 +19,7 @@ var navigationservice = angular.module('navigationservice', [])
             disabled: false,
             anchor: "dresses",
             subnav: []
-                // subnav: [{
-                //     name: "Lehengas",
-                //     classis: "active",
-                //     link: "product"
-                // }, {
-                //     name: "Sarees",
-                //     classis: "active",
-                //     link: "product"
-                // }, {
-                //     name: "Jumpsuit",
-                //     classis: "active",
-                //     link: "product"
-                // }, {
-                //     name: "Anakalis",
-                //     classis: "active",
-                //     link: "product"
-                // }, {
-                //     name: "Gown",
-                //     classis: "active",
-                //     link: "product"
-                // }]
+
         }, {
             name: "Occasion",
             classis: "active",
@@ -174,6 +154,12 @@ var navigationservice = angular.module('navigationservice', [])
         getSubcategory: function(callback, errCallback) {
             return $http({
                 url: adminURL + "subcategory/getAllCat",
+                method: "POST"
+            }).success(callback).error(errCallback);
+        },
+        getColor: function(callback, errCallback) {
+            return $http({
+                url: adminURL + "color/getAll",
                 method: "POST"
             }).success(callback).error(errCallback);
         },

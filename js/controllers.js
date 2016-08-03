@@ -250,7 +250,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
-        $scope.letIn= true;
+        $scope.letIn = true;
         $scope.template = TemplateService.changecontent("product");
         $scope.menutitle = NavigationService.makeactive("Product");
         TemplateService.title = $scope.menutitle;
@@ -261,26 +261,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.texts = {};
         $scope.texts.msg = "";
         $scope.filter.subcategory = [];
+        $scope.filter.color = [];
         $scope.filter.size = '';
         $scope.filter.pricefrom = 0;
         $scope.filter.priceto = 100000;
-      $scope.shopping = [];
-      $scope.getSubcategory = function () {
-        NavigationService.getSubcategory(function(data) {
-            $scope.subcategory = data.data;
-            if ($state.params.name) {
-                $scope.filter.subcategory.push(_.find($scope.subcategory, function(key) {
-                    return key.name == $state.params.name;
-                })._id);
-                $scope.checkIt[$state.params.name] = true;
-                $scope.filter.pagenumber = 1;
-                $scope.getMyProducts($scope.filter);
-            }
-        }, function(err) {
+        $scope.shopping = [];
+        $scope.getSubcategory = function() {
+            NavigationService.getSubcategory(function(data) {
+                $scope.subcategory = data.data;
+                if ($state.params.name) {
+                    $scope.filter.subcategory.push(_.find($scope.subcategory, function(key) {
+                        return key.name == $state.params.name;
+                    })._id);
+                    $scope.checkIt[$state.params.name] = true;
+                    $scope.filter.pagenumber = 1;
+                    $scope.getMyProducts($scope.filter);
+                }
+            }, function(err) {
 
-        });
-      };
-      $scope.getSubcategory();
+            });
+        };
+        $scope.getSubcategory();
         $scope.pushSubCategory = function(flag, id) {
             if (flag) {
                 $scope.filter.subcategory.push(id);
@@ -318,26 +319,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.getMyProducts = function(filter) {
             console.log("in get products");
-            if($scope.letIn){
-              $scope.letIn = false;
-              NavigationService.getProduct(filter, function(data) {
-                if(data.value){
-                  if(data.data.data.length === 0){
-                    $scope.texts.msg = "Product Not Found";
-                  }
-                  _.each(data.data.data, function(n) {
-                      $scope.shopping.push(n);
-                  });
-                  lastpage = data.data.totalpages;
-                  ++$scope.filter.pagenumber;
-                  $scope.letIn = true;
-                }
-              }, function(err) {
+            if ($scope.letIn) {
+                $scope.letIn = false;
+                NavigationService.getProduct(filter, function(data) {
+                    if (data.value) {
+                        if (data.data.data.length === 0) {
+                            $scope.texts.msg = "Product Not Found";
+                        }
+                        _.each(data.data.data, function(n) {
+                            $scope.shopping.push(n);
+                        });
+                        lastpage = data.data.totalpages;
+                        ++$scope.filter.pagenumber;
+                        $scope.letIn = true;
+                    }
+                }, function(err) {
 
-              });
+                });
             }
         };
-
+        $scope.getColor = function() {
+            NavigationService.getColor(function(data) {
+                console.log("colors",data.data);
+                $scope.color = data.data;
+            }, function(err) {});
+        };
+        $scope.getColor();
         $scope.applyFilter = function() {
             // $.jStorage.set("filter",)
             $scope.filter.pagenumber = 1;
@@ -348,18 +355,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.loadMore = function() {
             console.log('inside loadmore');
-                if (lastpage >= $scope.filter.pagenumber) {
-                  $scope.$broadcast('scroll.infiniteScrollComplete');
-                  $scope.getMyProducts($scope.filter);
+            if (lastpage >= $scope.filter.pagenumber) {
+                $scope.$broadcast('scroll.infiniteScrollComplete');
+                $scope.getMyProducts($scope.filter);
 
-                }
+            }
         };
 
 
     })
     .controller('ProductdetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
-
         $scope.template = TemplateService.changecontent("productdetail");
         $scope.menutitle = NavigationService.makeactive("Productdetail");
         TemplateService.title = $scope.menutitle;
