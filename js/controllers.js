@@ -265,6 +265,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.filter.size = '';
         $scope.filter.pricefrom = 0;
         $scope.filter.priceto = 100000;
+        $scope.letLoad = false;
         $scope.shopping = [];
         $scope.getSubcategory = function() {
             NavigationService.getSubcategory(function(data) {
@@ -287,6 +288,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.filter.subcategory.push(id);
             } else {
                 $scope.filter.subcategory.splice(_.findIndex($scope.filter.subcategory, function(key) {
+                    return key == id;
+                }), 1);
+            }
+        };
+        $scope.pushColor = function(flag, id) {
+            if (flag) {
+                $scope.filter.color.push(id);
+            } else {
+                $scope.filter.color.splice(_.findIndex($scope.filter.color, function(key) {
                     return key == id;
                 }), 1);
             }
@@ -330,8 +340,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             $scope.shopping.push(n);
                         });
                         lastpage = data.data.totalpages;
-                        ++$scope.filter.pagenumber;
-                        $scope.letIn = true;
+                      if(data.data.data.length !== 0){
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                          ++$scope.filter.pagenumber;
+                      }
+                      $scope.letIn = true;
+                      $scope.letLoad = true;
+                      if(lastpage < $scope.filter.pagenumber){
+                        $scope.letLoad = false;
+                      }
                     }
                 }, function(err) {
 
@@ -352,13 +370,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.getMyProducts($scope.filter);
 
         };
+        $scope.resetFilter = function () {
+          $scope.filter.subcategory = [];
+          $scope.filter.color =  [];
+          $scope.filter.size = '';
+          $scope.filter.pricefrom = 0;
+          $scope.filter.priceto = 100000;
+          $scope.filter.pagenumber = 1;
+          $scope.shopping = [];
+          $scope.checkIt = _.map($scope.checkIt,function (key) {
+            return false;
+          });
+          if ($state.params.name) {
+              $scope.filter.subcategory.push(_.find($scope.subcategory, function(key) {
+                  return key.name == $state.params.name;
+              })._id);
+              $scope.checkIt[$state.params.name] = true;
+          }
+          $scope.letLoad = false;
+          $scope.getMyProducts($scope.filter);
 
+        };
         $scope.loadMore = function() {
-            console.log('inside loadmore');
-            if (lastpage >= $scope.filter.pagenumber) {
-                $scope.$broadcast('scroll.infiniteScrollComplete');
-                $scope.getMyProducts($scope.filter);
-
+            if($scope.letLoad){
+              $scope.getMyProducts($scope.filter);
             }
         };
 

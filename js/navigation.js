@@ -133,7 +133,8 @@ var navigationservice = angular.module('navigationservice', [])
                 'priceto': request.priceto,
                 'size': request.size,
                 'pagenumber': request.pagenumber,
-                'pagesize': 5
+                'pagesize': 5,
+                'color':request.color
             };
             return $http({
                 url: adminURL + "product/getProductByCat",

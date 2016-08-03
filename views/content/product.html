@@ -149,14 +149,15 @@
                       </uib-accordion-heading>
                       <div class="color">
                         <div class="custom-checkbox" ng-repeat="c in color">
-                          <input type="checkbox" id="{{c._id}}">
+                          <input type="checkbox" ng-model="checkIt[c.name]"
+ng-change="pushColor(checkIt[c.name],c._id)" id="{{c._id}}">
                           <label for="{{c._id}}"><span></span> {{c.name}}</label>
                         </div>
                       </div>
                     </uib-accordion-group>
                   </uib-accordion>
                   <div class="on-edit filter-button">
-                    <button class="btn btn-outline text-medium">Reset</button>
+                    <button class="btn btn-outline text-medium" ng-click="resetFilter()">Reset</button>
                     <button class="btn btn-outline text-medium" ng-click="applyFilter()">Apply</button>
                   </div>
                 </form>
