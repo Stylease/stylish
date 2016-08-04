@@ -45,7 +45,7 @@
             <div class="product-size" ng-if="product.size.length > 0">
             <span class="mr20 text-medium">Size :</span>
             <ul class="list-inline inline-block m-clear" ng-init="size=''">
-              <li ng-repeat="size in product.size"><a ng-class="{'select-size' : size==size.name}" ng-click="size={{size.name}}">{{size.name}}</a></li>
+              <li ng-repeat="size in product.size"><a ng-class="{'select-size' : size=='{{size.name}}'}" ng-click="size={{size.name}}">{{size.name}}</a></li>
               <!-- <li><a href="" ng-class="{'select-size' : size=='m'}" ng-click="size='m'">M</a></li>
               <li><a href="" ng-class="{'select-size' : size=='l'}" ng-click="size='l'">L</a></li>
               <li><a href="" ng-class="{'select-size' : size=='xl'}" ng-click="size='xl'">XL</a></li> -->
