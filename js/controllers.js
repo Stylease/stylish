@@ -53,13 +53,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             name: "Riya shah"
         }];
     })
-    .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("profile");
         $scope.menutitle = NavigationService.makeactive("Profile");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+
+
+        $scope.logoutClick = function(){
+          console.log("logout clicked");
+          NavigationService.logout(function(data){
+            if (data.value) {
+              $scope.isLoggedIn = false;
+              $state.go("home");
+            }
+          },function(err){
+
+          })
+        }
 
     })
     .controller('OrdersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -582,7 +595,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.footer = "";
     })
 
-.controller('headerctrl', function($scope, TemplateService, $uibModal) {
+.controller('headerctrl', function($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state) {
     $scope.template = TemplateService;
     $scope.template.backClass = "";
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -667,6 +680,103 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             modal4.close();
         }
     }
+
+    // INTEGRATION CODE
+    $scope.login = {};
+    if (NavigationService.getStoredUser() == null) {
+      $scope.isLoggedIn = false;
+
+    }else {
+      $scope.isLoggedIn = true;
+
+    }
+    $scope.signup = {};
+    // SIGNUP
+    $scope.signUpNormal = function(){
+      console.log("validation don");
+      if ($scope.signup.password === $scope.signup.confirmpswd) {
+
+      NavigationService.signUP($scope.signup, function(data){
+        if (data.value) {
+          $scope.closeAllModals();
+          $scope.isLoggedIn = true;
+          NavigationService.saveUser(data.data);
+        }else {
+          alert(data.error);
+        }
+      }, function(err){
+        console.log(err);
+      })
+    }else {
+      alert("Password And Confirt Password Should be same");
+    }
+    }
+    // NORMAL LOGIN
+    $scope.userLogin = function(){
+      console.log("dfasdfasd");
+      NavigationService.login($scope.login, function(data){
+        if (data.value == true) {
+          $scope.closeAllModals();
+          $scope.isLoggedIn = true;
+          NavigationService.saveUser(data.data);
+        }else {
+          alert("Try again leter");
+        }
+      },function(){
+
+      })
+    }
+    //GOOGLE LOGIN
+    var checktwitter = function(data, status) {
+    var repdata = {};
+    if (data.value) {
+      $interval.cancel(stopinterval);
+      ref.close();
+      $scope.closeAllModals();
+      $scope.isLoggedIn = true;
+      NavigationService.saveUser(data.data);
+    } else {
+
+    }
+  };
+
+  var callAtIntervaltwitter = function() {
+    NavigationService.getProfile(checktwitter, function(err) {
+      console.log(err);
+    });
+  };
+  var authenticatesuccess = function(data, status) {
+    $ionicLoading.hide();
+    if (data.value) {
+      $scope.closeAllModals();
+      $scope.isLoggedIn = true;
+      NavigationService.saveUser(data.data);
+    }
+  };
+  $scope.facebookLogin = function() {
+
+      ref = window.open("http://stylease.wohlig.com/" + 'user/loginFacebook', '_blank', 'location=no');
+    stopinterval = $interval(callAtIntervaltwitter, 2000);
+    ref.addEventListener('exit', function(event) {
+      NavigationService.getProfile(authenticatesuccess, function(err) {
+        console.log(err);
+      });
+      $interval.cancel(stopinterval);
+    });
+  };
+
+$scope.googleLogin = function() {
+console.log("googlelogin");
+    ref = window.open("http://stylease.wohlig.com/" + 'user/loginGoogle', '_blank', 'location=no');
+  stopinterval = $interval(callAtIntervaltwitter, 2000);
+  ref.addEventListener('exit', function(event) {
+    NavigationService.getProfile(authenticatesuccess, function(err) {
+      console.log(err);
+    });
+    $interval.cancel(stopinterval);
+  });
+};
+
 
 })
 

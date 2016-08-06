@@ -164,6 +164,40 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback).error(errCallback);
         },
+        signUP: function(data, callback, errCallback) {
+          console.log(data);
+          return $http({
+            url: adminURL + "user/register",
+            method: "POST",
+            data: data
+          }).success(callback).error(errCallback);
+        },
+        getProfile: function(callback, errCallback) {
+          return $http({
+            url: adminURL + "user/profile",
+            method: "POST"
+          }).success(callback).error(errCallback);
+        },
+        login: function(data, callback, errCallback) {
+          return $http({
+            url: adminURL + "user/login",
+            method: "POST",
+            data: data
+          }).success(callback).error(errCallback);
+        },
+        logout: function(callback, errCallback) {
+          $.jStorage.flush();
+          return $http({
+            url: adminURL + "user/logout",
+            method: "POST",
+          }).success(callback).error(errCallback);
+        },
+        saveUser: function(data){
+          $.jStorage.set("user",data);
+        },
+        getStoredUser: function(){
+          return $.jStorage.get("user");
+        }
 
     };
 });

@@ -6,25 +6,25 @@
   <div class="pop-body text-center bg-light-pink pd20">
     <div class="row">
       <div class="col-md-offset-1 col-md-10">
-        <form action="" name="emailSignup">
+        <form name="emailSignup" ng-submit="signUpNormal()">
           <div class="relate">
-            <input type="text" class="form-control" name="name" placeholder="Name" ng-model="name" required>
+            <input type="text" class="form-control" name="name" placeholder="Name" ng-model="signup.name" required>
             <div class="form-error" ng-show="emailSignup.name.$error.required && emailSignup.name.$touched">Please enter your name.</div>
           </div>
           <div class="relate">
-            <input type="email" name="email" class="form-control" placeholder="Email Id" ng-model="mail" required>
+            <input type="email" name="email" class="form-control" placeholder="Email Id" ng-model="signup.email" required>
             <div class="form-error" ng-show="emailSignup.email.$error.required && emailSignup.email.$touched">
               Please enter a valid email id.
             </div>
           </div>
           <div class="relate">
-            <input type="password" name="password" class="form-control" placeholder="Password"  ng-model="password" required>
+            <input type="password" name="password" class="form-control" placeholder="Password"  ng-model="signup.password" required>
             <div class="form-error" ng-show="emailSignup.password.$error.required && emailSignup.password.$touched">
               Please enter your password.
             </div>
           </div>
           <div class="relate">
-            <input type="password" name="confirmpswd" class="form-control" placeholder="Confirm Password" ng-model="confirmpswd" required>
+            <input type="password" name="confirmpswd" class="form-control" placeholder="Confirm Password" ng-model="signup.confirmpswd" required>
             <div class="form-error" ng-show="emailSignup.confirmpswd.$error.required && emailSignup.confirmpswd.$touched">
               Passwords do not match.
             </div>
