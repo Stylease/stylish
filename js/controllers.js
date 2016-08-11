@@ -624,7 +624,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.signUp = function() {
       $scope.loginmsg.msg = "";
-
+      $scope.closeAllModals()
         modal1 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/signup.html",
@@ -634,7 +634,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.logIn = function() {
       $scope.loginmsg.msg = "";
-
+      $scope.closeAllModals()
         modal3 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/login.html",
@@ -643,7 +643,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.emailSignup = function() {
       $scope.loginmsg.msg = "";
-
+      $scope.closeAllModals()
         modal2 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/email-signup.html",
@@ -652,7 +652,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.forgot = function() {
       $scope.loginmsg.msg = "";
-
+      $scope.closeAllModals()
         modal4 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/forgotpassword.html",
