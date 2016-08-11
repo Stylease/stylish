@@ -17,21 +17,26 @@
       <div class="col-md-offset-2 col-md-8">
         <form name="formLogin" ng-submit="userLogin()">
           <div class="relate">
-            <input type="email" class="form-control" placeholder="Email Id" ng-model="email" name="login.email" required>
+            <input type="email" class="form-control" placeholder="Email Id" ng-model="login.email" name="email" required>
             <div class="form-error" ng-show="formLogin.email.$touched && formLogin.email.$error.required">
               Please enter your Email Id.
             </div>
           </div>
           <div class="relate">
-            <input type="password" class="form-control" placeholder="Password" ng-model="pswd" name="login.password" required>
+            <input type="password" class="form-control" placeholder="Password" ng-model="login.password" name="pswd" required>
             <div class="form-error" ng-show="formLogin.pswd.$touched && formLogin.pswd.$error.required">
               Please enter your password.
+            </div>
+          </div>
+          <div class="relate">
+            <div class="custom-checkbox text-left mt10 mb10">
+              <label for="accept" class="{{loginmsg.class}}"><span></span>{{loginmsg.msg}}</label>
             </div>
           </div>
           <div class="clearfix">
             <span class="pull-right pointer mt10 mb10" ng-click="forgot();">Forgot Password ?</span>
           </div>
-          <div class="login mb10 mt10" ng-click="closeAllModals();">
+          <div class="login mb10 mt10">
             <button type="Submit" class="btn btn-outline btn-full text-medium">Log In</button>
           </div>
           <div class="">

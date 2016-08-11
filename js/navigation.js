@@ -1,4 +1,4 @@
-var adminURL = "http://104.199.151.75/";
+var adminURL = "http://stylease.wohlig.com/";
 // if (isproduction) {
 //     adminURL = "http://www.wohlig.co.in/demo/index.php";
 // } else {
@@ -179,6 +179,7 @@ var navigationservice = angular.module('navigationservice', [])
           }).success(callback).error(errCallback);
         },
         login: function(data, callback, errCallback) {
+          console.log(data);
           return $http({
             url: adminURL + "user/login",
             method: "POST",

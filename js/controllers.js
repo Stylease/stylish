@@ -615,6 +615,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     var modal3 = "";
     var modal4 = "";
     $scope.cart = function() {
+      $scope.loginmsg.msg = "";
         $uibModal.open({
             animation: true,
             templateUrl: "views/modal/hello.html",
@@ -622,6 +623,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
     $scope.signUp = function() {
+      $scope.loginmsg.msg = "";
+
         modal1 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/signup.html",
@@ -630,6 +633,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log(modal1);
     };
     $scope.logIn = function() {
+      $scope.loginmsg.msg = "";
+
         modal3 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/login.html",
@@ -637,6 +642,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
     $scope.emailSignup = function() {
+      $scope.loginmsg.msg = "";
+
         modal2 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/email-signup.html",
@@ -644,6 +651,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
     $scope.forgot = function() {
+      $scope.loginmsg.msg = "";
+
         modal4 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/forgotpassword.html",
@@ -682,6 +691,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
 
     // INTEGRATION CODE
+    $scope.loginmsg = {};
     $scope.login = {};
     if (NavigationService.getStoredUser() == null) {
       $scope.isLoggedIn = false;
@@ -693,7 +703,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.signup = {};
     // SIGNUP
     $scope.signUpNormal = function(){
-      console.log("validation don");
+      $scope.loginmsg.msg = "";
       if ($scope.signup.password === $scope.signup.confirmpswd) {
 
       NavigationService.signUP($scope.signup, function(data){
@@ -702,25 +712,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           $scope.isLoggedIn = true;
           NavigationService.saveUser(data.data);
         }else {
-          alert(data.error);
+          $scope.loginmsg.msg = data.error;
+          $scope.loginmsg.class = "text-danger";
         }
       }, function(err){
         console.log(err);
       })
     }else {
-      alert("Password And Confirt Password Should be same");
+      $scope.loginmsg.msg = "Password And Confirm Password Should be same";
+      $scope.loginmsg.class = "text-danger";
     }
     }
     // NORMAL LOGIN
     $scope.userLogin = function(){
-      console.log("dfasdfasd");
+      $scope.loginmsg.msg = "";
+
       NavigationService.login($scope.login, function(data){
-        if (data.value == true) {
+        if(data.value) {
+          console.log("in if");
           $scope.closeAllModals();
           $scope.isLoggedIn = true;
           NavigationService.saveUser(data.data);
         }else {
-          alert("Try again leter");
+          $scope.loginmsg.msg = "Try again Later";
+          $scope.loginmsg.class = "text-danger";
         }
       },function(){
 
@@ -755,7 +770,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
   $scope.facebookLogin = function() {
 
-      ref = window.open("http://stylease.wohlig.com/" + 'user/loginFacebook', '_blank', 'location=no');
+      ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
     stopinterval = $interval(callAtIntervaltwitter, 2000);
     ref.addEventListener('exit', function(event) {
       NavigationService.getProfile(authenticatesuccess, function(err) {
@@ -767,7 +782,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 $scope.googleLogin = function() {
 console.log("googlelogin");
-    ref = window.open("http://stylease.wohlig.com/" + 'user/loginGoogle', '_blank', 'location=no');
+    ref = window.open(adminURL + 'user/loginGoogle', '_blank', 'location=no');
   stopinterval = $interval(callAtIntervaltwitter, 2000);
   ref.addEventListener('exit', function(event) {
     NavigationService.getProfile(authenticatesuccess, function(err) {
