@@ -85,6 +85,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.oneAtATime = true;
 
     })
+    .controller('CancelationPolicyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+
+        $scope.template = TemplateService.changecontent("cancelation-policy");
+        $scope.menutitle = NavigationService.makeactive("Cancelation Policy");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.oneAtATime = true;
+
+    })
     .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
 

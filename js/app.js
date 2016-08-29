@@ -65,6 +65,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'CartCtrl'
   })
+    .state('cancelation-policy', {
+    url: "/cancelation-policy",
+    templateUrl: "views/template.html",
+    controller: 'CancelationPolicyCtrl'
+  })
     .state('product', {
     url: "/product/:name",
     templateUrl: "views/template.html",

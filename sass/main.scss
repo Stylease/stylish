@@ -1682,6 +1682,29 @@ text-align: right;
 .mt50{
   margin-top: 50px;
 }
+.data-all{
+      padding-bottom: 30px;
+  ul{
+    padding: 0px;
+        list-style-type: decimal;
+    li{
+      p{
+    color:  #2c2d3d;
+    font-size: 16px;/* Approximation due to font substitution */
+    font-weight: 400;
+    text-align: justify;
+      }
+      a, span{
+            font-weight: 600;
+              color:  #2c2d3d;
+      }
+    }
+  }
+
+}
+.un-list{
+  list-style-type: upper-roman !important;
+}
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";
