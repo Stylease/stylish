@@ -85,6 +85,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.oneAtATime = true;
 
     })
+    .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+
+        $scope.template = TemplateService.changecontent("contact");
+        $scope.menutitle = NavigationService.makeactive("Contact");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.oneAtATime = true;
+
+    })
     .controller('OrderdetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
 

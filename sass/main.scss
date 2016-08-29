@@ -87,6 +87,9 @@ a {
 .relate {
   position: relative;
 }
+.abs {
+  position: absolute;
+}
 .get-center {
   @include position(absolute,50% null null 50%);
   @include transform(translate(-50%,-50%));
@@ -1659,8 +1662,26 @@ input.form-control {
     color: $brand-dark-pink;
   }
 }
-
-
+.text-up{
+  text-transform: uppercase;
+}
+.margin0{
+  margin:0;
+}
+.cn{
+      padding: 10px 0px 40px 0px;
+  h4{
+    font-size: 22px;/* Approximation due to font substitution */
+font-weight: 500;
+text-align: right;
+  }
+}
+.mt100 {
+    margin-top: 150px;
+}
+.mt50{
+  margin-top: 50px;
+}
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";

@@ -54,7 +54,7 @@ var navigationservice = angular.module('navigationservice', [])
             name: "Contact Us",
             classis: "active",
             disabled: true,
-            anchor: "contactus"
+            anchor: "contact"
         }, {
             name: "Help",
             classis: "active",
