@@ -75,7 +75,7 @@ var navigationservice = angular.module('navigationservice', [])
             }, {
                 name: "Privacy Policy",
                 classis: "active",
-                link: "#/privacypolicy"
+                link: "privacy-policy"
             }]
         }
 

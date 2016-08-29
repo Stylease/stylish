@@ -95,6 +95,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.oneAtATime = true;
 
     })
+    .controller('PrivacyPolicyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+
+        $scope.template = TemplateService.changecontent("privacy-policy");
+        $scope.menutitle = NavigationService.makeactive("Privacy Policy");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.oneAtATime = true;
+
+    })
     .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
 
