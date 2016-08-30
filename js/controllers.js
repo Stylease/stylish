@@ -455,8 +455,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //PRODUCT DETAIL ON SELECTED PRODUCT
         NavigationService.getProductDetail($state.params.id, function(data) {
             console.log(data);
-            $scope.product = data.data;
-            $scope.mainImage = data.data.images[0].image;
+            $scope.product = data.data.product;
+            $scope.mainImage = data.data.product.images[0].image;
         }, function(err) {
 
         });
