@@ -71,7 +71,7 @@ var navigationservice = angular.module('navigationservice', [])
             }, {
                 name: "Terms & Conditions",
                 classis: "active",
-                link: "#/termsconditions"
+                link: "terms-condition"
             }, {
                 name: "Privacy Policy",
                 classis: "active",

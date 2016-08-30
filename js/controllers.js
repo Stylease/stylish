@@ -85,6 +85,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.oneAtATime = true;
 
     })
+    .controller('TermsConditionCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+
+        $scope.template = TemplateService.changecontent("terms-condition");
+        $scope.menutitle = NavigationService.makeactive("Terms Condition");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.oneAtATime = true;
+
+    })
     .controller('CancelationPolicyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
 
