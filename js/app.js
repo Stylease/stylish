@@ -70,6 +70,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'CartCtrl'
   })
+    .state('terms-condition', {
+    url: "/terms-condition",
+    templateUrl: "views/template.html",
+    controller: 'TermsConditionCtrl'
+  })
     .state('cancelation-policy', {
     url: "/cancelation-policy",
     templateUrl: "views/template.html",
