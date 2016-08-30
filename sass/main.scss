@@ -1709,6 +1709,15 @@ text-align: right;
 .un-list{
   list-style-type: upper-roman !important;
 }
+.head-text{
+  h1{
+    border-bottom: 1px solid #f08168;
+    display: inline-block;
+  }
+}
+.pl25{
+      padding-left: 25px !important;
+}
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";
