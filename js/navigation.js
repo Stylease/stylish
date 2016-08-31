@@ -94,7 +94,6 @@ var navigationservice = angular.module('navigationservice', [])
                 if (data) {
 
                     _.each(data.data, function(key) {
-
                         if (key.category.name == 'Occasion') {
                             console.log("oc");
                             subnavGen.push({
@@ -111,8 +110,8 @@ var navigationservice = angular.module('navigationservice', [])
                         }
 
                     });
-                    navigation[1].subnav = subnavGen;
-                    navigation[2].subnav = subnavGen1;
+                    navigation[1].subnav = subnavGen1;
+                    navigation[2].subnav = subnavGen;
                 }
             });
             return navigation;

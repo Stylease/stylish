@@ -9,6 +9,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Home");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        console.log($scope.navigation);
         $scope.footerColor = "home-footer";
         $scope.subcategory = [];
 
@@ -461,12 +462,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.oneAtATime = true;
         $scope.product = {};
         $scope.mainImage = "";
+        $scope.timestamps = [];
 
         //PRODUCT DETAIL ON SELECTED PRODUCT
         NavigationService.getProductDetail($state.params.id, function(data) {
             console.log(data);
             $scope.product = data.data.product;
             $scope.producttime = data.data.producttime;
+            _.each($scope.producttime, function(key) {
+
+                var tmpdate = new Date(key.timestampFrom);
+                // tmpdate.setHours(0,0,0,0);
+                var tmpto = new Date(key.timestampTo);
+                var diffDays = tmpto.getDate() - tmpdate.getDate();
+                console.log(diffDays);
+                start = 0;
+                do {
+                    $scope.timestamps.push(new Date(tmpdate));
+                    tmpdate.setDate(tmpdate.getDate() + 1);
+                    start++;
+                } while (start <= diffDays);
+            })
             $scope.mainImage = data.data.product.images[0].image;
         }, function(err) {
 
@@ -513,14 +529,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         // Disable weekend selection
         function disabled(data) {
-            console.log("product data", $scope.producttime);
-            // var date = data.date,
-            //     mode = data.mode;
-            var date = data.date,
+            // console.log(data);
+            var current = data.date,
                 mode = data.mode;
-            // return mode === 'day' && (date.getDay() === 2 || date.getDay() === 3);
-            return mode === 'day' && (date.getDay() === 2);
-            console.log("modd", mode);
+            current.setHours(0, 0, 0, 0);
+            return _.findIndex($scope.timestamps, function(key) {
+                key.setHours(0, 0, 0, 0);
+                current.setHours(0, 0, 0, 0);
+                console.log(new Date(key), new Date(current));
+                return new Date(key).getTime() == current.getTime();
+            }) !== -1;
         }
         $scope.open1 = function() {
             $scope.popup1.opened = true;
@@ -545,34 +563,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.popup2 = {
             opened: false
         };
-        var tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        var afterTomorrow = new Date();
-        afterTomorrow.setDate(tomorrow.getDate() + 1);
-        $scope.events = [{
-            date: tomorrow,
-            status: 'full'
-        }, {
-            date: afterTomorrow,
-            status: 'partially'
-        }];
 
-        function getDayClass(data) {
-            var date = data.date,
-                mode = data.mode;
-            if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-                for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-                    if (dayToCheck === currentDay) {
-                        return $scope.events[i].status;
-                    }
-                }
-            }
-            return '';
-        }
     })
     .controller('CelebrityChoiceCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
