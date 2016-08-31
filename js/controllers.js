@@ -466,6 +466,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         NavigationService.getProductDetail($state.params.id, function(data) {
             console.log(data);
             $scope.product = data.data.product;
+            $scope.producttime = data.data.producttime;
             $scope.mainImage = data.data.product.images[0].image;
         }, function(err) {
 
@@ -474,60 +475,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.selectImage = function(img) {
             $scope.mainImage = img;
         };
-        $scope.product = [
-            'img/product-detail.png',
-            'img/product-detail.png',
-            'img/product-detail.png',
-            'img/product-detail.png',
-            'img/product-detail.png',
-            'img/product-detail.png',
-            'img/product-detail.png',
-            'img/product-detail.png'
-        ];
-        $scope.relatedProduct = [
-            'img/suggest1.png',
-            'img/suggest2.png',
-            'img/suggest1.png',
-            'img/suggest2.png',
-            'img/suggest1.png',
-            'img/suggest2.png',
-            'img/suggest2.png',
-            'img/suggest1.png',
-            'img/suggest2.png',
-            'img/suggest1.png',
-            'img/suggest2.png',
-        ];
-        $scope.suggested = [{
-            img: "img/suggest1.png",
-            name: "Bridal polki jewellery",
-            designer: "Anita Dongre's ",
-            price: "4,500"
-        }, {
-            img: "img/suggest2.png",
-            name: "Bridal polki jewellery",
-            designer: "Anita Dongre's ",
-            price: "4,500"
-        }, {
-            img: "img/suggest2.png",
-            name: "Bridal polki jewellery",
-            designer: "Anita Dongre's ",
-            price: "4,500"
-        }, {
-            img: "img/suggest1.png",
-            name: "Bridal polki jewellery",
-            designer: "Anita Dongre's ",
-            price: "4,500"
-        }, {
-            img: "img/suggest1.png",
-            name: "Bridal polki jewellery",
-            designer: "Anita Dongre's ",
-            price: "4,500"
-        }, {
-            img: "img/suggest1.png",
-            name: "Bridal polki jewellery",
-            designer: "Anita Dongre's ",
-            price: "4,500"
-        }];
+
         $scope.shop = function() {
             $uibModal.open({
                 animation: true,
@@ -549,45 +497,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-
-
+        //calendar
         $scope.today = function() {
             $scope.dt = new Date();
         };
         $scope.today();
-
-        $scope.clear = function() {
-            $scope.dt = null;
-        };
-
-        $scope.inlineOptions = {
-            customClass: getDayClass,
-            minDate: new Date(),
-            showWeeks: true
-        };
-
         $scope.dateOptions = {
             dateDisabled: disabled,
             formatYear: 'yy',
             maxDate: new Date(2020, 5, 22),
             minDate: new Date(),
-            startingDay: 1
+            startingDay: 1,
+            showWeeks: false
         };
 
         // Disable weekend selection
         function disabled(data) {
+            console.log("product data", $scope.producttime);
+            // var date = data.date,
+            //     mode = data.mode;
             var date = data.date,
                 mode = data.mode;
-            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+            // return mode === 'day' && (date.getDay() === 2 || date.getDay() === 3);
+            return mode === 'day' && (date.getDay() === 2);
+            console.log("modd", mode);
         }
-
-        $scope.toggleMin = function() {
-            $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
-            $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
-        };
-
-        $scope.toggleMin();
-
         $scope.open1 = function() {
             $scope.popup1.opened = true;
         };
@@ -611,7 +545,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.popup2 = {
             opened: false
         };
-
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         var afterTomorrow = new Date();
@@ -638,12 +571,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                 }
             }
-
             return '';
         }
-
-
-
     })
     .controller('CelebrityChoiceCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
