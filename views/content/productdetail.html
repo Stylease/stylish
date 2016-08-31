@@ -63,7 +63,13 @@
                 <label for="eight" class="text-medium"><span></span> 8 Days</label>
               </div>
               <div class="calendar inline-block">
-                <input type="text" class="form-control">
+                <div class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly"/>
+                  <span class="cal">
+                    <button type="button" class="btn btn-default" ng-click="open2()"></button>
+                  </span>
+                </div>
+
               </div>
             </form>
           </div>

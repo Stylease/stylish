@@ -62,16 +62,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
 
 
-        $scope.logoutClick = function(){
-          console.log("logout clicked");
-          NavigationService.logout(function(data){
-            if (data.value) {
-              $scope.isLoggedIn = false;
-              $state.go("home");
-            }
-          },function(err){
+        $scope.logoutClick = function() {
+            console.log("logout clicked");
+            NavigationService.logout(function(data) {
+                if (data.value) {
+                    $scope.isLoggedIn = false;
+                    $state.go("home");
+                }
+            }, function(err) {
 
-          })
+            })
         }
 
     })
@@ -393,16 +393,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             $scope.shopping.push(n);
                         });
                         lastpage = data.data.totalpages;
-                      if(data.data.data.length !== 0){
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                        if (data.data.data.length !== 0) {
+                            $scope.$broadcast('scroll.infiniteScrollComplete');
 
-                          ++$scope.filter.pagenumber;
-                      }
-                      $scope.letIn = true;
-                      $scope.letLoad = true;
-                      if(lastpage < $scope.filter.pagenumber){
-                        $scope.letLoad = false;
-                      }
+                            ++$scope.filter.pagenumber;
+                        }
+                        $scope.letIn = true;
+                        $scope.letLoad = true;
+                        if (lastpage < $scope.filter.pagenumber) {
+                            $scope.letLoad = false;
+                        }
                     }
                 }, function(err) {
 
@@ -411,7 +411,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.getColor = function() {
             NavigationService.getColor(function(data) {
-                console.log("colors",data.data);
+                console.log("colors", data.data);
                 $scope.color = data.data;
             }, function(err) {});
         };
@@ -423,30 +423,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.getMyProducts($scope.filter);
 
         };
-        $scope.resetFilter = function () {
-          $scope.filter.subcategory = [];
-          $scope.filter.color =  [];
-          $scope.filter.size = '';
-          $scope.filter.pricefrom = 0;
-          $scope.filter.priceto = 100000;
-          $scope.filter.pagenumber = 1;
-          $scope.shopping = [];
-          $scope.checkIt = _.map($scope.checkIt,function (key) {
-            return false;
-          });
-          if ($state.params.name) {
-              $scope.filter.subcategory.push(_.find($scope.subcategory, function(key) {
-                  return key.name == $state.params.name;
-              })._id);
-              $scope.checkIt[$state.params.name] = true;
-          }
-          $scope.letLoad = false;
-          $scope.getMyProducts($scope.filter);
+        $scope.resetFilter = function() {
+            $scope.filter.subcategory = [];
+            $scope.filter.color = [];
+            $scope.filter.size = '';
+            $scope.filter.pricefrom = 0;
+            $scope.filter.priceto = 100000;
+            $scope.filter.pagenumber = 1;
+            $scope.shopping = [];
+            $scope.checkIt = _.map($scope.checkIt, function(key) {
+                return false;
+            });
+            if ($state.params.name) {
+                $scope.filter.subcategory.push(_.find($scope.subcategory, function(key) {
+                    return key.name == $state.params.name;
+                })._id);
+                $scope.checkIt[$state.params.name] = true;
+            }
+            $scope.letLoad = false;
+            $scope.getMyProducts($scope.filter);
 
         };
         $scope.loadMore = function() {
-            if($scope.letLoad){
-              $scope.getMyProducts($scope.filter);
+            if ($scope.letLoad) {
+                $scope.getMyProducts($scope.filter);
             }
         };
 
@@ -548,6 +548,102 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 templateUrl: 'views/modal/added-wishlist.html',
             });
         };
+
+
+
+        $scope.today = function() {
+            $scope.dt = new Date();
+        };
+        $scope.today();
+
+        $scope.clear = function() {
+            $scope.dt = null;
+        };
+
+        $scope.inlineOptions = {
+            customClass: getDayClass,
+            minDate: new Date(),
+            showWeeks: true
+        };
+
+        $scope.dateOptions = {
+            dateDisabled: disabled,
+            formatYear: 'yy',
+            maxDate: new Date(2020, 5, 22),
+            minDate: new Date(),
+            startingDay: 1
+        };
+
+        // Disable weekend selection
+        function disabled(data) {
+            var date = data.date,
+                mode = data.mode;
+            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+        }
+
+        $scope.toggleMin = function() {
+            $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+            $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+        };
+
+        $scope.toggleMin();
+
+        $scope.open1 = function() {
+            $scope.popup1.opened = true;
+        };
+
+        $scope.open2 = function() {
+            $scope.popup2.opened = true;
+        };
+
+        $scope.setDate = function(year, month, day) {
+            $scope.dt = new Date(year, month, day);
+        };
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.format = $scope.formats[0];
+        $scope.altInputFormats = ['M!/d!/yyyy'];
+
+        $scope.popup1 = {
+            opened: false
+        };
+
+        $scope.popup2 = {
+            opened: false
+        };
+
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        var afterTomorrow = new Date();
+        afterTomorrow.setDate(tomorrow.getDate() + 1);
+        $scope.events = [{
+            date: tomorrow,
+            status: 'full'
+        }, {
+            date: afterTomorrow,
+            status: 'partially'
+        }];
+
+        function getDayClass(data) {
+            var date = data.date,
+                mode = data.mode;
+            if (mode === 'day') {
+                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+                for (var i = 0; i < $scope.events.length; i++) {
+                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+                    if (dayToCheck === currentDay) {
+                        return $scope.events[i].status;
+                    }
+                }
+            }
+
+            return '';
+        }
+
+
+
     })
     .controller('CelebrityChoiceCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
@@ -655,7 +751,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     var modal3 = "";
     var modal4 = "";
     $scope.cart = function() {
-      $scope.loginmsg.msg = "";
+        $scope.loginmsg.msg = "";
         $uibModal.open({
             animation: true,
             templateUrl: "views/modal/hello.html",
@@ -663,8 +759,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
     $scope.signUp = function() {
-      $scope.loginmsg.msg = "";
-      $scope.closeAllModals()
+        $scope.loginmsg.msg = "";
+        $scope.closeAllModals()
         modal1 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/signup.html",
@@ -673,8 +769,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log(modal1);
     };
     $scope.logIn = function() {
-      $scope.loginmsg.msg = "";
-      $scope.closeAllModals()
+        $scope.loginmsg.msg = "";
+        $scope.closeAllModals()
         modal3 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/login.html",
@@ -682,8 +778,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
     $scope.emailSignup = function() {
-      $scope.loginmsg.msg = "";
-      $scope.closeAllModals()
+        $scope.loginmsg.msg = "";
+        $scope.closeAllModals()
         modal2 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/email-signup.html",
@@ -691,8 +787,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
     $scope.forgot = function() {
-      $scope.loginmsg.msg = "";
-      $scope.closeAllModals()
+        $scope.loginmsg.msg = "";
+        $scope.closeAllModals()
         modal4 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/forgotpassword.html",
@@ -734,103 +830,103 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.loginmsg = {};
     $scope.login = {};
     if (NavigationService.getStoredUser() == null) {
-      $scope.isLoggedIn = false;
+        $scope.isLoggedIn = false;
 
-    }else {
-      $scope.isLoggedIn = true;
+    } else {
+        $scope.isLoggedIn = true;
 
     }
     $scope.signup = {};
     // SIGNUP
-    $scope.signUpNormal = function(){
-      $scope.loginmsg.msg = "";
-      if ($scope.signup.password === $scope.signup.confirmpswd) {
+    $scope.signUpNormal = function() {
+            $scope.loginmsg.msg = "";
+            if ($scope.signup.password === $scope.signup.confirmpswd) {
 
-      NavigationService.signUP($scope.signup, function(data){
-        if (data.value) {
-          $scope.closeAllModals();
-          $scope.isLoggedIn = true;
-          NavigationService.saveUser(data.data);
-        }else {
-          $scope.loginmsg.msg = data.error;
-          $scope.loginmsg.class = "text-danger";
+                NavigationService.signUP($scope.signup, function(data) {
+                    if (data.value) {
+                        $scope.closeAllModals();
+                        $scope.isLoggedIn = true;
+                        NavigationService.saveUser(data.data);
+                    } else {
+                        $scope.loginmsg.msg = data.error;
+                        $scope.loginmsg.class = "text-danger";
+                    }
+                }, function(err) {
+                    console.log(err);
+                })
+            } else {
+                $scope.loginmsg.msg = "Password And Confirm Password Should be same";
+                $scope.loginmsg.class = "text-danger";
+            }
         }
-      }, function(err){
-        console.log(err);
-      })
-    }else {
-      $scope.loginmsg.msg = "Password And Confirm Password Should be same";
-      $scope.loginmsg.class = "text-danger";
-    }
-    }
-    // NORMAL LOGIN
-    $scope.userLogin = function(){
-      $scope.loginmsg.msg = "";
+        // NORMAL LOGIN
+    $scope.userLogin = function() {
+            $scope.loginmsg.msg = "";
 
-      NavigationService.login($scope.login, function(data){
-        if(data.value) {
-          console.log("in if");
-          $scope.closeAllModals();
-          $scope.isLoggedIn = true;
-          NavigationService.saveUser(data.data);
-        }else {
-          $scope.loginmsg.msg = "Try again Later";
-          $scope.loginmsg.class = "text-danger";
+            NavigationService.login($scope.login, function(data) {
+                if (data.value) {
+                    console.log("in if");
+                    $scope.closeAllModals();
+                    $scope.isLoggedIn = true;
+                    NavigationService.saveUser(data.data);
+                } else {
+                    $scope.loginmsg.msg = "Try again Later";
+                    $scope.loginmsg.class = "text-danger";
+                }
+            }, function() {
+
+            })
         }
-      },function(){
-
-      })
-    }
-    //GOOGLE LOGIN
+        //GOOGLE LOGIN
     var checktwitter = function(data, status) {
-    var repdata = {};
-    if (data.value) {
-      $interval.cancel(stopinterval);
-      ref.close();
-      $scope.closeAllModals();
-      $scope.isLoggedIn = true;
-      NavigationService.saveUser(data.data);
-    } else {
+        var repdata = {};
+        if (data.value) {
+            $interval.cancel(stopinterval);
+            ref.close();
+            $scope.closeAllModals();
+            $scope.isLoggedIn = true;
+            NavigationService.saveUser(data.data);
+        } else {
 
-    }
-  };
+        }
+    };
 
-  var callAtIntervaltwitter = function() {
-    NavigationService.getProfile(checktwitter, function(err) {
-      console.log(err);
-    });
-  };
-  var authenticatesuccess = function(data, status) {
-    $ionicLoading.hide();
-    if (data.value) {
-      $scope.closeAllModals();
-      $scope.isLoggedIn = true;
-      NavigationService.saveUser(data.data);
-    }
-  };
-  $scope.facebookLogin = function() {
+    var callAtIntervaltwitter = function() {
+        NavigationService.getProfile(checktwitter, function(err) {
+            console.log(err);
+        });
+    };
+    var authenticatesuccess = function(data, status) {
+        $ionicLoading.hide();
+        if (data.value) {
+            $scope.closeAllModals();
+            $scope.isLoggedIn = true;
+            NavigationService.saveUser(data.data);
+        }
+    };
+    $scope.facebookLogin = function() {
 
-      ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
-    stopinterval = $interval(callAtIntervaltwitter, 2000);
-    ref.addEventListener('exit', function(event) {
-      NavigationService.getProfile(authenticatesuccess, function(err) {
-        console.log(err);
-      });
-      $interval.cancel(stopinterval);
-    });
-  };
+        ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
+        stopinterval = $interval(callAtIntervaltwitter, 2000);
+        ref.addEventListener('exit', function(event) {
+            NavigationService.getProfile(authenticatesuccess, function(err) {
+                console.log(err);
+            });
+            $interval.cancel(stopinterval);
+        });
+    };
 
-$scope.googleLogin = function() {
-console.log("googlelogin");
-    ref = window.open(adminURL + 'user/loginGoogle', '_blank', 'location=no');
-  stopinterval = $interval(callAtIntervaltwitter, 2000);
-  ref.addEventListener('exit', function(event) {
-    NavigationService.getProfile(authenticatesuccess, function(err) {
-      console.log(err);
-    });
-    $interval.cancel(stopinterval);
-  });
-};
+    $scope.googleLogin = function() {
+        console.log("googlelogin");
+        ref = window.open(adminURL + 'user/loginGoogle', '_blank', 'location=no');
+        stopinterval = $interval(callAtIntervaltwitter, 2000);
+        ref.addEventListener('exit', function(event) {
+            NavigationService.getProfile(authenticatesuccess, function(err) {
+                console.log(err);
+            });
+            $interval.cancel(stopinterval);
+        });
+    };
 
 
 })
