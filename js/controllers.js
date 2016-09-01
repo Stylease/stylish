@@ -472,6 +472,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.cartpro.timeTo = '';
         $scope.cartpro.deliveryTime = '';
         $scope.cartpro.pickupTime = '';
+        $scope.cartpro.rent = '';
+        $scope.cartpro.deposit = '';
 
 
         //PRODUCT DETAIL ON SELECTED PRODUCT
@@ -503,18 +505,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.addToCart = function() {
             console.log("calender date", $scope.cartpro.timeFrom);
+            $scope.cartpro.timeTo = $scope.cartpro.timeFrom.setDate($scope.cartpro.timeFrom.getDate() + $scope.cartpro.duration);
+            console.log("time to", $scope.cartpro.timeTo);
             console.log($scope.cartpro);
-            NavigationService.addToCart($scope.cartpro, function(data) {
-                console.log("response cart", data);
-                $scope.response = data;
-                if ($scope.response.value = true) {
-                    $uibModal.open({
-                        animation: true,
-                        templateUrl: "views/modal/shop.html",
-                        scope: $scope
-                    })
-                }
-            });
+            // NavigationService.addToCart($scope.cartpro, function(data) {
+            //     console.log("response cart", data);
+            //     $scope.response = data;
+            //     if ($scope.response.value = true) {
+            //         $uibModal.open({
+            //             animation: true,
+            //             templateUrl: "views/modal/shop.html",
+            //             scope: $scope
+            //         })
+            //     }
+            // });
 
         };
         $scope.productFull = function() {
