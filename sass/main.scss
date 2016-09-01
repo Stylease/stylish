@@ -1774,6 +1774,22 @@ ul.mn-list {
   list-style-type: lower-alpha !important;
   padding-left: 25px !important;
 }
+
+.display-inline{
+  display: inline-block;
+}
+
+.img-holder{
+  height: 300px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+}
+
+.padd{
+  padding-left: 80px;
+}
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";
