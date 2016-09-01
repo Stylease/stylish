@@ -1341,6 +1341,9 @@ input.form-control {
     margin: 10px 0 -16px;
     // background: url('../img/calendar.png') no-repeat 95% 50%;
   }
+  .dropdown-menu{
+    padding: 0;
+  }
   .input-group .form-control,
   .input-group-addon,
   .input-group-btn {
@@ -1365,6 +1368,9 @@ input.form-control {
         outline:0;
       }
     }
+  }
+  .uib-button-bar{
+    display: none;
   }
   .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
     background-color: transparent;

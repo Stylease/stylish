@@ -463,14 +463,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.product = {};
         $scope.mainImage = "";
         $scope.timestamps = [];
+        $scope.cartpro = {};
+        $scope.cartpro.product = $state.params.id;
+        $scope.cartpro.size = '';
+        $scope.cartpro.by = '';
+        $scope.cartpro.duration = '';
+        $scope.cartpro.timeFrom = '';
+        $scope.cartpro.timeTo = '';
+        $scope.cartpro.deliveryTime = '';
+        $scope.cartpro.pickupTime = '';
+
 
         //PRODUCT DETAIL ON SELECTED PRODUCT
         NavigationService.getProductDetail($state.params.id, function(data) {
-            console.log(data);
+            // console.log(data);
             $scope.product = data.data.product;
             $scope.producttime = data.data.producttime;
             _.each($scope.producttime, function(key) {
-
                 var tmpdate = new Date(key.timestampFrom);
                 // tmpdate.setHours(0,0,0,0);
                 var tmpto = new Date(key.timestampTo);
@@ -492,12 +501,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.mainImage = img;
         };
 
-        $scope.shop = function() {
-            $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/shop.html",
-                scope: $scope
-            })
+        $scope.addToCart = function() {
+            console.log("calender date", $scope.cartpro.timeFrom);
+            console.log($scope.cartpro);
+            NavigationService.addToCart($scope.cartpro, function(data) {
+                console.log("response cart", data);
+                $scope.response = data;
+                if ($scope.response.value = true) {
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/shop.html",
+                        scope: $scope
+                    })
+                }
+            });
+
         };
         $scope.productFull = function() {
             $uibModal.open({
@@ -514,10 +532,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         //calendar
-        $scope.today = function() {
-            $scope.dt = new Date();
-        };
-        $scope.today();
         $scope.dateOptions = {
             dateDisabled: disabled,
             formatYear: 'yy',
@@ -536,30 +550,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             return _.findIndex($scope.timestamps, function(key) {
                 key.setHours(0, 0, 0, 0);
                 current.setHours(0, 0, 0, 0);
-                console.log(new Date(key), new Date(current));
+                // console.log(new Date(key), new Date(current));
                 return new Date(key).getTime() == current.getTime();
             }) !== -1;
         }
         $scope.open1 = function() {
             $scope.popup1.opened = true;
         };
-
         $scope.open2 = function() {
             $scope.popup2.opened = true;
         };
-
-        $scope.setDate = function(year, month, day) {
-            $scope.dt = new Date(year, month, day);
-        };
-
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
-        $scope.altInputFormats = ['M!/d!/yyyy'];
-
         $scope.popup1 = {
             opened: false
         };
-
         $scope.popup2 = {
             opened: false
         };

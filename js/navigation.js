@@ -95,7 +95,7 @@ var navigationservice = angular.module('navigationservice', [])
 
                     _.each(data.data, function(key) {
                         if (key.category.name == 'Occasion') {
-                            console.log("oc");
+                            // console.log("oc");
                             subnavGen.push({
                                 name: key.name,
                                 classis: "active",
@@ -134,7 +134,7 @@ var navigationservice = angular.module('navigationservice', [])
                 'size': request.size,
                 'pagenumber': request.pagenumber,
                 'pagesize': 5,
-                'color':request.color
+                'color': request.color
             };
             return $http({
                 url: adminURL + "product/getProductByCat",
@@ -152,6 +152,14 @@ var navigationservice = angular.module('navigationservice', [])
                 data: data
             }).success(callback).error(errCallback);
         },
+        addToCart: function(cartpro, callback, errCallback) {
+            var data = cartpro;
+            return $http({
+                url: adminURL + "cart/save",
+                method: "POST",
+                data: data
+            }).success(callback).error(errCallback);
+        },
         getSubcategory: function(callback, errCallback) {
             return $http({
                 url: adminURL + "subcategory/getAllCat",
@@ -165,39 +173,39 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback).error(errCallback);
         },
         signUP: function(data, callback, errCallback) {
-          console.log(data);
-          return $http({
-            url: adminURL + "user/register",
-            method: "POST",
-            data: data
-          }).success(callback).error(errCallback);
+            console.log(data);
+            return $http({
+                url: adminURL + "user/register",
+                method: "POST",
+                data: data
+            }).success(callback).error(errCallback);
         },
         getProfile: function(callback, errCallback) {
-          return $http({
-            url: adminURL + "user/profile",
-            method: "POST"
-          }).success(callback).error(errCallback);
+            return $http({
+                url: adminURL + "user/profile",
+                method: "POST"
+            }).success(callback).error(errCallback);
         },
         login: function(data, callback, errCallback) {
-          console.log(data);
-          return $http({
-            url: adminURL + "user/login",
-            method: "POST",
-            data: data
-          }).success(callback).error(errCallback);
+            console.log(data);
+            return $http({
+                url: adminURL + "user/login",
+                method: "POST",
+                data: data
+            }).success(callback).error(errCallback);
         },
         logout: function(callback, errCallback) {
-          $.jStorage.flush();
-          return $http({
-            url: adminURL + "user/logout",
-            method: "POST",
-          }).success(callback).error(errCallback);
+            $.jStorage.flush();
+            return $http({
+                url: adminURL + "user/logout",
+                method: "POST",
+            }).success(callback).error(errCallback);
         },
-        saveUser: function(data){
-          $.jStorage.set("user",data);
+        saveUser: function(data) {
+            $.jStorage.set("user", data);
         },
-        getStoredUser: function(){
-          return $.jStorage.get("user");
+        getStoredUser: function() {
+            return $.jStorage.get("user");
         }
 
     };
