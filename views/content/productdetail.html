@@ -42,15 +42,84 @@
               <img src="img/change.png" alt="" width="15">
               <span class="change" uib-tooltip="Your deposit will be refunded on return of the outfit." tooltip-is-open="tooltipIsOpen" tooltip-placement="bottom"></span></p>
           </div>
-            <div class="product-size" ng-if="product.size.length > 0">
+<!--            <div class="product-size" ng-if="product.size.length > 0">
             <span class="mr20 text-medium">Size :</span>
             <ul class="list-inline inline-block m-clear" ng-init="size=''">
               <li ng-repeat="size in product.size"><a ng-class="{'select-size': cartpro.size==size.name }" ng-click="cartpro.size=size.name">{{size.name}}</a></li>
-              <!-- <li><a href="" ng-class="{'select-size' : filter.size=='m'}" ng-click="filter.size='m'">M</a></li>
+              <! - - <li><a href="" ng-class="{'select-size' : filter.size=='m'}" ng-click="filter.size='m'">M</a></li>
               <li><a href="" ng-class="{'select-size' : filter.size=='l'}" ng-click="filter.size='l'">L</a></li>
               <li><a href="" ng-class="{'select-size' : filter.size=='xl'}" ng-click="filter.size='xl'">XL</a></li> -->
-            </ul>
+
+          <!--size list-->
+          <div class="s1">
+            <div>
+              <form>
+                Size:
+                <label class="checkbox-inline">
+                  S
+                </label>
+                <label class="checkbox-inline">
+                  M
+                </label>
+                <label class="checkbox-inline">
+                  L
+                </label>
+                <label class="checkbox-inline">
+                  XL
+                </label>
+              </form>
+            </div>
+
+            <div class="back-color2">
+              <!-- <div class="back-color">
+              <div class="disp-inline">
+                <span></span>
+              </div>
+              <div class="disp-inline disp-padd">
+                <span></span>
+              </div>
+              <div class="disp-inline">
+                <span></span>
+              </div>
+            </div> -->
+
+            <!-- <div class="back-color">
+              <div class="disp-inline">
+                <span></span>
+              </div>
+              <div class="disp-inline disp-padd">
+                <span></span>
+              </div>
+              <div class="disp-inline">
+                <span></span>
+              </div>
+            </div> -->
+
+            <div class="back-color"><!--for l-->
+              <div class="disp-inline">
+                <span>Bust 34-40</span>
+              </div>
+              <div class="disp-inline  disp-padd">
+                <span>Upper waist 28-44</span>
+              </div>
+              <div class="disp-inline">
+                <span>Height N/A</span>
+              </div>
+            </div>
+            <!-- <div class="back-color">
+              <div  class="disp-inline">
+                <span class="disp-inline"></span>
+              </div>
+              <div  class="disp-inline disp-padd">
+                <span></span>
+              </div>
+              <div  class="disp-inline">
+                <span></span>
+              </div>
+            </div> -->
           </div>
+        </div>
+
           <div class="delivery-date dates">
             <span class="text-medium">Delivery / Return Dates :</span>
             <form action="">
@@ -72,27 +141,15 @@
               </div>
             </form>
           </div>
-          <div class="order-time">
+
+
+          <div class="order-time a1">
             <div class="row">
-              <div class="col-md-6 col-sm-6">
+              <div class="col-md-12 col-sm-12">
                 <div class="time">
-                  <label for="delivery-time" class="inline-block">Delivery Time</label>
-                  <div class="custom-select inline-block">
+                  <label for="delivery-time" class="inline-block a2">Delivery Time</label>
+                  <div class="custom-select inline-block a3">
                     <select name="" id="delivery-time" ng-model="cartpro.deliveryTime">
-                      <option value="10 am">10 am</option>
-                      <option value="11 am">11 am</option>
-                      <option value="12 am">12 am</option>
-                      <option value="01 pm">01 pm</option>
-                      <option value="02 pm">02 pm</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-sm-6">
-                <div class="time">
-                  <label for="pickup-time" class="inline-block">Pickup Time</label>
-                  <div class="custom-select inline-block">
-                    <select name="" ng-model="cartpro.pickupTime" id="pickup-time">
                       <option value="10 am">10 am</option>
                       <option value="11 am">11 am</option>
                       <option value="12 am">12 am</option>
@@ -104,10 +161,32 @@
               </div>
             </div>
           </div>
+          <div class="clearfix"></div>
+
+          <div class="order-time a1">
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="time">
+                <label for="pickup-time" class="inline-block a2">Pickup Time</label>
+                <div class="custom-select inline-block a3">
+                  <select name="" ng-model="cartpro.pickupTime" id="pickup-time">
+                    <option value="10 am">10 am</option>
+                    <option value="11 am">11 am</option>
+                    <option value="12 am">12 am</option>
+                    <option value="01 pm">01 pm</option>
+                    <option value="02 pm">02 pm</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div class="clearfix"></div>
+        <div class="cla">
           <div class="buttons on-edit text-center">
             <button class="btn btn-outline text-uppercase btn-full m-center added-cart" ng-click="addToCart();">add to cart</button>
             <button class="btn btn-outline text-uppercase btn-full m-center"  ng-disabled="checkLogin==null" ng-click="addTowishlist(); saveWishList(); ">add to wishlist</button>
           </div>
+        </div>
           <div class="product-more-detail accordion-custom">
             <uib-accordion close-others="oneAtATime">
               <uib-accordion-group is-open="status.open1" ng-if="product.details !== ''">
@@ -129,6 +208,13 @@
                 </uib-accordion-heading>
                 <div class="descp">
                   <p ng-bind-html="product.notes"></p>
+                </div>
+              </uib-accordion-group>
+              <uib-accordion-group is-open="status.open4" ng-if="product.notes !== ''">
+                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open4, 'fa-chevron-down': !status.open3}"></i> <span class="block">Additional Notes</span>
+                </uib-accordion-heading>
+                <div class="descp">
+                  <p ng-bind-html="additional.notes"></p>
                 </div>
               </uib-accordion-group>
             </uib-accordion>
