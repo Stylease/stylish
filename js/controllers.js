@@ -1,5 +1,6 @@
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter'])
 
+
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
 
@@ -472,11 +473,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.cartpro.timeTo = '';
         $scope.cartpro.deliveryTime = '';
         $scope.cartpro.pickupTime = '';
-        $scope.cartpro.rent = '';
-        $scope.cartpro.deposit = '';
 
+
+        $scope.checkLogin = $.jStorage.get("user");
 
         //PRODUCT DETAIL ON SELECTED PRODUCT
+         $scope.saveWishList=function(){
+           NavigationService.saveWishlist($state.params.id,function(data){
+             console.log("$state.params.id",$state.params.id);
+console.log("wish",data);
+           })
+         }
+        //  $scope.saveWishList();
+
         NavigationService.getProductDetail($state.params.id, function(data) {
             // console.log(data);
             $scope.product = data.data.product;
@@ -504,21 +513,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.addToCart = function() {
-            console.log("calender date", $scope.cartpro.timeFrom);
-            $scope.cartpro.timeTo = $scope.cartpro.timeFrom.setDate($scope.cartpro.timeFrom.getDate() + $scope.cartpro.duration);
-            console.log("time to", $scope.cartpro.timeTo);
+            var d = new Date($scope.cartpro.timeFrom);
+            $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
             console.log($scope.cartpro);
-            // NavigationService.addToCart($scope.cartpro, function(data) {
-            //     console.log("response cart", data);
-            //     $scope.response = data;
-            //     if ($scope.response.value = true) {
-            //         $uibModal.open({
-            //             animation: true,
-            //             templateUrl: "views/modal/shop.html",
-            //             scope: $scope
-            //         })
-            //     }
-            // });
+            NavigationService.addToCart($scope.cartpro, function(data) {
+                console.log("response cart", data);
+                $scope.response = data;
+                if ($scope.response.value = true) {
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/shop.html",
+                        scope: $scope
+                    })
+                }
+            });
 
         };
         $scope.productFull = function() {
@@ -765,6 +773,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
     $scope.signup = {};
     // SIGNUP
+
     $scope.signUpNormal = function() {
             $scope.loginmsg.msg = "";
             if ($scope.signup.password === $scope.signup.confirmpswd) {
@@ -795,7 +804,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log("in if");
                     $scope.closeAllModals();
                     $scope.isLoggedIn = true;
+                    console.log($scope.isLoggedIn, 'dsfdsfa');
                     NavigationService.saveUser(data.data);
+                    location.reload();
                 } else {
                     $scope.loginmsg.msg = "Try again Later";
                     $scope.loginmsg.class = "text-danger";

@@ -206,7 +206,15 @@ var navigationservice = angular.module('navigationservice', [])
         },
         getStoredUser: function() {
             return $.jStorage.get("user");
-        }
+        },
+        saveWishlist: function(id, callback, errCallback) {
+
+            return $http({
+                url: adminURL + "wishlist/save",
+                method: "POST",
+                product:id
+            }).success(callback).error(errCallback);
+        },
 
     };
 });
