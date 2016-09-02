@@ -301,6 +301,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 controller: "CartCtrl"
             });
         };
+        NavigationService.getcart(function(data){
+          $scope.cartDetails=data.data;
+          console.log("cartDetails",$scope.cartDetails);
+        })
 
     })
     .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
