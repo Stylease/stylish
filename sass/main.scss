@@ -1424,6 +1424,30 @@ input.form-control {
   }
 }
 // product detail page
+
+.a1{
+ .a2{
+    float: left;
+  }
+  .a3{
+    float: right;
+  }
+}
+
+.size-border{
+  display: inline-block;
+    border-radius: 50%;
+    border: 2px solid $brand-dark-blue;
+    height: 35px;
+    width: 35px;
+    margin-left: 30px;
+    text-align: center;
+}
+
+.size-font{
+  line-height: 2.3;
+}
+
 .product-info {
   padding: 100px 0 30px;
 }
@@ -1455,6 +1479,53 @@ input.form-control {
       font-size: 15px;
       font-weight: 300;
     }
+  }
+
+  .back-color{
+    width:100%;
+    background-color:  #fdd3be;
+    padding:10px;
+  }
+
+
+
+  .back-color2{
+    width:100%;
+    background-color:  #fdd3be;
+    padding: 2px 10px 2px 10px;
+    text-align: center;
+    margin-top: 12px;
+    position: relative;
+
+    &:before{
+      position: absolute;
+      top: -16%;
+      right: 223px;
+      margin-top: -3px;
+      width: 0;
+      height: 0;
+      border-bottom: 10px solid;
+      border-right: 10px solid rgba(253, 211, 190, 0);
+      border-left: 10px solid rgba(253, 211, 190, 0);
+      color: #fdd3be;
+      content: "";
+      pointer-events: none;
+      z-index: 999;
+  }
+  }
+
+  .disp-inline{
+    display: inline;
+  }
+
+  .disp-padd{
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .s1{
+    padding: 20px 0;
+    border-bottom: 1px solid $brand-dark-blue;
   }
   .buttons,
   .delivery-date,
@@ -1773,6 +1844,22 @@ input.form-control {
 ul.mn-list {
   list-style-type: lower-alpha !important;
   padding-left: 25px !important;
+}
+
+.display-inline{
+  display: inline-block;
+}
+
+.img-holder{
+  height: 300px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+}
+
+.padd{
+  padding-left: 80px;
 }
 // celebrity page end
 @import "fancybox-override";

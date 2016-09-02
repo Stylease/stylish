@@ -48,19 +48,28 @@
           <div class="celebrity-holder relate">
             <div class="clearfix">
               <div class="pull-left">
-                <h3 class="shop-name m-clear mb5">{{celebrity.shopName}}</h3>
-                <h4 class="celebrity-name m-clear">{{celebrity.celebrityName}}</h4>
+                <h3 class="shop-name m-clear mb5 padd">{{celebrity.celebrityName}}</h3>
               </div>
               <div class="pull-right">
                 <span class="pointer celebrity-heart inline-block" ng-click="addCelebrity(celebrity);"><i class="fa {{celebrity.heart}}"></i></span>
               </div>
             </div>
-            <div class="celebrity-imgholder relate">
-              <img ng-src="{{celebrity.img}}" alt="{{celebrity.celebrityName}}" class="get-center img-responsive">
+            <div class="celebrity-imgholder relate text-center">
+              <!-- <img ng-src="{{celebrity.img}}" alt="{{celebrity.celebrityName}}" class="get-center img-responsive">
               <div class="choice">
                 <img ng-src="{{celebrity.secImg}}" alt="{{celebrity.celebrityName}}" class="img-responsive">
-              </div>
-            </div>
+              </div> -->
+<div class="display-inline">
+  <div class="img-holder">
+    <img src="img/celebrities.jpg" alt="">
+  </div>
+
+</div>
+<div class="display-inline">
+  <div class="img-holder">
+    <img src="img/celebrities.jpg" alt="">
+  </div>
+</div>
             <div class="text-center">
               <span class="designer-name inline-block mb5 text-medium">By : {{celebrity.designerName}}</span>
               <h3 class="celebrity-price m-clear">Rent : Rs.{{celebrity.price}}/-</h3>
