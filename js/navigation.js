@@ -1,5 +1,5 @@
-// var adminURL = "http://stylease.wohlig.com/";
-var adminURL = "http://192.168.1.113:81/";
+var adminURL = "http://stylease.wohlig.com:81/";
+// var adminURL = "http://192.168.1.113:81/";
 // if (isproduction) {
 //     adminURL = "http://www.wohlig.co.in/demo/index.php";
 // } else {
