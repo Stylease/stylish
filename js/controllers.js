@@ -68,13 +68,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log("logout clicked");
             NavigationService.logout(function(data) {
                 if (data.value) {
+                  NavigationService.saveUser(null);
+
                     $scope.isLoggedIn = false;
                     $state.go("home");
                 }
             }, function(err) {
 
-            })
-        }
+            });
+        };
 
     })
     .controller('OrdersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
