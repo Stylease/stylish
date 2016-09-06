@@ -15,24 +15,24 @@
 
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="text" ng-disabled="!setProfile" class="form-control" ng-model="userdata.firstname" placeholder="First Name">
+                  <input type="text" ng-disabled="!set.Profile" class="form-control" ng-model="userdata.firstname" placeholder="First Name">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="text" ng-disabled="!setProfile" class="form-control" ng-model="userdata.lastname" placeholder="Last Name">
+                  <input type="text" ng-disabled="!set.Profile" class="form-control" ng-model="userdata.lastname" placeholder="Last Name">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="tel" ng-disabled="!setProfile" class="form-control" ng-model="userdata.mobile" placeholder="Mobile No">
+                  <input type="tel" ng-disabled="!set.Profile" class="form-control" ng-model="userdata.mobile" placeholder="Mobile No">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="email" ng-disabled="!setProfile" class="form-control" ng-model="userdata.email" placeholder="Email-id">
+                  <input type="email" ng-disabled="!set.Profile" class="form-control" ng-model="userdata.email" placeholder="Email-id">
                 </div>
               </div>
             </div>
@@ -75,8 +75,8 @@
                 </div>
               </div> -->
               <div class="text-center">
-                <a class="btn btn-outline mt20 mb20 btn-full text-medium" ng-hide="setProfile" ng-click="setProfile=true">Edit</a>
-                <div class="on-edit mt20 mb20" ng-show="setProfile">
+                <a class="btn btn-outline mt20 mb20 btn-full text-medium" ng-hide="set.Profile" ng-click="set.Profile=true">Edit</a>
+                <div class="on-edit mt20 mb20" ng-show="set.Profile">
                   <button type="reset" class="btn btn-outline reset text-medium btn-full" >Reset Details</button>
                   <a class="btn btn-outline save-changes text-medium btn-full" ng-click="saveProfile()">Save Changes</a>
                 </div>

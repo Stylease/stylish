@@ -1,35 +1,36 @@
 <div class="heading-bar text-center">
-  <h3 class="heading heading-underline">my wishlist</h3>
-  <span class="block text-medium">‘‘If You Can’t Stop Thinking About It Get It!’’</span>
+    <h3 class="heading heading-underline">my wishlist</h3>
+    <span class="block text-medium">‘‘If You Can’t Stop Thinking About It Get It!’’</span>
 </div>
 <div class="wishlist">
-  <div class="container">
-    <h3 class="dark-blue text-uppercase">my account</h3>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="wishlist-tab" ng-include="template.account"></div>
-      </div>
-      <div class="col-md-9">
-        <div class="wishlisted-product">
-          <div class="row">
-            <div class="col-md-4 col-sm-6" ng-repeat="prd in wishlist">
-              <div class="wishlist-product text-center">
-                <div class="remove-wishlist text-right">
-                  <span class="pointer"><img src="img/cross.png" alt="" width="15"></span>
-                </div>
-                <div class="wish-imgholder relate">
-                  <img ng-src="{{prd.img}}" alt="" class="get-center img-responsive">
-                </div>
-                <div class="wishlist-prd-detail">
-                  <h5 class="wishprd-name">{{prd.name}}</h5>
-                  <span>Rent : Rs, {{prd.price}}/-</span>
-                </div>
-                <button class="btn btn-outline btn-full text-medium" ui-sref="productdetail">View Detail</button>
-              </div>
+    <div class="container">
+        <h3 class="dark-blue text-uppercase">my account</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="wishlist-tab" ng-include="template.account"></div>
             </div>
-          </div>
+            <div class="col-md-9">
+                <div class="wishlisted-product">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6" ng-repeat="prd in wishlist track by $index">
+                            <div class="wishlist-product text-center">
+                                <div class="remove-wishlist text-right" style="cursor:pointer;" ng-click="deleteWishlist(prd._id);">
+                                    <span class="pointer"><img src="img/cross.png" alt="" width="15"></span>
+                                </div>
+                                <div class="wish-imgholder relate">
+                                    <img ng-src="{{prd.product.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
+                                </div>
+                                <div class="wishlist-prd-detail">
+                                    <h5 class="wishprd-name">{{prd.product.name}}</h5>
+                                    <span>Rent : Rs,
+                                        {{prd.product.rentalamount}}/-</span>
+                                </div>
+                                <button class="btn btn-outline btn-full text-medium" ui-sref="productdetail({id:prd.product._id})">View Detail</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

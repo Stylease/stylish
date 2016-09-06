@@ -57,7 +57,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-
+        $scope.set = {};
         $scope.template = TemplateService.changecontent("profile");
         $scope.menutitle = NavigationService.makeactive("Profile");
         TemplateService.title = $scope.menutitle;
@@ -76,9 +76,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
         $scope.saveProfile = function() {
+            $scope.set.Profile = false;
             console.log($scope.userdata);
             NavigationService.userProfileSave($scope.userdata, function(data) {
-                $scope.setProfile = null;
+                $scope.setProfile = false;
             });
         };
 
@@ -164,43 +165,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
-        $scope.wishlist = [{
-            img: "img/product1.png",
-            name: "The Nawishtah Jacket and Gown",
-            price: "4500"
-        }, {
-            img: "img/product2.png",
-            name: "The Mashq Suit",
-            price: "4500"
-        }, {
-            img: "img/product3.png",
-            name: "Raw Silk Gold Choli",
-            price: "4500"
-        }, {
-            img: "img/product1.png",
-            name: "The Nawishtah Jacket and Gown",
-            price: "4500"
-        }, {
-            img: "img/product2.png",
-            name: "The Mashq Suit",
-            price: "4500"
-        }, {
-            img: "img/product3.png",
-            name: "Raw Silk Gold Choli",
-            price: "4500"
-        }, {
-            img: "img/product1.png",
-            name: "The Nawishtah Jacket and Gown",
-            price: "4500"
-        }, {
-            img: "img/product2.png",
-            name: "The Mashq Suit",
-            price: "4500"
-        }, {
-            img: "img/product3.png",
-            name: "Raw Silk Gold Choli",
-            price: "4500"
-        }];
+        function getWishlist () {
+          NavigationService.getWishlistUser(function(data) {
+            $scope.wishlist = data.data.data;
+          });
+        }
+        getWishlist();
+
+        $scope.deleteWishlist = function(id) {
+          NavigationService.deleteWishlist(id,function(data) {
+            console.log(data);
+            getWishlist();
+          });
+        };
 
     })
     .controller('AddressCtrl', function($scope, TemplateService, NavigationService, $timeout) {

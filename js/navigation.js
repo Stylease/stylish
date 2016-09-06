@@ -90,7 +90,6 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminURL + 'subcategory/getAllCat',
                 method: "POST"
             }).success(function(data) {
-                console.log(data.data);
                 if (data) {
 
                     _.each(data.data, function(key) {
@@ -250,9 +249,15 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         userProfileSave: function(data, callback) {
-          console.log(data);
-            delete data.password;
-            return $http.post(adminURL + "user/save", data).success(callback);
+            $http.post(adminURL + "user/save", data).success(callback);
+        },
+        getWishlistUser: function(callback) {
+            $http.post(adminURL + "wishlist/getWishlistUser", {}).success(callback);
+        },
+        deleteWishlist: function(id, callback) {
+            $http.post(adminURL + "wishlist/delete", {
+                _id: id
+            }).success(callback);
         },
 
     };
