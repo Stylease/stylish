@@ -57,11 +57,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.set = {};
+
         $scope.template = TemplateService.changecontent("profile");
         $scope.menutitle = NavigationService.makeactive("Profile");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+
+        $scope.set = {};
         $scope.getProfile = function() {
             NavigationService.getProfile(function(data) {
                 if (data.value) {
@@ -165,18 +167,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
-        function getWishlist () {
-          NavigationService.getWishlistUser(function(data) {
-            $scope.wishlist = data.data.data;
-          });
+        function getWishlist() {
+            NavigationService.getWishlistUser(function(data) {
+                $scope.wishlist = data.data.data;
+            });
         }
         getWishlist();
 
         $scope.deleteWishlist = function(id) {
-          NavigationService.deleteWishlist(id,function(data) {
-            console.log(data);
-            getWishlist();
-          });
+            NavigationService.deleteWishlist(id, function(data) {
+                console.log(data);
+                getWishlist();
+            });
         };
 
     })
@@ -205,6 +207,42 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Bankdetail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+
+        $scope.set = {};
+        $scope.getProfile = function() {
+            NavigationService.getProfile(function(data) {
+                if (data.value) {
+                    $scope.userdata = data.data;
+                    console.log("uu", $scope.userdata);
+                }
+            }, function(err) {
+                console.log(err);
+            });
+        };
+        $scope.getProfile();
+
+
+        $scope.saveProfile = function() {
+            $scope.set.Profile = false;
+            console.log($scope.userdata);
+            NavigationService.userProfileSave($scope.userdata, function(data) {
+                $scope.setProfile = false;
+            });
+        };
+
+        $scope.logoutClick = function() {
+            console.log("logout clicked");
+            NavigationService.logout(function(data) {
+                if (data.value) {
+                    // NavigationService.saveUser(null);
+
+                    // $scope.isLoggedIn = false;
+                    $state.go("home");
+                }
+            }, function(err) {
+
+            });
+        };
 
     })
     .controller('CheckoutSigninCtrl', function($scope, TemplateService, NavigationService, $timeout) {
