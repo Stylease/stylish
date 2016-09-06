@@ -186,12 +186,12 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback).error(errCallback);
         },
-        getOneProduct: function(request,callback, errCallback) {
+        getOneProduct: function(request, callback, errCallback) {
             return $http({
                 url: adminURL + "product/getOne",
                 method: "POST",
-                data:{
-                  _id:request
+                data: {
+                    _id: request
                 }
             }).success(callback).error(errCallback);
         },
@@ -248,6 +248,11 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST",
                 data: data
             }).success(callback);
+        },
+        userProfileSave: function(data, callback) {
+          console.log(data);
+            delete data.password;
+            return $http.post(adminURL + "user/save", data).success(callback);
         },
 
     };

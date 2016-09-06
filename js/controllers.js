@@ -66,13 +66,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getProfile(function(data) {
                 if (data.value) {
                     $scope.userdata = data.data;
-                    console.log("uu",$scope.userdata);
+                    console.log("uu", $scope.userdata);
                 }
             }, function(err) {
                 console.log(err);
             });
         };
         $scope.getProfile();
+
+
+        $scope.saveProfile = function() {
+            console.log($scope.userdata);
+            NavigationService.userProfileSave($scope.userdata, function(data) {
+                $scope.setProfile = null;
+            });
+        };
 
         $scope.logoutClick = function() {
             console.log("logout clicked");
