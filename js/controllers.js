@@ -270,6 +270,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.variables = {};
+        $scope.cartProduct = [];
         $scope.date = function() {
             $uibModal.open({
                 animation: true,
@@ -298,8 +299,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.getCart = function () {
           NavigationService.getcart(function(data) {
-              $scope.cartDetails = data.data.cartcount;
-              $scope.cartProduct = data.data.cartproduct;
+              if(data.value){
+                $scope.cartDetails = data.data.cartcount;
+                $scope.cartProduct = data.data.cartproduct;
+              }else{
+                $scope.cartProduct = [];
+                $scope.cartDetails = 0;
+              }
           });
         };
         $scope.getCart();
@@ -333,8 +339,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     })._id);
                     $scope.checkIt[$state.params.name] = true;
                     $scope.filter.pagenumber = 1;
-                    $scope.getMyProducts($scope.filter);
                 }
+                $scope.getMyProducts($scope.filter);
+                
             }, function(err) {
 
             });

@@ -85,6 +85,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'ProductCtrl'
   })
+
     .state('productdetail', {
     url: "/productdetail/:id",
     templateUrl: "views/template.html",
