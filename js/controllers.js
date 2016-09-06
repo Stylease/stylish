@@ -62,7 +62,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Profile");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-
+        $scope.getProfile = function() {
+            NavigationService.getProfile(function(data) {
+                if (data.value) {
+                    $scope.userdata = data.data;
+                    console.log("uu",$scope.userdata);
+                }
+            }, function(err) {
+                console.log(err);
+            });
+        };
+        $scope.getProfile();
 
         $scope.logoutClick = function() {
             console.log("logout clicked");
@@ -262,7 +272,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CartCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal,$state) {
+    .controller('CartCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("cart");
@@ -280,59 +290,59 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
         $scope.remove = function() {
-          console.log("Yes I do");
+            console.log("Yes I do");
             NavigationService.removeFromCart($scope.variables.removeitem, function(data) {
                 $scope.response = data;
                 if ($scope.response.value === true) {
-                  removemod.close();
-                  $scope.getCart();
+                    removemod.close();
+                    $scope.getCart();
                 }
             });
 
         };
-        $scope.editCartProduct = function (id) {
-          $scope.variables.editCart =_.map($scope.variables.editCart,function (key) {
-            return false;
-          });
-          $scope.variables.editCart[id]= true;
-          NavigationService.getOneProduct(id, function (response) {
-            if(response.value){
-              $scope.product =response.data;
-              console.log($scope.product);
-              $scope.editable = _.find($scope.cartProduct,function (key) {
-               return key._id == id;
-             });
-            }
-          },function (err) {
-            console.log(err);
-          });
+        $scope.editCartProduct = function(id) {
+            $scope.variables.editCart = _.map($scope.variables.editCart, function(key) {
+                return false;
+            });
+            $scope.variables.editCart[id] = true;
+            NavigationService.getOneProduct(id, function(response) {
+                if (response.value) {
+                    $scope.product = response.data;
+                    console.log($scope.product);
+                    $scope.editable = _.find($scope.cartProduct, function(key) {
+                        return key._id == id;
+                    });
+                }
+            }, function(err) {
+                console.log(err);
+            });
 
         };
-        $scope.closeEdit = function (id) {
-          $scope.variables.editCart =_.map($scope.variables.editCart,function (key) {
-            return false;
-          });
+        $scope.closeEdit = function(id) {
+            $scope.variables.editCart = _.map($scope.variables.editCart, function(key) {
+                return false;
+            });
         };
-        $scope.openRemoveModal = function (productid) {
-          $scope.variables.removeitem = productid;
-          removemod = $uibModal.open({
-              animation: true,
-              templateUrl: "views/modal/removeitem.html",
-              scope:$scope
-          });
+        $scope.openRemoveModal = function(productid) {
+            $scope.variables.removeitem = productid;
+            removemod = $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/removeitem.html",
+                scope: $scope
+            });
         };
-        $scope.getCart = function () {
-          NavigationService.getcart(function(data) {
-              if(data.value){
-                $scope.cartDetails = data.data.cartcount;
-                $scope.cartProduct = data.data.cartproduct;
-              }else{
-                $scope.cartProduct = [];
-                $scope.cartDetails = 0;
-              }
-          },function (err) {
-            console.log(err);
-          });
+        $scope.getCart = function() {
+            NavigationService.getcart(function(data) {
+                if (data.value) {
+                    $scope.cartDetails = data.data.cartcount;
+                    $scope.cartProduct = data.data.cartproduct;
+                } else {
+                    $scope.cartProduct = [];
+                    $scope.cartDetails = 0;
+                }
+            }, function(err) {
+                console.log(err);
+            });
         };
         $scope.getCart();
 
@@ -514,13 +524,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         //PRODUCT DETAIL ON SELECTED PRODUCT
         $scope.saveWishList = function() {
-                NavigationService.saveWishlist($state.params.id, function(data) {
-                    console.log("$state.params.id", $state.params.id);
-                    console.log("wish", data);
-                });
-                // NavigationService.getSession
-            };
-            //  $scope.saveWishList();
+            NavigationService.saveWishlist($state.params.id, function(data) {
+                console.log("$state.params.id", $state.params.id);
+                console.log("wish", data);
+            });
+            // NavigationService.getSession
+        };
+        //  $scope.saveWishList();
 
         NavigationService.getProductDetail($state.params.id, function(data) {
             // console.log(data);
@@ -566,11 +576,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         templateUrl: "views/modal/shop.html",
                         scope: $scope
                     });
-                }else{
+                } else {
 
                 }
-            },function (err) {
-              console.log(err);
+            }, function(err) {
+                console.log(err);
             });
 
         };
@@ -790,16 +800,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.template.backClass = "backdrop";
         }
     };
-    $scope.checkSession = function () {
-      NavigationService.getSession(function (response) {
-        if(response.value){
-          $scope.isLoggedIn = true;
-        }else{
-          $scope.isLoggedIn = false;
-        }
-      },function (err) {
-        console.log(err);
-      });
+    $scope.checkSession = function() {
+        NavigationService.getSession(function(response) {
+            if (response.value) {
+                $scope.isLoggedIn = true;
+            } else {
+                $scope.isLoggedIn = false;
+            }
+        }, function(err) {
+            console.log(err);
+        });
     };
     $scope.checkSession();
     $scope.closeAllModals = function() {
@@ -854,25 +864,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
         // NORMAL LOGIN
     $scope.userLogin = function() {
-            $scope.loginmsg.msg = "";
+        $scope.loginmsg.msg = "";
 
-            NavigationService.login($scope.login, function(data) {
-                if (data.value) {
-                    console.log("in if");
-                    $scope.closeAllModals();
-                    // $scope.isLoggedIn = true;
-                    // console.log($scope.isLoggedIn, 'dsfdsfa');
-                    // NavigationService.saveUser(data.data);
-                    $state.reload();
-                } else {
-                    $scope.loginmsg.msg = "Try again Later";
-                    $scope.loginmsg.class = "text-danger";
-                }
-            }, function() {
+        NavigationService.login($scope.login, function(data) {
+            if (data.value) {
+                console.log("in if");
+                $scope.closeAllModals();
+                // $scope.isLoggedIn = true;
+                // console.log($scope.isLoggedIn, 'dsfdsfa');
+                // NavigationService.saveUser(data.data);
+                $state.reload();
+            } else {
+                $scope.loginmsg.msg = "Try again Later";
+                $scope.loginmsg.class = "text-danger";
+            }
+        }, function() {
 
-            });
-        };
-        //GOOGLE LOGIN
+        });
+    };
+    //GOOGLE LOGIN
     var checktwitter = function(data, status) {
         var repdata = {};
         if (data.value) {
