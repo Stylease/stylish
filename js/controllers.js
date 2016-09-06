@@ -270,6 +270,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.variables = {};
+        $scope.variables.editCart = [];
         $scope.cartProduct = [];
         $scope.date = function() {
             $uibModal.open({
@@ -289,6 +290,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
 
         };
+        $scope.editCartProduct = function (id) {
+          $scope.variables.editCart =_.map($scope.variables.editCart,function (key) {
+            return false;
+          });
+          $scope.variables.editCart[id]= true;
+          NavigationService.getOneProduct(id, function (response) {
+            if(response.value){
+              $scope.product =response.data;
+              console.log($scope.product);
+              $scope.editable = _.find($scope.cartProduct,function (key) {
+               return key._id == id;
+             });
+            }
+          },function (err) {
+            console.log(err);
+          });
+
+        };
+        $scope.closeEdit = function (id) {
+          $scope.variables.editCart =_.map($scope.variables.editCart,function (key) {
+            return false;
+          });
+        };
         $scope.openRemoveModal = function (productid) {
           $scope.variables.removeitem = productid;
           removemod = $uibModal.open({
@@ -306,6 +330,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.cartProduct = [];
                 $scope.cartDetails = 0;
               }
+          },function (err) {
+            console.log(err);
           });
         };
         $scope.getCart();
@@ -341,7 +367,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.filter.pagenumber = 1;
                 }
                 $scope.getMyProducts($scope.filter);
-                
+
             }, function(err) {
 
             });

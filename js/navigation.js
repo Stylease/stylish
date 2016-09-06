@@ -186,6 +186,15 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback).error(errCallback);
         },
+        getOneProduct: function(request,callback, errCallback) {
+            return $http({
+                url: adminURL + "product/getOne",
+                method: "POST",
+                data:{
+                  _id:request
+                }
+            }).success(callback).error(errCallback);
+        },
         getSession: function(callback, errCallback) {
             return $http({
                 url: adminURL + "user/getProfile",

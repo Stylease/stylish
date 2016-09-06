@@ -13,12 +13,12 @@
         </div>
         <div class="col-md-7">
           <div class="pull-right">
-            <a href="" class="text-medium dark-blue text-underline" ng-click="editCart=true">Edit</a>
+            <a href="" class="text-medium dark-blue text-underline" ng-click="editCartProduct(product.product._id)">Edit</a>
           </div>
           <div class="product-cart-detail clearfix">
             <h4 class="prd-name">{{product.product.name}}</h4>
             <h5>by : <span>{{product.by}}</span></h5>
-            <div class="product-all-detail" ng-hide="editCart">
+            <div class="product-all-detail" ng-hide="variables.editCart[product.product._id]">
               <p>RENT : INR <span>{{product.product.price}}/-</span></p>
               <p class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
               <p class="mb5"><span class="edit-cart">Rental</span> <span>INR {{product.product.rentalamount}}</span></p>
@@ -27,16 +27,13 @@
               <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>10 am</span></p>
               <p class="mb5"><span class="edit-cart">Pickup Time</span> <span>10 am</span></p>
             </div>
-            <div class="edit-product-detail product-all-detail" ng-show="editCart">
+            <div class="edit-product-detail product-all-detail" ng-show="variables.editCart[product.product._id]">
               <form action="">
                 <div class="edit-size">
                   <span class="edit-cart">Size</span>
                   <div class="custom-select">
-                    <select name="" id="">
-                      <option value="">S</option>
-                      <option value="">M</option>
-                      <option value="">L</option>
-                      <option value="">XL</option>
+                    <select name="" ng-model="editable.size" id="">
+                      <option ng-repeat="s in product.size"value="{{s.name}}">{{s}}</option>
                     </select>
                   </div>
                 </div>
@@ -87,7 +84,7 @@
                     </div>
                   </div>
                   <div class="mt10 mb10 on-edit">
-                    <button class="btn btn-outline btn-full text-medium" type="reset">Reset</button>
+                    <button class="btn btn-outline btn-full text-medium" type="reset" ng-click="closeEdit()">Reset</button>
                     <button class="btn btn-outline btn-full text-medium" ng-click="editCart=false;">Confirm</button>
                   </div>
               </form>
