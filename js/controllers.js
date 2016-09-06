@@ -525,6 +525,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         scope: $scope
                     })
                 }
+            },function (err) {
+              console.log(err);
             });
 
         };
@@ -743,8 +745,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.showCross = "cross-ham";
             $scope.template.backClass = "backdrop";
         }
-    }
-
+    };
+    $scope.checkSession = function () {
+      NavigationService.getSession(function (response) {
+        if(response.value){
+          $scope.isLoggedIn = true;
+        }else{
+          $scope.isLoggedIn = false;
+        }
+      },function (err) {
+        console.log(err);
+      });
+    };
+    $scope.checkSession();
     $scope.closeAllModals = function() {
         if (modal1) {
             modal1.close();
@@ -758,7 +771,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (modal4) {
             modal4.close();
         }
-    }
+    };
 
     // INTEGRATION CODE
     $scope.loginmsg = {};
@@ -781,6 +794,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     if (data.value) {
                         $scope.closeAllModals();
                         // $scope.isLoggedIn = true;
+                        $state.reload();
                         // NavigationService.saveUser(data.data);
                     } else {
                         $scope.loginmsg.msg = data.error;
@@ -805,15 +819,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     // $scope.isLoggedIn = true;
                     // console.log($scope.isLoggedIn, 'dsfdsfa');
                     // NavigationService.saveUser(data.data);
-                    location.reload();
+                    $state.reload();
                 } else {
                     $scope.loginmsg.msg = "Try again Later";
                     $scope.loginmsg.class = "text-danger";
                 }
             }, function() {
 
-            })
-        }
+            });
+        };
         //GOOGLE LOGIN
     var checktwitter = function(data, status) {
         var repdata = {};
@@ -822,6 +836,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             ref.close();
             $scope.closeAllModals();
             // $scope.isLoggedIn = true;
+            $state.reload();
             // NavigationService.saveUser(data.data);
         } else {
 

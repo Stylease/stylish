@@ -186,6 +186,12 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback).error(errCallback);
         },
+        getSession: function(callback, errCallback) {
+            return $http({
+                url: adminURL + "user/getProfile",
+                method: "POST"
+            }).success(callback).error(errCallback);
+        },
         login: function(data, callback, errCallback) {
             console.log(data);
             return $http({
