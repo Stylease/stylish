@@ -68,7 +68,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log("logout clicked");
             NavigationService.logout(function(data) {
                 if (data.value) {
-                  NavigationService.saveUser(null);
+                    NavigationService.saveUser(null);
 
                     $scope.isLoggedIn = false;
                     $state.go("home");
@@ -269,26 +269,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Cart");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        $scope.cart = [{
-            img: "img/product1.png",
-            name: "The Nawishtah Jacket and Gown",
-            desginername: "anita dongre",
-            rental: "6700",
-            size: "M",
-            price: "9,999",
-            date: "04 May 2016",
-            duration: "07"
-        }, {
-            img: "img/product2.png",
-            name: "The Nawishtah Jacket and Gown",
-            desginername: "anita dongre",
-            rental: "6700",
-            size: "M",
-            price: "9,999",
-            date: "04 May 2016",
-            duration: "07"
-        }];
-
         $scope.date = function() {
             $uibModal.open({
                 animation: true,
@@ -296,16 +276,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 controller: "CartCtrl"
             });
         };
-        $scope.remove = function() {
-            $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/removeitem.html",
-                controller: "CartCtrl"
+        $scope.remove = function(productid) {
+            NavigationService.removeFromCart(productid, function(data) {
+                $scope.response = data;
+                if ($scope.response.value = true) {
+                  $uibModal.open({
+                      animation: true,
+                      templateUrl: "views/modal/removeitem.html",
+                      controller: "CartCtrl"
+                  });
+                }
             });
+
         };
-        NavigationService.getcart(function(data){
-          $scope.cartDetails=data.data;
-          console.log("cartDetails",$scope.cartDetails);
+        NavigationService.getcart(function(data) {
+          console.log("cartdata", data);
+            $scope.cartDetails = data.data.cartcount;
+            $scope.cartProduct = data.data.cartproduct;
+            console.log("cartProduct", $scope.cartProduct);
         })
 
     })
@@ -479,18 +467,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.cartpro.timeTo = '';
         $scope.cartpro.deliveryTime = '';
         $scope.cartpro.pickupTime = '';
-
+        $scope.select = {}
 
         $scope.checkLogin = $.jStorage.get("user");
 
         //PRODUCT DETAIL ON SELECTED PRODUCT
-         $scope.saveWishList=function(){
-           NavigationService.saveWishlist($state.params.id,function(data){
-             console.log("$state.params.id",$state.params.id);
-console.log("wish",data);
-           })
-         }
-        //  $scope.saveWishList();
+        $scope.saveWishList = function() {
+                NavigationService.saveWishlist($state.params.id, function(data) {
+                    console.log("$state.params.id", $state.params.id);
+                    console.log("wish", data);
+                })
+            }
+            //  $scope.saveWishList();
 
         NavigationService.getProductDetail($state.params.id, function(data) {
             // console.log(data);
@@ -517,11 +505,16 @@ console.log("wish",data);
         $scope.selectImage = function(img) {
             $scope.mainImage = img;
         };
-
+        $scope.selectSize = function(size) {
+            // body...
+            $scope.cartpro.size = size;
+            console.log($scope.cartpro);
+        }
         $scope.addToCart = function() {
             var d = new Date($scope.cartpro.timeFrom);
             $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
             console.log($scope.cartpro);
+            $scope.cartpro.by = $scope.product.designer.name;
             NavigationService.addToCart($scope.cartpro, function(data) {
                 console.log("response cart", data);
                 $scope.response = data;

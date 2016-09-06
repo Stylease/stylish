@@ -1,5 +1,5 @@
 var adminURL = "http://stylease.wohlig.com:81/";
-// var adminURL = "http://192.168.1.113:81/";
+var adminURL = "http://192.168.1.107:81/";
 // if (isproduction) {
 //     adminURL = "http://www.wohlig.co.in/demo/index.php";
 // } else {
@@ -208,7 +208,6 @@ var navigationservice = angular.module('navigationservice', [])
             return $.jStorage.get("user");
         },
         saveWishlist: function(id, callback) {
-            console.log("in id", id);
             var data = {
                 product: id
             }
@@ -218,11 +217,22 @@ var navigationservice = angular.module('navigationservice', [])
                 data: data
             }).success(callback);
         },
-        getcart: function(callback, errCallback) {
+        getcart: function(callback) {
             return $http({
                 url: adminURL + "cart/getcart",
                 method: "POST"
-            }).success(callback).error(errCallback);
+            }).success(callback);
+        },
+
+        removeFromCart: function(id, callback) {
+            var data = {
+                product: id
+            }
+            return $http({
+                url: adminURL + "cart/removeCart",
+                method: "POST",
+                data: data
+            }).success(callback);
         },
 
     };
