@@ -282,15 +282,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('ChangepasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
 
+
         $scope.template = TemplateService.changecontent("changepassword");
         $scope.menutitle = NavigationService.makeactive("Changepassword");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        $scope.changePassowrd = function() {
-            $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/passwordchange.html",
-                controller: "ChangepasswordCtrl"
+
+        $scope.form = {};
+        $scope.changePassword = function(form) {
+            NavigationService.changePassword(form, function() {
+                $scope.form = {};
             });
         };
 
