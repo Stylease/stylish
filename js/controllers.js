@@ -68,9 +68,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log("logout clicked");
             NavigationService.logout(function(data) {
                 if (data.value) {
-                    NavigationService.saveUser(null);
+                    // NavigationService.saveUser(null);
 
-                    $scope.isLoggedIn = false;
+                    // $scope.isLoggedIn = false;
                     $state.go("home");
                 }
             }, function(err) {
@@ -763,13 +763,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // INTEGRATION CODE
     $scope.loginmsg = {};
     $scope.login = {};
-    if (NavigationService.getStoredUser() == null) {
-        $scope.isLoggedIn = false;
-
-    } else {
-        $scope.isLoggedIn = true;
-
-    }
+    // if (NavigationService.getStoredUser() == null) {
+    //     $scope.isLoggedIn = false;
+    //
+    // } else {
+    //     $scope.isLoggedIn = true;
+    //
+    // }
     $scope.signup = {};
     // SIGNUP
 
@@ -780,8 +780,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 NavigationService.signUP($scope.signup, function(data) {
                     if (data.value) {
                         $scope.closeAllModals();
-                        $scope.isLoggedIn = true;
-                        NavigationService.saveUser(data.data);
+                        // $scope.isLoggedIn = true;
+                        // NavigationService.saveUser(data.data);
                     } else {
                         $scope.loginmsg.msg = data.error;
                         $scope.loginmsg.class = "text-danger";
@@ -802,9 +802,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if (data.value) {
                     console.log("in if");
                     $scope.closeAllModals();
-                    $scope.isLoggedIn = true;
-                    console.log($scope.isLoggedIn, 'dsfdsfa');
-                    NavigationService.saveUser(data.data);
+                    // $scope.isLoggedIn = true;
+                    // console.log($scope.isLoggedIn, 'dsfdsfa');
+                    // NavigationService.saveUser(data.data);
                     location.reload();
                 } else {
                     $scope.loginmsg.msg = "Try again Later";
@@ -821,8 +821,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $interval.cancel(stopinterval);
             ref.close();
             $scope.closeAllModals();
-            $scope.isLoggedIn = true;
-            NavigationService.saveUser(data.data);
+            // $scope.isLoggedIn = true;
+            // NavigationService.saveUser(data.data);
         } else {
 
         }
@@ -837,8 +837,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $ionicLoading.hide();
         if (data.value) {
             $scope.closeAllModals();
-            $scope.isLoggedIn = true;
-            NavigationService.saveUser(data.data);
+            // $scope.isLoggedIn = true;
+            // NavigationService.saveUser(data.data);
         }
     };
     $scope.facebookLogin = function() {
