@@ -56,8 +56,8 @@
             <div>
               <form>
                 Size:
-                <div ng-repeat="size in product.size" ng-click="selectSize(size.name)" class=" size-border">
-                  <label class="size-font">
+                <div  ng-repeat="size in product.size" ng-click="selectSize(size.name)" class=" size-border">
+                  <label class="size-font pointer">
                     {{size.name}}
                   </label>
                 </div>
@@ -137,7 +137,7 @@
               </div>
               <div class="calendar inline-block">
                 <div class="input-group">
-                  <input type="text" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" />
+                  <input type="date" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" ng-change= "time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" />
                   <span class="cal">
                     <button type="button" class="btn btn-default" ng-click="open2()"></button>
                   </span>

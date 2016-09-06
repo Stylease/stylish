@@ -262,13 +262,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CartCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('CartCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal,$state) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("cart");
         $scope.menutitle = NavigationService.makeactive("Cart");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.variables = {};
         $scope.date = function() {
             $uibModal.open({
                 animation: true,
@@ -276,25 +277,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 controller: "CartCtrl"
             });
         };
-        $scope.remove = function(productid) {
-            NavigationService.removeFromCart(productid, function(data) {
+        $scope.remove = function() {
+          console.log("Yes I do");
+            NavigationService.removeFromCart($scope.variables.removeitem, function(data) {
                 $scope.response = data;
-                if ($scope.response.value = true) {
-                  $uibModal.open({
-                      animation: true,
-                      templateUrl: "views/modal/removeitem.html",
-                      controller: "CartCtrl"
-                  });
+                if ($scope.response.value === true) {
+                  removemod.close();
+                  $scope.getCart();
                 }
             });
 
         };
-        NavigationService.getcart(function(data) {
-          console.log("cartdata", data);
-            $scope.cartDetails = data.data.cartcount;
-            $scope.cartProduct = data.data.cartproduct;
-            console.log("cartProduct", $scope.cartProduct);
-        })
+        $scope.openRemoveModal = function (productid) {
+          $scope.variables.removeitem = productid;
+          removemod = $uibModal.open({
+              animation: true,
+              templateUrl: "views/modal/removeitem.html",
+              scope:$scope
+          });
+        };
+        $scope.getCart = function () {
+          NavigationService.getcart(function(data) {
+              $scope.cartDetails = data.data.cartcount;
+              $scope.cartProduct = data.data.cartproduct;
+          });
+        };
+        $scope.getCart();
 
     })
     .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
@@ -467,7 +475,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.cartpro.timeTo = '';
         $scope.cartpro.deliveryTime = '';
         $scope.cartpro.pickupTime = '';
-        $scope.select = {}
+        $scope.select = {};
 
         $scope.checkLogin = $.jStorage.get("user");
 
@@ -476,8 +484,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 NavigationService.saveWishlist($state.params.id, function(data) {
                     console.log("$state.params.id", $state.params.id);
                     console.log("wish", data);
-                })
-            }
+                });
+                // NavigationService.getSession
+            };
             //  $scope.saveWishList();
 
         NavigationService.getProductDetail($state.params.id, function(data) {
@@ -496,7 +505,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     tmpdate.setDate(tmpdate.getDate() + 1);
                     start++;
                 } while (start <= diffDays);
-            })
+            });
             $scope.mainImage = data.data.product.images[0].image;
         }, function(err) {
 
@@ -509,21 +518,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             // body...
             $scope.cartpro.size = size;
             console.log($scope.cartpro);
-        }
+        };
+
         $scope.addToCart = function() {
             var d = new Date($scope.cartpro.timeFrom);
             $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
-            console.log($scope.cartpro);
             $scope.cartpro.by = $scope.product.designer.name;
             NavigationService.addToCart($scope.cartpro, function(data) {
                 console.log("response cart", data);
                 $scope.response = data;
-                if ($scope.response.value = true) {
+                if ($scope.response.value === true) {
                     $uibModal.open({
                         animation: true,
                         templateUrl: "views/modal/shop.html",
                         scope: $scope
-                    })
+                    });
+                }else{
+
                 }
             },function (err) {
               console.log(err);

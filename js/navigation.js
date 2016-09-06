@@ -216,7 +216,7 @@ var navigationservice = angular.module('navigationservice', [])
         saveWishlist: function(id, callback) {
             var data = {
                 product: id
-            }
+            };
             return $http({
                 url: adminURL + "wishlist/save",
                 method: "POST",
@@ -233,7 +233,7 @@ var navigationservice = angular.module('navigationservice', [])
         removeFromCart: function(id, callback) {
             var data = {
                 product: id
-            }
+            };
             return $http({
                 url: adminURL + "cart/removeCart",
                 method: "POST",
