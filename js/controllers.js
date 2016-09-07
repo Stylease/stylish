@@ -543,6 +543,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.cartpro.deliveryTime = '';
         $scope.cartpro.pickupTime = '';
         $scope.select = {};
+        $scope.select.sizeactive = {};
 
         $scope.checkLogin = $.jStorage.get("user");
 
@@ -582,9 +583,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.mainImage = img;
         };
         $scope.selectSize = function(size) {
-            // body...
             $scope.cartpro.size = size;
-            console.log($scope.cartpro);
+            _.each($scope.select.sizeactive,function (key,n) {
+              $scope.select.sizeactive[n]=false;
+            });
+            $scope.select.sizeactive[size]=true;
+            $scope.select.sizedetail = _.find($scope.product.size,function (key) {
+              // body...
+              return key.name == size;
+            });
         };
 
         $scope.addToCart = function() {
@@ -825,7 +832,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     };
     $scope.checkSession = function() {
-        NavigationService.getSession(function(response) {
+        NavigationService.getProfile(function(response) {
             if (response.value) {
                 $scope.isLoggedIn = true;
             } else {

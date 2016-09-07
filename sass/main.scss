@@ -1341,7 +1341,7 @@ input.form-control {
     margin: 10px 0 -16px;
     // background: url('../img/calendar.png') no-repeat 95% 50%;
   }
-  .dropdown-menu{
+  .dropdown-menu {
     padding: 0;
   }
   .input-group .form-control,
@@ -1349,11 +1349,11 @@ input.form-control {
   .input-group-btn {
     display: block !important;
   }
-  .cal{
-    .btn{
+  .cal {
+    .btn {
       position: absolute;
       top: 10px;
-      right: 0px;
+      right: 0;
       height: 40px;
       width: 40px;
       border: 0;
@@ -1361,21 +1361,23 @@ input.form-control {
       background-color: transparent;
       background: url("../img/calendar.png") no-repeat 100% 50%;
       background-position-x: 8px;
-      &:active{
+      &:active {
         box-shadow: none;
       }
-      &:focus{
-        outline:0;
+      &:focus {
+        outline: 0;
       }
     }
   }
-  .uib-button-bar{
+  .uib-button-bar {
     display: none;
   }
-  .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  .form-control[disabled],
+  .form-control[readonly],
+  fieldset[disabled] .form-control {
     background-color: transparent;
     opacity: 1;
-}
+  }
 }
 .dates {
   .radio-button {
@@ -1424,30 +1426,44 @@ input.form-control {
   }
 }
 // product detail page
-
-.a1{
- .a2{
+.a1 {
+  .a2 {
     float: left;
   }
-  .a3{
+  .a3 {
     float: right;
   }
 }
-
-.size-border{
+.size-border {
   display: inline-block;
-    border-radius: 50%;
-    border: 2px solid $brand-dark-blue;
-    height: 35px;
-    width: 35px;
-    margin-left: 30px;
-    text-align: center;
+  border-radius: 50%;
+  border: 2px solid $brand-dark-blue;
+  height: 35px;
+  width: 35px;
+  margin-left: 30px;
+  text-align: center;
+  position: relative;
+  &.active-size {
+    &:after {
+      position: absolute;
+      bottom: -14px;
+      right: 6px;
+      margin-top: 0;
+      width: 0;
+      height: 0;
+      border-bottom: 10px solid;
+      border-right: 10px solid rgba(253, 211, 190, 0);
+      border-left: 10px solid rgba(253, 211, 190, 0);
+      color: #fdd3be;
+      content: "";
+      pointer-events: none;
+      z-index: 999;
+    }
+  }
 }
-
-.size-font{
+.size-font {
   line-height: 2.3;
 }
-
 .product-info {
   padding: 100px 0 30px;
 }
@@ -1480,50 +1496,27 @@ input.form-control {
       font-weight: 300;
     }
   }
-
-  .back-color{
-    width:100%;
-    background-color:  #fdd3be;
-    padding:10px;
+  .back-color {
+    width: 100%;
+    background-color: #fdd3be;
+    padding: 10px;
   }
-
-
-
-  .back-color2{
-    width:100%;
-    background-color:  #fdd3be;
-    padding: 2px 10px 2px 10px;
+  .back-color2 {
+    width: 100%;
+    background-color: #fdd3be;
+    padding: 2px 10px;
     text-align: center;
     margin-top: 12px;
     position: relative;
-
-    &:before{
-      position: absolute;
-      top: -16%;
-      right: 223px;
-      margin-top: -3px;
-      width: 0;
-      height: 0;
-      border-bottom: 10px solid;
-      border-right: 10px solid rgba(253, 211, 190, 0);
-      border-left: 10px solid rgba(253, 211, 190, 0);
-      color: #fdd3be;
-      content: "";
-      pointer-events: none;
-      z-index: 999;
   }
-  }
-
-  .disp-inline{
+  .disp-inline {
     display: inline;
   }
-
-  .disp-padd{
+  .disp-padd {
     padding-left: 60px;
     padding-right: 60px;
   }
-
-  .s1{
+  .s1 {
     padding: 20px 0;
     border-bottom: 1px solid $brand-dark-blue;
   }
@@ -1845,20 +1838,17 @@ ul.mn-list {
   list-style-type: lower-alpha !important;
   padding-left: 25px !important;
 }
-
-.display-inline{
+.display-inline {
   display: inline-block;
 }
-
-.img-holder{
+.img-holder {
   height: 300px;
   overflow: hidden;
   display: block;
   position: relative;
   margin: 0 auto;
 }
-
-.padd{
+.padd {
   padding-left: 80px;
 }
 // celebrity page end

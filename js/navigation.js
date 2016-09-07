@@ -1,5 +1,5 @@
 var adminURL = "http://stylease.wohlig.com:81/";
-// var adminURL = "http://192.168.1.107:81/";
+var adminURL = "http://192.168.100.115:81/";
 // if (isproduction) {
 //     adminURL = "http://www.wohlig.co.in/demo/index.php";
 // } else {
@@ -194,12 +194,12 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback).error(errCallback);
         },
-        getSession: function(callback, errCallback) {
-            return $http({
-                url: adminURL + "user/getProfile",
-                method: "POST"
-            }).success(callback).error(errCallback);
-        },
+        // getSession: function(callback, errCallback) {
+        //     return $http({
+        //         url: adminURL + "user/getProfile",
+        //         method: "POST"
+        //     }).success(callback).error(errCallback);
+        // },
         login: function(data, callback, errCallback) {
             console.log(data);
             return $http({

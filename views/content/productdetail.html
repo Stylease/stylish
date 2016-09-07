@@ -56,7 +56,7 @@
             <div>
               <form>
                 Size:
-                <div  ng-repeat="size in product.size" ng-click="selectSize(size.name)" class=" size-border">
+                <div  ng-repeat="size in product.size" ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
                   <label class="size-font pointer">
                     {{size.name}}
                   </label>
@@ -73,7 +73,7 @@
               </form>
             </div>
 
-            <div class="back-color2">
+            <div class="back-color2" ng-if="cartpro.size">
               <!-- <div class="back-color">
               <div class="disp-inline">
                 <span></span>
@@ -98,16 +98,19 @@
               </div>
             </div> -->
 
-              <div class="back-color">
+              <div class="back-color" >
                 <!--for l-->
                 <div class="disp-inline">
-                  <span>Bust 34-40</span>
+                  <span>{{select.sizedetail.text1}}</span>
                 </div>
                 <div class="disp-inline  disp-padd">
-                  <span>Upper waist 28-44</span>
+                  <span>{{select.sizedetail.text2}}</span>
                 </div>
                 <div class="disp-inline">
-                  <span>Height N/A</span>
+                  <span>{{select.sizedetail.text3}}</span>
+                </div>
+                <div class="disp-inline disp-padd">
+                  <span>{{select.sizedetail.text4}}</span>
                 </div>
               </div>
               <!-- <div class="back-color">
