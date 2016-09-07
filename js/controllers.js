@@ -229,6 +229,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getProfile(function(data) {
                 if (data.value) {
                     $scope.userdata = data.data;
+                    if (!$scope.userdata.billingAddress) {
+                        $scope.userdata.billingAddress = [];
+                    }
+                    if (!$scope.userdata.shippingAddress) {
+                        $scope.userdata.shippingAddress = [];
+                    }
                 }
             }, function(err) {});
         };
@@ -934,7 +940,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log(err);
             });
         }
-
     };
     $scope.checkSession();
     $scope.closeAllModals = function() {
