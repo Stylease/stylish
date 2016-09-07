@@ -86,7 +86,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.logoutClick = function() {
-            console.log("logout clicked");
             NavigationService.logout(function(data) {
                 if (data.value) {
                     // NavigationService.saveUser(null);
@@ -870,7 +869,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.signUp = function() {
         $scope.loginmsg.msg = "";
-        $scope.closeAllModals()
+        $scope.closeAllModals();
         modal1 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/signup.html",
@@ -880,7 +879,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.logIn = function() {
         $scope.loginmsg.msg = "";
-        $scope.closeAllModals()
+        $scope.closeAllModals();
         modal3 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/login.html",
@@ -889,7 +888,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.emailSignup = function() {
         $scope.loginmsg.msg = "";
-        $scope.closeAllModals()
+        $scope.closeAllModals();
         modal2 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/email-signup.html",
@@ -898,7 +897,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.forgot = function() {
         $scope.loginmsg.msg = "";
-        $scope.closeAllModals()
+        $scope.closeAllModals();
         modal4 = $uibModal.open({
             animation: true,
             templateUrl: "views/modal/forgotpassword.html",
@@ -921,15 +920,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     };
     $scope.checkSession = function() {
-        NavigationService.getProfile(function(response) {
-            if (response.value) {
-                $scope.isLoggedIn = true;
-            } else {
-                $scope.isLoggedIn = false;
-            }
-        }, function(err) {
-            console.log(err);
-        });
+        if ($.jStorage.get("userLoggedIn")) {
+            $scope.isLoggedIn = true;
+        } else {
+            NavigationService.getProfile(function(response) {
+                if (response.value) {
+                    $scope.isLoggedIn = true;
+                    $.jStorage.set("userLoggedIn", true);
+                } else {
+                    $scope.isLoggedIn = false;
+                }
+            }, function(err) {
+                console.log(err);
+            });
+        }
+
     };
     $scope.checkSession();
     $scope.closeAllModals = function() {
