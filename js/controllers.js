@@ -198,6 +198,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Saveaddress");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.getProfile = function() {
+            NavigationService.getProfile(function(data) {
+                if (data.value) {
+                    $scope.billingdata = data.data.billingaddress;
+                    console.log("aa", $scope.billingdata);
+                }
+            }, function(err) {
+                console.log(err);
+            });
+        };
+        $scope.getProfile();
 
     })
     .controller('BankdetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -213,7 +224,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getProfile(function(data) {
                 if (data.value) {
                     $scope.userdata = data.data;
-                    console.log("uu", $scope.userdata);
                 }
             }, function(err) {
                 console.log(err);
@@ -584,13 +594,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.selectSize = function(size) {
             $scope.cartpro.size = size;
-            _.each($scope.select.sizeactive,function (key,n) {
-              $scope.select.sizeactive[n]=false;
+            _.each($scope.select.sizeactive, function(key, n) {
+                $scope.select.sizeactive[n] = false;
             });
-            $scope.select.sizeactive[size]=true;
-            $scope.select.sizedetail = _.find($scope.product.size,function (key) {
-              // body...
-              return key.name == size;
+            $scope.select.sizeactive[size] = true;
+            $scope.select.sizedetail = _.find($scope.product.size, function(key) {
+                // body...
+                return key.name == size;
             });
         };
 

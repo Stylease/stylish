@@ -15,8 +15,24 @@
             <div class="col-md-6">
               <h4 class="text-center dark-blue">Billing Address</h4>
               <div class="" ng-hide="billingAdd">
-                <div class="first-address">
+                <!-- <div class="first-address"> -->
+                <div class="first-address" ng-repeat="data in billingdata">
                   <div class="add-head bg-pink clearfix">
+                    <span class="pointer edit-add pull-right mt10 mr10"><i class="fa fa-pencil" ng-click="billingAdd=true"></i></span>
+                    <h5 class="text-uppercase dark-blue m-clear pd10 text-center">{{data.billingtitle}}</h5>
+                  </div>
+                  <div class="add-body">
+                    <address>{{data.billingaddressflat}} ,{{data.billingaddressstreet}} , {{data.billingaddresslandmark}} ,{{data.billingaddresscity}} - {{data.billingaddresspin}} {{data.billingaddressstate}}, {{data.billingaddresscountry}}</address>
+                    <div class="custom-checkbox inline-block">
+                      <input type="checkbox" id="default">
+                      <label for="default"><span></span> Use as default address</label>
+                    </div>
+                    <div class="custom-checkbox inline-block">
+                      <input type="checkbox" id="use">
+                      <label for="use"><span></span> Use For Shipping address</label>
+                    </div>
+                  </div>
+                  <!-- <div class="add-head bg-pink clearfix">
                     <span class="pointer edit-add pull-right mt10 mr10"><i class="fa fa-pencil"></i></span>
                     <h5 class="text-uppercase dark-blue m-clear pd10 text-center">home</h5>
                   </div>
@@ -30,7 +46,7 @@
                       <input type="checkbox" id="use">
                       <label for="use"><span></span> Use For Shipping address</label>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="add-address relate pointer" ng-click="billingAdd=true">
                   <div class="new-add get-center dark-pink text-center">
