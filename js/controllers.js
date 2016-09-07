@@ -201,14 +201,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.getProfile = function() {
             NavigationService.getProfile(function(data) {
                 if (data.value) {
-                    $scope.billingdata = data.data.billingaddress;
-                    console.log("aa", $scope.billingdata);
+                    $scope.userdata = data.data;
                 }
-            }, function(err) {
-                console.log(err);
-            });
+            }, function(err) {});
+        };
+        $scope.showEdit = function(data) {
+            data.edit = true;
+        };
+        $scope.changeDefault = function(data) {
+            if (data.isDefault) {
+                _.each(userdata.billingAddress, function(n) {
+                    if (!_.isMatch(userdata.billingAddress, data)) {
+                        n.isDefault = false;
+                    }
+                });
+            }
         };
         $scope.getProfile();
+
+
+        $scope.saveProfile = function() {
+            $scope.set.Profile = false;
+            NavigationService.userProfileSave($scope.userdata, function(data) {
+                $scope.setProfile = false;
+            });
+        };
 
     })
     .controller('BankdetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
