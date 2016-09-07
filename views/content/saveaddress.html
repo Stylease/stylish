@@ -69,13 +69,13 @@
                                                     <input type="text" class="form-control fixed-add" placeholder="Country" ng-model="data.billingAddressCountry">
                                                     <div class="same-billing mg20">
                                                         <div class="custom-checkbox">
-                                                            <input type="checkbox" id="bill">
-                                                            <label for="bill">
+                                                            <input type="checkbox" id="bill{{$index}}" ng-model="data.isShipping" >
+                                                            <label for="bill{{$index}}">
                                                                 Use the same for shipping address.</label>
                                                         </div>
                                                     </div>
                                                     <div class="text-center mt20 mb20 save ">
-                                                        <button class="btn btn-outline btn-full text-medium" ng-click="saveProfile()">Save</button>
+                                                        <button class="btn btn-outline btn-full text-medium" ng-click="saveProfile(data)">Save</button>
                                                     </div>
                                                 </form>
                                             </div>

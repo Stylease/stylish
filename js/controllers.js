@@ -281,7 +281,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.getProfile();
 
 
-        $scope.saveProfile = function() {
+        $scope.saveProfile = function(data) {
+            if (data && data.isShipping) {
+                data.shippingTitle = data.billingTitle;
+                data.shippingAddressFlat = data.billingAddressFlat;
+                data.shippingAddressStreet = data.billingAddressStreet;
+                data.shippingAddressLandmark = data.billingAddressLandmark;
+                data.shippingAddressPin = data.billingAddressPin;
+                data.shippingAddressCity = data.billingAddressCity;
+                data.shippingAddressState = data.billingAddressState;
+                data.shippingAddressCountry = data.billingAddressCountry;
+                $scope.userdata.shippingAddress.push(data);
+            }
             _.each($scope.userdata.billingAddress, function(n) {
                 n.edit = false;
             });
@@ -289,7 +300,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 n.edit = false;
             });
             NavigationService.userProfileSave($scope.userdata, function(data) {
-
                 $scope.getProfile();
             });
         };
