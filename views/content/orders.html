@@ -1,361 +1,425 @@
 <div class="heading-bar text-center">
-  <h3 class="heading">My Orders</h3>
+    <h3 class="heading">My Orders</h3>
 </div>
 <div class="container">
-  <h3 class="dark-blue text-uppercase">my account</h3>
-  <div class="row">
-    <div class="col-md-3">
-      <div class="order-tab" ng-include="template.account"></div>
-    </div>
-    <div class="col-md-9">
-      <div class="order-heading text-center">
-        <div class="row">
-          <div class="col-md-2 col-xs-1">
-            <span>No.</span>
-          </div>
-          <div class="col-md-4 col-xs-4">
-            <span>Order number</span>
-          </div>
-          <div class="col-md-3 col-xs-4">
-            <span>Date</span>
-          </div>
-          <div class="col-md-3 col-xs-3">
-            <span>Amount</span>
-          </div>
+    <h3 class="dark-blue text-uppercase">my account</h3>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="order-tab" ng-include="template.account"></div>
         </div>
-      </div>
-      <div class="order-body accordion-custom">
-        <uib-accordion close-others="oneAtATime">
-          <uib-accordion-group is-open="status.open">
-            <uib-accordion-heading>
-              <i class="orders-dropdown fa" ng-class="{'fa-chevron-up': status.open, 'fa-chevron-down': !status.open}"></i>
-              <div class="row">
-                <div class="col-md-2 col-xs-1">
-                  <span>1</span>
-                </div>
-                <div class="col-md-4 col-xs-4">
-                  <span>2691433615</span>
-                </div>
-                <div class="col-md-3 col-xs-4">
-                  <span>10-02-2016</span>
-                </div>
-                <div class="col-md-3 col-xs-3">
-                  <span>Rs.15,684/-</span>
-                </div>
-              </div>
-            </uib-accordion-heading>
-            <div class="order-summary">
-              <h3 class="item-num dark-blue">Number of items: <span>01</span></h3>
-              <div class="order-address">
+        <div class="col-md-9">
+            <div class="order-heading text-center">
                 <div class="row">
-                  <div class="col-md-6 col-sm-6">
-                    <div class="delivery">
-                      <h4>Delivery Address</h4>
-                      <h5 class="name">Riya Shah</h5>
-                      <address>
-                          B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
-                          <span class="block mt10">Mobile : <a href="tel:9920674907" class="dark-blue">9920674907</a></span>
-                        </address>
+                    <div class="col-md-2 col-xs-1">
+                        <span>No.</span>
                     </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="delivery no-border">
-                      <h4>Shipping Address</h4>
-                      <h5 class="name">Riya Shah</h5>
-                      <address>
-                          B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
-                          <span class="block mt10">Mobile : <a href="tel:9920674907" class="dark-blue">9920674907</a></span>
-                        </address>
+                    <div class="col-md-4 col-xs-4">
+                        <span>Order number</span>
                     </div>
-                  </div>
+                    <div class="col-md-3 col-xs-4">
+                        <span>Date</span>
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <span>Amount</span>
+                    </div>
                 </div>
-              </div>
-              <div class="billing-detail">
-                <h4>Billing detail</h4>
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Sub Total</td>
-                      <td>Rs <span>6,700.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Service Tax :
-                      </td>
-                      <td>Rs <span>837.50</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Refundable Deposit :
-                      </td>
-                      <td>Rs <span>4,599.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>Delivery charge :</td>
-                      <td>Rs <span>0.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>Total :</td>
-                      <td>Rs <span>16,550.00</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="buttons-orders text-center on-edit">
-                <button class="btn btn-outline btn-full text-medium" ui-sref="orderdetail">Order Details</button>
-                <button class="btn btn-outline btn-full text-medium">Download Invoice</button>
-                <button class="btn btn-outline btn-full text-medium">Cancel Order</button>
-              </div>
             </div>
-          </uib-accordion-group>
-          <uib-accordion-group is-open="status.open1">
-            <uib-accordion-heading>
-              <i class="orders-dropdown fa" ng-class="{'fa-chevron-up': status.open1, 'fa-chevron-down': !status.open1}"></i>
-              <div class="row">
-                <div class="col-md-2 col-xs-1">
-                  <span>2</span>
-                </div>
-                <div class="col-md-4 col-xs-4">
-                  <span>2691433615</span>
-                </div>
-                <div class="col-md-3 col-xs-4">
-                  <span>10-02-2016</span>
-                </div>
-                <div class="col-md-3 col-xs-3">
-                  <span>Rs.15,684/-</span>
-                </div>
-              </div>
-            </uib-accordion-heading>
-            <div class="order-summary">
-              <h3 class="item-num dark-blue">Number of items: <span>01</span></h3>
-              <div class="order-address">
-                <div class="row">
-                  <div class="col-md-6 col-sm-6">
-                    <div class="delivery">
-                      <h4>Delivery Address</h4>
-                      <h5 class="name">Riya Shah</h5>
-                      <address>
-                          B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
-                          <span class="block mt10">Mobile : <a href="tel:9920674907" class="dark-blue">9920674907</a></span>
-                        </address>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="delivery no-border">
-                      <h4>Shipping Address</h4>
-                      <h5 class="name">Riya Shah</h5>
-                      <address>
-                          B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
-                          <span class="block mt10">Mobile : <a href="tel:9920674907" class="dark-blue">9920674907</a></span>
-                        </address>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="billing-detail">
-                <h4>Billing detail</h4>
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Sub Total</td>
-                      <td>Rs <span>6,700.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Service Tax :
-                      </td>
-                      <td>Rs <span>837.50</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Refundable Deposit :
-                      </td>
-                      <td>Rs <span>4,599.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>Delivery charge :</td>
-                      <td>Rs <span>0.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>Total :</td>
-                      <td>Rs <span>16,550.00</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="buttons-orders text-center on-edit">
-                <button class="btn btn-outline btn-full text-medium" ui-sref="orderdetail">Order Details</button>
-                <button class="btn btn-outline btn-full text-medium">Download Invoice</button>
-                <button class="btn btn-outline btn-full text-medium">Cancel Order</button>
-              </div>
+            <div class="order-body accordion-custom">
+                <uib-accordion close-others="oneAtATime" ng-show="yeswecan">
+                    <uib-accordion-group is-open="status.open">
+                        <uib-accordion-heading>
+                            <i class="orders-dropdown fa" ng-class="{'fa-chevron-up': status.open, 'fa-chevron-down': !status.open}"></i>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-1">
+                                    <span>1</span>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <span>2691433615</span>
+                                </div>
+                                <div class="col-md-3 col-xs-4">
+                                    <span>10-02-2016</span>
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <span>Rs.15,684/-</span>
+                                </div>
+                            </div>
+                        </uib-accordion-heading>
+                        <div class="order-summary">
+                            <h3 class="item-num dark-blue">Number of items:
+                                <span>01</span>
+                            </h3>
+                            <div class="order-address">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="delivery">
+                                            <h4>Delivery Address</h4>
+                                            <h5 class="name">Riya Shah</h5>
+                                            <address>
+                                                B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
+                                                <span class="block mt10">Mobile :
+                                                    <a href="tel:9920674907" class="dark-blue">9920674907</a>
+                                                </span>
+                                            </address>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="delivery no-border">
+                                            <h4>Shipping Address</h4>
+                                            <h5 class="name">Riya Shah</h5>
+                                            <address>
+                                                B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
+                                                <span class="block mt10">Mobile :
+                                                    <a href="tel:9920674907" class="dark-blue">9920674907</a>
+                                                </span>
+                                            </address>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="billing-detail">
+                                <h4>Billing detail</h4>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Sub Total</td>
+                                            <td>Rs
+                                                <span>6,700.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Service Tax :
+                                            </td>
+                                            <td>Rs
+                                                <span>837.50</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Refundable Deposit :
+                                            </td>
+                                            <td>Rs
+                                                <span>4,599.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Delivery charge :</td>
+                                            <td>Rs
+                                                <span>0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total :</td>
+                                            <td>Rs
+                                                <span>16,550.00</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="buttons-orders text-center on-edit">
+                                <button class="btn btn-outline btn-full text-medium" ui-sref="orderdetail">Order Details</button>
+                                <button class="btn btn-outline btn-full text-medium">Download Invoice</button>
+                                <button class="btn btn-outline btn-full text-medium">Cancel Order</button>
+                            </div>
+                        </div>
+                    </uib-accordion-group>
+                    <uib-accordion-group is-open="status.open1">
+                        <uib-accordion-heading>
+                            <i class="orders-dropdown fa" ng-class="{'fa-chevron-up': status.open1, 'fa-chevron-down': !status.open1}"></i>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-1">
+                                    <span>2</span>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <span>2691433615</span>
+                                </div>
+                                <div class="col-md-3 col-xs-4">
+                                    <span>10-02-2016</span>
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <span>Rs.15,684/-</span>
+                                </div>
+                            </div>
+                        </uib-accordion-heading>
+                        <div class="order-summary">
+                            <h3 class="item-num dark-blue">Number of items:
+                                <span>01</span>
+                            </h3>
+                            <div class="order-address">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="delivery">
+                                            <h4>Delivery Address</h4>
+                                            <h5 class="name">Riya Shah</h5>
+                                            <address>
+                                                B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
+                                                <span class="block mt10">Mobile :
+                                                    <a href="tel:9920674907" class="dark-blue">9920674907</a>
+                                                </span>
+                                            </address>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="delivery no-border">
+                                            <h4>Shipping Address</h4>
+                                            <h5 class="name">Riya Shah</h5>
+                                            <address>
+                                                B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
+                                                <span class="block mt10">Mobile :
+                                                    <a href="tel:9920674907" class="dark-blue">9920674907</a>
+                                                </span>
+                                            </address>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="billing-detail">
+                                <h4>Billing detail</h4>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Sub Total</td>
+                                            <td>Rs
+                                                <span>6,700.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Service Tax :
+                                            </td>
+                                            <td>Rs
+                                                <span>837.50</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Refundable Deposit :
+                                            </td>
+                                            <td>Rs
+                                                <span>4,599.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Delivery charge :</td>
+                                            <td>Rs
+                                                <span>0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total :</td>
+                                            <td>Rs
+                                                <span>16,550.00</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="buttons-orders text-center on-edit">
+                                <button class="btn btn-outline btn-full text-medium" ui-sref="orderdetail">Order Details</button>
+                                <button class="btn btn-outline btn-full text-medium">Download Invoice</button>
+                                <button class="btn btn-outline btn-full text-medium">Cancel Order</button>
+                            </div>
+                        </div>
+                    </uib-accordion-group>
+                    <uib-accordion-group is-open="status.open2">
+                        <uib-accordion-heading>
+                            <i class="orders-dropdown fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-1">
+                                    <span>3</span>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <span>2691433615</span>
+                                </div>
+                                <div class="col-md-3 col-xs-4">
+                                    <span>10-02-2016</span>
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <span>Rs.15,684/-</span>
+                                </div>
+                            </div>
+                        </uib-accordion-heading>
+                        <div class="order-summary">
+                            <h3 class="item-num dark-blue">Number of items:
+                                <span>01</span>
+                            </h3>
+                            <div class="order-address">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="delivery">
+                                            <h4>Delivery Address</h4>
+                                            <h5 class="name">Riya Shah</h5>
+                                            <address>
+                                                B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
+                                                <span class="block mt10">Mobile :
+                                                    <a href="tel:9920674907" class="dark-blue">9920674907</a>
+                                                </span>
+                                            </address>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="delivery no-border">
+                                            <h4>Shipping Address</h4>
+                                            <h5 class="name">Riya Shah</h5>
+                                            <address>
+                                                B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
+                                                <span class="block mt10">Mobile :
+                                                    <a href="tel:9920674907" class="dark-blue">9920674907</a>
+                                                </span>
+                                            </address>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="billing-detail">
+                                <h4>Billing detail</h4>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Sub Total</td>
+                                            <td>Rs
+                                                <span>6,700.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Service Tax :
+                                            </td>
+                                            <td>Rs
+                                                <span>837.50</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Refundable Deposit :
+                                            </td>
+                                            <td>Rs
+                                                <span>4,599.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Delivery charge :</td>
+                                            <td>Rs
+                                                <span>0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total :</td>
+                                            <td>Rs
+                                                <span>16,550.00</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="buttons-orders text-center on-edit">
+                                <button class="btn btn-outline btn-full text-medium" ui-sref="orderdetail">Order Details</button>
+                                <button class="btn btn-outline btn-full text-medium">Download Invoice</button>
+                                <button class="btn btn-outline btn-full text-medium">Cancel Order</button>
+                            </div>
+                        </div>
+                    </uib-accordion-group>
+                    <uib-accordion-group is-open="status.open3">
+                        <uib-accordion-heading>
+                            <i class="orders-dropdown fa" ng-class="{'fa-chevron-up': status.open3, 'fa-chevron-down': !status.open3}"></i>
+                            <div class="row">
+                                <div class="col-md-2 col-xs-1">
+                                    <span>4</span>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <span>2691433615</span>
+                                </div>
+                                <div class="col-md-3 col-xs-4">
+                                    <span>10-02-2016</span>
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <span>Rs.15,684/-</span>
+                                </div>
+                            </div>
+                        </uib-accordion-heading>
+                        <div class="order-summary">
+                            <h3 class="item-num dark-blue">Number of items:
+                                <span>01</span>
+                            </h3>
+                            <div class="order-address">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="delivery">
+                                            <h4>Delivery Address</h4>
+                                            <h5 class="name">Riya Shah</h5>
+                                            <address>
+                                                B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
+                                                <span class="block mt10">Mobile :
+                                                    <a href="tel:9920674907" class="dark-blue">9920674907</a>
+                                                </span>
+                                            </address>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="delivery no-border">
+                                            <h4>Shipping Address</h4>
+                                            <h5 class="name">Riya Shah</h5>
+                                            <address>
+                                                B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
+                                                <span class="block mt10">Mobile :
+                                                    <a href="tel:9920674907" class="dark-blue">9920674907</a>
+                                                </span>
+                                            </address>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="billing-detail">
+                                <h4>Billing detail</h4>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Sub Total</td>
+                                            <td>Rs
+                                                <span>6,700.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Service Tax :
+                                            </td>
+                                            <td>Rs
+                                                <span>837.50</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Refundable Deposit :
+                                            </td>
+                                            <td>Rs
+                                                <span>4,599.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Delivery charge :</td>
+                                            <td>Rs
+                                                <span>0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total :</td>
+                                            <td>Rs
+                                                <span>16,550.00</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="buttons-orders text-center on-edit">
+                                <button class="btn btn-outline btn-full text-medium" ui-sref="orderdetail">Order Details</button>
+                                <button class="btn btn-outline btn-full text-medium">Download Invoice</button>
+                                <button class="btn btn-outline btn-full text-medium">Cancel Order</button>
+                            </div>
+                        </div>
+                    </uib-accordion-group>
+                </uib-accordion>
             </div>
-          </uib-accordion-group>
-          <uib-accordion-group is-open="status.open2">
-            <uib-accordion-heading>
-              <i class="orders-dropdown fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i>
-              <div class="row">
-                <div class="col-md-2 col-xs-1">
-                  <span>3</span>
-                </div>
-                <div class="col-md-4 col-xs-4">
-                  <span>2691433615</span>
-                </div>
-                <div class="col-md-3 col-xs-4">
-                  <span>10-02-2016</span>
-                </div>
-                <div class="col-md-3 col-xs-3">
-                  <span>Rs.15,684/-</span>
-                </div>
-              </div>
-            </uib-accordion-heading>
-            <div class="order-summary">
-              <h3 class="item-num dark-blue">Number of items: <span>01</span></h3>
-              <div class="order-address">
-                <div class="row">
-                  <div class="col-md-6 col-sm-6">
-                    <div class="delivery">
-                      <h4>Delivery Address</h4>
-                      <h5 class="name">Riya Shah</h5>
-                      <address>
-                          B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
-                          <span class="block mt10">Mobile : <a href="tel:9920674907" class="dark-blue">9920674907</a></span>
-                        </address>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="delivery no-border">
-                      <h4>Shipping Address</h4>
-                      <h5 class="name">Riya Shah</h5>
-                      <address>
-                          B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
-                          <span class="block mt10">Mobile : <a href="tel:9920674907" class="dark-blue">9920674907</a></span>
-                        </address>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="billing-detail">
-                <h4>Billing detail</h4>
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Sub Total</td>
-                      <td>Rs <span>6,700.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Service Tax :
-                      </td>
-                      <td>Rs <span>837.50</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Refundable Deposit :
-                      </td>
-                      <td>Rs <span>4,599.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>Delivery charge :</td>
-                      <td>Rs <span>0.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>Total :</td>
-                      <td>Rs <span>16,550.00</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="buttons-orders text-center on-edit">
-                <button class="btn btn-outline btn-full text-medium" ui-sref="orderdetail">Order Details</button>
-                <button class="btn btn-outline btn-full text-medium">Download Invoice</button>
-                <button class="btn btn-outline btn-full text-medium">Cancel Order</button>
-              </div>
-            </div>
-          </uib-accordion-group>
-          <uib-accordion-group is-open="status.open3">
-            <uib-accordion-heading>
-              <i class="orders-dropdown fa" ng-class="{'fa-chevron-up': status.open3, 'fa-chevron-down': !status.open3}"></i>
-              <div class="row">
-                <div class="col-md-2 col-xs-1">
-                  <span>4</span>
-                </div>
-                <div class="col-md-4 col-xs-4">
-                  <span>2691433615</span>
-                </div>
-                <div class="col-md-3 col-xs-4">
-                  <span>10-02-2016</span>
-                </div>
-                <div class="col-md-3 col-xs-3">
-                  <span>Rs.15,684/-</span>
-                </div>
-              </div>
-            </uib-accordion-heading>
-            <div class="order-summary">
-              <h3 class="item-num dark-blue">Number of items: <span>01</span></h3>
-              <div class="order-address">
-                <div class="row">
-                  <div class="col-md-6 col-sm-6">
-                    <div class="delivery">
-                      <h4>Delivery Address</h4>
-                      <h5 class="name">Riya Shah</h5>
-                      <address>
-                          B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
-                          <span class="block mt10">Mobile : <a href="tel:9920674907" class="dark-blue">9920674907</a></span>
-                        </address>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="delivery no-border">
-                      <h4>Shipping Address</h4>
-                      <h5 class="name">Riya Shah</h5>
-                      <address>
-                          B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
-                          <span class="block mt10">Mobile : <a href="tel:9920674907" class="dark-blue">9920674907</a></span>
-                        </address>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="billing-detail">
-                <h4>Billing detail</h4>
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Sub Total</td>
-                      <td>Rs <span>6,700.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Service Tax :
-                      </td>
-                      <td>Rs <span>837.50</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Refundable Deposit :
-                      </td>
-                      <td>Rs <span>4,599.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>Delivery charge :</td>
-                      <td>Rs <span>0.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>Total :</td>
-                      <td>Rs <span>16,550.00</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="buttons-orders text-center on-edit">
-                <button class="btn btn-outline btn-full text-medium" ui-sref="orderdetail">Order Details</button>
-                <button class="btn btn-outline btn-full text-medium">Download Invoice</button>
-                <button class="btn btn-outline btn-full text-medium">Cancel Order</button>
-              </div>
-            </div>
-          </uib-accordion-group>
-        </uib-accordion>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
