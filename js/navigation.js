@@ -1,11 +1,3 @@
-var adminURL = "http://stylease.wohlig.com:81/";
-var adminURL = "http://localhost:81/";
-// if (isproduction) {
-//     adminURL = "http://www.wohlig.co.in/demo/index.php";
-// } else {
-//     adminURL = "http://192.168.0.112:1337/";
-// }
-
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function($http) {
