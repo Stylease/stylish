@@ -1,7 +1,7 @@
 <div class="heading-bar text-center">
     <h3 class="heading">Saved Addresses</h3>
 </div>
-{{userdata.billingAddress}}
+
 <div class="saved-address">
     <div class="container">
         <h3 class="dark-blue text-uppercase">my account</h3>
@@ -15,104 +15,145 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h4 class="text-center dark-blue">Billing Address</h4>
-                            <div class="" ng-hide="billingAdd">
+                            <div class="">
                                 <!-- <div class="first-address"> -->
                                 <div class="first-address" ng-repeat="data in userdata.billingAddress">
-                                  {{data}}
-                                    <div class="add-head bg-pink clearfix">
-                                        <span class="pointer edit-add pull-right mt10 mr10">
-                                            <i class="fa fa-pencil" ng-click="showEdit(data);"></i>
-                                        </span>
-                                        <h5 class="text-uppercase dark-blue m-clear pd10 text-center">{{data.BillingTitle}}</h5>
-                                    </div>
-                                    <div class="add-body">
-                                        <address>{{data.billingAddressFlat}}
-                                            ,{{data.billingAddressStreet}}
-                                            ,
-                                            {{data.billingAddressLandmark}}
-                                            ,{{data.billingAddressCity}}
-                                            -
-                                            {{data.billingAddressPin}}
-                                            {{data.billingAddressState}},
-                                            {{data.billingAddressCountry}}</address>
-                                        <div class="custom-checkbox inline-block">
-                                            <input type="checkbox" id="default" ng-model="data.isDefault" ng-change="changeDefault(data)">
-                                            <label for="default">
-                                                <span></span>
-                                                Use as default address</label>
-                                        </div>
-                                        <div class="custom-checkbox inline-block">
-                                            <input type="checkbox" id="use">
-                                            <label for="use">
-                                                <span></span>
-                                                Use For Shipping address</label>
-                                        </div>
-                                    </div>
 
+                                    <div ng-hide="data.edit">
+                                        <div class="add-head bg-pink clearfix">
+                                          <span class="pointer edit-add pull-right mt10 mr10">
+                                              <i class="fa fa-trash" ng-click="showDelete(data);"></i>
+                                          </span>
+                                            <span class="pointer edit-add pull-right mt10 mr10">
+                                                <i class="fa fa-pencil" ng-click="showEdit(data);"></i>
+                                            </span>
+
+                                            <h5 class="text-uppercase dark-blue m-clear pd10 text-center">{{data.billingTitle}}</h5>
+                                        </div>
+                                        <div class="add-body">
+                                            <address>{{data.billingAddressFlat}}
+                                                ,{{data.billingAddressStreet}}
+                                                ,
+                                                {{data.billingAddressLandmark}}
+                                                ,{{data.billingAddressCity}}
+                                                -
+                                                {{data.billingAddressPin}}
+                                                {{data.billingAddressState}},
+                                                {{data.billingAddressCountry}}</address>
+                                            <div class="custom-checkbox inline-block">
+                                                <input type="checkbox" id="default{{$index}}" ng-model="data.isDefault" ng-change="changeDefault(data)">
+                                                <label for="default{{$index}}">
+                                                    <span></span>
+                                                    Use as default address</label>
+                                            </div>
+                                            <!-- <div class="custom-checkbox inline-block">
+                                              <input type="checkbox" id="use{{$index}}">
+                                              <label for="use{{$index}}">
+                                                  <span></span>
+                                                  Use For Shipping address</label>
+                                          </div> -->
+                                        </div>
+
+                                    </div>
+                                    <div class="add-billing-add" ng-show="data.edit">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <form action="">
+                                                    <input type="text" class="form-control" placeholder="Title Of Address" ng-model="data.billingTitle">
+                                                    <input type="text" class="form-control" placeholder="Flat Number, Building Number" ng-model="data.billingAddressFlat">
+                                                    <input type="text" class="form-control" placeholder="Street Address" ng-model="data.billingAddressStreet">
+                                                    <input type="text" class="form-control" placeholder="Nearest Landmark" ng-model="data.billingAddressLandmark">
+                                                    <input type="text" class="form-control" placeholder="Pin Code" ng-model="data.billingAddressPin">
+                                                    <input type="text" class="form-control fixed-add" placeholder="City" ng-model="data.billingAddressCity">
+                                                    <input type="text" class="form-control fixed-add" placeholder="State" ng-model="data.billingAddressState">
+                                                    <input type="text" class="form-control fixed-add" placeholder="Country" ng-model="data.billingAddressCountry">
+                                                    <div class="same-billing mg20">
+                                                        <div class="custom-checkbox">
+                                                            <input type="checkbox" id="bill">
+                                                            <label for="bill">
+                                                                Use the same for shipping address.</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-center mt20 mb20 save ">
+                                                        <button class="btn btn-outline btn-full text-medium" ng-click="saveProfile()">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="add-address relate pointer" ng-click="billingAdd=true">
+                                <div class="add-address relate pointer" ng-click="addAddress();">
                                     <div class="new-add get-center dark-pink text-center">
                                         <span class="block">
                                             <i class="fa fa-plus-circle fa-2x dark-pink"></i>
                                         </span>
                                         <span>Add New Address</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="add-billing-add" ng-show="billingAdd">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <form action="">
-                                            <input type="text" class="form-control" placeholder="Title Of Address">
-                                            <input type="text" class="form-control" placeholder="Flat Number, Building Number">
-                                            <input type="text" class="form-control" placeholder="Street Address">
-                                            <input type="text" class="form-control" placeholder="Nearest Landmark">
-                                            <input type="text" class="form-control" placeholder="Pin Code">
-                                            <input type="text" class="form-control fixed-add" value="Mumbai">
-                                            <input type="text" class="form-control fixed-add" value="Maharashtra">
-                                            <input type="text" class="form-control fixed-add" value="India">
-                                            <div class="same-billing mg20">
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="bill">
-                                                    <label for="bill">
-                                                        Use the same for shipping address.</label>
-                                                </div>
-                                            </div>
-                                            <div class="text-center mt20 mb20 save ">
-                                                <button class="btn btn-outline btn-full text-medium" ng-click="billingAdd=false">Save</button>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <!-- <h4 class="text-center dark-blue">Shipping Address</h4> -->
-                            <div class="" ng-hide="shippingAdd">
-                                <div class="first-address office">
-                                    <div class="add-head bg-pink clearfix">
-                                        <span class="pointer pull-right mt10 mr10">
-                                            <i class="fa fa-pencil"></i>
-                                        </span>
-                                        <h5 class="text-uppercase dark-blue m-clear pd10 text-center">office</h5>
-                                    </div>
-                                    <div class="add-body">
-                                        <address>B/1202 ,sairam niwas, nr.eastern express highway ,thana east Mumbai- 400081 Maharashtra, India</address>
-                                        <div class="custom-checkbox inline-block">
-                                            <input type="checkbox" id="default-bill">
-                                            <label for="default-bill">
-                                                <span></span>
-                                                Use as default address</label>
+                            <h4 class="text-center dark-blue">Shipping Address</h4>
+                            <div class="">
+                                <!-- <div class="first-address"> -->
+                                <div class="first-address" ng-repeat="data in userdata.shippingAddress">
+
+                                    <div ng-hide="data.edit">
+                                        <div class="add-head bg-pink clearfix">
+                                          <span class="pointer edit-add pull-right mt10 mr10">
+                                              <i class="fa fa-trash" ng-click="showDelete(data,'ship');"></i>
+                                          </span>
+                                            <span class="pointer edit-add pull-right mt10 mr10">
+                                                <i class="fa fa-pencil" ng-click="showEdit(data,'ship');"></i>
+                                            </span>
+                                            <h5 class="text-uppercase dark-blue m-clear pd10 text-center">{{data.shippingTitle}}</h5>
                                         </div>
-                                        <div class="custom-checkbox inline-block">
-                                            <input type="checkbox" id="ship-bill">
-                                            <label for="ship-bill">
-                                                <span></span>
-                                                Use For Shipping address</label>
+                                        <div class="add-body">
+                                            <address>{{data.shippingAddressFlat}}
+                                                ,{{data.shippingAddressStreet}}
+                                                ,
+                                                {{data.shippingAddressLandmark}}
+                                                ,{{data.shippingAddressCity}}
+                                                -
+                                                {{data.shippingAddressPin}}
+                                                {{data.shippingAddressState}},
+                                                {{data.shippingAddressCountry}}</address>
+                                            <div class="custom-checkbox inline-block">
+                                                <input type="checkbox" id="defaultship{{$index}}" ng-model="data.isDefault" ng-change="changeDefault(data,'ship')">
+                                                <label for="defaultship{{$index}}">
+                                                    <span></span>
+                                                    Use as default address</label>
+                                            </div>
+                                            <!-- <div class="custom-checkbox inline-block">
+                                              <input type="checkbox" id="use{{$index}}">
+                                              <label for="use{{$index}}">
+                                                  <span></span>
+                                                  Use For Shipping address</label>
+                                          </div> -->
+                                        </div>
+
+                                    </div>
+                                    <div class="add-billing-add" ng-show="data.edit">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <form action="">
+                                                    <input type="text" class="form-control" placeholder="Title Of Address" ng-model="data.shippingTitle">
+                                                    <input type="text" class="form-control" placeholder="Flat Number, Building Number" ng-model="data.shippingAddressFlat">
+                                                    <input type="text" class="form-control" placeholder="Street Address" ng-model="data.shippingAddressStreet">
+                                                    <input type="text" class="form-control" placeholder="Nearest Landmark" ng-model="data.shippingAddressLandmark">
+                                                    <input type="text" class="form-control" placeholder="Pin Code" ng-model="data.shippingAddressPin">
+                                                    <input type="text" class="form-control fixed-add" placeholder="City" ng-model="data.shippingAddressCity">
+                                                    <input type="text" class="form-control fixed-add" placeholder="State" ng-model="data.shippingAddressState">
+                                                    <input type="text" class="form-control fixed-add" placeholder="Country" ng-model="data.shippingAddressCountry">
+                                                    <div class="text-center mt20 mb20 save ">
+                                                        <button class="btn btn-outline btn-full text-medium" ng-click="saveProfile()">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="add-address relate pointer" ng-click="shippingAdd=true;">
+                                <div class="add-address relate pointer" ng-click="addAddress('ship');">
                                     <div class="new-add get-center dark-pink text-center">
                                         <span class="block">
                                             <i class="fa fa-plus-circle fa-2x dark-pink"></i>
@@ -121,33 +162,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="add-billing-add add-shipping-add" ng-show="shippingAdd">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <form action="">
-                                            <input type="text" class="form-control" placeholder="Title Of Address">
-                                            <input type="text" class="form-control" placeholder="Flat Number, Building Number">
-                                            <input type="text" class="form-control" placeholder="Street Address">
-                                            <input type="text" class="form-control" placeholder="Nearest Landmark">
-                                            <input type="text" class="form-control" placeholder="Pin Code">
-                                            <input type="text" class="form-control fixed-add" value="Mumbai">
-                                            <input type="text" class="form-control fixed-add" value="Maharashtra">
-                                            <input type="text" class="form-control fixed-add" value="India">
-                                            <div class="same-billing mg20">
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="ship">
-                                                    <label for="ship">
-                                                        Use the same for billing address.</label>
-                                                </div>
-                                            </div>
-                                            <div class="text-center mt20 mb20 save ">
-                                                <button class="btn btn-outline btn-full text-medium" ng-click="shippingAdd=false">Save</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+
                     </div>
                 </div>
                 <!-- <div class="add-billing-add" ng-show="billingAdd">

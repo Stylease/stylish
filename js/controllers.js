@@ -191,13 +191,41 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
 
     })
-    .controller('SaveaddressCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('SaveaddressCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("saveaddress");
         $scope.menutitle = NavigationService.makeactive("Saveaddress");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.modelDelete = {};
+        $scope.remove = function() {
+            _.pull($scope.modelDelete.collection, $scope.modelDelete.obj);
+            $scope.saveProfile();
+            removemod.close();
+        };
+        $scope.showDelete = function(data, val) {
+            var collection;
+            var name;
+            if (val) {
+                collection = $scope.userdata.shippingAddress;
+                name = data.shippingTitle;
+            } else {
+                collection = $scope.userdata.billingAddress;
+                name = data.billingTitle;
+            }
+            $scope.modelDelete = {
+                collection: collection,
+                obj: data,
+                name: name
+            };
+            removemod = $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/removeitem.html",
+                scope: $scope
+            });
+        };
+
         $scope.getProfile = function() {
             NavigationService.getProfile(function(data) {
                 if (data.value) {
@@ -208,22 +236,56 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.showEdit = function(data) {
             data.edit = true;
         };
-        $scope.changeDefault = function(data) {
+        $scope.changeDefault = function(data, val) {
+            var collection;
+            if (val) {
+                collection = $scope.userdata.shippingAddress;
+            } else {
+                collection = $scope.userdata.billingAddress;
+            }
             if (data.isDefault) {
-                _.each(userdata.billingAddress, function(n) {
-                    if (!_.isMatch(userdata.billingAddress, data)) {
+                _.each(collection, function(n) {
+                    if (data !== n) {
                         n.isDefault = false;
                     }
                 });
             }
+            $scope.saveProfile();
+        };
+        $scope.addAddress = function(val) {
+            var collection;
+            if (val) {
+                collection = $scope.userdata.shippingAddress;
+                collection.push({
+                    edit: true,
+                    shippingAddressCity: "Mumbai",
+                    shippingAddressState: "Maharashtra",
+                    shippingAddressCountry: "India"
+                });
+            } else {
+                collection = $scope.userdata.billingAddress;
+                collection.push({
+                    edit: true,
+                    billingAddressCity: "Mumbai",
+                    billingAddressState: "Maharashtra",
+                    billingAddressCountry: "India"
+                });
+            }
+
         };
         $scope.getProfile();
 
 
         $scope.saveProfile = function() {
-            $scope.set.Profile = false;
+            _.each($scope.userdata.billingAddress, function(n) {
+                n.edit = false;
+            });
+            _.each($scope.userdata.shippingAddress, function(n) {
+                n.edit = false;
+            });
             NavigationService.userProfileSave($scope.userdata, function(data) {
-                $scope.setProfile = false;
+
+                $scope.getProfile();
             });
         };
 
