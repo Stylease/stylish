@@ -56,7 +56,7 @@
             <div>
               <form>
                 Size:
-                <div  ng-repeat="size in product.size" ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
+                <div ng-repeat="size in product.size" ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
                   <label class="size-font pointer">
                     {{size.name}}
                   </label>
@@ -98,7 +98,7 @@
               </div>
             </div> -->
 
-              <div class="back-color" >
+              <div class="back-color">
                 <!--for l-->
                 <div class="disp-inline">
                   <span>{{select.sizedetail.chest}}</span>
@@ -140,7 +140,7 @@
               </div>
               <div class="calendar inline-block">
                 <div class="input-group">
-                  <input type="date" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" ng-change= "time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" />
+                  <input type="date" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" />
                   <span class="cal">
                     <button type="button" class="btn btn-default" ng-click="open2()"></button>
                   </span>
@@ -157,11 +157,8 @@
                   <label for="delivery-time" class="inline-block a2">Delivery Time</label>
                   <div class="custom-select inline-block a3">
                     <select name="" id="delivery-time" ng-model="cartpro.deliveryTime">
-                      <option value="10 am">10 am</option>
-                      <option value="11 am">11 am</option>
-                      <option value="12 am">12 am</option>
-                      <option value="01 pm">01 pm</option>
-                      <option value="02 pm">02 pm</option>
+                      <option value="10 am - 2 pm">10 am - 2 pm</option>
+                      <option value="2 pm - 6 pm">2 pm - 6 pm</option>
                     </select>
                   </div>
                 </div>
@@ -177,11 +174,8 @@
                   <label for="pickup-time" class="inline-block a2">Pickup Time</label>
                   <div class="custom-select inline-block a3">
                     <select name="" ng-model="cartpro.pickupTime" id="pickup-time">
-                      <option value="10 am">10 am</option>
-                      <option value="11 am">11 am</option>
-                      <option value="12 am">12 am</option>
-                      <option value="01 pm">01 pm</option>
-                      <option value="02 pm">02 pm</option>
+                      <option value="10 am - 2 pm">10 am - 2 pm</option>
+                      <option value="2 pm - 6 pm">2 pm - 6 pm</option>
                     </select>
                   </div>
                 </div>

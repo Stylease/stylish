@@ -436,10 +436,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getOneProduct(id, function(response) {
                 if (response.value) {
                     $scope.product = response.data;
-                    console.log($scope.product);
+                    console.log($scope.cartProduct);
                     $scope.editable = _.find($scope.cartProduct, function(key) {
-                        return key._id == id;
+                        return key.product._id == id;
                     });
+                    console.log($scope.editable);
                 }
             }, function(err) {
                 console.log(err);

@@ -22,10 +22,10 @@
               <p>RENT : INR <span>{{product.product.price}}/-</span></p>
               <p class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
               <p class="mb5"><span class="edit-cart">Rental</span> <span>INR {{product.product.rentalamount}}</span></p>
-              <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeTo}}</span></p>
+              <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
               <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
-              <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>10 am</span></p>
-              <p class="mb5"><span class="edit-cart">Pickup Time</span> <span>10 am</span></p>
+              <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{product.deliveryTime}}</span></p>
+              <p class="mb5"><span class="edit-cart">Pickup Time</span> <span>{{product.pickupTime}}</span></p>
             </div>
             <div class="edit-product-detail product-all-detail" ng-show="variables.editCart[product.product._id]">
               <form action="">
@@ -38,7 +38,7 @@
                   </div>
                 </div>
                 <p><span class="edit-cart">Rental</span> <span>INR {{product.price}}</span></p>
-                <p><span class="edit-cart">Delivery Date</span> <span>{{product.date}}</span> <span class="dark-pink text-underline text-underline ml20 pointer" ng-click="date();">Change ?</span></p>
+                <p><span class="edit-cart">Delivery Date </span>{{product.date}} <span>{{product.date | date : 'shortDate'}}</span> <span class="dark-pink text-underline text-underline ml20 pointer" ng-click="date();">Change ?</span></p>
                 <div>
                   <span class="edit-cart">Duration</span>
                   <div class="dates inline-block">
@@ -58,11 +58,8 @@
                           <label for="delivery-time" class="inline-block text-medium">Delivery Time</label>
                           <div class="custom-select inline-block">
                             <select name="" id="delivery-time">
-                              <option value="">10 am</option>
-                              <option value="">11 am</option>
-                              <option value="">12 am</option>
-                              <option value="">01 pm</option>
-                              <option value="">20 pm</option>
+                              <option value="10 am - 2 pm">10 am - 2 pm</option>
+                              <option value="2 pm - 6 pm">2 pm - 6 pm</option>
                             </select>
                           </div>
                         </div>
@@ -72,11 +69,8 @@
                           <label for="pickup-time" class="inline-block text-medium">Pickup Time</label>
                           <div class="custom-select inline-block">
                             <select name="" id="pickup-time">
-                              <option value="">10 am</option>
-                              <option value="">11 am</option>
-                              <option value="">12 am</option>
-                              <option value="">01 pm</option>
-                              <option value="">02 pm</option>
+                              <option value="10 am - 2 pm">10 am - 2 pm</option>
+                              <option value="2 pm - 6 pm">2 pm - 6 pm</option>
                             </select>
                           </div>
                         </div>
