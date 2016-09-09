@@ -19,14 +19,14 @@
   <div class="container-fluid">
     <div ng-repeat="subcat in subcategory">
       <div class="row-flex" ng-if=" subcat.length == null">
-        <div class="relate mt20 mb20 pointer" ui-sref="product({'name':subcat.name})">
+        <div class="relate mt20 mb20 pointer ban-width" ui-sref="product({'name':subcat.name})">
           <img ng-src="{{subcat.image|serverimage}}" alt="" class="img-responsive">
         </div>
       </div>
 
       <div class="row-flex" ng-repeat="subc in subcat" ng-if="subcat.length > 0">
         <div class="col-flex" ng-repeat="sub in subc">
-          <div class="relate mr10 pointer" ui-sref="product({'name':sub.name})">
+          <div class="relate mr10 pointer ban-width" ui-sref="product({'name':sub.name})">
             <img ng-src="{{sub.image|serverimage}}" alt="" class="img-responsive">
           </div>
         </div>
@@ -56,7 +56,7 @@
       </div>
     </div> -->
     <div class="row-flex">
-      <div class="relate mt20 mb20 pointer" ui-sref="celebritychoice">
+      <div class="relate mt20 mb20 pointer ban-width" ui-sref="celebritychoice">
         <img src="img/celebrity.jpg" alt="" class="img-responsive">
       </div>
     </div>

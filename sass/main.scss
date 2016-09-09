@@ -407,7 +407,7 @@ a {
     @include transition(all 0.4s linear);
   }
 }
-.flexslider {
+.flexslider  {
   border: none;
   margin: 0;
   background-color: transparent;
@@ -543,6 +543,17 @@ nav {
     font-size: 25px;
   }
 }
+.badge-pos{
+  position: relative;
+}
+.badge-pos2{
+  position: absolute;
+  top: -3px;
+  right: -12px;
+  padding: 4px 4px;
+  height: 20px;
+  width: 20px;
+}
 // header end
 // home
 .home-slider {
@@ -652,6 +663,12 @@ nav {
     background: url('../img/comma1.png') no-repeat;
     top: 0;
     left: -20px;
+  }
+}
+.ban-width{
+  width: 100%;
+  img{
+    width: 100% !important;
   }
 }
 // home end
@@ -1589,9 +1606,14 @@ input.form-control {
 }
 .suggested-imgholder {
   height: 180px;
+  overflow: hidden;
+    display: block;
+    position: relative;
   img {
+    max-width: 100%;
     max-height: 100%;
-  }
+    width: auto !important;
+}
 }
 .suggested-slider {
   margin-top: 50px;
@@ -1599,15 +1621,15 @@ input.form-control {
     font-size: 16px;
   }
   .flexslider:hover .flex-direction-nav .flex-prev {
-    left: -40px;
+    left: 30px;
     opacity: 1;
   }
   .flexslider:hover .flex-direction-nav .flex-next {
-    right: -40px;
+    right: 30px;
     opacity: 1;
   }
   .flex-direction-nav a.flex-next {
-    right: -40px;
+    right: 30px;
     opacity: 1;
     &:before {
       content: "\f105";
@@ -1617,7 +1639,7 @@ input.form-control {
     }
   }
   .flex-direction-nav a.flex-prev {
-    left: -40px;
+    left: 30px;
     opacity: 1;
     &:before {
       content: "\f104";
@@ -1665,11 +1687,24 @@ input.form-control {
     top: 53%;
   }
   .related-imgholder {
-    @include square(85px);
-    img {
-      min-height: 100%;
+    width: auto;
+    height: 85px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+     img {
+      max-height: 100%;
       @include transform(rotate(-90deg));
+      overflow:hidden;
+      max-width: 100%;
     }
+  }
+}
+
+flex-slider{
+  .flex-viewport{
+    overflow: hidden;
+    position: relative;
   }
 }
 // end product page
