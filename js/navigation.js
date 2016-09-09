@@ -24,15 +24,7 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             disabled: false,
             anchor: "accessories",
-            subnav: [{
-                name: "Bags",
-                classis: "active",
-                link: "product"
-            }, {
-                name: "Jewellery",
-                classis: "active",
-                link: "product"
-            }, ]
+            subnav: []
         }, {
             name: "Celebrities Choice",
             classis: "active",
@@ -78,6 +70,7 @@ var navigationservice = angular.module('navigationservice', [])
         getnav: function() {
             var subnavGen = [];
             var subnavGen1 = [];
+            var subnavGen2 = [];
             $http({
                 url: adminURL + 'subcategory/getAllCat',
                 method: "POST"
@@ -92,8 +85,14 @@ var navigationservice = angular.module('navigationservice', [])
                                 classis: "active",
                                 link: "product({name:'" + key.name + "'})"
                             });
-                        } else {
+                        } else if (key.category.name == 'Dresses') {
                             subnavGen1.push({
+                                name: key.name,
+                                classis: "active",
+                                link: "product({name:'" + key.name + "'})"
+                            });
+                        } else {
+                            subnavGen2.push({
                                 name: key.name,
                                 classis: "active",
                                 link: "product({name:'" + key.name + "'})"
@@ -103,6 +102,7 @@ var navigationservice = angular.module('navigationservice', [])
                     });
                     navigation[1].subnav = subnavGen1;
                     navigation[2].subnav = subnavGen;
+                    navigation[3].subnav = subnavGen2;
                 }
             });
             return navigation;

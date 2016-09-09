@@ -52,7 +52,7 @@
               <li><a href="" ng-class="{'select-size' : filter.size=='xl'}" ng-click="filter.size='xl'">XL</a></li> -->
 
           <!--size list-->
-          <div class="s1">
+          <div ng-if="product.size.length>0" class="s1">
             <div>
               <form>
                 Size:
