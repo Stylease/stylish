@@ -671,7 +671,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 // tmpdate.setHours(0,0,0,0);
                 var tmpto = new Date(key.timestampTo);
                 var diffDays = tmpto.getDate() - tmpdate.getDate();
-                console.log("aaaa",diffDays);
+                console.log("aaaa", diffDays);
                 start = 0;
                 do {
                     $scope.timestamps.push(new Date(tmpdate));
@@ -953,6 +953,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     };
     $scope.checkSession();
+    $scope.getCart = function() {
+        NavigationService.getCart(function(data) {
+            if (data.value == true) {
+                $scope.cartcount = data.data.cartcount;
+                // console.log("cartcount", $scope.cartcount);
+            }
+        }, function(err) {
+            console.log(err);
+        });
+    };
+    $scope.getCart();
     $scope.closeAllModals = function() {
         if (modal1) {
             modal1.close();

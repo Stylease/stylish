@@ -177,6 +177,12 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback).error(errCallback);
         },
+        getCart: function(callback, errCallback) {
+            return $http({
+                url: adminURL + "cart/getCart",
+                method: "POST"
+            }).success(callback).error(errCallback);
+        },
         getOneProduct: function(request, callback, errCallback) {
             return $http({
                 url: adminURL + "product/getOne",
