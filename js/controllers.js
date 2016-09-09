@@ -671,13 +671,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 // tmpdate.setHours(0,0,0,0);
                 var tmpto = new Date(key.timestampTo);
                 var diffDays = tmpto.getDate() - tmpdate.getDate();
-                console.log(diffDays);
+                console.log("aaaa",diffDays);
                 start = 0;
                 do {
                     $scope.timestamps.push(new Date(tmpdate));
                     tmpdate.setDate(tmpdate.getDate() + 1);
                     start++;
-                } while (start <= diffDays);
+                } while (start <= (diffDays + 4));
             });
             $scope.mainImage = data.data.product.images[0].image;
         }, function(err) {
