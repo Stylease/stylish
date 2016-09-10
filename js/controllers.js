@@ -381,11 +381,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("CheckoutSignin");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-<<<<<<< HEAD
 
-=======
         $scope.facebookLogin = function() {
-
             ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
             stopinterval = $interval(callAtIntervaltwitter, 2000);
             ref.addEventListener('exit', function(event) {
@@ -406,7 +403,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $interval.cancel(stopinterval);
             });
         };
->>>>>>> 33bd020dbeb7633eebd288acbef5bf2058770e4e
+
 
     })
     .controller('CheckoutLoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
@@ -427,12 +424,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.login = {};
         $scope.userLogin = function() {
             $scope.loginmsg.msg = "";
-console.log("aaaa", $scope.login);
             NavigationService.login($scope.login, function(data) {
-              console.log(data.value);
                 if (data.value == true) {
-                    console.log("in if");
-                    // $scope.closeAllModals();
+                        // $scope.closeAllModals();
                     $scope.isLoggedIn = true;
                     // console.log($scope.isLoggedIn, 'dsfdsfa');
                     NavigationService.saveUser(data.data);
@@ -501,11 +495,30 @@ console.log("aaaa", $scope.login);
             });
 
         };
-        if ($.jStorage.get("userLoggedIn")) {
-            $scope.isLoggedIn = true;
-        } else {
-            $scope.isLoggedIn = false;
-        }
+        $scope.gotocheckout = function() {
+            NavigationService.getcart(function(data) {
+                if (data.value) {
+                    $scope.cartDetails = data.data.cartcount;
+                    console.log("aa", $scope.cartDetails);
+                    if ($scope.cartDetails.totalrentalamount > 8000) {
+                      if ($.jStorage.get("userLoggedIn")) {
+                          $state.go('address');
+                      } else {
+                          $state.go('checkoutsignin');
+                      }
+                    } else {
+                      removemod = $uibModal.open({
+                          animation: true,
+                          templateUrl: "views/modal/product-full.html",
+                          scope: $scope
+                      });
+                    }
+                }
+            }, function(err) {
+                console.log(err);
+            });
+
+        };
         $scope.editCartProduct = function(id) {
             $scope.variables.editCart = _.map($scope.variables.editCart, function(key) {
                 return false;
