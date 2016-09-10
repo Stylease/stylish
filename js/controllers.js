@@ -509,7 +509,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     } else {
                       removemod = $uibModal.open({
                           animation: true,
-                          templateUrl: "views/modal/product-full.html",
+                          templateUrl: "views/modal/minimumorder.html",
                           scope: $scope
                       });
                     }
