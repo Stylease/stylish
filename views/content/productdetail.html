@@ -126,27 +126,30 @@
             </div> -->
             </div>
           </div>
-
+<div>
+  <form name="myProduct">
+<!-- </div> -->
           <div class="delivery-date dates">
             <span class="text-medium">Delivery / Return Dates :</span>
-            <form action="">
+<div>
               <div class="radio-button">
-                <input type="radio" name="date" id="four">
+                <input type="radio" name="date" id="four" required>
                 <label for="four" ng-click="cartpro.duration=4" class="text-medium"><span></span> 4 Days</label>
               </div>
               <div class="radio-button">
-                <input type="radio" name="date" id="eight">
+                <input type="radio" name="date" id="eight" required>
                 <label for="eight" ng-click="cartpro.duration=8" class="text-medium"><span></span> 8 Days</label>
               </div>
               <div class="calendar inline-block">
                 <div class="input-group">
-                  <input type="date" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" />
+                  <input type="date" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" required/>
                   <span class="cal">
                     <button type="button" class="btn btn-default" ng-click="open2()"></button>
                   </span>
                 </div>
               </div>
-            </form>
+              </div>
+            <!-- </form> -->
           </div>
 
 
@@ -156,7 +159,7 @@
                 <div class="time">
                   <label for="delivery-time" class="inline-block a2">Delivery Time</label>
                   <div class="custom-select inline-block a3">
-                    <select name="" id="delivery-time" ng-model="cartpro.deliveryTime">
+                    <select name="" id="delivery-time" ng-model="cartpro.deliveryTime" required>
                       <option value="10 am - 2 pm">10 am - 2 pm</option>
                       <option value="2 pm - 6 pm">2 pm - 6 pm</option>
                     </select>
@@ -173,7 +176,7 @@
                 <div class="time">
                   <label for="pickup-time" class="inline-block a2">Pickup Time</label>
                   <div class="custom-select inline-block a3">
-                    <select name="" ng-model="cartpro.pickupTime" id="pickup-time">
+                    <select name="" ng-model="cartpro.pickupTime" id="pickup-time" required>
                       <option value="10 am - 2 pm">10 am - 2 pm</option>
                       <option value="2 pm - 6 pm">2 pm - 6 pm</option>
                     </select>
@@ -185,10 +188,12 @@
         </div>
         <div class="cla">
           <div class="buttons on-edit text-center">
-            <button class="btn btn-outline text-uppercase btn-full m-center added-cart" ng-click="addToCart();">add to cart</button>
+            <button class="btn btn-outline text-uppercase btn-full m-center added-cart" ng-click="addToCart();" ng-disabled="myProduct.$invalid">add to cart</button>
             <button class="btn btn-outline text-uppercase btn-full m-center" ng-disabled="checkLogin==null" ng-click="addTowishlist(); saveWishList(); ">add to wishlist</button>
           </div>
         </div>
+      </form>
+      </div>
         <div class="product-more-detail accordion-custom">
           <uib-accordion close-others="oneAtATime">
             <uib-accordion-group is-open="status.open1" ng-if="product.details !== ''">
