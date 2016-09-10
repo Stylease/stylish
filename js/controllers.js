@@ -356,7 +356,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("CheckoutSignin");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        
+
 
     })
     .controller('CheckoutLoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
