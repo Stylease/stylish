@@ -453,28 +453,33 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.editCart = function(data) {
-            var d = new Date($scope.cartpro.timeFrom);
-            $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
-            if ($scope.product.designer == null) {
-                $scope.cartpro.by = "";
-            } else {
-                $scope.cartpro.by = $scope.product.designer.name;
-            }
-            NavigationService.addToCart($scope.cartpro, function(data) {
-                console.log("response cart", data);
-                $scope.response = data;
-                if ($scope.response.value === true) {
-                    $uibModal.open({
-                        animation: true,
-                        templateUrl: "views/modal/shop.html",
-                        scope: $scope
-                    });
-                } else {
-
-                }
-            }, function(err) {
-                console.log(err);
-            });
+          console.log(data);
+          $scope.cartpro= {};
+          $scope.cartpro.product = data.product.id;
+          $scope.cartpro.timeFrom = data.timeFrom;
+          $scope.cartpro.duration = data.duration;
+          $scope.cartpro.size = data.size;
+          $scope.cartpro.deliveryTime = data.deliveryTime;
+          $scope.cartpro.pickupTime = data.pickupTime;
+          var d = new Date($scope.timeFrom);
+          $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
+          $scope.cartpro.by = data.by;
+          console.log("final cart", $scope.cartpro);
+            // NavigationService.addToCart($scope.cartpro, function(data) {
+            //     console.log("response cart", data);
+            //     $scope.response = data;
+            //     if ($scope.response.value === true) {
+            //         $uibModal.open({
+            //             animation: true,
+            //             templateUrl: "views/modal/shop.html",
+            //             scope: $scope
+            //         });
+            //     } else {
+            //
+            //     }
+            // }, function(err) {
+            //     console.log(err);
+            // });
         };
         $scope.openRemoveModal = function(productid) {
             $scope.variables.removeitem = productid;
