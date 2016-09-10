@@ -73,7 +73,7 @@
                           <div class="custom-select inline-block">
                             <select name="" id="pickup-time">
                               <option ng-selected="'10 am - 2 pm' === '{{product.deliveryTime}}'" value="10 am - 2 pm">10 am - 2 pm</option>
-                              <option ng-selected="'10 am - 2 pm' === '{{product.deliveryTime}}'" value="2 pm - 6 pm">2 pm - 6 pm</option>
+                              <option ng-selected="'2 pm - 6 pm' === '{{product.deliveryTime}}'" value="2 pm - 6 pm">2 pm - 6 pm</option>
                             </select>
                           </div>
                         </div>
@@ -83,6 +83,7 @@
                   <div class="mt10 mb10 on-edit">
                     <button class="btn btn-outline btn-full text-medium" type="reset" ng-click="closeEdit()">Reset</button>
                     <button class="btn btn-outline btn-full text-medium" ng-click="editCart=false;">Confirm</button>
+                    <!-- <button class="btn btn-outline btn-full text-medium" ng-click="editCart=false;">Confirm</button> -->
                   </div>
               </form>
               </div>

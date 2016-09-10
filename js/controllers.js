@@ -445,11 +445,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }, function(err) {
                 console.log(err);
             });
-
         };
         $scope.closeEdit = function(id) {
             $scope.variables.editCart = _.map($scope.variables.editCart, function(key) {
                 return false;
+            });
+        };
+
+        $scope.editCart = function(data) {
+            var d = new Date($scope.cartpro.timeFrom);
+            $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
+            if ($scope.product.designer == null) {
+                $scope.cartpro.by = "";
+            } else {
+                $scope.cartpro.by = $scope.product.designer.name;
+            }
+            NavigationService.addToCart($scope.cartpro, function(data) {
+                console.log("response cart", data);
+                $scope.response = data;
+                if ($scope.response.value === true) {
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/shop.html",
+                        scope: $scope
+                    });
+                } else {
+
+                }
+            }, function(err) {
+                console.log(err);
             });
         };
         $scope.openRemoveModal = function(productid) {
