@@ -436,7 +436,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getOneProduct(id, function(response) {
                 if (response.value) {
                     $scope.product = response.data;
-                    console.log($scope.cartProduct);
+                    $scope.sizes = response.data.size
                     $scope.editable = _.find($scope.cartProduct, function(key) {
                         return key.product._id == id;
                     });
@@ -702,7 +702,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.addToCart = function() {
             var d = new Date($scope.cartpro.timeFrom);
             $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
-            $scope.cartpro.by = $scope.product.designer.name;
+            if ($scope.product.designer == null) {
+                $scope.cartpro.by = "";
+            } else {
+                $scope.cartpro.by = $scope.product.designer.name;
+            }
+
             NavigationService.addToCart($scope.cartpro, function(data) {
                 console.log("response cart", data);
                 $scope.response = data;

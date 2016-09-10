@@ -32,7 +32,8 @@
             <span class="text-uppercase filter-heading inline-block mt10 mb10">filter</span>
             <div class="filter-dropdown accordion-custom">
               <div class="search-by-filter">
-                <form>                  <uib-accordion close-others="oneAtATime">
+                <form>
+                  <uib-accordion close-others="oneAtATime">
                     <uib-accordion-group is-open="status.open1" ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                       <uib-accordion-heading>
                         <i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i><span class="block">{{cat}}</span>
@@ -148,8 +149,7 @@
                       </uib-accordion-heading>
                       <div class="color">
                         <div class="custom-checkbox" ng-repeat="c in color">
-                          <input type="checkbox" ng-model="checkIt[c.name]"
-ng-change="pushColor(checkIt[c.name],c._id)" id="{{c._id}}">
+                          <input type="checkbox" ng-model="checkIt[c.name]" ng-change="pushColor(checkIt[c.name],c._id)" id="{{c._id}}">
                           <label for="{{c._id}}"><span></span> {{c.name}}</label>
                         </div>
                       </div>
