@@ -356,6 +356,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("CheckoutSignin");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        
 
     })
     .controller('CheckoutLoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
@@ -410,6 +411,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.variables = {};
         $scope.variables.editCart = [];
         $scope.cartProduct = [];
+        $scope.isLoggedIn = false;
         $scope.date = function() {
             $uibModal.open({
                 animation: true,
@@ -428,6 +430,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
 
         };
+        if ($.jStorage.get("userLoggedIn")) {
+            $scope.isLoggedIn = true;
+        } else{
+          $scope.isLoggedIn = false;
+        }
         $scope.editCartProduct = function(id) {
             $scope.variables.editCart = _.map($scope.variables.editCart, function(key) {
                 return false;
