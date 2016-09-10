@@ -8,25 +8,25 @@
         <div class="row">
           <div class="col-md-3">
             <div class="relate">
-              <input type="text" name="first" ng-model="first" class="form-control" placeholder="First Name" required>
+              <input type="text" name="first" ng-model="userdata.firstname" class="form-control" placeholder="First Name" required>
               <div class="form-error" ng-show="formcheckout.first.$error.required && formcheckout.first.$touched">Please enter your First Name</div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="relate">
-              <input type="text" name="last" ng-model="last" class="form-control" placeholder="Last Name" required>
+              <input type="text" name="last" ng-model="userdata.lastname" class="form-control" placeholder="Last Name" required>
               <div class="form-error" ng-show="formcheckout.last.$error.required && formcheckout.last.$touched">Please enter your Last Name</div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="relate">
-              <input type="tel" name="number" ng-model="number" class="form-control" placeholder="Mobile No" required>
+              <input type="tel" name="number" ng-model="userdata.mobile" class="form-control" placeholder="Mobile No" required>
               <div class="form-error" ng-show="formcheckout.number.$error.required && formcheckout.number.$touched">Please enter your Mobile No</div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="relate">
-              <input type="email" name="mail" ng-model="mail" class="form-control" placeholder="Email-id" required>
+              <input type="email" name="mail" ng-model="userdata.email" class="form-control" placeholder="Email-id" required>
               <div class="form-error" ng-show="formcheckout.mail.$error.required && formcheckout.mail.$touched">Please enter your Email</div>
             </div>
           </div>
@@ -40,29 +40,29 @@
               <div class="col-md-10">
                 <div class="add-billing-add">
                   <div class="relate">
-                    <input type="text" ng-model="flat" name="flat" class="form-control" placeholder="Flat Number, Building Number" required>
+                    <input type="text" ng-model="userdata.billingAddress.billingAddressFlat" name="flat" class="form-control" placeholder="Flat Number, Building Number" required>
                     <div class="form-error" ng-show="formcheckout.flat.$error.required && formcheckout.flat.$touched">Please enter your Flat Number, Building Number.</div>
                   </div>
                   <div class="relate">
-                    <input type="text" name="street" ng-model="street" class="form-control" placeholder="Street Address" required>
+                    <input type="text" name="street" ng-model="userdata.billingAddress.billingAddressStreet" class="form-control" placeholder="Street Address" required>
                     <div class="form-error" ng-show="formcheckout.street.$error.required && formcheckout.street.$touched">Please enter your Street Address.</div>
                   </div>
                   <div class="relate">
-                    <input type="text" ng-model="landmark" name="landmark" class="form-control" placeholder="Nearest Landmark" required>
+                    <input type="text" ng-model="userdata.billingAddress.billingAddressLandmark" name="landmark" class="form-control" placeholder="Nearest Landmark" required>
                     <div class="form-error" ng-show="formcheckout.landmark.$error.required && formcheckout.landmark.$touched">Please enter your Nearest Landmark.</div>
                   </div>
                   <div class="relate">
-                    <input type="text" name="code" ng-model="code" class="form-control" placeholder="Pin Code" required>
+                    <input type="text" name="code" ng-model="userdata.billingAddress.billingAddressPin" class="form-control" placeholder="Pin Code" required>
                     <div class="form-error" ng-show="formcheckout.code.$error.required && formcheckout.code.$touched">Please enter your Pin Code.</div>
                   </div>
                   <div class="relate">
-                    <input type="text" class="form-control fixed-add" value="Mumbai">
+                    <input type="text" ng-model="userdata.billingAddress.billingAddressCity" class="form-control fixed-add" value="Mumbai">
                   </div>
                   <div class="relate">
-                    <input type="text" class="form-control fixed-add" value="Maharashtra">
+                    <input type="text" ng-model="userdata.billingAddress.billingAddressState" class="form-control fixed-add" value="Maharashtra">
                   </div>
                   <div class="relate">
-                    <input type="text" class="form-control fixed-add" value="India">
+                    <input type="text" ng-model="userdata.billingAddress.billingAddressCountry" class="form-control fixed-add" value="India">
                   </div>
                 </div>
               </div>
@@ -80,24 +80,24 @@
                     </div>
                   </div>
                   <div class="relate">
-                    <input type="text" class="form-control" placeholder="Flat Number, Building Number" name="bldg" ng-model="bldg" required>
+                    <input type="text" class="form-control" placeholder="Flat Number, Building Number" name="bldg" ng-model="userdata.shippingAddress.shippingAddressFlat" required>
                     <div class="form-error" ng-show="formcheckout.bldg.$error.required && formcheckout.bldg.$touched">Please enter your Flat Number, Building Number</div>
                   </div>
                   <div class="relate">
-                    <input type="text" class="form-control" placeholder="Street Address" name="streetadd" ng-model="streetadd" required>
+                    <input type="text" class="form-control" placeholder="Street Address" name="streetadd" ng-model="userdata.shippingAddress.shippingAddressStreet" required>
                     <div class="form-error" ng-show="formcheckout.streetadd.$error.required && formcheckout.streetadd.$touched">Please enter your Street Address</div>
                   </div>
                   <div class="relate">
-                    <input type="text" class="form-control" placeholder="Nearest Landmark" name="nearest" ng-model="nearest" required>
+                    <input type="text" class="form-control" placeholder="Nearest Landmark" name="nearest" ng-model="userdata.shippingAddress.shippingAddressLandmark" required>
                     <div class="form-error" ng-show="formcheckout.nearest.$error.required && formcheckout.nearest.$touched">Please enter your Nearest Landmark</div>
                   </div>
                   <div class="relate">
-                    <input type="text" class="form-control" placeholder="Pin Code" name="pincode" ng-model="pincode" required>
+                    <input type="text" class="form-control" placeholder="Pin Code" name="pincode" ng-model="userdata.shippingAddress.shippingAddressPin" required>
                     <div class="form-error" ng-show="formcheckout.pincode.$error.required && formcheckout.pincode.$touched">Please enter your Pin Code</div>
                   </div>
-                  <input type="text" class="form-control fixed-add" value="Mumbai">
-                  <input type="text" class="form-control fixed-add" value="Maharashtra">
-                  <input type="text" class="form-control fixed-add" value="India">
+                  <input type="text" class="form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressCity" value="Mumbai">
+                  <input type="text" class="form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressState" value="Maharashtra">
+                  <input type="text" class="form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressCountry" value="India">
                 </div>
               </div>
             </div>
