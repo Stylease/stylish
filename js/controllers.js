@@ -535,19 +535,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             $state.go('checkoutsignin');
                         }
                     } else {
-<<<<<<< HEAD
+
                       removemod = $uibModal.open({
                           animation: true,
                           templateUrl: "views/modal/minimumorder.html",
                           scope: $scope
                       });
-=======
-                        removemod = $uibModal.open({
-                            animation: true,
-                            templateUrl: "views/modal/product-full.html",
-                            scope: $scope
-                        });
->>>>>>> f0da68a62cad5657292175440705391e651c2966
+
                     }
                 }
             }, function(err) {
