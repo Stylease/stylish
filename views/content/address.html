@@ -56,13 +56,13 @@
                     <div class="form-error" ng-show="formcheckout.code.$error.required && formcheckout.code.$touched">Please enter your Pin Code.</div>
                   </div>
                   <div class="relate">
-                    <input type="text" ng-model="userdata.billingAddress.billingAddressCity" class="form-control fixed-add" value="Mumbai">
+                    <input placeholder="City" type="text" ng-model="userdata.billingAddress.billingAddressCity" class="form-control fixed-add" value="Mumbai">
                   </div>
                   <div class="relate">
-                    <input type="text" ng-model="userdata.billingAddress.billingAddressState" class="form-control fixed-add" value="Maharashtra">
+                    <input placeholder="State" type="text" ng-model="userdata.billingAddress.billingAddressState" class="form-control fixed-add" value="Maharashtra">
                   </div>
                   <div class="relate">
-                    <input type="text" ng-model="userdata.billingAddress.billingAddressCountry" class="form-control fixed-add" value="India">
+                    <input placeholder="Country" type="text" ng-model="userdata.billingAddress.billingAddressCountry" class="form-control fixed-add" value="India">
                   </div>
                 </div>
               </div>
@@ -75,7 +75,7 @@
                 <div class="col-md-10">
                   <div class="same-billing mt10 mb10">
                     <div class="custom-checkbox">
-                      <input type="checkbox" id="bill">
+                      <input type="checkbox" id="bill" ng-model="userdata.sameaddress">
                       <label for="bill">  Use same as Billing Address.</label>
                     </div>
                   </div>
@@ -95,9 +95,9 @@
                     <input type="text" class="form-control" placeholder="Pin Code" name="pincode" ng-model="userdata.shippingAddress.shippingAddressPin" required>
                     <div class="form-error" ng-show="formcheckout.pincode.$error.required && formcheckout.pincode.$touched">Please enter your Pin Code</div>
                   </div>
-                  <input type="text" class="form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressCity" value="Mumbai">
-                  <input type="text" class="form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressState" value="Maharashtra">
-                  <input type="text" class="form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressCountry" value="India">
+                  <input type="text" class="form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressCity" placeholder="City" value="Mumbai">
+                  <input type="text" class="form-control fixed-add" placeholder="State" ng-model="userdata.shippingAddress.shippingAddressState" value="Maharashtra">
+                  <input type="text" class="form-control fixed-add" placeholder="Country" ng-model="userdata.shippingAddress.shippingAddressCountry" value="India">
                 </div>
               </div>
             </div>

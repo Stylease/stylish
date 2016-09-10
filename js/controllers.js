@@ -210,7 +210,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
                 }
                 console.log($scope.userdata);
-
+            } else {
+                // $scope.userdata={};
+                // $scope.userdata.billingAddress={};
+                // $scope.userdata.shippingAddress={};
+                // $scope.changeAddress = function(val) {
+                //     if (val) {
+                //         $scope.userdata.shippingAddress = $scope.userdata.billingAddress;
+                //     } else {
+                //         $scope.userdata.shippingAddress = '';
+                //     }
+                // }
             }
         }, function(err) {});
 
@@ -249,6 +259,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 scope: $scope
             });
         };
+        // $scope.shippingCheck = function(check) {
+        //     if (check) {
+        //         $scope.shipAtSame = true;
+        //         $scope.sameShipping($scope.userdata.billingAddress);
+        //     } else {
+        //         $scope.shipAtSame = false;
+        //         userdata.billingAddress.billingAddressFlat = "";
+        //         userdata.billingAddress.billingAddressStreet = "";
+        //         userdata.billingAddress.billingAddressLandmark = "";
+        //         userdata.billingAddress.billingAddressPin = "";
+        //         userdata.billingAddress.billingAddressCity = "";
+        //         userdata.billingAddress.billingAddressState = "";
+        //         userdata.billingAddress.billingAddressCountry = "";
+        //     }
+        // };
 
         $scope.getProfile = function() {
             NavigationService.getProfile(function(data) {
@@ -374,14 +399,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CheckoutSigninCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('CheckoutSigninCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("checkout-signin");
         $scope.menutitle = NavigationService.makeactive("CheckoutSignin");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-
+        $scope.goToAddress = function() {
+            $state.go('address');
+        }
         $scope.facebookLogin = function() {
             ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
             stopinterval = $interval(callAtIntervaltwitter, 2000);
@@ -426,7 +453,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.loginmsg.msg = "";
             NavigationService.login($scope.login, function(data) {
                 if (data.value == true) {
-                        // $scope.closeAllModals();
+                    // $scope.closeAllModals();
                     $scope.isLoggedIn = true;
                     // console.log($scope.isLoggedIn, 'dsfdsfa');
                     NavigationService.saveUser(data.data);
@@ -495,23 +522,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
 
         };
+
         $scope.gotocheckout = function() {
             NavigationService.getcart(function(data) {
                 if (data.value) {
                     $scope.cartDetails = data.data.cartcount;
                     console.log("aa", $scope.cartDetails);
                     if ($scope.cartDetails.totalrentalamount > 8000) {
-                      if ($.jStorage.get("userLoggedIn")) {
-                          $state.go('address');
-                      } else {
-                          $state.go('checkoutsignin');
-                      }
+                        if ($.jStorage.get("userLoggedIn")) {
+                            $state.go('address');
+                        } else {
+                            $state.go('checkoutsignin');
+                        }
                     } else {
+<<<<<<< HEAD
                       removemod = $uibModal.open({
                           animation: true,
                           templateUrl: "views/modal/minimumorder.html",
                           scope: $scope
                       });
+=======
+                        removemod = $uibModal.open({
+                            animation: true,
+                            templateUrl: "views/modal/product-full.html",
+                            scope: $scope
+                        });
+>>>>>>> f0da68a62cad5657292175440705391e651c2966
                     }
                 }
             }, function(err) {
