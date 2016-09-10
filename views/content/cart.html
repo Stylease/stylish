@@ -46,12 +46,12 @@
                   <span class="edit-cart">Duration</span>
                   <div class="dates inline-block">
                     <div class="radio-button">
-                      <input ng-checked="4 == {{product.duration}}" type="radio" name="date" id="four{{$index}}">
-                      <label for="four{{$index}}" class="text-medium"><span></span> 4 Days</label>
+                      <input ng-model="product.duration" ng-checked="4 == {{product.duration}}" type="radio" name="date" id="four{{$index}}">
+                      <label for="four{{$index}}"  class="text-medium"><span></span> 4 Days</label>
                     </div>
                     <div class="radio-button">
-                      <input type="radio" ng-checked="8 == {{product.duration}}" name="date" id="eight{{$index}}">
-                      <label for="eight{{$index}}" class="text-medium"><span></span> 8 Days</label>
+                      <input ng-model="product.duration" type="radio" ng-click="editcartpro.duration=8" ng-checked="8 == {{product.duration}}" name="date" id="eight{{$index}}">
+                      <label for="eight{{$index}}"  class="text-medium"><span></span> 8 Days</label>
                     </div>
                   </div>
                   <div class="order-delivery-time mb20">

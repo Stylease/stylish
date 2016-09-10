@@ -453,18 +453,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.editCart = function(data) {
-          console.log(data);
-          $scope.cartpro= {};
-          $scope.cartpro.product = data.product.id;
-          $scope.cartpro.timeFrom = data.timeFrom;
-          $scope.cartpro.duration = data.duration;
-          $scope.cartpro.size = data.size;
-          $scope.cartpro.deliveryTime = data.deliveryTime;
-          $scope.cartpro.pickupTime = data.pickupTime;
-          var d = new Date($scope.timeFrom);
-          $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
-          $scope.cartpro.by = data.by;
-          console.log("final cart", $scope.cartpro);
+          $scope.editcartpro= {};
+          $scope.editcartpro.product = data.product._id;
+            var d = new Date(data.timeFrom);
+            console.log("ddd",d);
+          $scope.editcartpro.timeFrom = d;
+          $scope.editcartpro.duration = data.duration;
+          console.log("duration",  $scope.editcartpro.duration);
+          $scope.editcartpro.size = data.size;
+          $scope.editcartpro.deliveryTime = data.deliveryTime;
+          $scope.editcartpro.pickupTime = data.pickupTime;
+          $scope.editcartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.editcartpro.duration));
+          console.log("time to",$scope.editcartpro.timeTo);
+          $scope.editcartpro.by = data.by;
+          console.log("final cart", $scope.editcartpro);
             // NavigationService.addToCart($scope.cartpro, function(data) {
             //     console.log("response cart", data);
             //     $scope.response = data;
