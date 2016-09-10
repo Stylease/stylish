@@ -189,6 +189,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
+        NavigationService.getProfile(function(data) {
+            if (data.value) {
+                $scope.userdata = data.data;
+                console.log($scope.userdata, 'userdata');
+                $scope.billingAddress = _.find($scope.userdata.billingAddress, {
+                    isDefault: true
+                });
+                $scope.shippingAddress = _.find($scope.userdata.shippingAddress, {
+                    isDefault: true
+                });
+                if ($scope.billingAddress) {
+                    $scope.userdata.billingAddress = $scope.billingAddress;
+                } else {
+                    $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
+                }
+                if ($scope.shippingAddress) {
+                    $scope.userdata.shippingAddress = $scope.shippingAddress;
+                } else {
+                    $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
+                }
+                console.log($scope.userdata);
+
+            }
+        }, function(err) {});
+
     })
     .controller('SaveaddressCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
@@ -356,10 +381,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("CheckoutSignin");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+<<<<<<< HEAD
 
+=======
+        $scope.facebookLogin = function() {
+
+            ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
+            stopinterval = $interval(callAtIntervaltwitter, 2000);
+            ref.addEventListener('exit', function(event) {
+                NavigationService.getProfile(authenticatesuccess, function(err) {
+                    console.log(err);
+                });
+                $interval.cancel(stopinterval);
+            });
+        };
+        $scope.googleLogin = function() {
+            console.log("googlelogin");
+            ref = window.open(adminURL + 'user/loginGoogle', '_blank', 'location=no');
+            stopinterval = $interval(callAtIntervaltwitter, 2000);
+            ref.addEventListener('exit', function(event) {
+                NavigationService.getProfile(authenticatesuccess, function(err) {
+                    console.log(err);
+                });
+                $interval.cancel(stopinterval);
+            });
+        };
+>>>>>>> 33bd020dbeb7633eebd288acbef5bf2058770e4e
 
     })
-    .controller('CheckoutLoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('CheckoutLoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("checkout-login");
@@ -373,7 +423,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 controller: "CheckoutLoginCtrl"
             });
         };
+        $scope.loginmsg = {};
+        $scope.login = {};
+        $scope.userLogin = function() {
+            $scope.loginmsg.msg = "";
+console.log("aaaa", $scope.login);
+            NavigationService.login($scope.login, function(data) {
+              console.log(data.value);
+                if (data.value == true) {
+                    console.log("in if");
+                    // $scope.closeAllModals();
+                    $scope.isLoggedIn = true;
+                    // console.log($scope.isLoggedIn, 'dsfdsfa');
+                    NavigationService.saveUser(data.data);
+                    $state.go('address');
+                } else {
+                    $scope.loginmsg.msg = "Try again Later";
+                    $scope.loginmsg.class = "text-danger";
+                }
+            }, function() {
 
+            });
+        };
     })
     .controller('CheckoutOrderCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
@@ -432,8 +503,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         if ($.jStorage.get("userLoggedIn")) {
             $scope.isLoggedIn = true;
-        } else{
-          $scope.isLoggedIn = false;
+        } else {
+            $scope.isLoggedIn = false;
         }
         $scope.editCartProduct = function(id) {
             $scope.variables.editCart = _.map($scope.variables.editCart, function(key) {
@@ -460,20 +531,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.editCart = function(data) {
-          $scope.editcartpro= {};
-          $scope.editcartpro.product = data.product._id;
+            $scope.editcartpro = {};
+            $scope.editcartpro.product = data.product._id;
             var d = new Date(data.timeFrom);
-            console.log("ddd",d);
-          $scope.editcartpro.timeFrom = d;
-          $scope.editcartpro.duration = data.duration;
-          console.log("duration",  $scope.editcartpro.duration);
-          $scope.editcartpro.size = data.size;
-          $scope.editcartpro.deliveryTime = data.deliveryTime;
-          $scope.editcartpro.pickupTime = data.pickupTime;
-          $scope.editcartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.editcartpro.duration));
-          console.log("time to",$scope.editcartpro.timeTo);
-          $scope.editcartpro.by = data.by;
-          console.log("final cart", $scope.editcartpro);
+            console.log("ddd", d);
+            $scope.editcartpro.timeFrom = d;
+            $scope.editcartpro.duration = data.duration;
+            console.log("duration", $scope.editcartpro.duration);
+            $scope.editcartpro.size = data.size;
+            $scope.editcartpro.deliveryTime = data.deliveryTime;
+            $scope.editcartpro.pickupTime = data.pickupTime;
+            $scope.editcartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.editcartpro.duration));
+            console.log("time to", $scope.editcartpro.timeTo);
+            $scope.editcartpro.by = data.by;
+            console.log("final cart", $scope.editcartpro);
             // NavigationService.addToCart($scope.cartpro, function(data) {
             //     console.log("response cart", data);
             //     $scope.response = data;
