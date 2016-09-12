@@ -1,11 +1,9 @@
+var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter'])
 
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-
-        console.log("Testing Consoles");
-
         $scope.template = TemplateService.changecontent("home");
         $scope.menutitle = NavigationService.makeactive("Home");
         TemplateService.title = $scope.menutitle;
@@ -469,12 +467,50 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CheckoutOrderCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-
         $scope.template = TemplateService.changecontent("checkout-orderdetail");
         $scope.menutitle = NavigationService.makeactive("Checkoutorder");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-
+        $scope.getProfile = function() {
+            NavigationService.getProfile(function(data) {
+                if (data.value) {
+                    $scope.userdata = data.data;
+                    $scope.billingAddress = _.find($scope.userdata.billingAddress, {
+                        isDefault: true
+                    });
+                    $scope.shippingAddress = _.find($scope.userdata.shippingAddress, {
+                        isDefault: true
+                    });
+                    if ($scope.billingAddress) {
+                        $scope.userdata.billingAddress = $scope.billingAddress;
+                    } else {
+                        $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
+                    }
+                    if ($scope.shippingAddress) {
+                        $scope.userdata.shippingAddress = $scope.shippingAddress;
+                    } else {
+                        $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
+                    }
+                    console.log("aaa", $scope.userdata);
+                }
+            }, function(err) {});
+        };
+        $scope.getProfile();
+        $scope.getCart = function() {
+            NavigationService.getcart(function(data) {
+                if (data.value) {
+                    $scope.cartDetails = data.data.cartcount;
+                    $scope.cartProduct = data.data.cartproduct;
+                    console.log("cartDetails",$scope.cartDetails);
+                } else {
+                    $scope.cartProduct = [];
+                    $scope.cartDetails = 0;
+                }
+            }, function(err) {
+                console.log(err);
+            });
+        };
+        $scope.getCart();
     })
     .controller('ChangepasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
@@ -518,6 +554,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if ($scope.response.value === true) {
                     removemod.close();
                     $scope.getCart();
+                    globalfunction.getCartCount();
                 }
             });
         };
@@ -566,6 +603,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.variables.editCart = _.map($scope.variables.editCart, function(key) {
                 return false;
             });
+            $scope.getCart();
+
         };
 
         $scope.editCart = function(data) {
@@ -584,12 +623,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.addToCart($scope.editcartpro, function(data) {
                 $scope.response = data;
                 if ($scope.response.value === true) {
-                    $uibModal.open({
-                        animation: true,
-                        templateUrl: "views/modal/shop.html",
-                        scope: $scope
-                    });
-                } else {
+                    $scope.getCart();
                 }
             }, function(err) {
                 console.log(err);
@@ -1101,7 +1135,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     };
     $scope.checkSession();
-    $scope.getCart = function() {
+    globalfunction.getCartCount = function() {
         NavigationService.getCart(function(data) {
             if (data.value == true) {
                 $scope.cartcount = data.data.cartcount;
@@ -1111,7 +1145,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log(err);
         });
     };
-    $scope.getCart();
+    globalfunction.getCartCount();
     $scope.closeAllModals = function() {
         if (modal1) {
             modal1.close();
