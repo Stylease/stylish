@@ -179,7 +179,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('AddressCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('AddressCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("address");
@@ -189,56 +189,48 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.flags = {};
         $scope.flags.sameshipping = false;
         $scope.userdata = {};
-
-        NavigationService.getProfile(function(data) {
-            if (data.value) {
-                $scope.userdata = data.data;
-                console.log($scope.userdata, 'userdata');
-                $scope.billingAddress = _.find($scope.userdata.billingAddress, {
-                    isDefault: true
-                });
-                $scope.shippingAddress = _.find($scope.userdata.shippingAddress, {
-                    isDefault: true
-                });
-                if ($scope.billingAddress) {
-                    $scope.userdata.billingAddress = $scope.billingAddress;
+        $scope.getUserAddress = function() {
+            NavigationService.getProfile(function(data) {
+                if (data.value) {
+                    $scope.userdata = data.data;
+                    console.log($scope.userdata, 'userdata');
+                    $scope.billingAddress = _.find($scope.userdata.billingAddress, {
+                        isDefault: true
+                    });
+                    $scope.shippingAddress = _.find($scope.userdata.shippingAddress, {
+                        isDefault: true
+                    });
+                    if ($scope.billingAddress) {
+                        $scope.userdata.billingAddress = $scope.billingAddress;
+                    } else {
+                        $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
+                    }
+                    if ($scope.shippingAddress) {
+                        $scope.userdata.shippingAddress = $scope.shippingAddress;
+                    } else {
+                        $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
+                    }
+                    console.log($scope.userdata);
                 } else {
-                    $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
+                    console.log("offline");
+                    $scope.userdata = $.jStorage.get("userData");
                 }
-                if ($scope.shippingAddress) {
-                    $scope.userdata.shippingAddress = $scope.shippingAddress;
-                } else {
-                    $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
-                }
-                console.log($scope.userdata);
-            } else {
-                // $scope.userdata={};
-                // $scope.userdata.billingAddress={};
-                // $scope.userdata.shippingAddress={};
-                // $scope.changeAddress = function(val) {
-                //     if (val) {
-                //         $scope.userdata.shippingAddress = $scope.userdata.billingAddress;
-                //     } else {
-                //         $scope.userdata.shippingAddress = '';
-                //     }
-                // }
-            }
-        }, function(err) {});
-
-
+            }, function(err) {});
+        };
+        $scope.getUserAddress();
         $scope.sameShipping = function() {
-          console.log("new data",$scope.userdata);
+            console.log("new data", $scope.userdata);
             if ($scope.flags.sameshipping) {
-              $scope.userdata.shippingAddress = {};
-              $scope.userdata.shippingAddress.shippingAddressFlat = $scope.userdata.billingAddress.billingAddressFlat;
-              $scope.userdata.shippingAddress.shippingAddressStreet = $scope.userdata.billingAddress.billingAddressStreet;
-              $scope.userdata.shippingAddress.shippingAddressLandmark = $scope.userdata.billingAddress.billingAddressLandmark;
-              $scope.userdata.shippingAddress.shippingAddressPin = $scope.userdata.billingAddress.billingAddressPin;
-              $scope.userdata.shippingAddress.shippingAddressCity = $scope.userdata.billingAddress.billingAddressCity;
-              $scope.userdata.shippingAddress.shippingAddressState = $scope.userdata.billingAddress.billingAddressState;
-              $scope.userdata.shippingAddress.shippingAddressCountry = $scope.userdata.billingAddress.billingAddressCountry;
+                $scope.userdata.shippingAddress = {};
+                $scope.userdata.shippingAddress.shippingAddressFlat = $scope.userdata.billingAddress.billingAddressFlat;
+                $scope.userdata.shippingAddress.shippingAddressStreet = $scope.userdata.billingAddress.billingAddressStreet;
+                $scope.userdata.shippingAddress.shippingAddressLandmark = $scope.userdata.billingAddress.billingAddressLandmark;
+                $scope.userdata.shippingAddress.shippingAddressPin = $scope.userdata.billingAddress.billingAddressPin;
+                $scope.userdata.shippingAddress.shippingAddressCity = $scope.userdata.billingAddress.billingAddressCity;
+                $scope.userdata.shippingAddress.shippingAddressState = $scope.userdata.billingAddress.billingAddressState;
+                $scope.userdata.shippingAddress.shippingAddressCountry = $scope.userdata.billingAddress.billingAddressCountry;
             }
-          };
+        };
         $scope.shippingCheck = function(check) {
             if (check) {
                 $scope.shipAtSame = true;
@@ -253,6 +245,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.userdata.shippingAddress.shippingAddressState = "";
                 $scope.userdata.shippingAddress.shippingAddressCountry = "";
             }
+        };
+
+        $scope.saveUserAddress = function(data) {
+            console.log("dataa", data);
+            if ($.jStorage.get("userLoggedIn")) {
+                // NavigationService.userProfileSave($scope.userdata, function(data) {
+                //     $scope.getProfile();
+                // });
+                $state.go("checkoutorder");
+            } else {
+                $.jStorage.set("userData", data)
+                $state.go("checkoutorder");
+            }
+
         };
 
     })
@@ -360,8 +366,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         };
         $scope.getProfile();
-
-
         $scope.saveProfile = function(data) {
             if (data && data.isShipping) {
                 data.shippingTitle = data.billingTitle;
@@ -524,7 +528,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     } else {
                         $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
                     }
-                    console.log("aaa", $scope.userdata);
+                } else {
+                    console.log("inn off");
+                    $scope.userdata = $.jStorage.get("userData");
                 }
             }, function(err) {});
         };
