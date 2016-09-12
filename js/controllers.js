@@ -520,14 +520,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.getCart();
                 }
             });
-
         };
-
         $scope.gotocheckout = function() {
             NavigationService.getcart(function(data) {
                 if (data.value) {
                     $scope.cartDetails = data.data.cartcount;
-                    console.log("aa", $scope.cartDetails);
                     if ($scope.cartDetails.totalrentalamount > 8000) {
                         if ($.jStorage.get("userLoggedIn")) {
                             $state.go('address');
@@ -535,13 +532,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             $state.go('checkoutsignin');
                         }
                     } else {
-
-                      removemod = $uibModal.open({
-                          animation: true,
-                          templateUrl: "views/modal/minimumorder.html",
-                          scope: $scope
-                      });
-
+                        removemod = $uibModal.open({
+                            animation: true,
+                            templateUrl: "views/modal/minimumorder.html",
+                            scope: $scope
+                        });
                     }
                 }
             }, function(err) {
@@ -561,7 +556,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.editable = _.find($scope.cartProduct, function(key) {
                         return key.product._id == id;
                     });
-                    console.log($scope.editable);
+                    console.log("editable", $scope.editable);
                 }
             }, function(err) {
                 console.log(err);
@@ -577,32 +572,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.editcartpro = {};
             $scope.editcartpro.product = data.product._id;
             var d = new Date(data.timeFrom);
-            console.log("ddd", d);
             $scope.editcartpro.timeFrom = d;
             $scope.editcartpro.duration = data.duration;
-            console.log("duration", $scope.editcartpro.duration);
             $scope.editcartpro.size = data.size;
             $scope.editcartpro.deliveryTime = data.deliveryTime;
             $scope.editcartpro.pickupTime = data.pickupTime;
-            $scope.editcartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.editcartpro.duration));
-            console.log("time to", $scope.editcartpro.timeTo);
+            var timeTo = new Date();
+            $scope.editcartpro.timeTo = new Date(timeTo.setDate(d.getDate() + $scope.editcartpro.duration));
             $scope.editcartpro.by = data.by;
             console.log("final cart", $scope.editcartpro);
-            // NavigationService.addToCart($scope.cartpro, function(data) {
-            //     console.log("response cart", data);
-            //     $scope.response = data;
-            //     if ($scope.response.value === true) {
-            //         $uibModal.open({
-            //             animation: true,
-            //             templateUrl: "views/modal/shop.html",
-            //             scope: $scope
-            //         });
-            //     } else {
-            //
-            //     }
-            // }, function(err) {
-            //     console.log(err);
-            // });
+            NavigationService.addToCart($scope.editcartpro, function(data) {
+                $scope.response = data;
+                if ($scope.response.value === true) {
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/shop.html",
+                        scope: $scope
+                    });
+                } else {
+                }
+            }, function(err) {
+                console.log(err);
+            });
         };
         $scope.openRemoveModal = function(productid) {
             $scope.variables.removeitem = productid;
