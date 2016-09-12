@@ -186,6 +186,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Address");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.flags = {};
+        $scope.flags.sameshipping = false;
+        $scope.userdata = {};
 
         NavigationService.getProfile(function(data) {
             if (data.value) {
@@ -221,6 +224,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 // }
             }
         }, function(err) {});
+
+
+        $scope.sameShipping = function() {
+          console.log("new data",$scope.userdata);
+            if ($scope.flags.sameshipping) {
+              $scope.userdata.shippingAddress = {};
+              $scope.userdata.shippingAddress.shippingAddressFlat = $scope.userdata.billingAddress.billingAddressFlat;
+              $scope.userdata.shippingAddress.shippingAddressStreet = $scope.userdata.billingAddress.billingAddressStreet;
+              $scope.userdata.shippingAddress.shippingAddressLandmark = $scope.userdata.billingAddress.billingAddressLandmark;
+              $scope.userdata.shippingAddress.shippingAddressPin = $scope.userdata.billingAddress.billingAddressPin;
+              $scope.userdata.shippingAddress.shippingAddressCity = $scope.userdata.billingAddress.billingAddressCity;
+              $scope.userdata.shippingAddress.shippingAddressState = $scope.userdata.billingAddress.billingAddressState;
+              $scope.userdata.shippingAddress.shippingAddressCountry = $scope.userdata.billingAddress.billingAddressCountry;
+            }
+          };
+        $scope.shippingCheck = function(check) {
+            if (check) {
+                $scope.shipAtSame = true;
+                $scope.sameShipping($scope.userdata.shippingAddress);
+            } else {
+                $scope.shipAtSame = false;
+                $scope.userdata.shippingAddress.shippingAddressFlat = "";
+                $scope.userdata.shippingAddress.shippingAddressStreet = "";
+                $scope.userdata.shippingAddress.shippingAddressLandmark = "";
+                $scope.userdata.shippingAddress.shippingAddressPin = "";
+                $scope.userdata.shippingAddress.shippingAddressCity = "";
+                $scope.userdata.shippingAddress.shippingAddressState = "";
+                $scope.userdata.shippingAddress.shippingAddressCountry = "";
+            }
+        };
 
     })
     .controller('SaveaddressCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
@@ -501,7 +534,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if (data.value) {
                     $scope.cartDetails = data.data.cartcount;
                     $scope.cartProduct = data.data.cartproduct;
-                    console.log("cartDetails",$scope.cartDetails);
+                    console.log("cartDetails", $scope.cartDetails);
+                    $scope.servicetax = parseInt($scope.cartDetails.totalrentalamount) * 0.15;
+                    $scope.grandtotal = parseInt($scope.cartDetails.totalrentalamount) + parseInt($scope.servicetax) + parseInt($scope.cartDetails.totalsecuritydeposit);
+                    console.log("st", $scope.servicetax, "total", $scope.grandtotal);
+
                 } else {
                     $scope.cartProduct = [];
                     $scope.cartDetails = 0;
@@ -562,7 +599,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getcart(function(data) {
                 if (data.value) {
                     $scope.cartDetails = data.data.cartcount;
-                    if ($scope.cartDetails.totalrentalamount > 8000) {
+                    if ($scope.cartDetails.totalrentalamount >= 8000) {
                         if ($.jStorage.get("userLoggedIn")) {
                             $state.go('address');
                         } else {
