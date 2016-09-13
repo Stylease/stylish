@@ -580,6 +580,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.variables = {};
+        $scope.totalrentalamount = 0;
         $scope.variables.editCart = [];
         $scope.cartProduct = [];
         $scope.isLoggedIn = false;
@@ -602,26 +603,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
         $scope.gotocheckout = function() {
-            NavigationService.getcart(function(data) {
-                if (data.value) {
-                    $scope.cartDetails = data.data.cartcount;
-                    if ($scope.cartDetails.totalrentalamount >= 8000) {
-                        if ($.jStorage.get("userLoggedIn")) {
-                            $state.go('address');
-                        } else {
-                            $state.go('checkoutsignin');
-                        }
-                    } else {
-                        removemod = $uibModal.open({
-                            animation: true,
-                            templateUrl: "views/modal/minimumorder.html",
-                            scope: $scope
-                        });
-                    }
-                }
-            }, function(err) {
-                console.log(err);
-            });
+          console.log("$scope.totalrentalamount",$scope.totalrentalamount);
+
+          if ($scope.totalrentalamount >= 8000) {
+              if ($.jStorage.get("userLoggedIn")) {
+                  $state.go('address');
+              } else {
+                  $state.go('checkoutsignin');
+              }
+          } else {
+              removemod = $uibModal.open({
+                  animation: true,
+                  templateUrl: "views/modal/minimumorder.html",
+                  scope: $scope
+              });
+          }
+            // NavigationService.getcart(function(data) {
+            //     if (data.value) {
+            //         $scope.cartDetails = data.data.cartcount;
+            //
+            //     }
+            // }, function(err) {
+            //     console.log(err);
+            // });
 
         };
         $scope.editCartProduct = function(id) {
@@ -683,9 +687,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.getCart = function() {
             NavigationService.getcart(function(data) {
                 if (data.value) {
+                  $scope.totalrentalamount = 0;
                     $scope.cartDetails = data.data.cartcount;
                     $scope.cartProduct = data.data.cartproduct;
-                    $scope.totalrentalamount = 0;
                     _.each($scope.cartProduct, function(n) {
                         if (n.duration == 4) {
                             $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.fourdayrentalamount);

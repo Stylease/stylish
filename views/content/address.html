@@ -53,7 +53,7 @@
                     <div class="form-error" ng-show="formcheckout.landmark.$error.required && formcheckout.landmark.$touched">Please enter your Nearest Landmark.</div>
                   </div>
                   <div class="relate">
-                    <input type="text" ng-change="sameShipping()" name="code" ng-model="userdata.billingAddress.billingAddressPin" class="form-control" placeholder="Pin Code" required>
+                    <input type="text" maxlength="6" ng-change="sameShipping()" name="code" ng-model="userdata.billingAddress.billingAddressPin" class="form-control" placeholder="Pin Code" required>
                     <div class="form-error" ng-show="formcheckout.code.$error.required && formcheckout.code.$touched">Please enter your Pin Code.</div>
                   </div>
                   <div class="relate">
@@ -93,7 +93,7 @@
                     <div class="form-error" ng-show="formcheckout.nearest.$error.required && formcheckout.nearest.$touched">Please enter your Nearest Landmark</div>
                   </div>
                   <div class="relate">
-                    <input type="text" class="form-control" placeholder="Pin Code" name="pincode" ng-model="userdata.shippingAddress.shippingAddressPin" required>
+                    <input type="text" maxlength="6" class="form-control" placeholder="Pin Code" name="pincode" ng-model="userdata.shippingAddress.shippingAddressPin" required>
                     <div class="form-error" ng-show="formcheckout.pincode.$error.required && formcheckout.pincode.$touched">Please enter your Pin Code</div>
                   </div>
                   <input type="text" class="form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressCity" placeholder="City" value="Mumbai">
