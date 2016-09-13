@@ -213,7 +213,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log($scope.userdata);
                 } else {
                     console.log("offline");
-                    $scope.userdata = $.jStorage.get("userData");
+                    if ($.jStorage.get("userData")) {
+                        $scope.userdata = $.jStorage.get("userData");
+                    }
                 }
             }, function(err) {});
         };
@@ -1180,9 +1182,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.checkSession();
     globalfunction.getCartCount = function() {
         NavigationService.getCart(function(data) {
+            console.log("cartcount", data);
             if (data.value == true) {
                 $scope.cartcount = data.data.cartcount;
-                // console.log("cartcount", $scope.cartcount);
+            } else {
+                $scope.cartcount = 0;
             }
         }, function(err) {
             console.log(err);
