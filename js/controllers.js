@@ -82,7 +82,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.setProfile = false;
             });
         };
-
         $scope.logoutClick = function() {
             NavigationService.logout(function(data) {
                 if (data.value) {
@@ -99,7 +98,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('OrdersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-
         $scope.template = TemplateService.changecontent("orders");
         $scope.menutitle = NavigationService.makeactive("Orders");
         TemplateService.title = $scope.menutitle;
@@ -687,6 +685,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if (data.value) {
                     $scope.cartDetails = data.data.cartcount;
                     $scope.cartProduct = data.data.cartproduct;
+                    $scope.totalrentalamount = 0;
+                    _.each($scope.cartProduct, function(n) {
+                        if (n.duration == 4) {
+                            $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.fourdayrentalamount);
+                        } else {
+                            $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.eightdayrentalamount);
+                        }
+
+                    });
                 } else {
                     $scope.cartProduct = [];
                     $scope.cartDetails = 0;
@@ -878,12 +885,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveWishList = function() {
             NavigationService.saveWishlist($state.params.id, function(data) {
                 console.log("$state.params.id", $state.params.id);
-                console.log("wish", data);
             });
             // NavigationService.getSession
         };
         //  $scope.saveWishList();
-
         NavigationService.getProductDetail($state.params.id, function(data) {
             // console.log(data);
             $scope.product = data.data.product;
@@ -902,10 +907,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 } while (start <= (diffDays + 4));
             });
             $scope.mainImage = data.data.product.images[0].image;
+            $scope.getRentalAmount(4);
         }, function(err) {
 
         });
-
         $scope.selectImage = function(img) {
             $scope.mainImage = img;
         };
@@ -920,8 +925,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 return key.name == size;
             });
         };
+        $scope.getRentalAmount = function(val) {
+            console.log("valll", val);
+            if (val == 8) {
+                $scope.product.rentalamount = $scope.product.eightdayrentalamount;
+                $scope.cartpro.duration = 8;
+            } else {
+                $scope.product.rentalamount = $scope.product.fourdayrentalamount;
+                $scope.cartpro.duration = 4;
+            }
+            console.log("$scope.rentalamount", $scope.rentalamount);
+        }
 
         $scope.addToCart = function() {
+
             var d = new Date($scope.cartpro.timeFrom);
             $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
             if ($scope.product.designer == null) {

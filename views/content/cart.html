@@ -21,7 +21,7 @@
             <div class="product-all-detail" ng-hide="variables.editCart[product.product._id]">
               <p>Retail Price : INR <span>{{product.product.price}}/-</span></p>
               <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
-              <p class="mb5"><span class="edit-cart">Rental</span> <span>INR {{product.product.rentalamount}}</span></p>
+              <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount}}</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount}}</span></p>
               <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
               <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
               <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{product.deliveryTime}}</span></p>
@@ -38,7 +38,7 @@
                     </select>
                   </div>
                 </div>
-                <p><span class="edit-cart">Rental</span> <span>INR {{product.product.rentalamount}}</span></p>
+                <p><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount}}</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount}}</span></p>
                 <p><span class="edit-cart">Delivery Date </span><span>{{product.timeFrom | date : 'mediumDate'}}</span>
                   <!-- <span class="dark-pink text-underline text-underline ml20 pointer" ng-click="date();">Change ?</span> -->
                 </p>
@@ -53,7 +53,7 @@
                       <input type="radio" ng-click="product.duration=8" ng-checked="8 == {{product.duration}}" name="date" id="eight{{$index}}">
                       <label for="eight{{$index}}" class="text-medium"><span></span> 8 Days</label>
                     </div>
-                </div>
+                  </div>
                   <div class="order-delivery-time mb20">
                     <div class="row">
                       <div class="inline-block time-picker">
@@ -96,7 +96,7 @@
       </div>
     </div>
     <div class="text-right" ng-if="cartProduct.length > 0">
-      <h4>Grand Total : INR {{cartDetails.totalrentalamount}}</h4>
+      <h4>Grand Total : INR {{totalrentalamount}}</h4>
     </div>
     <div class="text-center" ng-if="cartProduct.length == 0">
       <h3>Your Cart is empty.</h3>
