@@ -12,11 +12,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.footerColor = "home-footer";
         $scope.subcategory = [];
 
-        $scope.mySlides = [
-            'img/home-slider.jpg',
-            'img/home-slider.jpg',
-            'img/home-slider.jpg'
-        ];
+        // $scope.mySlides = [
+        //     'img/home-slider.jpg',
+        //     'img/home-slider.jpg',
+        //     'img/home-slider.jpg'
+        // ];
+NavigationService.getSlider(function(data){
+  if (data) {
+    $scope.mySlides = data.data;
+    // console.log("aaa", $scope.mySlides);
+  }
+});
+
         var temp = [];
         NavigationService.getSubcategory(function(data) {
             console.log(data);
@@ -45,13 +52,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         });
 
-        $scope.client = [{
-            detail: "I can now wear a new outfit for every occasion, thanks to their super quick service, and access to a huge selection of outfits by some of my favourite designers!",
-            name: "Riya shah"
-        }, {
-            detail: "I can now wear a new outfit for every occasion, thanks to their super quick service, and access to a huge selection of outfits by some of my favourite designers!",
-            name: "Riya shah"
-        }];
+      NavigationService.getTestimonial(function(data){
+        if(data){
+          $scope.testimonials = data.data
+        }
+      });
     })
     .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file

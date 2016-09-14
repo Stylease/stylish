@@ -157,6 +157,18 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback).error(errCallback);
         },
+        getSlider: function(callback) {
+            return $http({
+                url: adminURL + "slider/getAll",
+                method: "POST"
+            }).success(callback);
+        },
+        getTestimonial: function(callback) {
+            return $http({
+                url: adminURL + "testimonial/getAll",
+                method: "POST"
+            }).success(callback);
+        },
         getColor: function(callback, errCallback) {
             return $http({
                 url: adminURL + "color/getAll",
