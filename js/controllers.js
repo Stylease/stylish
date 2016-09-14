@@ -66,7 +66,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getProfile(function(data) {
                 if (data.value) {
                     $scope.userdata = data.data;
-                    console.log("uu", $scope.userdata);
                 }
             }, function(err) {
                 console.log(err);
@@ -603,21 +602,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
         $scope.gotocheckout = function() {
-          console.log("$scope.totalrentalamount",$scope.totalrentalamount);
+            console.log("$scope.totalrentalamount", $scope.totalrentalamount);
 
-          if ($scope.totalrentalamount >= 8000) {
-              if ($.jStorage.get("userLoggedIn")) {
-                  $state.go('address');
-              } else {
-                  $state.go('checkoutsignin');
-              }
-          } else {
-              removemod = $uibModal.open({
-                  animation: true,
-                  templateUrl: "views/modal/minimumorder.html",
-                  scope: $scope
-              });
-          }
+            if ($scope.totalrentalamount >= 8000) {
+                if ($.jStorage.get("userLoggedIn")) {
+                    $state.go('address');
+                } else {
+                    $state.go('checkoutsignin');
+                }
+            } else {
+                removemod = $uibModal.open({
+                    animation: true,
+                    templateUrl: "views/modal/minimumorder.html",
+                    scope: $scope
+                });
+            }
             // NavigationService.getcart(function(data) {
             //     if (data.value) {
             //         $scope.cartDetails = data.data.cartcount;
@@ -687,7 +686,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.getCart = function() {
             NavigationService.getcart(function(data) {
                 if (data.value) {
-                  $scope.totalrentalamount = 0;
+                    $scope.totalrentalamount = 0;
                     $scope.cartDetails = data.data.cartcount;
                     $scope.cartProduct = data.data.cartproduct;
                     _.each($scope.cartProduct, function(n) {
@@ -884,7 +883,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.select.sizeactive = {};
 
         $scope.checkLogin = $.jStorage.get("user");
-
         //PRODUCT DETAIL ON SELECTED PRODUCT
         $scope.saveWishList = function() {
             NavigationService.saveWishlist($state.params.id, function(data) {
@@ -933,13 +931,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log("valll", val);
             if (val == 8) {
                 $scope.product.rentalamount = $scope.product.eightdayrentalamount;
+                $scope.product.securitydeposit = $scope.product.eightdaysecuritydeposit;
                 $scope.cartpro.duration = 8;
             } else {
                 $scope.product.rentalamount = $scope.product.fourdayrentalamount;
+                $scope.product.securitydeposit = $scope.product.fourdaysecuritydeposit;
                 $scope.cartpro.duration = 4;
             }
             console.log("$scope.rentalamount", $scope.rentalamount);
         }
+
+        $scope.setCalender = function() {
+            if ($.jStorage.get("cartDate")) {
+              var newcartdate = $.jStorage.get("cartDate");
+                var tmpdate = new Date(newcartdate.timestampFrom);
+                // tmpdate.setHours(0,0,0,0);
+                var tmpto = new Date(newcartdate.timestampTo);
+                var diffDays = tmpto.getDate() - tmpdate.getDate();
+                console.log("aaaa", diffDays);
+                start = 0;
+                do {
+                    $scope.timestamps.push(new Date(tmpdate));
+                    tmpdate.setDate(tmpdate.getDate() + 1);
+                    start++;
+                } while (start <= (diffDays + 4));
+            }
+        };
 
         $scope.addToCart = function() {
 
@@ -950,7 +967,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 $scope.cartpro.by = $scope.product.designer.name;
             }
-
+            if ($.jStorage.get("cartDate")) {
+                console.log("cartDate", $.jStorage.get("cartDate"), $scope.cartpro);
+                $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
+            } else {
+                console.log("cartDate ", $.jStorage.get("cartDate"), $scope.cartpro);
+                $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
+            }
             NavigationService.addToCart($scope.cartpro, function(data) {
                 console.log("response cart", data);
                 $scope.response = data;
@@ -982,19 +1005,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
         //calendar
         $scope.dateOptions = {
             dateDisabled: disabled,
             formatYear: 'yy',
             maxDate: new Date(2020, 5, 22),
-            minDate: new Date(),
+            minDate: tomorrow,
             startingDay: 1,
             showWeeks: false
         };
 
         // Disable weekend selection
         function disabled(data) {
-            // console.log(data);
+            console.log(data);
             var current = data.date,
                 mode = data.mode;
             current.setHours(0, 0, 0, 0);
@@ -1203,7 +1228,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.checkSession();
     globalfunction.getCartCount = function() {
         NavigationService.getCart(function(data) {
-            console.log("cartcount", data);
             if (data.value == true) {
                 $scope.cartcount = data.data.cartcount;
             } else {

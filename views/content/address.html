@@ -3,7 +3,7 @@
 </div>
 <div class="address-main">
   <div class="container">
-    <form>
+    <form name="formcheckout">
     <!-- <form action="" name="formcheckout"> -->
       <div class="mt20 mb20">
         <div class="row">
@@ -53,7 +53,7 @@
                     <div class="form-error" ng-show="formcheckout.landmark.$error.required && formcheckout.landmark.$touched">Please enter your Nearest Landmark.</div>
                   </div>
                   <div class="relate">
-                    <input type="text" maxlength="6" ng-change="sameShipping()" name="code" ng-model="userdata.billingAddress.billingAddressPin" class="form-control" placeholder="Pin Code" required>
+                    <input type="text" maxlength="6" minlength="6" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-change="sameShipping()" name="code" ng-model="userdata.billingAddress.billingAddressPin" class="form-control" placeholder="Pin Code" required>
                     <div class="form-error" ng-show="formcheckout.code.$error.required && formcheckout.code.$touched">Please enter your Pin Code.</div>
                   </div>
                   <div class="relate">
@@ -93,7 +93,7 @@
                     <div class="form-error" ng-show="formcheckout.nearest.$error.required && formcheckout.nearest.$touched">Please enter your Nearest Landmark</div>
                   </div>
                   <div class="relate">
-                    <input type="text" maxlength="6" class="form-control" placeholder="Pin Code" name="pincode" ng-model="userdata.shippingAddress.shippingAddressPin" required>
+                    <input type="text" maxlength="6" minlength="6" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" placeholder="Pin Code" name="pincode" ng-model="userdata.shippingAddress.shippingAddressPin" required>
                     <div class="form-error" ng-show="formcheckout.pincode.$error.required && formcheckout.pincode.$touched">Please enter your Pin Code</div>
                   </div>
                   <input type="text" class="form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressCity" placeholder="City" value="Mumbai">
@@ -103,7 +103,7 @@
               </div>
             </div>
             <div class="text-center mt20 mb20 save">
-              <button class="btn btn-outline btn-full text-medium" ng-click="saveUserAddress(userdata)">Continue</button>
+              <button class="btn btn-outline btn-full text-medium" ng-click="saveUserAddress(userdata)" ng-disabled="formcheckout.$invalid">Continue</button>
               <!-- <button class="btn btn-outline btn-full text-medium" ui-sref="checkoutorder">Continue</button> -->
             </div>
           </div>
