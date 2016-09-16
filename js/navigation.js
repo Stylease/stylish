@@ -247,6 +247,12 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback);
         },
+        getSize: function(callback) {
+            return $http({
+                url: adminURL + "size/getAll",
+                method: "POST"
+            }).success(callback);
+        },
 
         removeFromCart: function(id, callback) {
             var data = {

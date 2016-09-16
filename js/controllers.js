@@ -747,7 +747,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.texts.msg = "";
         $scope.filter.subcategory = [];
         $scope.filter.color = [];
-        $scope.filter.size = '';
+        $scope.filter.size = [];
         $scope.filter.pricefrom = 0;
         $scope.filter.priceto = 100000;
         $scope.letLoad = false;
@@ -768,7 +768,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             });
         };
-        $scope.getSubcategory();
+
+      $scope.getSubcategory();
+      $scope.size = function(){
+      NavigationService.getSize(function(data){
+        if(data){
+          $scope.sizes = data.data
+        }
+      });
+      };
+      $scope.size();
+
         $scope.pushSubCategory = function(flag, id) {
             if (flag) {
                 $scope.filter.subcategory.push(id);
@@ -1337,7 +1347,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log("in if");
                 $scope.closeAllModals();
                 $scope.isLoggedIn = true;
-                // NavigationService.saveUser(data.data);
+                NavigationService.saveUser(data.data);
                 $state.reload();
             } else {
                 $scope.loginmsg.msg = "Try again Later";

@@ -112,7 +112,7 @@
                         <div range-slider min="demo2.range.min" max="demo2.range.max" model-min="filter.pricefrom" model-max="filter.priceto" filter="currency:'‎₹'" step="100"></div>
                       </div>
                     </uib-accordion-group>
-                    <uib-accordion-group is-open="status.open4">
+                    <!-- <uib-accordion-group is-open="status.open4">
                       <uib-accordion-heading>
                         <i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open4, 'fa-angle-down': !status.open4}"></i> <span class="block">Delivery / Return Dates</span>
                       </uib-accordion-heading>
@@ -129,17 +129,18 @@
                           <input type="text" class="form-control">
                         </div>
                       </div>
-                    </uib-accordion-group>
+                    </uib-accordion-group> -->
                     <uib-accordion-group is-open="status.open5">
                       <uib-accordion-heading>
                         <i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open5, 'fa-angle-down': !status.open5}"></i> <span class="block">Size</span>
                       </uib-accordion-heading>
                       <div class="product-size" ng-init="size=''">
                         <ul class="list-inline">
-                          <li><a href="" ng-class="{'select-size': filter.size=='S' }" ng-click="filter.size='S';">S</a></li>
+                            <li ng-repeat="size in sizes track by $index"><a href="" ng-class="{'select-size': filter.size=='{{size.name}}' }" ng-click="filter.size=size._id;">{{size.name}}</a></li>
+                          <!-- <li><a href="" ng-class="{'select-size': filter.size=='S' }" ng-click="filter.size='S';">S</a></li>
                           <li><a href="" ng-class="{'select-size': filter.size=='M' }" ng-click="filter.size='M';">M</a></li>
                           <li><a href="" ng-class="{'select-size': filter.size=='L' }" ng-click="filter.size='L';">L</a></li>
-                          <li><a href="" ng-class="{'select-size': filter.size=='XL' }" ng-click="filter.size='XL';">XL</a></li>
+                          <li><a href="" ng-class="{'select-size': filter.size=='XL' }" ng-click="filter.size='XL';">XL</a></li> -->
                         </ul>
                       </div>
                     </uib-accordion-group>
