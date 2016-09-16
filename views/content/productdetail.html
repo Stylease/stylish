@@ -217,11 +217,11 @@
                 <p ng-bind-html="product.notes"></p>
               </div>
             </uib-accordion-group>
-            <uib-accordion-group is-open="status.open4" ng-if="product.notes !== ''">
+            <uib-accordion-group is-open="status.open4" ng-if="product.additionalnotes !== ''">
               <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open4, 'fa-chevron-down': !status.open3}"></i> <span class="block">Additional Notes</span>
               </uib-accordion-heading>
               <div class="descp">
-                <p ng-bind-html="additional.notes"></p>
+                <p ng-bind-html="product.additionalnotes"></p>
               </div>
             </uib-accordion-group>
           </uib-accordion>

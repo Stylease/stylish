@@ -168,7 +168,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         function getWishlist() {
             NavigationService.getWishlistUser(function(data) {
-                $scope.wishlist = data.data.data;
+              console.log("datttaaa", data);
+              if (data.value == false) {
+                $scope.wishlist ="";
+              }else {
+                 $scope.wishlist  = data.data.data;
+              }
+
             });
         }
         getWishlist();
@@ -470,11 +476,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-
-    })
+  })
     .controller('CheckoutLoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
-
         $scope.template = TemplateService.changecontent("checkout-login");
         $scope.menutitle = NavigationService.makeactive("CheckoutLogin");
         TemplateService.title = $scope.menutitle;
@@ -686,6 +690,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.response = data;
                 if ($scope.response.value === true) {
                     $scope.getCart();
+                    $scope.closeEdit($scope.editcartpro.product);
+
                 }
             }, function(err) {
                 console.log(err);
@@ -889,6 +895,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.product = {};
         $scope.mainImage = "";
         $scope.timestamps = [];
+        $scope.calendertimestamps = [];
         $scope.cartpro = {};
         $scope.cartpro.product = $state.params.id;
         $scope.cartpro.size = '';
@@ -958,24 +965,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         }
 
-        $scope.setCalender = function() {
-            if ($.jStorage.get("cartDate")) {
-                console.log("in set calendar");
-                var newcartdate = $.jStorage.get("cartDate");
-                var tmpdate = new Date(newcartdate.timeFrom);
-                // tmpdate.setHours(0,0,0,0);
-                var tmpto = new Date(newcartdate.timeTo);
-                console.log("cal dates", tmpdate, tmpto);
-                var diffDays = tmpto.getDate() - tmpdate.getDate();
-                console.log("aaaa", diffDays);
-                start = 0;
-                do {
-                    $scope.timestamps.push(new Date(tmpdate));
-                    tmpdate.setDate(tmpdate.getDate() + 1);
-                    start++;
-                } while (start <= (diffDays + 4));
-            }
-        };
+        // $scope.setCalender = function() {
+        //     if ($.jStorage.get("cartDate")) {
+        //         console.log("in set calendar");
+        //         var newcartdate = $.jStorage.get("cartDate");
+        //         var tmpdate = new Date(newcartdate.timeFrom);
+        //         // tmpdate.setHours(0,0,0,0);
+        //         var tmpto = new Date(newcartdate.timeTo);
+        //         console.log("cal dates", tmpdate, tmpto);
+        //         var diffDays = tmpto.getDate() - tmpdate.getDate();
+        //         console.log("aaaa", diffDays);
+        //         start = 0;
+        //         do {
+        //             $scope.calendertimestamps.push(new Date(tmpdate));
+        //             tmpdate.setDate(tmpdate.getDate() + 1);
+        //             start++;
+        //         } while (start <= (diffDays));
+        //     }
+        // };
 
         $scope.addToCart = function() {
             var d = new Date($scope.cartpro.timeFrom);
@@ -987,7 +994,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
             if ($.jStorage.get("cartDate")) {
                 console.log("innn cartdate", $.jStorage.get("cartDate"), $scope.cartpro);
-                $scope.setCalender();
+                // $scope.setCalender();
                 $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
             } else {
                 console.log("else cartDate ", $.jStorage.get("cartDate"), $scope.cartpro);
@@ -1026,8 +1033,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         if ($.jStorage.get("cartDate")) {
             console.log("innn cartdate", $.jStorage.get("cartDate"), $scope.cartpro);
-            $scope.setCalender();
-              }
+            // $scope.setCalender();
+        }
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         //calendar
@@ -1042,15 +1049,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         // Disable weekend selection
         function disabled(data) {
-            // console.log(data);
+            console.log(data);
             var current = data.date,
                 mode = data.mode;
             current.setHours(0, 0, 0, 0);
+            // if ($.jStorage.get("cartDate")) {
+            //     return _.findIndex($scope.calendertimestamps, function(key) {
+            //         key.setHours(0, 0, 0, 0);
+            //         current.setHours(0, 0, 0, 0);
+            //         // console.log(new Date(key), new Date(current));
+            //         return new Date(key).getTime() == current.getTime();
+            //     }) == -1;
+            // }
             return _.findIndex($scope.timestamps, function(key) {
                 key.setHours(0, 0, 0, 0);
                 current.setHours(0, 0, 0, 0);
                 // console.log(new Date(key), new Date(current));
-                return new Date(key).getTime() == current.getTime();
+                // return new Date(key).getTime() == current.getTime();
+                return mode === 'day' && (current.getDay() === 0 || current.getDay() === 6);
             }) !== -1;
         }
         $scope.open1 = function() {
@@ -1238,6 +1254,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         } else {
             NavigationService.getProfile(function(response) {
                 if (response.value) {
+                  $scope.username = response.data.firstname;
                     $scope.isLoggedIn = true;
                     $.jStorage.set("userLoggedIn", true);
                 } else {
@@ -1319,8 +1336,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (data.value) {
                 console.log("in if");
                 $scope.closeAllModals();
-                // $scope.isLoggedIn = true;
-                // console.log($scope.isLoggedIn, 'dsfdsfa');
+                $scope.isLoggedIn = true;
                 // NavigationService.saveUser(data.data);
                 $state.reload();
             } else {

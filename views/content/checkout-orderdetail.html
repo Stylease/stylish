@@ -23,9 +23,9 @@
                 <p class="mb5"><span class="edit-cart">Size</span> <span>M</span></p>
                 <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>04 May, 2016</span></p>
                 <p class="mb5"><span class="edit-cart">Duration</span> <span>11 May, 2016</span></p> -->
-                <p>Retail Price : INR <span>{{product.product.price}}/-</span></p>
+                <!-- <p>Retail Price : INR <span>{{product.product.price}}/-</span></p> -->
                 <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
-                <p class="mb5"><span class="edit-cart">Rental</span> <span>INR {{product.product.rentalamount}}</span></p>
+                <p class="mb5"><span class="edit-cart">Rent</span> <span>INR {{product.product.rentalamount}}</span></p>
                 <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
                 <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
                 <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{product.deliveryTime}}</span></p>
@@ -82,10 +82,10 @@
                   </td>
                   <td>Rs <span>{{totalsecuritydeposit}}</span></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>Delivery charge :</td>
                   <td>Rs <span>0.00</span></td>
-                </tr>
+                </tr> -->
                 <tr>
                   <td>Total :</td>
                   <td>Rs <span>{{grandtotal}}</span></td>
