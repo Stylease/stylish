@@ -17,12 +17,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //     'img/home-slider.jpg',
         //     'img/home-slider.jpg'
         // ];
-NavigationService.getSlider(function(data){
-  if (data) {
-    $scope.mySlides = data.data;
-    // console.log("aaa", $scope.mySlides);
-  }
-});
+        NavigationService.getSlider(function(data) {
+            if (data) {
+                $scope.mySlides = data.data;
+                // console.log("aaa", $scope.mySlides);
+            }
+        });
 
         var temp = [];
         NavigationService.getSubcategory(function(data) {
@@ -52,11 +52,11 @@ NavigationService.getSlider(function(data){
 
         });
 
-      NavigationService.getTestimonial(function(data){
-        if(data){
-          $scope.testimonials = data.data
-        }
-      });
+        NavigationService.getTestimonial(function(data) {
+            if (data) {
+                $scope.testimonials = data.data
+            }
+        });
     })
     .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -542,13 +542,23 @@ NavigationService.getSlider(function(data){
         $scope.getCart = function() {
             NavigationService.getcart(function(data) {
                 if (data.value) {
+                    $scope.totalrentalamount = 0;
+                    $scope.totalsecuritydeposit = 0;
                     $scope.cartDetails = data.data.cartcount;
                     $scope.cartProduct = data.data.cartproduct;
                     console.log("cartDetails", $scope.cartDetails);
-                    $scope.servicetax = parseInt($scope.cartDetails.totalrentalamount) * 0.15;
-                    $scope.grandtotal = parseInt($scope.cartDetails.totalrentalamount) + parseInt($scope.servicetax) + parseInt($scope.cartDetails.totalsecuritydeposit);
-                    console.log("st", $scope.servicetax, "total", $scope.grandtotal);
+                    _.each($scope.cartProduct, function(n) {
+                        if (n.duration == 4) {
+                            $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.fourdayrentalamount);
+                            $scope.totalsecuritydeposit = $scope.totalsecuritydeposit + parseInt(n.product.fourdaysecuritydeposit);
+                        } else {
+                            $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.eightdayrentalamount);
+                            $scope.totalsecuritydeposit = $scope.totalsecuritydeposit + parseInt(n.product.eightdaysecuritydeposit);
+                        }
 
+                    });
+                    $scope.servicetax = parseInt($scope.totalrentalamount) * 0.15;
+                    $scope.grandtotal = parseInt($scope.totalrentalamount) + parseInt($scope.servicetax) + parseInt($scope.totalsecuritydeposit);
                 } else {
                     $scope.cartProduct = [];
                     $scope.cartDetails = 0;
@@ -585,6 +595,7 @@ NavigationService.getSlider(function(data){
         $scope.navigation = NavigationService.getnav();
         $scope.variables = {};
         $scope.totalrentalamount = 0;
+        $scope.totalsecuritydeposit = 0;
         $scope.variables.editCart = [];
         $scope.cartProduct = [];
         $scope.isLoggedIn = false;
@@ -692,13 +703,16 @@ NavigationService.getSlider(function(data){
             NavigationService.getcart(function(data) {
                 if (data.value) {
                     $scope.totalrentalamount = 0;
+                    $scope.totalsecuritydeposit = 0;
                     $scope.cartDetails = data.data.cartcount;
                     $scope.cartProduct = data.data.cartproduct;
                     _.each($scope.cartProduct, function(n) {
                         if (n.duration == 4) {
                             $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.fourdayrentalamount);
+                            $scope.totalsecuritydeposit = $scope.totalsecuritydeposit + parseInt(n.product.fourdaysecuritydeposit);
                         } else {
                             $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.eightdayrentalamount);
+                            $scope.totalsecuritydeposit = $scope.totalsecuritydeposit + parseInt(n.product.eightdaysecuritydeposit);
                         }
 
                     });
@@ -933,7 +947,6 @@ NavigationService.getSlider(function(data){
             });
         };
         $scope.getRentalAmount = function(val) {
-            console.log("valll", val);
             if (val == 8) {
                 $scope.product.rentalamount = $scope.product.eightdayrentalamount;
                 $scope.product.securitydeposit = $scope.product.eightdaysecuritydeposit;
@@ -943,15 +956,16 @@ NavigationService.getSlider(function(data){
                 $scope.product.securitydeposit = $scope.product.fourdaysecuritydeposit;
                 $scope.cartpro.duration = 4;
             }
-            console.log("$scope.rentalamount", $scope.rentalamount);
         }
 
         $scope.setCalender = function() {
             if ($.jStorage.get("cartDate")) {
-              var newcartdate = $.jStorage.get("cartDate");
-                var tmpdate = new Date(newcartdate.timestampFrom);
+                console.log("in set calendar");
+                var newcartdate = $.jStorage.get("cartDate");
+                var tmpdate = new Date(newcartdate.timeFrom);
                 // tmpdate.setHours(0,0,0,0);
-                var tmpto = new Date(newcartdate.timestampTo);
+                var tmpto = new Date(newcartdate.timeTo);
+                console.log("cal dates", tmpdate, tmpto);
                 var diffDays = tmpto.getDate() - tmpdate.getDate();
                 console.log("aaaa", diffDays);
                 start = 0;
@@ -964,7 +978,6 @@ NavigationService.getSlider(function(data){
         };
 
         $scope.addToCart = function() {
-
             var d = new Date($scope.cartpro.timeFrom);
             $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
             if ($scope.product.designer == null) {
@@ -973,10 +986,11 @@ NavigationService.getSlider(function(data){
                 $scope.cartpro.by = $scope.product.designer.name;
             }
             if ($.jStorage.get("cartDate")) {
-                console.log("cartDate", $.jStorage.get("cartDate"), $scope.cartpro);
+                console.log("innn cartdate", $.jStorage.get("cartDate"), $scope.cartpro);
+                $scope.setCalender();
                 $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
             } else {
-                console.log("cartDate ", $.jStorage.get("cartDate"), $scope.cartpro);
+                console.log("else cartDate ", $.jStorage.get("cartDate"), $scope.cartpro);
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
             NavigationService.addToCart($scope.cartpro, function(data) {
@@ -1010,6 +1024,10 @@ NavigationService.getSlider(function(data){
             });
         };
 
+        if ($.jStorage.get("cartDate")) {
+            console.log("innn cartdate", $.jStorage.get("cartDate"), $scope.cartpro);
+            $scope.setCalender();
+              }
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         //calendar
@@ -1024,7 +1042,7 @@ NavigationService.getSlider(function(data){
 
         // Disable weekend selection
         function disabled(data) {
-            console.log(data);
+            // console.log(data);
             var current = data.date,
                 mode = data.mode;
             current.setHours(0, 0, 0, 0);
