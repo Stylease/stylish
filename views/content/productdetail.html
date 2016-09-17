@@ -32,12 +32,12 @@
         <div class="product-descp">
           <div class="name-section">
             <h3 class="product-name">{{product.name}}</h3>
-            <p>Retail Price : Rs. <span>{{product.price}}</span></p>
+            <p>Retail Price : Rs. <span>{{product.price|currency}}</span>/-</p>
             <p ng-if="product.designer.name">By <span>{{product.designer.name}}</span></p>
           </div>
           <div class="product-price">
-            <p>Rental amount : Rs. <span>{{product.rentalamount}}</span>/-</p>
-            <p class="inline-block">Refundable Security Deposit: Rs.<span>{{product.securitydeposit}}</span>/-</p>
+            <p>Rental amount : Rs. <span>{{product.rentalamount|currency}}</span>/-</p>
+            <p class="inline-block">Refundable Security Deposit: Rs.<span>{{product.securitydeposit|currency}}</span>/-</p>
             <p class="refund ml5 inline-block" ng-click="tooltipIsOpen = !tooltipIsOpen">
               <!-- <i class="dark-pink pointer fa fa-question-circle-o"></i> -->
               <img src="img/change.png" alt="" width="15">
@@ -239,7 +239,7 @@
               <img ng-src="{{sProducts.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
             </div>
             <h4 class="name-suggestprd">{{sProducts.name}}<span class="block"> by {{sproducts.designer}}</span></h4>
-            <p class="rent text-medium">Rent : Rs {{sProducts.rentalamount}}</p>
+            <p class="rent text-medium">Rent : Rs {{sProducts.rentalamount|currency}}/-</p>
             <div class="view-button" ui-sref="productdetail({'id':sProducts._id})">
               <button class="btn btn-outline text-medium btn-full">
                 View Details

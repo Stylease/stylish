@@ -1,5 +1,5 @@
 var globalfunction = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter', 'angular-loading-bar'])
 
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -12,11 +12,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.footerColor = "home-footer";
         $scope.subcategory = [];
 
-        // $scope.mySlides = [
-        //     'img/home-slider.jpg',
-        //     'img/home-slider.jpg',
-        //     'img/home-slider.jpg'
-        // ];
         NavigationService.getSlider(function(data) {
             if (data) {
                 $scope.mySlides = data.data;
@@ -168,12 +163,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         function getWishlist() {
             NavigationService.getWishlistUser(function(data) {
-              console.log("datttaaa", data);
-              if (data.value == false) {
-                $scope.wishlist ="";
-              }else {
-                 $scope.wishlist  = data.data.data;
-              }
+                console.log("datttaaa", data);
+                if (data.value == false) {
+                    $scope.wishlist = "";
+                } else {
+                    $scope.wishlist = data.data.data;
+                }
 
             });
         }
@@ -476,7 +471,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-  })
+    })
     .controller('CheckoutLoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("checkout-login");
@@ -769,15 +764,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-      $scope.getSubcategory();
-      $scope.size = function(){
-      NavigationService.getSize(function(data){
-        if(data){
-          $scope.sizes = data.data
-        }
-      });
-      };
-      $scope.size();
+        $scope.getSubcategory();
+        $scope.size = function() {
+            NavigationService.getSize(function(data) {
+                if (data) {
+                    $scope.sizes = data.data
+                }
+            });
+        };
+        $scope.size();
 
         $scope.pushSubCategory = function(flag, id) {
             if (flag) {
@@ -789,16 +784,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         };
         $scope.pushSize = function(id) {
-          // console.log(flag,id);
-          $scope.filter.size = [];
+            // console.log(flag,id);
+            $scope.filter.size = [];
             if (_.findIndex($scope.filter.size, function(key) {
-                return key == id;
-            }) !== -1) {
-              $scope.filter.size.splice(_.findIndex($scope.filter.size, function(key) {
-                  return key == id;
-              }), 1);
+                    return key == id;
+                }) !== -1) {
+                $scope.filter.size.splice(_.findIndex($scope.filter.size, function(key) {
+                    return key == id;
+                }), 1);
             } else {
-              $scope.filter.size.push(id);
+                $scope.filter.size.push(id);
             }
             console.log($scope.filter.size);
         };
@@ -875,7 +870,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.getColor();
         $scope.applyFilter = function() {
             // $.jStorage.set("filter",)
-            console.log("aaaaa",$scope.filter);
+            console.log("aaaaa", $scope.filter);
             $scope.filter.pagenumber = 1;
             $scope.shopping = [];
             $scope.getMyProducts($scope.filter);
@@ -1279,7 +1274,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         } else {
             NavigationService.getProfile(function(response) {
                 if (response.value) {
-                  $scope.username = response.data.firstname;
+                    $scope.username = response.data.firstname;
                     $scope.isLoggedIn = true;
                     $.jStorage.set("userLoggedIn", true);
                 } else {

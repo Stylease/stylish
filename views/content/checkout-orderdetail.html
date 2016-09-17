@@ -25,7 +25,7 @@
                 <p class="mb5"><span class="edit-cart">Duration</span> <span>11 May, 2016</span></p> -->
                 <!-- <p>Retail Price : INR <span>{{product.product.price}}/-</span></p> -->
                 <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
-                <p class="mb5"><span class="edit-cart">Rent</span> <span>INR {{product.product.rentalamount}}</span></p>
+                <p class="mb5"><span class="edit-cart">Rent</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
                 <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
                 <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
                 <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{product.deliveryTime}}</span></p>
@@ -68,19 +68,19 @@
               <tbody>
                 <tr>
                   <td>Sub Total</td>
-                  <td>Rs <span>{{totalrentalamount}}</span></td>
+                  <td>Rs <span>{{totalrentalamount|currency}}/-</span></td>
                 </tr>
                 <tr>
                   <td>
                     Service Tax :
                   </td>
-                  <td>Rs <span>{{servicetax}}</span></td>
+                  <td>Rs <span>{{servicetax|currency}}/-</span></td>
                 </tr>
                 <tr>
                   <td>
                     Refundable Deposit :
                   </td>
-                  <td>Rs <span>{{totalsecuritydeposit}}</span></td>
+                  <td>Rs <span>{{totalsecuritydeposit|currency}}/-</span></td>
                 </tr>
                 <!-- <tr>
                   <td>Delivery charge :</td>
@@ -88,7 +88,7 @@
                 </tr> -->
                 <tr>
                   <td>Total :</td>
-                  <td>Rs <span>{{grandtotal}}</span></td>
+                  <td>Rs <span>{{grandtotal|currency}}/-</span></td>
                 </tr>
               </tbody>
             </table>

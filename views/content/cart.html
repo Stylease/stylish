@@ -19,9 +19,9 @@
             <h4 class="prd-name">{{product.product.name}}</h4>
             <h5 ng-if="product.by">by : <span>{{product.by}}</span></h5>
             <div class="product-all-detail" ng-hide="variables.editCart[product.product._id]">
-              <p>Retail Price : INR <span>{{product.product.price}}/-</span></p>
+              <p>Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
               <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
-              <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount}}</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount}}</span></p>
+              <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
               <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
               <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
               <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{product.deliveryTime}}</span></p>
@@ -29,7 +29,7 @@
             </div>
             <div class="edit-product-detail product-all-detail" ng-show="variables.editCart[product.product._id]">
               <form action="">
-                <p>Retail Price : INR <span>{{product.product.price}}/-</span></p>
+                <p>Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
                 <div class="edit-size" ng-if="sizes && sizes.length>0">
                   <span class="edit-cart">Size</span>
                   <div class="custom-select">
@@ -38,7 +38,7 @@
                     </select>
                   </div>
                 </div>
-                <p><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount}}</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount}}</span></p>
+                <p><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
                 <p><span class="edit-cart">Delivery Date </span><span>{{product.timeFrom | date : 'mediumDate'}}</span>
                   <!-- <span class="dark-pink text-underline text-underline ml20 pointer" ng-click="date();">Change ?</span> -->
                 </p>
@@ -96,7 +96,7 @@
       </div>
     </div>
     <div class="text-right" ng-if="cartProduct.length > 0">
-      <h4>Grand Total : INR {{totalrentalamount}}</h4>
+      <h4>Grand Total : INR {{totalrentalamount|currency}}/-</h4>
     </div>
     <div class="text-center" ng-if="cartProduct.length == 0">
       <h3>Your Cart is empty.</h3>
@@ -105,7 +105,7 @@
       <button class="btn btn-outline btn-full text-medium" ui-sref="product">Continue Shopping</button>
 
       <button ng-click="gotocheckout()" class="btn btn-outline btn-full text-medium" ng-if="cartProduct.length !== 0">Checkout</button>
-      <p class="dark-pink m-clear pd10 "><i>The minimum order value on TheStylease.com is Rs.8000/-</i></p>
+      <p class="dark-pink m-clear pd10 "><i>The minimum order value on TheStylease.com is Rs.8,000/-</i></p>
     </div>
   </div>
 </div>
