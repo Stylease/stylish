@@ -561,8 +561,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         }
 
                     });
-                    $scope.servicetax = parseInt($scope.totalrentalamount) * 0.15;
-                    $scope.grandtotal = parseInt($scope.totalrentalamount) + parseInt($scope.servicetax) + parseInt($scope.totalsecuritydeposit);
+                    $scope.servicetax = parseFloat($scope.totalrentalamount) * 0.15;
+                    $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
                 } else {
                     $scope.cartProduct = [];
                     $scope.cartDetails = 0;
@@ -788,6 +788,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }), 1);
             }
         };
+        $scope.pushSize = function(id) {
+          // console.log(flag,id);
+          $scope.filter.size = [];
+            if (_.findIndex($scope.filter.size, function(key) {
+                return key == id;
+            }) !== -1) {
+              $scope.filter.size.splice(_.findIndex($scope.filter.size, function(key) {
+                  return key == id;
+              }), 1);
+            } else {
+              $scope.filter.size.push(id);
+            }
+            console.log($scope.filter.size);
+        };
         $scope.pushColor = function(flag, id) {
             if (flag) {
                 $scope.filter.color.push(id);
@@ -861,6 +875,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.getColor();
         $scope.applyFilter = function() {
             // $.jStorage.set("filter",)
+            console.log("aaaaa",$scope.filter);
             $scope.filter.pagenumber = 1;
             $scope.shopping = [];
             $scope.getMyProducts($scope.filter);
