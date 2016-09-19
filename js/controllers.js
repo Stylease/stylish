@@ -1,6 +1,8 @@
 var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter', 'angular-loading-bar'])
-
+.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+  cfpLoadingBarProvider.includeSpinner = false;
+}])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
@@ -717,6 +719,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         }
 
                     });
+                    console.log("get cart", $scope.cartProduct);
                 } else {
                     $scope.cartProduct = [];
                     $scope.cartDetails = 0;
