@@ -26,14 +26,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log(data);
             _.each(data.data, function(key) {
                 // body...
-                if (key.imagetype == 'big') {
+                console.log("aaaaaa", key);
+                if (key.imagetype == 'Big') {
+                  console.log("aaaa", key);
                     if (temp.length !== 0) {
                         temp = _.chunk(temp, 2);
                         $scope.subcategory.push(temp);
                         temp = [];
                     }
                     $scope.subcategory.push(key);
-                } else if (key.imagetype == 'small') {
+                } else if (key.imagetype == 'Small') {
                     temp.push(key);
                 }
             });
