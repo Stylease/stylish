@@ -1,8 +1,8 @@
 var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter', 'angular-loading-bar'])
-.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
-  cfpLoadingBarProvider.includeSpinner = false;
-}])
+    .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = false;
+    }])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
@@ -28,7 +28,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 // body...
                 console.log("aaaaaa", key);
                 if (key.imagetype == 'Big') {
-                  console.log("aaaa", key);
+                    console.log("aaaa", key);
                     if (temp.length !== 0) {
                         temp = _.chunk(temp, 2);
                         $scope.subcategory.push(temp);
@@ -1026,22 +1026,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
             console.log("time", new Date($scope.cartpro.timeFrom), new Date($scope.cartDate.timeFrom));
-            if($scope.cartDate && new Date($scope.cartpro.timeFrom) === new Date($scope.cartDate.timeFrom))
-            NavigationService.addToCart($scope.cartpro, function(data) {
-                console.log("response cart", data);
-                $scope.response = data;
-                if ($scope.response.value === true) {
-                    $uibModal.open({
-                        animation: true,
-                        templateUrl: "views/modal/shop.html",
-                        scope: $scope
-                    });
-                } else {
+            if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration) {
+                console.log("in add to cart");
+                NavigationService.addToCart($scope.cartpro, function(data) {
+                    console.log("response cart", data);
+                    $scope.response = data;
+                    if ($scope.response.value === true) {
+                        $uibModal.open({
+                            animation: true,
+                            templateUrl: "views/modal/shop.html",
+                            scope: $scope
+                        });
+                    } else {
 
-                }
-            }, function(err) {
-                console.log(err);
-            });
+                    }
+                }, function(err) {
+                    console.log(err);
+                });
+            } else {
+                console.log("please select valid date");
+                $uibModal.open({
+                    animation: true,
+                    templateUrl: "views/modal/changedate.html",
+                    scope: $scope
+                });
+            }
+
 
         };
         $scope.productFull = function() {
@@ -1222,6 +1232,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             scope: $scope
         });
     };
+    NavigationService.getProfile(function(data) {
+        if (data.value) {
+
+        } else {
+            if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
+                $state.go("home");
+            }
+        }
+    }, function(err) {
+        console.log(err);
+    });
     $scope.signUp = function() {
         $scope.loginmsg.msg = "";
         $scope.closeAllModals();
@@ -1302,6 +1323,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function(err) {
             console.log(err);
         });
+        // console.log("cartcount", $scope.cartcount);
+        // if($state.current.name == "address"){
+        //     $state.go("home");
+        // }
     };
     globalfunction.getCartCount();
     $scope.closeAllModals = function() {
