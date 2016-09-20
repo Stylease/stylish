@@ -87,6 +87,9 @@ a {
 }
 .relate {
   position: relative;
+  input{
+    background: none!important;
+  }
 }
 .abs {
   position: absolute;
@@ -799,6 +802,11 @@ footer {
     text-transform: none;
     font-family: "Work Sans";
   }
+  label{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: none;
+  }
 }
 input.form-control {
   height: 40px;
@@ -1139,6 +1147,9 @@ input.form-control {
 // }
 .wishlisted-product {
   padding: 20px 0;
+  p{
+    font-size: 22px;
+  }
 }
 .wishlist-prd-detail {
   margin: 40px 0 10px;
