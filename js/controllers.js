@@ -1038,7 +1038,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             scope: $scope
                         });
                     } else {
-
                     }
                 }, function(err) {
                     console.log(err);
