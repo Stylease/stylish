@@ -947,11 +947,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.product = data.data.product;
             $scope.producttime = data.data.producttime;
             _.each($scope.producttime, function(key) {
-                var tmpdate = new Date(key.timestampFrom);
+                var tmpdate = new Date(key.timeFrom);
                 // tmpdate.setHours(0,0,0,0);
-                var tmpto = new Date(key.timestampTo);
+                var tmpto = new Date(key.timeTo);
                 var diffDays = tmpto.getDate() - tmpdate.getDate();
-                console.log("aaaa", diffDays);
                 start = 0;
                 do {
                     $scope.timestamps.push(new Date(tmpdate));
@@ -1037,8 +1036,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             templateUrl: "views/modal/shop.html",
                             scope: $scope
                         });
-                    } else {
-                    }
+                    } else {}
                 }, function(err) {
                     console.log(err);
                 });
@@ -1097,6 +1095,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //     }) == -1;
             // }
             return _.findIndex($scope.timestamps, function(key) {
+                console.log("aaaaaaa".key);
                 key.setHours(0, 0, 0, 0);
                 current.setHours(0, 0, 0, 0);
                 // console.log(new Date(key), new Date(current));
