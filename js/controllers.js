@@ -1229,17 +1229,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             scope: $scope
         });
     };
-    NavigationService.getProfile(function(data) {
-        if (data.value) {
-
-        } else {
-            if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
-                $state.go("home");
-            }
-        }
-    }, function(err) {
-        console.log(err);
-    });
+    // NavigationService.getProfile(function(data) {
+    //     if (data.value) {
+    //
+    //     } else {
+    //         if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
+    //             $state.go("home");
+    //         }
+    //     }
+    // }, function(err) {
+    //     console.log(err);
+    // });
     $scope.signUp = function() {
         $scope.loginmsg.msg = "";
         $scope.closeAllModals();
