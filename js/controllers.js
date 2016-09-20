@@ -1050,8 +1050,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     scope: $scope
                 });
             }
-
-
         };
         $scope.productFull = function() {
             $uibModal.open({
