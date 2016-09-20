@@ -920,7 +920,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.product = {};
         $scope.mainImage = "";
         $scope.timestamps = [];
-        $scope.calendertimestamps = [];
+        // $scope.calendertimestamps = [];
         $scope.cartpro = {};
         $scope.cartpro.product = $state.params.id;
         $scope.cartpro.size = '';
@@ -1025,6 +1025,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log("else cartDate ", $.jStorage.get("cartDate"), $scope.cartpro);
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
+            console.log("time", new Date($scope.cartpro.timeFrom), new Date($scope.cartDate.timeFrom));
+            if($scope.cartDate && new Date($scope.cartpro.timeFrom) === new Date($scope.cartDate.timeFrom))
             NavigationService.addToCart($scope.cartpro, function(data) {
                 console.log("response cart", data);
                 $scope.response = data;
@@ -1074,7 +1076,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         // Disable weekend selection
         function disabled(data) {
-            console.log(data);
+            // console.log(data);
             var current = data.date,
                 mode = data.mode;
             current.setHours(0, 0, 0, 0);
@@ -1090,8 +1092,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 key.setHours(0, 0, 0, 0);
                 current.setHours(0, 0, 0, 0);
                 // console.log(new Date(key), new Date(current));
-                // return new Date(key).getTime() == current.getTime();
-                return mode === 'day' && (current.getDay() === 0 || current.getDay() === 6);
+                return new Date(key).getTime() == current.getTime();
             }) !== -1;
         }
         $scope.open1 = function() {
