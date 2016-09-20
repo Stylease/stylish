@@ -26,9 +26,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log(data);
             _.each(data.data, function(key) {
                 // body...
-                console.log("aaaaaa", key);
+                // console.log("aaaaaa", key);
                 if (key.imagetype == 'Big') {
-                    console.log("aaaa", key);
+                    // console.log("aaaa", key);
                     if (temp.length !== 0) {
                         temp = _.chunk(temp, 2);
                         $scope.subcategory.push(temp);
@@ -1046,7 +1046,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log("please select valid date");
                 $uibModal.open({
                     animation: true,
-                    templateUrl: "views/modal/changedate.html",
+                    templateUrl: "views/modal/cartdate.html",
+                    controller: "ProductdetailCtrl",
                     scope: $scope
                 });
             }
