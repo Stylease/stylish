@@ -24,10 +24,14 @@
         </div>
       </div>
 
-      <div class="row-flex" ng-repeat="subc in subcat" ng-if="subcat.length > 0">
-        <div class="col-flex" ng-repeat="sub in subc">
+      <div class="row adj-margin" ng-repeat="subc in subcat" ng-if="subcat.length > 0">
+        <div class="col-md-6 adj-padd" ng-repeat="sub in subc">
           <div class="relate mr10 pointer ban-width" ui-sref="product({'name':sub.name})">
             <img ng-src="{{sub.image|serverimage}}" alt="" class="img-responsive">
+
+            <div class="tag-name" style="">
+              <label>sangeet</label>
+            </div>
           </div>
         </div>
         <!-- <div class="col-flex">
