@@ -21,6 +21,9 @@
       <div class="row-flex" ng-if=" subcat.length == null">
         <div class="relate mt20 mb20 pointer ban-width" ui-sref="product({'name':subcat.name})">
           <img ng-src="{{subcat.image|serverimage}}" alt="" class="img-responsive">
+          <div class="tag-name" style="">
+            <label>{{subcat.name}}</label>
+          </div>
         </div>
       </div>
 
@@ -30,7 +33,7 @@
             <img ng-src="{{sub.image|serverimage}}" alt="" class="img-responsive">
 
             <div class="tag-name" style="">
-              <label>sangeet</label>
+              <label>{{sub.name}}</label>
             </div>
           </div>
         </div>

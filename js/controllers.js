@@ -575,12 +575,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.placeOrder = function() {
             console.log("placeorder", $scope.cartProduct, $scope.userdata);
             var placeorderuser = $scope.userdata;
-          _.each($scope.userdata.shippingAddress,function (data,property) {
-            placeorderuser[property]=data;
-          });
-          _.each($scope.userdata.billingAddress,function (data,property) {
-            placeorderuser[property]=data;
-          });
+            _.each($scope.userdata.shippingAddress, function(data, property) {
+                placeorderuser[property] = data;
+            });
+            _.each($scope.userdata.billingAddress, function(data, property) {
+                placeorderuser[property] = data;
+            });
             placeorderuser.servicetax = $scope.servicetax;
             placeorderuser.total = $scope.grandtotal;
             placeorderuser.refundabledeposit = $scope.totalsecuritydeposit;
@@ -835,15 +835,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         };
         $scope.addTowishlist = function(product) {
-            if (product.heart == "fa-heart") {
-                product.heart = "fa-heart-o";
-            } else {
-                product.heart = "fa-heart";
-            }
-            $uibModal.open({
-                animation: true,
-                templateUrl: 'views/modal/added-wishlist.html',
+            NavigationService.getProfile(function(response) {
+                if (response.value) {
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: 'views/modal/added-wishlist.html',
+                    });
+                } else {
+                    console.log("please login");
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: 'views/modal/added-wishlist.html',
+                    });
+                }
+            }, function(err) {
+                console.log(err);
             });
+
+
         };
 
         $scope.oneAtATime = true;
@@ -1040,16 +1049,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.cartpro.by = $scope.product.designer.name;
             }
             if ($.jStorage.get("cartDate")) {
-                console.log("innn cartdate", $.jStorage.get("cartDate"), $scope.cartpro);
                 // $scope.setCalender();
                 $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
             } else {
-                console.log("else cartDate ", $.jStorage.get("cartDate"), $scope.cartpro);
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
-            console.log("time", new Date($scope.cartpro.timeFrom), new Date($scope.cartDate.timeFrom));
             if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration) {
-                console.log("in add to cart");
                 NavigationService.addToCart($scope.cartpro, function(data) {
                     console.log("response cart", data);
                     $scope.response = data;
