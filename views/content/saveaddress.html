@@ -46,6 +46,12 @@
                                                     <span></span>
                                                     Use as default address</label>
                                             </div>
+                                            <div class="custom-checkbox inline-block">
+                                                <input type="checkbox" id="default{{$index}}" ng-model="data.isDefault" ng-change="changeDefault(data)">
+                                                <label for="default{{$index}}">
+                                                    <span></span>
+                                                    Use for shipping address</label>
+                                            </div>
                                             <!-- <div class="custom-checkbox inline-block">
                                               <input type="checkbox" id="use{{$index}}">
                                               <label for="use{{$index}}">
@@ -93,8 +99,8 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h4 class="text-center dark-blue">Shipping Address</h4>
-                            <div class="">
+                            <!-- <h4 class="text-center dark-blue">Shipping Address</h4> -->
+                            <div class="shipping-padd">
                                 <!-- <div class="first-address"> -->
                                 <div class="first-address" ng-repeat="data in userdata.shippingAddress">
 
@@ -123,6 +129,12 @@
                                                 <label for="defaultship{{$index}}">
                                                     <span></span>
                                                     Use as default address</label>
+                                            </div>
+                                            <div class="custom-checkbox inline-block">
+                                                <input type="checkbox" id="defaultship{{$index}}" ng-model="data.isDefault" ng-change="changeDefault(data,'ship')">
+                                                <label for="defaultship{{$index}}">
+                                                    <span></span>
+                                                    Use for shipping address</label>
                                             </div>
                                             <!-- <div class="custom-checkbox inline-block">
                                               <input type="checkbox" id="use{{$index}}">
