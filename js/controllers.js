@@ -1095,6 +1095,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //     }) == -1;
             // }
             return _.findIndex($scope.timestamps, function(key) {
+                console.log("aaaaaaa".key);
                 key.setHours(0, 0, 0, 0);
                 current.setHours(0, 0, 0, 0);
                 // console.log(new Date(key), new Date(current));

@@ -498,7 +498,7 @@ nav {
   top: 72px;
   z-index: 11;
   .menu-name {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     &:hover {
       color: $brand-dark-blue;
@@ -544,7 +544,7 @@ nav {
     border: none;
   }
   .icon {
-    font-size: 25px;
+    font-size: 22px;
   }
 }
 .badge-pos{
@@ -691,6 +691,7 @@ nav {
         a {
           color: $brand-light-pink;
           font-size: 16px;
+          font-weight: 400;
           &:hover {
             color: $brand-dark-pink;
           }
@@ -703,6 +704,7 @@ nav {
     border-bottom: 1px solid $brand-dark-pink;
     display: inline-block;
     font-size: 17px;
+    font-weight: 400;
   }
   .social-links {
     a {
@@ -731,6 +733,7 @@ nav {
   .question {
     margin-top: 40px;
     font-size: 17px;
+    font-weight: 400;
     a {
       color: #fff;
       &:hover {
@@ -743,6 +746,7 @@ nav {
       font-size: 21px;
     }
     font-size: 17px;
+    font-weight: 400;
   }
   .read-more {
     @include button-variant(#dc795e, transparent, #dc795e);
@@ -1735,6 +1739,7 @@ flex-slider{
 // cart page
 .cart-imgholder {
   height: 250px;
+  margin: 35px;
   img {
     max-height: 100%;
   }
@@ -1921,15 +1926,33 @@ ul.mn-list {
     z-index: 0;
     width: 47%;
     height: 37px;
+    text-align: center;
   label{
     color: #fff;
     font-size: 22px;
-    padding: 5px 5em;
+    padding: 4px 0 0 0;
     font-family: 'fine-style';
     font-weight: normal;
   }
 }
-
+.tag-name1{
+    position: absolute;
+    bottom: 13%;
+    left: 24%;
+    background-image: -webkit-linear-gradient(left, transparent 0, #de785f 26%, #de785f 22%, #de785f 73%, transparent 100%);
+    background-image: linear-gradient(to right, transparent 0, #de785f 26%, #de785f 22%, #de785f 73%, transparent 100%);
+    z-index: 0;
+    width: 47%;
+    height: 37px;
+    text-align: center;
+  label{
+    color: #fff;
+    font-size: 22px;
+    padding: 4px 0 0 0;
+    font-family: 'fine-style';
+    font-weight: normal;
+  }
+}
 .adj-margin{
     margin-left: -8px;
     margin-right: -8px;
