@@ -571,6 +571,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
         $scope.getCart();
+
+        $scope.placeOrder = function() {
+            console.log("placeorder", $scope.cartProduct, $scope.userdata);
+            var placeorderuser = $scope.userdata;
+          _.each($scope.userdata.shippingAddress,function (data,property) {
+            placeorderuser[property]=data;
+          });
+          _.each($scope.userdata.billingAddress,function (data,property) {
+            placeorderuser[property]=data;
+          });
+            placeorderuser.servicetax = $scope.servicetax;
+            placeorderuser.total = $scope.grandtotal;
+            placeorderuser.refundabledeposit = $scope.totalsecuritydeposit;
+            placeorderuser.subtotal = $scope.totalrentalamount;
+            placeorder = placeorderuser;
+            placeorder.cartproduct = $scope.cartProduct;
+            console.log("aaaaa", placeorder);
+            NavigationService.placeOrder(placeorder, function(data) {
+                if (data == true) {
+                    console.log("done");
+                }
+            });
+        };
     })
     .controller('ChangepasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file

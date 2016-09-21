@@ -267,6 +267,9 @@ var navigationservice = angular.module('navigationservice', [])
         userProfileSave: function(data, callback) {
             $http.post(adminURL + "user/save", data).success(callback);
         },
+        placeOrder: function(data, callback) {
+            $http.post(adminURL + "order/save", data).success(callback);
+        },
         getWishlistUser: function(callback) {
             $http.post(adminURL + "wishlist/getWishlistUser", {}).success(callback);
         },
