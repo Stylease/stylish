@@ -87,8 +87,8 @@ a {
 }
 .relate {
   position: relative;
-  input{
-    background: none!important;
+  .inpu-1{
+    color: #000;
   }
 }
 .abs {
@@ -152,9 +152,12 @@ a {
 .mr10 {
   margin-right: 10px;
 }
-.mb10 {
-  margin-bottom: 10px;
-}
+// .mb10 {
+//   margin-bottom: 10px;
+//   button{
+//     padding: 12px 5.5em;
+//   }
+// }
 .ml10 {
   margin-left: 10px;
 }
@@ -219,7 +222,7 @@ a {
   padding-left: 20px;
 }
 .pd20 {
-  padding: 20px;
+  padding: 35px;
 }
 .text-underline {
   text-decoration: underline;
@@ -275,6 +278,7 @@ a {
 .btn-pink-outline {
   @include button-variant($brand-dark-pink, transparent, $brand-dark-pink);
   &:hover {
+    color: #fff!important;
     @include button-variant($brand-dark-blue, $brand-dark-pink, $brand-dark-pink);
   }
 }
@@ -788,7 +792,7 @@ footer {
 }
 // footer
 .heading-bar {
-  padding: 65px 0 30px;
+  padding: 65px 0 2px;
   background-color: $brand-pink;
   font-family: "fine-style";
   text-align: center;
@@ -810,6 +814,8 @@ footer {
     font-size: 18px;
     font-weight: bold;
     font-family: none;
+    margin: 12px 0 0 0;
+    text-transform: uppercase;
   }
 }
 input.form-control {
@@ -849,7 +855,9 @@ input.form-control {
 }
 // pop ups
 .social-btn {
-  width: 280px;
+  width: 100%;
+  padding: 12px 0;
+  margin: 10px 0;
 }
 .close-popup {
   position: relative;
@@ -884,14 +892,14 @@ input.form-control {
   &:after,
   &:before {
     content: "";
-    @include size(100px,2px);
+    @include size(45%,2px);
     background-color: $brand-dark-blue;
   }
   &:before {
-    @include position(absolute, 50% null null 28%);
+    @include position(absolute, 50% null null 0);
   }
   &:after {
-    @include position(absolute, 50% 28% null null );
+    @include position(absolute, 50% 0 null null );
   }
 }
 .tnc-error {
@@ -1038,10 +1046,11 @@ input.form-control {
   font-size: 16px;
   font-weight: 400;
 }
-.on-edit {
-  button {
-    margin-right: -5px;
-  }
+.on-edit{
+  margin-bottom: 20px;
+    button {
+      margin-right: -6px;
+    }
 }
 .bank-detail {
   margin-top: 60px;
@@ -1631,6 +1640,7 @@ input.form-control {
   text-align: center;
   .name-suggestprd {
     font-size: 15px;
+    min-height: 70px;
   }
 }
 .suggested-imgholder {
@@ -1642,7 +1652,13 @@ input.form-control {
     max-width: 100%;
     max-height: 100%;
     width: auto !important;
-}
+    padding: 4px;
+ }
+ .wishlist{
+   position: absolute;
+   right: 9px;
+   z-index: 9;
+ }
 }
 .suggested-slider {
   margin-top: 50px;
@@ -1918,6 +1934,18 @@ ul.mn-list {
 }
 
 
+
+.uib-datepicker-popup.dropdown-menu{
+  border: 2px solid #ffd9c1 !important;
+}
+
+.no-margin{
+  margin: 0!important;
+}
+.no-padding{
+  padding: 0!important;
+}
+.on-border{border: 1px solid #ffd9c1;}
 .tag-name{
   position: absolute;
     bottom: 13%;
@@ -1968,10 +1996,24 @@ ul.mn-list {
 .fixed-height{
   min-height:400px;
 }
-
-
-
-
+.fsi{
+  font-size: 15px;
+}
+.bckg{
+    background: none!important;
+}
+.sugg-padd{
+  padding: 16px 0 0 0;
+}
+.sugg-no-padd{
+  padding: 0;
+}
+.mb10-1 {
+  margin-bottom: 10px;
+  button{
+    padding: 12px 5.5em;
+  }
+}
 
 
 

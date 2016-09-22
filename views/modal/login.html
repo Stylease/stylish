@@ -13,18 +13,18 @@
     <div class="or relate mb20 mt20">
       <span>OR</span>
     </div>
-    <div class="row">
-      <div class="col-md-offset-2 col-md-8">
-        <form name="formLogin" ng-submit="userLogin()">
+
+
+    <form name="formLogin" ng-submit="userLogin()" class="ng-pristine ng-valid ng-valid-email ng-valid-required" style="">
           <div class="relate">
-            <input type="email" class="form-control" placeholder="Email Id" ng-model="login.email" name="email" required>
-            <div class="form-error" ng-show="formLogin.email.$touched && formLogin.email.$error.required">
+            <input type="email" class="form-control ng-pristine ng-valid ng-valid-email ng-valid-required ng-touched" placeholder="Email Id" ng-model="login.email" name="email" required="">
+            <div class="form-error ng-hide" ng-show="formLogin.email.$touched &amp;&amp; formLogin.email.$error.required" style="">
               Please enter your Email Id.
             </div>
           </div>
           <div class="relate">
-            <input type="password" class="form-control" placeholder="Password" ng-model="login.password" name="pswd" required>
-            <div class="form-error" ng-show="formLogin.pswd.$touched && formLogin.pswd.$error.required">
+            <input type="password" class="form-control ng-pristine ng-untouched ng-valid ng-valid-required" placeholder="Password" ng-model="login.password" name="pswd" required="" style="">
+            <div class="form-error ng-hide" ng-show="formLogin.pswd.$touched &amp;&amp; formLogin.pswd.$error.required" style="">
               Please enter your password.
             </div>
           </div>
@@ -36,15 +36,15 @@
           <div class="clearfix">
             <span class="pull-right pointer mt10 mb10" ng-click="forgot();">Forgot Password ?</span>
           </div>
-          <div class="login mb10 mt10">
+          <div class="login mb10-1 mt10">
             <button type="Submit" class="btn btn-outline btn-full text-medium">Log In</button>
           </div>
-          <div class="">
+          <div class="fsi">
             <span>New User?</span>
             <span class="text-underline pointer" ng-click="emailSignup();">Create Account!</span>
           </div>
         </form>
-      </div>
-    </div>
+
+
   </div>
 </div>

@@ -1,124 +1,125 @@
-<div class="heading-bar text-center">
-  <h3 class="heading heading-underline">my cart</h3>
-  <span class="block text-medium">‘‘If You Can’t Stop Thinking About It Get It!’’</span>
+<div class="heading-bar text-center ng-scope">
+    <h3 class="heading heading-underline">my cart</h3>
+    <span class="block text-medium">‘‘If You Can’t Stop Thinking About It Get It!’’</span>
+    <label class="block text-medium">0 items</label>
 </div>
 <div class="cart">
-  <div class="container">
-    <div class="cart-list" ng-repeat="product in cartProduct">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="cart-imgholder relate">
-            <img ng-src="{{product.product.images[0].image | serverimage}}" alt="{{product.product.name}}" class="get-center img-responsive">
-          </div>
-        </div>
-        <div class="col-md-7">
-          <div class="pull-right">
-            <a href="" class="text-medium dark-blue text-underline" ng-click="editCartProduct(product.product._id)">Edit</a>
-          </div>
-          <div class="product-cart-detail clearfix">
-            <h4 class="prd-name">{{product.product.name}}</h4>
-            <h5 ng-if="product.by">by : <span>{{product.by}}</span></h5>
-            <div class="product-all-detail" ng-hide="variables.editCart[product.product._id]">
-              <p>Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
-              <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
-              <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
-              <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
-              <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
-              <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{product.deliveryTime}}</span></p>
-              <p class="mb5"><span class="edit-cart">Pickup Time</span> <span>{{product.pickupTime}}</span></p>
-            </div>
-            <div class="edit-product-detail product-all-detail" ng-show="variables.editCart[product.product._id]">
-              <form action="">
-                <p>Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
-                <div class="edit-size" ng-if="sizes && sizes.length>0">
-                  <span class="edit-cart">Size</span>
-                  <div class="custom-select">
-                    <select name="" ng-model="editable.size" id="">
+    <div class="container">
+        <div class="cart-list" ng-repeat="product in cartProduct">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="cart-imgholder relate">
+                        <img ng-src="{{product.product.images[0].image | serverimage}}" alt="{{product.product.name}}" class="get-center img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="pull-right">
+                        <a href="" class="text-medium dark-blue text-underline" ng-click="editCartProduct(product.product._id)">Edit</a>
+                    </div>
+                    <div class="product-cart-detail clearfix">
+                        <h4 class="prd-name">{{product.product.name}}</h4>
+                        <h5 ng-if="product.by">by : <span>{{product.by}}</span></h5>
+                        <div class="product-all-detail" ng-hide="variables.editCart[product.product._id]">
+                            <p>Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
+                            <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
+                            <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
+                            <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
+                            <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
+                            <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{product.deliveryTime}}</span></p>
+                            <p class="mb5"><span class="edit-cart">Pickup Time</span> <span>{{product.pickupTime}}</span></p>
+                        </div>
+                        <div class="edit-product-detail product-all-detail" ng-show="variables.editCart[product.product._id]">
+                            <form action="">
+                                <p>Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
+                                <div class="edit-size" ng-if="sizes && sizes.length>0">
+                                    <span class="edit-cart">Size</span>
+                                    <div class="custom-select">
+                                        <select name="" ng-model="editable.size" id="">
                       <option ng-repeat="s in sizes" value="{{s.name}}">{{s.name}}</option>
                     </select>
-                  </div>
-                </div>
-                <p><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
-                <p><span class="edit-cart">Delivery Date </span><span>{{product.timeFrom | date : 'mediumDate'}}</span>
-                  <!-- <span class="dark-pink text-underline text-underline ml20 pointer" ng-click="date();">Change ?</span> -->
-                </p>
-                <div>
-                  <span class="edit-cart">Duration</span>
-                  <div class="dates inline-block">
-                    <div class="radio-button">
-                      <input type="radio" ng-click="product.duration=4" ng-checked="4 == {{product.duration}}" name="date" id="four{{$index}}">
-                      <label for="four{{$index}}" class="text-medium"><span></span> 4 Days</label>
-                    </div>
-                    <div class="radio-button">
-                      <input type="radio" ng-click="product.duration=8" ng-checked="8 == {{product.duration}}" name="date" id="eight{{$index}}">
-                      <label for="eight{{$index}}" class="text-medium"><span></span> 8 Days</label>
-                    </div>
-                  </div>
-                  <div class="order-delivery-time mb20">
-                    <div class="row">
-                      <div class="inline-block time-picker">
-                        <div class="time inline-block">
-                          <label for="delivery-time" class="inline-block text-medium">Delivery Time</label>
-                          <div class="custom-select inline-block">
-                            <select ng-model="product.deliveryTime" name="" id="delivery-time">
+                                    </div>
+                                </div>
+                                <p><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
+                                <p><span class="edit-cart">Delivery Date </span><span>{{product.timeFrom | date : 'mediumDate'}}</span>
+                                    <!-- <span class="dark-pink text-underline text-underline ml20 pointer" ng-click="date();">Change ?</span> -->
+                                </p>
+                                <div>
+                                    <span class="edit-cart">Duration</span>
+                                    <div class="dates inline-block">
+                                        <div class="radio-button">
+                                            <input type="radio" ng-click="product.duration=4" ng-checked="4 == {{product.duration}}" name="date" id="four{{$index}}">
+                                            <label for="four{{$index}}" class="text-medium"><span></span> 4 Days</label>
+                                        </div>
+                                        <div class="radio-button">
+                                            <input type="radio" ng-click="product.duration=8" ng-checked="8 == {{product.duration}}" name="date" id="eight{{$index}}">
+                                            <label for="eight{{$index}}" class="text-medium"><span></span> 8 Days</label>
+                                        </div>
+                                    </div>
+                                    <div class="order-delivery-time mb20">
+                                        <div class="row">
+                                            <div class="inline-block time-picker">
+                                                <div class="time inline-block">
+                                                    <label for="delivery-time" class="inline-block text-medium">Delivery Time</label>
+                                                    <div class="custom-select inline-block">
+                                                        <select ng-model="product.deliveryTime" name="" id="delivery-time">
                               <option ng-selected="'10 am - 2 pm' === '{{product.deliveryTime}}'" value="10 am - 2 pm">10 am - 2 pm</option>
                               <option ng-selected="'2 pm - 6 pm' === '{{product.deliveryTime}}'" value="2 pm - 6 pm">2 pm - 6 pm</option>
                             </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="inline-block time-picker">
-                        <div class="time inline-block">
-                          <label for="pickup-time" class="inline-block text-medium">Pickup Time</label>
-                          <div class="custom-select inline-block">
-                            <select ng-model="product.pickupTime" name="" id="pickup-time">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="inline-block time-picker">
+                                                <div class="time inline-block">
+                                                    <label for="pickup-time" class="inline-block text-medium">Pickup Time</label>
+                                                    <div class="custom-select inline-block">
+                                                        <select ng-model="product.pickupTime" name="" id="pickup-time">
                               <option ng-selected="'10 am - 2 pm' === '{{product.pickupTime}}'" value="10 am - 2 pm">10 am - 2 pm</option>
                               <option ng-selected="'2 pm - 6 pm' === '{{product.pickupTime}}'" value="2 pm - 6 pm">2 pm - 6 pm</option>
                             </select>
-                          </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt10 mb10 on-edit">
+                                        <button class="btn btn-outline btn-full text-medium" type="reset" ng-click="closeEdit()">Reset</button>
+                                        <!-- <button class="btn btn-outline btn-full text-medium" ng-click="closeEdit()">Confirm</button> -->
+                                        <button class="btn btn-outline btn-full text-medium" ng-click="editCart(product);">Confirm</button>
+                                    </div>
+                            </form>
+                            </div>
                         </div>
-                      </div>
+                        <div class="pull-right">
+                            <a href="" class="remove-cart text-medium dark-blue" ng-click="openRemoveModal(product.product._id);">Remove Item <img src="img/cross.png" width="12" alt="" class="v-top ml5"></a>
+                        </div>
                     </div>
-                  </div>
-                  <div class="mt10 mb10 on-edit">
-                    <button class="btn btn-outline btn-full text-medium" type="reset" ng-click="closeEdit()">Reset</button>
-                    <!-- <button class="btn btn-outline btn-full text-medium" ng-click="closeEdit()">Confirm</button> -->
-                    <button class="btn btn-outline btn-full text-medium" ng-click="editCart(product);">Confirm</button>
-                  </div>
-              </form>
-              </div>
+                </div>
             </div>
-            <div class="pull-right">
-              <a href="" class="remove-cart text-medium dark-blue" ng-click="openRemoveModal(product.product._id);">Remove Item <img src="img/cross.png" width="12" alt="" class="v-top ml5"></a>
-            </div>
-          </div>
         </div>
-      </div>
+        <!-- <div class="text-right" ng-if="cartProduct.length > 0">
+            <h4>Grand Total : INR {{totalrentalamount|currency}}/-</h4>
+        </div> -->
+        <div ng-if="cartDetails==0" class="cart-details">
+            <div class="text-center">
+                <h3>No Girl Likes An Empty Wardrobe. Time To Start Styling!</h3>
+                <img src="img/wish-cart.png">
+            </div>
+        </div>
+
+        <div class="text-center mt20 on-edit">
+            <button class="btn btn-outline btn-full text-medium" ui-sref="product">Start Shopping</button>
+
+            <button ng-click="gotocheckout()" class="btn btn-outline btn-full text-medium" ng-if="cartProduct.length !== 0">Checkout</button>
+            <p class="dark-pink m-clear pd10 "><i>The minimum order value on TheStylease.com is Rs.8,000/-</i></p>
+        </div>
+
+
     </div>
-    <div class="text-right" ng-if="cartProduct.length > 0">
-      <h4>Grand Total : INR {{totalrentalamount|currency}}/-</h4>
-    </div>
-    <div ng-if="cartDetails==0" class="cart-details">
-      <div class="text-center">
-        <h3>No Girl Likes An Empty Wardrobe. Time To Start Styling!</h3>
-        <img src="img/wish-cart.png">
-      </div>
-  </div>
-
-      <div class="text-center mt20 on-edit">
-        <button class="btn btn-outline btn-full text-medium" ui-sref="product">Start Shopping</button>
-
-        <button ng-click="gotocheckout()" class="btn btn-outline btn-full text-medium" ng-if="cartProduct.length !== 0">Checkout</button>
-        <p class="dark-pink m-clear pd10 "><i>The minimum order value on TheStylease.com is Rs.8,000/-</i></p>
-      </div>
-
-
-  </div>
 </div>
 <div class="cart-empty text-center hide">
-  <div class="container">
-    <h4>No Girl Likes An Empty Wardrobe. Time To Start Styling !</h4>
-    <img src="img/no-cart.png" alt="" class="img-responsive m-center">
-    <button class="btn btn-outline text-medium btn-full" ui-sref="product">Start Shopping</button>
-  </div>
+    <div class="container">
+        <h4>No Girl Likes An Empty Wardrobe. Time To Start Styling !</h4>
+        <img src="img/no-cart.png" alt="" class="img-responsive m-center">
+        <button class="btn btn-outline text-medium btn-full" ui-sref="product">Start Shopping</button>
+    </div>
 </div>

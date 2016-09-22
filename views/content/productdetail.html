@@ -235,8 +235,11 @@
       <flex-slider class="carousel" flex-slide="sProducts in product.suggestedProduct track by $index" control-nav="false" item-width="230" item-margin="0" animation="slide">
         <li>
           <div class="suggested-product">
-            <div class="suggested-imgholder relate">
+            <div class="suggested-imgholder relate img-thumbnail">
               <img ng-src="{{sProducts.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
+              <div class="wishlist">
+                <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa fa-heart-o"></i></span>
+              </div>
             </div>
             <h4 class="name-suggestprd">{{sProducts.name}}<span class="block"> by {{sproducts.designer}}</span></h4>
             <p class="rent text-medium">Rent : Rs {{sProducts.rentalamount|currency}}/-</p>
