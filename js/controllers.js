@@ -200,7 +200,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getProfile(function(data) {
                 if (data.value) {
                     $scope.userdata = data.data;
-                    console.log($scope.userdata, 'userdata');
                     $scope.billingAddress = _.find($scope.userdata.billingAddress, {
                         isDefault: true
                     });
@@ -210,18 +209,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     if ($scope.billingAddress) {
                         $scope.userdata.billingAddress = $scope.billingAddress;
                     } else {
-                        $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
+                        if ($scope.userdata.billingAddress.length > 0) {
+                            $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
+                        } else {
+                            $scope.userdata.billingAddress = $scope.userdata.billingAddress;
+                        }
+
                     }
                     if ($scope.shippingAddress) {
                         $scope.userdata.shippingAddress = $scope.shippingAddress;
                     } else {
-                        $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
+                        if ($scope.userdata.shippingAddress.length > 0) {
+                            $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
+                        } else {
+                            $scope.userdata.shippingAddress = $scope.userdata.shippingAddress;
+                        }
                     }
-                    console.log($scope.userdata);
                 } else {
                     console.log("offline");
                     if ($.jStorage.get("userData")) {
                         $scope.userdata = $.jStorage.get("userData");
+                    }else {
+                      $scope.userdata.shippingAddress ={};
+                      $scope.userdata.shippingAddress.shippingAddressCity ="Mumbai";
+                      $scope.userdata.shippingAddress.shippingAddressState ="maharashtra";
+                      $scope.userdata.shippingAddress.shippingAddressCountry ="India";
+                      $scope.userdata.billingAddress ={};
+                      $scope.userdata.billingAddress.billingAddressCity ="Mumbai";
+                      $scope.userdata.billingAddress.billingAddressState ="maharashtra";
+                      $scope.userdata.billingAddress.billingAddressCountry ="India";
                     }
                 }
             }, function(err) {});
@@ -256,18 +272,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         };
 
-        $scope.saveUserAddress = function(data) {
-            console.log("dataa", data);
+        $scope.saveUserAddress = function(addressdata) {
             if ($.jStorage.get("userLoggedIn")) {
-                // NavigationService.userProfileSave($scope.userdata, function(data) {
-                //     $scope.getProfile();
-                // });
-                $state.go("checkoutorder");
+                addressdata.billingAddress.isDefault = true;
+                addressdata.shippingAddress.isDefault = true;
+                NavigationService.userProfileSave(addressdata, function(data) {
+                    console.log("done");
+                    if (data.value) {
+                        $state.go("checkoutorder");
+                    }
+                });
+
             } else {
-                $.jStorage.set("userData", data)
+                $.jStorage.set("userData", addressdata)
                 $state.go("checkoutorder");
             }
+        };
 
+        $scope.getProfile = function() {
+            NavigationService.getProfile(function(data) {
+                if (data.value) {
+                    $scope.userdata = data.data;
+                    if (!$scope.userdata.billingAddress) {
+                        $scope.userdata.billingAddress = [];
+                    }
+                    if (!$scope.userdata.shippingAddress) {
+                        $scope.userdata.shippingAddress = [];
+                    }
+                }
+            }, function(err) {});
         };
 
     })
@@ -528,12 +561,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     if ($scope.billingAddress) {
                         $scope.userdata.billingAddress = $scope.billingAddress;
                     } else {
-                        $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
+                        if ($scope.userdata.billingAddress.length > 0) {
+                            $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
+                        } else {
+                            $scope.userdata.billingAddress = $scope.userdata.billingAddress;
+                        }
                     }
                     if ($scope.shippingAddress) {
                         $scope.userdata.shippingAddress = $scope.shippingAddress;
                     } else {
-                        $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
+                        if ($scope.userdata.shippingAddress.length > 0) {
+                            $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
+                        } else {
+                            $scope.userdata.shippingAddress = $scope.userdata.shippingAddress;
+                        }
                     }
                 } else {
                     console.log("inn off");
