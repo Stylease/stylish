@@ -229,15 +229,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log("offline");
                     if ($.jStorage.get("userData")) {
                         $scope.userdata = $.jStorage.get("userData");
-                    }else {
-                      $scope.userdata.shippingAddress ={};
-                      $scope.userdata.shippingAddress.shippingAddressCity ="Mumbai";
-                      $scope.userdata.shippingAddress.shippingAddressState ="maharashtra";
-                      $scope.userdata.shippingAddress.shippingAddressCountry ="India";
-                      $scope.userdata.billingAddress ={};
-                      $scope.userdata.billingAddress.billingAddressCity ="Mumbai";
-                      $scope.userdata.billingAddress.billingAddressState ="maharashtra";
-                      $scope.userdata.billingAddress.billingAddressCountry ="India";
+                    } else {
+                        $scope.userdata.shippingAddress = {};
+                        $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
+                        $scope.userdata.shippingAddress.shippingAddressState = "maharashtra";
+                        $scope.userdata.shippingAddress.shippingAddressCountry = "India";
+                        $scope.userdata.billingAddress = {};
+                        $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
+                        $scope.userdata.billingAddress.billingAddressState = "maharashtra";
+                        $scope.userdata.billingAddress.billingAddressCountry = "India";
                     }
                 }
             }, function(err) {});
@@ -542,7 +542,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('CheckoutOrderCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('CheckoutOrderCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("checkout-orderdetail");
         $scope.menutitle = NavigationService.makeactive("Checkoutorder");
@@ -614,7 +614,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.getCart();
 
         $scope.placeOrder = function() {
-            console.log("placeorder", $scope.cartProduct, $scope.userdata);
+            // console.log("placeorder", $scope.cartProduct, $scope.userdata);
             var placeorderuser = $scope.userdata;
             _.each($scope.userdata.shippingAddress, function(data, property) {
                 placeorderuser[property] = data;
@@ -628,10 +628,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             placeorderuser.subtotal = $scope.totalrentalamount;
             placeorder = placeorderuser;
             placeorder.cartproduct = $scope.cartProduct;
-            console.log("aaaaa", placeorder);
+            if ($.jStorage.get("userLoggedIn")) {
+                delete placeorder.wishlist;
+                delete placeorder.billingAddress;
+                delete placeorder.shippingAddress;
+                delete placeorder.userid;
+                delete placeorder._id;
+            }
             NavigationService.placeOrder(placeorder, function(data) {
-                if (data == true) {
-                    console.log("done");
+                if (data) {
+                    $.jStorage.set("cartDate", "");
+                    $state.go("thankyou");
+                } else {
+                    $state.go("thankyou");
                 }
             });
         };
