@@ -2015,7 +2015,16 @@ ul.mn-list {
   }
 }
 
-
+.modal-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateY(50%)!important;
+    -moz-transform: translateY(50%)!important;
+    -ms-transform: translateY(50%)!important;
+    -o-transform: translateY(50%)!important;
+    transform: translate(-50%,-50%)!important;
+}
 
 
 // celebrity page end
