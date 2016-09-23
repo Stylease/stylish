@@ -638,9 +638,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.placeOrder(placeorder, function(data) {
                 if (data) {
                     $.jStorage.set("cartDate", "");
-                    $state.go("thankyou");
+
+                    NavigationService.emptyCart(function(response) {
+                        if (response) {
+                            $state.go("thankyou");
+                        } else {
+                            $state.go("sorry");
+                        }
+                    });
                 } else {
-                    $state.go("thankyou");
+                    $state.go("sorry");
                 }
             });
         };
