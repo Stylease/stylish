@@ -222,7 +222,7 @@ a {
   padding-left: 20px;
 }
 .pd20 {
-  padding: 35px;
+  padding: 35px 5em;
 }
 .text-underline {
   text-decoration: underline;
@@ -232,7 +232,10 @@ a {
   color: $brand-dark-blue;
 }
 .dark-pink {
-  color: $brand-dark-pink;
+  // color: $brand-dark-pink;
+  &:hover{
+    color: $brand-dark-pink;
+  }
 }
 .color-pink {
   color: $brand-pink;
@@ -431,7 +434,7 @@ header {
   box-shadow: 1px 1px 5px $brand-dark-blue;
   position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 9999;
 }
 .hamburger {
   margin: 18px 0 6px;
@@ -661,16 +664,20 @@ nav {
     position: absolute;
   }
   &:after {
-    content: '';
-    background: url('../img/comma2.png') no-repeat;
+    content: "\f10e";
+    // background: url('../img/comma2.png') no-repeat;
     right: 0;
     bottom: 0;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 16px;
   }
   &:before {
-    content: '';
-    background: url('../img/comma1.png') no-repeat;
+    content: "\f10d" !important;
+    /* background: url("../img/comma1.png") no-repeat; */
     top: 0;
     left: -20px;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 16px;
   }
 }
 .ban-width{
@@ -858,6 +865,7 @@ input.form-control {
   width: 100%;
   padding: 12px 0;
   margin: 10px 0;
+  font-size: 15px;
 }
 .close-popup {
   position: relative;
@@ -1286,7 +1294,7 @@ input.form-control {
   padding: 20px;
   @include position(absolute, 46px null null 16px);
   background-color: $brand-pink;
-  z-index: 5;
+  z-index: 999;
   ul {
     padding: 0;
   }
@@ -1579,7 +1587,7 @@ input.form-control {
     border-bottom: 1px solid $brand-dark-blue;
   }
   .order-time {
-    padding: 20px 0;
+    padding: 10px 0;
     border-bottom: 1px solid $brand-dark-blue;
     label {
       margin-right: 5px;
@@ -1592,8 +1600,9 @@ input.form-control {
         top: 11px;
       }
       select {
-        width: 95px;
+        width: 142px;
         padding: 0 15px;
+        height: 35px;
         border: 1px solid $brand-dark-blue;
       }
     }
@@ -1640,7 +1649,7 @@ input.form-control {
   text-align: center;
   .name-suggestprd {
     font-size: 15px;
-    min-height: 70px;
+    // min-height: 70px;
   }
 }
 .suggested-imgholder {
@@ -1947,7 +1956,7 @@ ul.mn-list {
 }
 .on-border{border: 1px solid #ffd9c1;}
 .tag-name{
-  position: absolute;
+    position: absolute;
     bottom: 13%;
     left: 24%;
     background-image: -webkit-linear-gradient(left, transparent 0, #de785f 26%, #de785f 22%, #de785f 73%, transparent 100%);
@@ -1958,10 +1967,10 @@ ul.mn-list {
     text-align: center;
   label{
     color: #fff;
-    font-size: 22px;
-    padding: 4px 0 0 0;
+    font-size: 25px;
+    padding: 3px 0 0 0;
     font-family: 'fine-style';
-    font-weight: normal;
+    font-weight: 500;
   }
 }
 .tag-name1{
@@ -1976,10 +1985,10 @@ ul.mn-list {
     text-align: center;
   label{
     color: #fff;
-    font-size: 22px;
-    padding: 4px 0 0 0;
+    font-size: 25px;
+    padding: 3px 0 0 0;
     font-family: 'fine-style';
-    font-weight: normal;
+    font-weight: 500;
   }
 }
 .adj-margin{
@@ -1997,7 +2006,8 @@ ul.mn-list {
   min-height:400px;
 }
 .fsi{
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 500;
 }
 .bckg{
     background: none!important;
@@ -2014,7 +2024,12 @@ ul.mn-list {
     padding: 12px 5.5em;
   }
 }
-
+.frg-psw{
+  font-size: 15px;
+}
+.btn15{
+  font-size: 16px;
+}
 .modal-dialog {
     position: absolute;
     left: 50%;
