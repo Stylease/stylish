@@ -55,7 +55,7 @@
           <div ng-if="product.size.length>0" class="s1">
             <div>
               <form>
-                Size:
+                <span class="text-medium">Size:</span>
                 <div ng-repeat="size in product.size" ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
                   <label class="size-font pointer">
                     {{size.name}}
@@ -235,7 +235,7 @@
       <flex-slider class="carousel" flex-slide="sProducts in product.suggestedProduct track by $index" control-nav="false" item-width="260" item-margin="0" animation="slide">
         <li>
           <div class="suggested-product">
-            <div class="suggested-imgholder relate img-thumbnail">
+            <div class="suggested-imgholder relate">
               <img ng-src="{{sProducts.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
               <div class="wishlist">
                 <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa fa-heart-o"></i></span>
