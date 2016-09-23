@@ -1649,7 +1649,7 @@ input.form-control {
   text-align: center;
   .name-suggestprd {
     font-size: 15px;
-    min-height: 70px;
+    // min-height: 70px;
   }
 }
 .suggested-imgholder {
@@ -1956,7 +1956,7 @@ ul.mn-list {
 }
 .on-border{border: 1px solid #ffd9c1;}
 .tag-name{
-  position: absolute;
+    position: absolute;
     bottom: 13%;
     left: 24%;
     background-image: -webkit-linear-gradient(left, transparent 0, #de785f 26%, #de785f 22%, #de785f 73%, transparent 100%);
@@ -1967,10 +1967,10 @@ ul.mn-list {
     text-align: center;
   label{
     color: #fff;
-    font-size: 22px;
-    padding: 4px 0 0 0;
+    font-size: 25px;
+    padding: 3px 0 0 0;
     font-family: 'fine-style';
-    font-weight: normal;
+    font-weight: 500;
   }
 }
 .tag-name1{
@@ -1985,10 +1985,10 @@ ul.mn-list {
     text-align: center;
   label{
     color: #fff;
-    font-size: 22px;
-    padding: 4px 0 0 0;
+    font-size: 25px;
+    padding: 3px 0 0 0;
     font-family: 'fine-style';
-    font-weight: normal;
+    font-weight: 500;
   }
 }
 .adj-margin{
