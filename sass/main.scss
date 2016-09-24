@@ -2031,6 +2031,9 @@ ul.mn-list {
 .sugg-no-padd{
   padding: 0;
 }
+.no-padd{
+  padding: 0;
+}
 .mb10-1 {
   margin-bottom: 10px;
   button{
@@ -2052,6 +2055,19 @@ ul.mn-list {
     -ms-transform: translateY(50%)!important;
     -o-transform: translateY(50%)!important;
     transform: translate(-50%,-50%)!important;
+}
+
+.f-lef{
+  float: left;
+  label{
+    font-size: 12px!important;
+  }
+}
+.f-righ{
+  float: right;
+  label{
+    font-size: 12px!important;
+  }
 }
 
 
