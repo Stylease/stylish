@@ -197,28 +197,28 @@
         <div class="product-more-detail accordion-custom">
           <uib-accordion close-others="oneAtATime">
             <uib-accordion-group is-open="status.open1" ng-if="product.details !== ''">
-              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open1, 'fa-chevron-down': !status.open1}"></i> <span class="block">Details</span>
+              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i> <span class="block">Details</span>
               </uib-accordion-heading>
               <div class="descp">
                 <p ng-bind-html="product.details"></p>
               </div>
             </uib-accordion-group>
             <uib-accordion-group is-open="status.open2" ng-if="product.care !== ''">
-              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open2, 'fa-chevron-down': !status.open2}"></i> <span class="block">Material &amp; Care</span>
+              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open2, 'fa-angle-down': !status.open2}"></i> <span class="block">Material &amp; Care</span>
               </uib-accordion-heading>
               <div class="descp">
                 <p ng-bind-html="product.care"></p>
               </div>
             </uib-accordion-group>
             <uib-accordion-group is-open="status.open3" ng-if="product.notes !== ''">
-              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open3, 'fa-chevron-down': !status.open3}"></i> <span class="block">Stylist Notes</span>
+              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i> <span class="block">Stylist Notes</span>
               </uib-accordion-heading>
               <div class="descp">
                 <p ng-bind-html="product.notes"></p>
               </div>
             </uib-accordion-group>
             <uib-accordion-group is-open="status.open4" ng-if="product.additionalnotes !== ''">
-              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-chevron-up': status.open4, 'fa-chevron-down': !status.open3}"></i> <span class="block">Additional Notes</span>
+              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open4, 'fa-angle-down': !status.open3}"></i> <span class="block">Additional Notes</span>
               </uib-accordion-heading>
               <div class="descp">
                 <p ng-bind-html="product.additionalnotes"></p>

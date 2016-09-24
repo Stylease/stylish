@@ -1308,6 +1308,9 @@ input.form-control {
   @include position(absolute, 46px null null 16px);
   background-color: $brand-pink;
   z-index: 999;
+  h5{
+    margin-top: 0;
+  }
   ul {
     padding: 0;
   }
@@ -1317,6 +1320,9 @@ input.form-control {
     margin-bottom: 10px;
     font-size: 16px;
     list-style-type: none;
+    form{
+      margin-bottom: 15px;
+    }
   }
   a {
     display: block;
@@ -2069,7 +2075,16 @@ ul.mn-list {
     font-size: 12px!important;
   }
 }
-
+.flex-d{
+  display: inline-flex;
+  .btn-ful1{
+    padding: 5px 30px;
+  }
+}
+.dt-pik{
+  width: 95%;
+  display: block;
+}
 
 // celebrity page end
 @import "fancybox-override";

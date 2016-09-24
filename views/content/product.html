@@ -30,115 +30,12 @@
                     <div class="filter-product">
                         <img src="img/filter.png" alt="" width="20" class="img-responsive inline-block mr5">
 
-                        <span class="text-uppercase filter-heading inline-block mt10 mb10 pointer" ng-click="showFilterlist = (showFilterlist == true)? false:true;">filter</span>
-
-                        <div class="sort-filter-dropdown" ng-show="showFilterlist" style="">
-                            <ul>
-
-                                <li>
-                                    <div class="container no-padd">
-                                        <h5>Occassion</h5>
-                                        <div class="f-lef">
-                                            <div class="radio-button">
-                                                  <input type="radio" name="date" id="four" checked=" " required=" ">
-                                                    <label for="four" ng-click="getRentalAmount(4)" class="text-medium"><span></span> 4 Days</label>
-                                                </div>
-
-                                                <div class="radio-button"><input type="radio" name="date" id="four" checked=" " required=" ">
-                                                    <label for="four" ng-click="getRentalAmount(4)" class="text-medium"><span></span> 4 Days</label>
-                                                </div>
-                                                <div class="radio-button"><input type="radio" name="date" id="four" checked=" " required=" ">
-                                                    <label for="four" ng-click="getRentalAmount(4)" class="text-medium"><span></span> 4 Days</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="f-righ">
-                                                <div class="radio-button">
-                                                  <input type="radio" name="date" id="four" checked=" " required=" ">
-                                                    <label for="four " ng-click="getRentalAmount(4)" class="text-medium "><span></span> 4 Days</label>
-                                                </div>
-                                                <div class="radio-button"><input type="radio" name="date" id="four" checked=" " required=" ">
-                                                    <label for="four" ng-click="getRentalAmount(4)" class="text-medium"><span></span> 4 Days</label>
-                                                </div>
-                                                <div class="radio-button"><input type="radio" name="date" id="four" checked=" " required=" ">
-                                                    <label for="four" ng-click="getRentalAmount(4)" class="text-medium"><span></span> 4 Days</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </li>
-
-<li>
-
-<div class="container no-padd">
-  <h5>Dresses</h5>
-<div class="f-lef">
-
-<div class="custom-checkbox ng-scope">
-  <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="Wedding" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-  <label for="Wedding" class="ng-binding"><span></span> Wedding</label>
-</div>
-
-<div class="custom-checkbox ng-scope">
-  <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="Wedding" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-  <label for="Wedding" class="ng-binding"><span></span> Wedding</label>
-</div>
-
-<div class="custom-checkbox ng-scope">
-  <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="Wedding" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-  <label for="Wedding" class="ng-binding"><span></span> Wedding</label>
-</div>
-
-</div>
-
-<div class="f-righ">
-
-<div class="custom-checkbox ng-scope">
-  <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="Wedding" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-  <label for="Wedding" class="ng-binding"><span></span> Wedding</label>
-</div>
-
-<div class="custom-checkbox ng-scope">
-  <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="Wedding" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-  <label for="Wedding" class="ng-binding"><span></span> Wedding</label>
-</div>
-
-<div class="custom-checkbox ng-scope">
-  <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="Wedding" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-  <label for="Wedding" class="ng-binding"><span></span> Wedding</label>
-</div>
-
-</div>
-</div>
-
-</li>
+                        <span class="text-uppercase filter-heading inline-block mt10 mb10 pointer">filter</span>
 
 
-<li>
-  <div class="container no-padd">
-    <h5>Rental Price</h5>
-    <div>
-    </div>
-  </div>
-</li>
-
-<li>
-  <div class="container no-padd">
-      <h5>Delivery / Return Dates</h5>
-      <div class="f-lef">
-          <div class="radio-button">
-                <input type="radio" name="date" id="four" checked=" " required=" ">
-                  <label for="four" ng-click="getRentalAmount(4)" class="text-medium"><span></span> 4 Days</label>
-              </div>
-            </div>
-          </div>
-</li>
-
-                            </ul>
-                        </div>
 
                         <div class="filter-dropdown accordion-custom ">
-                            <div class="search-by-filter ">
+                            <div class="search-by-filter">
                                 <form>
                                     <uib-accordion close-others="oneAtATime ">
                                         <uib-accordion-group is-open="status.open1 " ng-repeat="(cat, value) in subcategory | groupBy: 'category.name' ">
