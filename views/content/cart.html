@@ -1,7 +1,7 @@
 <div class="heading-bar text-center ng-scope">
     <h3 class="heading heading-underline">my cart</h3>
     <span class="block text-medium">‘‘If You Can’t Stop Thinking About It Get It!’’</span>
-    <label class="block text-medium">0 items</label>
+    <label ng-if="cartProduct" class="block text-medium">{{cartProduct.length}} items</label>
 </div>
 <div class="cart">
     <div class="container">
