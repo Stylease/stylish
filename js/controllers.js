@@ -892,23 +892,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         };
         $scope.addTowishlist = function(product) {
-            NavigationService.getProfile(function(response) {
-                if (response.value) {
+            NavigationService.saveWishlist(product, function(data) {
+                if ($.jStorage.get("userLoggedIn")) {
                     $uibModal.open({
                         animation: true,
                         templateUrl: 'views/modal/added-wishlist.html',
                     });
                 } else {
-                    console.log("please login");
                     $uibModal.open({
                         animation: true,
-                        templateUrl: 'views/modal/added-wishlist.html',
+                        templateUrl: 'views/modal/hello.html',
                     });
                 }
-            }, function(err) {
-                console.log(err);
-            });
-
+            })
 
         };
 
@@ -1142,13 +1138,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 scope: $scope
             })
         };
-        $scope.addTowishlist = function() {
-            $uibModal.open({
-                animation: true,
-                templateUrl: 'views/modal/added-wishlist.html',
-            });
-        };
+        // $scope.addTowishlist = function() {
+        //     $uibModal.open({
+        //         animation: true,
+        //         templateUrl: 'views/modal/added-wishlist.html',
+        //     });
+        // };
+        $scope.addTowishlist = function(product) {
+            NavigationService.saveWishlist(product, function(data) {
+                if ($.jStorage.get("userLoggedIn")) {
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: 'views/modal/added-wishlist.html',
+                    });
+                } else {
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: 'views/modal/hello.html',
+                    });
+                }
+            })
 
+        };
         if ($.jStorage.get("cartDate")) {
             console.log("innn cartdate", $.jStorage.get("cartDate"), $scope.cartpro);
             // $scope.setCalender();
