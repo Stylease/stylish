@@ -41,7 +41,7 @@
                                 </div>
                                 <p><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
                                 <p><span class="edit-cart">Delivery Date </span><span>{{product.timeFrom | date : 'mediumDate'}}</span>
-                                    <span class="dark-pink text-underline text-underline ml20 pointer" ng-click="date();">Change ?</span>
+                                    <span class="change-pink text-underline text-underline ml20 pointer" ng-click="date();">Change ?</span>
                                 </p>
                                 <div>
                                     <span class="edit-cart">Duration</span>

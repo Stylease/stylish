@@ -236,6 +236,12 @@ a {
   color: $brand-dark-blue;
 }
 .dark-pink {
+  color: $brand-dark-pink;
+  // &:hover{
+  //   color: $brand-dark-pink;
+  // }
+}
+.change-pink{
   // color: $brand-dark-pink;
   &:hover{
     color: $brand-dark-pink;
