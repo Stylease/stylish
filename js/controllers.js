@@ -901,7 +901,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 } else {
                     $uibModal.open({
                         animation: true,
-                        templateUrl: 'views/modal/hello.html',
+                        templateUrl: 'views/modal/loginfirst.html',
                     });
                 }
             })
@@ -1154,7 +1154,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 } else {
                     $uibModal.open({
                         animation: true,
-                        templateUrl: 'views/modal/hello.html',
+                        templateUrl: 'views/modal/loginfirst.html',
                     });
                 }
             })
