@@ -47,10 +47,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 img.loading {
-  text-align: center;
-  opacity: 1;
-  width: 32px !important;
-  height: auto;
+    text-align: center;
+    opacity: 1;
+    width: 40% !important;
+    height: auto;
+    /* position: absolute; */
+    /* margin: 0 auto; */
+    /* left: 0; */
+    transform: translate(67%);
 }
 img {
   opacity: 0;
