@@ -654,14 +654,17 @@ nav {
   font-size: 50px;
 }
 .talk-us {
-  padding: 10px 20px;
-  position: absolute;
-  top: 60%;
-  right: -43px;
-  z-index: 20;
-  @include transform(rotate(-90deg));
-  background-color: $brand-pink;
-  color: $brand-dark-blue;
+    padding: 10px 20px;
+    position: absolute;
+    top: 94%;
+    right: 0;
+    z-index: 20;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(0);
+    background-color: #fdd3be;
   span {
     font-size: 15px;
   }
@@ -1291,12 +1294,12 @@ input.form-control {
   border-left: 1px solid $brand-pink;
 }
 .filter-heading {
-  font-size: 18px;
+  font-size: 16px;
 }
 .sort-product {
   border-bottom: 1px solid $brand-pink;
   span {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 .sort-filter-dropdown {
