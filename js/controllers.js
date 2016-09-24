@@ -892,28 +892,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         };
         $scope.addTowishlist = function(product) {
-            NavigationService.getProfile(function(response) {
-                if (response.value==true) {
-                  console.log('it is in');
-
+            NavigationService.saveWishlist(product, function(data) {
+                if ($.jStorage.get("userLoggedIn")) {
                     $uibModal.open({
                         animation: true,
                         templateUrl: 'views/modal/added-wishlist.html',
                     });
                 } else {
-                    console.log("please login");
                     $uibModal.open({
                         animation: true,
                         templateUrl: 'views/modal/hello.html',
                     });
                 }
-            }, function(err) {
-                console.log(err);
-            });
-            NavigationService.saveWishlist(product,function(data){
-            console.log(data);
             })
-
 
         };
 
@@ -1154,23 +1145,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //     });
         // };
         $scope.addTowishlist = function(product) {
-            NavigationService.getProfile(function(response) {
-                if (response.value) {
+            NavigationService.saveWishlist(product, function(data) {
+                if ($.jStorage.get("userLoggedIn")) {
                     $uibModal.open({
                         animation: true,
                         templateUrl: 'views/modal/added-wishlist.html',
                     });
                 } else {
-                    console.log("please login");
                     $uibModal.open({
                         animation: true,
-                        templateUrl: 'views/modal/added-wishlist.html',
+                        templateUrl: 'views/modal/hello.html',
                     });
                 }
-            }, function(err) {
-                console.log(err);
-            });
-
+            })
 
         };
         if ($.jStorage.get("cartDate")) {
