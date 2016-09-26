@@ -901,10 +901,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             });
                         })
                     } else {
-                        $uibModal.open({
-                            animation: true,
-                            templateUrl: 'views/modal/signup.html',
-                        });
+                        // $uibModal.open({
+                        //     animation: true,
+                        //     templateUrl: 'views/modal/signup.html',
+                        // });
                     }
                 },
                 function(err) {
@@ -1152,10 +1152,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                                     });
                                 })
                             } else {
-                                $uibModal.open({
-                                    animation: true,
-                                    templateUrl: 'views/modal/signup.html',
-                                });
+                                // $uibModal.open({
+                                //     animation: true,
+                                //     templateUrl: 'views/modal/signup.html',
+                                // });
                             }
                     },
                     function(err) {
