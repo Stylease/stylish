@@ -4,8 +4,8 @@
     <span class="block">for shopping with us</span>
     <span class="hope">we hope your event goes great !</span>
     <div class="transaction-detail">
-      <p class="mb5">Transaction id : <span>58632863</span></p>
-      <p class="mb5">Total amount : <span>Rs 16,015/-</span></p>
+      <p class="mb5">Transaction id : <span>{{orderDetails.transactionid}}</span></p>
+      <p class="mb5">Total amount : <span>{{orderDetails.total | currency}}/-</span></p>
       <h4>Your order has been processed</h4>
       <button class="btn btn-pink-outline btn-full text-medium mt20 mb20" ui-sref="product">Continue shopping</button>
     </div>

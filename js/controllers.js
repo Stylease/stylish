@@ -685,10 +685,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.placeOrder(placeorder, function(data) {
                 if (data) {
                     $.jStorage.set("cartDate", "");
-
+                    console.log("data",data.data.orderid);
                     NavigationService.emptyCart(function(response) {
                         if (response) {
-                            $state.go("thankyou");
+                            $state.go("thankyou",{'orderid':data.data.orderid});
                         } else {
                             $state.go("sorry");
                         }
@@ -1327,7 +1327,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             heart: "fa-heart-o"
         }];
     })
-    .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout,$stateParams) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("thankyou");
@@ -1336,6 +1336,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
         TemplateService.footer = "";
+        $scope.cartCheckout=$.jStorage.get("cartCheckout");
+        NavigationService.getOrderById($stateParams.id,function(data){
+          $scope.orderDetails=data.data;
+          console.log("orderDetails",data);
+        })
     })
     .controller('SorryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
@@ -1375,17 +1380,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             scope: $scope
         });
     };
-    // NavigationService.getProfile(function(data) {
-    //     if (data.value) {
-    //
-    //     } else {
-    //         if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
-    //             $state.go("home");
-    //         }
-    //     }
-    // }, function(err) {
-    //     console.log(err);
-    // });
+
+    NavigationService.getProfile(function(data) {
+        if (data.value) {
+
+        } else {
+            if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
+                $state.go("home");
+            }
+        }
+    }, function(err) {
+        console.log(err);
+    });
     $scope.signUp = function() {
         $scope.loginmsg.msg = "";
         $scope.closeAllModals();
@@ -1459,7 +1465,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     globalfunction.getCartCount = function() {
         NavigationService.getCart(function(data) {
             if (data.value == true) {
-                $scope.cartcount = data.data.cartcount;
+                  $scope.cartcount = data.data.cartcount;
             } else {
                 $scope.cartcount = 0;
             }
@@ -1471,6 +1477,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //     $state.go("home");
         // }
     };
+    // if($scope.cartcount == undefined && $state.current.name === "checkoutorder" ){
+    //     $state.go("home");
+    // }
     globalfunction.getCartCount();
     $scope.closeAllModals = function() {
         if (modal1) {
