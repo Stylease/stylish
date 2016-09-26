@@ -139,7 +139,7 @@ var navigationservice = angular.module('navigationservice', [])
                 'pagesize': 5
             };
             return $http({
-                url: adminURL + "order/getLimited",
+                url: adminURL + "order/getLimitedByUser",
                 method: "POST",
                 data: filter
             }).success(callback).error(errCallback);

@@ -10,7 +10,7 @@
       <div class="col-md-9">
          <div class="order-detail">
             <h3 class="dark-blue">Order Summary :</h3>
-            <div class="row bor-bot" ng-repeat="order in cartproduct">
+            <div class="row bor-bot" style="margin-top:15px;" ng-repeat="order in cartproduct">
                <div class="col-md-5">
                   <div class="order-imgholder relate">
                      <img ng-src="{{order.product.images[0].image | serverimage}}" alt="{{order.product.name}}" class="get-center img-responsive">
@@ -19,7 +19,7 @@
                <div class="col-md-7">
                   <div class="order-detail-info dark-blue">
                      <div class="order-detail-heading">
-                        <h3 class="m-clear mb5">{{order.product.name}}</h3>
+                        <h4 class="prd-name m-clear mb5">{{order.product.name}}</h4>
                         <p class="text-medium">by : <span>{{order.by}}</span></p>
                      </div>
                      <div class="order-prd-detail">
