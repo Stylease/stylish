@@ -268,6 +268,16 @@ var navigationservice = angular.module('navigationservice', [])
                 data: {_id:id}
             }).success(callback);
         },
+        getOrderById: function(id, callback) {
+            // var data = {
+            //     product: id
+            // };
+            return $http({
+                url: adminURL + "order/getOrderById",
+                method: "POST",
+                data: {orderid:id}
+            }).success(callback);
+        },
         getcart: function(callback) {
             return $http({
                 url: adminURL + "cart/getcart",

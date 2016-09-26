@@ -97,7 +97,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             controller: 'CelebrityChoiceCtrl'
         })
         .state('thankyou', {
-            url: "/thankyou",
+            url: "/thankyou/:orderid",
             templateUrl: "views/template.html",
             controller: 'ThankyouCtrl'
         })
