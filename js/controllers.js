@@ -86,8 +86,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
         $scope.logoutClick = function() {
+            console.log("logout as");
             NavigationService.logout(function(data) {
                 if (data.value) {
+                  console.log("logout");
                     // NavigationService.saveUser(null);
 
                     // $scope.isLoggedIn = false;
