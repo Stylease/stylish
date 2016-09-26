@@ -24,7 +24,514 @@
                 </button>
             </form>
         </div>
-        <div class="products">
+
+
+        <div class="products hidden-lg hidden-md hidden-sm">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="product-holder">
+
+
+
+
+                        <div class="sort-product pd10 clearfix">
+                            <div class="row">
+
+                                <div class="col-xs-7">
+
+                                    <img src="img/filter.png" alt="" width="20" class="img-responsive inline-block mr5 doneLoading">
+
+
+
+                                    <span class="text-uppercase filter-heading inline-block mb10 pointer" ng-click="showFilterlist = (showFilterlist == true)? false:true;">filter</span>
+
+                                    <div class="sort-filter-dropdown" ng-show="showFilterlist" style="">
+                                        <ul>
+
+                                            <li>
+                                                <div class="container no-padd">
+                                                    <h5>Occassion</h5>
+                                                    <div class="f-lef">
+                                                        <div class="radio-button">
+                                                            <input type="radio" name="date" id="wedding" checked=" " required=" ">
+                                                            <label for="wedding" ng-click="getRentalAmount(4)" class="text-medium"><span></span> Wedding</label>
+                                                        </div>
+
+                                                        <div class="radio-button">
+                                                            <input type="radio" name="date" id="mehendi" checked=" " required=" ">
+                                                            <label for="mehendi" ng-click="getRentalAmount(4)" class="text-medium"><span></span> Mehendi</label>
+                                                        </div>
+                                                        <div class="radio-button">
+                                                            <input type="radio" name="date" id="reception" checked=" " required=" ">
+                                                            <label for="reception" ng-click="getRentalAmount(4)" class="text-medium"><span></span> Reception</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="f-righ">
+                                                        <div class="radio-button">
+                                                            <input type="radio" name="date" id="sangeet" checked=" " required=" ">
+                                                            <label for="sangeet" ng-click="getRentalAmount(4)" class="text-medium"><span></span> Sangeet</label>
+                                                        </div>
+                                                        <div class="radio-button">
+                                                            <input type="radio" name="date" id="cocktail" checked=" " required=" ">
+                                                            <label for="cocktail" ng-click="getRentalAmount(4)" class="text-medium"><span></span> Cocktail</label>
+                                                        </div>
+                                                        <div class="radio-button">
+                                                            <input type="radio" name="date" id="engagement" checked=" " required=" ">
+                                                            <label for="engagement" ng-click="getRentalAmount(4)" class="text-medium"><span></span> Engagement</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </li>
+
+                                            <li>
+
+                                                <div class="container no-padd">
+                                                    <h5>Dresses</h5>
+                                                    <div class="f-lef">
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="lehengas" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="lehengas" class="ng-binding"><span></span> Lehengas</label>
+                                                        </div>
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="sarees" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="sarees" class="ng-binding"><span></span> Sarees</label>
+                                                        </div>
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="jumpsuit" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="jumpsuit" class="ng-binding"><span></span> Jumpsuit</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="f-righ">
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="anarkalis" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="anarkalis" class="ng-binding"><span></span> Anarkalis</label>
+                                                        </div>
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="gown" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="gown" class="ng-binding"><span></span> Gown</label>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </li>
+
+
+                                            <li>
+                                                <div class="container no-padd">
+                                                    <h5>Rental Price</h5>
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+
+                                            <li>
+                                                <div class="container no-padd">
+                                                    <h5>Delivery / Return Dates</h5>
+
+                                                    <form name="myProduct" class="ng-pristine ng-invalid ng-invalid-required">
+                                                        <div class="delivery-date dates">
+                                                            <div>
+                                                                <div class="radio-button">
+                                                                    <input type="radio" name="date" id="four" checked="" required="">
+                                                                    <label for="four" ng-click="getRentalAmount(4)" class="text-medium">
+            <span></span> 4 Days</label></div>
+                                                                <div class="radio-button">
+                                                                    <input type="radio" name="date" id="eight" required="">
+                                                                    <label for="eight" ng-click="getRentalAmount(8)" class="text-medium">
+                <span></span> 8 Days</label></div>
+
+                                                                <div class="calendar inline-block">
+                                                                    <div class="input-group dt-pik">
+                                                                        <input type="date" class="form-control ng-pristine ng-untouched ng-isolate-scope ng-invalid ng-invalid-required" uib-datepicker-popup="" ng-model="cartpro.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true"
+                                                                            close-text="Close" readonly="readonly" required="required">
+                                                                        <div uib-datepicker-popup-wrap="" ng-model="date"
+                                                                            ng-change="dateSelection(date)" template-url="uib/template/datepickerPopup/popup.html" class="ng-valid">
+                                                                            <!-- ngIf: isOpen -->
+                                                                        </div> <span class="cal"><button type="button" class="btn btn-default" ng-click="open2()"></button></span></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <form class="ng-pristine ng-valid">Size:
+                                                    <!-- ngRepeat: size in product.size -->
+                                                    <div ng-repeat="size in product.size" ng-click="selectSize(size.name)" class="size-border ng-scope" ng-class="{'active-size':select.sizeactive[size.name]}"><label class="size-font pointer ng-binding">L</label></div>
+                                                    <!-- end ngRepeat: size in product.size -->
+                                                </form>
+                                            </li>
+
+
+                                            <li>
+
+                                                <div class="container no-padd">
+                                                    <h5>Colour</h5>
+                                                    <div class="f-lef">
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="black" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="black" class="ng-binding"><span></span> Black</label>
+                                                        </div>
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="red" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="red" class="ng-binding"><span></span> Red</label>
+                                                        </div>
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="orange" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="orange" class="ng-binding"><span></span> Orange</label>
+                                                        </div>
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="green" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="green" class="ng-binding"><span></span> Green</label>
+                                                        </div>
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="blue" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="blue" class="ng-binding"><span></span> Blue</label>
+                                                        </div>
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="silver" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="silver" class="ng-binding"><span></span> Silver</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="f-righ">
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="white" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="white" class="ng-binding"><span></span> White</label>
+                                                        </div>
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="pink" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="pink" class="ng-binding"><span></span> Pink</label>
+                                                        </div>
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="yellow" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="yellow" class="ng-binding"><span></span> Yellow</label>
+                                                        </div>
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="turqouise" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="turqouise" class="ng-binding"><span></span> Turqouise</label>
+                                                        </div>
+
+                                                        <div class="custom-checkbox ng-scope">
+                                                            <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="gold" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                                                            <label for="gold" class="ng-binding"><span></span> Gold</label>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                            </li>
+
+
+                                            <li>
+                                                <div class="container no-padd">
+                                                    <div class="cla">
+                                                        <div class="buttons on-edit text-center flex-d">
+                                                            <button class="btn btn-outline text-uppercase btn-ful1 m-center added-cart" ng-click="addToCart();" ng-disabled="myProduct.$invalid" disabled="disabled">reset</button>
+                                                            <button class="btn btn-outline text-uppercase btn-ful1 m-center" ng-disabled="checkLogin==null" ng-click="addTowishlist(); saveWishList(); ">apply</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+
+
+                                    <img src="img/sort.png" alt=" " class="inline-block mr5 img-responsive doneLoading">
+                                    <span class="text-uppercase pointer" ng-click="showShortlist=( showShortlist==true)? false:true;">sort</span>
+                                    <div class="sort-filter-dropdown ng-hide" ng-show="showShortlist" style="">
+                                        <ul>
+                                            <li><a href=" ">Popularity</a></li>
+                                            <li><a href=" ">Price : High - Low</a></li>
+                                            <li><a href=" ">Price : Low - High</a></li>
+                                            <li><a href=" ">Recent Addition</a></li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-xs-5">
+
+                                    <div class="product-view pull-right hidden-md hidden-lg" ng-init="viewProduct=true">
+                                        <!-- <img src="img/grid.png " alt="view grid "> -->
+                                        <!-- <img src="img/list.png " alt="list grid "> -->
+                                        <i class="fa fa-th-large pointer active-view" ng-class="{ 'active-view': viewProduct==true }" ng-click="viewProduct=true"></i>
+                                        <i class="fa fa-bars pointer" ng-class="{ 'active-view': viewProduct==false}" ng-click="viewProduct=false"></i>
+                                        <span class="dark-blue">VIEW</span>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="shop-product list-view hidden-md visible-sm visible-xs ng-hide" ng-hide="viewProduct">
+
+                            <div class="row">
+                                <!-- ngRepeat: product in shopping -->
+                                <div class="col-md-4 ng-scope" ng-repeat="product in shopping">
+                                    <div class="view-product relate pointer">
+                                        <div class="wishlist text-right">
+                                            <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa fa-heart"></i></span>
+                                            <!-- <span class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa {{product.heart}} "></i></span> -->
+                                            <div class="product-detail text-center" ui-sref="productdetail" href="#/productdetail/">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-5 col-xs-5">
+                                                        <div class="product-imgholder relate">
+                                                            <img ng-src="http://104.155.129.33:81/upload/readFile?file=57dcee3136c78f09cf0d1c0f.jpg" alt=" " class="get-center img-responsive doneLoading" src="http://104.155.129.33:81/upload/readFile?file=57dcee3136c78f09cf0d1c0f.jpg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-7 col-xs-7">
+                                                        <h4 class="product-name ng-binding">Maroon Kurta with Palazzo Pants</h4>
+                                                        <p class="ng-binding">Rent : Rs 8,500/-</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end ngRepeat: product in shopping -->
+                                <div class="col-md-4 ng-scope" ng-repeat="product in shopping">
+                                    <div class="view-product relate pointer">
+                                        <div class="wishlist text-right">
+                                            <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa fa-heart"></i></span>
+                                            <!-- <span class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa {{product.heart}} "></i></span> -->
+                                            <div class="product-detail text-center" ui-sref="productdetail" href="#/productdetail/">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-5 col-xs-5">
+                                                        <div class="product-imgholder relate">
+                                                            <img ng-src="http://104.155.129.33:81/upload/readFile?file=57dcfc2436c78f09cf0d1d1b.jpg" alt=" " class="get-center img-responsive doneLoading" src="http://104.155.129.33:81/upload/readFile?file=57dcfc2436c78f09cf0d1d1b.jpg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-7 col-xs-7">
+                                                        <h4 class="product-name ng-binding">Maroon Embroidered Anarkali Set</h4>
+                                                        <p class="ng-binding">Rent : Rs 16,000/-</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end ngRepeat: product in shopping -->
+                                <div class="col-md-4 ng-scope" ng-repeat="product in shopping">
+                                    <div class="view-product relate pointer">
+                                        <div class="wishlist text-right">
+                                            <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa fa-heart"></i></span>
+                                            <!-- <span class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa {{product.heart}} "></i></span> -->
+                                            <div class="product-detail text-center" ui-sref="productdetail" href="#/productdetail/">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-5 col-xs-5">
+                                                        <div class="product-imgholder relate">
+                                                            <img ng-src="http://104.155.129.33:81/upload/readFile?file=57dd000e36c78f09cf0d1df3.jpg" alt=" " class="get-center img-responsive doneLoading" src="http://104.155.129.33:81/upload/readFile?file=57dd000e36c78f09cf0d1df3.jpg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-7 col-xs-7">
+                                                        <h4 class="product-name ng-binding">Red Appliquéd Long Jacket</h4>
+                                                        <p class="ng-binding">Rent : Rs 5,500/-</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end ngRepeat: product in shopping -->
+                                <div class="col-md-4 ng-scope" ng-repeat="product in shopping">
+                                    <div class="view-product relate pointer">
+                                        <div class="wishlist text-right">
+                                            <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa fa-heart"></i></span>
+                                            <!-- <span class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa {{product.heart}} "></i></span> -->
+                                            <div class="product-detail text-center" ui-sref="productdetail" href="#/productdetail/">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-5 col-xs-5">
+                                                        <div class="product-imgholder relate">
+                                                            <img ng-src="http://104.155.129.33:81/upload/readFile?file=57dd014036c78f09cf0d1e4d.jpg" alt=" " class="get-center img-responsive doneLoading" src="http://104.155.129.33:81/upload/readFile?file=57dd014036c78f09cf0d1e4d.jpg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-7 col-xs-7">
+                                                        <h4 class="product-name ng-binding">Maroon Kurta with Palazzo Pants</h4>
+                                                        <p class="ng-binding">Rent : Rs 8,500/-</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end ngRepeat: product in shopping -->
+                                <div class="col-md-4 ng-scope" ng-repeat="product in shopping">
+                                    <div class="view-product relate pointer">
+                                        <div class="wishlist text-right">
+                                            <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa fa-heart"></i></span>
+                                            <!-- <span class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa {{product.heart}} "></i></span> -->
+                                            <div class="product-detail text-center" ui-sref="productdetail" href="#/productdetail/">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-5 col-xs-5">
+                                                        <div class="product-imgholder relate">
+                                                            <img ng-src="http://104.155.129.33:81/upload/readFile?file=57dd01ca36c78f09cf0d1e7b.jpg" alt=" " class="get-center img-responsive doneLoading" src="http://104.155.129.33:81/upload/readFile?file=57dd01ca36c78f09cf0d1e7b.jpg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-7 col-xs-7">
+                                                        <h4 class="product-name ng-binding">Pink Strapless Gown</h4>
+                                                        <p class="ng-binding">Rent : Rs 10,000/-</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end ngRepeat: product in shopping -->
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <div infinite-scroll="loadMore()" infinite-scroll-disabled="shouldscroll" class="ng-isolate-scope">
+                            <div class="shop-product grid-view" ng-show="viewProduct">
+                                <div class="row">
+                                    <!-- ngRepeat: product in shopping -->
+                                    <div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping">
+                                        <div class="view-product relate pointer ">
+
+                                            <!-- <div class="product-detail text-center "> -->
+                                            <div class="product-detail text-center">
+                                                <div class="product-imgholder relate">
+                                                    <img ui-sref="productdetail({ 'id':product._id})" ng-src="http://104.155.129.33:81/upload/readFile?file=57dcee3136c78f09cf0d1c0f.jpg" alt=" " class="get-center img-responsive doneLoading" href="#/productdetail/57dcee3a36c78f09cf0d1c31" src="http://104.155.129.33:81/upload/readFile?file=57dcee3136c78f09cf0d1c0f.jpg">
+                                                    <div class="wishlist text-right">
+                                                        <!-- <span ng-if="wishlist " class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa fa-heart "></i></span> -->
+                                                        <span class="pointer wishlist-heart" ng-click="addTowishlist(product);">
+                              <i class="fa fa-heart"></i></span>
+                                                    </div>
+                                                </div>
+                                                <h4 class="product-name ng-binding">Maroon Kurta with Palazzo Pants</h4>
+                                                <p class="ng-binding">Rent : Rs 8,500/-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end ngRepeat: product in shopping -->
+                                    <div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping">
+                                        <div class="view-product relate pointer ">
+
+                                            <!-- <div class="product-detail text-center "> -->
+                                            <div class="product-detail text-center">
+                                                <div class="product-imgholder relate">
+                                                    <img ui-sref="productdetail({ 'id':product._id})" ng-src="http://104.155.129.33:81/upload/readFile?file=57dcfc2436c78f09cf0d1d1b.jpg" alt=" " class="get-center img-responsive doneLoading" href="#/productdetail/57dcfc2836c78f09cf0d1d43" src="http://104.155.129.33:81/upload/readFile?file=57dcfc2436c78f09cf0d1d1b.jpg">
+                                                    <div class="wishlist text-right">
+                                                        <!-- <span ng-if="wishlist " class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa fa-heart "></i></span> -->
+                                                        <span class="pointer wishlist-heart" ng-click="addTowishlist(product);">
+                              <i class="fa fa-heart"></i></span>
+                                                    </div>
+                                                </div>
+                                                <h4 class="product-name ng-binding">Maroon Embroidered Anarkali Set</h4>
+                                                <p class="ng-binding">Rent : Rs 16,000/-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end ngRepeat: product in shopping -->
+                                    <div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping">
+                                        <div class="view-product relate pointer ">
+
+                                            <!-- <div class="product-detail text-center "> -->
+                                            <div class="product-detail text-center">
+                                                <div class="product-imgholder relate">
+                                                    <img ui-sref="productdetail({ 'id':product._id})" ng-src="http://104.155.129.33:81/upload/readFile?file=57dd000e36c78f09cf0d1df3.jpg" alt=" " class="get-center img-responsive doneLoading" href="#/productdetail/57dd001436c78f09cf0d1e0c" src="http://104.155.129.33:81/upload/readFile?file=57dd000e36c78f09cf0d1df3.jpg">
+                                                    <div class="wishlist text-right">
+                                                        <!-- <span ng-if="wishlist " class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa fa-heart "></i></span> -->
+                                                        <span class="pointer wishlist-heart" ng-click="addTowishlist(product);">
+                              <i class="fa fa-heart"></i></span>
+                                                    </div>
+                                                </div>
+                                                <h4 class="product-name ng-binding">Red Appliquéd Long Jacket</h4>
+                                                <p class="ng-binding">Rent : Rs 5,500/-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end ngRepeat: product in shopping -->
+                                    <div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping">
+                                        <div class="view-product relate pointer ">
+
+                                            <!-- <div class="product-detail text-center "> -->
+                                            <div class="product-detail text-center">
+                                                <div class="product-imgholder relate">
+                                                    <img ui-sref="productdetail({ 'id':product._id})" ng-src="http://104.155.129.33:81/upload/readFile?file=57dd014036c78f09cf0d1e4d.jpg" alt=" " class="get-center img-responsive doneLoading" href="#/productdetail/57dd014536c78f09cf0d1e75" src="http://104.155.129.33:81/upload/readFile?file=57dd014036c78f09cf0d1e4d.jpg">
+                                                    <div class="wishlist text-right">
+                                                        <!-- <span ng-if="wishlist " class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa fa-heart "></i></span> -->
+                                                        <span class="pointer wishlist-heart" ng-click="addTowishlist(product);">
+                              <i class="fa fa-heart"></i></span>
+                                                    </div>
+                                                </div>
+                                                <h4 class="product-name ng-binding">Maroon Kurta with Palazzo Pants</h4>
+                                                <p class="ng-binding">Rent : Rs 8,500/-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end ngRepeat: product in shopping -->
+                                    <div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping">
+                                        <div class="view-product relate pointer ">
+
+                                            <!-- <div class="product-detail text-center "> -->
+                                            <div class="product-detail text-center">
+                                                <div class="product-imgholder relate">
+                                                    <img ui-sref="productdetail({ 'id':product._id})" ng-src="http://104.155.129.33:81/upload/readFile?file=57dd01ca36c78f09cf0d1e7b.jpg" alt=" " class="get-center img-responsive doneLoading" href="#/productdetail/57dd01ce36c78f09cf0d1e94" src="http://104.155.129.33:81/upload/readFile?file=57dd01ca36c78f09cf0d1e7b.jpg">
+                                                    <div class="wishlist text-right">
+                                                        <!-- <span ng-if="wishlist " class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa fa-heart "></i></span> -->
+                                                        <span class="pointer wishlist-heart" ng-click="addTowishlist(product);">
+                              <i class="fa fa-heart"></i></span>
+                                                    </div>
+                                                </div>
+                                                <h4 class="product-name ng-binding">Pink Strapless Gown</h4>
+                                                <p class="ng-binding">Rent : Rs 10,000/-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end ngRepeat: product in shopping -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ngIf: shopping.length===0 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="products hidden-xs">
             <div class="row">
                 <div class="col-md-3">
                     <div class="filter-product">
@@ -249,5 +756,10 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
     </div>
 </div>

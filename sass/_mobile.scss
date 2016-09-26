@@ -152,6 +152,9 @@
     }
   }
 }
+
+
+
 @media (max-width: $screen-xs-max) {
   .user-detail {
     .signin {
@@ -198,7 +201,15 @@
   .product-all-detail { font-size: 15px; }
   .order-detail-heading { text-align: center; }
   // product
-  .product-imgholder { height: 250px; }
+  .product-imgholder {
+    height: 250px;
+    .wishlist {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+}
+  }
   .product-detail h4 {
     min-height: 35px;
     margin: 15px 0 10px;
@@ -272,7 +283,15 @@
   .celebrity-holder { border-bottom: 1px solid $brand-pink; }
   .celebrity-price { font-size: 18px; }
 }
+
+
+
 @media (max-width: 480px) {
+
+  .talk-us{
+    display: none;
+  }
+
   .social-btn {
     width: auto;
     padding: 8px 30px;
@@ -412,7 +431,7 @@
     .product-price { font-size: 15px; }
     .time label { width: 120px; }
   }
-  .search-product input { width: 83%; }
+  .search-product input { width: 86%; }
   .product-related-slider {
     width: 262px;
     .flexslider:hover .flex-direction-nav .flex-prev {
@@ -509,4 +528,14 @@
       right: 120px;
     }
   }
+}
+
+
+
+
+
+
+
+@media (min-width:320px) and (max-width:480px) {
+
 }

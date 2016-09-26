@@ -140,6 +140,7 @@ a {
 }
 .mr5 {
   margin-right: 5px;
+  margin-left: 7px;
 }
 .mb5 {
   margin-bottom: 5px;
@@ -1303,9 +1304,9 @@ input.form-control {
   }
 }
 .sort-filter-dropdown {
-  width: 250px;
+  width: 300px;
   padding: 20px;
-  @include position(absolute, 46px null null 16px);
+  @include position(absolute, 33px null null 16px);
   background-color: $brand-pink;
   z-index: 999;
   h5{
