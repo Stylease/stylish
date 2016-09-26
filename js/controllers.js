@@ -111,7 +111,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
         $scope.letLoad = false;
-        $scope.getMyProducts = function(filter) {
+        $scope.getMyOrders = function(filter) {
             console.log("in get products");
             if ($scope.letIn) {
                 $scope.letIn = false;
@@ -119,7 +119,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log("dddddd", data);
                     if (data.value) {
                         if (data.data.data.length === 0) {
-                            $scope.texts.msg = "Product Not Found";
+                            $scope.texts.msg = "Orders Not Found";
                         }
                         _.each(data.data.data, function(n) {
                             $scope.orders.push(n);
@@ -141,10 +141,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 });
             }
         };
-        $scope.getMyProducts($scope.filter);
+        $scope.getMyOrders($scope.filter);
         $scope.loadMore = function() {
             if ($scope.letLoad) {
-                $scope.getMyProducts($scope.filter);
+                $scope.getMyOrders($scope.filter);
             }
         };
 
@@ -189,13 +189,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.oneAtATime = true;
 
     })
-    .controller('OrderdetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('OrderdetailCtrl', function($scope, TemplateService, NavigationService, $timeout,$stateParams) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("orderdetail");
         $scope.menutitle = NavigationService.makeactive("Orderdetail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        NavigationService.getOrderDetail($stateParams.id,function(data){
+          console.log("data",data);
+          $scope.orderdetail = data.data;
+          $scope.cartproduct = data.data.cartproduct;
+        })
+
 
     })
     .controller('WishlistCtrl', function($scope, TemplateService, NavigationService, $timeout) {
