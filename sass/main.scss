@@ -13,6 +13,18 @@ $brand-pink: #fdd3be !default;
 $brand-light-pink: #fff6f1 !default;
 $brand-facebook: #3b5998 !default;
 $brand-google: #d34836 !default;
+
+
+$panel-border: #043E77 !default;
+$magic-radio-size: 20px !default;
+$magic-checkbox-size: 20px !default;
+$magic-dot-size: 8px !default;
+$magic-border-color: #c0c0c0 !default;
+$magic-main-color: #51b1ac !default;
+$magic-disabled-color: lighten($magic-border-color, 14%) !default;
+$magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
+
+
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Work+Sans:400,100,800,700,500,600,200,300);
 @mixin placeholder {
@@ -452,7 +464,7 @@ header {
   cursor: pointer;
   display: inline-block;
   .icon-bar {
-    margin: 5px 0;
+    margin: 4px 0;
     @include size(30px,2px);
     display: block;
     background-color: $brand-pink;
@@ -656,7 +668,7 @@ nav {
 }
 .talk-us {
     padding: 10px 20px;
-    position: absolute;
+    position: fixed;
     top: 94%;
     right: 0;
     z-index: 20;
@@ -832,7 +844,7 @@ footer {
     font-family: "Work Sans";
   }
   label{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     font-family: none;
     margin: 12px 0 0 0;
@@ -1304,7 +1316,7 @@ input.form-control {
   }
 }
 .sort-filter-dropdown {
-  width: 300px;
+  width: 320px;
   padding: 20px;
   @include position(absolute, 33px null null 16px);
   background-color: $brand-pink;
@@ -2086,6 +2098,186 @@ ul.mn-list {
   width: 95%;
   display: block;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.magic-form{
+  .magic-resize{
+    input[type="radio"], input[type="checkbox"] {
+        display: none;
+    }
+    label{
+      max-width: 100%;
+      margin-bottom: 5px;
+      font-weight: normal;
+      margin-left: 26px !important;
+    }
+
+
+    .magic-checkbox + label {
+      &:before {
+        border-radius: 3px;
+        font-weight: 200;
+      }
+      &:after {
+        top: 6px;
+        left: -19px;
+        box-sizing: border-box;
+        width: 6px;
+        height: 12px;
+        transform: rotate(45deg);
+        border-width: 2px;
+        border-style: solid;
+        // border-color: #069;
+        content: '';
+        border-top: 0;
+        border-left: 0;
+      }
+    }
+    .magic-checkbox:checked + label {
+      &:before {
+        border: $panel-border;
+        background: $panel-border;
+      }
+    }
+    .magic-checkbox:checked[disabled] + label {
+      &:before {
+        border: $magic-disabled-checked-color;
+        background: $magic-disabled-checked-color;
+      }
+    }
+
+
+    @keyframes hover-color {
+      from {
+        border-color: $magic-border-color;
+      }
+
+      to {
+        border-color: $magic-main-color;
+      }
+    }
+
+    .magic-radio,
+    .magic-checkbox {
+      position: relative;
+      // display: none;
+    }
+    .magic-radio[disabled],
+    .magic-checkbox[disabled] {
+      cursor: not-allowed;
+    }
+
+    .magic-radio + label,
+    .magic-checkbox + label {
+      position: relative;
+      padding: 5px 0 0 0;
+      cursor: pointer;
+      vertical-align: middle;
+      margin: 0 0 0 26px;
+
+      &:hover {
+        &:before {
+          animation-duration: 0.4s;
+          animation-fill-mode: both;
+          animation-name: hover-color;
+        }
+      }
+      &:before {
+        position: absolute;
+        top: 3px;
+        left: -26px;
+        display: inline-block;
+        width: $magic-checkbox-size;
+        height: $magic-checkbox-size;
+        content: '';
+        border: 1px solid $magic-border-color;
+        background-color: #fff;
+        border-radius: 0;
+      }
+      &:after {
+        position: absolute;
+        display: none;
+        content: '';
+        color: #fff;
+      }
+    }
+
+    .magic-radio[disabled] + label,
+    .magic-checkbox[disabled] + label {
+      cursor: not-allowed;
+      color: $magic-disabled-color;
+      &:hover,
+      &:before,
+      &:after {
+        cursor: not-allowed;
+      }
+      &:hover {
+        &:before {
+          border: 1px solid $magic-disabled-color;
+          animation-name: none;
+        }
+      }
+      &:before {
+        border-color: $magic-disabled-color;
+      }
+    }
+
+
+    .magic-radio:checked + label,
+    .magic-checkbox:checked + label {
+      &:before {
+        animation-name: none;
+      }
+      &:after {
+        display: block;
+      }
+    }
+
+    .magic-radio + label {
+      &:before {
+        border-radius: 50%;
+      }
+      &:after {
+        top: 9px;
+        left: -20px;
+        width: $magic-dot-size;
+        height: $magic-dot-size;
+        border-radius: 50%;
+        background: $magic-main-color;
+      }
+    }
+
+    .magic-radio:checked + label {
+      &:before {
+        border: 1px solid $magic-main-color;
+      }
+      // &:after{
+      //   display: block;
+      // }
+    }
+    .magic-radio:checked[disabled] + label {
+      &:before {
+        border: 1px solid $magic-disabled-checked-color;
+      }
+      &:after {
+        background: $magic-disabled-checked-color;
+      }
+    }
+  }
+}
+
+
 
 // celebrity page end
 @import "fancybox-override";

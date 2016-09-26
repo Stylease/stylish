@@ -97,6 +97,13 @@
                                                             <label for="lehengas" class="ng-binding"><span></span> Lehengas</label>
                                                         </div>
 
+                                                        <div class="magic-form">
+                                                          <div class="magic-resize">
+                                                            <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+                                                            <label class="detail-heading" for="add-one">More</label>
+                                                          </div>
+                                                        </div>
+
                                                         <div class="custom-checkbox ng-scope">
                                                             <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="sarees" class="ng-valid ng-dirty ng-valid-parse ng-touched">
                                                             <label for="sarees" class="ng-binding"><span></span> Sarees</label>
@@ -252,9 +259,9 @@
                                             <li>
                                                 <div class="container no-padd">
                                                     <div class="cla">
-                                                        <div class="buttons on-edit text-center flex-d">
-                                                            <button class="btn btn-outline text-uppercase btn-ful1 m-center added-cart" ng-click="addToCart();" ng-disabled="myProduct.$invalid" disabled="disabled">reset</button>
-                                                            <button class="btn btn-outline text-uppercase btn-ful1 m-center" ng-disabled="checkLogin==null" ng-click="addTowishlist(); saveWishList(); ">apply</button>
+                                                        <div class="buttons on-edit text-center">
+                                                            <button class="btn btn-outline text-uppercase btn-ful1 m-center added-cart" ng-click="addToCart();">reset</button>
+                                                            <button class="btn btn-outline text-uppercase btn-ful1 m-center" ng-click="addTowishlist(); saveWishList();">apply</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -660,10 +667,17 @@
                                                 <i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open6, 'fa-angle-down': !status.open6}"></i> <span class="block">Colour</span>
                                             </uib-accordion-heading>
                                             <div class="color">
-                                                <div class="custom-checkbox" ng-repeat="c in color">
+                                                <!-- <div class="custom-checkbox" ng-repeat="c in color">
                                                     <input type="checkbox" ng-model="checkIt[c.name]" ng-change="pushColor(checkIt[c.name],c._id)" id="{{c._id}}">
                                                     <label for="{{c._id}}"><span></span> {{c.name}}</label>
+                                                </div> -->
+                                                <div class="magic-form">
+                                                  <div class="magic-resize">
+                                                    <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
+                                                    <label class="detail-heading" for="add-one">More</label>
+                                                  </div>
                                                 </div>
+
                                             </div>
                                         </uib-accordion-group>
                                     </uib-accordion>
