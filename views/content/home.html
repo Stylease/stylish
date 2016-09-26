@@ -1,7 +1,7 @@
 <div class="mobile-slider relate visible-xs">
   <flex-slider ng-if="mySlides.length>0" flex-slide="s in mySlides track by $index" prev-text="" next-text="" direction-nav="false">
-    <li>
-      <img ng-src="{{s.image|serverimage}}" class="img-responsive">
+    <li ng-if="s.mobileimage !==''">
+      <img ng-src="{{s.mobileimage|serverimage}}" class="img-responsive">
     </li>
   </flex-slider>
   <!-- <div class="talk-us pointer">
