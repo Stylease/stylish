@@ -106,6 +106,47 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
+        $scope.letIn = true;
+        $scope.orders = [];
+        $scope.filter = {};
+        $scope.filter.pagenumber = 1;
+        $scope.letLoad = false;
+        $scope.getMyProducts = function(filter) {
+            console.log("in get products");
+            if ($scope.letIn) {
+                $scope.letIn = false;
+                NavigationService.getOrders(filter, function(data) {
+                    console.log("dddddd", data);
+                    if (data.value) {
+                        if (data.data.data.length === 0) {
+                            $scope.texts.msg = "Product Not Found";
+                        }
+                        _.each(data.data.data, function(n) {
+                            $scope.orders.push(n);
+                        });
+                        lastpage = data.data.totalpages;
+                        if (data.data.data.length !== 0) {
+                            $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                            ++$scope.filter.pagenumber;
+                        }
+                        $scope.letIn = true;
+                        $scope.letLoad = true;
+                        if (lastpage < $scope.filter.pagenumber) {
+                            $scope.letLoad = false;
+                        }
+                    }
+                }, function(err) {
+
+                });
+            }
+        };
+        $scope.getMyProducts($scope.filter);
+        $scope.loadMore = function() {
+            if ($scope.letLoad) {
+                $scope.getMyProducts($scope.filter);
+            }
+        };
 
     })
     .controller('TermsConditionCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -901,10 +942,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             });
                         })
                     } else {
-                        $uibModal.open({
-                            animation: true,
-                            templateUrl: 'views/modal/signup.html',
-                        });
+                        // $uibModal.open({
+                        //     animation: true,
+                        //     templateUrl: 'views/modal/signup.html',
+                        // });
                     }
                 },
                 function(err) {
@@ -1000,174 +1041,175 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     })
     .controller('ProductdetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("productdetail");
-            $scope.menutitle = NavigationService.makeactive("Productdetail");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
-            $scope.oneAtATime = true;
-            $scope.product = {};
-            $scope.mainImage = "";
-            $scope.timestamps = [];
-            // $scope.calendertimestamps = [];
-            $scope.cartpro = {};
-            $scope.cartpro.product = $state.params.id;
-            $scope.cartpro.size = '';
-            $scope.cartpro.by = '';
-            $scope.cartpro.duration = '';
-            $scope.cartpro.timeFrom = '';
-            $scope.cartpro.timeTo = '';
-            $scope.cartpro.deliveryTime = '';
-            $scope.cartpro.pickupTime = '';
-            $scope.select = {};
-            $scope.select.sizeactive = {};
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("productdetail");
+        $scope.menutitle = NavigationService.makeactive("Productdetail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.oneAtATime = true;
+        $scope.product = {};
+        $scope.mainImage = "";
+        $scope.timestamps = [];
+        // $scope.calendertimestamps = [];
+        $scope.cartpro = {};
+        $scope.cartpro.product = $state.params.id;
+        $scope.cartpro.size = '';
+        $scope.cartpro.by = '';
+        $scope.cartpro.duration = '';
+        $scope.cartpro.timeFrom = '';
+        $scope.cartpro.timeTo = '';
+        $scope.cartpro.deliveryTime = '';
+        $scope.cartpro.pickupTime = '';
+        $scope.select = {};
+        $scope.select.sizeactive = {};
 
-            $scope.checkLogin = $.jStorage.get("user");
-            //PRODUCT DETAIL ON SELECTED PRODUCT
-            $scope.saveWishList = function() {
-                NavigationService.saveWishlist($state.params.id, function(data) {
-                    console.log("$state.params.id", $state.params.id);
-                });
-                // NavigationService.getSession
-            };
-            //  $scope.saveWishList();
-            NavigationService.getProductDetail($state.params.id, function(data) {
-                // console.log(data);
-                $scope.product = data.data.product;
-                $scope.producttime = data.data.producttime;
-                _.each($scope.producttime, function(key) {
-                    var tmpdate = new Date(key.timeFrom);
-                    // tmpdate.setHours(0,0,0,0);
-                    var tmpto = new Date(key.timeTo);
-                    var diffDays = tmpto.getDate() - tmpdate.getDate();
-                    start = 0;
-                    do {
-                        $scope.timestamps.push(new Date(tmpdate));
-                        tmpdate.setDate(tmpdate.getDate() + 1);
-                        start++;
-                    } while (start <= (diffDays + 4));
-                });
-                $scope.mainImage = data.data.product.images[0].image;
-                $scope.getRentalAmount(4);
-            }, function(err) {
-
+        $scope.checkLogin = $.jStorage.get("user");
+        //PRODUCT DETAIL ON SELECTED PRODUCT
+        $scope.saveWishList = function() {
+            NavigationService.saveWishlist($state.params.id, function(data) {
+                console.log("$state.params.id", $state.params.id);
             });
-            $scope.selectImage = function(img) {
-                $scope.mainImage = img;
-            };
-            $scope.selectSize = function(size) {
-                $scope.cartpro.size = size;
-                _.each($scope.select.sizeactive, function(key, n) {
-                    $scope.select.sizeactive[n] = false;
-                });
-                $scope.select.sizeactive[size] = true;
-                $scope.select.sizedetail = _.find($scope.product.size, function(key) {
-                    // body...
-                    return key.name == size;
-                });
-            };
-            $scope.getRentalAmount = function(val) {
-                if (val == 8) {
-                    $scope.product.rentalamount = $scope.product.eightdayrentalamount;
-                    $scope.product.securitydeposit = $scope.product.eightdaysecuritydeposit;
-                    $scope.cartpro.duration = 8;
-                } else {
-                    $scope.product.rentalamount = $scope.product.fourdayrentalamount;
-                    $scope.product.securitydeposit = $scope.product.fourdaysecuritydeposit;
-                    $scope.cartpro.duration = 4;
-                }
+            // NavigationService.getSession
+        };
+        //  $scope.saveWishList();
+        NavigationService.getProductDetail($state.params.id, function(data) {
+            // console.log(data);
+            $scope.product = data.data.product;
+            $scope.producttime = data.data.producttime;
+            _.each($scope.producttime, function(key) {
+                var tmpdate = new Date(key.timeFrom);
+                // tmpdate.setHours(0,0,0,0);
+                var tmpto = new Date(key.timeTo);
+                var diffDays = tmpto.getDate() - tmpdate.getDate();
+                start = 0;
+                do {
+                    $scope.timestamps.push(new Date(tmpdate));
+                    tmpdate.setDate(tmpdate.getDate() + 1);
+                    start++;
+                } while (start <= (diffDays + 4));
+            });
+            $scope.mainImage = data.data.product.images[0].image;
+            $scope.getRentalAmount(4);
+        }, function(err) {
+
+        });
+        $scope.selectImage = function(img) {
+            $scope.mainImage = img;
+        };
+        $scope.selectSize = function(size) {
+            $scope.cartpro.size = size;
+            _.each($scope.select.sizeactive, function(key, n) {
+                $scope.select.sizeactive[n] = false;
+            });
+            $scope.select.sizeactive[size] = true;
+            $scope.select.sizedetail = _.find($scope.product.size, function(key) {
+                // body...
+                return key.name == size;
+            });
+        };
+        $scope.getRentalAmount = function(val) {
+            if (val == 8) {
+                $scope.product.rentalamount = $scope.product.eightdayrentalamount;
+                $scope.product.securitydeposit = $scope.product.eightdaysecuritydeposit;
+                $scope.cartpro.duration = 8;
+            } else {
+                $scope.product.rentalamount = $scope.product.fourdayrentalamount;
+                $scope.product.securitydeposit = $scope.product.fourdaysecuritydeposit;
+                $scope.cartpro.duration = 4;
             }
+        }
 
-            // $scope.setCalender = function() {
-            //     if ($.jStorage.get("cartDate")) {
-            //         console.log("in set calendar");
-            //         var newcartdate = $.jStorage.get("cartDate");
-            //         var tmpdate = new Date(newcartdate.timeFrom);
-            //         // tmpdate.setHours(0,0,0,0);
-            //         var tmpto = new Date(newcartdate.timeTo);
-            //         console.log("cal dates", tmpdate, tmpto);
-            //         var diffDays = tmpto.getDate() - tmpdate.getDate();
-            //         console.log("aaaa", diffDays);
-            //         start = 0;
-            //         do {
-            //             $scope.calendertimestamps.push(new Date(tmpdate));
-            //             tmpdate.setDate(tmpdate.getDate() + 1);
-            //             start++;
-            //         } while (start <= (diffDays));
-            //     }
-            // };
+        // $scope.setCalender = function() {
+        //     if ($.jStorage.get("cartDate")) {
+        //         console.log("in set calendar");
+        //         var newcartdate = $.jStorage.get("cartDate");
+        //         var tmpdate = new Date(newcartdate.timeFrom);
+        //         // tmpdate.setHours(0,0,0,0);
+        //         var tmpto = new Date(newcartdate.timeTo);
+        //         console.log("cal dates", tmpdate, tmpto);
+        //         var diffDays = tmpto.getDate() - tmpdate.getDate();
+        //         console.log("aaaa", diffDays);
+        //         start = 0;
+        //         do {
+        //             $scope.calendertimestamps.push(new Date(tmpdate));
+        //             tmpdate.setDate(tmpdate.getDate() + 1);
+        //             start++;
+        //         } while (start <= (diffDays));
+        //     }
+        // };
 
-            $scope.addToCart = function() {
-                var d = new Date($scope.cartpro.timeFrom);
-                $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
-                if ($scope.product.designer == null) {
-                    $scope.cartpro.by = "";
-                } else {
-                    $scope.cartpro.by = $scope.product.designer.name;
-                }
-                if ($.jStorage.get("cartDate")) {
-                    // $scope.setCalender();
-                    $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
-                } else {
-                    $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
-                }
-                if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime== $scope.cartpro.deliveryTime) {
-                    NavigationService.addToCart($scope.cartpro, function(data) {
-                        console.log("response cart", data);
-                        $scope.response = data;
-                        if ($scope.response.value === true) {
-                            $uibModal.open({
-                                animation: true,
-                                templateUrl: "views/modal/shop.html",
-                                scope: $scope
-                            });
-                        } else {}
-                    }, function(err) {
-                        console.log(err);
-                    });
-                } else {
-                    console.log("please select valid date");
-                    $uibModal.open({
-                        animation: true,
-                        templateUrl: "views/modal/cartdate.html",
-                        controller: "ProductdetailCtrl",
-                        scope: $scope
-                    });
-                }
-            };
-            $scope.productFull = function() {
+        $scope.addToCart = function() {
+            var d = new Date($scope.cartpro.timeFrom);
+            $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
+            if ($scope.product.designer == null) {
+                $scope.cartpro.by = "";
+            } else {
+                $scope.cartpro.by = $scope.product.designer.name;
+            }
+            if ($.jStorage.get("cartDate")) {
+                // $scope.setCalender();
+                $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
+            } else {
+                $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
+            }
+            if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
+                NavigationService.addToCart($scope.cartpro, function(data) {
+                    console.log("response cart", data);
+                    $scope.response = data;
+                    if ($scope.response.value === true) {
+                        $uibModal.open({
+                            animation: true,
+                            templateUrl: "views/modal/shop.html",
+                            scope: $scope
+                        });
+                    } else {}
+                }, function(err) {
+                    console.log(err);
+                });
+            } else {
+                console.log("please select valid date");
                 $uibModal.open({
                     animation: true,
-                    templateUrl: "views/modal/product-full.html",
+                    templateUrl: "views/modal/cartdate.html",
+                    controller: "ProductdetailCtrl",
                     scope: $scope
-                })
-            };
-            $scope.addTowishlist = function(product) {
-                NavigationService.getProfile(function(data) {
-                            if (data.value) {
-                                NavigationService.saveWishlist(product, function(data) {
-                                    $uibModal.open({
-                                        animation: true,
-                                        templateUrl: 'views/modal/added-wishlist.html',
-                                    });
-                                })
-                            } else {
-                                $uibModal.open({
-                                    animation: true,
-                                    templateUrl: 'views/modal/signup.html',
-                                });
-                            }
-                    },
-                    function(err) {
-                        console.log(err);
-                    });
+                });
+            }
+        };
+        $scope.productFull = function() {
+            $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/product-full.html",
+                scope: $scope
+            })
+        };
+        $scope.addTowishlist = function(product) {
+            NavigationService.getProfile(function(data) {
+                    if (data.value) {
+                        NavigationService.saveWishlist(product, function(data) {
+                            $uibModal.open({
+                                animation: true,
+                                templateUrl: 'views/modal/added-wishlist.html',
+                            });
+                        })
+                    } else {
+                        // $uibModal.open({
+                        //     animation: true,
+                        //     templateUrl: 'views/modal/signup.html',
+                        // });
+                    }
+                },
+                function(err) {
+                    console.log(err);
+                });
 
         };
         if ($.jStorage.get("cartDate")) {
             console.log("innn cartdate", $.jStorage.get("cartDate"), $scope.cartpro);
             // $scope.setCalender();
         }
-        var tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
         //calendar
         $scope.dateOptions = {
             dateDisabled: disabled,
@@ -1202,16 +1244,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
         $scope.open1 = function() {
             $scope.popup1.opened = true;
-        }; $scope.open2 = function() {
+        };
+        $scope.open2 = function() {
             $scope.popup2.opened = true;
-        }; $scope.popup1 = {
+        };
+        $scope.popup1 = {
             opened: false
-        }; $scope.popup2 = {
+        };
+        $scope.popup2 = {
             opened: false
         };
 
     })
-.controller('CelebrityChoiceCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('CelebrityChoiceCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("celebrity-choice");
