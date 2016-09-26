@@ -1,4 +1,4 @@
-<div class="home-slider relate">
+<div class="mobile-slider relate visible-xs">
   <flex-slider ng-if="mySlides.length>0" flex-slide="s in mySlides track by $index" prev-text="" next-text="" direction-nav="false">
     <li>
       <img ng-src="{{s.image|serverimage}}" class="img-responsive">
@@ -8,6 +8,18 @@
     <span class="text-uppercase">talk to us</span>
   </div> -->
 </div>
+
+<div class="home-slider relate hidden-xs">
+  <flex-slider ng-if="mySlides.length>0" flex-slide="s in mySlides track by $index" prev-text="" next-text="" direction-nav="false">
+    <li>
+      <img ng-src="{{s.image|serverimage}}" class="img-responsive">
+    </li>
+  </flex-slider>
+  <!-- <div class="talk-us pointer">
+    <span class="text-uppercase">talk to us</span>
+  </div> -->
+</div>
+
 <div class="container-fluid">
   <div class="how-it-works relate">
     <div class="play get-center font-serif">

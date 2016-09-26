@@ -1155,7 +1155,7 @@ input.form-control {
     border-right: 1px solid $brand-dark-blue;
   }
   .order-address {
-    border-top: 1px solid $brand-dark-blue;
+    // border-top: 1px solid $brand-dark-blue;
   }
 }
 .order-detail-heading {
@@ -1980,6 +1980,10 @@ ul.mn-list {
   border: 2px solid #ffd9c1 !important;
 }
 
+
+.bor-bot{
+  border-bottom: 1px solid #e87b65;
+}
 .no-margin{
   margin: 0!important;
 }
