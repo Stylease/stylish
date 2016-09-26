@@ -24,6 +24,7 @@
                     </div>
                 </div>
             </div>
+            <div infinite-scroll='loadMore()' infinite-scroll-disabled="shouldscroll">
             <div class="order-body accordion-custom">
                 <uib-accordion close-others="oneAtATime" >
                     <uib-accordion-group is-open="status.open" ng-repeat="order in orders">
@@ -34,30 +35,30 @@
                                     <span>{{order.orderid}}</span>
                                 </div>
                                 <div class="col-md-4 col-xs-4">
-                                    <span>2691433615</span>
+                                    <span>{{order.orderid}}</span>
                                 </div>
                                 <div class="col-md-3 col-xs-4">
-                                    <span>{{order.date}}</span>
+                                    <span>{{order.date |date:"mediumDate"}}</span>
                                 </div>
                                 <div class="col-md-3 col-xs-3">
-                                    <span>Rs.15,684/-</span>
+                                    <span>{{order.total | currency}}/-</span>
                                 </div>
                             </div>
                         </uib-accordion-heading>
                         <div class="order-summary">
                             <h3 class="item-num dark-blue">Number of items:
-                                <span>01</span>
+                                <span>{{order.cartproduct.length}}</span>
                             </h3>
                             <div class="order-address">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="delivery">
                                             <h4>Delivery Address</h4>
-                                            <h5 class="name">Riya Shah</h5>
+                                            <h5 class="name">{{order.firstname}} {{order.lastname}}</h5>
                                             <address>
-                                                B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
+                                              {{order.billingAddressFlat}}, {{order.billingAddressStreet}},<br> {{order.billingAddressLandmark}}, <br> {{order.billingAddressCity}} - {{order.billingAddressPin}}. <br> {{order.billingAddressState}},  {{order.billingAddressCountry}}
                                                 <span class="block mt10">Mobile :
-                                                    <a href="tel:9920674907" class="dark-blue">9920674907</a>
+                                                    <a href="tel:9920674907" class="dark-blue">{{order.mobile}}</a>
                                                 </span>
                                             </address>
                                         </div>
@@ -65,11 +66,11 @@
                                     <div class="col-md-6 col-sm-6">
                                         <div class="delivery no-border">
                                             <h4>Shipping Address</h4>
-                                            <h5 class="name">Riya Shah</h5>
+                                            <h5 class="name">{{order.firstname}} {{order.lastname}}</h5>
                                             <address>
-                                                B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra
+                                                {{order.shippingAddressFlat}}, {{order.shippingAddressStreet}},<br> {{order.shippingAddressLandmark}}, <br> {{order.shippingAddressCity}} - {{order.shippingAddressPin}}. <br> {{order.shippingAddressState}},  {{order.shippingAddressCountry}}
                                                 <span class="block mt10">Mobile :
-                                                    <a href="tel:9920674907" class="dark-blue">9920674907</a>
+                                                    <a href="tel:9920674907" class="dark-blue">{{order.mobile}}</a>
                                                 </span>
                                             </address>
                                         </div>
@@ -83,7 +84,7 @@
                                         <tr>
                                             <td>Sub Total</td>
                                             <td>Rs
-                                                <span>6,700.00</span>
+                                                <span>{{order.subtotal | currency}}/-</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -91,7 +92,7 @@
                                                 Service Tax :
                                             </td>
                                             <td>Rs
-                                                <span>837.50</span>
+                                                <span>{{order.servicetax | currency}}/-</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -99,26 +100,23 @@
                                                 Refundable Deposit :
                                             </td>
                                             <td>Rs
-                                                <span>4,599.00</span>
+                                                <span>{{order.refundabledeposit | currency}}/-</span>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>Delivery charge :</td>
-                                            <td>Rs
-                                                <span>0.00</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
+                                            <td>R
+                                        <tr> -->
                                             <td>Total :</td>
                                             <td>Rs
-                                                <span>16,550.00</span>
+                                                <span>{{order.total | currency}}/-</span>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="buttons-orders text-center on-edit">
-                                <button class="btn btn-outline btn-full text-medium" ui-sref="orderdetail">Order Details</button>
+                                <button class="btn btn-outline btn-full text-medium" ui-sref="orderdetail({id:order._id})">Order Details</button>
                                 <button class="btn btn-outline btn-full text-medium">Download Invoice</button>
                                 <button class="btn btn-outline btn-full text-medium">Cancel Order</button>
                             </div>
@@ -129,6 +127,7 @@
 
                 </uib-accordion>
             </div>
+          </div>
         </div>
     </div>
 </div>
