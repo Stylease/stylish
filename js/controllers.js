@@ -189,17 +189,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.oneAtATime = true;
 
     })
-    .controller('OrderdetailCtrl', function($scope, TemplateService, NavigationService, $timeout,$stateParams) {
+    .controller('OrderdetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("orderdetail");
         $scope.menutitle = NavigationService.makeactive("Orderdetail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        NavigationService.getOrderDetail($stateParams.id,function(data){
-          console.log("data",data);
-          $scope.orderdetail = data.data;
-          $scope.cartproduct = data.data.cartproduct;
+        NavigationService.getOrderDetail($stateParams.id, function(data) {
+            console.log("data", data);
+            $scope.orderdetail = data.data;
+            $scope.cartproduct = data.data.cartproduct;
         })
 
 
@@ -685,10 +685,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.placeOrder(placeorder, function(data) {
                 if (data) {
                     $.jStorage.set("cartDate", "");
-                    console.log("data",data.data.orderid);
+                    console.log("data", data.data.orderid);
+                    $scope.orderid = data.data.orderid
                     NavigationService.emptyCart(function(response) {
                         if (response) {
-                            $state.go("thankyou",{'orderid':data.data.orderid});
+                            $state.go('thankyou', {
+                                orderid: $scope.orderid
+                            });
                         } else {
                             $state.go("sorry");
                         }
@@ -1327,7 +1330,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             heart: "fa-heart-o"
         }];
     })
-    .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout,$stateParams) {
+    .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("thankyou");
@@ -1336,10 +1339,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
         TemplateService.footer = "";
-        $scope.cartCheckout=$.jStorage.get("cartCheckout");
-        NavigationService.getOrderById($stateParams.id,function(data){
-          $scope.orderDetails=data.data;
-          console.log("orderDetails",data);
+        $scope.cartCheckout = $.jStorage.get("cartCheckout");
+        NavigationService.getOrderById($stateParams.orderid, function(data) {
+            $scope.orderDetails = data.data;
         })
     })
     .controller('SorryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -1465,7 +1467,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     globalfunction.getCartCount = function() {
         NavigationService.getCart(function(data) {
             if (data.value == true) {
-                  $scope.cartcount = data.data.cartcount;
+                $scope.cartcount = data.data.cartcount;
             } else {
                 $scope.cartcount = 0;
             }
