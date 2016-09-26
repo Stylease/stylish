@@ -20,8 +20,8 @@
             <form action="">
                 <input type="search" placeholder="Find what you're looking for !">
                 <button type="submit" class="bg-dark-pink">
-          <img src="img/search.png" alt="" class="img-responsive">
-        </button>
+                  <img src="img/search.png" alt="" class="img-responsive">
+                </button>
             </form>
         </div>
         <div class="products">
@@ -34,18 +34,18 @@
 
 
 
-                        <div class="filter-dropdown accordion-custom ">
+                        <div class="filter-dropdown accordion-custom">
                             <div class="search-by-filter">
                                 <form>
-                                    <uib-accordion close-others="oneAtATime ">
-                                        <uib-accordion-group is-open="status.open1 " ng-repeat="(cat, value) in subcategory | groupBy: 'category.name' ">
+                                    <uib-accordion close-others="oneAtATime">
+                                        <uib-accordion-group is-open="status.open1" ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                                             <uib-accordion-heading>
-                                                <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open1, 'fa-angle-down': !status.open1} "></i><span class="block ">{{cat}}</span>
+                                                <i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i><span class="block ">{{cat}}</span>
                                             </uib-accordion-heading>
                                             <div class="occasion ">
-                                                <div class="custom-checkbox " ng-repeat="subcat in value ">
-                                                    <input type="checkbox " name="{{cat}} " ng-model="checkIt[subcat.name] " ng-change="pushSubCategory(checkIt[subcat.name],subcat._id) " id="{{subcat.name}} ">
-                                                    <label for="{{subcat.name}} "><span></span> {{subcat.name}}</label>
+                                                <div class="custom-checkbox" ng-repeat="subcat in value">
+                                                    <input type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="{{subcat.name}}">
+                                                    <label for="{{subcat.name}}"><span></span> {{subcat.name}}</label>
                                                 </div>
 
                                             </div>
@@ -108,12 +108,12 @@
                         </div>
                       </div>
                     </uib-accordion-group> -->
-                                        <uib-accordion-group is-open="status.open3 ">
+                                        <uib-accordion-group is-open="status.open3">
                                             <uib-accordion-heading>
-                                                <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open3, 'fa-angle-down': !status.open3} "></i><span class="block ">Rental Price</span>
+                                                <i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i><span class="block">Rental Price</span>
                                             </uib-accordion-heading>
-                                            <div class="price-rangeslider ">
-                                                <div range-slider min="demo2.range.min " max="demo2.range.max " model-min="filter.pricefrom " model-max="filter.priceto " filter="currency: '‎₹' " step="100 "></div>
+                                            <div class="price-rangeslider">
+                                                <div range-slider min="demo2.range.min" max="demo2.range.max" model-min="filter.pricefrom" model-max="filter.priceto" filter="currency: '‎₹'" step="100"></div>
                                             </div>
                                         </uib-accordion-group>
                                         <!-- <uib-accordion-group is-open="status.open4 ">
@@ -134,13 +134,13 @@
                         </div>
                       </div>
                     </uib-accordion-group> -->
-                                        <uib-accordion-group is-open="status.open5 ">
+                                        <uib-accordion-group is-open="status.open5">
                                             <uib-accordion-heading>
-                                                <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open5, 'fa-angle-down': !status.open5} "></i> <span class="block ">Size</span>
+                                                <i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open5, 'fa-angle-down': !status.open5}"></i> <span class="block">Size</span>
                                             </uib-accordion-heading>
-                                            <div class="product-size " ng-init="size='' ">
-                                                <ul class="list-inline ">
-                                                    <li ng-repeat="size in sizes track by $index "><a href=" " ng-class="{ 'select-size': filter.size[0]==s ize._id } " ng-click="pushSize(size._id) ">{{size.name}}</a></li>
+                                            <div class="product-size " ng-init="size=''">
+                                                <ul class="list-inline">
+                                                    <li ng-repeat="size in sizes track by $index"><a href=" " ng-class="{ 'select-size': filter.size[0]==size._id }" ng-click="pushSize(size._id)">{{size.name}}</a></li>
                                                     <!-- <li><a href=" " ng-class="{ 'select-size': filter.size=='S' } " ng-click="filter.size='S' ; ">S</a></li>
                           <li><a href=" " ng-class="{ 'select-size': filter.size=='M' } " ng-click="filter.size='M' ; ">M</a></li>
                           <li><a href=" " ng-class="{ 'select-size': filter.size=='L' } " ng-click="filter.size='L' ; ">L</a></li>
@@ -148,33 +148,33 @@
                                                 </ul>
                                             </div>
                                         </uib-accordion-group>
-                                        <uib-accordion-group is-open="status.open6 ">
+                                        <uib-accordion-group is-open="status.open6">
                                             <uib-accordion-heading>
-                                                <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open6, 'fa-angle-down': !status.open6} "></i> <span class="block ">Colour</span>
+                                                <i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open6, 'fa-angle-down': !status.open6}"></i> <span class="block">Colour</span>
                                             </uib-accordion-heading>
-                                            <div class="color ">
-                                                <div class="custom-checkbox " ng-repeat="c in color ">
-                                                    <input type="checkbox " ng-model="checkIt[c.name] " ng-change="pushColor(checkIt[c.name],c._id) " id="{{c._id}} ">
-                                                    <label for="{{c._id}} "><span></span> {{c.name}}</label>
+                                            <div class="color">
+                                                <div class="custom-checkbox" ng-repeat="c in color">
+                                                    <input type="checkbox" ng-model="checkIt[c.name]" ng-change="pushColor(checkIt[c.name],c._id)" id="{{c._id}}">
+                                                    <label for="{{c._id}}"><span></span> {{c.name}}</label>
                                                 </div>
                                             </div>
                                         </uib-accordion-group>
                                     </uib-accordion>
-                                    <div class="on-edit filter-button ">
-                                        <button class="btn btn-outline text-medium " ng-click="resetFilter() ">Reset</button>
-                                        <button class="btn btn-outline text-medium " ng-click="applyFilter() ">Apply</button>
+                                    <div class="on-edit filter-button">
+                                        <button class="btn btn-outline text-medium" ng-click="resetFilter()">Reset</button>
+                                        <button class="btn btn-outline text-medium" ng-click="applyFilter()">Apply</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9 ">
-                    <div class="product-holder ">
-                        <div class="sort-product pd10 clearfix ">
-                            <img src="img/sort.png " alt=" " class="inline-block mr5 img-responsive ">
-                            <span class="text-uppercase pointer " ng-click="showShortlist=( showShortlist==t rue)? false:true; ">sort</span>
-                            <div class="sort-filter-dropdown " ng-show="showShortlist ">
+                <div class="col-md-9">
+                    <div class="product-holder">
+                        <div class="sort-product pd10 clearfix">
+                            <img src="img/sort.png" alt=" " class="inline-block mr5 img-responsive">
+                            <span class="text-uppercase pointer" ng-click="showShortlist=( showShortlist==true)? false:true;">sort</span>
+                            <div class="sort-filter-dropdown" ng-show="showShortlist">
                                 <ul>
                                     <li><a href=" ">Popularity</a></li>
                                     <li><a href=" ">Price : High - Low</a></li>
@@ -182,32 +182,32 @@
                                     <li><a href=" ">Recent Addition</a></li>
                                 </ul>
                             </div>
-                            <div class="product-view pull-right hidden-md hidden-lg " ng-init="viewProduct=true ">
+                            <div class="product-view pull-right hidden-md hidden-lg" ng-init="viewProduct=true">
                                 <!-- <img src="img/grid.png " alt="view grid "> -->
                                 <!-- <img src="img/list.png " alt="list grid "> -->
-                                <i class="fa fa-th-large pointer " ng-class="{ 'active-view': viewProduct==true } " ng-click="viewProduct=true "></i>
-                                <i class="fa fa-bars pointer " ng-class="{ 'active-view': viewProduct==false} " ng-click="viewProduct=false "></i>
-                                <span class="dark-blue ">VIEW</span>
+                                <i class="fa fa-th-large pointer" ng-class="{ 'active-view': viewProduct==true }" ng-click="viewProduct=true"></i>
+                                <i class="fa fa-bars pointer" ng-class="{ 'active-view': viewProduct==false}" ng-click="viewProduct=false"></i>
+                                <span class="dark-blue">VIEW</span>
                             </div>
                         </div>
 
-                        <div class="shop-product list-view hidden-md visible-sm visible-xs " ng-hide="viewProduct ">
+                        <div class="shop-product list-view hidden-md visible-sm visible-xs" ng-hide="viewProduct">
 
-                            <div class="row ">
-                                <div class="col-md-4 " ng-repeat="product in shopping ">
-                                    <div class="view-product relate pointer ">
-                                        <div class="wishlist text-right ">
-                                            <span class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa fa-heart "></i></span>
+                            <div class="row">
+                                <div class="col-md-4" ng-repeat="product in shopping">
+                                    <div class="view-product relate pointer">
+                                        <div class="wishlist text-right">
+                                            <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa fa-heart"></i></span>
                                             <!-- <span class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa {{product.heart}} "></i></span> -->
-                                            <div class="product-detail text-center " ui-sref="productdetail ">
-                                                <div class="row ">
-                                                    <div class="col-md-12 col-sm-5 col-xs-5 ">
-                                                        <div class="product-imgholder relate ">
-                                                            <img ng-src="{{product.images[0].image|serverimage}} " alt=" " class="get-center img-responsive ">
+                                            <div class="product-detail text-center" ui-sref="productdetail">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-5 col-xs-5">
+                                                        <div class="product-imgholder relate">
+                                                            <img ng-src="{{product.images[0].image|serverimage}}" alt=" " class="get-center img-responsive">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-sm-7 col-xs-7 ">
-                                                        <h4 class="product-name ">{{product.name}}</h4>
+                                                    <div class="col-md-12 col-sm-7 col-xs-7">
+                                                        <h4 class="product-name">{{product.name}}</h4>
                                                         <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
                                                     </div>
                                                 </div>
@@ -218,23 +218,23 @@
                             </div>
                         </div>
                         <!-- </div> -->
-                        <div infinite-scroll='loadMore()' infinite-scroll-disabled="shouldscroll ">
-                            <div class="shop-product grid-view " ng-show="viewProduct ">
-                                <div class="row ">
-                                    <div class="col-md-4 col-sm-6 col-xs-6 " ng-repeat="product in shopping ">
+                        <div infinite-scroll='loadMore()' infinite-scroll-disabled="shouldscroll">
+                            <div class="shop-product grid-view" ng-show="viewProduct">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 col-xs-6" ng-repeat="product in shopping">
                                         <div class="view-product relate pointer ">
 
                                             <!-- <div class="product-detail text-center "> -->
-                                            <div class="product-detail text-center ">
-                                                <div class="product-imgholder relate ">
-                                                    <img ui-sref="productdetail({ 'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} " alt=" " class="get-center img-responsive ">
-                                                    <div class="wishlist text-right ">
+                                            <div class="product-detail text-center">
+                                                <div class="product-imgholder relate">
+                                                    <img ui-sref="productdetail({ 'id':product._id})" ng-src="{{product.images[0].image|serverimage}}" alt=" " class="get-center img-responsive">
+                                                    <div class="wishlist text-right">
                                                         <!-- <span ng-if="wishlist " class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa fa-heart "></i></span> -->
-                                                        <span class="pointer wishlist-heart " ng-click="addTowishlist(product); ">
-                              <i class="fa fa-heart "></i></span>
+                                                        <span class="pointer wishlist-heart" ng-click="addTowishlist(product);">
+                              <i class="fa fa-heart"></i></span>
                                                     </div>
                                                 </div>
-                                                <h4 class="product-name ">{{product.name}}</h4>
+                                                <h4 class="product-name">{{product.name}}</h4>
                                                 <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
                                             </div>
                                         </div>
@@ -242,8 +242,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div ng-if="shopping.length===0 " style="min-height:667px; ">
-                            <h4 class="text-center ">{{texts.msg}}</h4>
+                        <div ng-if="shopping.length===0" style="min-height:667px;">
+                            <h4 class="text-center">{{texts.msg}}</h4>
                         </div>
                     </div>
                 </div>
