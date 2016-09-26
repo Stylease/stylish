@@ -89,7 +89,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log("logout as");
             NavigationService.logout(function(data) {
                 if (data.value) {
-                  console.log("logout");
+                    console.log("logout");
                     // NavigationService.saveUser(null);
 
                     // $scope.isLoggedIn = false;
@@ -101,7 +101,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('OrdersCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('OrdersCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("orders");
         $scope.menutitle = NavigationService.makeactive("Orders");
@@ -148,6 +148,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if ($scope.letLoad) {
                 $scope.getMyOrders($scope.filter);
             }
+        };
+
+        $scope.logoutClick = function() {
+            NavigationService.logout(function(data) {
+                if (data.value) {
+                    $state.go("home");
+                }
+            }, function(err) {
+
+            });
         };
 
     })
@@ -206,7 +216,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
     })
-    .controller('WishlistCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('WishlistCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("wishlist");
@@ -233,6 +243,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 getWishlist();
             });
         };
+
+        $scope.logoutClick = function() {
+            NavigationService.logout(function(data) {
+                if (data.value) {
+                    $state.go("home");
+                }
+            }, function(err) {
+
+            });
+        };
+
 
     })
     .controller('AddressCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -353,7 +374,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('SaveaddressCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('SaveaddressCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("saveaddress");
@@ -480,8 +501,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
+        $scope.logoutClick = function() {
+            NavigationService.logout(function(data) {
+                if (data.value) {
+                    $state.go("home");
+                }
+            }, function(err) {
+
+            });
+        };
+
     })
-    .controller('BankdetailCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('BankdetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("bankdetail");
@@ -511,12 +542,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.logoutClick = function() {
-            console.log("logout clicked");
             NavigationService.logout(function(data) {
                 if (data.value) {
-                    // NavigationService.saveUser(null);
-
-                    // $scope.isLoggedIn = false;
                     $state.go("home");
                 }
             }, function(err) {
@@ -677,34 +704,61 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             placeorderuser.subtotal = $scope.totalrentalamount;
             placeorder = placeorderuser;
             placeorder.cartproduct = $scope.cartProduct;
-            if ($.jStorage.get("userLoggedIn")) {
-                delete placeorder.wishlist;
-                delete placeorder.billingAddress;
-                delete placeorder.shippingAddress;
-                delete placeorder.userid;
-                delete placeorder._id;
-            }
-            NavigationService.placeOrder(placeorder, function(data) {
-                if (data) {
-                    $.jStorage.set("cartDate", "");
-                    console.log("data", data.data.orderid);
-                    $scope.orderid = data.data.orderid
-                    NavigationService.emptyCart(function(response) {
-                        if (response) {
-                            $state.go('thankyou', {
-                                orderid: $scope.orderid
-                            });
-                        } else {
-                            $state.go("sorry");
-                        }
-                    });
-                } else {
-                    $state.go("sorry");
-                }
-            });
+            NavigationService.getProfile(function(data) {
+                    if (data.value) {
+                        delete placeorder.wishlist;
+                        delete placeorder.billingAddress;
+                        delete placeorder.shippingAddress;
+                        delete placeorder.userid;
+                        delete placeorder._id;
+
+                        NavigationService.placeOrder(placeorder, function(data) {
+                            if (data) {
+                                $.jStorage.set("cartDate", "");
+                                console.log("data", data.data.orderid);
+                                $scope.orderid = data.data.orderid
+                                NavigationService.emptyCart(function(response) {
+                                    if (response) {
+                                        $state.go('thankyou', {
+                                            orderid: $scope.orderid
+                                        });
+                                    } else {
+                                        $state.go("sorry");
+                                    }
+                                });
+                            } else {
+                                $state.go("sorry");
+                            }
+                        });
+                    } else {
+                        NavigationService.placeOrder(placeorder, function(data) {
+                            if (data) {
+                                $.jStorage.set("cartDate", "");
+                                console.log("data", data.data.orderid);
+                                $scope.orderid = data.data.orderid
+                                NavigationService.emptyCart(function(response) {
+                                    if (response) {
+                                        $state.go('thankyou', {
+                                            orderid: $scope.orderid
+                                        });
+                                    } else {
+                                        $state.go("sorry");
+                                    }
+                                });
+                            } else {
+                                $state.go("sorry");
+                            }
+                        });
+                    }
+                },
+                function(err) {
+                    console.log(err);
+                });
+
+
         };
     })
-    .controller('ChangepasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('ChangepasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
 
 
@@ -717,6 +771,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.changePassword = function(form) {
             NavigationService.changePassword(form, function() {
                 $scope.form = {};
+            });
+        };
+
+        $scope.logoutClick = function() {
+            NavigationService.logout(function(data) {
+                if (data.value) {
+                    $state.go("home");
+                }
+            }, function(err) {
+
             });
         };
 
