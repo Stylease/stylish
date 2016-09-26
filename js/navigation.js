@@ -133,6 +133,17 @@ var navigationservice = angular.module('navigationservice', [])
                 data: filter
             }).success(callback).error(errCallback);
         },
+        getOrders: function(request, callback, errCallback) {
+            var filter = {
+                'pagenumber': request.pagenumber,
+                'pagesize': 5
+            };
+            return $http({
+                url: adminURL + "order/getLimited",
+                method: "POST",
+                data: filter
+            }).success(callback).error(errCallback);
+        },
         getProductDetail: function(productid, callback, errCallback) {
             var data = {
                 '_id': productid
