@@ -1,7 +1,7 @@
 <div class="heading-bar text-center">
   <h3 class="heading heading-underline">my wishlist</h3>
   <span class="block text-medium">‘‘If You Can’t Stop Thinking About It Get It!’’</span>
-  <label class="block text-medium">0 items</label>
+  <label class="block text-medium">{{wishlist.length}} items</label>
 </div>
 <div class="wishlist">
   <div class="container">
@@ -15,7 +15,7 @@
           <div class="row" ng-if="wishlist.length>0">
             <div class="col-md-4 col-sm-6" ng-repeat="prd in wishlist track by $index">
               <div class="wishlist-product text-center">
-                <div class="remove-wishlist text-right" style="cursor:pointer;" ng-click="deleteWishlist(prd._id);">
+                <div class="remove-wishlist text-right" style="cursor:pointer;" ng-click="openRemoveModal(prd._id);">
                   <span class="pointer"><img src="img/cross.png" alt="" width="15"></span>
                 </div>
                 <div class="wish-imgholder relate">

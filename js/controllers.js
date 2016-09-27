@@ -216,13 +216,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
     })
-    .controller('WishlistCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('WishlistCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("wishlist");
         $scope.menutitle = NavigationService.makeactive("Wishlist");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.variables = {};
 
         function getWishlist() {
             NavigationService.getWishlistUser(function(data) {
@@ -239,11 +240,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.deleteWishlist = function(id) {
             NavigationService.deleteWishlist(id, function(data) {
-                console.log(data);
-                getWishlist();
+                $scope.response = data;
+                if ($scope.response.value === true) {
+                    // removemod.close();
+                    // getWishlist();
+                }
             });
         };
-
+        $scope.remove = function() {
+            NavigationService.deleteWishlist($scope.variables.removeitem, function(data) {
+                $scope.response = data;
+                if ($scope.response.value === true) {
+                    removemod.close();
+                    getWishlist();
+                }
+            });
+        };
+        $scope.openRemoveModal = function(productid) {
+            $scope.variables.removeitem = productid;
+            console.log($scope.variables);
+            removemod = $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/removeitem.html",
+                scope: $scope
+            });
+        };
         $scope.logoutClick = function() {
             NavigationService.logout(function(data) {
                 if (data.value) {
@@ -1027,10 +1048,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             });
                         })
                     } else {
-                        // $uibModal.open({
-                        //     animation: true,
-                        //     templateUrl: 'views/modal/signup.html',
-                        // });
+                        $uibModal.open({
+                            animation: true,
+                            templateUrl: 'views/modal/signup.html',
+                        });
                     }
                 },
                 function(err) {
