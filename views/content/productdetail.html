@@ -56,48 +56,17 @@
             <div>
               <form>
                 <span class="text-medium">Size:</span>
-                <div ng-repeat="size in product.size" ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
+                <div ng-repeat="size in product.size" required ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
                   <label class="size-font pointer">
                     {{size.name}}
                   </label>
                 </div>
-                <!-- <div class=" size-border"><label class="size-font">
-                  M
-                </label></div>
-                <div class=" size-border"><label class="size-font">
-                  L
-                </label></div>
-                <div class=" size-border"><label class="size-font">
-                  XL
-                </label></div> -->
+
+
               </form>
             </div>
 
             <div class="back-color2" ng-if="cartpro.size">
-              <!-- <div class="back-color">
-              <div class="disp-inline">
-                <span></span>
-              </div>
-              <div class="disp-inline disp-padd">
-                <span></span>
-              </div>
-              <div class="disp-inline">
-                <span></span>
-              </div>
-            </div> -->
-
-              <!-- <div class="back-color">
-              <div class="disp-inline">
-                <span></span>
-              </div>
-              <div class="disp-inline disp-padd">
-                <span></span>
-              </div>
-              <div class="disp-inline">
-                <span></span>
-              </div>
-            </div> -->
-
               <div class="back-color">
                 <!--for l-->
                 <div class="disp-inline">
@@ -113,17 +82,7 @@
                   <span>{{select.sizedetail.length}}</span>
                 </div>
               </div>
-              <!-- <div class="back-color">
-              <div  class="disp-inline">
-                <span class="disp-inline"></span>
-              </div>
-              <div  class="disp-inline disp-padd">
-                <span></span>
-              </div>
-              <div  class="disp-inline">
-                <span></span>
-              </div>
-            </div> -->
+
             </div>
           </div>
           <div>
