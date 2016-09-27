@@ -1662,8 +1662,10 @@ input.form-control {
     }
     .tooltip.bottom {
       opacity: 1;
-      top: 178px!important;
-      left: 241px !important;
+      top: 29% !important;
+      left: 28% !important;
+      position: absolute;
+      transform: translate(50%);
     }
     .tooltip.bottom .tooltip-arrow {
       margin-left: -10px;
@@ -2110,7 +2112,26 @@ ul.mn-list {
   width: 95%;
   display: block;
 }
-
+.btn {
+    display: inline-block;
+    margin: 0 -6px 0 0!important;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    /* touch-action: manipulation; */
+    cursor: pointer;
+    /* background-image: none; */
+    /* border: 1px solid transparent; */
+    /* white-space: nowrap; */
+    padding: 8px 30px;
+    font-size: 14px;
+    line-height: 1.42857;
+    /* border-radius: 4px; */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 
 
