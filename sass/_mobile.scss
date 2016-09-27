@@ -158,6 +158,22 @@
 
 @media (max-width: $screen-xs-max) {
 
+  .on-edit {
+      button {
+        // margin: 0 -6px 10px 0;
+        /* display: block; */
+        padding: 6px 28px;
+      }
+      .added-cart{
+        // padding: 8px 65px;
+      }
+  }
+  .social-btn{
+    width: 100%;
+    /* padding: 12px 0; */
+    margin: 10px 0;
+    font-size: 15px;
+  }
   .tag-name{
       position: absolute;
       bottom: 13%;
