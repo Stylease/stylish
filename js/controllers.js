@@ -227,7 +227,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         function getWishlist() {
             NavigationService.getWishlistUser(function(data) {
-                console.log("datttaaa", data);
                 if (data.value == false) {
                     $scope.wishlist = "";
                 } else {
@@ -990,7 +989,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.filter.pagenumber = 1;
                 }
                 $scope.getMyProducts($scope.filter);
-
             }, function(err) {
 
             });
@@ -1038,6 +1036,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }), 1);
             }
         };
+
+        function getWishlist() {
+            NavigationService.getWishlistUser(function(data) {
+                if (data.value == true) {
+                    $scope.wishlist = data.data.data;
+                    console.log("wishlist", $scope.wishlist);
+                } else {
+                    $scope.wishlist = "";
+                }
+
+            });
+        }
+        getWishlist();
+        $scope.isInWishlist = function(id) {
+            var indexF = _.findIndex($scope.wishlist, function(key) {
+                return key.product._id == id;
+            })
+            if (indexF !== -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         $scope.addTowishlist = function(product) {
             NavigationService.getProfile(function(data) {
                     if (data.value) {
@@ -1046,12 +1068,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                                 animation: true,
                                 templateUrl: 'views/modal/added-wishlist.html',
                             });
+                            getWishlist();
                         })
                     } else {
-                        $uibModal.open({
-                            animation: true,
-                            templateUrl: 'views/modal/signup.html',
-                        });
+                        globalfunction.signUp();
                     }
                 },
                 function(err) {
@@ -1289,6 +1309,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 scope: $scope
             })
         };
+
+        function getWishlist() {
+            NavigationService.getWishlistUser(function(data) {
+                if (data.value == true) {
+                    $scope.wishlist = data.data.data;
+                    console.log("wishlist", $scope.wishlist);
+                } else {
+                    $scope.wishlist = "";
+                }
+
+            });
+        }
+        getWishlist();
+        $scope.isInWishlist = function(id) {
+            // body...
+            var indexF = _.findIndex($scope.wishlist, function(key) {
+                // body...
+                return key.product._id == id;
+            })
+            if (indexF !== -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         $scope.addTowishlist = function(product) {
             NavigationService.getProfile(function(data) {
                     if (data.value) {
@@ -1297,12 +1342,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                                 animation: true,
                                 templateUrl: 'views/modal/added-wishlist.html',
                             });
+                            getWishlist();
                         })
                     } else {
-                        // $uibModal.open({
-                        //     animation: true,
-                        //     templateUrl: 'views/modal/signup.html',
-                        // });
+                        $uibModal.open({
+                            animation: true,
+                            templateUrl: 'views/modal/signup.html',
+                        });
                     }
                 },
                 function(err) {
@@ -1491,6 +1537,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // }, function(err) {
     //     console.log(err);
     // });
+    globalfunction.signUp = function() {
+        $scope.signUp();
+    }
+    globalfunction.logIn = function() {
+        $scope.logIn();
+    }
     $scope.signUp = function() {
         $scope.loginmsg.msg = "";
         $scope.closeAllModals();
