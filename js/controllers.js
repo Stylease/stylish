@@ -295,18 +295,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             $scope.userdata.shippingAddress = $scope.userdata.shippingAddress;
                         }
                     }
+                    $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
+                    $scope.userdata.shippingAddress.shippingAddressState = "Maharashtra";
+                    $scope.userdata.shippingAddress.shippingAddressCountry = "India";
+                    $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
+                    $scope.userdata.billingAddress.billingAddressState = "Maharashtra";
+                    $scope.userdata.billingAddress.billingAddressCountry = "India";
+
                 } else {
-                    console.log("offline");
                     if ($.jStorage.get("userData")) {
                         $scope.userdata = $.jStorage.get("userData");
                     } else {
                         $scope.userdata.shippingAddress = {};
                         $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
-                        $scope.userdata.shippingAddress.shippingAddressState = "maharashtra";
+                        $scope.userdata.shippingAddress.shippingAddressState = "Maharashtra";
                         $scope.userdata.shippingAddress.shippingAddressCountry = "India";
                         $scope.userdata.billingAddress = {};
                         $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
-                        $scope.userdata.billingAddress.billingAddressState = "maharashtra";
+                        $scope.userdata.billingAddress.billingAddressState = "Maharashtra";
                         $scope.userdata.billingAddress.billingAddressCountry = "India";
                     }
                 }
@@ -336,9 +342,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.userdata.shippingAddress.shippingAddressStreet = "";
                 $scope.userdata.shippingAddress.shippingAddressLandmark = "";
                 $scope.userdata.shippingAddress.shippingAddressPin = "";
-                $scope.userdata.shippingAddress.shippingAddressCity = "";
-                $scope.userdata.shippingAddress.shippingAddressState = "";
-                $scope.userdata.shippingAddress.shippingAddressCountry = "";
+                // $scope.userdata.shippingAddress.shippingAddressCity = "";
+                // $scope.userdata.shippingAddress.shippingAddressState = "";
+                // $scope.userdata.shippingAddress.shippingAddressCountry = "";
             }
         };
 
@@ -917,10 +923,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         }
 
                     });
-                    console.log("get cart", $scope.cartProduct);
+
                 } else {
                     $scope.cartProduct = [];
                     $scope.cartDetails = 0;
+                }
+                console.log("get cart", $scope.cartProduct.length);
+                if ($scope.cartProduct.length == 0) {
+                    $.jStorage.set("cartDate", "");
                 }
             }, function(err) {
                 console.log(err);

@@ -21,7 +21,7 @@
           </div>
           <div class="col-md-3">
             <div class="relate">
-              <input type="tel" name="number" ng-model="userdata.mobile" class="form-control" placeholder="Mobile No" required>
+              <input type="text" maxlength="10" minlength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="number" ng-model="userdata.mobile" class="form-control" placeholder="Mobile No" required>
               <div class="form-error" ng-show="formcheckout.number.$error.required && formcheckout.number.$touched">Please enter your Mobile No</div>
             </div>
           </div>
@@ -57,13 +57,13 @@
                     <div class="form-error" ng-show="formcheckout.code.$error.required && formcheckout.code.$touched">Please enter your Pin Code.</div>
                   </div>
                   <div class="relate">
-                    <input placeholder="City" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCity" class="form-control fixed-add" value="Mumbai">
+                    <input placeholder="City" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCity" class="bckg form-control fixed-add" readonly value="Mumbai">
                   </div>
                   <div class="relate">
-                    <input placeholder="State" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressState" class="form-control fixed-add" value="Maharashtra">
+                    <input placeholder="State" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressState" readonly class="bckg form-control fixed-add" value="Maharashtra">
                   </div>
                   <div class="relate">
-                    <input placeholder="Country" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCountry" class="form-control fixed-add" value="India">
+                    <input placeholder="Country" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCountry" readonly class="bckg form-control fixed-add" value="India">
                   </div>
                 </div>
               </div>
@@ -96,9 +96,9 @@
                     <input type="text" maxlength="6" minlength="6" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" placeholder="Pin Code" name="pincode" ng-model="userdata.shippingAddress.shippingAddressPin" required>
                     <div class="form-error" ng-show="formcheckout.pincode.$error.required && formcheckout.pincode.$touched">Please enter your Pin Code</div>
                   </div>
-                  <input type="text" class="form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressCity" placeholder="City" value="Mumbai">
-                  <input type="text" class="form-control fixed-add" placeholder="State" ng-model="userdata.shippingAddress.shippingAddressState" value="Maharashtra">
-                  <input type="text" class="form-control fixed-add" placeholder="Country" ng-model="userdata.shippingAddress.shippingAddressCountry" value="India">
+                  <input type="text" readonly class="bckg form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressCity" placeholder="City" value="Mumbai">
+                  <input type="text" readonly class="bckg form-control fixed-add" placeholder="State" ng-model="userdata.shippingAddress.shippingAddressState" value="Maharashtra">
+                  <input type="text" readonly class="bckg form-control fixed-add" placeholder="Country" ng-model="userdata.shippingAddress.shippingAddressCountry" value="India">
                 </div>
               </div>
             </div>
