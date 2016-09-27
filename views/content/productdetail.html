@@ -90,7 +90,7 @@
               <!-- </div> -->
               <div class="delivery-date dates">
                 <span class="text-medium">Delivery / Return Dates :</span>
-                <div>
+                <div class="text-center">
                   <div class="radio-button">
                     <input type="radio" name="date" id="four" checked required>
                     <label for="four" ng-click="getRentalAmount(4)" class="text-medium"><span></span> 4 Days</label>
@@ -100,7 +100,7 @@
                     <label for="eight" ng-click="getRentalAmount(8)" class="text-medium"><span></span> 8 Days</label>
                   </div>
                   <div class="calendar inline-block">
-                    <div class="input-group">
+                    <div class="input-group calen">
                       <input type="date" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" required/>
                       <span class="cal">
                     <button type="button" class="btn btn-default" ng-click="open2()"></button>
@@ -115,7 +115,7 @@
               <div class="order-time a1">
                 <div class="row">
                   <div class="col-md-12 col-sm-12">
-                    <div class="time">
+                    <div class="">
                       <label for="delivery-time" class="inline-block a2">Delivery Time</label>
                       <div class="custom-select inline-block a3">
                         <select name="" id="delivery-time" ng-model="cartpro.deliveryTime" required>
@@ -132,7 +132,7 @@
               <div class="order-time a1">
                 <div class="row">
                   <div class="col-md-12 col-sm-12">
-                    <div class="time">
+                    <div class="">
                       <label for="pickup-time" class="inline-block a2">Pickup Time</label>
                       <div class="custom-select inline-block a3">
                         <select name="" ng-model="cartpro.pickupTime" id="pickup-time" required>
