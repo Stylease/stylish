@@ -436,7 +436,7 @@
                     <div class="wishlist text-right">
                       <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa fa-heart"></i></span>
                       <!-- <span class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa {{product.heart}} "></i></span> -->
-                      <div class="product-detail text-center" ui-sref="productdetail">
+                      <div class="product-detail text-center" ui-sref="productdetail({ 'id':product._id})">
                         <div class="row">
                           <div class="col-md-12 col-sm-5 col-xs-5">
                             <div class="product-imgholder relate">
