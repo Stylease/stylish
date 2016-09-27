@@ -792,12 +792,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Changepassword");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-
         $scope.form = {};
+        $scope.passChanged = false;
+        $scope.invalidPass=false;
         $scope.changePassword = function(form) {
-            NavigationService.changePassword(form, function() {
-                $scope.form = {};
+            console.log("  $scope.form ", form);
+            NavigationService.changePassword(form, function(data) {
+                console.log("data", data);
+                if (data.value === true) {
+                    $scope.passChanged = true;
+                      $scope.invalidPass=false;
+                    $timeout(function() {
+                        $scope.passChanged = false;
+                          $scope.invalidPass=false;
+                        $scope.form = {};
+                    }, 2000);
+                } else if(data.value===false) {
+                    console.log("data", data);
+                      $scope.invalidPass=true;
+                }
             });
+
         };
 
         $scope.logoutClick = function() {
@@ -1069,25 +1084,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             return key.product._id == product;
                         });
                         if (indexF !== -1) {
-                          $scope.remove = function() {
-                              NavigationService.deleteWishlistByProduct($scope.variables.removeitem, function(data) {
-                                  $scope.response = data;
-                                  if ($scope.response.value === true) {
-                                      removemod.close();
-                                      getWishlist();
-                                  }
-                              });
-                          };
-                          $scope.openRemoveModal = function(product) {
-                              $scope.variables.removeitem = product;
-                              console.log($scope.variables);
-                              removemod = $uibModal.open({
-                                  animation: true,
-                                  templateUrl: "views/modal/removeitem.html",
-                                  scope: $scope
-                              });
-                          };
-                          $scope.openRemoveModal(product);
+                            $scope.remove = function() {
+                                NavigationService.deleteWishlistByProduct($scope.variables.removeitem, function(data) {
+                                    $scope.response = data;
+                                    if ($scope.response.value === true) {
+                                        removemod.close();
+                                        getWishlist();
+                                    }
+                                });
+                            };
+                            $scope.openRemoveModal = function(product) {
+                                $scope.variables.removeitem = product;
+                                console.log($scope.variables);
+                                removemod = $uibModal.open({
+                                    animation: true,
+                                    templateUrl: "views/modal/removeitem.html",
+                                    scope: $scope
+                                });
+                            };
+                            $scope.openRemoveModal(product);
                         } else {
                             NavigationService.saveWishlist(product, function(data) {
                                 $uibModal.open({
