@@ -978,6 +978,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.filter.priceto = 100000;
         $scope.letLoad = false;
         $scope.shopping = [];
+        $scope.variables = {};
         $scope.getSubcategory = function() {
             NavigationService.getSubcategory(function(data) {
                 $scope.subcategory = data.data;
@@ -1054,28 +1055,48 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 return key.product._id == id;
             })
             if (indexF !== -1) {
-                  return true;
+                return true;
             } else {
                 return false;
             }
         }
 
         $scope.addTowishlist = function(product) {
-          var indexF = _.findIndex($scope.wishlist, function(key) {
-              return key.product._id == product;
-          });
-          if (indexF !== -1) {
-            console.log("innn");
             NavigationService.getProfile(function(data) {
                     if (data.value) {
-                      console.log("in login");
-                        NavigationService.saveWishlist(product, function(data) {
-                            $uibModal.open({
-                                animation: true,
-                                templateUrl: 'views/modal/added-wishlist.html',
-                            });
-                            getWishlist();
+                        var indexF = _.findIndex($scope.wishlist, function(key) {
+                            console.log("key", key.product._id, 'id', product);
+                            return key.product._id == product;
                         });
+                        if (indexF !== -1) {
+                          $scope.remove = function() {
+                              NavigationService.deleteWishlist($scope.variables.removeitem, function(data) {
+                                  $scope.response = data;
+                                  if ($scope.response.value === true) {
+                                      removemod.close();
+                                      getWishlist();
+                                  }
+                              });
+                          };
+                          $scope.openRemoveModal = function(product) {
+                              $scope.variables.removeitem = product;
+                              console.log($scope.variables);
+                              removemod = $uibModal.open({
+                                  animation: true,
+                                  templateUrl: "views/modal/removeitem.html",
+                                  scope: $scope
+                              });
+                          };
+                          $scope.openRemoveModal(product);
+                        } else {
+                            NavigationService.saveWishlist(product, function(data) {
+                                $uibModal.open({
+                                    animation: true,
+                                    templateUrl: 'views/modal/added-wishlist.html',
+                                });
+                                getWishlist();
+                            });
+                        }
                     } else {
                         globalfunction.signUp();
                     }
@@ -1083,28 +1104,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 function(err) {
                     console.log(err);
                 });
-          } else {
-            console.log("test");
-                $scope.remove = function() {
-                NavigationService.deleteWishlist($scope.variables.removeitem, function(data) {
-                    $scope.response = data;
-                    if ($scope.response.value === true) {
-                        removemod.close();
-                        getWishlist();
-                    }
-                });
-            };
-            $scope.openRemoveModal = function(product) {
-                $scope.variables.removeitem = product;
-                console.log($scope.variables);
-                removemod = $uibModal.open({
-                    animation: true,
-                    templateUrl: "views/modal/removeitem.html",
-                    scope: $scope
-                });
-            };
-          }
-
         };
 
         $scope.oneAtATime = true;
