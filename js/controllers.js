@@ -1062,11 +1062,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.addTowishlist = function(product) {
           var indexF = _.findIndex($scope.wishlist, function(key) {
-              return key.product._id == id;
+              return key.product._id == product;
           });
           if (indexF !== -1) {
+            console.log("innn");
             NavigationService.getProfile(function(data) {
                     if (data.value) {
+                      console.log("in login");
                         NavigationService.saveWishlist(product, function(data) {
                             $uibModal.open({
                                 animation: true,
@@ -1083,7 +1085,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 });
           } else {
             console.log("test");
-            $scope.remove = function() {
+                $scope.remove = function() {
                 NavigationService.deleteWishlist($scope.variables.removeitem, function(data) {
                     $scope.response = data;
                     if ($scope.response.value === true) {
@@ -1092,8 +1094,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                 });
             };
-            $scope.openRemoveModal = function(productid) {
-                $scope.variables.removeitem = productid;
+            $scope.openRemoveModal = function(product) {
+                $scope.variables.removeitem = product;
                 console.log($scope.variables);
                 removemod = $uibModal.open({
                     animation: true,
