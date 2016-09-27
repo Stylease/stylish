@@ -313,7 +313,7 @@
 
                       <!-- <div class="product-detail text-center "> -->
                       <div class="product-detail text-center">
-                        <div class="product-imgholder relate">
+                        <div class="product-imgholder relate" ui-sref="productdetail({ 'id':product._id})">
                       <img ng-src="{{product.images[0].image|serverimage}}" alt=" " class="get-center img-responsive">
                           <div class="wishlist text-right">
                             <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa" ng-class="{'fa-heart':isInWishlist(product._id),'fa-heart-o':!isInWishlist(product._id)}"></i></span>
