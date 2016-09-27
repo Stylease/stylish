@@ -40,7 +40,7 @@
       </div>
 
       <div class="row adj-margin" ng-repeat="subc in subcat" ng-if="subcat.length > 0">
-        <div class="col-md-6 adj-padd" ng-repeat="sub in subc">
+        <div class="col-md-6 col-sm-6 col-xs-6 adj-padd" ng-repeat="sub in subc">
           <div class="relate mr10 pointer ban-width" ui-sref="product({'name':sub.name})">
             <!-- <img ng-src="{{sub.image|serverimage}}" alt="" class="img-responsive"> -->
             <img ng-src="{{sub.image|serverimage}}" alt="" class="img-responsive">
