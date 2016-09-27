@@ -315,6 +315,11 @@ var navigationservice = angular.module('navigationservice', [])
                 _id: id
             }).success(callback);
         },
+        deleteWishlistByProduct: function(product, callback) {
+            $http.post(adminURL + "wishlist/deleteByUser", {
+                product: product
+            }).success(callback);
+        },
         changePassword: function(data, callback) {
             $http.post(adminURL + "user/changePassword", data).success(callback);
         },

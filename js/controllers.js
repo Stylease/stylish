@@ -1070,7 +1070,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         });
                         if (indexF !== -1) {
                           $scope.remove = function() {
-                              NavigationService.deleteWishlist($scope.variables.removeitem, function(data) {
+                              NavigationService.deleteWishlistByProduct($scope.variables.removeitem, function(data) {
                                   $scope.response = data;
                                   if ($scope.response.value === true) {
                                       removemod.close();
