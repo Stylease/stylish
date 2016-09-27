@@ -1367,7 +1367,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.isInWishlist = function(id) {
             // body...
             var indexF = _.findIndex($scope.wishlist, function(key) {
-                // body...
+            console.log("key",key);
                 return key.product._id == id;
             })
             if (indexF !== -1) {
