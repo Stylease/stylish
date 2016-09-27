@@ -1535,6 +1535,9 @@ input.form-control {
   margin-left: 30px;
   text-align: center;
   position: relative;
+  &:focus{
+    background:#069;
+  }
   &.active-size {
     &:after {
       position: absolute;
