@@ -357,6 +357,11 @@
                         <i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i><span class="block ">{{cat}}</span>
                       </uib-accordion-heading>
                       <div class="occasion ">
+                        <div class="custom-checkbox">
+                          <!-- <input type="checkbox" name="{{cat}}" ng-model="checkIt[cat]"  id="{{cat}}"> -->
+                            <input value="{{cat}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
+                          <label for="{{cat}}"><span></span> All {{cat}}</label>
+                        </div>
                         <div class="custom-checkbox" ng-repeat="subcat in value">
                           <input type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="{{subcat.name}}">
                           <label for="{{subcat.name}}"><span></span> {{subcat.name}}</label>
