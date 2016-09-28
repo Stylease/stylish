@@ -504,8 +504,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         };
         $scope.getProfile();
+        $scope.data={};
         $scope.saveProfile = function(data) {
-            if (data && data.isShipping) {
+          console.log("data",data);
+            if (Object.keys($scope.data).length != 0&& data.isShipping) {
+                console.log("data",data);
                 data.shippingTitle = data.billingTitle;
                 data.shippingAddressFlat = data.billingAddressFlat;
                 data.shippingAddressStreet = data.billingAddressStreet;
