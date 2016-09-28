@@ -58,7 +58,7 @@
                            <div class="add-billing-add" ng-show="data.edit">
                               <div class="row">
                                  <div class="col-md-12">
-                                    <form name="saveaddress">
+                                    <form name="saveaddress" ng-submit="saveProfile(data)">
                                        <input type="text" class="form-control" placeholder="Title Of Address" ng-model="data.billingTitle" name="addressTitle" required>
                                        <div  ng-show="saveaddress.addressTitle.$error.required && saveaddress.addressTitle.$touched">Please enter title Of address</div>
                                        <input type="text" class="form-control" placeholder="Flat Number, Building Number" ng-model="data.billingAddressFlat" name="flatNo" required>
@@ -67,7 +67,7 @@
                                        <div  ng-show="saveaddress.street.$error.required && saveaddress.street.$touched">Please enter street address</div>
                                        <input type="text" class="form-control" placeholder="Nearest Landmark" ng-model="data.billingAddressLandmark" required name="landmark">
                                        <div  ng-show="saveaddress.landmark.$error.required && saveaddress.landmark.$touched">Please enter nearest landmark</div>
-                                       <input type="text" class="form-control" placeholder="Pin Code" maxlength="6" ng-model="data.billingAddressPin" required name="pinNo" only-Digits>
+                                       <input type="text" class="form-control" placeholder="Pin Code" maxlength="6" ng-model="data.billingAddressPin" minlength ="6" required name="pinNo" only-Digits>
                                         <div  ng-show="saveaddress.pinNo.$error.required && saveaddress.pinNo.$touched">Please enter pin code</div>
                                        <input type="text" readonly  class="form-control fixed-add" placeholder="City" ng-model="data.billingAddressCity">
                                        <input type="text" readonly class="form-control fixed-add" placeholder="State" ng-model="data.billingAddressState">
@@ -80,7 +80,7 @@
                                           </div>
                                        </div>
                                        <div class="text-center mt20 mb20 save ">
-                                          <button class="btn btn-outline btn-full text-medium" ng-click="saveProfile(data)">Save</button>
+                                          <button class="btn btn-outline btn-full text-medium" type="submit">Save</button>
                                        </div>
                                     </form>
                                  </div>

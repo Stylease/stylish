@@ -482,7 +482,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
             $scope.saveProfile();
         };
+        if (true) {
+
+        }
+
         $scope.addAddress = function(val) {
+        
             var collection;
             if (val) {
                 collection = $scope.userdata.shippingAddress;
