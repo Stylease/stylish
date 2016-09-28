@@ -46,11 +46,11 @@ var navigationservice = angular.module('navigationservice', [])
             disabled: false,
             anchor: "help",
             subnav: [{
-                name: "FAQ's",
+                name: "Cancellation Policy",
                 classis: "active",
-                link: "#/faq"
+                link: "#/cancelation-policy"
             }, {
-                name: "How it works",
+                name: "Return Policy",
                 classis: "active",
                 link: "#/how-it-works"
             }, {

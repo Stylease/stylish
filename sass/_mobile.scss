@@ -364,9 +364,11 @@
   .talk-us{
     display: none;
   }
-
+  .pd20 {
+      padding: 12px 1.5em;
+  }
   .social-btn {
-    width: auto;
+    // width: auto;
     padding: 8px 30px;
   }
   body { padding: 53px 0px 0px 0px !important; }
@@ -572,7 +574,9 @@
   // footer end
   // pop ups
   .pop-heading-bar h2 { font-size: 35px; }
-  .msg { font-size: 17px; }
+
+  .msg { font-size: 12px; }
+
   .close img { width: 15px; }
   .close-header { padding: 10px 0; }
   .hello {
@@ -609,6 +613,20 @@
   }
 }
 
+
+
+@media (min-width: 320px) {
+  .on-edit {
+    button {
+      margin: 0 -6px 0 0;
+      /* display: block; */
+      padding: 8px 12px;
+    }
+    .atc-atw{
+      margin: 0 -6px 0 0;
+    }
+  }
+}
 
 
 

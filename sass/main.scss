@@ -1556,7 +1556,7 @@ input.form-control {
       color: #fdd3be;
       content: "";
       pointer-events: none;
-      z-index: 999;
+      z-index: 0;
     }
   }
 }
@@ -1666,6 +1666,7 @@ input.form-control {
       left: 28% !important;
       position: absolute;
       transform: translate(50%);
+      z-index: 0;
     }
     .tooltip.bottom .tooltip-arrow {
       margin-left: -10px;
