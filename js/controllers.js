@@ -10,7 +10,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Home");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-            TemplateService.removeLoaderOn(3);
+            // TemplateService.removeLoaderOn(3);
         console.log($scope.navigation);
         $scope.footerColor = "home-footer";
         $scope.subcategory = [];
@@ -954,7 +954,7 @@ TemplateService.removeLoader();
             removemod = $uibModal.open({
                 animation: true,
                 templateUrl: "views/modal/removeitem.html",
-                windowClass: "mwidth",
+                windowClass: "modal-dialog",
                 scope: $scope
             });
         };

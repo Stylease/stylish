@@ -3,6 +3,7 @@ templateservicemod.service('TemplateService', function() {
   this.title = "Home";
   this.meta = "Google";
   this.metadesc = "Home";
+     this.isLoader = false;
 
   var d = new Date();
   this.year = d.getFullYear();
@@ -11,6 +12,7 @@ templateservicemod.service('TemplateService', function() {
     this.headermenu = "views/headermenu.html";
     this.header = "views/header.html";
     this.menu = "views/menu.html";
+      this.isLoader = false;
     this.slider = "views/slider.html";
     this.content = "views/content/content.html";
     this.footermenu = "views/footermenu.html";
