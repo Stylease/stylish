@@ -1591,17 +1591,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
 
-    // NavigationService.getProfile(function(data) {
-    //     if (data.value) {
-    //
-    //     } else {
-    //         if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
-    //             $state.go("home");
-    //         }
-    //     }
-    // }, function(err) {
-    //     console.log(err);
-    // });
+    NavigationService.getProfile(function(data) {
+        if (data.value == false) {
+            if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
+                $state.go("home");
+            }
+        }
+    }, function(err) {
+        console.log(err);
+    });
     globalfunction.signUp = function() {
         $scope.signUp();
     }
@@ -1661,21 +1659,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     };
     $scope.checkSession = function() {
-        if ($.jStorage.get("userLoggedIn")) {
-            $scope.isLoggedIn = true;
-        } else {
-            NavigationService.getProfile(function(response) {
-                if (response.value) {
-                    $scope.username = response.data.firstname;
-                    $scope.isLoggedIn = true;
-                    $.jStorage.set("userLoggedIn", true);
-                } else {
-                    $scope.isLoggedIn = false;
-                }
-            }, function(err) {
-                console.log(err);
-            });
-        }
+        // if ($.jStorage.get("userLoggedIn")) {
+        //     $scope.isLoggedIn = true;
+        // } else {
+        NavigationService.getProfile(function(response) {
+            if (response.value) {
+                $scope.username = response.data.firstname;
+                $scope.isLoggedIn = true;
+                $.jStorage.set("userLoggedIn", true);
+            } else {
+                $scope.isLoggedIn = false;
+            }
+        }, function(err) {
+            console.log(err);
+        });
+        // }
     };
     $scope.checkSession();
     globalfunction.getCartCount = function() {
