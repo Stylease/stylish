@@ -487,7 +487,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
         $scope.addAddress = function(val) {
-        
+
             var collection;
             if (val) {
                 collection = $scope.userdata.shippingAddress;
@@ -1320,6 +1320,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // };
 
         $scope.addToCart = function() {
+
             var d = new Date($scope.cartpro.timeFrom);
             $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
             if ($scope.product.designer == null) {
@@ -1333,6 +1334,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
+          
             if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
                 NavigationService.addToCart($scope.cartpro, function(data) {
                     console.log("response cart", data);
