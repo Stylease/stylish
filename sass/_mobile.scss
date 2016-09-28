@@ -180,7 +180,7 @@
   .social-btn{
     width: 100%;
     /* padding: 12px 0; */
-    margin: 10px 0;
+    margin: 10px 0!important;
     font-size: 15px;
   }
   .tag-name{
@@ -299,13 +299,13 @@
   // popups
   .or {
     &:after, &:before {
-      width: 70px;
+      width: 100px;
     }
     &:after {
-      right: 33%;
+      right: 0;
     }
     &:before {
-      left: 33%;
+      left: 0;
     }
   }
   // popups ends
@@ -525,13 +525,13 @@
   // popups
   .or {
     &:after, &:before {
-      width: 50px;
+      width: 100px;
     }
     &:after {
-      right: 25%;
+      right: 0;
     }
     &:before {
-      left: 25%;
+      left: 0;
     }
   }
   .right-reserved {
