@@ -107,7 +107,8 @@
       border-left: 1px solid $brand-dark-pink;
     }
   }
-  .add-billing-add { padding: 30px 0 0; }
+  // .add-billing-add { padding: 30px 0 0; }
+  // .aba-none { padding: 0; }
   .billingsave-add { padding: 30px 0px 0px; }
   // product -detail
   .product-info {
@@ -643,17 +644,40 @@
 @media (min-width: 320px) {
 
 
-  .mwidth {
+  // .mwidth {
+  //   position: absolute;
+  //   left: 47%;
+  //   top: 50%;
+  //   -webkit-transform: translateY(50%) !important;
+  //   -moz-transform: translateY(50%) !important;
+  //   -ms-transform: translateY(50%) !important;
+  //   -o-transform: translateY(50%) !important;
+  //   transform: translate(-50%, -50%) !important;
+  //   width: 90%;
+  // }
+  // .ip5{
+  //   h2{
+  //     font-size: 25px!important;
+  //   }
+  //   p{
+  //     font-size: 15px!important;
+  //   }
+  //   span{
+  //     font-size: 15px!important;
+  //   }
+  // }
+  .wishlist{
     position: absolute;
-    left: 47%;
-    top: 50%;
-    -webkit-transform: translateY(50%) !important;
-    -moz-transform: translateY(50%) !important;
-    -ms-transform: translateY(50%) !important;
-    -o-transform: translateY(50%) !important;
-    transform: translate(-50%, -50%) !important;
-    width: 90%;
+    right: 0!important;
+    z-index: 9;
+    span{
+      i{
+        font-size: 15px;
+      }
+    }
+
   }
+
   .on-edit {
     button {
       margin: 0 -6px 0 0;
@@ -668,9 +692,9 @@
 
 
 
-
-
-
-@media (min-width:320px) and (max-width:480px) {
-
+@media (min-width: 768px){
+  .modal-dialog {
+      width: 600px;
+      margin: 0;
+  }
 }

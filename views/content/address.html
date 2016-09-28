@@ -8,28 +8,36 @@
       <div class="mt20 mb20">
         <div class="row">
           <div class="col-md-3">
+            <div class="add-billing-add aba-none">
             <div class="relate">
               <input type="text" name="first" ng-model="userdata.firstname" class="form-control" placeholder="First Name" required aplha-Only>
               <div class="form-error" ng-show="formcheckout.first.$error.required && formcheckout.first.$touched">Please enter your First Name</div>
             </div>
           </div>
+          </div>
           <div class="col-md-3">
+            <div class="add-billing-add aba-none">
             <div class="relate">
               <input type="text" name="last" ng-model="userdata.lastname" class="form-control" placeholder="Last Name" aplha-Only required>
               <div class="form-error" ng-show="formcheckout.last.$error.required && formcheckout.last.$touched">Please enter your Last Name</div>
             </div>
           </div>
+          </div>
           <div class="col-md-3">
+            <div class="add-billing-add aba-none">
             <div class="relate">
               <input type="text" only-Digits maxlength="10" minlength="10" name="number" ng-model="userdata.mobile" class="form-control" placeholder="Mobile No" required>
               <div class="form-error" ng-show="formcheckout.number.$error.required && formcheckout.number.$touched">Please enter your Mobile No</div>
             </div>
           </div>
+          </div>
           <div class="col-md-3">
+            <div class="add-billing-add aba-none">
             <div class="relate">
               <input type="email" name="mail" ng-model="userdata.email" class="form-control" placeholder="Email-id" required>
               <div class="form-error" ng-show="formcheckout.mail.$error.required && formcheckout.mail.$touched">Please enter your Email</div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -39,7 +47,7 @@
             <h3 class="dark-blue mb20">Billing Address</h3>
             <div class="row">
               <div class="col-md-10">
-                <div class="add-billing-add">
+                <div class="add-billing-add mb20">
                   <div class="relate">
                     <input type="text" ng-change="sameShipping()" ng-model="userdata.billingAddress.billingAddressFlat" name="flat" class="form-control" placeholder="Flat Number, Building Number" required>
                     <div class="form-error" ng-show="formcheckout.flat.$error.required && formcheckout.flat.$touched">Please enter your Flat Number, Building Number.</div>
@@ -70,10 +78,10 @@
             </div>
           </div>
           <div class="col-md-6">
-            <h3 class="dark-blue">Shipping Address</h3>
+            <h3 class="add-dark-blue">Shipping Address</h3>
             <div class="add-billing-add">
               <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-10 mb20">
                   <div class="same-billing mt10 mb10">
                     <div class="custom-checkbox">
                       <input type="checkbox" id="bill" ng-model="flags.sameshipping" ng-change="sameShipping()">
