@@ -308,13 +308,13 @@
             <div infinite-scroll="loadMore()" infinite-scroll-disabled="shouldscroll" class="ng-isolate-scope">
               <div class="shop-product grid-view" ng-show="viewProduct">
                 <div class="row">
-                        <div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping">
+                  <div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping">
                     <div class="view-product relate pointer ">
 
                       <!-- <div class="product-detail text-center "> -->
                       <div class="product-detail text-center">
                         <div class="product-imgholder relate" ui-sref="productdetail({ 'id':product._id})">
-                      <img ng-src="{{product.images[0].image|serverimage}}" alt=" " class="get-center img-responsive">
+                          <img ng-src="{{product.images[0].image|serverimage}}" alt=" " class="get-center img-responsive">
                           <div class="wishlist text-right">
                             <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa" ng-class="{'fa-heart':isInWishlist(product._id),'fa-heart-o':!isInWishlist(product._id)}"></i></span>
                           </div>
@@ -324,7 +324,7 @@
                       </div>
                     </div>
                   </div>
-                    </div>
+                </div>
               </div>
             </div>
             <!-- ngIf: shopping.length===0 -->
@@ -347,8 +347,8 @@
         <div class="col-md-3">
           <div class="filter-product">
             <img src="img/filter.png" alt="" width="20" class="img-responsive inline-block mr5">
-        <span class="text-uppercase filter-heading inline-block mt10 mb10 pointer">filter</span>
-      <div class="filter-dropdown accordion-custom">
+            <span class="text-uppercase filter-heading inline-block mt10 mb10 pointer">filter</span>
+            <div class="filter-dropdown accordion-custom">
               <div class="search-by-filter">
                 <form>
                   <uib-accordion close-others="oneAtATime">
@@ -364,7 +364,7 @@
 
                       </div>
                     </uib-accordion-group>
-                          <uib-accordion-group is-open="status.open3">
+                    <uib-accordion-group is-open="status.open3">
                       <uib-accordion-heading>
                         <i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i><span class="block">Rental Price</span>
                       </uib-accordion-heading>
@@ -372,14 +372,14 @@
                         <div range-slider min="demo2.range.min" max="demo2.range.max" model-min="filter.pricefrom" model-max="filter.priceto" filter="currency: '‎₹'" step="100"></div>
                       </div>
                     </uib-accordion-group>
-                          <uib-accordion-group is-open="status.open5">
+                    <uib-accordion-group is-open="status.open5">
                       <uib-accordion-heading>
                         <i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open5, 'fa-angle-down': !status.open5}"></i> <span class="block">Size</span>
                       </uib-accordion-heading>
                       <div class="product-size " ng-init="size=''">
                         <ul class="list-inline">
                           <li ng-repeat="size in sizes track by $index"><a href=" " ng-class="{ 'select-size': filter.size[0]==size._id }" ng-click="pushSize(size._id)">{{size.name}}</a></li>
-                              </ul>
+                        </ul>
                       </div>
                     </uib-accordion-group>
                     <uib-accordion-group is-open="status.open6">
@@ -387,7 +387,7 @@
                         <i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open6, 'fa-angle-down': !status.open6}"></i> <span class="block">Colour</span>
                       </uib-accordion-heading>
                       <div class="color">
-                          <div class="magic-form">
+                        <div class="magic-form">
                           <div class="magic-resize">
                             <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
                             <label class="detail-heading" for="add-one">More</label>
@@ -434,8 +434,7 @@
                 <div class="col-md-4" ng-repeat="product in shopping">
                   <div class="view-product relate pointer">
                     <div class="wishlist text-right">
-                      <span class="pointer wishlist-heart" ng-click="addTowishlist(product);"><i class="fa fa-heart"></i></span>
-                      <!-- <span class="pointer wishlist-heart " ng-click="addTowishlist(product); "><i class="fa {{product.heart}} "></i></span> -->
+                      <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa" ng-class="{'fa-heart':isInWishlist(product._id),'fa-heart-o':!isInWishlist(product._id)}"></i></span>
                       <div class="product-detail text-center" ui-sref="productdetail({ 'id':product._id})">
                         <div class="row">
                           <div class="col-md-12 col-sm-5 col-xs-5">
