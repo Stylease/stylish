@@ -16,7 +16,25 @@ templateservicemod.service('TemplateService', function() {
     this.footermenu = "views/footermenu.html";
     this.footer = "views/footer.html";
     this.account = "views/account.html";
+
+        this.removeLoaderTemp = 0;
+        this.removeLoaderNum = 0;
   };
+
+
+    this.removeLoader = function() {
+        this.removeLoaderTemp++;
+        if (this.removeLoaderTemp >= this.removeLoaderNum) {
+            this.isLoader = false;
+        }
+    };
+    this.getLoader = function() {
+        this.isLoader = true;
+    };
+    this.removeLoaderOn = function(num) {
+        this.isLoader = true;
+        this.removeLoaderNum = num;
+    };
 
   this.changecontent = function(page) {
     this.init();

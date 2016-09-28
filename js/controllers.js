@@ -10,6 +10,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Home");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+            TemplateService.removeLoaderOn(3);
         console.log($scope.navigation);
         $scope.footerColor = "home-footer";
         $scope.subcategory = [];
@@ -19,6 +20,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.mySlides = data.data;
                 // console.log("aaa", $scope.mySlides);
             }
+            TemplateService.removeLoader();
         });
 
         var temp = [];
@@ -38,6 +40,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 } else if (key.imagetype == 'Small') {
                     temp.push(key);
                 }
+
             });
 
             if (temp.length !== 0) {
@@ -48,13 +51,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log($scope.subcategory);
 
         }, function(err) {
-
+TemplateService.removeLoader();
         });
 
         NavigationService.getTestimonial(function(data) {
             if (data) {
                 $scope.testimonials = data.data
             }
+            TemplateService.removeLoader();
         });
     })
     .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -1334,7 +1338,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
-          
+
             if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
                 NavigationService.addToCart($scope.cartpro, function(data) {
                     console.log("response cart", data);
