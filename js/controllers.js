@@ -801,6 +801,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log("data", data);
                 if (data.value === true) {
                     $scope.passChanged = true;
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: 'views/modal/passwordchange.html',
+                    });
                     $scope.invalidPass = false;
                     $timeout(function() {
                         $scope.passChanged = false;
