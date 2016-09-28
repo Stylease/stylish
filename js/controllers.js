@@ -942,6 +942,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             removemod = $uibModal.open({
                 animation: true,
                 templateUrl: "views/modal/removeitem.html",
+                windowClass: "modal-dialog",
                 scope: $scope
             });
         };
