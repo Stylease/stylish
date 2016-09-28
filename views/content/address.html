@@ -9,19 +9,19 @@
         <div class="row">
           <div class="col-md-3">
             <div class="relate">
-              <input type="text" name="first" ng-model="userdata.firstname" class="form-control" placeholder="First Name" required>
+              <input type="text" name="first" ng-model="userdata.firstname" class="form-control" placeholder="First Name" required aplha-Only>
               <div class="form-error" ng-show="formcheckout.first.$error.required && formcheckout.first.$touched">Please enter your First Name</div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="relate">
-              <input type="text" name="last" ng-model="userdata.lastname" class="form-control" placeholder="Last Name" required>
+              <input type="text" name="last" ng-model="userdata.lastname" class="form-control" placeholder="Last Name" aplha-Only required>
               <div class="form-error" ng-show="formcheckout.last.$error.required && formcheckout.last.$touched">Please enter your Last Name</div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="relate">
-              <input type="text" maxlength="10" minlength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="number" ng-model="userdata.mobile" class="form-control" placeholder="Mobile No" required>
+              <input type="text" only-Digits maxlength="10" minlength="10" name="number" ng-model="userdata.mobile" class="form-control" placeholder="Mobile No" required>
               <div class="form-error" ng-show="formcheckout.number.$error.required && formcheckout.number.$touched">Please enter your Mobile No</div>
             </div>
           </div>
