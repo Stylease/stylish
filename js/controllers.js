@@ -954,7 +954,7 @@ TemplateService.removeLoader();
             removemod = $uibModal.open({
                 animation: true,
                 templateUrl: "views/modal/removeitem.html",
-                windowClass: "modal-dialog",
+                windowClass: "mwidth",
                 scope: $scope
             });
         };
