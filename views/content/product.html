@@ -17,180 +17,56 @@
                   <span class="text-uppercase filter-heading inline-block mb10 pointer" ng-click="showFilterlist = (showFilterlist == true)? false:true;">filter</span>
                   <div class="sort-filter-dropdown" ng-show="showFilterlist" style="">
                     <ul>
-                      <li>
+                      <li ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                         <div class="container no-padd">
-                          <h5>Occassion</h5>
-                          <div class="f-lef">
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="date" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="wedding" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="wedding" class="ng-binding"><span></span> Wedding</label>
-                            </div>
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="date" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="mehendi" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="mehendi" class="ng-binding"><span></span> Mehendi</label>
-                            </div>
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="date" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="reception" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="reception" class="ng-binding"><span></span> Reception</label>
+                          <h5>{{cat}}</h5>
+                          <div class="f-lef" style="width:140px;" ng-repeat="subcat in value">
+                            <div class="magic-form ">
+                              <div class="magic-resize">
+                                <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="{{subcat.name}}">
+                                <label class="detail-heading" for="{{subcat.name}}">{{subcat.name}}</label>
+                              </div>
                             </div>
                           </div>
 
-                          <div class="f-righ">
+                          <!-- <div class="f-righ">
                             <div class="custom-checkbox ng-scope">
                               <input type="checkbox" name="date" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="sangeet" class="ng-valid ng-dirty ng-valid-parse ng-touched">
                               <label for="sangeet" class="ng-binding"><span></span> Sangeet</label>
                             </div>
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="date" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="cocktail" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="cocktail" class="ng-binding"><span></span> Cocktail</label>
-                            </div>
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="date" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="engagement" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="engagement" class="ng-binding"><span></span> Engagement</label>
-                            </div>
-                          </div>
+                          </div> -->
                         </div>
 
                       </li>
-
-                      <li>
-
-                        <div class="container no-padd">
-                          <h5>Dresses</h5>
-                          <div class="f-lef">
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="lehengas" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="lehengas" class="ng-binding"><span></span> Lehengas</label>
-                            </div>
-
-                            <!-- <div class="magic-form">
-                                                          <div class="magic-resize">
-                                                            <input class="magic-checkbox" type="checkbox" name="layout" id="add-one" value="option1">
-                                                            <label class="detail-heading" for="add-one">More</label>
-                                                          </div>
-                                                        </div> -->
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="sarees" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="sarees" class="ng-binding"><span></span> Sarees</label>
-                            </div>
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="jumpsuit" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="jumpsuit" class="ng-binding"><span></span> Jumpsuit</label>
-                            </div>
-
-                          </div>
-
-                          <div class="f-righ">
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="anarkalis" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="anarkalis" class="ng-binding"><span></span> Anarkalis</label>
-                            </div>
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="gown" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="gown" class="ng-binding"><span></span> Gown</label>
-                            </div>
-
-                          </div>
-                        </div>
-
-                      </li>
-
-
                       <li>
                         <div class="container no-padd">
                           <h5>Rental Price</h5>
                           <div>
+                            <div class="price-rangeslider ">
+                              <div range-slider min="demo2.range.min " max="demo2.range.max " model-min="filter.pricefrom " model-max="filter.priceto " filter="currency: '‎₹' " step="100 "></div>
+                            </div>
                           </div>
                         </div>
                       </li>
                       <li>
-                        <div ng-if="product.size.length>0" class="s1 ng-scope">
+                        <div class="container no-padd">
+                          <h5>Size</h5>
                           <div>
-                            <form class="ng-pristine ng-valid">
-                              <span class="text-medium">Size:</span>
-                              <!-- ngRepeat: size in product.size -->
-                              <div ng-repeat="size in product.size" required="" ng-click="selectSize(size.name)" class="size-border ng-scope" ng-class="{'active-size':select.sizeactive[size.name]}">
-                                <label class="size-font pointer ng-binding">
-                                  M
-                                </label>
-                              </div>
-                              <!-- end ngRepeat: size in product.size -->
-
-
-                            </form>
-                          </div>
-
-                          <!-- ngIf: cartpro.size -->
+                        <div class="product-size" ng-init="size=''">
+                          <ul class="list-inline">
+                            <li ng-repeat="size in sizes track by $index "><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click="pushSize(size._id)">{{size.name}}</a></li>
+                          </ul>
                         </div>
                       </li>
-
-
                       <li>
-
                         <div class="container no-padd">
                           <h5>Colour</h5>
-                          <div class="f-lef">
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="black" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="black" class="ng-binding"><span></span> Black</label>
-                            </div>
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="red" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="red" class="ng-binding"><span></span> Red</label>
-                            </div>
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="orange" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="orange" class="ng-binding"><span></span> Orange</label>
-                            </div>
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="green" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="green" class="ng-binding"><span></span> Green</label>
-                            </div>
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="blue" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="blue" class="ng-binding"><span></span> Blue</label>
-                            </div>
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="silver" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="silver" class="ng-binding"><span></span> Silver</label>
-                            </div>
-
-                          </div>
-
-                          <div class="f-righ">
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="white" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="white" class="ng-binding"><span></span> White</label>
-                            </div>
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="pink" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="pink" class="ng-binding"><span></span> Pink</label>
-                            </div>
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="yellow" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="yellow" class="ng-binding"><span></span> Yellow</label>
-                            </div>
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="turqouise" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="turqouise" class="ng-binding"><span></span> Turqouise</label>
-                            </div>
-
-                            <div class="custom-checkbox ng-scope">
-                              <input type="checkbox" name="Occasion" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="gold" class="ng-valid ng-dirty ng-valid-parse ng-touched">
-                              <label for="gold" class="ng-binding"><span></span> Gold</label>
+                          <div class="f-lef" style="width:140px;" ng-repeat="col in color">
+                            <div class="magic-form ">
+                              <div class="magic-resize">
+                                <input class="magic-checkbox" type="checkbox" name="{{col.name}}" ng-model="checkIt[col.name]" ng-change="pushColor(checkIt[col.name],col._id)" id="{{col.name}}">
+                                <label class="detail-heading" for="{{col.name}}">{{col.name}}</label>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -199,8 +75,8 @@
                         <div class="container no-padd">
                           <div class="cla">
                             <div class="buttons on-edit text-center">
-                              <button class="btn btn-outline text-uppercase btn-ful1 m-center added-cart" ng-click="addToCart();">reset</button>
-                              <button class="btn btn-outline text-uppercase btn-ful1 m-center" ng-click="addTowishlist(); saveWishList();">apply</button>
+                              <button class="btn btn-outline text-medium " ng-click="resetFilter()">Reset</button>
+                              <button class="btn btn-outline text-medium " ng-click="applyFilter()">Apply</button>
                             </div>
                           </div>
                         </div>
@@ -209,7 +85,7 @@
                     </ul>
                   </div>
                   <img src="img/sort.png" alt=" " class="inline-block mr5 img-responsive doneLoading">
-                  <span class="text-uppercase pointer" ng-click="showShortlist=( showShortlist==true)? false:true;">sort</span>
+                  <span class="text-uppercase pointer" ng-click="showShortlist=(showShortlist==true)? false:true;">sort</span>
                   <div class="sort-filter-dropdown ng-hide" ng-show="showShortlist" style="">
                     <ul>
                       <li><a href=" ">Popularity</a></li>
@@ -272,16 +148,22 @@
               <div class="search-by-filter ">
                 <form>
                   <uib-accordion close-others="oneAtATime ">
-                    <uib-accordion-group is-open="status.open1 " ng-repeat="(cat, value) in subcategory | groupBy: 'category.name' ">
+                    <uib-accordion-group is-open="status.open1 " ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                       <uib-accordion-heading>
                         <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open1, 'fa-angle-down': !status.open1} "></i><span class="block ">{{cat}}</span>
                       </uib-accordion-heading>
-                      <div class="occasion ">
-                        <div class="custom-checkbox" ng-repeat="subcat in value">
-                          <input type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name] " ng-change="pushSubCategory(checkIt[subcat.name],subcat._id) " id="{{subcat.name}} ">
-                          <label for="{{subcat.name}} "><span></span> {{subcat.name}}</label>
+                      <div class="magic-form ">
+                        <div class="magic-resize" ng-repeat="subcat in value">
+                          <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="{{subcat.name}}">
+                          <label class="detail-heading" for="{{subcat.name}}">{{subcat.name}}</label>
                         </div>
                       </div>
+                      <!-- <div class="occasion ">
+                        <div class="custom-checkbox" ng-repeat="subcat in value">
+                          <input type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id) " id="{{subcat.name}} ">
+                          <label for="{{subcat.name}} "><span></span> {{subcat.name}}</label>
+                        </div>
+                      </div> -->
                     </uib-accordion-group>
                     <uib-accordion-group is-open="status.open3 ">
                       <uib-accordion-heading>
@@ -308,7 +190,7 @@
                       <div class="color ">
                         <div class="magic-form ">
                           <div class="magic-resize" ng-repeat="col in color">
-                            <input class="magic-checkbox" type="checkbox" name="layout" id="{{col.name}}">
+                            <input class="magic-checkbox" type="checkbox" name="{{col.name}}" ng-model="checkIt[col.name]" ng-change="pushColor(checkIt[col.name],col._id)" id="{{col.name}}">
                             <label class="detail-heading" for="{{col.name}}">{{col.name}}</label>
                           </div>
                         </div>
@@ -320,8 +202,8 @@
                     </uib-accordion-group>
                   </uib-accordion>
                   <div class="on-edit filter-button ">
-                    <button class="btn btn-outline text-medium " ng-click="resetFilter() ">Reset</button>
-                    <button class="btn btn-outline text-medium " ng-click="applyFilter() ">Apply</button>
+                    <button class="btn btn-outline text-medium " ng-click="resetFilter()">Reset</button>
+                    <button class="btn btn-outline text-medium " ng-click="applyFilter()">Apply</button>
                   </div>
                 </form>
               </div>
@@ -332,8 +214,8 @@
           <div class="product-holder ">
             <div class="sort-product pd10 clearfix ">
               <img src="img/sort.png " alt=" " class="inline-block mr5 img-responsive ">
-              <span class="text-uppercase pointer " ng-click="showShortlist=( showShortlist==true)? false:true; ">sort</span>
-              <div class="sort-filter-dropdown " ng-show="showShortlist ">
+              <span class="text-uppercase pointer " ng-click="showShortlist=(showShortlist==true)? false:true; ">sort</span>
+              <div class="sort-filter-dropdown " ng-show="showShortlist">
                 <ul>
                   <li><a href=" ">Popularity</a></li>
                   <li><a href=" ">Price : High - Low</a></li>

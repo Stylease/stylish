@@ -1097,6 +1097,18 @@ TemplateService.removeLoader();
                 }), 1);
             }
         };
+        $scope.showfilter=false;
+        $scope.showsort=false;
+        $scope.doworkFilter=function(){
+          $scope.showfilter=true;
+          $scope.showsort=false;
+        }
+        $scope.doworkSort=function(){
+          $scope.showfilter=false;
+          $scope.showsort=true;
+        }
+        $scope.doworkFilter();
+        $scope.doworkSort();
 
         function getWishlist() {
             NavigationService.getWishlistUser(function(data) {
