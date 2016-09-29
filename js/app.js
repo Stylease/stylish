@@ -252,6 +252,18 @@ firstapp.directive('aplhaOnly', function() {
         }
     };
 });
+firstapp.filter('shorten', function() {
+    return function(value, limit) {
+        if (value)
+            if (value.length < limit) {
+                return value;
+            } else {
+                return value.slice(0, limit - 2) + "..";
+
+            }
+
+    }
+});
 firstapp.directive('onlyDigits', function() {
     return {
         require: 'ngModel',
