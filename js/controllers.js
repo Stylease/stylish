@@ -10,7 +10,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Home");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-            // TemplateService.removeLoaderOn(3);
+        // TemplateService.removeLoaderOn(3);
         console.log($scope.navigation);
         $scope.footerColor = "home-footer";
         $scope.subcategory = [];
@@ -51,7 +51,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log($scope.subcategory);
 
         }, function(err) {
-TemplateService.removeLoader();
+            TemplateService.removeLoader();
         });
 
         NavigationService.getTestimonial(function(data) {
@@ -80,27 +80,27 @@ TemplateService.removeLoader();
         $scope.navigation = NavigationService.getnav();
 
         $scope.download = [{
-           name: "my profile"
+            name: "my profile"
 
-       }, {
-           name: "my orders"
+        }, {
+            name: "my orders"
 
-       },{
-           name: "my wishlist"
+        }, {
+            name: "my wishlist"
 
-       },{
-           name: "saved addresses "
+        }, {
+            name: "saved addresses "
 
-       },{
-           name: "bank a/c details"
+        }, {
+            name: "bank a/c details"
 
-       },{
-           name: "change password"
+        }, {
+            name: "change password"
 
-       },{
-           name: "logout"
+        }, {
+            name: "logout"
 
-       }];
+        }];
 
         $scope.set = {};
         $scope.getProfile = function() {
@@ -556,11 +556,11 @@ TemplateService.removeLoader();
 
         };
         $scope.getProfile();
-        $scope.data={};
+        $scope.data = {};
         $scope.saveProfile = function(data) {
-          console.log("data",data);
-            if (Object.keys($scope.data).length != 0&& data.isShipping) {
-                console.log("data",data);
+            console.log("data", data);
+            if (Object.keys($scope.data).length != 0 && data.isShipping) {
+                console.log("data", data);
                 data.shippingTitle = data.billingTitle;
                 data.shippingAddressFlat = data.billingAddressFlat;
                 data.shippingAddressStreet = data.billingAddressStreet;
@@ -667,8 +667,8 @@ TemplateService.removeLoader();
             });
         };
 
-        $scope.signUp = function(){
-          globalfunction.emailSignup();
+        $scope.signUp = function() {
+            globalfunction.emailSignup();
         }
     })
     .controller('CheckoutLoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
@@ -1085,7 +1085,22 @@ TemplateService.removeLoader();
         };
         $scope.size();
 
-        $scope.pushSubCategory = function(flag, id) {
+        $scope.checkall = function(cat) {
+            var abc = _.filter($scope.subcategory, function(key) {
+                return key.category.name == cat;
+            });
+            _.each(abc,function (key) {
+              // body...
+              if($scope.checkIt[key.name]){
+                
+              }else{
+                $scope.pushSubCategory(true,key._id,key.name);
+              }
+            })
+        };
+        $scope.pushSubCategory = function(flag, id,subcat) {
+          $scope.checkIt[subcat]=flag;
+            console.log("flag", flag, id);
             if (flag) {
                 $scope.filter.subcategory.push(id);
             } else {

@@ -20,7 +20,7 @@
                       <li ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                         <div class="container no-padd">
                           <h5>{{cat}}</h5>
-                          
+
                           <div class="f-lef" style="width:140px;" ng-repeat="subcat in value">
                             <div class="magic-form ">
                               <div class="magic-resize">
@@ -153,8 +153,12 @@
                             <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open1, 'fa-angle-down': !status.open1} "></i><span class="block ">{{cat}}</span>
                           </uib-accordion-heading>
                           <div class="magic-form ">
+                            <div class="magic-resize">
+                              <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[cat]" ng-change="checkall(cat)" id="{{cat}}">
+                              <label class="detail-heading" for="{{cat}}">All {{cat}}</label>
+                            </div>
                             <div class="magic-resize" ng-repeat="subcat in value">
-                              <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id)" id="{{subcat.name}}">
+                              <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id,subcat.name)" id="{{subcat.name}}">
                               <label class="detail-heading" for="{{subcat.name}}">{{subcat.name}}</label>
                             </div>
                           </div>
