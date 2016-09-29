@@ -69,6 +69,14 @@ TemplateService.removeLoader();
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
+        $scope.download = [{
+           name: "Download - PRECIOUS METAL COMPOUND"
+
+       }, {
+           name: "Download - PRECIOUS METAL COMPOUND"
+
+       }];
+
         $scope.set = {};
         $scope.getProfile = function() {
             NavigationService.getProfile(function(data) {
