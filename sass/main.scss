@@ -1307,6 +1307,14 @@ input.form-control {
     border: 1px solid $brand-dark-pink;
     background-color: $brand-dark-pink;
   }
+  ul{
+    li{
+      border: none;
+    }
+    li+li{
+      padding-left: 10px;
+    }
+  }
 }
 .product-holder {
   border-left: 1px solid $brand-pink;

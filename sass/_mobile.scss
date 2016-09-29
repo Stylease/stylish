@@ -170,6 +170,10 @@
         a{
           font-size: 18px;
           color: #fff;
+          text-transform: uppercase;
+          font-weight: 500;
+          background: #c9624d;
+          padding: 8px;
         }
       }
       .flex-control-nav{
@@ -690,6 +694,11 @@
 
 
 @media (min-width: 320px) {
+
+  .calen-align{
+    float: none;
+    margin: 0;
+  }
 
   .product-detail{
     h4{
