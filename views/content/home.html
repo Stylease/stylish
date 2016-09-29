@@ -1,10 +1,10 @@
-<div class="mobile-slider relate visible-xs">
-  <flex-slider ng-if="mySlides.length>0" flex-slide="s in mySlides track by $index" prev-text="" next-text="" direction-nav="false">
-    <li ng-if="s.mobileimage !==''">
-      <img ng-src="{{s.mobileimage|serverimage}}" class="img-responsive">
-    </li>
-  </flex-slider>
-  <!-- <div class="talk-us pointer">
+<!-- <div class="mobile-slider relate visible-xs"> -->
+<flex-slider ng-if="mySlides.length>0" flex-slide="s in mySlides track by $index" prev-text="" next-text="" direction-nav="false">
+  <li ng-if="s.mobileimage !==''">
+    <img ng-src="{{s.mobileimage|serverimage}}" class="img-responsive">
+  </li>
+</flex-slider>
+<!-- <div class="talk-us pointer">
     <span class="text-uppercase">talk to us</span>
   </div> -->
 </div>
