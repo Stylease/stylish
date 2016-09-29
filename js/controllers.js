@@ -80,10 +80,25 @@ TemplateService.removeLoader();
         $scope.navigation = NavigationService.getnav();
 
         $scope.download = [{
-           name: "Download - PRECIOUS METAL COMPOUND"
+           name: "my profile"
 
        }, {
-           name: "Download - PRECIOUS METAL COMPOUND"
+           name: "my orders"
+
+       },{
+           name: "my wishlist"
+
+       },{
+           name: "saved addresses "
+
+       },{
+           name: "bank a/c details"
+
+       },{
+           name: "change password"
+
+       },{
+           name: "logout"
 
        }];
 
@@ -1097,18 +1112,6 @@ TemplateService.removeLoader();
                 }), 1);
             }
         };
-        $scope.showfilter=false;
-        $scope.showsort=false;
-        $scope.doworkFilter=function(){
-          $scope.showfilter=true;
-          $scope.showsort=false;
-        }
-        $scope.doworkSort=function(){
-          $scope.showfilter=false;
-          $scope.showsort=true;
-        }
-        $scope.doworkFilter();
-        $scope.doworkSort();
 
         function getWishlist() {
             NavigationService.getWishlistUser(function(data) {
