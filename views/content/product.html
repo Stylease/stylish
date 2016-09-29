@@ -277,13 +277,8 @@
                         <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open1, 'fa-angle-down': !status.open1} "></i><span class="block ">{{cat}}</span>
                       </uib-accordion-heading>
                       <div class="occasion ">
-                        <div class="custom-checkbox ">
-                          <!-- <input type="checkbox " name="{{cat}} " ng-model="checkIt[cat] "  id="{{cat}} "> -->
-                          <input value="{{cat}} " type="checkbox " ng-model="selectedAll.expertise " ng-click="checkAll() " />
-                          <label for="{{cat}} "><span></span> All {{cat}}</label>
-                        </div>
-                        <div class="custom-checkbox " ng-repeat="subcat in value ">
-                          <input type="checkbox " name="{{cat}} " ng-model="checkIt[subcat.name] " ng-change="pushSubCategory(checkIt[subcat.name],subcat._id) " id="{{subcat.name}} ">
+                        <div class="custom-checkbox" ng-repeat="subcat in value">
+                          <input type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name] " ng-change="pushSubCategory(checkIt[subcat.name],subcat._id) " id="{{subcat.name}} ">
                           <label for="{{subcat.name}} "><span></span> {{subcat.name}}</label>
                         </div>
                       </div>
@@ -298,11 +293,11 @@
                     </uib-accordion-group>
                     <uib-accordion-group is-open="status.open5 ">
                       <uib-accordion-heading>
-                        <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open5, 'fa-angle-down': !status.open5} "></i> <span class="block ">Size</span>
+                        <i class="pull-right fa icon " ng-class="{'fa-angle-up': status.open5, 'fa-angle-down': !status.open5}"></i> <span class="block ">Size</span>
                       </uib-accordion-heading>
-                      <div class="product-size " ng-init="size='' ">
-                        <ul class="list-inline ">
-                          <li ng-repeat="size in sizes track by $index "><a href=" " ng-class="{ 'select-size': filter.size[0]==size._id } " ng-click="pushSize(size._id) ">{{size.name}}</a></li>
+                      <div class="product-size" ng-init="size=''">
+                        <ul class="list-inline">
+                          <li ng-repeat="size in sizes track by $index "><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click="pushSize(size._id)">{{size.name}}</a></li>
                         </ul>
                       </div>
                     </uib-accordion-group>
@@ -311,16 +306,16 @@
                         <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open6, 'fa-angle-down': !status.open6} "></i> <span class="block ">Colour</span>
                       </uib-accordion-heading>
                       <div class="color ">
-                        <!-- <div class="magic-form ">
-                          <div class="magic-resize ">
-                            <input class="magic-checkbox " type="checkbox " name="layout " id="add-one " value="option1 ">
-                            <label class="detail-heading " for="add-one ">More</label>
+                        <div class="magic-form ">
+                          <div class="magic-resize" ng-repeat="col in color">
+                            <input class="magic-checkbox" type="checkbox" name="layout" id="{{col.name}}">
+                            <label class="detail-heading" for="{{col.name}}">{{col.name}}</label>
                           </div>
-                        </div> -->
-                        <div class="custom-checkbox " ng-repeat="col in color ">
+                        </div>
+                        <!-- <div class="custom-checkbox " ng-repeat="col in color ">
                           <input type="checkbox " name="{{col.name}} " ng-model="checkIt[col.name] " ng-change="pushColor(checkIt[col.name],col._id) " id="{{col.name}} ">
                           <label for="{{col.name}} "><span></span> {{col.name}}</label>
-                        </div>
+                        </div> -->
                       </div>
                     </uib-accordion-group>
                   </uib-accordion>

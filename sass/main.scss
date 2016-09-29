@@ -2219,8 +2219,8 @@ ul.mn-list {
     }
     .magic-checkbox:checked + label {
       &:before {
-        border: $panel-border;
-        background: $panel-border;
+        border: #e87b65;
+        background: #e87b65;
       }
     }
     .magic-checkbox:checked[disabled] + label {
