@@ -3,13 +3,16 @@
 </div>
 <div class="profile">
 
+      <h3 class="dark-blue text-uppercase text-center">my account</h3>
 
-  <flex-slider flex-slide="s in download track by $index" prev-text="" next-text="" width="280px">
+      <div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
+        <flex-slider flex-slide="s in download track by $index"  animation="slide" item-width="250" item-margin="10" animationloop="true" move="2">
            <li auto-heightfixed>
-<a href="">{{s.name}}</a>
+              <a href="">{{s.name}}</a>
                <!-- <img ng-src="{{s}}" class="img-responsive" alt="Hindustan Platinum" auto-heightfixed> -->
            </li>
-       </flex-slider>
+        </flex-slider>
+      </div>
 
   <div class="container">
     <h3 class="dark-blue text-uppercase">my account</h3>
