@@ -160,7 +160,7 @@
 @media (max-width: $screen-xs-max) {
 
 
-  .flexslider-container{
+  .bg-color{
     padding: 11px;
     background: #e87b65;
     min-height: 51px;
@@ -332,7 +332,7 @@
 }
   }
   .product-detail h4 {
-    min-height: 35px;
+    min-height: 67px;
     margin: 15px 0 10px;
   }
   .search-product input { width: 89%; }
@@ -690,6 +690,16 @@
 
 
 @media (min-width: 320px) {
+
+  .product-detail{
+    h4{
+      min-height: 85px;
+      font-size: 15px;
+    }
+    p{
+      font-size: 14px;
+    }
+  }
 
   .mt100 {
       margin: 0;
