@@ -20,6 +20,7 @@
                       <li ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                         <div class="container no-padd">
                           <h5>{{cat}}</h5>
+                          
                           <div class="f-lef" style="width:140px;" ng-repeat="subcat in value">
                             <div class="magic-form ">
                               <div class="magic-resize">
@@ -232,7 +233,7 @@
                 </div>
 
 
-          
+
 
                 <!-- </div> -->
                 <div infinite-scroll='loadMore()' infinite-scroll-disabled="shouldscroll ">

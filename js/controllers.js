@@ -643,6 +643,8 @@ TemplateService.removeLoader();
         $scope.goToAddress = function() {
             $state.go('address');
         }
+
+
         $scope.facebookLogin = function() {
             ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
             stopinterval = $interval(callAtIntervaltwitter, 2000);
@@ -665,6 +667,9 @@ TemplateService.removeLoader();
             });
         };
 
+        $scope.signUp = function(){
+          globalfunction.emailSignup();
+        }
     })
     .controller('CheckoutLoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
@@ -1665,6 +1670,9 @@ TemplateService.removeLoader();
     globalfunction.signUp = function() {
         $scope.signUp();
     }
+    globalfunction.emailSignup = function() {
+        $scope.emailSignup();
+    }
     globalfunction.logIn = function() {
         $scope.logIn();
     }
@@ -1687,6 +1695,7 @@ TemplateService.removeLoader();
             scope: $scope
         });
     };
+
     $scope.emailSignup = function() {
         $scope.loginmsg.msg = "";
         $scope.closeAllModals();
