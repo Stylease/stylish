@@ -10,7 +10,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Home");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-            TemplateService.removeLoaderOn(3);
+            // TemplateService.removeLoaderOn(3);
         console.log($scope.navigation);
         $scope.footerColor = "home-footer";
         $scope.subcategory = [];
@@ -42,7 +42,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
 
             });
-TemplateService.removeLoader();
+
             if (temp.length !== 0) {
                 temp = _.chunk(temp, 2);
                 $scope.subcategory.push(temp);
@@ -51,7 +51,7 @@ TemplateService.removeLoader();
             console.log($scope.subcategory);
 
         }, function(err) {
-
+TemplateService.removeLoader();
         });
 
         NavigationService.getTestimonial(function(data) {
@@ -60,6 +60,16 @@ TemplateService.removeLoader();
             }
             TemplateService.removeLoader();
         });
+    })
+    .controller('AboutUsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+
+        $scope.template = TemplateService.changecontent("about-us");
+        $scope.menutitle = NavigationService.makeactive("About Us");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.oneAtATime = true;
+
     })
     .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -188,6 +198,16 @@ TemplateService.removeLoader();
 
         $scope.template = TemplateService.changecontent("cancelation-policy");
         $scope.menutitle = NavigationService.makeactive("Cancelation Policy");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.oneAtATime = true;
+
+    })
+    .controller('ReturnPolicyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+
+        $scope.template = TemplateService.changecontent("return-policy");
+        $scope.menutitle = NavigationService.makeactive("Return Policy");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
@@ -1006,7 +1026,6 @@ TemplateService.removeLoader();
         $scope.menutitle = NavigationService.makeactive("Product");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        TemplateService.removeLoaderOn(6);
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
         $scope.checkIt = {};
@@ -1031,11 +1050,9 @@ TemplateService.removeLoader();
                     $scope.filter.pagenumber = 1;
                 }
                 $scope.getMyProducts($scope.filter);
-                TemplateService.removeLoader();
             }, function(err) {
 
             });
-            //
         };
 
         $scope.getSubcategory();
@@ -1045,7 +1062,6 @@ TemplateService.removeLoader();
                     $scope.sizes = data.data
                 }
             });
-            TemplateService.removeLoader();
         };
         $scope.size();
 
@@ -1090,9 +1106,8 @@ TemplateService.removeLoader();
                 } else {
                     $scope.wishlist = "";
                 }
-  TemplateService.removeLoader();
-            });
 
+            });
         }
         getWishlist();
         $scope.isInWishlist = function(id) {
@@ -1122,7 +1137,6 @@ TemplateService.removeLoader();
                                         getWishlist();
                                     }
                                 });
-
                             };
                             $scope.openRemoveModal = function(product) {
                                 $scope.variables.removeitem = product;
@@ -1146,12 +1160,10 @@ TemplateService.removeLoader();
                     } else {
                         globalfunction.signUp();
                     }
-
                 },
                 function(err) {
                     console.log(err);
                 });
-
         };
 
         $scope.oneAtATime = true;
@@ -1192,19 +1204,16 @@ TemplateService.removeLoader();
                             $scope.letLoad = false;
                         }
                     }
-TemplateService.removeLoader();
                 }, function(err) {
 
                 });
             }
-            // TemplateService.removeLoader();
         };
         $scope.getColor = function() {
             NavigationService.getColor(function(data) {
                 console.log("colors", data.data);
                 $scope.color = data.data;
             }, function(err) {});
-            TemplateService.removeLoader();
         };
         $scope.getColor();
         $scope.applyFilter = function() {
@@ -1240,7 +1249,6 @@ TemplateService.removeLoader();
             if ($scope.letLoad) {
                 $scope.getMyProducts($scope.filter);
             }
-            TemplateService.removeLoader();
         };
 
 

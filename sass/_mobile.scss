@@ -167,6 +167,9 @@
 //     width: 440px;
 //     text-align: center;
 // }
+.mt100 {
+    margin: 0;
+}
 
 .modal-dialog {
   position: absolute;
@@ -364,6 +367,10 @@
 
 
 @media (max-width: 480px) {
+
+  .mt100 {
+      margin: 0;
+  }
 
   .modal-dialog {
     position: absolute;
@@ -643,7 +650,9 @@
 
 @media (min-width: 320px) {
 
-
+  .mt100 {
+      margin: 0;
+  }
   // .mwidth {
   //   position: absolute;
   //   left: 47%;

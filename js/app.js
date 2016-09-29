@@ -15,6 +15,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             templateUrl: "views/template.html",
             controller: 'HomeCtrl'
         })
+        .state('about-us', {
+            url: "/about-us",
+            templateUrl: "views/template.html",
+            controller: 'AboutUsCtrl'
+        })
         .state('profile', {
             url: "/profile",
             templateUrl: "views/template.html",
@@ -74,6 +79,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             url: "/terms-condition",
             templateUrl: "views/template.html",
             controller: 'TermsConditionCtrl'
+        })
+        .state('return-policy', {
+            url: "/return-policy",
+            templateUrl: "views/template.html",
+            controller: 'ReturnPolicyCtrl'
         })
         .state('cancelation-policy', {
             url: "/cancelation-policy",
@@ -269,16 +279,4 @@ firstapp.directive('onlyDigits', function() {
             ctrl.$parsers.push(inputValue);
         }
     };
-});
-firstapp.filter('shorten', function() {
-    return function(value, limit) {
-        if (value)
-            if (value.length < limit) {
-                return value;
-            } else {
-                return value.slice(0, limit - 2) + "..";
-
-            }
-
-    }
 });

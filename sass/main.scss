@@ -1941,7 +1941,7 @@ flex-slider{
 }
 .data-all {
   color: #2c2d3d;
-  font-size: 16px;
+  font-size: 14px;
   /* Approximation due to font substitution */
   font-weight: 400;
   text-align: justify;
@@ -1952,7 +1952,7 @@ flex-slider{
     li {
       p {
         color: #2c2d3d;
-        font-size: 16px;
+        font-size: 14px;
         /* Approximation due to font substitution */
         font-weight: 400;
         text-align: justify;
@@ -1972,6 +1972,10 @@ flex-slider{
   h1 {
     border-bottom: 1px solid #f08168;
     display: inline-block;
+    font-size: 25px;
+  }
+  p{
+    font-size: 14px;
   }
 }
 .pl25 {
@@ -2157,7 +2161,17 @@ ul.mn-list {
   float: right;
   margin: -12px 0 0;
 }
-
+.cont-form{
+  .btn-sub{
+    margin-top: 25px;
+    button{
+      padding: 6px 30px;
+      font-size: 14px;
+      background: none;
+      border: 1px solid #2c2d3d;
+    }
+  }
+}
 
 
 
