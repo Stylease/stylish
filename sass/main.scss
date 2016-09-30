@@ -78,6 +78,7 @@ img.doneLoading {
 nav li:hover .dropdown-menu {
   display: block;
 }
+
 a {
   cursor: pointer;
   @include transition(all ease 300ms);
@@ -2186,7 +2187,9 @@ ul.mn-list {
 .inline-flex{
   display: inline-flex;
 }
-
+.act-fil-sor{
+color:#e87b65;
+}
 
 
 
