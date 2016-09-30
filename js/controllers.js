@@ -1085,21 +1085,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.size();
 
-        $scope.checkall = function(cat) {
+        $scope.checkall = function(cat, flag) {
+            console.log("catt", cat, flag);
             var abc = _.filter($scope.subcategory, function(key) {
                 return key.category.name == cat;
             });
-            _.each(abc,function (key) {
-              // body...
-              if($scope.checkIt[key.name]){
-                
-              }else{
-                $scope.pushSubCategory(true,key._id,key.name);
-              }
-            })
+            console.log("asa",abc);
+            if (flag) {
+                _.each(abc, function(key) {
+                    if ($scope.checkIt[key.name]) {
+
+                    } else {
+                        $scope.pushSubCategory(true, key._id, key.name);
+                    }
+                })
+            } else {
+                _.each(abc, function(key) {
+                  console.log("checkit",$scope.checkIt[key.name]);
+                    $scope.pushSubCategory(false, key._id, key.name);
+                })
+            }
+
         };
-        $scope.pushSubCategory = function(flag, id,subcat) {
-          $scope.checkIt[subcat]=flag;
+        $scope.pushSubCategory = function(flag, id, subcat) {
+            $scope.checkIt[subcat] = flag;
             console.log("flag", flag, id);
             if (flag) {
                 $scope.filter.subcategory.push(id);
