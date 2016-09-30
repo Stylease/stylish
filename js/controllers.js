@@ -728,7 +728,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         if ($scope.userdata.billingAddress.length > 0) {
                             $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
                         } else {
-                            $scope.userdata.billingAddress = {};
+                            $scope.userdata.billingAddress = $scope.userdata.billingAddress;
                         }
                     }
                     if ($scope.shippingAddress) {
@@ -737,7 +737,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         if ($scope.userdata.shippingAddress.length > 0) {
                             $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
                         } else {
-                            $scope.userdata.shippingAddress = {};
+                            $scope.userdata.shippingAddress = $scope.userdata.shippingAddress;
                         }
                     }
                 } else {
