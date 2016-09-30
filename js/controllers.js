@@ -349,7 +349,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         if ($scope.userdata.billingAddress.length > 0) {
                             $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
                         } else {
-                            $scope.userdata.billingAddress = $scope.userdata.billingAddress;
+                            $scope.userdata.billingAddress = {};
                         }
 
                     }
@@ -359,7 +359,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         if ($scope.userdata.shippingAddress.length > 0) {
                             $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
                         } else {
-                            $scope.userdata.shippingAddress = $scope.userdata.shippingAddress;
+                            $scope.userdata.shippingAddress = {};
                         }
                     }
                     $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
@@ -368,7 +368,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
                     $scope.userdata.billingAddress.billingAddressState = "Maharashtra";
                     $scope.userdata.billingAddress.billingAddressCountry = "India";
-
+                    console.log($scope.userdata);
                 } else {
                     if ($.jStorage.get("userData")) {
                         $scope.userdata = $.jStorage.get("userData");
@@ -728,7 +728,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         if ($scope.userdata.billingAddress.length > 0) {
                             $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
                         } else {
-                            $scope.userdata.billingAddress = $scope.userdata.billingAddress;
+                            $scope.userdata.billingAddress = {};
                         }
                     }
                     if ($scope.shippingAddress) {
@@ -737,7 +737,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         if ($scope.userdata.shippingAddress.length > 0) {
                             $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
                         } else {
-                            $scope.userdata.shippingAddress = $scope.userdata.shippingAddress;
+                            $scope.userdata.shippingAddress = {};
                         }
                     }
                 } else {
@@ -858,7 +858,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.passChanged = false;
         $scope.invalidPass = false;
         $scope.changePassword = function(form) {
-            console.log("  $scope.form ", form);
             NavigationService.changePassword(form, function(data) {
                 console.log("data", data);
                 if (data.value === true) {
