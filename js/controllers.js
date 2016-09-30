@@ -1090,7 +1090,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             var abc = _.filter($scope.subcategory, function(key) {
                 return key.category.name == cat;
             });
-            console.log("asa",abc);
             if (flag) {
                 _.each(abc, function(key) {
                     if ($scope.checkIt[key.name]) {
@@ -1101,7 +1100,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 })
             } else {
                 _.each(abc, function(key) {
-                  console.log("checkit",$scope.checkIt[key.name]);
+                    console.log("checkit", $scope.checkIt[key.name]);
                     $scope.pushSubCategory(false, key._id, key.name);
                 })
             }
