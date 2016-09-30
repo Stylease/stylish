@@ -21,7 +21,7 @@
     padding: 16% 0;
   }
   // productdetail
-  .grid-view .col-xs-6:nth-last-child(-n+2) .view-product { border: none; }
+  .grid-view .col-xs-6:last-child .view-product { border: none; }
 
   // celebrity page
   .celebrity-imgholder {
@@ -693,7 +693,71 @@
 
 
 
-@media (min-width: 320px) {
+@media (max-width: 320px) {
+
+  .user-detail{
+    .cart {
+      span {
+      font-size: 10px;
+      }
+    }
+    img {
+        margin-bottom: 0;
+    }
+    span {
+    font-size: 10px;
+}
+  }
+  .adj-margin{
+      margin-left: -5px;
+      margin-right: -5px;
+  }
+  .adj-padd{
+      padding-left: 5px;
+      padding-right: 5px;
+  }
+  .mb20 {
+    margin-bottom: 10px;
+  }
+  .mt20 {
+      margin-top: 10px;
+  }
+  .tag-name{
+      position: absolute;
+      bottom: 13%;
+      left: 17%;
+      background-image: -webkit-linear-gradient(left, transparent 0, #de785f 26%, #de785f 22%, #de785f 73%, transparent 100%);
+      background-image: linear-gradient(to right, transparent 0, #de785f 26%, #de785f 22%, #de785f 73%, transparent 100%);
+      z-index: 0;
+      width: 66%;
+      height: 23px;
+      text-align: center;
+      label{
+        color: #fff;
+        font-size: 12px;
+        padding: 3px 0 0 0;
+        font-family: 'fine-style';
+        font-weight: 500;
+      }
+  }
+  .tag-name1{
+      position: absolute;
+      bottom: 13%;
+      left: 24%;
+      background-image: -webkit-linear-gradient(left, transparent 0, #de785f 26%, #de785f 22%, #de785f 73%, transparent 100%);
+      background-image: linear-gradient(to right, transparent 0, #de785f 26%, #de785f 22%, #de785f 73%, transparent 100%);
+      z-index: 0;
+      width: 47%;
+      height: 24px;
+      text-align: center;
+      label{
+        color: #fff;
+        font-size: 13px;
+        padding: 3px 0 0 0;
+        font-family: 'fine-style';
+        font-weight: 500;
+      }
+  }
 
   .calen-align{
     float: none;
@@ -765,7 +829,7 @@
 
 
 
-@media (min-width: 768px){
+@media (max-width: 768px){
   .modal-dialog {
       width: 600px;
       margin: 0;

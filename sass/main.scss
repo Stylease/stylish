@@ -1681,8 +1681,8 @@ input.form-control {
     }
     .tooltip.bottom {
       opacity: 1;
-      top: 29% !important;
-      left: 28% !important;
+      top: 18% !important;
+      left: 17% !important;
       position: absolute;
       transform: translate(50%);
       z-index: 0;
@@ -2212,14 +2212,13 @@ ul.mn-list {
       }
       &:after {
         top: 6px;
-        left: -19px;
+        left: -20px;
         box-sizing: border-box;
-        width: 6px;
-        height: 12px;
+        width: 5px;
+        height: 10px;
         transform: rotate(45deg);
         border-width: 2px;
         border-style: solid;
-        // border-color: #069;
         content: '';
         border-top: 0;
         border-left: 0;
@@ -2279,8 +2278,8 @@ ul.mn-list {
         top: 3px;
         left: -26px;
         display: inline-block;
-        width: $magic-checkbox-size;
-        height: $magic-checkbox-size;
+        width: 17px;
+        height: 17px;
         content: '';
         border: 1px solid $magic-border-color;
         background-color: #fff;
