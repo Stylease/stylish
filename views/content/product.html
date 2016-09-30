@@ -12,10 +12,12 @@
           <div class="product-holder">
             <div class="sort-product pd10 clearfix">
               <div class="row">
-                <div class="col-xs-7">
-                  <img src="img/filter.png" alt="" width="20" class="img-responsive inline-block mr5 doneLoading">
-                  <span class="text-uppercase filter-heading inline-block mb10 pointer" ng-click="seeFilter()">filter</span>
-                  <!-- <span class="text-uppercase filter-heading inline-block mb10 pointer" ng-init="showFilterlist==false" ng-click="showFilterlist = (showFilterlist == true || showShortlist == true)? false:true;">filter</span> -->
+                <div class="col-xs-7 inline-flex">
+                  <div>
+                    <img src="img/filter.png" alt="" width="20" class="img-responsive inline-block mr5 doneLoading">
+                    <span class="text-uppercase filter-heading mb10 pointer" ng-click="seeFilter()">filter</span>
+                    <!-- <span class="text-uppercase filter-heading inline-block mb10 pointer" ng-init="showFilterlist==false" ng-click="showFilterlist = (showFilterlist == true || showShortlist == true)? false:true;">filter</span> -->
+                  </div>
                   <div class="sort-filter-dropdown" ng-show="showFilterlist" style="">
                     <ul>
                       <li ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
@@ -86,9 +88,11 @@
 
                     </ul>
                     </div>
-                    <img src="img/sort.png" alt=" " class="inline-block mr5 img-responsive doneLoading">
-                    <span class="text-uppercase pointer" ng-click="seeSort()">sort</span>
-                    <!-- <span class="text-uppercase pointer" ng-init="showShortlist=false" ng-click="showShortlist=(showShortlist==true || showFilterlist==true)? false:true;">sort</span> -->
+                    <div>
+                      <img src="img/sort.png" alt=" " class="inline-block mr5 img-responsive doneLoading">
+                      <span class="text-uppercase pointer" ng-click="seeSort()">sort</span>
+                      <!-- <span class="text-uppercase pointer" ng-init="showShortlist=false" ng-click="showShortlist=(showShortlist==true || showFilterlist==true)? false:true;">sort</span> -->
+                    </div>
                     <div class="sort-filter-dropdown ng-hide" ng-show="showSortlist" style="">
                       <ul>
                         <li><a href=" ">Popularity</a></li>
