@@ -14,7 +14,8 @@
               <div class="row">
                 <div class="col-xs-7">
                   <img src="img/filter.png" alt="" width="20" class="img-responsive inline-block mr5 doneLoading">
-                  <span class="text-uppercase filter-heading inline-block mb10 pointer" ng-click="showFilterlist = (showFilterlist == true)? false:true;">filter</span>
+                  <span class="text-uppercase filter-heading inline-block mb10 pointer" ng-click="seeFilter()">filter</span>
+                  <!-- <span class="text-uppercase filter-heading inline-block mb10 pointer" ng-init="showFilterlist==false" ng-click="showFilterlist = (showFilterlist == true || showShortlist == true)? false:true;">filter</span> -->
                   <div class="sort-filter-dropdown" ng-show="showFilterlist" style="">
                     <ul>
                       <li ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
@@ -52,7 +53,7 @@
                       <li>
                         <div class="container no-padd">
                           <h5>Size</h5>
-                          <div>
+
                             <div class="product-size" ng-init="size=''">
                               <ul class="list-inline">
                                 <li ng-repeat="size in sizes track by $index "><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click="pushSize(size._id)">{{size.name}}</a></li>
@@ -86,8 +87,9 @@
                     </ul>
                     </div>
                     <img src="img/sort.png" alt=" " class="inline-block mr5 img-responsive doneLoading">
-                    <span class="text-uppercase pointer" ng-click="showShortlist=(showShortlist==true)? false:true;">sort</span>
-                    <div class="sort-filter-dropdown ng-hide" ng-show="showShortlist" style="">
+                    <span class="text-uppercase pointer" ng-click="seeSort()">sort</span>
+                    <!-- <span class="text-uppercase pointer" ng-init="showShortlist=false" ng-click="showShortlist=(showShortlist==true || showFilterlist==true)? false:true;">sort</span> -->
+                    <div class="sort-filter-dropdown ng-hide" ng-show="showSortlist" style="">
                       <ul>
                         <li><a href=" ">Popularity</a></li>
                         <li><a href=" ">Price : High - Low</a></li>

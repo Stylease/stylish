@@ -1294,7 +1294,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.getMyProducts($scope.filter);
             }
         };
+        $scope.showFilterlist = false;
+        $scope.showShortlist = false;
+$scope.seeFilter = function(){
+  $scope.showFilterlist = true;
+  $scope.showShortlist = false;
+}
+$scope.seeSort = function(){
+  $scope.showSortlist = true;
+  $scope.showFilterlist = false;
 
+}
 
     })
     .controller('ProductdetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
