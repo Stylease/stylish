@@ -1115,6 +1115,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.filter.subcategory.splice(_.findIndex($scope.filter.subcategory, function(key) {
                     return key == id;
                 }), 1);
+                $scope.checkall(subcat);
             }
         };
         $scope.pushSize = function(id) {
