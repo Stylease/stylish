@@ -154,7 +154,7 @@
                           </uib-accordion-heading>
                           <div class="magic-form ">
                             <div class="magic-resize">
-                              <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[cat]" ng-change="checkall(cat)" id="{{cat}}">
+                              <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[cat]" ng-change="checkall(cat,checkIt[cat])" id="{{cat}}">
                               <label class="detail-heading" for="{{cat}}">All {{cat}}</label>
                             </div>
                             <div class="magic-resize" ng-repeat="subcat in value">
