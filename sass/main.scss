@@ -78,6 +78,7 @@ img.doneLoading {
 nav li:hover .dropdown-menu {
   display: block;
 }
+
 a {
   cursor: pointer;
   @include transition(all ease 300ms);
@@ -2180,7 +2181,15 @@ ul.mn-list {
     }
   }
 }
-
+.main-mid-mh{
+  min-height: 250px;
+}
+.inline-flex{
+  display: inline-flex;
+}
+.act-fil-sor{
+color:#e87b65;
+}
 
 
 
