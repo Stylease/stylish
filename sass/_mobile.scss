@@ -266,7 +266,7 @@
     min-height: 200px;
   }
   .play {
-    font-size: 25px;
+    font-size: 22px;
     img {
       width: 30px;
     }
@@ -378,7 +378,12 @@
 
 
 @media (max-width: 480px) {
-
+  .product-descp .product-price .tooltip.bottom {
+    top: 75% !important;
+  }
+.size-border {
+    margin-left: 20px;
+}
   .calen-align{
     float: none;
     margin: 0;

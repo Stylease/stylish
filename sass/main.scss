@@ -1671,6 +1671,7 @@ input.form-control {
     border-bottom: 1px solid $brand-dark-blue;
     font-size: 16px;
     font-weight: 500;
+    position: relative;
     p {
       margin: 0;
     }
@@ -1679,17 +1680,19 @@ input.form-control {
     }
     .tooltip.bottom {
       opacity: 1;
-      top: 18% !important;
-      left: 17% !important;
-      position: absolute;
-      transform: translate(50%);
-      z-index: 0;
+    top: 70% !important;
+    left: 50% !important;
+    position: absolute;
+    width: 100%;
+      @include transform(translate(-50%));
+      z-index: 1;
     }
     .tooltip.bottom .tooltip-arrow {
       margin-left: -10px;
     }
     .tooltip-inner {
       max-width: 228px!important;
+      margin:0 auto;
       border: 1px solid $brand-dark-blue;
       border-radius: 0;
       background-color: $brand-pink;
