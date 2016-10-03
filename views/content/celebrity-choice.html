@@ -44,15 +44,15 @@
   </div>
   <div class="celebrity-choice-main">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-6" ng-repeat="celebrity in celebrityChoice track by $index">
+      <div class="row" infinite-scroll='loadMore()' infinite-scroll-disabled="shouldscroll">
+        <div class="col-md-6 col-sm-6" ng-repeat="celebrity in celebrityData track by $index">
           <div class="celebrity-holder relate">
             <div class="clearfix">
               <div class="pull-left">
-                <h3 class="shop-name m-clear mb5 padd">{{celebrity.celebrityName}}</h3>
+                <h3 class="shop-name m-clear mb5 padd">{{celebrity.celebrity}}</h3>
               </div>
               <div class="pull-right">
-                <span class="pointer celebrity-heart inline-block" ng-click="addCelebrity(celebrity);"><i class="fa {{celebrity.heart}}"></i></span>
+                <span class="pointer celebrity-heart inline-block" ng-click="addTowishlist(celebrity.product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(celebrity.product._id), 'fa-heart-o':!isInWishlist(celebrity.product._id)} "></i></span>
               </div>
             </div>
             <div class="celebrity-imgholder relate text-center">
@@ -60,21 +60,21 @@
               <div class="choice">
                 <img ng-src="{{celebrity.secImg}}" alt="{{celebrity.celebrityName}}" class="img-responsive">
               </div> -->
-<div class="display-inline">
-  <div class="img-holder">
-    <img src="img/celebrities.jpg" alt="">
+<div class="display-inline" ng-repeat="img in celebrity.images track by $index">
+  <div class="img-holder" >
+    <img ng-src="{{img.image|serverimage}}" alt="">
   </div>
 
 </div>
-<div class="display-inline">
+<!-- <div class="display-inline">
   <div class="img-holder">
     <img src="img/celebrities.jpg" alt="">
   </div>
-</div>
+</div> -->
             <div class="text-center">
-              <span class="designer-name inline-block mb5 text-medium">By : {{celebrity.designerName}}</span>
-              <h3 class="celebrity-price m-clear">Rent : Rs.{{celebrity.price}}/-</h3>
-              <button class="btn btn-outline btn-full text-medium mt20 mb20">View Details</button>
+              <!-- <span class="designer-name inline-block mb5 text-medium">By : {{celebrity.product.name}}</span> -->
+              <h3 class="celebrity-price m-clear">Rent : Rs.{{celebrity.product.fourdayrentalamount}}/-</h3>
+              <button class="btn btn-outline btn-full text-medium mt20 mb20" ui-sref="productdetail({id:celebrity.product._id})">View Details</button>
             </div>
           </div>
         </div>

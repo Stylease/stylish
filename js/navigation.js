@@ -330,6 +330,15 @@ var navigationservice = angular.module('navigationservice', [])
         changePassword: function(data, callback) {
             $http.post(adminURL + "user/changePassword", data).success(callback);
         },
+        getCelebrity: function(request,callback) {
+
+            $http({
+                url: adminURL + 'celebritychoice/getLimited',
+                method: 'POST',
+                withCredentials: true,
+                data: request
+            }).success(callback);
+        },
 
     };
 });

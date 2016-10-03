@@ -689,6 +689,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userLogin = function() {
             $scope.loginmsg.msg = "";
             NavigationService.login($scope.login, function(data) {
+              console.log(data);
                 if (data.value == true) {
                     // $scope.closeAllModals();
                     $scope.isLoggedIn = true;
@@ -1618,6 +1619,106 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             price: "4,500",
             heart: "fa-heart-o"
         }];
+
+console.log('inside');
+        $scope.celebrityFilter = {};
+        $scope.celebrityFilter.pagenumber = 1;
+        $scope.celebrityFilter.pagesize = 2;
+        $scope.celebrityData = [];
+        $scope.pages = [1]
+var lastpage = 1;
+$scope.getYourCelebrity = function(){
+  NavigationService.getCelebrity($scope.celebrityFilter,function(data){
+    // $scope.celebrityData = data.data.data;
+    // console.log($scope.celebrityData);
+
+    lastpage = data.data.totalpages;
+    _.each(data.data.data, function(n) {
+        $scope.celebrityData.push(n);
+    });
+  })
+}
+      $scope.getYourCelebrity();
+        $scope.loadMore = function() {
+            console.log('///////');
+            if (lastpage > $scope.celebrityFilter.pagenumber) {
+                console.log('lastpageeee: ', lastpage)
+                    ++$scope.celebrityFilter.pagenumber;
+                    $scope.pages.push($scope.celebrityFilter.pagenumber);
+                    //         console.log('pages:', $scope.pages);
+                console.log('pages:', $scope.pages);
+                $scope.getYourCelebrity();
+            }
+        };
+        function getWishlist() {
+            NavigationService.getWishlistUser(function(data) {
+                if (data.value == true) {
+                    $scope.wishlist = data.data.data;
+                    console.log("wishlist", $scope.wishlist);
+                } else {
+                    $scope.wishlist = "";
+                }
+
+            });
+        }
+        getWishlist();
+        $scope.isInWishlist = function(id) {
+            var indexF = _.findIndex($scope.wishlist, function(key) {
+                return key.product._id == id;
+            })
+            if (indexF !== -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+$scope.variables = {};
+        $scope.addTowishlist = function(product) {
+          console.log(product);
+            NavigationService.getProfile(function(data) {
+                    if (data.value) {
+                        var indexF = _.findIndex($scope.wishlist, function(key) {
+                            console.log("key", key.product._id, 'id', product);
+                            return key.product._id == product;
+                        });
+                        if (indexF !== -1) {
+                            $scope.remove = function() {
+                                NavigationService.deleteWishlistByProduct($scope.variables.removeitem, function(data) {
+                                    $scope.response = data;
+                                    if ($scope.response.value === true) {
+                                        removemod.close();
+                                        getWishlist();
+                                    }
+                                });
+                            };
+                            $scope.openRemoveModal = function(product) {
+                                $scope.variables.removeitem = product;
+                                console.log($scope.variables);
+                                removemod = $uibModal.open({
+                                    animation: true,
+                                    templateUrl: "views/modal/removeitem.html",
+                                    scope: $scope
+                                });
+                            };
+                            $scope.openRemoveModal(product);
+                        } else {
+                            NavigationService.saveWishlist(product, function(data) {
+                                $uibModal.open({
+                                    animation: true,
+                                    templateUrl: 'views/modal/added-wishlist.html',
+                                });
+                                getWishlist();
+                            });
+                        }
+                    } else {
+                        globalfunction.signUp();
+                    }
+                },
+                function(err) {
+                    console.log(err);
+                });
+        };
+
     })
     .controller('ThankyouCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         //Used to name the .html file
@@ -1831,10 +1932,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         }
         // NORMAL LOGIN
+        $scope.notFound = false;
     $scope.userLogin = function() {
         $scope.loginmsg.msg = "";
 
         NavigationService.login($scope.login, function(data) {
+          if(data.data.comment == 'User Not Found'){
+            $scope.notFound = true;
+            $timeout(function () {
+              $scope.notFound = false;
+            }, 1500);
+          }
+          console.log(data.data.comment);
             if (data.value) {
                 console.log("in if");
                 $scope.closeAllModals();
