@@ -452,9 +452,6 @@ a {
   margin: 0;
   background-color: transparent;
 }
-.modal-dialog {
-  @include transform(translateY(50%)!important);
-}
 /* Start writing sass here */
 // header
 header {
@@ -479,7 +476,7 @@ header {
 }
 .cross-ham {
   span:first-child {
-    @include position(relative,7px null null null);
+    @include position(relative,5px null null null);
     @include transform(rotate(-135deg));
     @include transition(all 300ms linear);
   }
@@ -2108,11 +2105,7 @@ ul.mn-list {
     position: absolute;
     left: 50%;
     top: 50%;
-    -webkit-transform: translateY(50%)!important;
-    -moz-transform: translateY(50%)!important;
-    -ms-transform: translateY(50%)!important;
-    -o-transform: translateY(50%)!important;
-    transform: translate(-50%,-50%)!important;
+    @include transform (translate(-50%,-50%)!important);
 }
 
 .modal-dialog {
@@ -2125,6 +2118,9 @@ ul.mn-list {
   label{
     font-size: 12px!important;
   }
+}
+.magic-form label {
+  font-size: 12px!important;
 }
 .f-righ{
   float: right;
