@@ -1066,6 +1066,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           $scope.filter.subcategory.push(_.find($scope.subcategory, function(key) {
             return key.name == $state.params.name;
           })._id);
+          _.each($scope.subcategory, function(key) {
+            $scope.checkIt[key.name] = false;
+          });
           $scope.checkIt[$state.params.name] = true;
           $scope.filter.pagenumber = 1;
         }
@@ -1113,15 +1116,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     };
     $scope.pushSubCategory = function(flag, id, subcat) {
-      console.log("key", flag, id, subcat);
       $scope.checkIt[subcat] = flag;
-      console.log("flag", flag, id);
+      console.log("flag", flag, id, subcat);
+      var data = _.find($scope.subcategory, function(key) {
+        return key.name == subcat;
+      });
       if (flag) {
         $scope.filter.subcategory.push(id);
+        var notAll = false;
+        _.each($scope.subcategory, function(key) {
+          if (data.category.name === key.category.name && $scope.checkIt[key.name] === false) {
+            //$scope.checkIt[key.] = flag;
+            notAll = true;
+          }
+        });
+        if (notAll) {
+          $scope.checkIt[data.category.name] = false;
+        } else {
+          $scope.checkIt[data.category.name] = true;
+        }
       } else {
         $scope.filter.subcategory.splice(_.findIndex($scope.filter.subcategory, function(key) {
           return key == id;
         }), 1);
+        $scope.checkIt[data.category.name] = false;
+        //$scope.checkall();
       }
     };
     $scope.pushSize = function(id) {
