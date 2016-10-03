@@ -1078,6 +1078,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       });
     };
 
+    $scope.showFilterlist = false;
+    $scope.showSortlist = false;
+    $scope.seeFilter = function() {
+      $scope.showFilterlist = true;
+      $scope.showSortlist = false;
+      console.log($scope.showFilterlist, 1);
+      console.log($scope.showSortlist, 2);
+    };
+    $scope.seeSort = function() {
+      $scope.showSortlist = true;
+      $scope.showFilterlist = false;
+      console.log($scope.showFilterlist, 3);
+      console.log($scope.showSortlist, 4);
+    };
+
     $scope.getSubcategory();
     $scope.size = function() {
       NavigationService.getSize(function(data) {

@@ -24,6 +24,12 @@
                         <div class="container no-padd">
                           <h5>{{cat}}</h5>
 
+                          <div class="magic-form ">
+                            <div class="magic-resize">
+                              <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[cat]" ng-change="checkall(cat,checkIt[cat])" id="{{cat}}">
+                              <label class="detail-heading" for="{{cat}}">All {{cat}}</label>
+                            </div>
+                          </div>
                           <div class="f-lef" style="width:140px;" ng-repeat="subcat in value">
                             <div class="magic-form ">
                               <div class="magic-resize">
