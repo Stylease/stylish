@@ -333,7 +333,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.flags = {};
         $scope.flags.sameshipping = false;
         $scope.userdata = {};
-          $scope.getUserAddress = function() {
+        $scope.getUserAddress = function() {
             NavigationService.getProfile(function(data) {
                 if (data.value) {
                     $scope.userdata = data.data;
@@ -417,11 +417,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.saveUserAddress = function(addressdata) {
             if ($.jStorage.get("userLoggedIn")) {
-              console.log("aaa", addressdata);
                 addressdata.billingAddress.isDefault = true;
                 addressdata.shippingAddress.isDefault = true;
                 NavigationService.userProfileSave(addressdata, function(data) {
-                  console.log(addressdata,'addressdata');
                     console.log("done");
                     if (data.value) {
                         $state.go("checkoutorder");
@@ -434,19 +432,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         };
 
-        // $scope.getProfile = function() {
-        //     NavigationService.getProfile(function(data) {
-        //         if (data.value) {
-        //             $scope.userdata = data.data;
-        //             if (!$scope.userdata.billingAddress) {
-        //                 $scope.userdata.billingAddress = [];
-        //             }
-        //             if (!$scope.userdata.shippingAddress) {
-        //                 $scope.userdata.shippingAddress = [];
-        //             }
-        //         }
-        //     }, function(err) {});
-        // };
+        $scope.getProfile = function() {
+            NavigationService.getProfile(function(data) {
+                if (data.value) {
+                    $scope.userdata = data.data;
+                    if (!$scope.userdata.billingAddress) {
+                        $scope.userdata.billingAddress = [];
+                    }
+                    if (!$scope.userdata.shippingAddress) {
+                        $scope.userdata.shippingAddress = [];
+                    }
+                }
+            }, function(err) {});
+        };
 
     })
     .controller('SaveaddressCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
@@ -1087,29 +1085,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.size();
 
-        $scope.checkall = function(cat, flag) {
-            console.log("catt", cat, flag);
+        $scope.checkall = function(cat) {
             var abc = _.filter($scope.subcategory, function(key) {
                 return key.category.name == cat;
             });
-            if (flag) {
-                _.each(abc, function(key) {
-                    if ($scope.checkIt[key.name]) {
+            _.each(abc,function (key) {
+              // body...
+              if($scope.checkIt[key.name]){
 
-                    } else {
-                        $scope.pushSubCategory(true, key._id, key.name);
-                    }
-                })
-            } else {
-                _.each(abc, function(key) {
-                    console.log("checkit", $scope.checkIt[key.name]);
-                    $scope.pushSubCategory(false, key._id, key.name);
-                })
-            }
-
+              }else{
+                $scope.pushSubCategory(true,key._id,key.name);
+              }
+            })
         };
-        $scope.pushSubCategory = function(flag, id, subcat) {
-            $scope.checkIt[subcat] = flag;
+        $scope.pushSubCategory = function(flag, id,subcat) {
+          $scope.checkIt[subcat]=flag;
             console.log("flag", flag, id);
             if (flag) {
                 $scope.filter.subcategory.push(id);
@@ -1117,7 +1107,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.filter.subcategory.splice(_.findIndex($scope.filter.subcategory, function(key) {
                     return key == id;
                 }), 1);
-                $scope.checkall(subcat);
             }
         };
         $scope.pushSize = function(id) {
@@ -1296,20 +1285,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.getMyProducts($scope.filter);
             }
         };
-        $scope.showFilterlist = false;
-        $scope.showSortlist = false;
-        $scope.takeMyClass = false;
-$scope.seeFilter = function(){
-  $scope.takeMyClass = true;
-  $scope.showFilterlist = true;
-  $scope.showSortlist = false;
-}
-$scope.seeSort = function(){
-  $scope.takeMyClass = true;
-  $scope.showSortlist = true;
-  $scope.showFilterlist = false;
 
-}
 
     })
     .controller('ProductdetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
