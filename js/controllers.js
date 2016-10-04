@@ -1056,6 +1056,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.filter.size = [];
     $scope.filter.pricefrom = 0;
     $scope.filter.priceto = 100000;
+    $scope.filter.sort = '';
     $scope.letLoad = false;
     $scope.shopping = [];
     $scope.variables = {};
@@ -1077,20 +1078,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
       });
     };
+    $scope.productSort = "";
+    $scope.getProductSort = function() {
+      NavigationService.getProductSort(function(data) {
+        $scope.productSort = data.data;
+      }, function(err) {});
+    };
+    $scope.getProductSort();
 
     $scope.showFilterlist = false;
-    $scope.showSortlist = false;
+    $scope.variables.showSortlist = false;
     $scope.seeFilter = function() {
       $scope.showFilterlist = true;
-      $scope.showSortlist = false;
-      console.log($scope.showFilterlist, 1);
-      console.log($scope.showSortlist, 2);
+      $scope.variables.showSortlist = false;
     };
     $scope.seeSort = function() {
-      $scope.showSortlist = true;
+      $scope.variables.showSortlist = !$scope.variables.showSortlist;
       $scope.showFilterlist = false;
-      console.log($scope.showFilterlist, 3);
-      console.log($scope.showSortlist, 4);
     };
 
     $scope.getSubcategory();
@@ -1197,13 +1201,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.isInWishlist = function(id) {
       var indexF = _.findIndex($scope.wishlist, function(key) {
         return key.product._id == id;
-      })
+      });
       if (indexF !== -1) {
         return true;
       } else {
         return false;
       }
-    }
+    };
 
     $scope.addTowishlist = function(product) {
       NavigationService.getProfile(function(data) {
@@ -1279,7 +1283,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             lastpage = data.data.totalpages;
             if (data.data.data.length !== 0) {
               $scope.$broadcast('scroll.infiniteScrollComplete');
-
               ++$scope.filter.pagenumber;
             }
             $scope.letIn = true;
@@ -1300,13 +1303,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       }, function(err) {});
     };
     $scope.getColor();
-    $scope.applyFilter = function() {
-      // $.jStorage.set("filter",)
-      console.log("aaaaa", $scope.filter);
+    $scope.applyFilter = function(sortName) {
       $scope.filter.pagenumber = 1;
+      $scope.filter.sort = sortName;
       $scope.shopping = [];
       $scope.getMyProducts($scope.filter);
-
+      $scope.showFilterlist = false;
     };
     $scope.resetFilter = function() {
       $scope.filter.subcategory = [];
@@ -1315,6 +1317,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.filter.pricefrom = 0;
       $scope.filter.priceto = 100000;
       $scope.filter.pagenumber = 1;
+      $scope.filter.sort = '';
       $scope.shopping = [];
       $scope.checkIt = _.map($scope.checkIt, function(key) {
         return false;
@@ -1328,6 +1331,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.letLoad = false;
       $scope.getMyProducts($scope.filter);
 
+    };
+    $scope.applySort = function (sort) {
+      $scope.variables.showSortlist = false;
+      $scope.applyFilter(sort);
+      $scope.loadMore();
     };
     $scope.loadMore = function() {
       if ($scope.letLoad) {

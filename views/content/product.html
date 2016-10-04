@@ -18,7 +18,7 @@
                     <span class="text-uppercase filter-heading mb10 pointer" ng-click="seeFilter()" ng-class="act-fil-sor:takeMyClass">filter</span>
                     <!-- <span class="text-uppercase filter-heading inline-block mb10 pointer" ng-init="showFilterlist==false" ng-click="showFilterlist = (showFilterlist == true || showShortlist == true)? false:true;">filter</span> -->
                   </div>
-                  <div class="sort-filter-dropdown" ng-show="showFilterlist && !showSortlist" style="">
+                  <div class="sort-filter-dropdown" ng-show="showFilterlist && !variables.showSortlist" style="">
                     <ul>
                       <li ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                         <div class="container no-padd">
@@ -100,12 +100,9 @@
                       <span class="text-uppercase pointer act-fil-sor" ng-click="seeSort()" ng-class="act-fil-sor:takeMyClass">sort</span>
                       <!-- <span class="text-uppercase pointer" ng-init="showShortlist=false" ng-click="showShortlist=(showShortlist==true || showFilterlist==true)? false:true;">sort</span> -->
                     </div>
-                    <div class="sort-filter-dropdown ng-hide" ng-show="showSortlist && !showFilterlist" style="">
+                    <div class="sort-filter-dropdown ng-hide" ng-show="variables.showSortlist && !showFilterlist" style="">
                       <ul>
-                        <li><a href=" ">Popularity</a></li>
-                        <li><a href=" ">Price : High - Low</a></li>
-                        <li><a href=" ">Price : Low - High</a></li>
-                        <li><a href=" ">Recent Addition</a></li>
+                        <li ng-repeat="sort in productSort" ng-click="applySort(sort.name)"><a>{{sort.name}}</a></li>
                       </ul>
                     </div>
                     </div>
@@ -136,7 +133,7 @@
                                 <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
                               </div>
                             </div>
-                            <h4 class="product-name ">{{product.name | shorten:55}}</h4>
+                            <h4 class="product-name ">{{product.name | shorten:50}}</h4>
                             <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
                           </div>
                         </div>
@@ -220,7 +217,7 @@
                       </uib-accordion>
                       <div class="on-edit filter-button ">
                         <button class="btn btn-outline text-medium " ng-click="resetFilter()">Reset</button>
-                        <button class="btn btn-outline text-medium " ng-click="applyFilter()">Apply</button>
+                        <button class="btn btn-outline text-medium " ng-click="applyFilter('')">Apply</button>
                       </div>
                     </form>
                   </div>
@@ -231,13 +228,10 @@
               <div class="product-holder ">
                 <div class="sort-product pd10 clearfix ">
                   <img src="img/sort.png " alt=" " class="inline-block mr5 img-responsive ">
-                  <span class="text-uppercase pointer " ng-click="showShortlist=(showShortlist==true)? false:true; ">sort</span>
-                  <div class="sort-filter-dropdown " ng-show="showShortlist">
+                  <span class="text-uppercase pointer " ng-click="seeSort()">sort</span>
+                  <div class="sort-filter-dropdown " ng-show="variables.showSortlist">
                     <ul>
-                      <li><a href=" ">Popularity</a></li>
-                      <li><a href=" ">Price : High - Low</a></li>
-                      <li><a href=" ">Price : Low - High</a></li>
-                      <li><a href=" ">Recent Addition</a></li>
+                      <li ng-repeat="sort in productSort" ng-click="applySort(sort.name)"><a>{{sort.name}}</a></li>
                     </ul>
                   </div>
                   <div class="product-view pull-right hidden-md hidden-lg " ng-init="viewProduct=true ">

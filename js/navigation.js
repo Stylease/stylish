@@ -132,7 +132,8 @@ var navigationservice = angular.module('navigationservice', [])
                 'size': request.size,
                 'pagenumber': request.pagenumber,
                 'pagesize': 5,
-                'color': request.color
+                'color': request.color,
+                'sort': request.sort
             };
             return $http({
                 url: adminURL + "product/getProductByCat",
@@ -172,6 +173,13 @@ var navigationservice = angular.module('navigationservice', [])
         getSubcategory: function(callback, errCallback) {
             return $http({
                 url: adminURL + "subcategory/getAllCat",
+                method: "POST"
+            }).success(callback).error(errCallback);
+        },
+        getProductSort: function(callback, errCallback) {
+            return $http({
+                // url: adminURL + "productsort/getall",
+                url: "http://192.168.0.110:81/productsort/getall",
                 method: "POST"
             }).success(callback).error(errCallback);
         },
