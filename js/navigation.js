@@ -176,10 +176,17 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback).error(errCallback);
         },
+        forgotPassword: function(data,callback, errCallback) {
+          console.log(":aaaa", data);
+            return $http({
+                url: adminURL + "user/forgotPassword",
+                method: "POST",
+                data: data
+            }).success(callback).error(errCallback);
+        },
         getProductSort: function(callback, errCallback) {
             return $http({
-                // url: adminURL + "productsort/getall",
-                url: "http://192.168.0.110:81/productsort/getall",
+                url: adminURL + "productsort/getall",
                 method: "POST"
             }).success(callback).error(errCallback);
         },

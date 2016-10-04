@@ -100,11 +100,11 @@
                               <input type="radio" name="date" id="eight" required>
                               <label for="eight" ng-click="getRentalAmount(8)" class="text-medium"><span></span> 8 Days</label>
                            </div>
-                           <div class="calendar inline-block calen-align">
+                           <div class="calendar inline-block calen-align" ng-click="open2()">
                               <div class="input-group calen">
                                  <input type="date" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" required/>
                                  <span class="cal">
-                    <button type="button" class="btn btn-default" ng-click="open2()"></button>
+                    <button type="button" class="btn btn-default" ></button>
                   </span>
                               </div>
                            </div>
