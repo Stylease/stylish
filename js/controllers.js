@@ -2020,11 +2020,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
 
-    $scope.forgotPassword = function(){
-      NavigationService.forgotPassword($scope.mail, function(data){
-        console.log("asdas", $scope.mail);
-        if(data){
-          console.log("done");
+    $scope.forgotPassword = function(mail){
+      NavigationService.forgotPassword(mail, function(data){
+        // console.log("asdas", mail);
+        if(data.value == true){
+          modal4.close();
+          $state.go('home');
+          // console.log("done");
+        }else {
+          $scope.err.msg = data.comment;
+          $scope.err.class = "text-danger";
         }
       });
     };

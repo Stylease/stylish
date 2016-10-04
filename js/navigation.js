@@ -176,13 +176,15 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback).error(errCallback);
         },
-        forgotPassword: function(data,callback, errCallback) {
-          console.log(":aaaa", data);
+        forgotPassword: function(data,callback) {
+          var data = {
+              'email': data
+          };
             return $http({
                 url: adminURL + "user/forgotPassword",
                 method: "POST",
                 data: data
-            }).success(callback).error(errCallback);
+            }).success(callback);
         },
         getProductSort: function(callback, errCallback) {
             return $http({
