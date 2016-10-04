@@ -32,6 +32,10 @@ $magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
     }
 }
 @font-face {
+    font-family: "Glyphicons Halflings";
+    src: url('../fonts/glyphicons-halflings-regular.ttf');
+}
+@font-face {
     font-family: "fine-serif";
     src: url('../fonts/fine-serif.ttf');
 }
@@ -39,7 +43,9 @@ $magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
     font-family: "fine-style";
     src: url('../fonts/fine-style.TTF');
 }
-
+.glyphicon {
+font-family: 'Glyphicons Halflings';
+}
 .font-serif {
     font-family: "fine-serif";
 }
