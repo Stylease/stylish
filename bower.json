@@ -1,6 +1,6 @@
 {
-  "name": "Stylease",
-  "description": "AngularFrameworkFrontend",
+  "name": "stylease",
+  "description": "stylease",
   "main": "gulpfile.js",
   "authors": [
     "chintan@wohlig.com"

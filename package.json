@@ -1,7 +1,7 @@
 {
-  "name": "Stylease",
+  "name": "stylease",
   "version": "0.0.1",
-  "description": "AngularFrameworkFrontend",
+  "description": "stylease",
   "main": "gulpfile.js",
   "dependencies": {
     "crypto-js": "^3.1.6",

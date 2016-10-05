@@ -2004,7 +2004,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.notFound = false;
                 }, 1500);
             }
-            console.log(data.data.comment);
+            console.log(data.data);
             if (data.value) {
                 console.log("in if");
                 $scope.closeAllModals();
