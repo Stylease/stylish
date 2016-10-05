@@ -7,13 +7,13 @@
 
       <div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
         <flex-slider flex-slide="s in download track by $index"  class="bg-color" animation="slide" item-width="200" item-margin="10" animationloop="true" move="2">
-           <li auto-heightfixed>
-              <a href="">{{s.name}}</a>
+           {{s}}<li auto-heightfixed>
+              <a ui-sref="{{s.state}}">{{s.name}}</a>
                <!-- <img ng-src="{{s}}" class="img-responsive" alt="Hindustan Platinum" auto-heightfixed> -->
            </li>
         </flex-slider>
       </div>
-
+{{asd}}asd
   <div class="container">
     <h3 class="dark-blue text-uppercase hidden-xs">my account</h3>
     <div class="row">
@@ -44,7 +44,7 @@
               </div>
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="email" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.email" placeholder="Email-id">
+                  <input type="email" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.email" placeholder="Email-id" readonly>
                 </div>
               </div>
             </div>

@@ -10,7 +10,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Home");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        // TemplateService.removeLoaderOn(3);
+        TemplateService.removeLoaderOn(2);
         console.log($scope.navigation);
         $scope.footerColor = "home-footer";
         $scope.subcategory = [];
@@ -51,7 +51,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log($scope.subcategory);
 
         }, function(err) {
-            TemplateService.removeLoader();
+
         });
 
         NavigationService.getTestimonial(function(data) {
@@ -78,24 +78,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Profile");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(1);
 
         $scope.download = [{
-            name: "my profile"
+            name: "my profile",
+            state:"profile()"
 
         }, {
-            name: "my orders"
+            name: "my orders",
+            state:"orders()"
 
         }, {
-            name: "my wishlist"
+            name: "my wishlist",
+            state:"wishlist()"
 
         }, {
-            name: "saved addresses "
+            name: "saved addresses ",
+            state:"saveaddress()"
 
         }, {
-            name: "bank a/c details"
+            name: "bank a/c details",
+            state:"bankdetail()"
 
         }, {
-            name: "change password"
+            name: "change password",
+            state:"changepassword()"
 
         }, {
             name: "logout"
@@ -108,6 +115,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if (data.value) {
                     $scope.userdata = data.data;
                 }
+                TemplateService.removeLoader();
             }, function(err) {
                 console.log(err);
             });
@@ -144,6 +152,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Orders");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(1);
         $scope.oneAtATime = true;
         $scope.letIn = true;
         $scope.orders = [];
@@ -175,6 +184,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             $scope.letLoad = false;
                         }
                     }
+                    TemplateService.removeLoader();
                 }, function(err) {
 
                 });
@@ -255,13 +265,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Orderdetail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(1);
         NavigationService.getOrderDetail($stateParams.id, function(data) {
             console.log("data", data);
             $scope.orderdetail = data.data;
             $scope.cartproduct = data.data.cartproduct;
         })
-
-
+        TemplateService.removeLoader();
     })
     .controller('WishlistCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal) {
         //Used to name the .html file
@@ -270,6 +280,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Wishlist");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(1);
         $scope.variables = {};
 
         function getWishlist() {
@@ -279,7 +290,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 } else {
                     $scope.wishlist = data.data.data;
                 }
-
+                TemplateService.removeLoader();
             });
         }
         getWishlist();
@@ -330,6 +341,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Address");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(1);
         $scope.flags = {};
         $scope.flags.sameshipping = false;
         $scope.userdata = {};
@@ -383,6 +395,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.userdata.billingAddress.billingAddressCountry = "India";
                     }
                 }
+                TemplateService.removeLoader();
             }, function(err) {});
         };
         $scope.getUserAddress();
@@ -443,6 +456,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.userdata.shippingAddress = [];
                     }
                 }
+                // TemplateService.removeLoader();
             }, function(err) {});
         };
 
@@ -454,6 +468,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Saveaddress");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(1);
         $scope.modelDelete = {};
         $scope.remove = function() {
             _.pull($scope.modelDelete.collection, $scope.modelDelete.obj);
@@ -509,6 +524,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.userdata.shippingAddress = [];
                     }
                 }
+                TemplateService.removeLoader();
             }, function(err) {});
         };
         $scope.showEdit = function(data) {
@@ -601,13 +617,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Bankdetail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-
+        TemplateService.removeLoader(1);
         $scope.set = {};
         $scope.getProfile = function() {
             NavigationService.getProfile(function(data) {
                 if (data.value) {
                     $scope.userdata = data.data;
                 }
+                TemplateService.removeLoader();
             }, function(err) {
                 console.log(err);
             });
@@ -646,7 +663,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
 
-        $scope.facebookLogin = function() {
+        $scope.facebookLogin = function() {ProductC
             ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
             stopinterval = $interval(callAtIntervaltwitter, 2000);
             ref.addEventListener('exit', function(event) {
@@ -712,6 +729,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Checkoutorder");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(3);
         $scope.getProfile = function() {
             NavigationService.getProfile(function(data) {
                 if (data.value) {
@@ -744,6 +762,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log("inn off");
                     $scope.userdata = $.jStorage.get("userData");
                 }
+                TemplateService.removeLoader();
             }, function(err) {});
         };
         $scope.getProfile();
@@ -771,6 +790,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.cartProduct = [];
                     $scope.cartDetails = 0;
                 }
+                TemplateService.removeLoader();
             }, function(err) {
                 console.log(err);
             });
@@ -838,6 +858,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             }
                         });
                     }
+                    TemplateService.removeLoader();
                 },
                 function(err) {
                     console.log(err);
@@ -898,6 +919,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Cart");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(1);
         $scope.variables = {};
         $scope.totalrentalamount = 0;
         $scope.totalsecuritydeposit = 0;
@@ -962,6 +984,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     });
                     console.log("editable", $scope.editable);
                 }
+
             }, function(err) {
                 console.log(err);
             });
@@ -1029,6 +1052,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.cartProduct = [];
                     $scope.cartDetails = 0;
                 }
+                TemplateService.removeLoader();
                 console.log("get cart", $scope.cartProduct.length);
                 if ($scope.cartProduct.length === 0) {
                     $.jStorage.set("cartDate", "");
@@ -1047,7 +1071,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Product");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        TemplateService.removeLoaderOn(3);
+        TemplateService.removeLoaderOn(6);
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
         $scope.checkIt = {};
@@ -1107,6 +1131,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if (data) {
                     $scope.sizes = data.data;
                 }
+                TemplateService.removeLoader();
             });
         };
         $scope.size();
@@ -1197,7 +1222,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 } else {
                     $scope.wishlist = "";
                 }
-TemplateService.removeLoader();
+                TemplateService.removeLoader();
             });
         }
         getWishlist();
@@ -1294,6 +1319,7 @@ TemplateService.removeLoader();
                             $scope.letLoad = false;
                         }
                     }
+                    TemplateService.removeLoader();
                 }, function(err) {
 
                 });
@@ -1303,6 +1329,7 @@ TemplateService.removeLoader();
             NavigationService.getColor(function(data) {
                 console.log("colors", data.data);
                 $scope.color = data.data;
+                TemplateService.removeLoader();
             }, function(err) {});
         };
         $scope.getColor();
@@ -1475,7 +1502,7 @@ TemplateService.removeLoader();
                             scope: $scope
                         });
                     } else {}
-                    TemplateService.removeLoader();
+                    //TemplateService.removeLoader();
                 }, function(err) {
                     console.log(err);
                 });
@@ -1505,7 +1532,7 @@ TemplateService.removeLoader();
                 } else {
                     $scope.wishlist = "";
                 }
-TemplateService.removeLoader();
+                TemplateService.removeLoader();
             });
         }
         getWishlist();
@@ -1625,8 +1652,8 @@ TemplateService.removeLoader();
         $scope.menutitle = NavigationService.makeactive("CelebrityChoice");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(2);
         $scope.oneAtATime = true;
-
 
         $scope.addCelebrity = function(celebrity) {
             if (celebrity.heart == "fa-heart") {
@@ -1692,13 +1719,19 @@ TemplateService.removeLoader();
         var lastpage = 1;
         $scope.getYourCelebrity = function() {
             NavigationService.getCelebrity($scope.celebrityFilter, function(data) {
+              console.log("aaa",data);
                 // $scope.celebrityData = data.data.data;
                 // console.log($scope.celebrityData);
-
-                lastpage = data.data.totalpages;
+              if(data.value==true){
+                $scope.lastpage = data.data.totalpages;
                 _.each(data.data.data, function(n) {
                     $scope.celebrityData.push(n);
                 });
+              }
+              else {
+                $scope.celebrityData = "";
+            }
+            TemplateService.removeLoader();
             })
         }
         $scope.getYourCelebrity();
@@ -1722,7 +1755,7 @@ TemplateService.removeLoader();
                 } else {
                     $scope.wishlist = "";
                 }
-
+                TemplateService.removeLoader();
             });
         }
         getWishlist();
@@ -1792,7 +1825,7 @@ TemplateService.removeLoader();
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
-        TemplateService.footer = "";
+        // TemplateService.footer = "";
         $scope.cartCheckout = $.jStorage.get("cartCheckout");
         NavigationService.getOrderById($stateParams.orderid, function(data) {
             $scope.orderDetails = data.data;
@@ -1811,6 +1844,7 @@ TemplateService.removeLoader();
 
 .controller('headerctrl', function($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state) {
     $scope.template = TemplateService;
+    //TemplateService.removeLoaderOn(1);
     $scope.template.backClass = "";
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         $(window).scrollTop(0);
@@ -1923,6 +1957,7 @@ TemplateService.removeLoader();
                 } else {
                     $scope.isLoggedIn = false;
                 }
+                // TemplateService.removeLoader();
             }, function(err) {
                 console.log(err);
             });
