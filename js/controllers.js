@@ -1,8 +1,8 @@
 var globalfunction = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter', 'angular-loading-bar'])
-    .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
-        cfpLoadingBarProvider.includeSpinner = false;
-    }])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter'])
+    // .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    //     cfpLoadingBarProvider.includeSpinner = false;
+    // }])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
@@ -1047,6 +1047,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Product");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(3);
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
         $scope.checkIt = {};
@@ -1075,6 +1076,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.filter.pagenumber = 1;
                 }
                 $scope.getMyProducts($scope.filter);
+                TemplateService.removeLoader();
             }, function(err) {
 
             });
@@ -1083,6 +1085,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.getProductSort = function() {
             NavigationService.getProductSort(function(data) {
                 $scope.productSort = data.data;
+                TemplateService.removeLoader();
             }, function(err) {});
         };
         $scope.getProductSort();
@@ -1194,7 +1197,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 } else {
                     $scope.wishlist = "";
                 }
-
+TemplateService.removeLoader();
             });
         }
         getWishlist();
@@ -1351,6 +1354,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Productdetail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(2);
         $scope.oneAtATime = true;
         $scope.product = {};
         $scope.mainImage = "";
@@ -1395,6 +1399,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
             $scope.mainImage = data.data.product.images[0].image;
             $scope.getRentalAmount(4);
+            TemplateService.removeLoader();
         }, function(err) {
 
         });
@@ -1470,6 +1475,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             scope: $scope
                         });
                     } else {}
+                    TemplateService.removeLoader();
                 }, function(err) {
                     console.log(err);
                 });
@@ -1499,7 +1505,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 } else {
                     $scope.wishlist = "";
                 }
-
+TemplateService.removeLoader();
             });
         }
         getWishlist();
@@ -1960,13 +1966,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // INTEGRATION CODE
     $scope.loginmsg = {};
     $scope.login = {};
-    // if (NavigationService.getStoredUser() == null) {
-    //     $scope.isLoggedIn = false;
-    //
-    // } else {
-    //     $scope.isLoggedIn = true;
-    //
-    // }
+
     $scope.signup = {};
     // SIGNUP
 
@@ -1998,13 +1998,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.loginmsg.msg = "";
 
         NavigationService.login($scope.login, function(data) {
-            if (data.data.comment == 'User Not Found') {
-                $scope.notFound = true;
-                $timeout(function() {
-                    $scope.notFound = false;
-                }, 1500);
-            }
-            console.log(data.data);
             if (data.value) {
                 console.log("in if");
                 $scope.closeAllModals();
@@ -2012,7 +2005,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 NavigationService.saveUser(data.data);
                 $state.reload();
             } else {
-                $scope.loginmsg.msg = "Try again Later";
+                console.log(data.data.comment);
+                $scope.loginmsg.msg = data.data.comment;
                 $scope.loginmsg.class = "text-danger";
             }
         }, function() {
@@ -2023,12 +2017,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.forgotPassword = function(mail){
       NavigationService.forgotPassword(mail, function(data){
         // console.log("asdas", mail);
+        $scope.err = {};
         if(data.value == true){
           modal4.close();
           $state.go('home');
           // console.log("done");
         }else {
-          $scope.err.msg = data.comment;
+          $scope.err.msg = data.error.comment;
           $scope.err.class = "text-danger";
         }
       });

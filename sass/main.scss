@@ -43,9 +43,11 @@ $magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
     font-family: "fine-style";
     src: url('../fonts/fine-style.TTF');
 }
+
 .glyphicon {
-font-family: 'Glyphicons Halflings';
+    font-family: 'Glyphicons Halflings';
 }
+
 .font-serif {
     font-family: "fine-serif";
 }
@@ -2653,6 +2655,20 @@ ul.mn-list {
 
 .act-fil-sor {
     color: #e87b65;
+}
+
+.loaderHeader img {
+    z-index: 100000;
+    width: 100px;
+    top: 50%;
+    left: 50%;
+    vertical-align: middle;
+    position: fixed;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 .magic-form {
