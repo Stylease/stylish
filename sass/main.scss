@@ -87,6 +87,10 @@ img.doneLoading {
     opacity: 1;
 }
 
+table {
+    outline: none !important;
+}
+
 nav li:hover .dropdown-menu {
     display: block;
 }

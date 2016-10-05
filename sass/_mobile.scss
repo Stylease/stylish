@@ -541,6 +541,10 @@
     }
 }
 @media (max-width: 480px) {
+    .mob {
+        padding: 6px 35px !important;
+    }
+
     .bg-color .flexslider .slides a {
         font-size: 16px;
     }
