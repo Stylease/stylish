@@ -105,9 +105,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             state: "changepassword()"
 
         }, {
-            name: "logout"
+            name: "logout",
+            state: "log"
 
         }];
+        $scope.logout = function(){
+          globalfunction.logout();
+
+        }
+
 
         $scope.set = {};
         $scope.getProfile = function() {
@@ -233,9 +239,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             state: "changepassword()"
 
         }, {
-            name: "logout"
+            name: "logout",
+            state: "log"
 
         }];
+        $scope.logout = function(){
+          globalfunction.logout();
+
+        }
+
 
     })
     .controller('TermsConditionCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -339,12 +351,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         }, {
             name: "logout",
-            state: ""
+            state: "log"
 
         }];
 $scope.logout = function(){
   globalfunction.logout();
+
 }
+
 
         function getWishlist() {
             NavigationService.getWishlistUser(function(data) {
@@ -559,9 +573,14 @@ $scope.logout = function(){
             state: "changepassword()"
 
         }, {
-            name: "logout"
+            name: "logout",
+            state: "log"
 
         }];
+        $scope.logout = function(){
+          globalfunction.logout();
+
+        }
         $scope.remove = function() {
             _.pull($scope.modelDelete.collection, $scope.modelDelete.obj);
             $scope.saveProfile();
@@ -737,9 +756,14 @@ $scope.logout = function(){
             state: "changepassword()"
 
         }, {
-            name: "logout"
+            name: "logout",
+            state: "log"
 
         }];
+        $scope.logout = function(){
+          globalfunction.logout();
+
+        }
 
 
         $scope.getProfile = function() {
@@ -1028,9 +1052,15 @@ $scope.logout = function(){
             state: "changepassword()"
 
         }, {
-            name: "logout"
+            name: "logout",
+            state: "log"
 
         }];
+        $scope.logout = function(){
+          globalfunction.logout();
+
+        }
+
 
         $scope.changePassword = function(form) {
             NavigationService.changePassword(form, function(data) {
