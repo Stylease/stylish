@@ -1744,7 +1744,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.addTowishlistProduct = function(product) {
           console.log("in function");
             NavigationService.getProfile(function(data) {
-                    if (data) {
+              console.log(data.value);
+                    if (data.value) {
                         NavigationService.saveWishlist(product, function(data) {
                             console.log("data", data.message);
                             if (data.value) {
@@ -1755,10 +1756,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
                                 });
                                 // getWishlist();
-                            } else if(data.value === false){
-                              console.log("in else");
-                              $scope.message = data.message;
-                              $uibModal.open({
+                            } else{
+                                $uibModal.open({
                                     animation: true,
                                     templateUrl: 'views/modal/already-Wishlist.html',
                                     controller: 'ProductdetailCtrl'
