@@ -1640,7 +1640,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.getRentalAmount = function(val) {
             if (val == 8) {
-                $scope.product.rentalamount = $scope.product.eightdayrentalamount;
+                $scope.product.productrentalamount = $scope.product.eightdayrentalamount;
                 $scope.product.securitydeposit = $scope.product.eightdaysecuritydeposit;
                 $scope.cartpro.duration = 8;
             } else {
@@ -1682,7 +1682,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 // $scope.setCalender();
                 $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
             } else {
-                $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
+                $scope.cartDate = $.jStorage.set("cartDatproducte", $scope.cartpro);
             }
 
             if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
@@ -1741,6 +1741,43 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         }
 
+        $scope.addTowishlistProduct = function(product) {
+          console.log("in function");
+            NavigationService.getProfile(function(data) {
+                    if (data) {
+                        NavigationService.saveWishlist(product, function(data) {
+                            console.log("data", data.message);
+                            if (data.value) {
+                                  $uibModal.open({
+                                    animation: true,
+                                    templateUrl: 'views/modal/added-wishlist.html',
+                                    controller: 'ProductdetailCtrl'
+
+                                });
+                                // getWishlist();
+                            } else if(data.value === false){
+                              console.log("in else");
+                              $scope.message = data.message;
+                              $uibModal.open({
+                                    animation: true,
+                                    templateUrl: 'views/modal/already-Wishlist.html',
+                                    controller: 'ProductdetailCtrl'
+
+                                });
+                            }
+
+                        });
+
+                    } else {
+                        globalfunction.signUp();
+                    }
+                },
+                function(err) {
+                    console.log(err);
+                });
+        };
+
+
         $scope.addTowishlist = function(product) {
             NavigationService.getProfile(function(data) {
                     if (data.value) {
@@ -1749,17 +1786,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             return key.product._id == product;
                         });
                         if (indexF !== -1) {
-                          $scope.remove = function() {
-                              NavigationService.deleteWishlistByProduct(product, function(data) {
-                                  $scope.response = data;
-                                  if ($scope.response.value === true) {
-                                      // removemod.close();
-                                      console.log("in re");
-                                      getWishlist();
-                                  }
-                              });
-                          };
-                          $scope.remove();
+                            $scope.remove = function() {
+                                NavigationService.deleteWishlistByProduct(product, function(data) {
+                                    $scope.response = data;
+                                    if ($scope.response.value === true) {
+                                        // removemod.close();
+                                        getWishlist();
+                                    }
+                                });
+                            };
+                            $scope.remove();
                             // $scope.openRemoveModal = function(product) {
                             //     $scope.variables.removeitem = product;
                             //     console.log($scope.variables);
@@ -1820,7 +1856,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //     }) == -1;
             // }
             return _.findIndex($scope.timestamps, function(key) {
-                console.log("aaaaaaa".key);
                 key.setHours(0, 0, 0, 0);
                 current.setHours(0, 0, 0, 0);
                 // console.log(new Date(key), new Date(current));
@@ -1864,49 +1899,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             })
         };
 
-        $scope.celebrityChoice = [{
-            shopName: "Choker Kundan",
-            celebrityName: "Sonam Kapoor",
-            img: "img/celebrities.jpg",
-            secImg: "img/celebrity-choice.jpg",
-            designerName: "Anita Dongre",
-            price: "4,500",
-            heart: "fa-heart-o"
-        }, {
-            shopName: "Choker Kundan",
-            celebrityName: "Sonam Kapoor",
-            img: "img/celebrities.jpg",
-            secImg: "img/celebrity-choice.jpg",
-            designerName: "Anita Dongre",
-            price: "4,500",
-            heart: "fa-heart-o"
-        }, {
-            shopName: "Choker Kundan",
-            celebrityName: "Sonam Kapoor",
-            img: "img/celebrities.jpg",
-            secImg: "img/celebrity-choice.jpg",
-            designerName: "Anita Dongre",
-            price: "4,500",
-            heart: "fa-heart-o"
-        }, {
-            shopName: "Choker Kundan",
-            celebrityName: "Sonam Kapoor",
-            img: "img/celebrities.jpg",
-            secImg: "img/celebrity-choice.jpg",
-            designerName: "Anita Dongre",
-            price: "4,500",
-            heart: "fa-heart-o"
-        }, {
-            shopName: "Choker Kundan",
-            celebrityName: "Sonam Kapoor",
-            img: "img/celebrities.jpg",
-            secImg: "img/celebrity-choice.jpg",
-            designerName: "Anita Dongre",
-            price: "4,500",
-            heart: "fa-heart-o"
-        }];
-
-        console.log('inside');
         $scope.celebrityFilter = {};
         $scope.celebrityFilter.pagenumber = 1;
         $scope.celebrityFilter.pagesize = 2;
@@ -1955,6 +1947,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
         getWishlist();
         $scope.isInWishlist = function(id) {
+            console.log("id", id);
             var indexF = _.findIndex($scope.wishlist, function(key) {
                 return key.product._id == id;
             })
@@ -1966,7 +1959,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
         $scope.variables = {};
         $scope.addTowishlist = function(product) {
-            console.log(product);
             NavigationService.getProfile(function(data) {
                     if (data.value) {
                         var indexF = _.findIndex($scope.wishlist, function(key) {
@@ -1975,24 +1967,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         });
                         if (indexF !== -1) {
                             $scope.remove = function() {
-                                NavigationService.deleteWishlistByProduct($scope.variables.removeitem, function(data) {
+                                NavigationService.deleteWishlistByProduct(product, function(data) {
                                     $scope.response = data;
                                     if ($scope.response.value === true) {
-                                        removemod.close();
+                                        // removemod.close();
+                                        console.log("in re");
                                         getWishlist();
                                     }
                                 });
                             };
-                            $scope.openRemoveModal = function(product) {
-                                $scope.variables.removeitem = product;
-                                console.log($scope.variables);
-                                removemod = $uibModal.open({
-                                    animation: true,
-                                    templateUrl: "views/modal/removeitem.html",
-                                    scope: $scope
-                                });
-                            };
-                            $scope.openRemoveModal(product);
+                            $scope.remove();
+                            // $scope.openRemoveModal = function(product) {
+                            //     $scope.variables.removeitem = product;
+                            //     console.log($scope.variables);
+                            //     removemod = $uibModal.open({
+                            //         animation: true,
+                            //         templateUrl: "views/modal/removeitem.html",
+                            //         scope: $scope
+                            //     });
+                            // };
+                            // $scope.openRemoveModal(product);
                         } else {
                             NavigationService.saveWishlist(product, function(data) {
                                 $uibModal.open({
