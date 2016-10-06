@@ -3,13 +3,26 @@
   <span class="block text-medium">‘‘If You Can’t Stop Thinking About It Get It!’’</span>
   <label class="block text-medium">{{wishlist.length}} items</label>
 </div>
-<div class="wishlist">
+
+
+  <h3 class="dark-blue text-uppercase text-center hidden-md hidden-sm hidden-lg hidden-xs">my wishlist</h3>
+
+  <div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
+    <flex-slider flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200" item-margin="10" animationloop="true" move="2">
+      <li auto-heightfixed>
+        <a ng-if="state !==''" ui-sref="{{s.state}}">{{s.name}}</a>
+        <a ng-if="state === ''" ng-click="logout()">{{s.name}}</a>
+      </li>
+    </flex-slider>
+  </div>
   <div class="container">
-    <h3 class="dark-blue text-uppercase">my account</h3>
+    <h3 class="dark-blue text-uppercase hidden-xs">my wishlist</h3>
     <div class="row">
-      <div class="col-md-3">
-        <div class="wishlist-tab" ng-include="template.account"></div>
+      <div class="col-md-3 hidden-xs">
+        <div class="prof-tab" ng-include="template.account"></div>
       </div>
+
+
       <div class="col-md-9 fixed-height">
         <div class="wishlisted-product">
           <div class="row" ng-if="wishlist.length>0">

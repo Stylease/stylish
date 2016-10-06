@@ -82,27 +82,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.download = [{
             name: "my profile",
-            state:"profile()"
+            state: "profile()"
 
         }, {
             name: "my orders",
-            state:"orders()"
+            state: "orders()"
 
         }, {
             name: "my wishlist",
-            state:"wishlist()"
+            state: "wishlist()"
 
         }, {
             name: "saved addresses ",
-            state:"saveaddress()"
+            state: "saveaddress()"
 
         }, {
             name: "bank a/c details",
-            state:"bankdetail()"
+            state: "bankdetail()"
 
         }, {
             name: "change password",
-            state:"changepassword()"
+            state: "changepassword()"
 
         }, {
             name: "logout"
@@ -160,7 +160,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.filter.pagenumber = 1;
         $scope.letLoad = false;
 
-                $scope.getMyOrders = function(filter) {
+        $scope.getMyOrders = function(filter) {
             console.log("in get products");
             if ($scope.letIn) {
                 $scope.letIn = false;
@@ -210,27 +210,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.download = [{
             name: "my profile",
-            state:"profile()"
+            state: "profile()"
 
         }, {
             name: "my orders",
-            state:"orders()"
+            state: "orders()"
 
         }, {
             name: "my wishlist",
-            state:"wishlist()"
+            state: "wishlist()"
 
         }, {
             name: "saved addresses ",
-            state:"saveaddress()"
+            state: "saveaddress()"
 
         }, {
             name: "bank a/c details",
-            state:"bankdetail()"
+            state: "bankdetail()"
 
         }, {
             name: "change password",
-            state:"changepassword()"
+            state: "changepassword()"
 
         }, {
             name: "logout"
@@ -312,6 +312,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         TemplateService.removeLoaderOn(1);
         $scope.variables = {};
+
+        $scope.download = [{
+            name: "my profile",
+            state: "profile()"
+
+        }, {
+            name: "my orders",
+            state: "orders()"
+
+        }, {
+            name: "my wishlist",
+            state: "wishlist()"
+
+        }, {
+            name: "saved addresses ",
+            state: "saveaddress()"
+
+        }, {
+            name: "bank a/c details",
+            state: "bankdetail()"
+
+        }, {
+            name: "change password",
+            state: "changepassword()"
+
+        }, {
+            name: "logout",
+            state: ""
+
+        }];
+$scope.logout = function(){
+  globalfunction.logout();
+}
 
         function getWishlist() {
             NavigationService.getWishlistUser(function(data) {
@@ -503,27 +536,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.download = [{
             name: "my profile",
-            state:"profile()"
+            state: "profile()"
 
         }, {
             name: "my orders",
-            state:"orders()"
+            state: "orders()"
 
         }, {
             name: "my wishlist",
-            state:"wishlist()"
+            state: "wishlist()"
 
         }, {
             name: "saved addresses ",
-            state:"saveaddress()"
+            state: "saveaddress()"
 
         }, {
             name: "bank a/c details",
-            state:"bankdetail()"
+            state: "bankdetail()"
 
         }, {
             name: "change password",
-            state:"changepassword()"
+            state: "changepassword()"
 
         }, {
             name: "logout"
@@ -575,7 +608,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getProfile(function(data) {
                 if (data.value) {
                     $scope.userdata = data.data;
-                    console.log("aaaaa",$scope.userdata.billingAddress);
+                    console.log("aaaaa", $scope.userdata.billingAddress);
                     if (!$scope.userdata.billingAddress) {
                         $scope.userdata.billingAddress = [];
                     }
@@ -681,27 +714,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.download = [{
             name: "my profile",
-            state:"profile()"
+            state: "profile()"
 
         }, {
             name: "my orders",
-            state:"orders()"
+            state: "orders()"
 
         }, {
             name: "my wishlist",
-            state:"wishlist()"
+            state: "wishlist()"
 
         }, {
             name: "saved addresses ",
-            state:"saveaddress()"
+            state: "saveaddress()"
 
         }, {
             name: "bank a/c details",
-            state:"bankdetail()"
+            state: "bankdetail()"
 
         }, {
             name: "change password",
-            state:"changepassword()"
+            state: "changepassword()"
 
         }, {
             name: "logout"
@@ -753,7 +786,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
 
-        $scope.facebookLogin = function() {ProductC
+        $scope.facebookLogin = function() {
+            ProductC
             ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
             stopinterval = $interval(callAtIntervaltwitter, 2000);
             ref.addEventListener('exit', function(event) {
@@ -971,27 +1005,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.download = [{
             name: "my profile",
-            state:"profile()"
+            state: "profile()"
 
         }, {
             name: "my orders",
-            state:"orders()"
+            state: "orders()"
 
         }, {
             name: "my wishlist",
-            state:"wishlist()"
+            state: "wishlist()"
 
         }, {
             name: "saved addresses ",
-            state:"saveaddress()"
+            state: "saveaddress()"
 
         }, {
             name: "bank a/c details",
-            state:"bankdetail()"
+            state: "bankdetail()"
 
         }, {
             name: "change password",
-            state:"changepassword()"
+            state: "changepassword()"
 
         }, {
             name: "logout"
@@ -1839,19 +1873,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         var lastpage = 1;
         $scope.getYourCelebrity = function() {
             NavigationService.getCelebrity($scope.celebrityFilter, function(data) {
-              console.log("aaa",data);
+                console.log("aaa", data);
                 // $scope.celebrityData = data.data.data;
                 // console.log($scope.celebrityData);
-              if(data.value==true){
-                $scope.lastpage = data.data.totalpages;
-                _.each(data.data.data, function(n) {
-                    $scope.celebrityData.push(n);
-                });
-              }
-              else {
-                $scope.celebrityData = "";
-            }
-            TemplateService.removeLoader();
+                if (data.value == true) {
+                    $scope.lastpage = data.data.totalpages;
+                    _.each(data.data.data, function(n) {
+                        $scope.celebrityData.push(n);
+                    });
+                } else {
+                    $scope.celebrityData = "";
+                }
+                TemplateService.removeLoader();
             })
         }
         $scope.getYourCelebrity();
@@ -2012,6 +2045,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     globalfunction.forgot = function() {
         $scope.forgot();
     }
+    globalfunction.logout = function() {
+        $scope.logout();
+    }
+    $scope.logout = function() {
+        console.log("logout as");
+        NavigationService.logout(function(data) {
+            if (data.value) {
+                console.log("logout");
+                // NavigationService.saveUser(null);
+
+                // $scope.isLoggedIn = false;
+                $state.go("home");
+            }
+        }, function(err) {
+
+        });
+    };
 
     $scope.signUp = function() {
         $scope.loginmsg.msg = "";
@@ -2170,19 +2220,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
 
-    $scope.forgotPassword = function(mail){
-      NavigationService.forgotPassword(mail, function(data){
-        // console.log("asdas", mail);
-        $scope.err = {};
-        if(data.value == true){
-          modal4.close();
-          $state.go('home');
-          // console.log("done");
-        }else {
-          $scope.err.msg = data.error.comment;
-          $scope.err.class = "text-danger";
-        }
-      });
+    $scope.forgotPassword = function(mail) {
+        NavigationService.forgotPassword(mail, function(data) {
+            // console.log("asdas", mail);
+            $scope.err = {};
+            if (data.value == true) {
+                modal4.close();
+                $state.go('home');
+                // console.log("done");
+            } else {
+                $scope.err.msg = data.error.comment;
+                $scope.err.class = "text-danger";
+            }
+        });
     };
     //GOOGLE LOGIN
     var checktwitter = function(data, status) {
