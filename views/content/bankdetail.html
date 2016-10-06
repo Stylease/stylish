@@ -1,13 +1,21 @@
 <div class="heading-bar text-center">
     <h3 class="heading">Bank Details</h3>
 </div>
-<div class="bankdetails">
-    <div class="container">
-        <h3 class="dark-blue text-uppercase">My Account</h3>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="bank-tab" ng-include="template.account"></div>
-            </div>
+<h3 class="dark-blue text-uppercase text-center hidden-md hidden-sm hidden-lg hidden-xs">Bank Details</h3>
+
+<div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
+  <flex-slider flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200" item-margin="10" animationloop="true" move="2">
+    <li auto-heightfixed>
+      <a ui-sref="{{s.state}}">{{s.name}}</a>
+    </li>
+  </flex-slider>
+</div>
+<div class="container">
+  <h3 class="dark-blue text-uppercase hidden-xs">Bank Details</h3>
+  <div class="row">
+    <div class="col-md-3 hidden-xs">
+      <div class="prof-tab" ng-include="template.account"></div>
+    </div>
             <div class="col-md-8 fixed-height">
                 <div class="bankdetail-main">
                     <form action="">

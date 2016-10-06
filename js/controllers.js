@@ -160,36 +160,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.filter.pagenumber = 1;
         $scope.letLoad = false;
 
-        $scope.download = [{
-            name: "my profile",
-            state:"profile()"
-
-        }, {
-            name: "my orders",
-            state:"orders()"
-
-        }, {
-            name: "my wishlist",
-            state:"wishlist()"
-
-        }, {
-            name: "saved addresses ",
-            state:"saveaddress()"
-
-        }, {
-            name: "bank a/c details",
-            state:"bankdetail()"
-
-        }, {
-            name: "change password",
-            state:"changepassword()"
-
-        }, {
-            name: "logout"
-
-        }];
-
-        $scope.getMyOrders = function(filter) {
+                $scope.getMyOrders = function(filter) {
             console.log("in get products");
             if ($scope.letIn) {
                 $scope.letIn = false;
@@ -237,9 +208,34 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-        $scope.download = function() {
-            globalfunction.download();
-        }
+        $scope.download = [{
+            name: "my profile",
+            state:"profile()"
+
+        }, {
+            name: "my orders",
+            state:"orders()"
+
+        }, {
+            name: "my wishlist",
+            state:"wishlist()"
+
+        }, {
+            name: "saved addresses ",
+            state:"saveaddress()"
+
+        }, {
+            name: "bank a/c details",
+            state:"bankdetail()"
+
+        }, {
+            name: "change password",
+            state:"changepassword()"
+
+        }, {
+            name: "logout"
+
+        }];
 
     })
     .controller('TermsConditionCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -682,6 +678,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         TemplateService.removeLoader(1);
         $scope.set = {};
+
+        $scope.download = [{
+            name: "my profile",
+            state:"profile()"
+
+        }, {
+            name: "my orders",
+            state:"orders()"
+
+        }, {
+            name: "my wishlist",
+            state:"wishlist()"
+
+        }, {
+            name: "saved addresses ",
+            state:"saveaddress()"
+
+        }, {
+            name: "bank a/c details",
+            state:"bankdetail()"
+
+        }, {
+            name: "change password",
+            state:"changepassword()"
+
+        }, {
+            name: "logout"
+
+        }];
+
+
         $scope.getProfile = function() {
             NavigationService.getProfile(function(data) {
                 if (data.value) {
@@ -941,6 +968,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.form = {};
         $scope.passChanged = false;
         $scope.invalidPass = false;
+
+        $scope.download = [{
+            name: "my profile",
+            state:"profile()"
+
+        }, {
+            name: "my orders",
+            state:"orders()"
+
+        }, {
+            name: "my wishlist",
+            state:"wishlist()"
+
+        }, {
+            name: "saved addresses ",
+            state:"saveaddress()"
+
+        }, {
+            name: "bank a/c details",
+            state:"bankdetail()"
+
+        }, {
+            name: "change password",
+            state:"changepassword()"
+
+        }, {
+            name: "logout"
+
+        }];
+
         $scope.changePassword = function(form) {
             NavigationService.changePassword(form, function(data) {
                 console.log("data", data);
