@@ -1,14 +1,20 @@
 <div class="heading-bar text-center">
    <h3 class="heading">Saved Addresses</h3>
 </div>
-
-<div class="saved-address">
-   <div class="container">
-      <h3 class="dark-blue text-uppercase">my account</h3>
-      <div class="row">
-         <div class="col-md-3">
-            <div class="save-add-tab" ng-include="template.account"></div>
-         </div>
+<div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
+  <flex-slider flex-slide="s in download track by $index"  class="bg-color" animation="slide" item-width="200" item-margin="10" animationloop="true" move="2">
+     <li auto-heightfixed>
+        <a ui-sref="{{s.state}}">{{s.name}}</a>
+         <!-- <img ng-src="{{s}}" class="img-responsive" alt="Hindustan Platinum" auto-heightfixed> -->
+     </li>
+  </flex-slider>
+</div>
+<div class="container">
+  <h3 class="dark-blue text-uppercase hidden-xs">Saved Addresses</h3>
+  <div class="row">
+    <div class="col-md-3 hidden-xs">
+      <div class="prof-tab" ng-include="template.account"></div>
+    </div>
          <div class="col-md-9">
             <div class="billingsave-add">
                <div class="row">

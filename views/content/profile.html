@@ -3,17 +3,15 @@
 </div>
 <div class="profile">
 
-      <h3 class="dark-blue text-uppercase text-center hidden-md hidden-sm hidden-lg hidden-xs">my account</h3>
+  <h3 class="dark-blue text-uppercase text-center hidden-md hidden-sm hidden-lg hidden-xs">my account</h3>
 
-      <div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
-        <flex-slider flex-slide="s in download track by $index"  class="bg-color" animation="slide" item-width="200" item-margin="10" animationloop="true" move="2">
-           {{s}}<li auto-heightfixed>
-              <a ui-sref="{{s.state}}">{{s.name}}</a>
-               <!-- <img ng-src="{{s}}" class="img-responsive" alt="Hindustan Platinum" auto-heightfixed> -->
-           </li>
-        </flex-slider>
-      </div>
-{{asd}}asd
+  <div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
+    <flex-slider flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200" item-margin="10" animationloop="true" move="2">
+      <li auto-heightfixed>
+        <a ui-sref="{{s.state}}">{{s.name}}</a>
+      </li>
+    </flex-slider>
+  </div>
   <div class="container">
     <h3 class="dark-blue text-uppercase hidden-xs">my account</h3>
     <div class="row">
@@ -27,7 +25,7 @@
 
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="text" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.firstname" placeholder="First Name" aplha-Only >
+                  <input type="text" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.firstname" placeholder="First Name" aplha-Only>
                 </div>
               </div>
               <div class="col-md-6">
@@ -89,7 +87,7 @@
               <div class="text-center">
                 <a class="btn btn-outline mt20 mb20 btn-full text-medium" ng-hide="set.Profile" ng-click="set.Profile=true">Edit</a>
                 <div class="on-edit mt20 mb20" ng-show="set.Profile">
-                  <button type="reset" class="btn btn-outline reset text-medium btn-full" >Reset Details</button>
+                  <button type="reset" class="btn btn-outline reset text-medium btn-full">Reset Details</button>
                   <button class="btn btn-outline save-changes text-medium btn-full" ng-click="saveProfile()">Save Changes</button>
                 </div>
               </div>
