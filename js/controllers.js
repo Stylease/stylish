@@ -207,6 +207,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
+        $scope.download = function() {
+            globalfunction.download();
+        }
+
     })
     .controller('TermsConditionCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
@@ -1879,7 +1883,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $state.go("home");
         }
     }
-
+    globalfunction.download = function() {
+        $scope.download;
+        console.log($scope.download);
+    }
     globalfunction.signUp = function() {
         $scope.signUp();
     }
@@ -1892,6 +1899,34 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     globalfunction.forgot = function() {
         $scope.forgot();
     }
+    $scope.download = [{
+        name: "my profile",
+        state:"profile()"
+
+    }, {
+        name: "my orders",
+        state:"orders()"
+
+    }, {
+        name: "my wishlist",
+        state:"wishlist()"
+
+    }, {
+        name: "saved addresses ",
+        state:"saveaddress()"
+
+    }, {
+        name: "bank a/c details",
+        state:"bankdetail()"
+
+    }, {
+        name: "change password",
+        state:"changepassword()"
+
+    }, {
+        name: "logout"
+
+    }];
     $scope.signUp = function() {
         $scope.loginmsg.msg = "";
         $scope.closeAllModals();
