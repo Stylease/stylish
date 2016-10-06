@@ -782,6 +782,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.getProfile();
 
+        $scope.goToReset = function() {
+            $scope.getProfile();
+        }
 
         $scope.saveProfile = function() {
             $scope.set.Profile = false;
@@ -2250,8 +2253,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 NavigationService.saveUser(data.data);
                 $state.reload();
             } else {
-                console.log(data.data.comment);
-                $scope.loginmsg.msg = data.data.comment;
+                console.log(data.data.message);
+                $scope.loginmsg.msg = data.data.message;
                 $scope.loginmsg.class = "text-danger";
             }
         }, function() {
