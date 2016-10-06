@@ -37,7 +37,8 @@
           </div>
           <div class="relate">
             <div class="custom-checkbox text-left mt10 mb10">
-              <label for="accept" class="{{loginmsg.class}}"><span></span>{{loginmsg.msg}}</label>
+              <label ng-if="loginmsg.msg !=='User already Exists'"for="accept" class="{{loginmsg.class}}"><span></span>{{loginmsg.msg}}</label>
+              <label ng-if="loginmsg.msg==='User already Exists'" for="accept" class="{{loginmsg.class}}"><span></span>{{loginmsg.msg}}  Do you want to <a ng-click="logIn();">Login?</a></label>
             </div>
           </div>
             <p ng-if="notFound">Incorrect Email or Password</p>

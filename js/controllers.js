@@ -109,8 +109,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             state: "log"
 
         }];
-        $scope.logout = function(){
-          globalfunction.logout();
+        $scope.logout = function() {
+            globalfunction.logout();
 
         }
 
@@ -150,6 +150,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             });
         };
+
+        $scope.goToReset = function() {
+            $scope.getProfile();
+        }
 
     })
     .controller('OrdersCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -243,8 +247,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             state: "log"
 
         }];
-        $scope.logout = function(){
-          globalfunction.logout();
+        $scope.logout = function() {
+            globalfunction.logout();
 
         }
 
@@ -354,10 +358,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             state: "log"
 
         }];
-$scope.logout = function(){
-  globalfunction.logout();
+        $scope.logout = function() {
+            globalfunction.logout();
 
-}
+        }
 
 
         function getWishlist() {
@@ -577,8 +581,8 @@ $scope.logout = function(){
             state: "log"
 
         }];
-        $scope.logout = function(){
-          globalfunction.logout();
+        $scope.logout = function() {
+            globalfunction.logout();
 
         }
         $scope.remove = function() {
@@ -760,8 +764,8 @@ $scope.logout = function(){
             state: "log"
 
         }];
-        $scope.logout = function(){
-          globalfunction.logout();
+        $scope.logout = function() {
+            globalfunction.logout();
 
         }
 
@@ -1056,8 +1060,8 @@ $scope.logout = function(){
             state: "log"
 
         }];
-        $scope.logout = function(){
-          globalfunction.logout();
+        $scope.logout = function() {
+            globalfunction.logout();
 
         }
 
@@ -1270,6 +1274,7 @@ $scope.logout = function(){
         $scope.letLoad = false;
         $scope.shopping = [];
         $scope.variables = {};
+        $scope.oneAtATime = true;
         $scope.getSubcategory = function() {
             NavigationService.getSubcategory(function(data) {
                 $scope.subcategory = data.data;
@@ -1430,24 +1435,26 @@ $scope.logout = function(){
                         });
                         if (indexF !== -1) {
                             $scope.remove = function() {
-                                NavigationService.deleteWishlistByProduct($scope.variables.removeitem, function(data) {
+                                NavigationService.deleteWishlistByProduct(product, function(data) {
                                     $scope.response = data;
                                     if ($scope.response.value === true) {
-                                        removemod.close();
+                                        // removemod.close();
+                                        console.log("in re");
                                         getWishlist();
                                     }
                                 });
                             };
-                            $scope.openRemoveModal = function(product) {
-                                $scope.variables.removeitem = product;
-                                console.log($scope.variables);
-                                removemod = $uibModal.open({
-                                    animation: true,
-                                    templateUrl: "views/modal/removeitem.html",
-                                    scope: $scope
-                                });
-                            };
-                            $scope.openRemoveModal(product);
+                            $scope.remove();
+                            // $scope.openRemoveModal = function(product) {
+                            //     $scope.variables.removeitem = product;
+                            //     console.log($scope.variables);
+                            //     removemod = $uibModal.open({
+                            //         animation: true,
+                            //         templateUrl: "views/modal/removeitem.html",
+                            //         scope: $scope
+                            //     });
+                            // };
+                            // $scope.openRemoveModal(product);
                         } else {
                             NavigationService.saveWishlist(product, function(data) {
                                 $uibModal.open({
@@ -1739,25 +1746,27 @@ $scope.logout = function(){
                             return key.product._id == product;
                         });
                         if (indexF !== -1) {
-                            $scope.remove = function() {
-                                NavigationService.deleteWishlistByProduct($scope.variables.removeitem, function(data) {
-                                    $scope.response = data;
-                                    if ($scope.response.value === true) {
-                                        removemod.close();
-                                        getWishlist();
-                                    }
-                                });
-                            };
-                            $scope.openRemoveModal = function(product) {
-                                $scope.variables.removeitem = product;
-                                console.log($scope.variables);
-                                removemod = $uibModal.open({
-                                    animation: true,
-                                    templateUrl: "views/modal/removeitem.html",
-                                    scope: $scope
-                                });
-                            };
-                            $scope.openRemoveModal(product);
+                          $scope.remove = function() {
+                              NavigationService.deleteWishlistByProduct(product, function(data) {
+                                  $scope.response = data;
+                                  if ($scope.response.value === true) {
+                                      // removemod.close();
+                                      console.log("in re");
+                                      getWishlist();
+                                  }
+                              });
+                          };
+                          $scope.remove();
+                            // $scope.openRemoveModal = function(product) {
+                            //     $scope.variables.removeitem = product;
+                            //     console.log($scope.variables);
+                            //     removemod = $uibModal.open({
+                            //         animation: true,
+                            //         templateUrl: "views/modal/removeitem.html",
+                            //         scope: $scope
+                            //     });
+                            // };
+                            // $scope.openRemoveModal(product);
                         } else {
                             NavigationService.saveWishlist(product, function(data) {
                                 $uibModal.open({

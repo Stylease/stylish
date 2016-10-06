@@ -3,7 +3,7 @@
 </div>
 <div class="address-main">
   <div class="container">
-    <form name="formcheckout">
+    <form name="formcheckout" ng-submit="saveUserAddress(userdata)">
     <!-- <form action="" name="formcheckout"> -->
       <div class="mt20 mb20">
         <div class="row">
@@ -62,7 +62,7 @@
                   </div>
                   <div class="relate">
                     <input type="text" maxlength="6" minlength="6" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-change="sameShipping()" name="code" ng-model="userdata.billingAddress.billingAddressPin" class="form-control" placeholder="Pin Code" required>
-                    <div class="form-error" ng-show="formcheckout.code.$error.required && formcheckout.code.$touched">Please enter your Pin Code.</div>
+                    <div class="form-error" ng-show="formcheckout.code.$error.required && formcheckout.code.$touched"gmail.com>Please enter your Pin Code.</div>
                   </div>
                   <div class="relate">
                     <input placeholder="City" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCity" class="bckg form-control fixed-add" readonly value="Mumbai">
@@ -111,8 +111,8 @@
               </div>
             </div>
             <div class="text-center mt20 mb20 save">
-              <button class="btn btn-outline btn-full text-medium" ng-click="saveUserAddress(userdata)" ng-disabled="formcheckout.$invalid">Continue</button>
-              <!-- <button class="btn btn-outline btn-full text-medium" ui-sref="checkoutorder">Continue</button> -->
+              <!-- <button class="btn btn-outline btn-full text-medium" ng-click="saveUserAddress(userdata)" ng-disabled="formcheckout.$invalid">Continue</button> -->
+              <button class="btn btn-outline btn-full text-medium" >Continue</button>
             </div>
           </div>
         </div>

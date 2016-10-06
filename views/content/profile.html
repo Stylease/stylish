@@ -38,7 +38,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="text" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.mobile" placeholder="Mobile No" only-Digits minlength="10" maxlength="10">
+                  <input type="text" readonly ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.mobile" placeholder="Mobile No" only-Digits minlength="10" maxlength="10">
                 </div>
               </div>
               <div class="col-md-6">
@@ -88,7 +88,7 @@
               <div class="text-center">
                 <a class="btn btn-outline mt20 mb20 btn-full text-medium" ng-hide="set.Profile" ng-click="set.Profile=true">Edit</a>
                 <div class="on-edit mt20 mb20" ng-show="set.Profile">
-                  <button type="reset" class="btn btn-outline reset text-medium btn-full">Reset Details</button>
+                  <button type="button" class="btn btn-outline reset text-medium btn-full" ng-click="goToReset()">Reset Details</button>
                   <button class="btn btn-outline save-changes text-medium btn-full" ng-click="saveProfile()">Save Changes</button>
                 </div>
               </div>
