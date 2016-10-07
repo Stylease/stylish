@@ -151,7 +151,7 @@
                   <div class="cla">
                      <div class="buttons on-edit text-center">
                         <button class="atc-atw btn btn-outline text-uppercase btn-full m-center" ng-click="addToCart();" ng-disabled="myProduct.$invalid">add to cart</button>
-                        <button class="atc-atw btn btn-outline text-uppercase btn-full m-center" ng-disabled="checkLogin==null" ng-click="addTowishlist(); saveWishList(); ">add to wishlist</button>
+                        <button type="button" class="atc-atw btn btn-outline text-uppercase btn-full m-center"  ng-click="addTowishlistProduct(product._id);">add to wishlist</button>
                      </div>
                   </div>
                </form>
