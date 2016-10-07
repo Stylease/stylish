@@ -1,4 +1,4 @@
-<div class="mobile-slider relate visible-xs"> 
+<div class="mobile-slider relate visible-xs">
 <flex-slider ng-if="mySlides.length>0" flex-slide="s in mySlides track by $index" prev-text="" next-text="" direction-nav="false">
   <li ng-if="s.mobileimage !==''">
     <img ng-src="{{s.mobileimage|serverimage}}" class="img-responsive">
@@ -21,12 +21,19 @@
 </div>
 
 <div class="container-fluid">
-  <div class="how-it-works relate">
+  <div class="how-it-works relate" ng-click="hiw();">
     <div class="play get-center font-serif">
       <span>HOW IT <img src="img/play-work.png" alt="" class=""> WORKS</span>
     </div>
   </div>
 </div>
+<!-- <div class="container-fluid">
+  <div class="how-it-works relate" ng-click="verified();">
+    <div class="play get-center font-serif">
+      <span>HOW IT <img src="img/play-work.png" alt="" class=""> WORKS</span>
+    </div>
+  </div>
+</div> -->
 <div class="occasion-main">
   <div class="container-fluid">
     <div ng-repeat="subcat in subcategory">
@@ -73,13 +80,13 @@
           <img src="img/engagement.jpg" alt="" class="img-responsive">
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="row-flex">
       <div class="relate mt20 mb20 pointer ban-width" ui-sref="celebritychoice">
         <img src="img/celebrity.jpg" alt="" class="img-responsive">
       </div>
     </div>
-  </div>
+  </div>-->
 </div>
 <div class="customerspeak-slider text-center">
   <h4 class="text-center dark-blue inline-block">Customers Speak</h4>

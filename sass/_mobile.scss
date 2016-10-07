@@ -238,6 +238,25 @@
             right: 55px;
         }
     }
+
+    .hidden-md-down {
+        display: none;
+    }
+
+    .colh {
+        height: 275px;
+    }
+    .colh2 {
+        height: 314px;
+    }
+    .hiw .minsize2 {
+        margin: 8%;
+    }
+
+    .hiw .text2 {
+        font-size: 21px;
+        padding: 5%;
+    }
 }
 @media (max-width: $screen-xs-max) {
     .flex-direction-nav {
@@ -541,6 +560,10 @@
     }
 }
 @media (max-width: 480px) {
+    .hiw .ptext {
+        margin: 0;
+    }
+
     .mob {
         padding: 6px 35px !important;
     }

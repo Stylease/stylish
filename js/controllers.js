@@ -4,7 +4,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     //     cfpLoadingBarProvider.includeSpinner = false;
     // }])
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('HomeCtrl', function($scope, $uibModal,TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("home");
         $scope.menutitle = NavigationService.makeactive("Home");
@@ -14,6 +14,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log($scope.navigation);
         $scope.footerColor = "home-footer";
         $scope.subcategory = [];
+
+        $scope.hiw = function() {
+            modal5 = $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/hiw.html",
+                windowClass: "modal-dialog2",
+                scope: $scope
+            });
+        };
+        $scope.verified = function() {
+            modal6 = $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/verified.html",
+                scope: $scope
+            });
+        };
 
         NavigationService.getSlider(function(data) {
             if (data) {
