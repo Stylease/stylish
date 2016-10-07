@@ -1270,6 +1270,45 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.getCart();
 
+         var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        //calendar
+        $scope.dateOptions = {
+            dateDisabled: disabled,
+            formatYear: 'yy',
+            maxDate: new Date(2020, 5, 22),
+            minDate: tomorrow,
+            startingDay: 1,
+            showWeeks: false
+        };
+
+        // Disable weekend selection
+        function disabled(data) {
+            // console.log(data);
+            var current = data.date,
+                mode = data.mode;
+            current.setHours(0, 0, 0, 0);
+             return _.findIndex($scope.timestamps, function(key) {
+                key.setHours(0, 0, 0, 0);
+                current.setHours(0, 0, 0, 0);
+                // console.log(new Date(key), new Date(current));
+                return new Date(key).getTime() == current.getTime();
+            }) !== -1;
+        }
+        $scope.open1 = function() {
+            $scope.popup1.opened = true;
+        };
+        $scope.open2 = function() {
+            $scope.popup2.opened = true;
+        };
+        $scope.popup1 = {
+            opened: false
+        };
+        $scope.popup2 = {
+            opened: false
+        };
+
+
     })
     .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
@@ -1695,10 +1734,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.cartpro.by = $scope.product.designer.name;
             }
             if ($.jStorage.get("cartDate")) {
-                // $scope.setCalender();
-                $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
+                      $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
             } else {
-                $scope.cartDate = $.jStorage.set("cartDatproducte", $scope.cartpro);
+                $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
 
             if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
