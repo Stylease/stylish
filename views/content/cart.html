@@ -40,17 +40,11 @@
                                     </div>
                                 </div>
                                 <p><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
-                                <p><span class="edit-cart">Delivery Date </span><span>{{product.timeFrom | date : 'mediumDate'}}</span>
-
-                                    <div class="calendar calen-align" ng-click="open2()">
-                              <div class="input-group calen">
-                                 <input type="date" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" required/>
-                                 <span class="cal">
-                    <button type="button" class="btn btn-default" ></button>
-                  </span>
-                              </div>
-                           </div>
-                                     <span class="change-pink text-underline text-underline ml20 pointer" ng-click="date();">Change ?</span> 
+                                <p><span class="edit-cart">Delivery Date </span>
+                                <!--<span><input type="date" class="form-control" uib-datepicker-popup ng-model="product.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" required/></span>-->
+<span>{{product.timeFrom}}</span>
+                                 
+                                     <!--<span class="change-pink text-underline text-underline ml20 pointer" ng-click="open2()" ng-model="cartpro.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions">Change ?</span> -->
                                 </p>
                                 <div>
                                     <span class="edit-cart">Duration</span>
@@ -116,8 +110,6 @@
             <button ng-click="gotocheckout()" class="btn btn-outline btn-full text-medium" ng-if="cartProduct.length !== 0">Checkout</button>
             <p class="dark-pink m-clear pd10 "><i>The minimum order value on TheStylease.com is Rs.8,000/-</i></p>
         </div>
-
-
     </div>
 </div>
 <div class="cart-empty text-center" ng-if="cartProduct.length == 0">
