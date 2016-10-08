@@ -1951,7 +1951,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         afterTomorrow2.setDate(tomorrow.getDate() + 2);
         var afterTomorrow3 = new Date(tomorrow);
         afterTomorrow3.setDate(tomorrow.getDate() + 3);
-
         $scope.getDuration = function () {
             if ($scope.cartpro.duration == 8) {
                 console.log("in 8");
@@ -1998,7 +1997,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         };
 
-        $scope.getDuration();
+        // $scope.getDuration();
         $scope.beTheChange = function (dtdata) {
             $scope.getDuration();
             console.log("asdsad", dtdata, $scope.events.length);
