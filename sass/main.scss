@@ -2379,8 +2379,10 @@ flex-slider {
     font-size: 14px;
     /* Approximation due to font substitution */
     font-weight: 400;
-    text-align: justify;
+    padding-left: 5px;
+  padding-right: 5px;
     padding-bottom: 30px;
+    p {  word-spacing: 3px;}
 
     ul {
         padding: 0;
@@ -2392,7 +2394,7 @@ flex-slider {
                 font-size: 14px;
                 /* Approximation due to font substitution */
                 font-weight: 400;
-                text-align: justify;
+
             }
 
             a,
@@ -2413,6 +2415,7 @@ flex-slider {
         border-bottom: 1px solid #f08168;
         display: inline-block;
         font-size: 25px;
+          word-spacing: 3px;
     }
 
     p {
@@ -2944,6 +2947,7 @@ ul.mn-list {
 .wd50 {
     width: 50%;
 }
+
 .zopim {
     z-index: 3 !important;
 }

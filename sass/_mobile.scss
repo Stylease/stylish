@@ -261,9 +261,7 @@
     }
 }
 @media (max-width: $screen-xs-max) {
-    .flex-direction-nav {
-        display: none !important;
-    }
+
 
     .bg-color {
         padding: 11px;
@@ -1117,8 +1115,20 @@
         float: right;
         margin-right: 1px;
     }
+
+    .data-all ul {
+        padding: 0 8px;
+    }
+
+    .head-text h1 {
+        font-size: 20px;
+    }
 }
 @media (max-width: 320px) {
+    .pop-heading-bar h2 {
+        font-size: 27px;
+    }
+
     .product-name {
         font-weight: 400;
         padding: 0;
@@ -1179,7 +1189,7 @@
     }
 
     .mt20 {
-        margin-top: 5px;
+        margin-top: 12px;
     }
 
     .calen-align {
@@ -1240,7 +1250,7 @@
 
     .on-edit {
         button {
-            margin: 0 -6px 0 0;
+            // margin: 0 -6px 0 0;
             /* display: block; */
             padding: 8px 12px;
         }
