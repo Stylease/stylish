@@ -173,6 +173,14 @@ var navigationservice = angular.module('navigationservice', [])
                 data: data
             }).success(callback).error(errCallback);
         },
+        editAllCart: function (cartpro, callback, errCallback) {
+            var data = cartpro;
+            return $http({
+                url: adminURL + "cart/updateCartDate",
+                method: "POST",
+                data: data
+            }).success(callback).error(errCallback);
+        },
         getSubcategory: function (callback, errCallback) {
             return $http({
                 url: adminURL + "subcategory/getAllCat",
