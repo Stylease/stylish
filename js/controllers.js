@@ -1207,7 +1207,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.editCart = function (data) {
             $scope.editcartpro = {};
             $scope.editcartpro.product = data.product._id;
-            var d = new Date(data.timeFrom);
+            var d = new Date(data.timeFromS);
             $scope.editcartpro.timeFrom = d;
             $scope.editcartpro.duration = data.duration;
             $scope.editcartpro.size = data.size;
@@ -1716,10 +1716,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.product.productrentalamount = $scope.product.eightdayrentalamount;
                 $scope.product.securitydeposit = $scope.product.eightdaysecuritydeposit;
                 $scope.cartpro.duration = 8;
+                $scope.dateduration = 8;
             } else {
                 $scope.product.rentalamount = $scope.product.fourdayrentalamount;
                 $scope.product.securitydeposit = $scope.product.fourdaysecuritydeposit;
                 $scope.cartpro.duration = 4;
+                $scope.dateduration = 4;
             }
             $scope.beTheChange(tomorrow);
         }
@@ -1744,7 +1746,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // };
 
         $scope.addToCart = function () {
-
+            console.log("cartproduct", $scope.cartpro);
             var d = new Date($scope.cartpro.timeFrom);
             $scope.cartpro.timeTo = new Date(d.setDate(d.getDate() + $scope.cartpro.duration));
             if ($scope.product.designer == null) {
@@ -1758,7 +1760,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
 
-            if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
+            // if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
+            if ($scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
                 NavigationService.addToCart($scope.cartpro, function (data) {
                     console.log("response cart", data);
                     $scope.response = data;
@@ -1943,7 +1946,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //change color
         $scope.cartpro.timeFrom = tomorrow;
         $scope.today = new Date();
-        $scope.dateduration = $scope.cartpro.duration;
         console.log("duration", $scope.cartpro.duration);
         var afterTomorrow = new Date(tomorrow);
         afterTomorrow.setDate(tomorrow.getDate() + 1);
@@ -1952,7 +1954,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         var afterTomorrow3 = new Date(tomorrow);
         afterTomorrow3.setDate(tomorrow.getDate() + 3);
         $scope.getDuration = function () {
-            if ($scope.cartpro.duration == 8) {
+            if ($scope.dateduration == 8) {
                 console.log("in 8");
                 $scope.events = [{
                     date: afterTomorrow,

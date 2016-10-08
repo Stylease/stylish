@@ -25,7 +25,7 @@
                             <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span>
                                 <span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span>
                             </p>
-                            <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
+                            <p class="mb5"><span class="edit-cart">Delivery Date</span><span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
                             <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
                             <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{product.deliveryTime}}</span></p>
                             <p class="mb5"><span class="edit-cart">Pickup Time</span> <span>{{product.pickupTime}}</span></p>
@@ -45,7 +45,7 @@
                                     <span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span>
                                 </p>
                                 <p><span class="edit-cart">Delivery Date </span>
-                                    <span><input type="date" class="form-control" uib-datepicker-popup ng-model="product.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" readonly="readonly" required/></span>
+                                    <span><input type="date" class="form-control" uib-datepicker-popup ng-model="product.timeFromS"  is-open="popup2.opened" datepicker-options="dateOptions" value="product.timeFrom" ng-required="true" close-text="Close" readonly="readonly" required/></span>
                                     <!--<span>{{product.timeFrom}}</span>-->
 
                                     <span class="change-pink text-underline text-underline ml20 pointer" ng-click="open2()" ng-model="cartpro.timeFrom" ng-change="time()"
