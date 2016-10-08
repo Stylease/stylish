@@ -174,6 +174,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback).error(errCallback);
         },
         editAllCart: function (cartpro, callback, errCallback) {
+            console.log("cartproducts", cartpro);
             var data = cartpro;
             return $http({
                 url: adminURL + "cart/updateCartDate",
@@ -249,7 +250,7 @@ var navigationservice = angular.module('navigationservice', [])
         },
         getOneProduct: function (request, callback, errCallback) {
             return $http({
-                url: adminURL + "product/getOne",
+                url: adminURL + "product/getOneProduct",
                 method: "POST",
                 data: {
                     _id: request

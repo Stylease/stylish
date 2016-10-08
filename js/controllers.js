@@ -1217,22 +1217,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.editcartpro.timeTo = new Date(timeTo.setDate(d.getDate() + $scope.editcartpro.duration));
             $scope.editcartpro.by = data.by;
             console.log("final cart", $scope.editcartpro);
-            // NavigationService.addToCart($scope.editcartpro, function(data) {
-            //     $scope.response = data;
-            //     if ($scope.response.value === true) {
-            //         $scope.getCart();
-            //         $scope.closeEdit($scope.editcartpro.product);
+            NavigationService.getProfile(function (data) {
+                if (data.value) {
+                    console.log("login cart edit");
+                    NavigationService.addToCart($scope.editcartpro, function (data) {
+                        $scope.response = data;
+                        if ($scope.response.value == true) {
+                            $scope.getCart();
+                            $scope.closeEdit($scope.editcartpro.product);
 
-            //     }
-            // }, function(err) {
-            //     console.log(err);
-            // });
-            NavigationService.editAllCart($scope.editcartpro, function (data) {
-                $scope.response = data;
-                if ($scope.response.value === true) {
-                    $scope.getCart();
-                    $scope.closeEdit($scope.editcartpro.product);
+                        }
+                    }, function (err) {
+                        console.log(err);
+                    });
+                } else {
+                    NavigationService.editAllCart($scope.editcartpro, function (data) {
+                        $scope.response = data;
+                        if ($scope.response.value == true) {
+                            $scope.getCart();
+                            $scope.closeEdit($scope.editcartpro.product);
 
+                        }
+                    }, function (err) {
+                        console.log(err);
+                    });
                 }
             }, function (err) {
                 console.log(err);
