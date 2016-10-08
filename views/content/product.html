@@ -30,7 +30,7 @@
                                                             <label class="detail-heading" for="{{cat}}">All {{cat}}</label>
                                                         </div>
                                                     </div>
-                                                    <div class="f-lef" style="width:140px;" ng-repeat="subcat in value">
+                                                    <div class="f-lef" style="width:90px;" ng-repeat="subcat in value">
                                                         <div class="magic-form ">
                                                             <div class="magic-resize">
                                                                 <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id,subcat.name)" id="{{subcat.name}}">

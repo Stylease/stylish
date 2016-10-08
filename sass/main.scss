@@ -1587,7 +1587,7 @@ input.form-control {
 
 .product-size {
     a {
-        @include square(40px);
+        @include square(36px);
         border: 1px solid $brand-dark-blue;
         border-radius: 100%;
         display: inline-block;
@@ -1603,6 +1603,8 @@ input.form-control {
 
     ul {
         li {
+            padding-bottom: 5px;
+            padding-top: 5px;
             border: none;
         }
 
