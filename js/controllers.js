@@ -1904,6 +1904,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         tomorrow.setDate(tomorrow.getDate() + 1);
         //calendar
         $scope.dateOptions = {
+            customClass: getDayClass,
             dateDisabled: disabled,
             formatYear: 'yy',
             maxDate: new Date(2020, 5, 22),
@@ -1945,6 +1946,92 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.popup2 = {
             opened: false
         };
+
+        //change color
+
+        $scope.cartpro.timeFrom = tomorrow;
+
+        //     var selectDay = new Date(key.timeTo);
+        //     var diffDays = tmpto.getDate() - tmpdate.getDate();
+        //     start = 0;
+        //     do {
+        //         $scope.timestamps.push(new Date(tmpdate));
+        //         tmpdate.setDate(tmpdate.getDate() + 1);
+        //         start++;
+        //     } while (start <= (diffDays));
+        // });
+        $scope.today = new Date();
+        $scope.dateduration = 8;
+        var afterTomorrow = new Date(tomorrow);
+        afterTomorrow.setDate(tomorrow.getDate() + 1);
+        var afterTomorrow2 = new Date(tomorrow);
+        afterTomorrow2.setDate(tomorrow.getDate() + 2);
+        var afterTomorrow3 = new Date(tomorrow);
+        afterTomorrow3.setDate(tomorrow.getDate() + 3);
+        if ($scope.dateduration == 4) {
+            $scope.events = [{
+                date: afterTomorrow,
+                status: 'active'
+            }, {
+                date: afterTomorrow2,
+                status: 'active'
+            }, {
+                date: afterTomorrow3,
+                status: 'active'
+            }, {
+                date: afterTomorrow,
+                status: 'active4'
+            }];
+        } else {
+            $scope.events = [{
+                date: afterTomorrow,
+                status: 'active'
+            }, {
+                date: afterTomorrow2,
+                status: 'active'
+            }, {
+                date: afterTomorrow3,
+                status: 'active'
+            }, {
+                date: afterTomorrow,
+                status: 'active'
+            }, {
+                date: afterTomorrow,
+                status: 'active'
+            }, {
+                date: afterTomorrow2,
+                status: 'active'
+            }, {
+                date: afterTomorrow3,
+                status: 'active'
+            }, {
+                date: afterTomorrow,
+                status: 'active4'
+            }];
+        }
+        $scope.beTheChange = function (dtdata) {
+            console.log("asdsad", dtdata);
+            var i = 1;
+            _.each($scope.events, function (data) {
+                data.date = new Date(dtdata).setDate(new Date(dtdata).getDate() + i);
+                i++;
+            });
+        };
+
+        function getDayClass(data) {
+            var date = data.date,
+                mode = data.mode;
+            if (mode === 'day') {
+                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+                for (var i = 0; i < $scope.events.length; i++) {
+                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+                    if (dayToCheck === currentDay) {
+                        return $scope.events[i].status;
+                    }
+                }
+            }
+            return '';
+        }
 
     })
     .controller('CelebrityChoiceCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
