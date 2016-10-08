@@ -118,7 +118,8 @@
                             </div>
                         </div>
 
-                        <div infinite-scroll="loadMore()" infinite-scroll-disabled="shouldscroll" class="ng-isolate-scope">
+                        <!-- grid view -->
+                        <!-- <div infinite-scroll="loadMore()" infinite-scroll-disabled="shouldscroll" class="ng-isolate-scope">
                             <div class="shop-product grid-view" ng-show="viewProduct">
                                 <div class="row">
                                     <div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping">
@@ -132,6 +133,30 @@
                                                 </div>
                                                 <h4 class="product-name ">{{product.name | shorten:50}}</h4>
                                                 <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!--  list view-->
+                        <div infinite-scroll="loadMore()" infinite-scroll-disabled="shouldscroll" class="ng-isolate-scope">
+                            <div class="shop-product grid-view" ng-show="viewProduct">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 col-xs-12 ng-scope" ng-repeat="product in shopping">
+                                        <div class="view-product relate pointer ">
+                                            <div class="row">
+                                                <div class="col-xs-3 product-img ">
+                                                    <img ui-sref="productdetail({ 'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} " alt=" " class="img-responsive ">
+                                                </div>
+                                                <div class="col-xs-9 product-rate">
+                                                  <div class="wishlist text-right ">
+                                                      <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
+                                                  </div>
+                                                    <h4 class="product-name ">{{product.name | shorten:50}}</h4>
+                                                    <p class="product-namep ">Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -240,9 +265,6 @@
                             </div>
                         </div>
 
-
-
-
                         <!-- </div> -->
                         <div infinite-scroll='loadMore()' infinite-scroll-disabled="shouldscroll ">
                             <div class="shop-product grid-view " ng-show="viewProduct ">
@@ -264,6 +286,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div ng-if="shopping.length===0 " style="min-height:667px; ">
                             <h4 class="text-center ">{{texts.msg}}</h4>
                         </div>
