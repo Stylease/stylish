@@ -1721,6 +1721,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.product.securitydeposit = $scope.product.fourdaysecuritydeposit;
                 $scope.cartpro.duration = 4;
             }
+            $scope.beTheChange(tomorrow);
         }
 
         // $scope.setCalender = function() {
@@ -1919,14 +1920,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             var current = data.date,
                 mode = data.mode;
             current.setHours(0, 0, 0, 0);
-            // if ($.jStorage.get("cartDate")) {
-            //     return _.findIndex($scope.calendertimestamps, function(key) {
-            //         key.setHours(0, 0, 0, 0);
-            //         current.setHours(0, 0, 0, 0);
-            //         // console.log(new Date(key), new Date(current));
-            //         return new Date(key).getTime() == current.getTime();
-            //     }) == -1;
-            // }
             return _.findIndex($scope.timestamps, function (key) {
                 key.setHours(0, 0, 0, 0);
                 current.setHours(0, 0, 0, 0);
@@ -1948,69 +1941,67 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         //change color
-
         $scope.cartpro.timeFrom = tomorrow;
-
-        //     var selectDay = new Date(key.timeTo);
-        //     var diffDays = tmpto.getDate() - tmpdate.getDate();
-        //     start = 0;
-        //     do {
-        //         $scope.timestamps.push(new Date(tmpdate));
-        //         tmpdate.setDate(tmpdate.getDate() + 1);
-        //         start++;
-        //     } while (start <= (diffDays));
-        // });
         $scope.today = new Date();
-        $scope.dateduration = 8;
+        $scope.dateduration = $scope.cartpro.duration;
+        console.log("duration", $scope.cartpro.duration);
         var afterTomorrow = new Date(tomorrow);
         afterTomorrow.setDate(tomorrow.getDate() + 1);
         var afterTomorrow2 = new Date(tomorrow);
         afterTomorrow2.setDate(tomorrow.getDate() + 2);
         var afterTomorrow3 = new Date(tomorrow);
         afterTomorrow3.setDate(tomorrow.getDate() + 3);
-        if ($scope.dateduration == 4) {
-            $scope.events = [{
-                date: afterTomorrow,
-                status: 'active'
-            }, {
-                date: afterTomorrow2,
-                status: 'active'
-            }, {
-                date: afterTomorrow3,
-                status: 'active'
-            }, {
-                date: afterTomorrow,
-                status: 'active4'
-            }];
-        } else {
-            $scope.events = [{
-                date: afterTomorrow,
-                status: 'active'
-            }, {
-                date: afterTomorrow2,
-                status: 'active'
-            }, {
-                date: afterTomorrow3,
-                status: 'active'
-            }, {
-                date: afterTomorrow,
-                status: 'active'
-            }, {
-                date: afterTomorrow,
-                status: 'active'
-            }, {
-                date: afterTomorrow2,
-                status: 'active'
-            }, {
-                date: afterTomorrow3,
-                status: 'active'
-            }, {
-                date: afterTomorrow,
-                status: 'active4'
-            }];
-        }
+
+        $scope.getDuration = function () {
+            if ($scope.cartpro.duration == 8) {
+                console.log("in 8");
+                $scope.events = [{
+                    date: afterTomorrow,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow2,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow3,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow2,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow3,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow,
+                    status: 'active4'
+                }];
+            } else {
+                console.log("in 4");
+                $scope.events = [{
+                    date: afterTomorrow,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow2,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow3,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow,
+                    status: 'active4'
+                }];
+            }
+        };
+
+        $scope.getDuration();
         $scope.beTheChange = function (dtdata) {
-            console.log("asdsad", dtdata);
+            $scope.getDuration();
+            console.log("asdsad", dtdata, $scope.events.length);
             var i = 1;
             _.each($scope.events, function (data) {
                 data.date = new Date(dtdata).setDate(new Date(dtdata).getDate() + i);
