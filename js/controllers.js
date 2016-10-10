@@ -1656,124 +1656,124 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     })
     .controller('ProductdetailCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("productdetail");
-            $scope.menutitle = NavigationService.makeactive("Productdetail");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
-            TemplateService.removeLoaderOn(2);
-            $scope.oneAtATime = true;
-            $scope.product = {};
-            $scope.mainImage = "";
-            $scope.timestamps = [];
-            // $scope.calendertimestamps = [];
-            $scope.cartpro = {};
-            $scope.cartpro.product = $state.params.id;
-            $scope.cartpro.size = '';
-            $scope.cartpro.by = '';
-            $scope.cartpro.duration = '';
-            $scope.cartpro.timeFrom = '';
-            $scope.cartpro.timeTo = '';
-            $scope.cartpro.deliveryTime = '';
-            $scope.cartpro.pickupTime = '';
-            $scope.select = {};
-            $scope.select.sizeactive = {};
-            $scope.variables = {};
-            $scope.checkLogin = $.jStorage.get("user");
-            //PRODUCT DETAIL ON SELECTED PRODUCT
-            $scope.saveWishList = function () {
-                NavigationService.saveWishlist($state.params.id, function (data) {
-                    console.log("$state.params.id", $state.params.id);
-                });
-                // NavigationService.getSession
-            };
-            //  $scope.saveWishList();
-            NavigationService.getProductDetail($state.params.id, function (data) {
-                // console.log(data);
-                $scope.product = data.data.product;
-                $scope.producttime = data.data.producttime;
-                _.each($scope.producttime, function (key) {
-                    var tmpdate = new Date(key.timeFrom);
-                    // tmpdate.setHours(0,0,0,0);
-                    var tmpto = new Date(key.timeTo);
-                    var diffDays = tmpto.getDate() - tmpdate.getDate();
-                    start = 0;
-                    do {
-                        $scope.timestamps.push(new Date(tmpdate));
-                        tmpdate.setDate(tmpdate.getDate() + 1);
-                        start++;
-                    } while (start <= (diffDays + 4));
-                });
-                $scope.mainImage = data.data.product.images[0].image;
-                $scope.getRentalAmount(4);
-                TemplateService.removeLoader();
-            }, function (err) {
-
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("productdetail");
+        $scope.menutitle = NavigationService.makeactive("Productdetail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(2);
+        $scope.oneAtATime = true;
+        $scope.product = {};
+        $scope.mainImage = "";
+        $scope.timestamps = [];
+        // $scope.calendertimestamps = [];
+        $scope.cartpro = {};
+        $scope.cartpro.product = $state.params.id;
+        $scope.cartpro.size = '';
+        $scope.cartpro.by = '';
+        $scope.cartpro.duration = '';
+        $scope.cartpro.timeFrom = '';
+        $scope.cartpro.timeTo = '';
+        $scope.cartpro.deliveryTime = '';
+        $scope.cartpro.pickupTime = '';
+        $scope.select = {};
+        $scope.select.sizeactive = {};
+        $scope.variables = {};
+        $scope.checkLogin = $.jStorage.get("user");
+        //PRODUCT DETAIL ON SELECTED PRODUCT
+        $scope.saveWishList = function () {
+            NavigationService.saveWishlist($state.params.id, function (data) {
+                console.log("$state.params.id", $state.params.id);
             });
-            $scope.selectImage = function (img) {
-                $scope.mainImage = img;
-            };
-            $scope.selectSize = function (size) {
-                $scope.cartpro.size = size;
-                _.each($scope.select.sizeactive, function (key, n) {
-                    $scope.select.sizeactive[n] = false;
-                });
-                $scope.select.sizeactive[size] = true;
-                $scope.select.sizedetail = _.find($scope.product.size, function (key) {
-                    // body...
-                    return key.name == size;
-                });
-            };
-            $scope.getRentalAmount = function (val) {
-                if (val == 8) {
-                    $scope.product.productrentalamount = $scope.product.eightdayrentalamount;
-                    $scope.product.securitydeposit = $scope.product.eightdaysecuritydeposit;
-                    $scope.cartpro.duration = 8;
-                    $scope.dateduration = 8;
-                } else {
-                    $scope.product.rentalamount = $scope.product.fourdayrentalamount;
-                    $scope.product.securitydeposit = $scope.product.fourdaysecuritydeposit;
-                    $scope.cartpro.duration = 4;
-                    $scope.dateduration = 4;
-                }
-                $scope.beTheChange(tomorrow);
+            // NavigationService.getSession
+        };
+        //  $scope.saveWishList();
+        NavigationService.getProductDetail($state.params.id, function (data) {
+            // console.log(data);
+            $scope.product = data.data.product;
+            $scope.producttime = data.data.producttime;
+            _.each($scope.producttime, function (key) {
+                var tmpdate = new Date(key.timeFrom);
+                // tmpdate.setHours(0,0,0,0);
+                var tmpto = new Date(key.timeTo);
+                var diffDays = tmpto.getDate() - tmpdate.getDate();
+                start = 0;
+                do {
+                    $scope.timestamps.push(new Date(tmpdate));
+                    tmpdate.setDate(tmpdate.getDate() + 1);
+                    start++;
+                } while (start <= (diffDays + 4));
+            });
+            $scope.mainImage = data.data.product.images[0].image;
+            $scope.getRentalAmount(4);
+            TemplateService.removeLoader();
+        }, function (err) {
+
+        });
+        $scope.selectImage = function (img) {
+            $scope.mainImage = img;
+        };
+        $scope.selectSize = function (size) {
+            $scope.cartpro.size = size;
+            _.each($scope.select.sizeactive, function (key, n) {
+                $scope.select.sizeactive[n] = false;
+            });
+            $scope.select.sizeactive[size] = true;
+            $scope.select.sizedetail = _.find($scope.product.size, function (key) {
+                // body...
+                return key.name == size;
+            });
+        };
+        $scope.getRentalAmount = function (val) {
+            if (val == 8) {
+                $scope.product.productrentalamount = $scope.product.eightdayrentalamount;
+                $scope.product.securitydeposit = $scope.product.eightdaysecuritydeposit;
+                $scope.cartpro.duration = 8;
+                $scope.dateduration = 8;
+            } else {
+                $scope.product.rentalamount = $scope.product.fourdayrentalamount;
+                $scope.product.securitydeposit = $scope.product.fourdaysecuritydeposit;
+                $scope.cartpro.duration = 4;
+                $scope.dateduration = 4;
+            }
+            $scope.beTheChange(tomorrow);
+        }
+
+        // $scope.setCalender = function() {
+        //     if ($.jStorage.get("cartDate")) {
+        //         console.log("in set calendar");
+        //         var newcartdate = $.jStorage.get("cartDate");
+        //         var tmpdate = new Date(newcartdate.timeFrom);
+        //         // tmpdate.setHours(0,0,0,0);
+        //         var tmpto = new Date(newcartdate.timeTo);
+        //         console.log("cal dates", tmpdate, tmpto);
+        //         var diffDays = tmpto.getDate() - tmpdate.getDate();
+        //         console.log("aaaa", diffDays);
+        //         start = 0;
+        //         do {
+        //             $scope.calendertimestamps.push(new Date(tmpdate));
+        //             tmpdate.setDate(tmpdate.getDate() + 1);
+        //             start++;
+        //         } while (start <= (diffDays));
+        //     }
+        // };
+
+        $scope.addToCart = function () {
+            var d = new Date($scope.cartpro.timeFrom);
+            $scope.cartpro.timeFrom = d;
+            var timeto = new Date(d);
+            $scope.cartpro.timeTo = new Date(timeto.setDate(d.getDate() + $scope.cartpro.duration));
+            if ($scope.product.designer == null) {
+                $scope.cartpro.by = "";
+            } else {
+                $scope.cartpro.by = $scope.product.designer.name;
+            }
+            if ($.jStorage.get("cartDate")) {
+                $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
+            } else {
+                $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
 
-            // $scope.setCalender = function() {
-            //     if ($.jStorage.get("cartDate")) {
-            //         console.log("in set calendar");
-            //         var newcartdate = $.jStorage.get("cartDate");
-            //         var tmpdate = new Date(newcartdate.timeFrom);
-            //         // tmpdate.setHours(0,0,0,0);
-            //         var tmpto = new Date(newcartdate.timeTo);
-            //         console.log("cal dates", tmpdate, tmpto);
-            //         var diffDays = tmpto.getDate() - tmpdate.getDate();
-            //         console.log("aaaa", diffDays);
-            //         start = 0;
-            //         do {
-            //             $scope.calendertimestamps.push(new Date(tmpdate));
-            //             tmpdate.setDate(tmpdate.getDate() + 1);
-            //             start++;
-            //         } while (start <= (diffDays));
-            //     }
-            // };
-
-            $scope.addToCart = function () {
-                var d = new Date($scope.cartpro.timeFrom);
-                $scope.cartpro.timeFrom = d;
-                var timeto = new Date(d);
-                $scope.cartpro.timeTo = new Date(timeto.setDate(d.getDate() + $scope.cartpro.duration));
-                if ($scope.product.designer == null) {
-                    $scope.cartpro.by = "";
-                } else {
-                    $scope.cartpro.by = $scope.product.designer.name;
-                }
-                if ($.jStorage.get("cartDate")) {
-                    $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
-                } else {
-                    $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
-                }
-                ($scope.cartDate.timeFrom).setHours(0, 0, 0, 0))
             if (new Date($scope.cartpro.timeFrom).setHours(0, 0, 0, 0) === new Date($scope.cartDate.timeFrom).setHours(0, 0, 0, 0) && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
                 NavigationService.addToCart($scope.cartpro, function (data) {
                     console.log("response cart", data);
@@ -1798,7 +1798,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     scope: $scope
                 });
             }
-        }; $scope.productFull = function () {
+        };
+        $scope.productFull = function () {
             $uibModal.open({
                 animation: true,
                 templateUrl: "views/modal/product-full.html",
@@ -1817,7 +1818,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 TemplateService.removeLoader();
             });
         }
-        getWishlist(); $scope.isInWishlist = function (id) {
+        getWishlist();
+        $scope.isInWishlist = function (id) {
             var indexF = _.findIndex($scope.wishlist, function (key) {
                 return key.product._id == id;
             })
@@ -1915,7 +1917,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log("innn cartdate", $.jStorage.get("cartDate"), $scope.cartpro);
             // $scope.setCalender();
         }
-        var tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
         //calendar
         $scope.dateOptions = {
             customClass: getDayClass,
@@ -1942,20 +1945,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
         $scope.open1 = function () {
             $scope.popup1.opened = true;
-        }; $scope.open2 = function () {
+        };
+        $scope.open2 = function () {
             $scope.popup2.opened = true;
-        }; $scope.popup1 = {
+        };
+        $scope.popup1 = {
             opened: false
-        }; $scope.popup2 = {
+        };
+        $scope.popup2 = {
             opened: false
         };
 
         //change color
         // $scope.cartpro.timeFrom = tomorrow;
-        $scope.today = new Date(); console.log("duration", $scope.cartpro.duration);
-        var afterTomorrow = new Date(tomorrow); afterTomorrow.setDate(tomorrow.getDate() + 1);
-        var afterTomorrow2 = new Date(tomorrow); afterTomorrow2.setDate(tomorrow.getDate() + 2);
-        var afterTomorrow3 = new Date(tomorrow); afterTomorrow3.setDate(tomorrow.getDate() + 3); $scope.getDuration = function () {
+        $scope.today = new Date();
+        console.log("duration", $scope.cartpro.duration);
+        var afterTomorrow = new Date(tomorrow);
+        afterTomorrow.setDate(tomorrow.getDate() + 1);
+        var afterTomorrow2 = new Date(tomorrow);
+        afterTomorrow2.setDate(tomorrow.getDate() + 2);
+        var afterTomorrow3 = new Date(tomorrow);
+        afterTomorrow3.setDate(tomorrow.getDate() + 3);
+        $scope.getDuration = function () {
             if ($scope.dateduration == 8) {
                 console.log("in 8");
                 $scope.events = [{
@@ -2028,7 +2039,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
     })
-.controller('CelebrityChoiceCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('CelebrityChoiceCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("celebrity-choice");
