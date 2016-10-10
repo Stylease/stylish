@@ -39,7 +39,8 @@
                   required>
                 <div class="form-error" ng-show="formcheckout.email.$dirty.pattern && formcheckout.email.$error.pattern === true">Please enter valid Email</div>
                 <div class="form-error" ng-if="">Please enter valid Email</div>
-                {{formcheckout.email.$error.pattern}}
+                <div ng-if="invalid">Please enter valid Email.</div>
+
               </div>
             </div>
           </div>
