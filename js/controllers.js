@@ -1760,7 +1760,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
 
-            // if (new Date($scope.cartpro.timeFrom).getTime() === new Date($scope.cartDate.timeFrom).getTime() && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
+            // if (d.getDate() === new Date($scope.cartDate.timeTo).getDate() && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
             if ($scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
                 NavigationService.addToCart($scope.cartpro, function (data) {
                     console.log("response cart", data);
