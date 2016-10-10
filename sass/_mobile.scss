@@ -580,7 +580,11 @@
         font-size: 16px;
         font-weight: 600;
     }
-
+    .data-all p {
+        margin: 0;
+        font-size: 14px;
+        word-spacing: 3px;
+    }
 
 }
 @media (max-width: 480px) {
