@@ -2301,7 +2301,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
     $scope.oneAtATime = true;
-
     $scope.showCross = "";
     $scope.showMe = "menu-out";
     $scope.showMenu = function () {
@@ -2388,6 +2387,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             templateUrl: "views/modal/verified.html",
                             scope: $scope
                         });
+                        // $state.reload();
                         // NavigationService.saveUser(data.data);
                     } else {
                         $scope.loginmsg.msg = data.data;
