@@ -2402,8 +2402,18 @@ flex-slider {
     padding-right: 5px;
     padding-bottom: 30px;
 
+    h2 {
+        padding: 1% 0;
+    }
+
     p {
+        margin: 0;
+        font-size: 17px;
         word-spacing: 3px;
+    }
+
+    .paddab {
+        padding-bottom: 2% !important;
     }
 
     ul {
@@ -2953,8 +2963,8 @@ ul.mn-list {
 
     .btn {
         margin: 5% !important;
-        padding: 5px 100px !important;
-        font-size: 30px !important;
+        padding: 5px 50px !important;
+        font-size: 25px !important;
         border-color: black !important;
         color: black !important;
         background-color: #fff !important;
@@ -3077,7 +3087,7 @@ div[uib-datepicker] {
     }
 }
 
->  >  >  >  >  >  > 8b223063ba2ee6599e9de485d28d838ecc227746 .zopim {
+.zopim {
     z-index: 3 !important;
 }
 // celebrity page end
