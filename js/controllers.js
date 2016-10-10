@@ -1773,7 +1773,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
-
+            // ($scope.cartDate.timeFrom).setHours(0, 0, 0, 0))
             if (new Date($scope.cartpro.timeFrom).setHours(0, 0, 0, 0) === new Date($scope.cartDate.timeFrom).setHours(0, 0, 0, 0) && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
                 NavigationService.addToCart($scope.cartpro, function (data) {
                     console.log("response cart", data);
