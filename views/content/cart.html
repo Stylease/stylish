@@ -48,7 +48,8 @@
                                     <span class="displayinline"><input type="date" class="form-control" uib-datepicker-popup ng-model="product.timeFromS"  is-open="popup2.opened" datepicker-options="dateOptions" value="product.timeFrom" ng-required="true" close-text="Close" readonly="readonly" required/></span>
                                     <!--<span>{{product.timeFrom}}</span>-->
 
-                                    <span class="change-pink text-underline text-underline ml20 pointer" ng-click="open2()" ng-model="cartpro.timeFrom" ng-change="time()" is-open="popup2.opened" datepicker-options="dateOptions">Change ?</span>
+                                    <span class="change-pink text-underline text-underline ml20 pointer" ng-click="open2()" ng-model="cartpro.timeFrom" ng-change="time()"
+                                        is-open="popup2.opened" datepicker-options="dateOptions">Change ?</span>
                                 </p>
                                 <div>
                                     <span class="edit-cart">Duration</span>
@@ -91,7 +92,7 @@
                                     <div class="mt10 mb10 on-edit">
                                         <button class="btn btn-outline btn-full text-medium" type="reset" ng-click="closeEdit()">Reset</button>
                                         <!-- <button class="btn btn-outline btn-full text-medium" ng-click="closeEdit()">Confirm</button> -->
-                                        <button class="btn btn-outline btn-full text-medium" ng-click="editCart(product);">Confirm</button>
+                                        <button class="btn btn-outline btn-full text-medium" ng-click="changeCartDate(product);">Confirm</button>
                                     </div>
                             </form>
                             </div>
