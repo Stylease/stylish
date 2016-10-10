@@ -442,6 +442,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.flags = {};
         $scope.flags.sameshipping = false;
         $scope.userdata = {};
+        $scope.emailRegex = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
         $scope.getUserAddress = function () {
             NavigationService.getProfile(function (data) {
                 if (data.value) {
@@ -525,7 +526,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         };
 
-        $scope.saveUserAddress = function (addressdata) {
+        $scope.saveUserAddress = function (addressdata, formcheckout) {
+            if (formcheckout.$invalid) {
+
+            }
             if ($.jStorage.get("userLoggedIn")) {
                 addressdata.billingAddress.isDefault = true;
                 addressdata.shippingAddress.isDefault = true;
