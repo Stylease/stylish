@@ -1642,6 +1642,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         };
 
+// $scope.viewProduct = false;
+// $scope.goToGridview=function(){
+// $scope.viewProduct = true;
+// };
+//
+// $scope.viewList=false;
+// $scope.goToListview=function(){
+//   $scope.viewList=true;
+// }
+
+
 
     })
     .controller('ProductdetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
