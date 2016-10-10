@@ -30,7 +30,7 @@
                                                             <label class="detail-heading" for="{{cat}}">All {{cat}}</label>
                                                         </div>
                                                     </div>
-                                                    <div class="f-lef" style="width:140px;" ng-repeat="subcat in value">
+                                                    <div class="f-lef" style="width:90px;" ng-repeat="subcat in value">
                                                         <div class="magic-form ">
                                                             <div class="magic-resize">
                                                                 <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id,subcat.name)" id="{{subcat.name}}">
@@ -97,7 +97,7 @@
                                     </div>
                                     <div>
                                         <img src="img/sort.png" alt=" " class="inline-block mr5 img-responsive doneLoading">
-                                        <span class="text-uppercase pointer act-fil-sor" ng-click="seeSort()" ng-class="act-fil-sor:takeMyClass">sort</span>
+                                        <span class="text-uppercase pointer" ng-click="seeSort()" ng-class="act-fil-sor:takeMyClass">sort</span>
                                         <!-- <span class="text-uppercase pointer" ng-init="showShortlist=false" ng-click="showShortlist=(showShortlist==true || showFilterlist==true)? false:true;">sort</span> -->
                                     </div>
                                     <div class="sort-filter-dropdown ng-hide" ng-show="variables.showSortlist && !showFilterlist" style="">
@@ -119,7 +119,7 @@
                         </div>
 
                         <!-- grid view -->
-                        <!-- <div infinite-scroll="loadMore()" infinite-scroll-disabled="shouldscroll" class="ng-isolate-scope">
+                        <div infinite-scroll="loadMore()" infinite-scroll-disabled="shouldscroll" class="ng-isolate-scope">
                             <div class="shop-product grid-view" ng-show="viewProduct">
                                 <div class="row">
                                     <div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping">
@@ -138,10 +138,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
                         <!--  list view-->
-                        <div infinite-scroll="loadMore()" infinite-scroll-disabled="shouldscroll" class="ng-isolate-scope">
+                        <!-- <div infinite-scroll="loadMore()" infinite-scroll-disabled="shouldscroll" class="ng-isolate-scope">
                             <div class="shop-product grid-view" ng-show="viewProduct">
                                 <div class="row">
                                     <div class="col-md-4 col-sm-6 col-xs-12 ng-scope" ng-repeat="product in shopping">
@@ -162,7 +162,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
