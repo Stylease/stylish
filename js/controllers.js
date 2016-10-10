@@ -2378,11 +2378,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.loginmsg.msg = "";
             if ($scope.signup.password === $scope.signup.confirmpswd) {
 
+                $scope.closeme = function () {
+                    removemod.close();
+                    $state.reload();
+                };
                 NavigationService.signUP($scope.signup, function (data) {
                     if (data.value) {
                         $scope.closeAllModals();
                         // $scope.isLoggedIn = true;
-                        $uibModal.open({
+                        removemod = $uibModal.open({
                             animation: true,
                             templateUrl: "views/modal/verified.html",
                             scope: $scope
