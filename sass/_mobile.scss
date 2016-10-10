@@ -1,4 +1,7 @@
 @media (max-width: 1200px) {
+  .order-delivery-time .time {
+    margin-bottom: 10px;
+}
     .tooltip.bottom .tooltip-arrow {
         margin-left: 38% !important;
     }
@@ -261,9 +264,6 @@
     }
 }
 @media (max-width: $screen-xs-max) {
-    .displayinline .form-control {
-        width: 262px !important;
-    }
 
     .contactchange {
         margin: 4% 5%;
