@@ -1220,6 +1220,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.editAllCart($scope.editcartpro, function (data) {
                 $scope.response = data;
                 if ($scope.response.value == true) {
+                    cartdate.close();
                     $scope.getCart();
                     $scope.closeEdit($scope.editcartpro.product);
                 }
@@ -1228,6 +1229,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
 
         };
+
+        $scope.changeCartDate = function (data) {
+            $scope.editProduct = data;
+            $scope.openDateModal = function (data) {
+                cartdate = $uibModal.open({
+                    animation: true,
+                    templateUrl: "views/modal/changedate.html",
+                    scope: $scope
+                });
+            };
+            $scope.openDateModal(data);
+        };
+
         $scope.openRemoveModal = function (productid) {
             $scope.variables.removeitem = productid;
             removemod = $uibModal.open({
