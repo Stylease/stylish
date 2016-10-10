@@ -2366,7 +2366,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     if (data.value) {
                         $scope.closeAllModals();
                         // $scope.isLoggedIn = true;
-                        $state.reload();
+                        $uibModal.open({
+                            animation: true,
+                            templateUrl: "views/modal/verified.html",
+                            scope: $scope
+                        });
                         // NavigationService.saveUser(data.data);
                     } else {
                         $scope.loginmsg.msg = data.data;
