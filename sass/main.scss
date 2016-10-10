@@ -1638,7 +1638,9 @@ input.form-control {
 }
 
 .sort-filter-dropdown {
-    width: 278px;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    width: 271px;
     padding: 20px;
     @include position(absolute, 33px null null 16px);
     background-color: $brand-pink;
@@ -2204,6 +2206,7 @@ input.form-control {
         position: relative;
 
         img {
+            -webkit-backface-visibility: hidden;
             max-height: 100%;
             @include transform(rotate(-90deg));
             overflow: hidden;
@@ -2359,12 +2362,17 @@ flex-slider {
 
 .cn {
     padding: 10px 0 40px;
+    margin: 4% 21%;
 
     h4 {
-        font-size: 22px;
-        /* Approximation due to font substitution */
         font-weight: 500;
-        text-align: right;
+        padding-bottom: 5px;
+        font-size: 17px;
+    }
+
+    .cn2 {
+        padding-bottom: 12px;
+        font-size: 20px;
     }
 }
 

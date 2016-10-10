@@ -12,13 +12,13 @@
                     <div class="product-holder">
                         <div class="sort-product pd10 clearfix">
                             <div class="row">
-                                <div class="col-xs-7 inline-flex padding320">
-                                    <div>
+                                <div class="col-xs-7 inline-flex padding320 dropdown-submenu">
+                                    <div class="dropdown-toggle" data-toggle="dropdown">
                                         <img src="img/filter.png" alt="" width="20" class="img-responsive inline-block mr5 doneLoading">
-                                        <span class="text-uppercase filter-heading mb10 pointer" ng-click="seeFilter()" ng-class="'act-fil-sor':takeMyClass">filter</span>
+                                        <span class=" dropdown-toggletext-uppercase filter-heading mb10 pointer" ng-click="seeFilter()" ng-class="'act-fil-sor':takeMyClass">FILTER</span>
                                         <!-- <span class="text-uppercase filter-heading inline-block mb10 pointer" ng-init="showFilterlist==false" ng-click="showFilterlist = (showFilterlist == true || showShortlist == true)? false:true;">filter</span> -->
                                     </div>
-                                    <div class="sort-filter-dropdown" ng-show="showFilterlist && !variables.showSortlist" style="">
+                                    <div class="dropdown-menu sort-filter-dropdown" ng-show="showFilterlist && !variables.showSortlist" style="">
                                         <ul>
                                             <li ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                                                 <div class="container no-padd">

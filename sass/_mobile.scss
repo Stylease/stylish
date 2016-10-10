@@ -261,7 +261,13 @@
     }
 }
 @media (max-width: $screen-xs-max) {
+    .contactchange {
+        margin: 4% 5%;
+    }
 
+    .cn {
+        margin: 0 5%;
+    }
 
     .bg-color {
         padding: 11px;
@@ -1123,8 +1129,38 @@
     .head-text h1 {
         font-size: 20px;
     }
+
+    .leave-form {
+        font-size: 20px;
+    }
+
+    .cn .cn2 {
+        padding-bottom: 12px;
+        font-size: 15px;
+    }
+
+    .cn h4 {
+        font-weight: 500;
+        padding-bottom: 5px;
+        font-size: 14px;
+    }
 }
 @media (max-width: 320px) {
+    .leave-form h2{
+        font-size: 20px;
+    }
+
+    .cn .cn2 {
+        padding-bottom: 12px;
+        font-size: 15px;
+    }
+
+    .cn h4 {
+        font-weight: 500;
+        padding-bottom: 5px;
+        font-size: 14px;
+    }
+
     .pop-heading-bar h2 {
         font-size: 27px;
     }
