@@ -261,6 +261,10 @@
     }
 }
 @media (max-width: $screen-xs-max) {
+    .displayinline .form-control {
+        width: 262px !important;
+    }
+
     .contactchange {
         margin: 4% 5%;
     }
@@ -576,8 +580,13 @@
         font-size: 16px;
         font-weight: 600;
     }
+
+
 }
 @media (max-width: 480px) {
+  .displayinline {
+      display: block;
+  }
     .product-name {
         font-weight: 400;
         padding: 0;
@@ -1146,7 +1155,7 @@
     }
 }
 @media (max-width: 320px) {
-    .leave-form h2{
+    .leave-form h2 {
         font-size: 20px;
     }
 
