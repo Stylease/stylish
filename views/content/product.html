@@ -130,7 +130,8 @@
                                         <div class="view-product relate pointer ">
                                             <div class="product-detail text-center ">
                                                 <div class="product-imgholder relate ">
-                                                    <img ui-sref="productdetail({ 'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} " alt=" " class="get-center img-responsive ">
+                                                    <img ui-sref="productdetail({'subcatname':sendtoproduct.name ,'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} "
+                                                        alt=" " class="get-center img-responsive ">
                                                     <div class="wishlist text-right ">
                                                         <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
                                                     </div>
@@ -152,7 +153,8 @@
                                         <div class="view-product relate pointer ">
                                             <div class="row">
                                                 <div class="col-xs-3 product-img ">
-                                                    <img ui-sref="productdetail({ 'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} " alt=" " class="img-responsive ">
+                                                    <img ui-sref="productdetail({ 'subcatname':sendtoproduct.name ,'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} "
+                                                        alt=" " class="img-responsive ">
                                                 </div>
                                                 <div class="col-xs-9 product-rate">
                                                     <div class="wishlist text-right ">
@@ -283,7 +285,8 @@
                                         <div class="view-product relate pointer ">
                                             <div class="product-detail text-center ">
                                                 <div class="product-imgholder relate ">
-                                                    <img ui-sref="productdetail({ 'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} " alt=" " class="get-center img-responsive ">
+                                                    <img ui-sref="productdetail({ 'subcatname':sendtoproduct.name ,'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} "
+                                                        alt=" " class="get-center img-responsive ">
                                                     <div class="wishlist text-right ">
                                                         <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
                                                     </div>
