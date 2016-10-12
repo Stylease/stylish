@@ -2224,13 +2224,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
 
-    if ($.jStorage.get("userLoggedIn")) {
-        console.log("logged in");
-    } else {
-        if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
-            $state.go("home");
-        }
-    }
+
 
     globalfunction.signUp = function () {
         $scope.signUp();
@@ -2333,6 +2327,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     };
     $scope.checkSession();
+
+    if ($.jStorage.get("userLoggedIn")) {
+        console.log("logged in");
+    } else {
+        if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
+            $state.go("home");
+        }
+    }
     globalfunction.getCartCount = function () {
         NavigationService.getCart(function (data) {
             if (data.value == true) {
@@ -2374,35 +2376,57 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.signup = {};
     // SIGNUP
 
-    $scope.signUpNormal = function () {
-            $scope.loginmsg.msg = "";
-            if ($scope.signup.password === $scope.signup.confirmpswd) {
+    $scope.emailRegex = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+    $scope.validEmail = false;
+    $scope.signUpNormal = function (emailSignupForm,signup) {
+        if (emailSignupForm.$invalid) {
+          $scope.validEmail = true;
+      }else {
+        console.log("im in else");
+        $scope.loginmsg.msg = "";
+        if ($scope.signup.password === $scope.signup.confirmpswd) {
 
-                $scope.closeme = function () {
-                    removemod.close();
-                    $state.reload();
-                };
-                NavigationService.signUP($scope.signup, function (data) {
-                    if (data.value) {
-                        $scope.closeAllModals();
-                        // $scope.isLoggedIn = true;
-                        removemod = $uibModal.open({
-                            animation: true,
-                            templateUrl: "views/modal/verified.html",
-                            scope: $scope
-                        });
-                        // $state.reload();
-                        // NavigationService.saveUser(data.data);
-                    } else {
-                        $scope.loginmsg.msg = data.data;
-                        $scope.loginmsg.class = "text-danger";
-                    }
-                }, function (err) {
-                    console.log(err);
-                })
-            } else {
-                $scope.loginmsg.msg = "Password And Confirm Password Should be same";
-                $scope.loginmsg.class = "text-danger";
+            $scope.closeme = function () {
+                removemod.close();
+                $state.reload();
+            };
+            NavigationService.signUP($scope.signup, function (data) {
+                if (data.value) {
+                    $scope.closeAllModals();
+                    // $scope.isLoggedIn = true;
+                    removemod = $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/verified.html",
+                        scope: $scope
+                    });
+                    // $state.reload();
+                    // NavigationService.saveUser(data.data);
+                } else {
+                    $scope.loginmsg.msg = data.data;
+                    $scope.loginmsg.class = "text-danger";
+                }
+            }, function (err) {
+                console.log(err);
+            })
+        } else {
+            $scope.loginmsg.msg = "Password And Confirm Password Should be same";
+            $scope.loginmsg.class = "text-danger";
+        }
+      }
+
+        }
+        $scope.goToFunction=function(){
+          console.log("im in");
+          console.log("$state",$state.current.name);
+          if ($state.current.name === 'checkoutsignin') {
+            console.log("aaaa");
+            $state.go('address');
+          }else {
+            console.log("bbbbbb");
+          if ($.jStorage.get("userLoggedIn")!=null) {
+            console.log("adsdasd");
+                $state.go('profile');
+            }
             }
         }
         // NORMAL LOGIN

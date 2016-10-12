@@ -6,26 +6,32 @@
    <div class="pop-body text-center bg-light-pink pd20">
       <div class="row">
          <div class="col-md-offset-1 col-md-10">
-            <form name="emailSignup" ng-submit="signUpNormal()">
+            <form name="emailSignupForm" ng-submit="signUpNormal(emailSignupForm,signup);">
                <div class="relate">
                   <input type="text" class="form-control inpu-1" name="name" placeholder="Name" ng-model="signup.name" required>
-                  <div class="form-error" ng-show="emailSignup.name.$error.required && emailSignup.name.$touched">Please enter your name.</div>
+                  <div class="form-error" ng-show="emailSignupForm.name.$error.required && emailSignupForm.name.$touched">Please enter your name.</div>
                </div>
                <div class="relate">
-                  <input type="email" name="email" class="form-control inpu-1 bckg" placeholder="Email Id" ng-model="signup.email" ng-pattern="emailRegex" required>
-                  <div class="form-error" ng-show="emailSignup.email.$dirty && (emailSignup.email.$error.pattern === true)">
+                  <input type="email" name="email" ng-pattern="emailRegex" class="form-control inpu-1 bckg" placeholder="Email Id" ng-model="signup.email" required>
+                  <!-- <div class="form-error" ng-show="emailSignupForm.email.$dirty && (emailSignupForm.email.$error.pattern === true)">
                      Please enter a valid email id.
-                  </div>
+                  </div> -->
+                  <div class="form-error" ng-show="emailSignupForm.email.$dirty.pattern && emailSignupForm.email.$error.pattern === true">Please enter valid Email</div>
+                  <div class="form-error" ng-if="">Please enter valid Email</div>
+                  <div ng-if="invalid">Please enter valid Email.</div>
+                  <!-- <div class="form-error" ng-show="emailSignupForm.email.$error.required && emailSignupForm.email.$touched">Please enter a valid email id.</div> -->
+                  <div class="form-error" ng-if="validEmail">Please enter a valid email id.</div>
+                  {{emailSignupForm.$invalid}}
                </div>
                <div class="relate">
                   <input type="password" name="password" class="form-control inpu-1 bckg" placeholder="Password" ng-model="signup.password" required>
-                  <div class="form-error" ng-show="emailSignup.password.$error.required && emailSignup.password.$touched">
+                  <div class="form-error" ng-show="emailSignupForm.password.$error.required && emailSignupForm.password.$touched">
                      Please enter your password.
                   </div>
                </div>
                <div class="relate">
                   <input type="password" name="confirmpswd" class="form-control inpu-1 bckg" placeholder="Confirm Password" ng-model="signup.confirmpswd" required>
-                  <div class="form-error" ng-show="emailSignup.confirmpswd.$error.required && emailSignup.confirmpswd.$touched">
+                  <div class="form-error" ng-show="emailSignupForm.confirmpswd.$error.required && emailSignupForm.confirmpswd.$touched">
                      Passwords do not match.
                   </div>
                </div>
@@ -34,7 +40,7 @@
                      <input type="checkbox" id="accept" name="accept" ng-model="accept" required>
                      <label for="accept" class="dark-blue"><span></span>I Accept the <a href="" class="font-bold dark-blue text-underline" target="_blank">TERMS &amp; CONDITIONS</a> And Privacy Policy</label>
                   </div>
-                  <div class="form-error tnc-error" ng-show="emailSignup.accept.$error.required && emailSignup.accept.$touched">Please accept Terms and Conditions to get started.</div>
+                  <div class="form-error tnc-error" ng-show="emailSignupForm.accept.$error.required && emailSignupForm.accept.$touched">Please accept Terms and Conditions to get started.</div>
                </div>
                <div class="relate">
                   <div class="custom-checkbox text-left mt10 mb10">
