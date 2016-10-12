@@ -29,7 +29,7 @@
                 <p class="mb5"><span class="edit-cart">Duration</span> <span>11 May, 2016</span></p> -->
                         <!-- <p>Retail Price : INR <span>{{order.order.price}}/-</span></p> -->
                         <p ng-if="order.size" class="mb5"><span class="edit-cart">Size</span> <span>{{order.size}}</span></p>
-                        <p class="mb5"><span class="edit-cart">Rent</span> <span ng-if="order.duration==4">INR {{order.product.fourdayrentalamount|currency}}/-</span><span ng-if="order.duration==8">INR {{order.product.eightdayrentalamount|currency}}/-</span></p>
+                        <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="order.duration==4">INR {{order.product.fourdayrentalamount|currency}}/-</span><span ng-if="order.duration==8">INR {{order.product.eightdayrentalamount|currency}}/-</span></p>
                         <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{order.timeFrom | date : 'mediumDate'}}</span></p>
                         <p class="mb5"><span class="edit-cart">Duration</span> <span>{{order.duration}} Days</span></p>
                         <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{order.deliveryTime}}</span></p>
