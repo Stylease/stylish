@@ -2363,6 +2363,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // if($scope.cartcount == undefined && $state.current.name === "checkoutorder" ){
     //     $state.go("home");
     // }
+
     globalfunction.getCartCount();
     $scope.closeAllModals = function () {
         if (modal1) {
@@ -2432,11 +2433,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log("aaaa");
                 $state.go('address');
             } else {
-                console.log("bbbbbb");
-                if ($.jStorage.get("userLoggedIn")) {
-                    console.log("adsdasd");
-                    $state.go('profile');
-                }
+                $state.go('profile');
+
             }
         }
         // NORMAL LOGIN
