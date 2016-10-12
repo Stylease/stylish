@@ -80,13 +80,15 @@
                                                             <div class="magic-resize">
                                                                 <input class="magic-checkbox" type="checkbox" name="{{col.name}}" ng-model="checkIt[col.name]" ng-change="pushColor(checkIt[col.name],col._id)"
                                                                     id="{{col.name}}">
-                                                                <label class="detail-heading" forsubcatname="{{col.name}}">{{col.name}}</label>
+                                                                <label class="detail-heading" for="{{col.name}}">{{col.name}}</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li>
+                                                <div class="container no-padd">
+                                                    <div class="cla">
                                                         <div class="buttons on-edit text-center">
                                                             <button class="btn btn-outline text-medium " ng-click="resetFilter()">Reset</button>
                                                             <button class="btn btn-outline text-medium " ng-click="applyFilter()">Apply</button>
@@ -128,7 +130,7 @@
                                         <div class="view-product relate pointer ">
                                             <div class="product-detail text-center ">
                                                 <div class="product-imgholder relate ">
-                                                    <img ui-sref="productdetail({ 'subcatname':sendtoproduct,'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} " alt=" " class="get-center img-responsive ">
+                                                    <img ui-sref="productdetail({ 'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} " alt=" " class="get-center img-responsive ">
                                                     <div class="wishlist text-right ">
                                                         <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
                                                     </div>
@@ -279,10 +281,9 @@
                                 <div class="row ">
                                     <div class="col-md-4 col-sm-6 col-xs-6 " ng-repeat="product in shopping ">
                                         <div class="view-product relate pointer ">
-                                          {{sendtoproduct.name}}
                                             <div class="product-detail text-center ">
                                                 <div class="product-imgholder relate ">
-                                                    <img ui-sref="productdetail({'subcatname':sendtoproduct.name, 'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} " alt=" " class="get-center img-responsive ">
+                                                    <img ui-sref="productdetail({ 'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} " alt=" " class="get-center img-responsive ">
                                                     <div class="wishlist text-right ">
                                                         <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
                                                     </div>
