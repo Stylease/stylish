@@ -13,7 +13,7 @@
             </div>
           </div>
           <div class="col-md-7">
-            <div class="order-detail-info dark-blue">
+            <div class="order-detail-info dark-blue paddup15">
               <div class="order-detail-heading">
                 <h3 class="m-clear mb5">{{product.product.name}}</h3>
                 <p class="text-medium">by : <span>{{product.by}}</span></p>
@@ -25,7 +25,7 @@
                 <p class="mb5"><span class="edit-cart">Duration</span> <span>11 May, 2016</span></p> -->
                 <!-- <p>Retail Price : INR <span>{{product.product.price}}/-</span></p> -->
                 <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
-                <p class="mb5"><span class="edit-cart">Rent</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
+                <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
                 <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
                 <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
                 <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{product.deliveryTime}}</span></p>

@@ -1,7 +1,8 @@
 @media (max-width: 1200px) {
-  .order-delivery-time .time {
-    margin-bottom: 10px;
-}
+    .order-delivery-time .time {
+        margin-bottom: 10px;
+    }
+
     .tooltip.bottom .tooltip-arrow {
         margin-left: 38% !important;
     }
@@ -264,6 +265,29 @@
     }
 }
 @media (max-width: $screen-xs-max) {
+  .add-body .custom-checkbox {
+    margin: 0px;
+
+}
+    .cn .cni {
+        font-size: 15px;
+        padding: 0 15px;
+        display: block;
+    }
+
+    .ml20 {
+        margin-left: 0;
+    }
+    .wd50 {
+        width: inherit;
+    }
+    .paddis {
+        padding-left: inherit;
+    }
+
+    .customerspeak-slider .flex-direction-nav {
+        display: none;
+    }
 
     .contactchange {
         margin: 4% 5%;
@@ -580,17 +604,22 @@
         font-size: 16px;
         font-weight: 600;
     }
+
     .data-all p {
         margin: 0;
         font-size: 14px;
         word-spacing: 3px;
     }
-
 }
 @media (max-width: 480px) {
-  .displayinline {
-      display: block;
-  }
+    .close-popup .close {
+        right: -7px !important;
+    }
+
+    .displayinline {
+        display: block;
+    }
+
     .product-name {
         font-weight: 400;
         padding: 0;
@@ -1073,6 +1102,11 @@
 
     .continue-shop .outfit {
         padding: 0;
+        font-size: 15px;
+    }
+
+    .btnwi {
+        width: 75%;
     }
 
     .change-delivery-date p {
