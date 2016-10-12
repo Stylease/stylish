@@ -688,7 +688,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
         $scope.addAddress = function(val) {
-
+console.log("val",val);
             var collection;
             if (val) {
                 collection = $scope.userdata.shippingAddress;
@@ -732,7 +732,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 n.edit = false;
             });
             NavigationService.userProfileSave($scope.userdata, function(data) {
+              console.log("data",data);
                 $scope.getProfile();
+
             });
         };
 
