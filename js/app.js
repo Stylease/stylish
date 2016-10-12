@@ -97,10 +97,15 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         })
 
     .state('productdetail', {
-            url: "/productdetail/:id",
+            url: "/productdetail/:subcatname/:id",
             templateUrl: "views/template.html",
             controller: 'ProductdetailCtrl'
         })
+    // .state('productdetail', {
+    //         url: "/productdetail/:id",
+    //         templateUrl: "views/template.html",
+    //         controller: 'ProductdetailCtrl'
+    //     })
         .state('celebritychoice', {
             url: "/celebrity-choice",
             templateUrl: "views/template.html",
