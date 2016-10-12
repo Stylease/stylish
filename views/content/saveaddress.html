@@ -1,13 +1,14 @@
 <div class="heading-bar text-center">
-   <h3 class="heading">Saved Addresses</h3>
+  <h3 class="heading">Saved Addresses</h3>
 </div>
 <div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
-  <flex-slider flex-slide="s in download track by $index"  class="bg-color" animation="slide" item-width="200" item-margin="10" animationloop="true" move="2">
-     <li auto-heightfixed>
-       <a ng-if="s.state !== 'log'" ui-sref="{{s.state}}">{{s.name}}</a>
-       <a ng-if="s.state === 'log'" ng-click="logout()">{{s.name}}</a>
-         <!-- <img ng-src="{{s}}" class="img-responsive" alt="Hindustan Platinum" auto-heightfixed> -->
-     </li>
+  <flex-slider flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200" item-margin="10"
+    animationloop="true" move="2">
+    <li auto-heightfixed>
+      <a ng-if="s.state !== 'log'" ui-sref="{{s.state}}">{{s.name}}</a>
+      <a ng-if="s.state === 'log'" ng-click="logout()">{{s.name}}</a>
+      <!-- <img ng-src="{{s}}" class="img-responsive" alt="Hindustan Platinum" auto-heightfixed> -->
+    </li>
   </flex-slider>
 </div>
 <div class="container">
@@ -16,85 +17,84 @@
     <div class="col-md-3 hidden-xs">
       <div class="prof-tab" ng-include="template.account"></div>
     </div>
-         <div class="col-md-9">
-            <div class="billingsave-add">
-               <div class="row">
-                  <h4 class="text-center dark-blue">Billing Address</h4>
-                  <div class="col-md-6" ng-repeat="data in userdata.billingAddress">
-                     <div class="">
-                        <div class="first-address">
-                           <div ng-hide="data.edit">
-                              <div class="add-head bg-pink clearfix">
-                                 <span class="pointer edit-add pull-right mt10 mr10">
+    <div class="col-md-9">
+      <div class="billingsave-add">
+        <div class="row">
+          <h4 class="text-center dark-blue">Billing Address</h4>
+          <div class="col-md-6" ng-repeat="data in userdata.billingAddress">
+            <div class="">
+              <div class="first-address">
+                <div ng-hide="data.edit">
+                  <div class="add-head bg-pink clearfix">
+                    <span class="pointer edit-add pull-right mt10 mr10">
                                               <i class="fa fa-trash" ng-click="showDelete(data);"></i>
                                           </span>
-                                 <span class="pointer edit-add pull-right mt10 mr10">
+                    <span class="pointer edit-add pull-right mt10 mr10">
                                                 <i class="fa fa-pencil" ng-click="showEdit(data);"></i>
                                             </span>
 
-                                 <h5 class="text-uppercase dark-blue m-clear pd10 text-center">{{data.billingTitle}}</h5>
-                              </div>
-                              <div class="add-body">
-                                 <address>{{data.billingAddressFlat}},<br/>
-                                                {{data.billingAddressStreet}},<br/>
-                                                {{data.billingAddressLandmark}},<br/>
-                                                {{data.billingAddressCity}}
-                                                -
-                                                {{data.billingAddressPin}}<br/>
-                                                {{data.billingAddressState}},
-                                                {{data.billingAddressCountry}}</address>
-                                 <div class="custom-checkbox inline-block no-margin">
-                                    <input type="checkbox" id="default{{$index}}" ng-model="data.isDefault" ng-change="changeDefault(data)">
-                                    <label for="default{{$index}}">
+                    <h5 class="text-uppercase dark-blue m-clear pd10 text-center">{{data.billingTitle}}</h5>
+                  </div>
+                  <div class="add-body">
+                    <address>{{data.billingAddressFlat}},<br/> {{data.billingAddressStreet}},
+                      <br/> {{data.billingAddressLandmark}},
+                      <br/> {{data.billingAddressCity}} - {{data.billingAddressPin}}
+                      <br/> {{data.billingAddressState}}, {{data.billingAddressCountry}}
+                    </address>
+                    <div class="custom-checkbox inline-block no-margin">
+                      <input type="checkbox" id="default{{$index}}" ng-model="data.isDefault" ng-change="changeDefault(data)">
+                      <label for="default{{$index}}">
                                        <span></span> Use as default address</label>
-                                 </div>
-                                 <div class="custom-checkbox inline-block">
+                    </div>
+                    <!--<div class="custom-checkbox inline-block">
                                     <input type="checkbox" id="default{{$index}}" ng-model="data.isDefault" ng-change="changeDefault(data)">
                                     <label for="default{{$index}}">
                                        <span></span> Use for shipping address</label>
-                                 </div>
-                                 <!-- <div class="custom-checkbox inline-block">
-                                              <input type="checkbox" id="use{{$index}}">
-                                              <label for="use{{$index}}">
+                                 </div>-->
+                    <div class="custom-checkbox inline-block">
+                      <input type="checkbox" id="use{{$index}}">
+                      <label for="use{{$index}}">
                                                   <span></span>
                                                   Use For Shipping address</label>
-                                          </div> -->
-                              </div>
+                    </div>
+                  </div>
 
-                           </div>
-                           <div class="add-billing-add" ng-show="data.edit">
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <form name="saveaddress" ng-submit="saveProfile(data)">
-                                       <input type="text" class="form-control" placeholder="Title Of Address" ng-model="data.billingTitle" name="addressTitle" required>
-                                       <div  ng-show="saveaddress.addressTitle.$error.required && saveaddress.addressTitle.$touched">Please enter title Of address</div>
-                                       <input type="text" class="form-control" placeholder="Flat Number, Building Number" ng-model="data.billingAddressFlat" name="flatNo" required>
-                                       <div  ng-show="saveaddress.flatNo.$error.required && saveaddress.flatNo.$touched">Please enter flat number, building number</div>
-                                       <input type="text" class="form-control" placeholder="Street Address" ng-model="data.billingAddressStreet" required name="street">
-                                       <div  ng-show="saveaddress.street.$error.required && saveaddress.street.$touched">Please enter street address</div>
-                                       <input type="text" class="form-control" placeholder="Nearest Landmark" ng-model="data.billingAddressLandmark" required name="landmark">
-                                       <div  ng-show="saveaddress.landmark.$error.required && saveaddress.landmark.$touched">Please enter nearest landmark</div>
-                                       <input type="text" class="form-control" placeholder="Pin Code" maxlength="6" ng-model="data.billingAddressPin" minlength ="6" required name="pinNo" only-Digits>
-                                        <div  ng-show="saveaddress.pinNo.$error.required && saveaddress.pinNo.$touched">Please enter pin code</div>
-                                       <input type="text" readonly  class="form-control fixed-add" placeholder="City" ng-model="data.billingAddressCity">
-                                       <input type="text" readonly class="form-control fixed-add" placeholder="State" ng-model="data.billingAddressState">
-                                       <input type="text" readonly class="form-control fixed-add" placeholder="Country" ng-model="data.billingAddressCountry">
-                                       <div class="same-billing mg20">
-                                          <div class="custom-checkbox">
-                                             <input type="checkbox" id="bill{{$index}}" ng-model="data.isShipping">
-                                             <label for="bill{{$index}}">
+                </div>
+                <div class="add-billing-add" ng-show="data.edit">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <form name="saveaddress" ng-submit="saveProfile(data)">
+                        <input type="text" class="form-control" placeholder="Title Of Address" ng-model="data.billingTitle" name="addressTitle" required>
+                        <div ng-show="saveaddress.addressTitle.$error.required && saveaddress.addressTitle.$touched">Please enter title Of address</div>
+                        <input type="text" class="form-control" placeholder="Flat Number, Building Number" ng-model="data.billingAddressFlat" name="flatNo"
+                          required>
+                        <div ng-show="saveaddress.flatNo.$error.required && saveaddress.flatNo.$touched">Please enter flat number, building number</div>
+                        <input type="text" class="form-control" placeholder="Street Address" ng-model="data.billingAddressStreet" required name="street">
+                        <div ng-show="saveaddress.street.$error.required && saveaddress.street.$touched">Please enter street address</div>
+                        <input type="text" class="form-control" placeholder="Nearest Landmark" ng-model="data.billingAddressLandmark" required name="landmark">
+                        <div ng-show="saveaddress.landmark.$error.required && saveaddress.landmark.$touched">Please enter nearest landmark</div>
+                        <input type="text" class="form-control" placeholder="Pin Code" maxlength="6" ng-model="data.billingAddressPin" minlength="6"
+                          required name="pinNo" only-Digits>
+                        <div ng-show="saveaddress.pinNo.$error.required && saveaddress.pinNo.$touched">Please enter pin code</div>
+                        <input type="text" readonly class="form-control fixed-add" placeholder="City" ng-model="data.billingAddressCity">
+                        <input type="text" readonly class="form-control fixed-add" placeholder="State" ng-model="data.billingAddressState">
+                        <input type="text" readonly class="form-control fixed-add" placeholder="Country" ng-model="data.billingAddressCountry">
+                        <div class="same-billing mg20">
+                          <div class="custom-checkbox">
+                            <input type="checkbox" id="bill{{$index}}" ng-model="data.isShipping">
+                            <label for="bill{{$index}}">
                                                 Use the same for shipping address.</label>
-                                          </div>
-                                       </div>
-                                       <div class="text-center mt20 mb20 save ">
-                                          <button class="btn btn-outline btn-full text-medium" type="submit">Save</button>
-                                       </div>
-                                    </form>
-                                 </div>
-                              </div>
-                           </div>
+                          </div>
                         </div>
-                        <!-- <div class="add-address relate pointer" ng-click="addAddress();">
+                        <div class="text-center mt20 mb20 save ">
+                          <button class="btn btn-outline btn-full text-medium" type="submit">Save</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="add-address relate pointer" ng-click="addAddress();">
                            <div class="new-add get-center dark-pink text-center">
                               <span class="block">
                                             <i class="fa fa-plus-circle fa-2x dark-pink"></i>
@@ -102,19 +102,19 @@
                               <span>Add New Address</span>
                            </div>
                         </div> -->
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="add-address relate pointer" ng-click="addAddress();">
-                     <div class="new-add get-center dark-pink text-center">
-                        <span class="block">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="add-address relate pointer" ng-click="addAddress();">
+            <div class="new-add get-center dark-pink text-center">
+              <span class="block">
                                       <i class="fa fa-plus-circle fa-2x dark-pink"></i>
                                   </span>
-                        <span>Add New Address</span>
-                     </div>
-                  </div>
-                  <!-- <div class="col-md-6">
+              <span>Add New Address</span>
+            </div>
+          </div>
+          <!-- <div class="col-md-6">
                      <div class="shipping-padd">
                          <div class="first-address">
                         <div class="first-address" ng-repeat="data in userdata.shippingAddress">
@@ -176,9 +176,9 @@
                      </div>
                   </div> -->
 
-               </div>
-            </div>
-            <!-- <div class="add-billing-add" ng-show="billingAdd">
+        </div>
+      </div>
+      <!-- <div class="add-billing-add" ng-show="billingAdd">
           <div class="row">
             <div class="col-md-12">
               <form action="">
@@ -203,7 +203,7 @@
             </div>
           </div>
         </div> -->
-            <!-- <div class="billingsave-add shippingsave-add" ng-hide="shippingAdd">
+      <!-- <div class="billingsave-add shippingsave-add" ng-hide="shippingAdd">
           <h4 class="text-center dark-blue">Shipping Address</h4>
           <div class="row">
             <div class="col-md-6">
@@ -231,7 +231,7 @@
             </div>
           </div>
         </div> -->
-            <!-- <div class="add-billing-add add-shipping-add" ng-show="shippingAdd">
+      <!-- <div class="add-billing-add add-shipping-add" ng-show="shippingAdd">
           <div class="row">
             <div class="col-md-offset-2 col-md-8">
               <form action="">
@@ -256,10 +256,10 @@
             </div>
           </div>
         </div> -->
-            <!-- <div class="text-center mb20">
+      <!-- <div class="text-center mb20">
                     <button class="btn btn-outline btn-full text-medium">Continue</button>
                 </div> -->
-         </div>
-      </div>
-   </div>
+    </div>
+  </div>
+</div>
 </div>
