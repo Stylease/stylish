@@ -1334,13 +1334,16 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     $scope.totalsecuritydeposit = 0;
                     $scope.cartDetails = data.data.cartcount;
                     $scope.cartProduct = data.data.cartproduct;
+                    CalenderService.duration = $scope.cartProduct[0].duration;
                     _.each($scope.cartProduct, function (n) {
                         if (n.duration == 4) {
                             $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.fourdayrentalamount);
                             $scope.totalsecuritydeposit = $scope.totalsecuritydeposit + parseInt(n.product.fourdaysecuritydeposit);
+
                         } else {
                             $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.eightdayrentalamount);
                             $scope.totalsecuritydeposit = $scope.totalsecuritydeposit + parseInt(n.product.eightdaysecuritydeposit);
+
                         }
 
                     });
@@ -1366,6 +1369,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             NavigationService.getProductTimes(function (data) {
                 if (data.value) {
                     $scope.productTime = data.data;
+                    CalenderService.blockedDates = $scope.producttime;
                     console.log("product times", $scope.productTime);
                 }
 
