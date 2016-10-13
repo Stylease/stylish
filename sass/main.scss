@@ -1591,7 +1591,7 @@ input.form-control {
         color: $brand-dark-blue;
         font-weight: 500;
         &:hover {
-            color: $brand-dark-pink;
+            color: $brand-dark-blue;
         }
     }
 }
@@ -1630,7 +1630,7 @@ input.form-control {
 
 .product-detail {
     h4 {
-        min-height: 52px;
+        height: 52px;
         padding: 0 30px;
         margin: 20px 0 0;
         font-size: 16px;
@@ -2869,6 +2869,17 @@ div[uib-datepicker] {
     z-index: 3 !important;
 }
 
+.uib-daypicker{
+  .btn-default{
+    &:hover{
+
+
+        background-color: #e87b65 !important;
+
+
+    }
+  }
+}
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";

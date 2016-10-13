@@ -1057,13 +1057,47 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         };
     })
-    .controller('paymentCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+    .controller('paymentCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams, $http) {
         //Used to name the .html file
-        console.log($stateParams.id);
+        console.log(window.location.origin + "/payment.php");
         NavigationService.getOrderDetail($stateParams.id, function (data, status) {
             console.log(data);
             $scope.toPaymentGateway = data.data;
             $scope.toPaymentGateway.productinfo = "Stylease Product";
+            // $scope.payvalue = {};
+            // $scope.payvalue.email = $scope.toPaymentGateway.email;
+            // $scope.payvalue.txnid = $scope.toPaymentGateway.orderid;
+            // $scope.payvalue.key = '3gqoHz';
+            // $scope.payvalue.amount = $scope.toPaymentGateway.total;
+            // $scope.payvalue.firstname = $scope.toPaymentGateway.firstname;
+            // $scope.payvalue.phone = $scope.toPaymentGateway.mobile;
+            // $scope.payvalue.productinfo = $scope.toPaymentGateway.productinfo;
+            // $scope.payvalue.surl = 'http://google.com';
+            // $scope.payvalue.furl = 'https://in.yahoo.com/';
+
+
+            // console.log($scope.payvalue);
+            // NavigationService.toPaymentGateway($scope.payvalue, function (data) {
+            //     console.log(data);
+            // });
+            // var request = $http({
+            //     method: "post",
+            //     url: window.location.origin + "/payment.php",
+            //     data: {
+            //         email: $scope.toPaymentGateway.email,
+            //         txnid: $scope.toPaymentGateway.orderid,
+            //         key: '3gqoHz',
+            //         amount: $scope.toPaymentGateway.total,
+            //         firstname: $scope.toPaymentGateway.firstname,
+            //         phone: $scope.toPaymentGateway.mobile,
+            //         productinfo: $scope.toPaymentGateway.productinfo,
+            //         surl: 'http://google.com',
+            //         furl: 'https://in.yahoo.com/'
+            //     },
+            //     headers: {
+            //         'Content-Type': 'application/x-www-form-urlencoded'
+            //     }
+            // });
             // $("form[name='payuForm']").submit();
         });
         $scope.template = TemplateService.changecontent("payment");
@@ -2008,18 +2042,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
 
         // Disable weekend selection
-        function disabled(data) {
-            // console.log(data);
-            var current = data.date,
-                mode = data.mode;
-            current.setHours(0, 0, 0, 0);
-            return _.findIndex($scope.timestamps, function (key) {
-                key.setHours(0, 0, 0, 0);
-                current.setHours(0, 0, 0, 0);
-                // console.log(new Date(key), new Date(current));
-                return new Date(key).getTime() == current.getTime();
-            }) !== -1;
-        }
+
         $scope.open1 = function () {
             $scope.popup1.opened = true;
         };
@@ -2098,20 +2121,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             });
         };
 
-        function getDayClass(data) {
-            // var date = data.date,
-            //     mode = data.mode;
-            // if (mode === 'day') {
-            //     var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-            //     for (var i = 0; i < $scope.events.length; i++) {
-            //         var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-            //         if (dayToCheck === currentDay) {
-            //             return $scope.events[i].status;
-            //         }
-            //     }
-            // }
-            // return '';
-        }
 
     })
     .controller('CelebrityChoiceCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {

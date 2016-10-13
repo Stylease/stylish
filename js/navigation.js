@@ -312,6 +312,14 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
+        toPaymentGateway: function (data, callback) {
+            console.log(data);
+            return $http({
+                url: window.location.origin + "/payu/payment.php",
+                method: "POST",
+                data: data
+            }).success(callback);
+        },
         getOrderById: function (id, callback) {
             // var data = {
             //     product: id
