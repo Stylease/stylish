@@ -1013,9 +1013,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                                 console.log("data", data.data.orderid);
                                 $scope.orderid = data.data.orderid;
                                 $scope.formdata = data.data;
-                                NavigationService.goToPayment(data.data._id, function (data) {
-                                    console.log("payment ja done");
-                                });
+                                window.location.href = (adminURL + "payu/payU?_id=" + data.data._id);
+                                // NavigationService.goToPayment(data.data._id, function (data) {
+                                //     console.log("payment ja done");
+                                // });
                                 // NavigationService.emptyCart(function (response) {
                                 //     if (response) {
                                 //         $state.go('thankyou', {
@@ -1203,6 +1204,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         TemplateService.removeLoaderOn(1);
+        TemplateService.removeLoader();
         $scope.variables = {};
         $scope.totalrentalamount = 0;
         $scope.totalsecuritydeposit = 0;
