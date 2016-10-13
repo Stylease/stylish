@@ -51,6 +51,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             templateUrl: "views/template.html",
             controller: 'WishlistCtrl'
         })
+        .state('payment', {
+            url: "/payment/:id",
+            templateUrl: "views/template.html",
+            controller: 'paymentCtrl'
+        })
         .state('address', {
             url: "/address",
             templateUrl: "views/template.html",

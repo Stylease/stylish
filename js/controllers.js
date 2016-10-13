@@ -1003,16 +1003,21 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                             if (data) {
                                 $.jStorage.set("cartDate", "");
                                 console.log("data", data.data.orderid);
-                                $scope.orderid = data.data.orderid
-                                NavigationService.emptyCart(function (response) {
-                                    if (response) {
-                                        $state.go('thankyou', {
-                                            orderid: $scope.orderid
-                                        });
-                                    } else {
-                                        $state.go("sorry");
-                                    }
+                                $scope.orderid = data.data.orderid;
+                                $scope.formdata = data.data;
+                                console.log($scope.formdata);
+                                $state.go('payment', {
+                                    'id': data.data._id
                                 });
+                                // NavigationService.emptyCart(function (response) {
+                                //     if (response) {
+                                //         $state.go('thankyou', {
+                                //             orderid: $scope.orderid
+                                //         });
+                                //     } else {
+                                //         $state.go("sorry");
+                                //     }
+                                // });
                             } else {
                                 $state.go("sorry");
                             }
@@ -1022,16 +1027,22 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                             if (data) {
                                 $.jStorage.set("cartDate", "");
                                 console.log("data", data.data.orderid);
-                                $scope.orderid = data.data.orderid
-                                NavigationService.emptyCart(function (response) {
-                                    if (response) {
-                                        $state.go('thankyou', {
-                                            orderid: $scope.orderid
-                                        });
-                                    } else {
-                                        $state.go("sorry");
-                                    }
+                                $scope.orderid = data.data.orderid;
+                                console.log("IN FORM DATA");
+                                $scope.formdata = data.data;
+                                console.log($scope.formdata);
+                                $state.go('payment', {
+                                    'id': data.data._id
                                 });
+                                // NavigationService.emptyCart(function (response) {
+                                //     if (response) {
+                                //         $state.go('thankyou', {
+                                //             orderid: $scope.orderid
+                                //         });
+                                //     } else {
+                                //         $state.go("sorry");
+                                //     }
+                                // });
                             } else {
                                 $state.go("sorry");
                             }
@@ -1045,6 +1056,22 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
 
         };
+    })
+    .controller('paymentCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+        //Used to name the .html file
+        console.log($stateParams.id);
+        NavigationService.getOrderDetail($stateParams.id, function (data, status) {
+            console.log(data);
+            $scope.toPaymentGateway = data.data;
+            $scope.toPaymentGateway.productinfo = "Stylease Product";
+            // $("form[name='payuForm']").submit();
+        });
+        $scope.template = TemplateService.changecontent("payment");
+        $scope.menutitle = NavigationService.makeactive("payment");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.oneAtATime = true;
+
     })
     .controller('ChangepasswordCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
