@@ -1962,7 +1962,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         tomorrow.setDate(tomorrow.getDate() + 1);
         //calendar
         $scope.dateOptions = {
-            customClass: getDayClass,
+            customClass: CalenderService.getDayClass,
             dateDisabled: CalenderService.disableDate,
             formatYear: 'yy',
             maxDate: new Date(2020, 5, 22),
@@ -2053,6 +2053,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         // $scope.getDuration();
         $scope.beTheChange = function (dtdata) {
+            CalenderService.selectedDate = dtdata;
             $scope.getDuration();
             var i = 1;
             _.each($scope.events, function (data) {
