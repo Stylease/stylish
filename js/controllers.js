@@ -1,5 +1,5 @@
 var globalfunction = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter'])
+angular.module('phonecatControllers', ['templateservicemod', "calenderService", 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter'])
     // .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     //     cfpLoadingBarProvider.includeSpinner = false;
     // }])
@@ -1654,7 +1654,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('ProductdetailCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+    .controller('ProductdetailCtrl', function ($scope, CalenderService, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("productdetail");
         $scope.menutitle = NavigationService.makeactive("Productdetail");

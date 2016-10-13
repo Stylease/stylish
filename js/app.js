@@ -3,10 +3,11 @@ var firstapp = angular.module('firstapp', [
     'ui.router',
     'phonecatControllers',
     'templateservicemod',
-    'navigationservice'
+    'navigationservice',
+    'calenderService'
 ]);
 
-firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
+firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     // for http request with session
     $httpProvider.defaults.withCredentials = true;
     $stateProvider
@@ -101,11 +102,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             templateUrl: "views/template.html",
             controller: 'ProductdetailCtrl'
         })
-    // .state('productdetail', {
-    //         url: "/productdetail/:id",
-    //         templateUrl: "views/template.html",
-    //         controller: 'ProductdetailCtrl'
-    //     })
+        // .state('productdetail', {
+        //         url: "/productdetail/:id",
+        //         templateUrl: "views/template.html",
+        //         controller: 'ProductdetailCtrl'
+        //     })
         .state('celebritychoice', {
             url: "/celebrity-choice",
             templateUrl: "views/template.html",
@@ -162,28 +163,28 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 // });
 
 
-firstapp.directive('img', function($compile, $parse) {
-   return {
-       restrict: 'E',
-       replace: false,
-       link: function($scope, element, attrs) {
-           var $element = $(element);
-           if (!attrs.noloading) {
-               $element.after("<img src='img/loading.gif' class='loading' />");
-               var $loading = $element.next(".loading");
-               $element.load(function() {
-                   $loading.remove();
-                   $(this).addClass("doneLoading");
-               });
-           } else {
-               $($element).addClass("doneLoading");
-           }
-       }
-   };
+firstapp.directive('img', function ($compile, $parse) {
+    return {
+        restrict: 'E',
+        replace: false,
+        link: function ($scope, element, attrs) {
+            var $element = $(element);
+            if (!attrs.noloading) {
+                $element.after("<img src='img/loading.gif' class='loading' />");
+                var $loading = $element.next(".loading");
+                $element.load(function () {
+                    $loading.remove();
+                    $(this).addClass("doneLoading");
+                });
+            } else {
+                $($element).addClass("doneLoading");
+            }
+        }
+    };
 });
 
-firstapp.filter('currency', function() {
-    return function(value) {
+firstapp.filter('currency', function () {
+    return function (value) {
         if (value && value !== '') {
             value = value.toString();
             var lastThree = value.substring(value.length - 3);
@@ -197,8 +198,8 @@ firstapp.filter('currency', function() {
     };
 });
 
-firstapp.filter('serverimage', function() {
-    return function(image) {
+firstapp.filter('serverimage', function () {
+    return function (image) {
         if (image && image !== null) {
 
             return adminURL + "upload/readFile?file=" + image;
@@ -207,11 +208,11 @@ firstapp.filter('serverimage', function() {
         }
     };
 });
-firstapp.directive('fancyboxBox', function($document) {
+firstapp.directive('fancyboxBox', function ($document) {
     return {
         restrict: 'EA',
         replace: false,
-        link: function(scope, element, attr) {
+        link: function (scope, element, attr) {
             var $element = $(element);
             var target;
             if (attr.rel) {
@@ -232,7 +233,7 @@ firstapp.directive('fancyboxBox', function($document) {
     };
 });
 
-firstapp.directive('onlynumber', function() {
+firstapp.directive('onlynumber', function () {
     return event.charCode >= 48 && event.charCode <= 57;
 });
 
@@ -241,10 +242,10 @@ firstapp.directive('onlynumber', function() {
 //   $translateProvider.translations('hi', LanguageHindi);
 //   $translateProvider.preferredLanguage('en');
 // });
-firstapp.directive('aplhaOnly', function() {
+firstapp.directive('aplhaOnly', function () {
     return {
         require: 'ngModel',
-        link: function(scope, element, attr, ngModelCtrl) {
+        link: function (scope, element, attr, ngModelCtrl) {
             function fromUser(text) {
                 var transformedInput = text.replace(/[^a-zA-Z]/g, '');
                 if (transformedInput !== text) {
@@ -257,8 +258,8 @@ firstapp.directive('aplhaOnly', function() {
         }
     };
 });
-firstapp.filter('shorten', function() {
-    return function(value, limit) {
+firstapp.filter('shorten', function () {
+    return function (value, limit) {
         if (value)
             if (value.length < limit) {
                 return value;
@@ -269,11 +270,11 @@ firstapp.filter('shorten', function() {
 
     }
 });
-firstapp.directive('onlyDigits', function() {
+firstapp.directive('onlyDigits', function () {
     return {
         require: 'ngModel',
         restrict: 'A',
-        link: function(scope, element, attr, ctrl) {
+        link: function (scope, element, attr, ctrl) {
             var digits;
 
             function inputValue(val) {
