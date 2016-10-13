@@ -242,6 +242,12 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback).error(errCallback);
         },
+        getProductTimes: function (callback, errCallback) {
+            return $http({
+                url: adminURL + "producttime/getAll",
+                method: "POST"
+            }).success(callback).error(errCallback);
+        },
         emptyCart: function (callback, errCallback) {
             return $http({
                 url: adminURL + "cart/emptyCart",

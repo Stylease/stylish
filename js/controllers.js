@@ -1310,6 +1310,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         }
 
                     });
+                    $scope.isAvailable();
 
                 } else {
                     $scope.cartProduct = [];
@@ -1325,6 +1326,44 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             });
         };
         $scope.getCart();
+
+
+        $scope.getProductTimes = function () {
+            NavigationService.getProductTimes(function (data) {
+                if (data.value) {
+                    $scope.productTime = data.data;
+                    console.log("product times", $scope.productTime);
+                }
+
+            }, function (err) {
+                console.log(err);
+            });
+        };
+        $scope.getProductTimes();
+        $scope.isAvailable = function (productid) {
+            var producttime = {}
+            _.each($scope.productTime, function (cartp) {
+                if (cartp.product == productid) {
+                    producttime = cartp;
+                }
+            });
+            if (!_.isEmpty(producttime)) {
+                var cartprod = _.find($scope.cartProduct, function (key) {
+                    return key.product._id == producttime.product;
+                });
+                // console.log(producttime)
+                // console.log("producttime", (new Date(producttime.timeFrom) < new Date(cartprod.timeTo) && new Date(producttime.timeFrom) > new Date(cartprod.timeFrom)), "cartprod", cartprod);
+                // if ((new Date(producttime.timeFrom) < new Date(cartprod.timeTo) && new Date(producttime.timeFrom) > new Date(cartprod.timeFrom)) || (producttime.timeTo < new Date(cartprod.timeTo) && producttime.timeTo > new Date(cartprod.timeFrom))) {
+                //     return true;
+                // } else {
+                //     return false;
+                // }
+            } else {
+                return false;
+            }
+        };
+
+        $scope.isAvailable();
 
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
@@ -1811,9 +1850,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             } else {
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
-            // check product is available or not
-            console.log("$scope.producttime", $scope.producttime);
-
             //check current cart date 
             if (new Date($scope.cartpro.timeFrom).setHours(0, 0, 0, 0) === new Date($scope.cartDate.timeFrom).setHours(0, 0, 0, 0) && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
                 NavigationService.addToCart($scope.cartpro, function (data) {
