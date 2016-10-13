@@ -908,7 +908,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.menutitle = NavigationService.makeactive("Checkoutorder");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        TemplateService.removeLoaderOn(3);
+        TemplateService.removeLoaderOn(2);
         $scope.getProfile = function () {
             NavigationService.getProfile(function (data) {
                 if (data.value) {
@@ -1048,7 +1048,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                             }
                         });
                     }
-                    TemplateService.removeLoader();
+
                 },
                 function (err) {
                     console.log(err);
@@ -1188,7 +1188,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
 
     })
-    .controller('CartCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+    .controller('CartCtrl', function ($scope, CalenderService, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("cart");
@@ -1403,7 +1403,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         tomorrow.setDate(tomorrow.getDate() + 1);
         //calendar
         $scope.dateOptions = {
-            dateDisabled: disabled,
+            customClass: CalenderService.getDayClass,
+            dateDisabled: CalenderService.disableDate,
             formatYear: 'yy',
             maxDate: new Date(2020, 5, 22),
             minDate: tomorrow,
@@ -1412,18 +1413,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
 
         // Disable weekend selection
-        function disabled(data) {
-            // console.log(data);
-            var current = data.date,
-                mode = data.mode;
-            current.setHours(0, 0, 0, 0);
-            return _.findIndex($scope.timestamps, function (key) {
-                key.setHours(0, 0, 0, 0);
-                current.setHours(0, 0, 0, 0);
-                // console.log(new Date(key), new Date(current));
-                return new Date(key).getTime() == current.getTime();
-            }) !== -1;
-        }
+
         $scope.open1 = function () {
             $scope.popup1.opened = true;
         };
@@ -1437,6 +1427,70 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             opened: false
         };
 
+        //change color
+        // $scope.cartpro.timeFrom = tomorrow;
+        $scope.today = new Date();
+        var afterTomorrow = new Date(tomorrow);
+        afterTomorrow.setDate(tomorrow.getDate() + 1);
+        var afterTomorrow2 = new Date(tomorrow);
+        afterTomorrow2.setDate(tomorrow.getDate() + 2);
+        var afterTomorrow3 = new Date(tomorrow);
+        afterTomorrow3.setDate(tomorrow.getDate() + 3);
+        $scope.getDuration = function () {
+            if ($scope.dateduration == 8) {
+                console.log("in 8");
+                $scope.events = [{
+                    date: afterTomorrow,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow2,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow3,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow2,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow3,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow,
+                    status: 'active4'
+                }];
+            } else {
+                $scope.events = [{
+                    date: afterTomorrow,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow2,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow3,
+                    status: 'active'
+                }, {
+                    date: afterTomorrow,
+                    status: 'active4'
+                }];
+            }
+        };
+
+        // $scope.getDuration();
+        $scope.beTheChange = function (dtdata) {
+            CalenderService.selectedDate = dtdata;
+            $scope.getDuration();
+            var i = 1;
+            _.each($scope.events, function (data) {
+                data.date = new Date(dtdata).setDate(new Date(dtdata).getDate() + i);
+                i++;
+            });
+        };
 
     })
     .controller('ProductCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
@@ -2120,8 +2174,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 i++;
             });
         };
-
-
     })
     .controller('CelebrityChoiceCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
