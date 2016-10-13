@@ -2372,7 +2372,7 @@ $scope.tabActive1=true;
 }else if ($state.current.name === 'changepassword') {
   $scope.tabActive6=true;
 }
-console.log("state.current.name",$state.current.name);
+
 
     globalfunction.signUp = function () {
         $scope.signUp();
