@@ -8,7 +8,7 @@ calenderService.service('CalenderService', function () {
         console.log("CalenderService");
     };
     this.selectedDate = undefined;
-
+    console.log("blockedDates", Cal.blockedDates);
     this.disableDate = function (date, mode) {
         var selDate = moment(date.date);
         var addedSelDate = moment(date.date).add(Cal.duration + Cal.addDuration, "d");

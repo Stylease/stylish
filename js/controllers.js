@@ -1222,7 +1222,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
         $scope.gotocheckout = function () {
             console.log("$scope.totalrentalamount", $scope.totalrentalamount);
-
             if ($scope.totalrentalamount >= 8000) {
                 if ($.jStorage.get("userLoggedIn")) {
                     $state.go('address');
@@ -1369,8 +1368,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             NavigationService.getProductTimes(function (data) {
                 if (data.value) {
                     $scope.productTime = data.data;
-                    CalenderService.blockedDates = $scope.producttime;
-                    console.log("product times", $scope.productTime);
+                    CalenderService.blockedDates = $scope.productTime;
+                    console.log("product times", CalenderService.blockedDates);
                 }
 
             }, function (err) {
@@ -2362,22 +2361,22 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             scope: $scope
         });
     };
-$scope.tabActive=function(){
-  if ($state.current.name === 'profile') {
-  $scope.tabActive1=true;
-  }else if ($state.current.name === 'orders') {
-    $scope.tabActive2=true;
-  }else if ($state.current.name === 'wishlist') {
-    $scope.tabActive3=true;
-  }else if ($state.current.name === 'saveaddress') {
-    $scope.tabActive4=true;
-  }else if ($state.current.name === 'bankdetail') {
-    $scope.tabActive5=true;
-  }else if ($state.current.name === 'changepassword') {
-    $scope.tabActive6=true;
-  }
-}
-$scope.tabActive();
+    $scope.tabActive = function () {
+        if ($state.current.name === 'profile') {
+            $scope.tabActive1 = true;
+        } else if ($state.current.name === 'orders') {
+            $scope.tabActive2 = true;
+        } else if ($state.current.name === 'wishlist') {
+            $scope.tabActive3 = true;
+        } else if ($state.current.name === 'saveaddress') {
+            $scope.tabActive4 = true;
+        } else if ($state.current.name === 'bankdetail') {
+            $scope.tabActive5 = true;
+        } else if ($state.current.name === 'changepassword') {
+            $scope.tabActive6 = true;
+        }
+    }
+    $scope.tabActive();
 
     globalfunction.signUp = function () {
         $scope.signUp();

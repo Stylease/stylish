@@ -461,7 +461,7 @@ a {
         border: 1px solid $brand-dark-pink;
         background-color: transparent;
         position: relative;
-        z-index: 10;
+        z-index: 1;
         &:focus {
             outline: none;
         }
@@ -2869,17 +2869,14 @@ div[uib-datepicker] {
     z-index: 3 !important;
 }
 
-.uib-daypicker{
-  .btn-default{
-    &:hover{
-
-
-        background-color: #e87b65 !important;
-
-
+.uib-daypicker {
+    .btn-default {
+        &:hover {
+            background-color: #e87b65 !important;
+        }
     }
-  }
 }
+
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";
