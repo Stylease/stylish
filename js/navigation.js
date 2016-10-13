@@ -358,6 +358,9 @@ var navigationservice = angular.module('navigationservice', [])
         userProfileSave: function (data, callback) {
             $http.post(adminURL + "user/save", data).success(callback);
         },
+        goToPayment: function (data, callback) {
+            $http.get(adminURL + "payu/payU?_id=" + data).success(callback);
+        },
         placeOrder: function (data, callback) {
             $http.post(adminURL + "order/save", data).success(callback);
         },

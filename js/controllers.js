@@ -447,17 +447,19 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             NavigationService.getProfile(function (data) {
                 if (data.value) {
                     $scope.userdata = data.data;
-                    $scope.billingAddress = _.find($scope.userdata.billingAddress, {
+                    $scope.userdata.billingcopy = data.data.billingAddress;
+                    $scope.userdata.shippingcopy = data.data.shippingAddress;
+                    $scope.billingAddress = _.cloneDeep(_.find($scope.userdata.billingAddress, {
                         isDefault: true
-                    });
-                    $scope.shippingAddress = _.find($scope.userdata.shippingAddress, {
+                    }));
+                    $scope.shippingAddress = _.cloneDeep(_.find($scope.userdata.shippingAddress, {
                         isDefault: true
-                    });
+                    }));
                     if ($scope.billingAddress) {
                         $scope.userdata.billingAddress = $scope.billingAddress;
                     } else {
                         if ($scope.userdata.billingAddress.length > 0) {
-                            $scope.userdata.billingAddress = $scope.userdata.billingAddress[0];
+                            $scope.userdata.billingAddress = _.cloneDeep($scope.userdata.billingAddress[0]);
                         } else {
                             $scope.userdata.billingAddress = {};
                         }
@@ -467,7 +469,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         $scope.userdata.shippingAddress = $scope.shippingAddress;
                     } else {
                         if ($scope.userdata.shippingAddress.length > 0) {
-                            $scope.userdata.shippingAddress = $scope.userdata.shippingAddress[0];
+                            $scope.userdata.shippingAddress = _.cloneDeep($scope.userdata.shippingAddress[0]);
                         } else {
                             $scope.userdata.shippingAddress = {};
                         }
@@ -525,15 +527,20 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 // $scope.userdata.shippingAddress.shippingAddressCountry = "";
             }
         };
+
         $scope.invalid = false;
         $scope.saveUserAddress = function (addressdata, formcheckout) {
             if (formcheckout.$invalid) {
                 $scope.invalid = true;
             } else {
                 if ($.jStorage.get("userLoggedIn")) {
-                    addressdata.billingAddress.isDefault = true;
-                    addressdata.shippingAddress.isDefault = true;
-                    NavigationService.userProfileSave(addressdata, function (data) {
+                    $scope.userdata.billingcopy.push(addressdata.billingAddress);
+                    $scope.userdata.shippingcopy.push(addressdata.shippingAddress);
+                    console.log("billingAddress", $scope.userdata.billingcopy);
+                    $scope.userdata.billingAddress = $scope.userdata.billingcopy;
+                    $scope.userdata.shippingAddress = $scope.userdata.shippingcopy;
+
+                    NavigationService.userProfileSave($scope.userdata, function (data) {
                         console.log("done");
                         if (data.value) {
                             $state.go("checkoutorder");
@@ -548,20 +555,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         };
 
-        $scope.getProfile = function () {
-            NavigationService.getProfile(function (data) {
-                if (data.value) {
-                    $scope.userdata = data.data;
-                    if (!$scope.userdata.billingAddress) {
-                        $scope.userdata.billingAddress = [];
-                    }
-                    if (!$scope.userdata.shippingAddress) {
-                        $scope.userdata.shippingAddress = [];
-                    }
-                }
-                // TemplateService.removeLoader();
-            }, function (err) {});
-        };
+
 
     })
     .controller('SaveaddressCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
@@ -1005,9 +999,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                                 console.log("data", data.data.orderid);
                                 $scope.orderid = data.data.orderid;
                                 $scope.formdata = data.data;
-                                console.log($scope.formdata);
-                                $state.go('payment', {
-                                    'id': data.data._id
+                                NavigationService.goToPayment(data.data._id, function (data) {
+                                    console.log("payment ja done");
                                 });
                                 // NavigationService.emptyCart(function (response) {
                                 //     if (response) {
@@ -1286,13 +1279,13 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.editcartpro.by = data.by;
 
             NavigationService.editAllCart($scope.editcartpro, function (data) {
+                console.log("$scope.editcartpro", $scope.editcartpro);
                 $scope.response = data;
                 if ($scope.response.value == true) {
                     if ($scope.cartProduct.length != 1) {
                         cartdate.close();
                     }
-                    $scope.cartDate = $.jStorage.set("cartDate", "");
-                    $scope.cartDate = $.jStorage.set("cartDate", $scope.editProduct);
+                    $scope.cartDate = $.jStorage.set("cartDate", $scope.editcartpro);
                     console.log("$scope.cartDate", $scope.cartDate);
                     $scope.getCart();
                     $scope.closeEdit($scope.editcartpro.product);
@@ -1367,43 +1360,43 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.getCart();
 
 
-        $scope.getProductTimes = function () {
-            NavigationService.getProductTimes(function (data) {
-                if (data.value) {
-                    $scope.productTime = data.data;
-                    CalenderService.blockedDates = $scope.productTime;
-                    console.log("product times", CalenderService.blockedDates);
-                }
+        // $scope.getProductTimes = function () {
+        //     NavigationService.getProductTimes(function (data) {
+        //         if (data.value) {
+        //             $scope.productTime = data.data;
+        //             CalenderService.blockedDates = $scope.productTime;
+        //             console.log("product times", CalenderService.blockedDates);
+        //         }
 
-            }, function (err) {
-                console.log(err);
-            });
-        };
-        $scope.getProductTimes();
-        $scope.isAvailable = function (productid) {
-            var producttime = {}
-            _.each($scope.productTime, function (cartp) {
-                if (cartp.product == productid) {
-                    producttime = cartp;
-                }
-            });
-            if (!_.isEmpty(producttime)) {
-                var cartprod = _.find($scope.cartProduct, function (key) {
-                    return key.product._id == producttime.product;
-                });
-                // console.log(producttime)
-                // console.log("producttime", (new Date(producttime.timeFrom) < new Date(cartprod.timeTo) && new Date(producttime.timeFrom) > new Date(cartprod.timeFrom)), "cartprod", cartprod);
-                // if ((new Date(producttime.timeFrom) < new Date(cartprod.timeTo) && new Date(producttime.timeFrom) > new Date(cartprod.timeFrom)) || (producttime.timeTo < new Date(cartprod.timeTo) && producttime.timeTo > new Date(cartprod.timeFrom))) {
-                //     return true;
-                // } else {
-                //     return false;
-                // }
-            } else {
-                return false;
-            }
-        };
+        //     }, function (err) {
+        //         console.log(err);
+        //     });
+        // };
+        // $scope.getProductTimes();
+        // $scope.isAvailable = function (productid) {
+        //     var producttime = {}
+        //     _.each($scope.productTime, function (cartp) {
+        //         if (cartp.product == productid) {
+        //             producttime = cartp;
+        //         }
+        //     });
+        //     if (!_.isEmpty(producttime)) {
+        //         var cartprod = _.find($scope.cartProduct, function (key) {
+        //             return key.product._id == producttime.product;
+        //         });
+        //         // console.log(producttime)
+        //         // console.log("producttime", (new Date(producttime.timeFrom) < new Date(cartprod.timeTo) && new Date(producttime.timeFrom) > new Date(cartprod.timeFrom)), "cartprod", cartprod);
+        //         // if ((new Date(producttime.timeFrom) < new Date(cartprod.timeTo) && new Date(producttime.timeFrom) > new Date(cartprod.timeFrom)) || (producttime.timeTo < new Date(cartprod.timeTo) && producttime.timeTo > new Date(cartprod.timeFrom))) {
+        //         //     return true;
+        //         // } else {
+        //         //     return false;
+        //         // }
+        //     } else {
+        //         return false;
+        //     }
+        // };
 
-        $scope.isAvailable();
+        // $scope.isAvailable();
 
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
