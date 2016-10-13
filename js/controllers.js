@@ -1028,21 +1028,21 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                                 $.jStorage.set("cartDate", "");
                                 console.log("data", data.data.orderid);
                                 $scope.orderid = data.data.orderid;
-                                console.log("IN FORM DATA");
-                                $scope.formdata = data.data;
-                                console.log($scope.formdata);
-                                $state.go('payment', {
-                                    'id': data.data._id
-                                });
-                                // NavigationService.emptyCart(function (response) {
-                                //     if (response) {
-                                //         $state.go('thankyou', {
-                                //             orderid: $scope.orderid
-                                //         });
-                                //     } else {
-                                //         $state.go("sorry");
-                                //     }
+                                // console.log("IN FORM DATA");
+                                // $scope.formdata = data.data;
+                                // console.log($scope.formdata);
+                                // $state.go('payment', {
+                                //     'id': data.data._id
                                 // });
+                                NavigationService.emptyCart(function (response) {
+                                    if (response) {
+                                        $state.go('thankyou', {
+                                            orderid: $scope.orderid
+                                        });
+                                    } else {
+                                        $state.go("sorry");
+                                    }
+                                });
                             } else {
                                 $state.go("sorry");
                             }
@@ -1291,6 +1291,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     if ($scope.cartProduct.length != 1) {
                         cartdate.close();
                     }
+                    $scope.cartDate = $.jStorage.set("cartDate", $scope.editProduct);
+                    console.log("$scope.cartDate", $scope.cartDate);
                     $scope.getCart();
                     $scope.closeEdit($scope.editcartpro.product);
                 }
@@ -1302,6 +1304,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         $scope.changeCartDate = function (data) {
             $scope.editProduct = data;
+
             if ($scope.cartProduct.length == 1) {
                 $scope.editCart(data);
             } else {
@@ -1313,7 +1316,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     });
                 };
                 $scope.openDateModal(data);
-
             }
         };
 
