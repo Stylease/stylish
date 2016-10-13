@@ -1282,7 +1282,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.editcartpro.deliveryTime = data.deliveryTime;
             $scope.editcartpro.pickupTime = data.pickupTime;
             var timeTo = new Date();
-            $scope.editcartpro.timeTo = new Date(timeTo.setDate(d.getDate() + $scope.editcartpro.duration));
+            $scope.editcartpro.timeTo = new Date(timeTo.setDate(d.getDate() + ($scope.editcartpro.duration - 1)));
             $scope.editcartpro.by = data.by;
 
             NavigationService.editAllCart($scope.editcartpro, function (data) {
@@ -1930,7 +1930,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             var d = new Date($scope.cartpro.timeFrom);
             $scope.cartpro.timeFrom = d;
             var timeto = new Date(d);
-            $scope.cartpro.timeTo = new Date(timeto.setDate(d.getDate() + $scope.cartpro.duration));
+            $scope.cartpro.timeTo = new Date(timeto.setDate(d.getDate() + ($scope.cartpro.duration - 1)));
             if ($scope.product.designer == null) {
                 $scope.cartpro.by = "";
             } else {
