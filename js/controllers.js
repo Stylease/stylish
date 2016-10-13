@@ -1938,7 +1938,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             } else {
                 $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
             }
-            //check current cart date 
+            //check current cart date
             if (new Date($scope.cartpro.timeFrom).setHours(0, 0, 0, 0) === new Date($scope.cartDate.timeFrom).setHours(0, 0, 0, 0) && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
                 NavigationService.addToCart($scope.cartpro, function (data) {
                     console.log("response cart", data);
@@ -2359,8 +2359,20 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         });
     };
 
-
-
+if ($state.current.name === 'profile') {
+$scope.tabActive1=true;
+}else if ($state.current.name === 'orders') {
+  $scope.tabActive2=true;
+}else if ($state.current.name === 'wishlist') {
+  $scope.tabActive3=true;
+}else if ($state.current.name === 'saveaddress') {
+  $scope.tabActive4=true;
+}else if ($state.current.name === 'bankdetail') {
+  $scope.tabActive5=true;
+}else if ($state.current.name === 'changepassword') {
+  $scope.tabActive6=true;
+}
+console.log("state.current.name",$state.current.name);
 
     globalfunction.signUp = function () {
         $scope.signUp();

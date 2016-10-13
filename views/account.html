@@ -1,11 +1,11 @@
-<div class="profile-tab">
+<div class="profile-tab" ng-controller="headerctrl">
   <ul>
-    <li><a href="" class="profile-active" ui-sref="profile()">My Profile</a></li>
-    <li><a href="" class="order-active" ui-sref="orders()">My Orders</a></li>
-    <li><a href="" class="wishlist-active" ui-sref="wishlist()">My Wishlist</a></li>
-    <li><a href="" class="save-active" ui-sref="saveaddress()">Saved Addresses</a></li>
-    <li><a href="" class="bank-active" ui-sref="bankdetail()">Bank A/C Details</a></li>
-    <li><a href="" class="password-active" ui-sref="changepassword()">Change Password</a></li>
+    <li><a  ng-class="{'profile-active':tabActive1}"  ui-sref="profile()" >My Profile</a></li>
+    <li><a  ng-class="{'profile-active':tabActive2}"  ui-sref="orders()">My Orders</a></li>
+    <li><a ng-class="{'profile-active':tabActive3}" ui-sref="wishlist()" >My Wishlist</a></li>
+    <li><a ng-class="{'profile-active':tabActive4}" ui-sref="saveaddress()" >Saved Addresses</a></li>
+    <li><a ng-class="{'profile-active':tabActive5}" ui-sref="bankdetail()">Bank A/C Details</a></li>
+    <li><a  ng-class="{'profile-active':tabActive6}" ui-sref="changepassword()" >Change Password</a></li>
     <li><a href="" class="log-active" ng-click="logoutClick()">Logout</a></li>
   </ul>
 </div>
