@@ -1291,6 +1291,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     if ($scope.cartProduct.length != 1) {
                         cartdate.close();
                     }
+                    $scope.cartDate = $.jStorage.set("cartDate", "");
                     $scope.cartDate = $.jStorage.set("cartDate", $scope.editProduct);
                     console.log("$scope.cartDate", $scope.cartDate);
                     $scope.getCart();
