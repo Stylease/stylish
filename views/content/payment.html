@@ -1,0 +1,69 @@
+<div ng-controller="paymentCtrl">
+    <form action="http://admin.thestylease.com/payment.php" method="post" name="payuForm">
+        <input type="hidden" name="key" value="3gqoHz" />
+        <input type="text" name="txnid" value="" ng-model="toPaymentGateway.orderid" />
+        <table>
+            <tr>
+                <td><b>Mandatory Parameters</b></td>
+            </tr>
+            <tr>
+                <td>Amount: </td>
+                <td>
+                    <input name="amount" value="" ng-model="toPaymentGateway.total" />
+                </td>
+                <td>First Name: </td>
+                <td>
+                    <input name="firstname" id="firstname" value="" ng-model="toPaymentGateway.firstname" />
+                </td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td>
+                    <input name="email" id="email" value="" ng-model="toPaymentGateway.email" />
+                </td>
+                <td>Phone: </td>
+                <td>
+                    <input name="phone" value="" ng-model="toPaymentGateway.mobile" />
+                </td>
+            </tr>
+            <tr>
+                <td>Product Info: </td>
+                <td colspan="3">
+                    <textarea name="productinfo" ng-model="toPaymentGateway.productinfo"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Success URI: </td>
+                <td colspan="3">
+                    <!-- <input name="surl" value="http://192.168.0.122:81/order/payU" size="64" /> -->
+                    <input name="surl" value="http://google.com" size="64" />
+                    <!-- <input name="surl" value="http://www.auraart.in/manjhi/payumoney/success.php" size="64" /> -->
+                </td>
+            </tr>
+            <tr>
+                <td>Failure URI: </td>
+                <td colspan="3">
+                    <!-- <input name="furl" value="http://192.168.0.122:81/order/payU" size="64" /> -->
+                    <input name="furl" value="https://in.yahoo.com/" size="64" />
+                    <!-- <input name="furl" value="http://www.auraart.in/manjhi/payumoney/failure.php" size="64" /> -->
+                </td>
+            </tr>
+            <tr>
+                <td>UDF1: </td>
+                <td>
+                    <input name="udf1" value="1" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="hidden" name="service_provider" value="" size="64" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <input type="submit" value="Submit" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
