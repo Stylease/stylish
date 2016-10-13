@@ -2358,21 +2358,22 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             scope: $scope
         });
     };
-
-if ($state.current.name === 'profile') {
-$scope.tabActive1=true;
-}else if ($state.current.name === 'orders') {
-  $scope.tabActive2=true;
-}else if ($state.current.name === 'wishlist') {
-  $scope.tabActive3=true;
-}else if ($state.current.name === 'saveaddress') {
-  $scope.tabActive4=true;
-}else if ($state.current.name === 'bankdetail') {
-  $scope.tabActive5=true;
-}else if ($state.current.name === 'changepassword') {
-  $scope.tabActive6=true;
+$scope.tabActive=function(){
+  if ($state.current.name === 'profile') {
+  $scope.tabActive1=true;
+  }else if ($state.current.name === 'orders') {
+    $scope.tabActive2=true;
+  }else if ($state.current.name === 'wishlist') {
+    $scope.tabActive3=true;
+  }else if ($state.current.name === 'saveaddress') {
+    $scope.tabActive4=true;
+  }else if ($state.current.name === 'bankdetail') {
+    $scope.tabActive5=true;
+  }else if ($state.current.name === 'changepassword') {
+    $scope.tabActive6=true;
+  }
 }
-
+$scope.tabActive();
 
     globalfunction.signUp = function () {
         $scope.signUp();
