@@ -1972,18 +1972,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
 
         // Disable weekend selection
-        function disabled(data) {
-            // console.log(data);
-            var current = data.date,
-                mode = data.mode;
-            current.setHours(0, 0, 0, 0);
-            return _.findIndex($scope.timestamps, function (key) {
-                key.setHours(0, 0, 0, 0);
-                current.setHours(0, 0, 0, 0);
-                // console.log(new Date(key), new Date(current));
-                return new Date(key).getTime() == current.getTime();
-            }) !== -1;
-        }
+
         $scope.open1 = function () {
             $scope.popup1.opened = true;
         };
@@ -2062,20 +2051,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             });
         };
 
-        function getDayClass(data) {
-            // var date = data.date,
-            //     mode = data.mode;
-            // if (mode === 'day') {
-            //     var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-            //     for (var i = 0; i < $scope.events.length; i++) {
-            //         var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-            //         if (dayToCheck === currentDay) {
-            //             return $scope.events[i].status;
-            //         }
-            //     }
-            // }
-            // return '';
-        }
 
     })
     .controller('CelebrityChoiceCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
