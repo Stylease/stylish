@@ -36,7 +36,8 @@
     "angular-filter": "^0.5.9",
     "ngInfiniteScroll": "https://github.com/sroze/ngInfiniteScroll.git#^1.3.0",
     "jStorage": "^0.4.12",
-    "angular-loading-bar": "^0.9.0"
+    "angular-loading-bar": "^0.9.0",
+    "moment": "^2.15.1"
   },
   "devDependencies": {
     "angular-translate": "^2.11.0"

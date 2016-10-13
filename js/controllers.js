@@ -1708,7 +1708,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.checkLogin = $.jStorage.get("user");
         //PRODUCT DETAIL ON SELECTED PRODUCT
         $scope.sendtoproductreturn = $state.params.subcatname;
-        console.log("$scope.sendtoproductreturn", $scope.sendtoproductreturn);
         $scope.saveWishList = function () {
             NavigationService.saveWishlist($state.params.id, function (data) {
                 console.log("$state.params.id", $state.params.id);
@@ -1724,18 +1723,21 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.selectSize($scope.psizes[0].name);
             }
             $scope.producttime = data.data.producttime;
-            _.each($scope.producttime, function (key) {
-                var tmpdate = new Date(key.timeFrom);
-                // tmpdate.setHours(0,0,0,0);
-                var tmpto = new Date(key.timeTo);
-                var diffDays = tmpto.getDate() - tmpdate.getDate();
-                start = 0;
-                do {
-                    $scope.timestamps.push(new Date(tmpdate));
-                    tmpdate.setDate(tmpdate.getDate() + 1);
-                    start++;
-                } while (start <= (diffDays + 4));
-            });
+            CalenderService.blockedDates = $scope.producttime;
+            console.log($scope.producttime);
+            console.log(CalenderService);
+            // _.each($scope.producttime, function (key) {
+            //     var tmpdate = new Date(key.timeFrom);
+            //     // tmpdate.setHours(0,0,0,0);
+            //     var tmpto = new Date(key.timeTo);
+            //     var diffDays = tmpto.getDate() - tmpdate.getDate();
+            //     start = 0;
+            //     do {
+            //         $scope.timestamps.push(new Date(tmpdate));
+            //         tmpdate.setDate(tmpdate.getDate() + 1);
+            //         start++;
+            //     } while (start <= (diffDays + 4));
+            // });
             $scope.mainImage = data.data.product.images[0].image;
             $scope.getRentalAmount(4);
             TemplateService.removeLoader();
@@ -1763,12 +1765,14 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.product.productrentalamount = $scope.product.eightdayrentalamount;
                 $scope.product.securitydeposit = $scope.product.eightdaysecuritydeposit;
                 $scope.cartpro.duration = 8;
+                CalenderService.duration = 8;
                 $scope.dateduration = 8;
             } else {
                 $scope.product.rentalamount = $scope.product.fourdayrentalamount;
                 $scope.product.securitydeposit = $scope.product.fourdaysecuritydeposit;
                 $scope.cartpro.duration = 4;
                 $scope.dateduration = 4;
+                CalenderService.duration = 4;
             }
             $scope.beTheChange(tomorrow);
         }
@@ -1959,7 +1963,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         //calendar
         $scope.dateOptions = {
             customClass: getDayClass,
-            dateDisabled: disabled,
+            dateDisabled: CalenderService.disableDate,
             formatYear: 'yy',
             maxDate: new Date(2020, 5, 22),
             minDate: tomorrow,
@@ -1996,7 +2000,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         //change color
         $scope.cartpro.timeFrom = tomorrow;
         $scope.today = new Date();
-        console.log("duration", $scope.cartpro.duration);
         var afterTomorrow = new Date(tomorrow);
         afterTomorrow.setDate(tomorrow.getDate() + 1);
         var afterTomorrow2 = new Date(tomorrow);
@@ -2032,7 +2035,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     status: 'active4'
                 }];
             } else {
-                console.log("in 4");
                 $scope.events = [{
                     date: afterTomorrow,
                     status: 'active'
@@ -2052,7 +2054,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         // $scope.getDuration();
         $scope.beTheChange = function (dtdata) {
             $scope.getDuration();
-            console.log("asdsad", dtdata, $scope.events.length);
             var i = 1;
             _.each($scope.events, function (data) {
                 data.date = new Date(dtdata).setDate(new Date(dtdata).getDate() + i);
@@ -2061,18 +2062,18 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
 
         function getDayClass(data) {
-            var date = data.date,
-                mode = data.mode;
-            if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-                for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-                    if (dayToCheck === currentDay) {
-                        return $scope.events[i].status;
-                    }
-                }
-            }
-            return '';
+            // var date = data.date,
+            //     mode = data.mode;
+            // if (mode === 'day') {
+            //     var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+            //     for (var i = 0; i < $scope.events.length; i++) {
+            //         var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+            //         if (dayToCheck === currentDay) {
+            //             return $scope.events[i].status;
+            //         }
+            //     }
+            // }
+            // return '';
         }
 
     })
