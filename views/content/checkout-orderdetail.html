@@ -25,7 +25,9 @@
                 <p class="mb5"><span class="edit-cart">Duration</span> <span>11 May, 2016</span></p> -->
                 <!-- <p>Retail Price : INR <span>{{product.product.price}}/-</span></p> -->
                 <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
-                <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span><span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span></p>
+                <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span>
+                  <span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span>
+                </p>
                 <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>{{product.timeFrom | date : 'mediumDate'}}</span></p>
                 <p class="mb5"><span class="edit-cart">Duration</span> <span>{{product.duration}} Days</span></p>
                 <p class="mb5"><span class="edit-cart">Delivery Time</span> <span>{{product.deliveryTime}}</span></p>
@@ -43,10 +45,12 @@
                   <h5 class="name">
                     {{userdata.firstname}} {{userdata.lastname}}</h5>
                   <address>
-                    {{userdata.billingAddress.billingAddressFlat}}, {{userdata.billingAddress.billingAddressStreet}},<br> {{userdata.billingAddress.billingAddressLandmark}}, <br> {{userdata.billingAddress.billingAddressCity}} - {{userdata.billingAddress.billingAddressPin}}. <br> {{userdata.billingAddress.billingAddressState}},  {{userdata.billingAddress.billingAddressCountry}}
-                      <!-- B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra -->
-                      <span class="block mt10">Mobile : <a href="tel:{{userdata.mobile}}" class="dark-blue">{{userdata.mobile}}</a></span>
-                    </address>
+                    {{userdata.billingAddress.billingAddressFlat}}, {{userdata.billingAddress.billingAddressStreet}},<br>                    {{userdata.billingAddress.billingAddressLandmark}}, <br> {{userdata.billingAddress.billingAddressCity}}
+                    - {{userdata.billingAddress.billingAddressPin}}. <br> {{userdata.billingAddress.billingAddressState}},
+                    {{userdata.billingAddress.billingAddressCountry}}
+                    <!-- B/1202 ,sairam niwas, nr.eastern express highway, thane east mumbai- 400081 maharashtra -->
+                    <span class="block mt10">Mobile : <a href="tel:{{userdata.mobile}}" class="dark-blue">{{userdata.mobile}}</a></span>
+                  </address>
                 </div>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
@@ -55,9 +59,11 @@
                   <h5 class="name">
                     {{userdata.firstname}} {{userdata.lastname}}</h5>
                   <address>
-                      {{userdata.shippingAddress.shippingAddressFlat}}, {{userdata.shippingAddress.shippingAddressStreet}},<br> {{userdata.shippingAddress.shippingAddressLandmark}}, <br> {{userdata.shippingAddress.shippingAddressCity}} - {{userdata.shippingAddress.shippingAddressPin}}. <br> {{userdata.shippingAddress.shippingAddressState}},  {{userdata.shippingAddress.shippingAddressCountry}}
-                      <span class="block mt10">Mobile : <a href="tel:{{userdata.mobile}}" class="dark-blue">{{userdata.mobile}}</a></span>
-                    </address>
+                    {{userdata.shippingAddress.shippingAddressFlat}}, {{userdata.shippingAddress.shippingAddressStreet}},<br>                    {{userdata.shippingAddress.shippingAddressLandmark}}, <br> {{userdata.shippingAddress.shippingAddressCity}}
+                    - {{userdata.shippingAddress.shippingAddressPin}}. <br> {{userdata.shippingAddress.shippingAddressState}},
+                    {{userdata.shippingAddress.shippingAddressCountry}}
+                    <span class="block mt10">Mobile : <a href="tel:{{userdata.mobile}}" class="dark-blue">{{userdata.mobile}}</a></span>
+                  </address>
                 </div>
               </div>
             </div>
@@ -96,8 +102,81 @@
           <div class="buttons-orders text-center">
             <button class="btn btn-outline btn-full text-medium" ng-click="placeOrder()">Payment Methods</button>
           </div>
+          <div>
+            <form action="payment.php" method="post" name="payuForm">{{formdata}}
+              <input type="hidden" name="key" value="nnrXnB" />
+              <input type="text" name="txnid" value="" ng-model="formdata.orderid" />
+              <table>
+                <tr>
+                  <td><b>Mandatory Parameters</b></td>
+                </tr>
+                <tr>
+                  <td>Amount: </td>
+                  <td>
+                    <input name="amount" value="" ng-model="grandtotal" />
+                  </td>
+                  <td>First Name: </td>
+                  <td>
+                    <input name="firstname" id="firstname" value="" ng-model="firstname" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Email: </td>
+                  <td>
+                    <input name="email" id="email" value="" ng-model="email" />
+                  </td>
+                  <td>Phone: </td>
+                  <td>
+                    <input name="phone" value="" ng-model="mobile" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Product Info: </td>
+                  <td colspan="3">
+                    <textarea name="productinfo" value="Purchase of stylease"></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Success URI: </td>
+                  <td colspan="3">
+                    <!-- <input name="surl" value="http://192.168.0.122:81/order/payU" size="64" /> -->
+                    <input name="surl" value="http://google.com" size="64" />
+                    <!-- <input name="surl" value="http://www.auraart.in/manjhi/payumoney/success.php" size="64" /> -->
+                  </td>
+                </tr>
+                <tr>
+                  <td>Failure URI: </td>
+                  <td colspan="3">
+                    <!-- <input name="furl" value="http://192.168.0.122:81/order/payU" size="64" /> -->
+                    <input name="furl" value="https://in.yahoo.com/" size="64" />
+                    <!-- <input name="furl" value="http://www.auraart.in/manjhi/payumoney/failure.php" size="64" /> -->
+                  </td>
+                </tr>
+                <tr>
+                  <td>UDF1: </td>
+                  <td>
+                    <input name="udf1" value="1" />
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <input type="hidden" name="service_provider" value="" size="64" />
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4">
+                    <input type="submit" value="Submit" />
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
+</div>
+</div>
 </div>
