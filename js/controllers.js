@@ -310,7 +310,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.oneAtATime = true;
 
     })
-    .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    .controller('ContactCtrl', function($scope, $state, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("contact");
@@ -319,15 +319,20 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
         $scope.formData = {};
+
         $scope.submitForm = function() {
-            console.log("contact", $scope.formData);
+            //console.log("contact", $scope.formData);
             NavigationService.saveContact($scope.formData, function(data) {
-              console.console.log("res data ",data);
+                //console.log("res data ", data);
                 if (data.value) {
-                    $uibModal.open({
+                    $scope.formData = '';
+                    closeModal = $uibModal.open({
                         animation: true,
                         templateUrl: 'views/modal/thanks.html',
                     });
+                    $timeout(function() {
+                      closeModal.close();
+                    }, 2000);
                 } else {
                     console.log("Error while submiting form");
                 }
@@ -1836,7 +1841,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.menutitle = NavigationService.makeactive("Productdetail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        TemplateService.removeLoaderOn(2);
+        TemplateService.removeLoaderOn(1);
         $scope.oneAtATime = true;
         $scope.product = {};
         $scope.mainImage = "";
@@ -1868,13 +1873,11 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             // console.log(data);
             $scope.product = data.data.product;
             $scope.psizes = data.data.product.size;
-            if ($scope.psizes.length > 0) {
+            if ($scope.psizes && $scope.psizes.length > 0) {
                 $scope.selectSize($scope.psizes[0].name);
             }
             $scope.producttime = data.data.producttime;
             CalenderService.blockedDates = $scope.producttime;
-            console.log($scope.producttime);
-            console.log(CalenderService);
             // _.each($scope.producttime, function (key) {
             //     var tmpdate = new Date(key.timeFrom);
             //     // tmpdate.setHours(0,0,0,0);
@@ -2002,7 +2005,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 } else {
                     $scope.wishlist = "";
                 }
-                TemplateService.removeLoader();
+                // TemplateService.removeLoader();
             });
         }
         getWishlist();
@@ -2331,7 +2334,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("thankyou");
-        $scope.menutitle = NavigationServ ice.makeactive("Thankyou");
+        $scope.menutitle = NavigationService.makeactive("Thankyou");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
