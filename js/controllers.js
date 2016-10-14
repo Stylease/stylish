@@ -534,32 +534,24 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.invalid = true;
             } else {
                 if ($.jStorage.get("userLoggedIn")) {
-                    if (_.isEqual($scope.userdata.billingcopy[0], addressdata.billingAddress)) {
-                        console.log("equal");
+                    if (_.isEqual($scope.userdata.billingAddress, addressdata.billingAddress)) {
                         $scope.userdata.billingAddress = $scope.userdata.billingcopy;
-                        $scope.userdata.shippingAddress = $scope.userdata.shippingcopy;
-                        NavigationService.userProfileSave($scope.userdata, function (data) {
-                            console.log("done");
-                            if (data.value) {
-                                $state.go("checkoutorder");
-                            }
-                        });
                     } else {
-                        console.log("not");
                         $scope.userdata.billingcopy.push(addressdata.billingAddress);
-                        $scope.userdata.shippingcopy.push(addressdata.shippingAddress);
-                        console.log("billingAddress", $scope.userdata.billingcopy);
                         $scope.userdata.billingAddress = $scope.userdata.billingcopy;
-                        $scope.userdata.shippingAddress = $scope.userdata.shippingcopy;
-
-                        NavigationService.userProfileSave($scope.userdata, function (data) {
-                            console.log("done");
-                            if (data.value) {
-                                $state.go("checkoutorder");
-                            }
-                        });
                     }
-
+                    if (_.isEqual($scope.userdata.shippingAddress, addressdata.shippingAddress)) {
+                        $scope.userdata.shippingAddress = $scope.userdata.shippingcopy;
+                    } else {
+                        $scope.userdata.shippingcopy.push(addressdata.shippingAddress);
+                        $scope.userdata.shippingAddress = $scope.userdata.shippingcopy;
+                    }
+                    NavigationService.userProfileSave($scope.userdata, function (data) {
+                        console.log("done");
+                        if (data.value) {
+                            $state.go("checkoutorder");
+                        }
+                    });
 
                 } else {
                     $.jStorage.set("userData", addressdata)
