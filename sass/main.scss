@@ -6,9 +6,7 @@
 @import "../bower_components/fancyBox/source/jquery.fancybox.css";
 @import "../bower_components/angular-rangeslider/angular.rangeSlider.css";
 @import "../bower_components/angular-loading-bar/build/loading-bar.min.css";
-
 /* Bootstrap Variables Goes Here */
-
 $brand-dark-blue: #2c2d3d !default;
 $brand-dark-pink: #e87b65 !default;
 $brand-pink: #fdd3be !default;
@@ -33,17 +31,14 @@ $magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
         }
     }
 }
-
 @font-face {
     font-family: "Glyphicons Halflings";
     src: url('../fonts/glyphicons-halflings-regular.ttf');
 }
-
 @font-face {
     font-family: "fine-serif";
     src: url('../fonts/fine-serif.ttf');
 }
-
 @font-face {
     font-family: "fine-style";
     src: url('../fonts/fine-style.TTF');
@@ -103,10 +98,12 @@ nav li:hover .dropdown-menu {
 a {
     cursor: pointer;
     @include transition(all ease 300ms);
+
     &:hover {
         @include transition(all ease 300ms);
         text-decoration: none;
     }
+
     &:focus {
         outline: none;
         text-decoration: none;
@@ -116,12 +113,10 @@ a {
 
 .backdrop:after {
     content: "";
-    @include position(fixed,
-    0);
+    @include position(fixed, 0);
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 99;
 }
-
 // classess
 .no-border {
     border: none !important;
@@ -129,6 +124,7 @@ a {
 
 .relate {
     position: relative;
+
     .inpu-1 {
         color: #000;
     }
@@ -139,10 +135,8 @@ a {
 }
 
 .get-center {
-    @include position(absolute,
-    50% null null 50%);
-    @include transform(translate(-50%,
-    -50%));
+    @include position(absolute, 50% null null 50%);
+    @include transform(translate(-50%, -50%));
 }
 
 .row-flex {
@@ -217,13 +211,13 @@ a {
 .mr10 {
     margin-right: 10px;
 }
-
 // .mb10 {
 //   margin-bottom: 10px;
 //   button{
 //     padding: 12px 5.5em;
 //   }
 // }
+
 .margp {
     margin: 10px 0 !important;
 }
@@ -323,7 +317,6 @@ a {
 .text-underline {
     text-decoration: underline;
 }
-
 // color classess
 .dark-blue {
     color: $brand-dark-blue;
@@ -360,9 +353,9 @@ a {
 .color-white {
     color: white;
 }
-
 // end color classess
 // background classess
+
 .bg-dark-blue {
     background-color: $brand-dark-blue !important;
 }
@@ -378,67 +371,59 @@ a {
 .bg-light-pink {
     background-color: $brand-light-pink !important;
 }
-
 // end background classess
 // btn-classes
+
 .btn {
     @include transition(all 300ms linear);
+
     &:focus {
         box-shadow: none;
         outline: none;
     }
+
     &:hover {
         @include transition(all 300ms linear);
     }
 }
 
 .btn-outline {
-    @include button-variant($brand-dark-blue,
-    transparent,
-    $brand-dark-blue);
+    @include button-variant($brand-dark-blue, transparent, $brand-dark-blue);
+
     &:hover {
-        @include button-variant($brand-dark-blue,
-        $brand-light-pink,
-        $brand-dark-blue);
+        @include button-variant($brand-dark-blue, $brand-light-pink, $brand-dark-blue);
     }
 }
 
 .btn-pink-outline {
-    @include button-variant($brand-dark-pink,
-    transparent,
-    $brand-dark-pink);
+    @include button-variant($brand-dark-pink, transparent, $brand-dark-pink);
+
     &:hover {
         color: #fff!important;
-        @include button-variant($brand-dark-blue,
-        $brand-dark-pink,
-        $brand-dark-pink);
+        @include button-variant($brand-dark-blue, $brand-dark-pink, $brand-dark-pink);
     }
 }
 
 .btn-facebook {
-    @include button-variant(white,
-    $brand-facebook,
-    $brand-facebook);
+    @include button-variant(white, $brand-facebook, $brand-facebook);
 }
 
 .btn-google {
-    @include button-variant(white,
-    $brand-google,
-    $brand-google);
+    @include button-variant(white, $brand-google, $brand-google);
 }
 
 .btn-full {
     padding: 8px 50px;
 }
-
 // end btn-classes
 // end of classess
 //bootstrap forms
+
 .btn,
 .form-control,
-.input-group-lg>.form-control,
-.input-group-lg>.input-group-addon,
-.input-group-lg>.input-group-btn>.btn,
+.input-group-lg > .form-control,
+.input-group-lg > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn,
 .input-lg {
     border-radius: 0;
     @include box-shadow(none);
@@ -449,30 +434,30 @@ a {
     outline: 0;
     @include box-shadow(none);
 }
-
 //bootstrap forms
 .custom-select {
     position: relative;
+
     select {
         @include appearance(none);
-        @include size(100%,
-        40px);
+        @include size(100%, 40px);
         padding: 0 5px;
         border: 1px solid $brand-dark-pink;
         background-color: transparent;
         position: relative;
         z-index: 1;
+
         &:focus {
             outline: none;
         }
     }
+
     &:after {
         content: "\f107";
         font: normal normal normal 14px/1 FontAwesome;
         font-size: 18px;
         color: $brand-dark-pink;
-        @include position(absolute,
-        6px 10px null null);
+        @include position(absolute, 6px 10px null null);
     }
 }
 
@@ -483,6 +468,7 @@ a {
         position: absolute;
         left: -9999px;
     }
+
     [type="checkbox"]:checked+label,
     [type="checkbox"]:not(:checked)+label {
         position: relative;
@@ -496,8 +482,7 @@ a {
     [type="checkbox"]:not(:checked)+label:before {
         content: '';
         padding-right: 7px;
-        @include position(absolute,
-        0 null null 0);
+        @include position(absolute, 0 null null 0);
         @include square(15px);
         border: 1px solid $brand-dark-blue;
         background: transparent;
@@ -506,8 +491,7 @@ a {
     [type="checkbox"]:checked+label:after,
     [type="checkbox"]:not(:checked)+label:after {
         content: '✔';
-        @include position(absolute,
-        3px null null 4px);
+        @include position(absolute, 3px null null 4px);
         font-size: 15px;
         line-height: 0.8;
         color: $brand-dark-pink;
@@ -518,6 +502,7 @@ a {
         opacity: 0;
         transform: scale(0);
     }
+
     [type="checkbox"]:checked+label:after {
         opacity: 1;
         transform: scale(1);
@@ -528,9 +513,11 @@ a {
     input[type="radio"] {
         display: none;
     }
+
     input[type="radio"]+label {
         font-size: 14px;
     }
+
     input[type="radio"]+label span {
         display: inline-block;
         @include square(18px);
@@ -540,6 +527,7 @@ a {
         cursor: pointer;
         border: 1px solid $brand-dark-blue;
         @include transition(all 300ms linear);
+
         &:after {
             content: "";
             @include square(12px);
@@ -551,13 +539,16 @@ a {
             @include transition(all 300ms linear);
         }
     }
+
     input[type="radio"]:checked+label span {
         @include transition(all 300ms linear);
+
         &:after {
             opacity: 1;
             @include transition(all 300ms linear);
         }
     }
+
     input[type="radio"]+label span,
     input[type="radio"]:checked+label span {
         @include transition(all 0.4s linear);
@@ -569,10 +560,7 @@ a {
     margin: 0;
     background-color: transparent;
 }
-
-
 /* Start writing sass here */
-
 // header
 header {
     width: 100%;
@@ -587,10 +575,10 @@ header {
     margin: 18px 0 6px;
     cursor: pointer;
     display: inline-block;
+
     .icon-bar {
         margin: 4px 0;
-        @include size(27px,
-        2px);
+        @include size(27px, 2px);
         display: block;
         background-color: $brand-pink;
         @include transition(all 300ms linear);
@@ -599,18 +587,18 @@ header {
 
 .cross-ham {
     span:first-child {
-        @include position(relative,
-        5px null null null);
+        @include position(relative, 5px null null null);
         @include transform(rotate(-135deg));
         @include transition(all 300ms linear);
     }
+
     span:nth-child(2) {
         opacity: 0;
         @include transition(all 300ms linear);
     }
+
     span:last-child {
-        @include position(relative,
-        -7px null null null);
+        @include position(relative, -7px null null null);
         @include transform(rotate(135deg));
         @include transition(all 300ms linear);
     }
@@ -628,8 +616,7 @@ header {
 
 .logo h1 {
     margin: 0;
-    @include position(absolute,
-    4px null null 50%);
+    @include position(absolute, 4px null null 50%);
     @include transform(translateX(-50%));
     z-index: 20;
 }
@@ -643,6 +630,7 @@ header {
     h1 {
         top: 0;
     }
+
     img {
         width: 88px;
         @include transition(all 300ms linear);
@@ -651,40 +639,47 @@ header {
 
 .user-detail {
     margin: 5px 0;
+
     img {
         margin-bottom: 5px;
     }
 }
 
 nav {
-    @include size(350px,
-    100%);
+    @include size(350px, 100%);
     padding: 20px;
     @include transition(all 300ms linear);
     position: fixed;
     top: 72px;
     z-index: 11;
+
     .menu-name {
         font-size: 16px;
         font-weight: 500;
+
         &:hover {
             color: $brand-dark-blue;
         }
     }
+
     .menu-dropdown {
         margin: 0;
         padding: 0;
+
         li {
             list-style-type: none;
+
             a {
                 padding: 10px 0;
                 border-bottom: 1px solid rgba(61, 60, 62, 0.2);
                 display: block;
                 font-size: 16px;
+
                 &:hover {
                     color: $brand-dark-pink;
                 }
             }
+
             &:last-child a {
                 border-bottom: none;
             }
@@ -694,23 +689,27 @@ nav {
 
 .accordion-custom {
     .panel,
-    .panel-default>.panel-heading {
+    .panel-default > .panel-heading {
         border: none;
         border-top: 1px solid $brand-dark-blue;
         border-radius: 0;
         box-shadow: none;
         background-color: transparent;
+
         &:first-child {
             border-top: none;
         }
     }
-    .panel-default>.panel-heading {
+
+    .panel-default > .panel-heading {
         padding: 10px 0;
     }
-    .panel-default>.panel-heading+.panel-collapse>.panel-body {
+
+    .panel-default > .panel-heading+.panel-collapse > .panel-body {
         padding: 10px 0 0;
         border: none;
     }
+
     .icon {
         font-size: 22px;
     }
@@ -728,18 +727,20 @@ nav {
     height: 20px;
     width: 20px;
 }
-
 // header end
 // home
+
 .home-slider {
     .flex-control-nav {
         bottom: 60px;
         z-index: 2;
     }
+
     .flex-control-paging li a.flex-active {
         background-color: $brand-dark-pink;
         opacity: 1;
     }
+
     .flex-control-paging li a {
         background-color: $brand-pink;
         opacity: 0.7;
@@ -750,25 +751,31 @@ nav {
     padding: 110px 0 50px;
     margin-top: -110px;
     background: url('../img/anchor.png') #dc795e;
+
     h4 {
         border-bottom: 1px solid $brand-dark-blue;
         padding-bottom: 5px;
         font-size: 35px;
     }
+
     .flex-direction-nav a {
         top: 20%;
     }
+
     .flexslider:hover .flex-direction-nav .flex-prev {
         left: 100px;
         opacity: 1;
     }
+
     .flexslider:hover .flex-direction-nav .flex-next {
         right: 100px;
         opacity: 1;
     }
+
     .flex-direction-nav a.flex-next {
         right: 100px;
         opacity: 1;
+
         &:before {
             content: "\f105";
             font: normal normal normal 14px/1 FontAwesome;
@@ -776,9 +783,11 @@ nav {
             color: $brand-dark-blue;
         }
     }
+
     .flex-direction-nav a.flex-prev {
         left: 100px;
         opacity: 1;
+
         &:before {
             content: "\f104";
             font: normal normal normal 14px/1 FontAwesome;
@@ -786,11 +795,13 @@ nav {
             color: $brand-dark-blue;
         }
     }
+
     .client-speak {
         width: 50%;
         margin: 0 auto;
         font-size: 16px;
         font-weight: 400;
+
         h5 {
             font-size: 18px;
             font-style: italic;
@@ -823,6 +834,7 @@ nav {
     -o-transform: rotate(-90deg);
     transform: rotate(0);
     background-color: #fdd3be;
+
     span {
         font-size: 15px;
     }
@@ -830,12 +842,13 @@ nav {
 
 .client-descp {
     position: relative;
+
     &:after,
     &:before {
-        @include size(16px,
-        10px);
+        @include size(16px, 10px);
         position: absolute;
     }
+
     &:after {
         content: "\f10e";
         // background: url('../img/comma2.png') no-repeat;
@@ -844,6 +857,7 @@ nav {
         font: normal normal normal 14px/1 FontAwesome;
         font-size: 16px;
     }
+
     &:before {
         content: "\f10d" !important;
         /* background: url("../img/comma1.png") no-repeat; */
@@ -857,27 +871,32 @@ nav {
 .ban-width {
     width: 100%;
     position: relative;
+
     img {
         width: 100% !important;
     }
 }
-
 // home end
 // footer
+
 .home-footer {
     background-color: $brand-dark-blue;
     color: white;
     font-weight: 300;
+
     .links {
         ul {
             padding: 0;
+
             li {
                 margin-bottom: 8px;
                 list-style-type: none;
+
                 a {
                     color: $brand-light-pink;
                     font-size: 16px;
                     font-weight: 400;
+
                     &:hover {
                         color: $brand-dark-pink;
                     }
@@ -885,6 +904,7 @@ nav {
             }
         }
     }
+
     .footer-head {
         padding-bottom: 3px;
         border-bottom: 1px solid $brand-dark-pink;
@@ -892,6 +912,7 @@ nav {
         font-size: 17px;
         font-weight: 400;
     }
+
     .social-links {
         a {
             @include square(25px);
@@ -900,33 +921,41 @@ nav {
             background-color: $brand-dark-pink;
             line-height: 27px;
             text-align: center;
+
             i {
                 color: $brand-light-pink;
             }
             @include transition(all 300ms linear);
+
             &:hover {
                 @include transition(all 300ms linear);
                 background-color: $brand-light-pink;
+
                 i {
                     color: $brand-dark-pink;
                 }
             }
         }
     }
+
     .follow {
         margin: 20px 0;
     }
+
     .question {
         margin-top: 20px;
         font-size: 17px;
         font-weight: 400;
+
         a {
             color: #fff;
+
             &:hover {
                 color: $brand-dark-pink;
             }
         }
     }
+
     .about {
         .footer-head {
             font-size: 21px;
@@ -934,17 +963,19 @@ nav {
         font-size: 17px;
         font-weight: 400;
     }
+
     .read-more {
-        @include button-variant(#dc795e,
-        transparent,
-        #dc795e);
+        @include button-variant(#dc795e, transparent, #dc795e);
+
         &:hover {
             background-color: #d35634;
             color: $brand-dark-blue;
         }
     }
+
     .ting {
         color: white;
+
         &:hover {
             color: $brand-pink;
         }
@@ -960,36 +991,38 @@ footer {
     background-color: $brand-pink;
     color: $brand-dark-blue;
     @extend .home-footer;
+
     .links ul li a {
         color: $brand-dark-blue;
     }
+
     .question a {
         color: $brand-dark-blue;
     }
+
     .ting {
         color: $brand-dark-blue;
+
         &:hover {
             color: $brand-dark-pink;
         }
     }
+
     .read-more {
-        @include button-variant($brand-dark-blue,
-        transparent,
-        $brand-dark-blue);
+        @include button-variant($brand-dark-blue, transparent, $brand-dark-blue);
+
         &:hover {
-            @include button-variant($brand-dark-pink,
-            $brand-dark-blue,
-            $brand-dark-blue);
+            @include button-variant($brand-dark-pink, $brand-dark-blue, $brand-dark-blue);
         }
     }
 }
-
 // footer
 .heading-bar {
     padding: 65px 0 2px;
     background-color: $brand-pink;
     font-family: "fine-style";
     text-align: center;
+
     h3 {
         margin: 0 0 5px;
         display: inline-block;
@@ -997,13 +1030,16 @@ footer {
         font-size: 55px;
         text-transform: uppercase;
     }
+
     .heading-underline {
         border-bottom: 2px solid $brand-dark-blue;
     }
+
     span {
         text-transform: none;
         font-family: "Work Sans";
     }
+
     label {
         font-size: 16px;
         font-weight: bold;
@@ -1022,30 +1058,28 @@ input.form-control {
     font-size: 16px;
     @include placeholder {
         color: #696969;
-    }
-    ;
+    };
     @include transition(all 300ms linear);
+
     &:focus {
         border-color: $brand-dark-pink;
         @include placeholder {
             color: $brand-dark-pink;
-        }
-        ;
+        };
         @include transition(all 300ms linear);
     }
 }
 
 .form-error {
     padding: 5px 15px;
-    @include position(absolute,
-    50px null null null);
+    @include position(absolute, 50px null null null);
     z-index: 2;
     background-color: $brand-pink;
     color: $brand-dark-blue;
+
     &:before {
         content: "";
-        @include position(absolute,
-        -20px null null 20px);
+        @include position(absolute, -20px null null 20px);
         border-top: 10px solid transparent;
         border-right: 10px solid transparent;
         border-bottom: 10px solid $brand-pink;
@@ -1053,7 +1087,6 @@ input.form-control {
         z-index: 3;
     }
 }
-
 // pop ups
 .social-btn {
     width: 100%;
@@ -1064,12 +1097,13 @@ input.form-control {
 
 .close-popup {
     position: relative;
+
     .close {
         width: 20px;
         text-shadow: none;
         opacity: 1;
-        @include position(absolute,
-        20px 10px null null);
+        @include position(absolute, 20px 10px null null);
+
         &:hover {
             opacity: 0.8;
         }
@@ -1078,6 +1112,7 @@ input.form-control {
 
 .close-header {
     padding: 20px;
+
     .close {
         top: -15px;
     }
@@ -1085,6 +1120,7 @@ input.form-control {
 
 .pop-heading-bar {
     position: relative;
+
     h2 {
         font-size: 40px;
     }
@@ -1097,20 +1133,20 @@ input.form-control {
 .or {
     font-size: 20px;
     text-align: center;
+
     &:after,
     &:before {
         content: "";
-        @include size(45%,
-        2px);
+        @include size(45%, 2px);
         background-color: $brand-dark-blue;
     }
+
     &:before {
-        @include position(absolute,
-        50% null null 0);
+        @include position(absolute, 50% null null 0);
     }
+
     &:after {
-        @include position(absolute,
-        50% 0 null null);
+        @include position(absolute, 50% 0 null null);
     }
 }
 
@@ -1127,22 +1163,25 @@ input.form-control {
     padding: 20px;
     border-radius: 0;
     border: 1px solid $brand-dark-pink;
+
     p {
         font-size: 25px;
     }
 }
-
 // thankyou
 .thankyou {
     padding: 10% 0;
     background: url('../img/thankyou.png');
+
     h2 {
         margin: 0;
         font-size: 50px;
     }
+
     span {
         font-size: 24px;
     }
+
     .hope {
         padding-top: 2px;
         border-top: 2px solid $brand-dark-pink;
@@ -1150,13 +1189,16 @@ input.form-control {
         display: inline-block;
         font-size: 16px;
     }
+
     .transaction-detail {
         margin-top: 50px;
+
         p,
         span {
             font-size: 16px;
         }
     }
+
     button {
         font-size: 18px;
     }
@@ -1165,7 +1207,6 @@ input.form-control {
 .sorry {
     padding: 12% 0;
 }
-
 // hello msg
 .hello {
     h3 {
@@ -1173,29 +1214,31 @@ input.form-control {
         font-family: "fine-serif";
         font-size: 35px;
     }
+
     .message {
         font-size: 16px;
     }
+
     input {
         padding: 8px 14px;
         border: 1px solid $brand-dark-blue;
+
         &:first-child {
             border-bottom: none;
         }
     }
 }
-
 // cart pop
 .change-delivery-date {
     padding: 20px;
     border: 1px solid $brand-dark-pink;
     background-color: $brand-light-pink;
     text-align: center;
+
     p {
         font-size: 18px;
     }
 }
-
 // remove-item
 .remove-item {
     p {
@@ -1206,25 +1249,27 @@ input.form-control {
 .remove-accept {
     border-top: 1px solid $brand-dark-blue;
     font-size: 20px;
+
     .col-flex:first-child {
         border-right: 1px solid $brand-dark-blue;
     }
 }
-
 // shop
 .continue-shop {
     padding: 20px;
     border: 1px solid $brand-dark-pink;
+
     .outfit {
         padding: 0 14%;
     }
+
     .close {
         top: -10px;
     }
 }
-
 // end pop ups
 // my account
+
 .prof-tab .profile-tab .profile-active {
     color: $brand-dark-pink;
 }
@@ -1252,13 +1297,16 @@ input.form-control {
 .profile-tab {
     ul {
         padding: 0 30px 0 0;
+
         li {
             padding: 8px 0;
             border-bottom: 1px solid $brand-dark-blue;
             font-size: 16px;
             list-style-type: none;
+
             a {
                 color: $brand-dark-blue;
+
                 &:hover {
                     color: $brand-dark-pink;
                 }
@@ -1287,7 +1335,6 @@ input.form-control {
 .bank-detail {
     margin-top: 60px;
 }
-
 // orders
 .order-heading {
     font-size: 16px;
@@ -1309,6 +1356,7 @@ input.form-control {
 .order-summary {
     padding: 0 50px;
     color: $brand-dark-blue;
+
     .item-num {
         padding: 10px 0;
         margin: 0;
@@ -1322,6 +1370,7 @@ input.form-control {
 
 .delivery {
     border-right: 1px solid $brand-dark-pink;
+
     address {
         padding-right: 65px;
         margin: 0;
@@ -1335,12 +1384,13 @@ input.form-control {
     border-bottom: 1px solid $brand-dark-pink;
     font-size: 16px;
     font-weight: 500;
-    .table>tbody>tr>td,
-    .table>tbody>tr>th,
-    .table>tfoot>tr>td,
-    .table>tfoot>tr>th,
-    .table>thead>tr>td,
-    .table>thead>tr>th {
+
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > td,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
         padding: 5px 0;
         border: none;
     }
@@ -1351,16 +1401,17 @@ input.form-control {
     // button:first-child { margin-right: -4px; }
     // button:nth-child(2) { margin-left: -4px; }
 }
-
 // order-detail
 .order-detail-summary {
     .billing-detail {
         border-top: 1px solid $brand-dark-blue;
         border-bottom: 1px solid $brand-dark-blue;
     }
+
     .delivery {
         border-right: 1px solid $brand-dark-blue;
     }
+
     .order-address {
         // border-top: 1px solid $brand-dark-blue;
     }
@@ -1377,6 +1428,7 @@ input.form-control {
 .order-imgholder {
     height: 250px;
     margin: 20px 0;
+
     img {
         max-height: 100%;
     }
@@ -1385,7 +1437,6 @@ input.form-control {
 .order-heading {
     margin-bottom: 30px;
 }
-
 // wishlist
 .wishlist-product {
     padding: 20px;
@@ -1394,6 +1445,7 @@ input.form-control {
 
 .wish-imgholder {
     height: 300px;
+
     img {
         max-height: 100%;
     }
@@ -1402,14 +1454,15 @@ input.form-control {
 .view-product {
     padding: 20px 0;
 }
-
 // .wishlisted-product .col-md-4:nth-child(3n-1) .wishlist-product {
 //   border-left: 1px solid $brand-dark-pink;
 //   border-right: 1px solid $brand-dark-pink;
 // }
+
 .cart-details,
 .wishlisted-product {
     padding: 20px 0;
+
     h3 {
         font-size: 22px;
         padding: 25px;
@@ -1418,11 +1471,13 @@ input.form-control {
 
 .wishlist-prd-detail {
     margin: 40px 0 10px;
+
     h5 {
         min-height: 40px;
         padding: 0 10px;
         font-size: 16px;
     }
+
     span {
         font-size: 18px;
         font-weight: 500;
@@ -1431,11 +1486,11 @@ input.form-control {
 
 .wishlist-heart {
     font-size: 18px;
+
     .fa-heart {
         color: $brand-dark-pink;
     }
 }
-
 // save address
 .billingsave-add {
     h4 {
@@ -1458,18 +1513,22 @@ input.form-control {
     padding: 30px;
     font-size: 16px;
     font-weight: 500;
+
     .custom-checkbox {
         margin: 0 7px;
         font-size: 12px;
+
         [type="checkbox"]:checked+label,
         [type="checkbox"]:not(:checked)+label {
             padding-left: 17px;
         }
+
         [type="checkbox"]:checked+label:before,
         [type="checkbox"]:not(:checked)+label:before {
             padding-left: 13px;
             padding-right: 0;
         }
+
         [type="checkbox"]:checked+label:after,
         [type="checkbox"]:not(:checked)+label:after {
             top: 1px;
@@ -1493,11 +1552,11 @@ input.form-control {
     input.form-control {
         padding: 8px 20px;
     }
+
     input.fixed-add {
         color: $brand-dark-pink;
     }
 }
-
 // .add-shipping-add {
 //   padding-top: 30px;
 //   border-top: 2px solid $brand-dark-blue;
@@ -1507,13 +1566,14 @@ input.form-control {
 // .addressess {
 //   margin-top: 50px;
 // }
+
 .checkout-login-main,
 .checkout-sign-main {
     margin: 50px 0;
 }
-
 // end checkout
 // product page
+
 .product-size {
     a {
         @include square(36px);
@@ -1524,16 +1584,19 @@ input.form-control {
         line-height: 37px;
         text-align: center;
     }
+
     .select-size {
         border: 1px solid $brand-dark-pink;
         background-color: $brand-dark-pink;
     }
+
     ul {
         li {
             padding-bottom: 5px;
             padding-top: 5px;
             border: none;
         }
+
         li+li {
             padding-left: 10px;
         }
@@ -1546,6 +1609,7 @@ input.form-control {
 
 .filter-heading {
     font-size: 16px;
+
     &.active-size {
         height: 35px;
         width: 35px;
@@ -1556,6 +1620,7 @@ input.form-control {
 
 .sort-product {
     border-bottom: 1px solid $brand-pink;
+
     span {
         font-size: 16px;
     }
@@ -1566,30 +1631,35 @@ input.form-control {
     border-radius: 0 !important;
     width: 271px;
     padding: 20px;
-    @include position(absolute,
-    33px null null 16px);
+    @include position(absolute, 33px null null 16px);
     background-color: $brand-pink;
     z-index: 999;
+
     h5 {
         margin-top: 0;
     }
+
     ul {
         padding: 0;
     }
+
     li {
         border-bottom: 1px solid $brand-dark-blue;
         padding: 7px 0;
         margin-bottom: 10px;
         font-size: 16px;
         list-style-type: none;
+
         form {
             margin-bottom: 15px;
         }
     }
+
     a {
         display: block;
         color: $brand-dark-blue;
         font-weight: 500;
+
         &:hover {
             color: $brand-dark-blue;
         }
@@ -1602,12 +1672,14 @@ input.form-control {
         font-size: 18px;
         @include transform(all 300ms linear);
         opacity: 0.8;
+
         &:hover {
             @include transform(scale(1.2));
             @include transform(all 300ms linear);
             opacity: 1;
         }
     }
+
     .active-view {
         @include transform(scale(1.2));
         opacity: 1;
@@ -1617,9 +1689,11 @@ input.form-control {
 .product-imgholder {
     height: 300px;
     position: relative;
+
     img {
         max-height: 100%;
     }
+
     .wishlist {
         position: absolute;
         top: 10px;
@@ -1636,6 +1710,7 @@ input.form-control {
         font-size: 16px;
         font-weight: 400;
     }
+
     p {
         font-size: 18px;
         font-weight: 500;
@@ -1644,28 +1719,31 @@ input.form-control {
 
 .price-rangeslider {
     .ngrs-range-slider {
-        @include size(100%,
-        1px);
+        @include size(100%, 1px);
         margin: 10px 0 50px;
         padding: 0;
         border: none;
         box-shadow: none;
         background-color: $brand-dark-blue;
+
         .ngrs-runner {
             top: -8px;
         }
+
         .ngrs-join {
             height: 2px;
             top: 60%;
             background-color: $brand-dark-pink;
             background-image: none;
         }
+
         .ngrs-handle {
             border-radius: 100%;
             border: none;
             background-color: $brand-dark-pink;
         }
     }
+
     .ng-cloak,
     .ng-hide:not(.ng-hide-animate),
     .x-ng-cloak,
@@ -1688,14 +1766,17 @@ input.form-control {
         margin: 10px 0 -16px;
         // background: url('../img/calendar.png') no-repeat 95% 50%;
     }
+
     .dropdown-menu {
         padding: 0;
     }
+
     .input-group .form-control,
     .input-group-addon,
     .input-group-btn {
         display: block !important;
     }
+
     .cal {
         .btn {
             position: absolute;
@@ -1708,17 +1789,21 @@ input.form-control {
             background-color: transparent;
             background: url("../img/calendar.png") no-repeat 100% 50%;
             background-position-x: 8px;
+
             &:active {
                 box-shadow: none;
             }
+
             &:focus {
                 outline: 0;
             }
         }
     }
+
     .uib-button-bar {
         display: none;
     }
+
     .form-control[disabled],
     .form-control[readonly],
     fieldset[disabled] .form-control {
@@ -1739,6 +1824,7 @@ input.form-control {
     .radio-button {
         margin-bottom: 10px;
     }
+
     .icon {
         font-size: 25px;
     }
@@ -1746,6 +1832,7 @@ input.form-control {
 
 .filter-button {
     text-align: center;
+
     button {
         padding: 8px 34px;
     }
@@ -1758,8 +1845,8 @@ input.form-control {
 }
 
 .search-product {
-    @include position(absolute,
-    null 0 null null);
+    @include position(absolute, null 0 null null);
+
     input {
         width: 250px;
         min-height: 40px;
@@ -1768,22 +1855,24 @@ input.form-control {
         background-color: $brand-light-pink;
         font-family: "Work Sans";
         vertical-align: top;
+
         &:focus {
             outline: none;
         }
     }
+
     button {
         padding: 8px 12px;
         border: none;
         margin-left: -4px;
     }
 }
-
 // product detail page
 .a1 {
     .a2 {
         float: left;
     }
+
     .a3 {
         float: right;
     }
@@ -1798,11 +1887,13 @@ input.form-control {
     margin-left: 30px;
     text-align: center;
     position: relative;
+
     &.active-size {
         height: 35px;
         width: 35px;
         background: #e87b65;
         border: none;
+
         &:after {
             position: absolute;
             bottom: -14px;
@@ -1832,13 +1923,16 @@ input.form-control {
 .productdetail-slider {
     .prd-slide-imgholder {
         @include square(550px);
+
         img {
             max-height: 100%;
         }
     }
+
     .flexslider .slides img {
         width: auto;
     }
+
     .flex-control-paging li a {
         @include square(9px);
         border: none;
@@ -1846,6 +1940,7 @@ input.form-control {
         border-radius: 100%;
         background-color: $brand-pink;
     }
+
     .flex-control-paging li a.flex-active {
         background-color: $brand-dark-blue;
     }
@@ -1854,16 +1949,19 @@ input.form-control {
 .product-descp {
     .name-section {
         margin-bottom: 20px;
+
         p {
             font-size: 15px;
             font-weight: 300;
         }
     }
+
     .back-color {
         width: 100%;
         background-color: #fdd3be;
         padding: 10px;
     }
+
     .back-color2 {
         width: 100%;
         background-color: #fdd3be;
@@ -1872,36 +1970,44 @@ input.form-control {
         margin-top: 12px;
         position: relative;
     }
+
     .disp-inline {
         display: inline;
     }
+
     .disp-padd {
         padding-left: 60px;
         padding-right: 60px;
     }
+
     .s1 {
         padding: 20px 0;
         border-bottom: 1px solid $brand-dark-blue;
     }
+
     .buttons,
     .delivery-date,
     .product-size {
         padding: 20px 0;
         border-bottom: 1px solid $brand-dark-blue;
     }
+
     .order-time {
         padding: 10px 0;
         border-bottom: 1px solid $brand-dark-blue;
+
         label {
             margin: 5px;
             font-size: 16px;
             font-weight: 400;
         }
+
         .custom-select {
             &:after {
                 color: $brand-dark-blue;
                 top: 11px;
             }
+
             select {
                 width: 142px;
                 padding: 0 15px;
@@ -1910,21 +2016,26 @@ input.form-control {
             }
         }
     }
+
     .added-cart {
         padding: 8px 65px;
     }
+
     .product-price {
         padding: 10px 0;
         border-bottom: 1px solid $brand-dark-blue;
         font-size: 16px;
         font-weight: 500;
         position: relative;
+
         p {
             margin: 0;
         }
+
         .refund {
             margin-left: 5px;
         }
+
         .tooltip.bottom {
             opacity: 1;
             top: 70% !important;
@@ -1934,9 +2045,11 @@ input.form-control {
             @include transform(translate(-50%));
             z-index: 1;
         }
+
         .tooltip.bottom .tooltip-arrow {
             margin-left: -10px;
         }
+
         .tooltip-inner {
             float: right;
             max-width: 228px!important;
@@ -1959,6 +2072,7 @@ input.form-control {
 .suggested-product {
     margin: 0 20px;
     text-align: center;
+
     .name-suggestprd {
         font-size: 15px;
         // min-height: 70px;
@@ -1970,12 +2084,14 @@ input.form-control {
     overflow: hidden;
     display: block;
     position: relative;
+
     img {
         max-width: 100%;
         max-height: 100%;
         width: auto !important;
         padding: 4px;
     }
+
     .wishlist {
         position: absolute;
         right: 9px;
@@ -1985,20 +2101,25 @@ input.form-control {
 
 .suggested-slider {
     margin-top: 50px;
+
     .rent {
         font-size: 16px;
     }
+
     .flexslider:hover .flex-direction-nav .flex-prev {
         left: 30px;
         opacity: 1;
     }
+
     .flexslider:hover .flex-direction-nav .flex-next {
         right: 30px;
         opacity: 1;
     }
+
     .flex-direction-nav a.flex-next {
         right: 30px;
         opacity: 1;
+
         &:before {
             content: "\f105";
             font: normal normal normal 14px/1 FontAwesome;
@@ -2006,9 +2127,11 @@ input.form-control {
             color: $brand-dark-blue;
         }
     }
+
     .flex-direction-nav a.flex-prev {
         left: 30px;
         opacity: 1;
+
         &:before {
             content: "\f104";
             font: normal normal normal 14px/1 FontAwesome;
@@ -2020,20 +2143,23 @@ input.form-control {
 
 .product-related-slider {
     width: 342px;
-    @include position(absolute,
-    42% null null -130px);
+    @include position(absolute, 42% null null -130px);
     @include transform(rotate(90deg));
+
     .flexslider:hover .flex-direction-nav .flex-prev {
         left: -25px;
         opacity: 1;
     }
+
     .flexslider:hover .flex-direction-nav .flex-next {
         right: -25px;
         opacity: 1;
     }
+
     .flex-direction-nav a.flex-next {
         right: -25px;
         opacity: 1;
+
         &:before {
             content: "\f105";
             font: normal normal normal 14px/1 FontAwesome;
@@ -2041,9 +2167,11 @@ input.form-control {
             color: $brand-dark-blue;
         }
     }
+
     .flex-direction-nav a.flex-prev {
         left: -25px;
         opacity: 1;
+
         &:before {
             content: "\f104";
             font: normal normal normal 14px/1 FontAwesome;
@@ -2051,17 +2179,20 @@ input.form-control {
             color: $brand-dark-blue;
         }
     }
+
     .flex-direction-nav a {
         color: transparent;
         text-shadow: none;
         top: 53%;
     }
+
     .related-imgholder {
         width: auto;
         height: 85px;
         overflow: hidden;
         display: block;
         position: relative;
+
         img {
             -webkit-backface-visibility: hidden;
             max-height: 100%;
@@ -2078,12 +2209,13 @@ flex-slider {
         position: relative;
     }
 }
-
 // end product page
 // cart page
+
 .cart-imgholder {
     height: 250px;
     margin: 35px;
+
     img {
         max-height: 100%;
     }
@@ -2092,11 +2224,14 @@ flex-slider {
 .cart-list {
     padding: 30px 0;
     border-bottom: 1px solid $brand-dark-pink;
+
     &:last-child {
         border: none;
     }
+
     a {
         font-size: 15px;
+
         &:hover {
             color: $brand-dark-blue;
         }
@@ -2107,6 +2242,7 @@ flex-slider {
     margin-top: 50px;
     font-size: 16px;
     font-weight: 500;
+
     .edit-cart {
         width: 120px;
         display: inline-block;
@@ -2115,10 +2251,11 @@ flex-slider {
 
 .edit-size {
     margin-bottom: 10px;
+
     .custom-select {
-        @include size(70px,
-        30px);
+        @include size(70px, 30px);
         display: inline-block;
+
         select {
             height: 30px;
         }
@@ -2128,10 +2265,12 @@ flex-slider {
 .order-delivery-time {
     .custom-select {
         width: 140px;
+
         select {
             height: 30px;
         }
     }
+
     label {
         margin-right: 10px;
     }
@@ -2140,15 +2279,16 @@ flex-slider {
 .time-picker {
     margin: 0 15px;
 }
-
 // cart end page
 // celebrity page
+
 .celebrity-choice-main .col-md-6:nth-child(2n+1) .celebrity-holder {
     border-right: 1px solid $brand-pink;
 }
 
 .celebrity-holder {
     margin: 30px 0;
+
     .designer-name {
         font-size: 18px;
     }
@@ -2163,6 +2303,7 @@ flex-slider {
 .sort-by {
     padding: 15px 0;
     border-bottom: 1px solid $brand-pink;
+
     .sort-filter-dropdown {
         top: 35px;
         left: 0;
@@ -2172,9 +2313,11 @@ flex-slider {
 .celebrity-imgholder {
     height: 500px;
     margin: 30px 0;
+
     img {
         max-height: 100%;
     }
+
     .choice {
         @include square(120px);
         position: absolute;
@@ -2187,9 +2330,11 @@ flex-slider {
 .celebrity-heart {
     margin: 10px 50px 0 0;
     font-size: 20px;
+
     .fa {
         @include transition(all 300ms linear);
     }
+
     .fa-heart {
         color: $brand-dark-pink;
     }
@@ -2215,17 +2360,25 @@ flex-slider {
 .cn {
     padding: 10px 0 40px;
     margin: 4% 21%;
+
     h4 {
         font-weight: 500;
         padding-bottom: 5px;
         font-size: 17px;
     }
+
     .cn2 {
         padding-bottom: 12px;
     }
+
     .cni {
+        font-size: 15px;
+        list-style: none;
+        margin: 9px 0;
+    }
+
+    .fnt {
         font-size: 20px;
-        padding: 0 15px;
     }
 }
 
@@ -2245,21 +2398,26 @@ flex-slider {
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 30px;
+
     h2 {
         padding: 5% 0;
         margin: 0;
     }
+
     p {
         margin: 0;
         font-size: 17px;
         word-spacing: 3px;
     }
+
     .paddab {
         padding-bottom: 2% !important;
     }
+
     ul {
         padding: 0;
         list-style-type: decimal;
+
         li {
             p {
                 color: #2c2d3d;
@@ -2267,6 +2425,7 @@ flex-slider {
                 /* Approximation due to font substitution */
                 font-weight: 400;
             }
+
             a,
             span {
                 font-weight: 600;
@@ -2287,6 +2446,7 @@ flex-slider {
         font-size: 25px;
         word-spacing: 3px;
     }
+
     p {
         font-size: 14px;
     }
@@ -2347,6 +2507,7 @@ ul.mn-list {
     width: 47%;
     height: 37px;
     text-align: center;
+
     label {
         color: #fff;
         font-size: 25px;
@@ -2366,6 +2527,7 @@ ul.mn-list {
     width: 47%;
     height: 37px;
     text-align: center;
+
     label {
         color: #fff;
         font-size: 25px;
@@ -2416,6 +2578,7 @@ ul.mn-list {
 
 .mb10-1 {
     margin-bottom: 10px;
+
     button {
         padding: 12px 5.5em;
     }
@@ -2434,8 +2597,7 @@ ul.mn-list {
     left: 50%;
     top: 50%;
     bottom: 0;
-    @include transform (translate(-50%,
-    -50%)!important);
+    @include transform (translate(-50%, -50%)!important);
 }
 
 .modal-dialog {
@@ -2448,6 +2610,7 @@ ul.mn-list {
 
 .f-lef {
     float: left;
+
     label {
         font-size: 12px!important;
     }
@@ -2459,6 +2622,7 @@ ul.mn-list {
 
 .f-righ {
     float: right;
+
     label {
         font-size: 12px!important;
     }
@@ -2466,6 +2630,7 @@ ul.mn-list {
 
 .flex-d {
     display: inline-flex;
+
     .btn-ful1 {
         padding: 5px 30px;
     }
@@ -2510,6 +2675,7 @@ ul.mn-list {
 .cont-form {
     .btn-sub {
         margin-top: 25px;
+
         button {
             padding: 6px 30px;
             font-size: 14px;
@@ -2551,17 +2717,20 @@ ul.mn-list {
         input[type="radio"] {
             display: none;
         }
+
         label {
             max-width: 100%;
             margin-bottom: 5px;
             font-weight: normal;
             margin-left: 26px !important;
         }
+
         .magic-checkbox+label {
             &:before {
                 border-radius: 3px;
                 font-weight: 200;
             }
+
             &:after {
                 top: 6px;
                 left: -20px;
@@ -2576,12 +2745,14 @@ ul.mn-list {
                 border-left: 0;
             }
         }
+
         .magic-checkbox:checked+label {
             &:before {
                 border: #e87b65;
                 background: #e87b65;
             }
         }
+
         .magic-checkbox:checked[disabled]+label {
             &:before {
                 border: $magic-disabled-checked-color;
@@ -2592,19 +2763,23 @@ ul.mn-list {
             from {
                 border-color: $magic-border-color;
             }
+
             to {
                 border-color: $magic-main-color;
             }
         }
+
         .magic-checkbox,
         .magic-radio {
             position: relative;
             // display: none;
         }
+
         .magic-checkbox[disabled],
         .magic-radio[disabled] {
             cursor: not-allowed;
         }
+
         .magic-checkbox+label,
         .magic-radio+label {
             position: relative;
@@ -2612,6 +2787,7 @@ ul.mn-list {
             cursor: pointer;
             vertical-align: middle;
             margin: 0 0 0 26px;
+
             &:hover {
                 &:before {
                     animation-duration: 0.4s;
@@ -2619,6 +2795,7 @@ ul.mn-list {
                     animation-name: hover-color;
                 }
             }
+
             &:before {
                 position: absolute;
                 top: 3px;
@@ -2631,6 +2808,7 @@ ul.mn-list {
                 background-color: #fff;
                 border-radius: 0;
             }
+
             &:after {
                 position: absolute;
                 display: none;
@@ -2638,38 +2816,46 @@ ul.mn-list {
                 color: #fff;
             }
         }
+
         .magic-checkbox[disabled]+label,
         .magic-radio[disabled]+label {
             cursor: not-allowed;
             color: $magic-disabled-color;
+
             &:after,
             &:before,
             &:hover {
                 cursor: not-allowed;
             }
+
             &:hover {
                 &:before {
                     border: 1px solid $magic-disabled-color;
                     animation-name: none;
                 }
             }
+
             &:before {
                 border-color: $magic-disabled-color;
             }
         }
+
         .magic-checkbox:checked+label,
         .magic-radio:checked+label {
             &:before {
                 animation-name: none;
             }
+
             &:after {
                 display: block;
             }
         }
+
         .magic-radio+label {
             &:before {
                 border-radius: 50%;
             }
+
             &:after {
                 top: 9px;
                 left: -20px;
@@ -2679,6 +2865,7 @@ ul.mn-list {
                 background: $magic-main-color;
             }
         }
+
         .magic-radio:checked+label {
             &:before {
                 border: 1px solid $magic-main-color;
@@ -2687,10 +2874,12 @@ ul.mn-list {
             //   display: block;
             // }
         }
+
         .magic-radio:checked[disabled]+label {
             &:before {
                 border: 1px solid $magic-disabled-checked-color;
             }
+
             &:after {
                 background: $magic-disabled-checked-color;
             }
@@ -2716,37 +2905,46 @@ ul.mn-list {
     border: 1px solid rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
     .minsize {
         margin: 8%;
+
         a:hover {
             color: #e87b65;
         }
     }
+
     .minsize2 {
         margin: 0 8% 16%;
     }
+
     h2 {
         background: #dd795f;
         padding: 15px 0;
         font-weight: 900;
         color: #fff;
     }
+
     .imgsize {
         width: 20% !important;
     }
+
     .imgsizereturn {
         margin: 5% 0;
         width: 44% !important;
     }
+
     .text {
         font-size: 21px;
         padding: 5%;
     }
+
     .text2 {
         font-size: 21px;
         padding: 2% 0 0;
         margin: 0;
     }
+
     .ptext {
         margin: 2px 7%;
         word-spacing: 4px;
@@ -2760,6 +2958,7 @@ ul.mn-list {
         font-size: 16px;
         color: black;
     }
+
     .btn {
         margin: 5% !important;
         padding: 10px 50px !important;
@@ -2782,15 +2981,16 @@ ul.mn-list {
 .zopim {
     z-index: 3 !important;
 }
-
 // DATEPICKER
 div[uib-datepicker] {
     background: #fdd3be;
     color: #e87b65;
+
     div[uib-daypicker] {
         background: #fdd3be;
         color: #e87b65;
     }
+
     table {
         th {
             button {
@@ -2799,13 +2999,16 @@ div[uib-datepicker] {
                 border-color: #2c2d3d;
             }
         }
+
         td {
             background-color: $brand-dark-pink;
+
             button {
                 color: $brand-dark-pink;
                 background-color: white;
                 border-color: $brand-pink;
             }
+
             .btn-default,
             .btn-default.active {
                 &:active,
@@ -2815,11 +3018,13 @@ div[uib-datepicker] {
                     background-color: $brand-pink;
                     border-color: $brand-pink;
                     outline: none;
+
                     .text-info {
                         color: white;
                     }
                 }
             }
+
             .btn-default,
             .btn-default.active {
                 &:active,
@@ -2829,18 +3034,22 @@ div[uib-datepicker] {
                     background-color: $brand-pink;
                     border-color: $brand-pink;
                     outline: none;
+
                     .text-info {
                         color: white;
                     }
                 }
             }
+
             .btn-default.active {
                 color: $brand-pink;
                 background-color: transparent;
                 border-color: $brand-pink;
             }
+
             .text-info {
                 color: $brand-pink;
+
                 &:active,
                 &:focus,
                 &:hover {
@@ -2848,6 +3057,7 @@ div[uib-datepicker] {
                 }
             }
         }
+
         td.active,
         td.active2,
         td.active3 {
@@ -2858,6 +3068,7 @@ div[uib-datepicker] {
             }
         }
     }
+
     *:active,
     *:focus,
     *:hover {
@@ -2876,7 +3087,6 @@ div[uib-datepicker] {
         }
     }
 }
-
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";
