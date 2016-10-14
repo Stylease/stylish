@@ -35,8 +35,10 @@
           <div class="col-md-3">
             <div class="add-billing-add aba-none">
               <div class="relate">
-                <input type="email" name="email" ng-pattern="emailRegex" ng-model="userdata.email" class="form-control" placeholder="Email-id"
+                <input ng-if="isLoggedIn==true" readonly type="email" name="email" ng-pattern="emailRegex" ng-model="userdata.email" class="form-control" placeholder="Email-id"
                   required>
+                  <input ng-if="isLoggedIn!=true" type="email" name="email" ng-pattern="emailRegex" ng-model="userdata.email" class="form-control" placeholder="Email-id"
+                    required>
                 <div class="form-error" ng-show="formcheckout.email.$dirty.pattern && formcheckout.email.$error.pattern === true">Please enter valid Email</div>
                 <div class="form-error" ng-if="">Please enter valid Email</div>
                 <div ng-if="invalid">Please enter valid Email.</div>

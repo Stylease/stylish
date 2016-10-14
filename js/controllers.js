@@ -331,7 +331,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         templateUrl: 'views/modal/thanks.html',
                     });
                     $timeout(function() {
-                      closeModal.close();
+                        closeModal.close();
                     }, 2000);
                 } else {
                     console.log("Error while submiting form");
@@ -462,6 +462,9 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.flags.sameshipping = false;
         $scope.userdata = {};
         $scope.emailRegex = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+        if ($.jStorage.get("userLoggedIn")) {
+            $scope.isLoggedIn = true;
+        }
         $scope.getUserAddress = function() {
             NavigationService.getProfile(function(data) {
                 if (data.value) {
@@ -482,9 +485,9 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         } else {
                             $scope.userdata.billingAddress = {};
                         }
-
                     }
-                    if ($scope.shippingAddress) {
+                    $scope.userdata.billingaddcopy = _.cloneDeep($scope.userdata.billingAddress);
+                if ($scope.shippingAddress) {
                         $scope.userdata.shippingAddress = $scope.shippingAddress;
                     } else {
                         if ($scope.userdata.shippingAddress.length > 0) {
@@ -493,13 +496,13 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                             $scope.userdata.shippingAddress = {};
                         }
                     }
+                    $scope.userdata.shippingaddcopy = _.cloneDeep($scope.userdata.shippingAddress);
                     $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
                     $scope.userdata.shippingAddress.shippingAddressState = "Maharashtra";
                     $scope.userdata.shippingAddress.shippingAddressCountry = "India";
                     $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
                     $scope.userdata.billingAddress.billingAddressState = "Maharashtra";
                     $scope.userdata.billingAddress.billingAddressCountry = "India";
-                    console.log($scope.userdata);
                 } else {
                     if ($.jStorage.get("userData")) {
                         $scope.userdata = $.jStorage.get("userData");
@@ -519,7 +522,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
         $scope.getUserAddress();
         $scope.sameShipping = function() {
-            console.log("new data", $scope.userdata);
             if ($scope.flags.sameshipping) {
                 $scope.userdata.shippingAddress = {};
                 $scope.userdata.shippingAddress.shippingAddressFlat = $scope.userdata.billingAddress.billingAddressFlat;
@@ -553,13 +555,16 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.invalid = true;
             } else {
                 if ($.jStorage.get("userLoggedIn")) {
-                    if (_.isEqual($scope.userdata.billingAddress, addressdata.billingAddress)) {
+                    console.log('aaaa', $scope.userdata.billingaddcopy, addressdata.billingAddress);
+                    if (_.isEqual($scope.userdata.billingaddcopy, addressdata.billingAddress)) {
+                        console.log("equal");
                         $scope.userdata.billingAddress = $scope.userdata.billingcopy;
                     } else {
+                        console.log("not e");
                         $scope.userdata.billingcopy.push(addressdata.billingAddress);
                         $scope.userdata.billingAddress = $scope.userdata.billingcopy;
                     }
-                    if (_.isEqual($scope.userdata.shippingAddress, addressdata.shippingAddress)) {
+                    if (_.isEqual($scope.userdata.shippingaddcopy, addressdata.shippingAddress)) {
                         $scope.userdata.shippingAddress = $scope.userdata.shippingcopy;
                     } else {
                         $scope.userdata.shippingcopy.push(addressdata.shippingAddress);
@@ -1369,7 +1374,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         }
 
                     });
-                    $scope.isAvailable();
 
                 } else {
                     $scope.cartProduct = [];
@@ -1385,45 +1389,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             });
         };
         $scope.getCart();
-
-
-        // $scope.getProductTimes = function () {
-        //     NavigationService.getProductTimes(function (data) {
-        //         if (data.value) {
-        //             $scope.productTime = data.data;
-        //             CalenderService.blockedDates = $scope.productTime;
-        //             console.log("product times", CalenderService.blockedDates);
-        //         }
-
-        //     }, function (err) {
-        //         console.log(err);
-        //     });
-        // };
-        // $scope.getProductTimes();
-        // $scope.isAvailable = function (productid) {
-        //     var producttime = {}
-        //     _.each($scope.productTime, function (cartp) {
-        //         if (cartp.product == productid) {
-        //             producttime = cartp;
-        //         }
-        //     });
-        //     if (!_.isEmpty(producttime)) {
-        //         var cartprod = _.find($scope.cartProduct, function (key) {
-        //             return key.product._id == producttime.product;
-        //         });
-        //         // console.log(producttime)
-        //         // console.log("producttime", (new Date(producttime.timeFrom) < new Date(cartprod.timeTo) && new Date(producttime.timeFrom) > new Date(cartprod.timeFrom)), "cartprod", cartprod);
-        //         // if ((new Date(producttime.timeFrom) < new Date(cartprod.timeTo) && new Date(producttime.timeFrom) > new Date(cartprod.timeFrom)) || (producttime.timeTo < new Date(cartprod.timeTo) && producttime.timeTo > new Date(cartprod.timeFrom))) {
-        //         //     return true;
-        //         // } else {
-        //         //     return false;
-        //         // }
-        //     } else {
-        //         return false;
-        //     }
-        // };
-
-        // $scope.isAvailable();
 
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
@@ -2591,10 +2556,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
     }
     $scope.goToFunction = function() {
-            console.log("im in");
-            console.log("$state", $state.current.name);
             if ($state.current.name === 'checkoutsignin') {
-                console.log("aaaa");
                 $state.go('address');
             } else {
                 $.jStorage.set("userLoggedIn", true);
