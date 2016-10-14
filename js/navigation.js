@@ -300,6 +300,14 @@ var navigationservice = angular.module('navigationservice', [])
                 data: data
             }).success(callback);
         },
+        saveContact: function (request, callback) {
+          console.log(request);
+            return $http({
+                url: adminURL + "contact/save",
+                method: "POST",
+                data: request
+            }).success(callback);
+        },
         getOrderDetail: function (id, callback) {
             // var data = {
             //     product: id

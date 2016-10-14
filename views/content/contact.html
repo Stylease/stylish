@@ -29,22 +29,22 @@
         <div class="leave-form">
             <h2>LEAVE A MESSAGE</h2>
         </div>
-        <form action="" ng-submit="submitForm(formData)">
+        <form name="contactUsForm" ng-submit="submitForm(formData)" method="post">
             <div class="cont-form">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="usr" placeholder="Name" name="name">
+                    <input type="text" class="form-control" id="usr" name="name" placeholder="Name" ng-model="formData.name" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="usr" placeholder="Email-id" name="email">
+                    <input type="email" class="form-control" id="usr" name="email" placeholder="Email-id" ng-model="formData.email" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="usr" placeholder="Mobile no" name="mobile">
+                    <input type="tel" class="form-control" id="usr" name="mobie"min="10" max="12" placeholder="Mobile no" ng-model="formData.mobile" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="usr" placeholder="Message" name="msg">
+                    <input type="text" class="form-control" id="usr" name="msg" placeholder="Message" ng-model="formData.msg" required>
                 </div>
                 <div class="form-group btn-sub">
-                    <button type="button" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Submit</button>
                 </div>
             </div>
         </form>

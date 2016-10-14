@@ -318,7 +318,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
-
+        $scope.formData = {};
+        $scope.submitForm = function() {
+          console.log("contact",$scope.formData);
+        }
     })
     .controller('OrderdetailCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         //Used to name the .html file
