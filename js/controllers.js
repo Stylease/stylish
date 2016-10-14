@@ -2580,7 +2580,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $state.go('address');
             } else {
                 $state.go('profile');
-
             }
         }
         // NORMAL LOGIN
