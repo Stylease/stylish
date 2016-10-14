@@ -1554,7 +1554,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.showFilterlist = false;
         $scope.variables.showSortlist = false;
         $scope.seeFilter = function () {
-            $scope.showFilterlist = true;
+          $scope.showFilterlist = !$scope.showFilterlist;
+            // $scope.showFilterlist = true;
             $scope.variables.showSortlist = false;
         };
         $scope.seeSort = function () {
@@ -2579,6 +2580,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 console.log("aaaa");
                 $state.go('address');
             } else {
+                $.jStorage.set("userLoggedIn", true);
                 $state.go('profile');
             }
         }
