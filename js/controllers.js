@@ -2582,7 +2582,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             } else {
                 $.jStorage.set("userLoggedIn", true);
                 $state.go('profile');
-
             }
         }
         // NORMAL LOGIN
