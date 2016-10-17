@@ -1247,19 +1247,28 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
         $scope.gotocheckout = function () {
             console.log("$scope.totalrentalamount", $scope.totalrentalamount);
-            if ($scope.totalrentalamount >= 8000) {
-                if ($.jStorage.get("userLoggedIn")) {
-                    $state.go('address');
-                } else {
-                    $state.go('checkoutsignin');
-                }
+            // if ($scope.totalrentalamount >= 8000) {
+            //     if ($.jStorage.get("userLoggedIn")) {
+            //         $state.go('address');
+            //     } else {
+            //         $state.go('checkoutsignin');
+            //     }
+            // } else {
+            //     removemod = $uibModal.open({
+            //         animation: true,
+            //         templateUrl: "views/modal/minimumorder.html",
+            //         scope: $scope
+            //     });
+            // }
+
+
+            if ($.jStorage.get("userLoggedIn")) {
+                $state.go('address');
             } else {
-                removemod = $uibModal.open({
-                    animation: true,
-                    templateUrl: "views/modal/minimumorder.html",
-                    scope: $scope
-                });
+                $state.go('checkoutsignin');
             }
+
+
             // NavigationService.getcart(function(data) {
             //     if (data.value) {
             //         $scope.cartDetails = data.data.cartcount;
