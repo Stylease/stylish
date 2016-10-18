@@ -709,7 +709,7 @@ nav {
         }
     }
     .panel-default>.panel-heading {
-        padding: 10px 0;
+        padding: 0px 0;
     }
     .panel-default>.panel-heading+.panel-collapse>.panel-body {
         padding: 10px 0 0;
@@ -1308,6 +1308,7 @@ input.form-control {
 .orders-dropdown {
     position: absolute;
     right: 0;
+        top: 12px;
 }
 
 .order-summary {
@@ -1387,7 +1388,7 @@ input.form-control {
 }
 
 .order-heading {
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
 }
 
 // wishlist
@@ -2884,7 +2885,25 @@ div[uib-datepicker] {
         }
     }
 }
+.b-r-l{
+  border-left: 1px solid #e87b65;
+  border-right: 1px solid #e87b65;
+}
+.b-r{
+  border-right: 1px solid #e87b65;
 
+}
+.b-row{
+  border-bottom: 1px solid #e87b65;
+border-right: 1px solid #e87b65;
+border-left: 1px solid #e87b65;
+/* padding: 15px 0px; */
+line-height: 250%;
+}
+.b-row2{
+      border: 1px solid #e87b65;
+          line-height: 250%;
+}
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";

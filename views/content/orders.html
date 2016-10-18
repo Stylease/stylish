@@ -21,14 +21,14 @@
     </div>
     <div class="col-md-9 fixed-height">
       <div class="order-heading text-center">
-        <div class="row">
+        <div class="row b-row2">
           <div class="col-md-2 col-xs-1">
             <span>No.</span>
           </div>
-          <div class="col-md-4 col-xs-4">
+          <div class="col-md-4 col-xs-4 b-r-l">
             <span>Order number</span>
           </div>
-          <div class="col-md-3 col-xs-4">
+          <div class="col-md-3 col-xs-4 b-r">
             <span>Date</span>
           </div>
           <div class="col-md-3 col-xs-3">
@@ -42,14 +42,14 @@
             <uib-accordion-group is-open="status.open" ng-repeat="order in orders">
               <uib-accordion-heading>
                 <i class="orders-dropdown fa" ng-class="{'fa-chevron-up': status.open, 'fa-chevron-down': !status.open}"></i>
-                <div class="row">
+                <div class="row b-row">
                   <div class="col-md-2 col-xs-1">
                     <span>{{order.orderid}}</span>
                   </div>
-                  <div class="col-md-4 col-xs-4">
+                  <div class="col-md-4 col-xs-4 b-r-l">
                     <span>{{order.orderid}}</span>
                   </div>
-                  <div class="col-md-3 col-xs-4">
+                  <div class="col-md-3 col-xs-4 b-r">
                     <span>{{order.date |date:"mediumDate"}}</span>
                   </div>
                   <div class="col-md-3 col-xs-3">
