@@ -6,8 +6,8 @@
   <h3 class="dark-blue text-uppercase text-center hidden-md hidden-sm hidden-lg hidden-xs">my account</h3>
 
   <div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
-    <flex-slider slideshow="true" flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200"
-      item-margin="10" animationloop="true" move="2">
+    <flex-slider slideshow="true" start-at="0" flex-slide="s in download track by $index" class="bg-color" animation="slide"
+      item-width="200" item-margin="10" animationloop="true" move="2">
       <li auto-heightfixed>
         <a ng-if="s.state !== 'log'" ui-sref="{{s.state}}" ng-click="setActive(s.name)" ng-class="{'active1' : activeMenu === s.name}">{{s.name}}</a>
         <a ng-if="s.state === 'log'" ng-click="logout()">{{s.name}}</a>
