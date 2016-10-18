@@ -1322,6 +1322,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             NavigationService.getOneProduct(id, function (response) {
                 if (response.value) {
                     $scope.product = response.data;
+                    
                     $scope.sizes = response.data.size
                     $scope.editable = _.find($scope.cartProduct, function (key) {
                         return key.product._id == id;
@@ -1405,6 +1406,21 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     $scope.totalsecuritydeposit = 0;
                     $scope.cartDetails = data.data.cartcount;
                     $scope.cartProduct = data.data.cartproduct;
+                    _.each($scope.cartProduct,function(n) {
+                        console.log(n);
+                        n.timeFrom =  moment(n.timeFrom).toDate();
+                        CalenderService.selectedDate = n.timeFrom;
+                    });
+                    
+                    NavigationService.getProductTimes(function(data) {
+                        if(data.value === true) {
+                            console.log(data.data);
+                            CalenderService.blockedDates = data.data;
+                        }
+                    },function() {
+
+                    });
+
                     CalenderService.duration = $scope.cartProduct[0].duration;
                     _.each($scope.cartProduct, function (n) {
                         if (n.duration == 4) {
@@ -1472,61 +1488,16 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         afterTomorrow2.setDate(tomorrow.getDate() + 2);
         var afterTomorrow3 = new Date(tomorrow);
         afterTomorrow3.setDate(tomorrow.getDate() + 3);
-        $scope.getDuration = function () {
-            if ($scope.dateduration == 8) {
-                console.log("in 8");
-                $scope.events = [{
-                    date: afterTomorrow,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow2,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow3,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow2,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow3,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow,
-                    status: 'active4'
-                }];
-            } else {
-                $scope.events = [{
-                    date: afterTomorrow,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow2,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow3,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow,
-                    status: 'active4'
-                }];
-            }
-        };
-
-
+      
         // $scope.getDuration();
         $scope.beTheChange = function (dtdata) {
             CalenderService.selectedDate = dtdata;
-            $scope.getDuration();
-            var i = 1;
-            _.each($scope.events, function (data) {
-                data.date = new Date(dtdata).setDate(new Date(dtdata).getDate() + i);
-                i++;
-            });
+              $scope.popup1 = {
+            opened: false
+        };
+        $scope.popup2 = {
+            opened: false
+        };
         };
 
     })
@@ -2145,61 +2116,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         afterTomorrow2.setDate(tomorrow.getDate() + 2);
         var afterTomorrow3 = new Date(tomorrow);
         afterTomorrow3.setDate(tomorrow.getDate() + 3);
-        $scope.getDuration = function () {
-            if ($scope.dateduration == 8) {
-                console.log("in 8");
-                $scope.events = [{
-                    date: afterTomorrow,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow2,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow3,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow2,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow3,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow,
-                    status: 'active4'
-                }];
-            } else {
-                $scope.events = [{
-                    date: afterTomorrow,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow2,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow3,
-                    status: 'active'
-                }, {
-                    date: afterTomorrow,
-                    status: 'active4'
-                }];
-            }
-        };
-
+      
         // $scope.getDuration();
         $scope.beTheChange = function (dtdata) {
-            console.log("aaaa", dtdata);
             CalenderService.selectedDate = dtdata;
-            $scope.getDuration();
-            var i = 1;
-            _.each($scope.events, function (data) {
-                data.date = new Date(dtdata).setDate(new Date(dtdata).getDate() + i);
-                i++;
-            });
         };
     })
     .controller('CelebrityChoiceCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
