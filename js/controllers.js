@@ -1927,6 +1927,14 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     console.log("response cart", data);
                     $scope.response = data;
                     if ($scope.response.value === true) {
+                        //remove product from wishlist
+                        NavigationService.deleteWishlistByProduct($scope.cartpro.product, function (data) {
+                            $scope.response = data;
+                            if ($scope.response.value === true) {
+                                console.log("removed");
+                            }
+                        });
+
                         $uibModal.open({
                             animation: true,
                             templateUrl: "views/modal/shop.html",
