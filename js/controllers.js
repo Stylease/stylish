@@ -124,6 +124,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             state: "log"
 
         }];
+
         $scope.logout = function () {
             globalfunction.logout();
 
@@ -361,47 +362,60 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     })
     .controller('WishlistCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, $uibModal) {
         //Used to name the .html file
+
         $scope.template = TemplateService.changecontent("wishlist");
         $scope.menutitle = NavigationService.makeactive("Wishlist");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         TemplateService.removeLoaderOn(1);
         $scope.variables = {};
-
         $scope.download = [{
             name: "my profile",
-            state: "profile()"
+            state: "profile()",
+            id: 1
 
         }, {
             name: "my orders",
-            state: "orders()"
+            state: "orders()",
+            id: 2
 
         }, {
             name: "my wishlist",
-            state: "wishlist()"
+            state: "wishlist()",
+            id: 3
 
         }, {
             name: "saved addresses ",
-            state: "saveaddress()"
+            state: "saveaddress()",
+            id: 4
 
         }, {
             name: "bank a/c details",
-            state: "bankdetail()"
+            state: "bankdetail()",
+            id: 4
 
         }, {
             name: "change password",
-            state: "changepassword()"
+            state: "changepassword()",
+            id: 5
 
         }, {
             name: "logout",
-            state: "log"
+            state: "log",
+            id: 6
 
         }];
-        $scope.logout = function () {
-                globalfunction.logout();
 
-            }
-            // $scope.activeMenu = $scope.download[0].name;
+
+        $(".visible-xs").flexslider({
+            startAt: '4'
+        });
+
+
+        $scope.logout = function () {
+            globalfunction.logout();
+
+        }
         $scope.setActive = function (menuItem) {
             $scope.activeMenu = menuItem;
             // $scope.colour = "color: black";
