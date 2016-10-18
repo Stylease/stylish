@@ -709,7 +709,30 @@ nav {
         }
     }
     .panel-default>.panel-heading {
-        padding: 0px 0;
+    //  padding: 10px 0;
+    }
+    .panel-default>.panel-heading+.panel-collapse>.panel-body {
+        padding: 10px 0 0;
+        border: none;
+    }
+    .icon {
+        font-size: 22px;
+    }
+}
+.accordion-customs {
+    .panel,
+    .panel-default>.panel-heading {
+        border: none;
+        border-top: 1px solid $brand-dark-blue;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+        &:first-child {
+            border-top: none;
+        }
+    }
+    .panel-default>.panel-heading {
+     padding: 10px 0;
     }
     .panel-default>.panel-heading+.panel-collapse>.panel-body {
         padding: 10px 0 0;
