@@ -6,9 +6,10 @@
   <h3 class="dark-blue text-uppercase text-center hidden-md hidden-sm hidden-lg hidden-xs">my account</h3>
 
   <div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
-    <flex-slider slideshow="true" flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200" item-margin="10" animationloop="true" move="2">
+    <flex-slider slideshow="true" flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200"
+      item-margin="10" animationloop="true" move="2">
       <li auto-heightfixed>
-        <a ng-if="s.state !== 'log'" ui-sref="{{s.state}}">{{s.name}}</a>
+        <a ng-if="s.state !== 'log'" ui-sref="{{s.state}}" ng-click="setActive(s.name)" ng-class="{'active1' : activeMenu === s.name}">{{s.name}}</a>
         <a ng-if="s.state === 'log'" ng-click="logout()">{{s.name}}</a>
       </li>
     </flex-slider>
@@ -26,24 +27,28 @@
 
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="text" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.firstname" placeholder="First Name" aplha-Only>
+                  <input type="text" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.firstname" placeholder="First Name"
+                    aplha-Only>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="text" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.lastname" placeholder="Last Name" aplha-Only>
+                  <input type="text" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.lastname" placeholder="Last Name"
+                    aplha-Only>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="text"  ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.mobile" placeholder="Mobile No" only-Digits minlength="10" maxlength="10">
+                  <input type="text" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.mobile" placeholder="Mobile No"
+                    only-Digits minlength="10" maxlength="10">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="relate">
-                  <input type="email" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.email" placeholder="Email-id" readonly>
+                  <input type="email" ng-disabled="!set.Profile" class="form-control bckg" ng-model="userdata.email" placeholder="Email-id"
+                    readonly>
                 </div>
               </div>
             </div>

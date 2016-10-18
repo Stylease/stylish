@@ -5,9 +5,10 @@
 <h3 class="dark-blue text-uppercase text-center hidden-md hidden-sm hidden-lg hidden-xs">my orders</h3>
 
 <div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
-  <flex-slider flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200" item-margin="10" animationloop="true" move="2">
+  <flex-slider flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200" item-margin="10"
+    animationloop="true" move="2">
     <li auto-heightfixed>
-      <a ng-if="s.state !== 'log'" ui-sref="{{s.state}}">{{s.name}}</a>
+      <a ng-if="s.state !== 'log'" ui-sref="{{s.state}}" ng-click="setActive(s.name)" ng-class="{'active1' : activeMenu === s.name}">{{s.name}}</a>
       <a ng-if="s.state === 'log'" ng-click="logout()">{{s.name}}</a>
     </li>
   </flex-slider>
@@ -58,8 +59,8 @@
               </uib-accordion-heading>
               <div class="order-summary">
                 <h3 class="item-num dark-blue">Number of items:
-                                <span>{{order.cartproduct.length}}</span>
-                            </h3>
+                  <span>{{order.cartproduct.length}}</span>
+                </h3>
                 <div class="order-address">
                   <div class="row">
                     <div class="col-md-6 col-sm-6">
@@ -67,11 +68,13 @@
                         <h4>Delivery Address</h4>
                         <h5 class="name">{{order.firstname}} {{order.lastname}}</h5>
                         <address>
-                                              {{order.billingAddressFlat}}, {{order.billingAddressStreet}},<br> {{order.billingAddressLandmark}}, <br> {{order.billingAddressCity}} - {{order.billingAddressPin}}. <br> {{order.billingAddressState}},  {{order.billingAddressCountry}}
-                                                <span class="block mt10">Mobile :
+                          {{order.billingAddressFlat}}, {{order.billingAddressStreet}},<br> {{order.billingAddressLandmark}},
+                          <br> {{order.billingAddressCity}} - {{order.billingAddressPin}}. <br> {{order.billingAddressState}},
+                          {{order.billingAddressCountry}}
+                          <span class="block mt10">Mobile :
                                                     <a href="tel:9920674907" class="dark-blue">{{order.mobile}}</a>
                                                 </span>
-                                            </address>
+                        </address>
                       </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
@@ -79,11 +82,13 @@
                         <h4>Shipping Address</h4>
                         <h5 class="name">{{order.firstname}} {{order.lastname}}</h5>
                         <address>
-                                                {{order.shippingAddressFlat}}, {{order.shippingAddressStreet}},<br> {{order.shippingAddressLandmark}}, <br> {{order.shippingAddressCity}} - {{order.shippingAddressPin}}. <br> {{order.shippingAddressState}},  {{order.shippingAddressCountry}}
-                                                <span class="block mt10">Mobile :
+                          {{order.shippingAddressFlat}}, {{order.shippingAddressStreet}},<br> {{order.shippingAddressLandmark}},
+                          <br> {{order.shippingAddressCity}} - {{order.shippingAddressPin}}. <br> {{order.shippingAddressState}},
+                          {{order.shippingAddressCountry}}
+                          <span class="block mt10">Mobile :
                                                     <a href="tel:9920674907" class="dark-blue">{{order.mobile}}</a>
                                                 </span>
-                                            </address>
+                        </address>
                       </div>
                     </div>
                   </div>

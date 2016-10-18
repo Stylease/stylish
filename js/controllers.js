@@ -89,7 +89,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     })
     .controller('ProfileCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-
         $scope.template = TemplateService.changecontent("profile");
         $scope.menutitle = NavigationService.makeactive("Profile");
         TemplateService.title = $scope.menutitle;
@@ -129,7 +128,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             globalfunction.logout();
 
         }
-
+        $scope.setActive = function (menuItem) {
+            $scope.activeMenu = menuItem;
+        }
+        $scope.setActive('my profile');
 
         $scope.set = {};
         $scope.getProfile = function () {
@@ -267,7 +269,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             globalfunction.logout();
 
         }
-
+        $scope.setActive = function (menuItem) {
+            $scope.activeMenu = menuItem;
+        }
+        $scope.setActive('my orders');
 
     })
     .controller('TermsConditionCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
@@ -356,7 +361,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     })
     .controller('WishlistCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, $uibModal) {
         //Used to name the .html file
-
         $scope.template = TemplateService.changecontent("wishlist");
         $scope.menutitle = NavigationService.makeactive("Wishlist");
         TemplateService.title = $scope.menutitle;
@@ -394,10 +398,15 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         }];
         $scope.logout = function () {
-            globalfunction.logout();
+                globalfunction.logout();
 
+            }
+            // $scope.activeMenu = $scope.download[0].name;
+        $scope.setActive = function (menuItem) {
+            $scope.activeMenu = menuItem;
+            // $scope.colour = "color: black";
         }
-
+        $scope.setActive('my wishlist');
 
         function getWishlist() {
             NavigationService.getWishlistUser(function (data) {
@@ -627,6 +636,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             state: "log"
 
         }];
+        $scope.setActive = function (menuItem) {
+            $scope.activeMenu = menuItem;
+        }
+        $scope.setActive('saved addresses ');
         $scope.logout = function () {
             globalfunction.logout();
 
@@ -812,6 +825,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             state: "log"
 
         }];
+        $scope.setActive = function (menuItem) {
+            $scope.activeMenu = menuItem;
+        }
+        $scope.setActive('bank a/c details');
         $scope.logout = function () {
             globalfunction.logout();
 
@@ -1172,6 +1189,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             state: "log"
 
         }];
+        $scope.setActive = function (menuItem) {
+            $scope.activeMenu = menuItem;
+        }
+        $scope.setActive('change password');
         $scope.logout = function () {
             globalfunction.logout();
 

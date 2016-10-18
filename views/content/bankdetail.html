@@ -4,57 +4,58 @@
 <h3 class="dark-blue text-uppercase text-center hidden-md hidden-sm hidden-lg hidden-xs">Bank Details</h3>
 
 <div class="mob-slider hidden-md hidden-sm hidden-lg visible-xs">
-  <flex-slider flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200" item-margin="10" animationloop="true" move="2">
-    <li auto-heightfixed>
-      <a ng-if="s.state !== 'log'" ui-sref="{{s.state}}">{{s.name}}</a>
-      <a ng-if="s.state === 'log'" ng-click="logout()">{{s.name}}</a>
-    </li>
-  </flex-slider>
+    <flex-slider flex-slide="s in download track by $index" class="bg-color" animation="slide" item-width="200" item-margin="10"
+        animationloop="true" move="2">
+        <li auto-heightfixed>
+            <a ng-if="s.state !== 'log'" ui-sref="{{s.state}}" ng-click="setActive(s.name)" ng-class="{'active1' : activeMenu === s.name}">{{s.name}}</a>
+            <a ng-if="s.state === 'log'" ng-click="logout()">{{s.name}}</a>
+        </li>
+    </flex-slider>
 </div>
 <div class="container">
-  <h3 class="dark-blue text-uppercase hidden-xs">Bank Details</h3>
-  <div class="row">
-    <div class="col-md-3 hidden-xs">
-      <div class="prof-tab" ng-include="template.account"></div>
-    </div>
-            <div class="col-md-8 fixed-height">
-                <div class="bankdetail-main">
-                    <form action="">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="relate">
-                                    <input type="text" ng-disabled="!set.Profile" class="form-control bckg" placeholder="Beneficiary Name" ng-model="userdata.beneficiaryName">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="relate">
-                                    <input type="text" ng-disabled="!set.Profile" class="form-control bckg" placeholder="Account Number" ng-model="userdata.accountNumber">
-                                </div>
+    <h3 class="dark-blue text-uppercase hidden-xs">Bank Details</h3>
+    <div class="row">
+        <div class="col-md-3 hidden-xs">
+            <div class="prof-tab" ng-include="template.account"></div>
+        </div>
+        <div class="col-md-8 fixed-height">
+            <div class="bankdetail-main">
+                <form action="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="relate">
+                                <input type="text" ng-disabled="!set.Profile" class="form-control bckg" placeholder="Beneficiary Name" ng-model="userdata.beneficiaryName">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="relate">
-                                    <input type="text" ng-disabled="!set.Profile" class="form-control bckg" placeholder="Bank Name" ng-model="userdata.bankName">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="relate">
-                                    <input type="text" ng-disabled="!set.Profile" class="form-control bckg" placeholder="IFSC Code" ng-model="userdata.IFSC">
-                                </div>
+                        <div class="col-md-6">
+                            <div class="relate">
+                                <input type="text" ng-disabled="!set.Profile" class="form-control bckg" placeholder="Account Number" ng-model="userdata.accountNumber">
                             </div>
                         </div>
-                        <div class="text-center">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="relate">
+                                <input type="text" ng-disabled="!set.Profile" class="form-control bckg" placeholder="Bank Name" ng-model="userdata.bankName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="relate">
+                                <input type="text" ng-disabled="!set.Profile" class="form-control bckg" placeholder="IFSC Code" ng-model="userdata.IFSC">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
 
-                            <div class="on-edit mt20 mb20" ng-show="set.Profile">
-                                <button type="button" class="btn btn-outline text-medium btn-full" ng-click="goToReset()">Reset Details</button>
-                                <a class="btn btn-outline text-medium btn-full" ng-click="saveProfile()">Save Changes</a>
-                            </div>
-                            <button class="btn btn-outline mt20 mb20 btn-full text-medium" ng-hide="set.Profile" ng-click="set.Profile=true">Edit</button>
+                        <div class="on-edit mt20 mb20" ng-show="set.Profile">
+                            <button type="button" class="btn btn-outline text-medium btn-full" ng-click="goToReset()">Reset Details</button>
+                            <a class="btn btn-outline text-medium btn-full" ng-click="saveProfile()">Save Changes</a>
                         </div>
-                    </form>
-                </div>
+                        <button class="btn btn-outline mt20 mb20 btn-full text-medium" ng-hide="set.Profile" ng-click="set.Profile=true">Edit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
