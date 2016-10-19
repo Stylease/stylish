@@ -1754,7 +1754,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                             }]);
                             $scope.shopping.push(n);
                         });
-                        console.log("shopping", $scope.shopping);
                         lastpage = data.data.totalpages;
                         if (data.data.data.length !== 0) {
                             $scope.$broadcast('scroll.infiniteScrollComplete');
@@ -1864,6 +1863,9 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             }
             $scope.producttime = data.data.producttime;
             CalenderService.blockedDates = $scope.producttime;
+            $scope.product.images = _.sortBy(data.data.product.images, [function (o) {
+                return o.order;
+            }]);
             // _.each($scope.producttime, function (key) {
             //     var tmpdate = new Date(key.timeFrom);
             //     // tmpdate.setHours(0,0,0,0);
@@ -1876,7 +1878,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             //         start++;
             //     } while (start <= (diffDays + 4));
             // });
-            $scope.mainImage = data.data.product.images[0].image;
+            $scope.mainImage = $scope.product.images[0].image;
             $scope.getRentalAmount(4);
             TemplateService.removeLoader();
         }, function (err) {

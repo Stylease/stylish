@@ -59,7 +59,7 @@
               <div>
                 <!-- <form> -->
                 <span class="text-medium">Size:</span>
-                <div ng-repeat="size in product.size" required ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
+                <div ng-repeat="size in product.size | orderBy:'order'" required ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
                   <label class="size-font pointer">
                                  {{size.name}}
                               </label>
