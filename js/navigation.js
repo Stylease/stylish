@@ -281,7 +281,7 @@ var navigationservice = angular.module('navigationservice', [])
             $.jStorage.flush();
             // $.jStorage.set("userData");
             // $.jStorage.set("cartDate");
-            //  $.jStorage.set("userLoggedIn", false);
+            // $.jStorage.set("userLoggedIn", false);
             return $http({
                 url: adminURL + "user/logout",
                 method: "POST",
