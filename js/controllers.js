@@ -1322,7 +1322,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             NavigationService.getOneProduct(id, function (response) {
                 if (response.value) {
                     $scope.product = response.data;
-                    
+
                     $scope.sizes = response.data.size
                     $scope.editable = _.find($scope.cartProduct, function (key) {
                         return key.product._id == id;
@@ -1406,18 +1406,18 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     $scope.totalsecuritydeposit = 0;
                     $scope.cartDetails = data.data.cartcount;
                     $scope.cartProduct = data.data.cartproduct;
-                    _.each($scope.cartProduct,function(n) {
+                    _.each($scope.cartProduct, function (n) {
                         console.log(n);
-                        n.timeFrom =  moment(n.timeFrom).toDate();
+                        n.timeFrom = moment(n.timeFrom).toDate();
                         CalenderService.selectedDate = n.timeFrom;
                     });
-                    
-                    NavigationService.getProductTimes(function(data) {
-                        if(data.value === true) {
+
+                    NavigationService.getProductTimes(function (data) {
+                        if (data.value === true) {
                             console.log(data.data);
                             CalenderService.blockedDates = data.data;
                         }
-                    },function() {
+                    }, function () {
 
                     });
 
@@ -1488,20 +1488,20 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         afterTomorrow2.setDate(tomorrow.getDate() + 2);
         var afterTomorrow3 = new Date(tomorrow);
         afterTomorrow3.setDate(tomorrow.getDate() + 3);
-      
+
         // $scope.getDuration();
         $scope.beTheChange = function (dtdata) {
             CalenderService.selectedDate = dtdata;
-              $scope.popup1 = {
-            opened: false
-        };
-        $scope.popup2 = {
-            opened: false
-        };
+            $scope.popup1 = {
+                opened: false
+            };
+            $scope.popup2 = {
+                opened: false
+            };
         };
 
     })
-    .controller('ProductCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+    .controller('ProductCtrl', function ($scope, $filter, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
         $scope.letIn = true;
         $scope.template = TemplateService.changecontent("product");
@@ -1749,8 +1749,12 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                             $scope.texts.msg = "Product Not Found";
                         }
                         _.each(data.data.data, function (n) {
+                            n.images = _.sortBy(n.images, [function (o) {
+                                return o.order;
+                            }]);
                             $scope.shopping.push(n);
                         });
+                        console.log("shopping", $scope.shopping);
                         lastpage = data.data.totalpages;
                         if (data.data.data.length !== 0) {
                             $scope.$broadcast('scroll.infiniteScrollComplete');
@@ -2116,7 +2120,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         afterTomorrow2.setDate(tomorrow.getDate() + 2);
         var afterTomorrow3 = new Date(tomorrow);
         afterTomorrow3.setDate(tomorrow.getDate() + 3);
-      
+
         // $scope.getDuration();
         $scope.beTheChange = function (dtdata) {
             CalenderService.selectedDate = dtdata;
