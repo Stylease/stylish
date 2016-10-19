@@ -611,6 +611,15 @@
     }
 }
 @media (max-width: 480px) {
+  .product-sizes {
+    ul {
+      li{
+        &:last-child{
+          padding-left: 0px !important;
+        }
+      }
+    }
+  }
     .close-popup .close {
       right: 8px !important;
     }

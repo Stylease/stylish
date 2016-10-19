@@ -56,7 +56,7 @@
                                                 <div class="container no-padd">
                                                     <h5>Size</h5>
 
-                                                    <div class="product-size" ng-init="size=''">
+                                                    <div class="product-size product-sizes" ng-init="size=''">
                                                         <ul class="list-inline">
                                                             <li ng-repeat="size in sizes track by $index "><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click="pushSize(size._id)">{{size.name}}</a></li>
                                                         </ul>
@@ -66,11 +66,13 @@
                                             <li>
                                                 <div class="container no-padd">
                                                     <h5>Colour</h5>
-                                                    <div class="f-lef" style="width:140px;" ng-repeat="col in color">
-                                                        <div class="magic-form ">
-                                                            <div class="magic-resize">
-                                                                <input class="magic-checkbox" type="checkbox" name="{{col.name}}" ng-model="checkIt[col.name]" ng-change="pushColor(checkIt[col.name],col._id)" id="{{col.name}}">
-                                                                <label class="detail-heading" for="{{col.name}}">{{col.name}}</label>
+                                                    <div class="web-count">
+                                                        <div class="f-lef" style="width:140px;" ng-repeat="col in color">
+                                                            <div class="magic-form ">
+                                                                <div class="magic-resize">
+                                                                    <input class="magic-checkbox" type="checkbox" name="{{col.name}}" ng-model="checkIt[col.name]" ng-change="pushColor(checkIt[col.name],col._id)" id="{{col.name}}">
+                                                                    <label class="detail-heading" for="{{col.name}}">{{col.name}}</label>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
