@@ -1322,12 +1322,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             NavigationService.getOneProduct(id, function (response) {
                 if (response.value) {
                     $scope.product = response.data;
-
                     $scope.sizes = response.data.size
                     $scope.editable = _.find($scope.cartProduct, function (key) {
                         return key.product._id == id;
                     });
-                    console.log("editable", $scope.editable);
                     CalenderService.duration = $scope.editable.duration;
                     // $scope.getCalenderDays();
                 }
@@ -1346,7 +1344,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.editCart = function (data) {
             $scope.editcartpro = {};
             $scope.editcartpro.product = data.product._id;
-            var d = new Date(data.timeFromS);
+            var d = new Date(data.timeFrom);
             $scope.editcartpro.timeFrom = d;
             $scope.editcartpro.duration = data.duration;
             $scope.editcartpro.size = data.size;
