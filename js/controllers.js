@@ -1408,6 +1408,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         console.log(n);
                         n.timeFrom = moment(n.timeFrom).toDate();
                         CalenderService.selectedDate = n.timeFrom;
+
                     });
 
                     NavigationService.getProductTimes(function (data) {
