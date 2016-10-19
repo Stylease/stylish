@@ -1561,8 +1561,12 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.seeSort = function () {
             $scope.variables.showSortlist = !$scope.variables.showSortlist;
             $scope.showFilterlist = false;
-        };
 
+        };
+        $scope.hideLoginContainer = function(){
+          $scope.showFilterlist = false;
+            $scope.variables.showSortlist = false;
+       	};
         $scope.getSubcategory();
         $scope.size = function () {
             NavigationService.getSize(function (data) {
