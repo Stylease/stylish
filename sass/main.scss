@@ -2923,6 +2923,8 @@ border-left: 1px solid #e87b65;
 /* padding: 15px 0px; */
 line-height: 250%;
 }
+
+
 .b-row2{
       border: 1px solid #e87b65;
           line-height: 250%;
@@ -2932,7 +2934,11 @@ line-height: 250%;
  -moz-column-count: 2;
  column-count:2;
 }
-
+.em-cs{
+  .panel-heading{
+    padding: 0px !important;
+  }
+}
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";
