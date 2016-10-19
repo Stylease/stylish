@@ -351,6 +351,12 @@ a {
         color: $brand-dark-pink !important;
     }
 }
+.change-pinks {
+    color: $brand-dark-pink;
+    &:hover {
+        color: $brand-dark-pink !important;
+    }
+}
 
 .color-pink {
     color: $brand-pink;
@@ -1673,7 +1679,7 @@ input.form-control {
     .ngrs-range-slider {
         @include size(100%,
         1px);
-        margin: 10px 0 50px;
+        margin: 10px 0 20px;
         padding: 0;
         border: none;
         box-shadow: none;
@@ -2937,6 +2943,17 @@ line-height: 250%;
   .panel-heading{
     padding: 0px !important;
   }
+}
+.ngrs-value.ngrs-value-min {
+    display: none !important;
+    opacity: 0;
+}
+.ngrs-value.ngrs-value-max {
+    display: none !important;
+      opacity: 0;
+}
+.ngrs-range-slider .ngrs-handle i {
+    background-position: 50% 50%;
 }
 // celebrity page end
 @import "fancybox-override";
