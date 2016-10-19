@@ -2271,7 +2271,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             console.log("aaaaaaa", $scope.orderDetails);
         })
     })
-    .controller('SorryCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    .controller('SorryCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("sorry");
@@ -2279,7 +2279,11 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
-        TemplateService.footer = "";
+        $scope.footerColor = "home-footer";
+        NavigationService.getOrderById($stateParams.orderid, function (data) {
+            $scope.orderDetails = data.data;
+            console.log("aaaaaaa", $scope.orderDetails);
+        })
     })
 
 .controller('headerctrl', function ($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state) {
