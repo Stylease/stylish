@@ -1322,12 +1322,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             NavigationService.getOneProduct(id, function (response) {
                 if (response.value) {
                     $scope.product = response.data;
-
                     $scope.sizes = response.data.size
                     $scope.editable = _.find($scope.cartProduct, function (key) {
                         return key.product._id == id;
                     });
-                    console.log("editable", $scope.editable);
                     CalenderService.duration = $scope.editable.duration;
                     // $scope.getCalenderDays();
                 }
@@ -1346,7 +1344,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.editCart = function (data) {
             $scope.editcartpro = {};
             $scope.editcartpro.product = data.product._id;
-            var d = new Date(data.timeFromS);
+            var d = new Date(data.timeFrom);
             $scope.editcartpro.timeFrom = d;
             $scope.editcartpro.duration = data.duration;
             $scope.editcartpro.size = data.size;
@@ -1410,6 +1408,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         console.log(n);
                         n.timeFrom = moment(n.timeFrom).toDate();
                         CalenderService.selectedDate = n.timeFrom;
+
                     });
 
                     NavigationService.getProductTimes(function (data) {
@@ -2268,12 +2267,17 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.oneAtATime = true;
         $scope.footerColor = "home-footer";
         $scope.cartCheckout = $.jStorage.get("cartCheckout");
-        NavigationService.getOrderById($stateParams.orderid, function (data) {
-            $scope.orderDetails = data.data;
-            console.log("aaaaaaa", $scope.orderDetails);
-        })
+        NavigationService.emptyCart(function (response) {
+            if (response) {
+                NavigationService.getOrderById($stateParams.orderid, function (data) {
+                    $scope.orderDetails = data.data;
+                    console.log("aaaaaaa", $scope.orderDetails);
+                });
+            }
+        });
+
     })
-    .controller('SorryCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+    .controller('SorryCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("sorry");
@@ -2281,7 +2285,11 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
-        TemplateService.footer = "";
+        $scope.footerColor = "home-footer";
+        NavigationService.getOrderById($stateParams.orderid, function (data) {
+            $scope.orderDetails = data.data;
+            console.log("aaaaaaa", $scope.orderDetails);
+        })
     })
 
 .controller('headerctrl', function ($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state) {

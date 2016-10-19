@@ -279,6 +279,9 @@ var navigationservice = angular.module('navigationservice', [])
         },
         logout: function (callback, errCallback) {
             $.jStorage.flush();
+            // $.jStorage.set("userData");
+            // $.jStorage.set("cartDate");
+            // $.jStorage.set("userLoggedIn", false);
             return $http({
                 url: adminURL + "user/logout",
                 method: "POST",
@@ -301,7 +304,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         saveContact: function (request, callback) {
-          console.log(request);
+            console.log(request);
             return $http({
                 url: adminURL + "contact/save",
                 method: "POST",

@@ -123,7 +123,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             controller: 'ThankyouCtrl'
         })
         .state('sorry', {
-            url: "/sorry",
+            url: "/sorry/:orderid",
             templateUrl: "views/template.html",
             controller: 'SorryCtrl'
         })
