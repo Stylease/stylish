@@ -1089,15 +1089,15 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                                 // $state.go('payment', {
                                 //     'id': data.data._id
                                 // });
-                                NavigationService.emptyCart(function (response) {
-                                    if (response) {
-                                        $state.go('thankyou', {
-                                            orderid: $scope.orderid
-                                        });
-                                    } else {
-                                        $state.go("sorry");
-                                    }
-                                });
+                                // NavigationService.emptyCart(function (response) {
+                                //     if (response) {
+                                //         $state.go('thankyou', {
+                                //             orderid: $scope.orderid
+                                //         });
+                                //     } else {
+                                //         $state.go("sorry");
+                                //     }
+                                // });
                             } else {
                                 $state.go("sorry");
                             }
@@ -1563,10 +1563,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.showFilterlist = false;
 
         };
-        $scope.hideLoginContainer = function(){
-          $scope.showFilterlist = false;
+        $scope.hideLoginContainer = function () {
+            $scope.showFilterlist = false;
             $scope.variables.showSortlist = false;
-       	};
+        };
         $scope.getSubcategory();
         $scope.size = function () {
             NavigationService.getSize(function (data) {
