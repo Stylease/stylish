@@ -1,14 +1,16 @@
 <div class="popup">
   <div class="pop-heading-bar bg-dark-blue close-popup">
-  <span class="close" ng-click="$close();"><img src="img/cross-pink.png" alt="" class="img-responsive"></span>
+    <span class="close" ng-click="$close();"><img src="img/cross-pink.png" alt="" class="img-responsive"></span>
     <h2 class="text-uppercase text-center color-pink m-clear font-finestyle pd10">Login</h2>
   </div>
   <div class="pop-body text-center bg-light-pink pd20">
     <div class="block text-center mb10">
-      <button class="btn btn-google btn-full text-medium social-btn" ng-click="googleLogin()"><i class="fa fa-google-plus mr10"></i>Sign in with Google+</button>
+      <button class="btn btn-google btn-full text-medium social-btn"><i class="fa fa-google-plus mr10"></i>Sign in with Google+</button>
+      <!--<button class="btn btn-google btn-full text-medium social-btn" ng-click="googleLogin()"><i class="fa fa-google-plus mr10"></i>Sign in with Google+</button>-->
     </div>
     <div class="block text-center">
-      <button class="btn btn-facebook btn-full text-medium social-btn" ng-click="facebookLogin()"><i class="fa fa-facebook mr10"></i>Sign in with Facebook</button>
+      <button class="btn btn-facebook btn-full text-medium social-btn"><i class="fa fa-facebook mr10"></i>Sign in with Facebook</button>
+      <!--<button class="btn btn-facebook btn-full text-medium social-btn" ng-click="facebookLogin()"><i class="fa fa-facebook mr10"></i>Sign in with Facebook</button>-->
     </div>
     <div class="or relate mb20 mt20">
       <span>OR</span>
@@ -16,35 +18,37 @@
 
 
     <form name="formLogin" ng-submit="userLogin()" class="ng-pristine ng-valid ng-valid-email ng-valid-required" style="">
-          <div class="relate">
-          <input type="email" class="form-control ng-pristine ng-valid ng-valid-email ng-valid-required ng-touched" placeholder="Email Id" ng-model="login.email" name="email" required>
-            <div class="form-error ng-hide" ng-show="formLogin.email.$touched &amp;&amp; formLogin.email.$error.required" style="">
-              Please enter your Email Id.
-            </div>
-          </div>
-          <div class="relate">
-            <input type="password" class="form-control ng-pristine ng-untouched ng-valid ng-valid-required" placeholder="Password" ng-model="login.password" name="pswd" required="" style="">
-            <div class="form-error ng-hide" ng-show="formLogin.pswd.$touched &amp;&amp; formLogin.pswd.$error.required" style="">
-              Please enter your password.
-            </div>
-          </div>
-          <div class="relate">
-            <div class="custom-checkbox text-left mt10 mb10">
-              <label for="accept" class="{{loginmsg.class}}"><span></span>{{loginmsg.msg}}</label>
-            </div>
-          </div>
-          <div class="clearfix">
-            <span class="frg-psw pull-right pointer mt10 mb10" ng-click="forgot();">Forgot Password ?</span>
-          </div>
-          <p ng-if="notFound">Incorrect Email or Password</p>
-          <div class="login mb10-1 mt10">
-            <button type="Submit" class="btn15 btn btn-outline btn-full text-medium">Log In</button>
-          </div>
-          <div class="fsi">
-            <span>New User?</span>
-            <span class="text-underline pointer" ng-click="emailSignup();">Create Account!</span>
-          </div>
-        </form>
+      <div class="relate">
+        <input type="email" class="form-control ng-pristine ng-valid ng-valid-email ng-valid-required ng-touched" placeholder="Email Id"
+          ng-model="login.email" name="email" required>
+        <div class="form-error ng-hide" ng-show="formLogin.email.$touched &amp;&amp; formLogin.email.$error.required" style="">
+          Please enter your Email Id.
+        </div>
+      </div>
+      <div class="relate">
+        <input type="password" class="form-control ng-pristine ng-untouched ng-valid ng-valid-required" placeholder="Password" ng-model="login.password"
+          name="pswd" required="" style="">
+        <div class="form-error ng-hide" ng-show="formLogin.pswd.$touched &amp;&amp; formLogin.pswd.$error.required" style="">
+          Please enter your password.
+        </div>
+      </div>
+      <div class="relate">
+        <div class="custom-checkbox text-left mt10 mb10">
+          <label for="accept" class="{{loginmsg.class}}"><span></span>{{loginmsg.msg}}</label>
+        </div>
+      </div>
+      <div class="clearfix">
+        <span class="frg-psw pull-right pointer mt10 mb10" ng-click="forgot();">Forgot Password ?</span>
+      </div>
+      <p ng-if="notFound">Incorrect Email or Password</p>
+      <div class="login mb10-1 mt10">
+        <button type="Submit" class="btn15 btn btn-outline btn-full text-medium">Log In</button>
+      </div>
+      <div class="fsi">
+        <span>New User?</span>
+        <span class="text-underline pointer" ng-click="emailSignup();">Create Account!</span>
+      </div>
+    </form>
 
 
   </div>
