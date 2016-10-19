@@ -8,8 +8,8 @@
         <h3 class="dark-blue">Order Summary :</h3>
         <div class="row bor-bot" ng-repeat="product in cartProduct">
           <div class="col-md-5">
-            <div class="order-imgholder relate">
-              <img ng-src="{{product.product.images[0].image | serverimage}}" alt="{{product.product.name}}" class="get-center img-responsive">
+            <div class="order-imgholder relate" ng-repeat=" proimage in product.product.images | orderBy:'order' | limitTo: 1">
+              <img ng-src="{{proimage.image | serverimage}}" alt="{{product.product.name}}" class="get-center img-responsive">
             </div>
           </div>
           <div class="col-md-7">

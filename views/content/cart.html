@@ -8,13 +8,13 @@
         <div class="cart-list" ng-repeat="product in cartProduct">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="cart-imgholder relate">
-                        <img ng-src="{{product.product.images[0].image | serverimage}}" alt="{{product.product.name}}" class="get-center img-responsive">
+                    <div class="cart-imgholder relate" ng-repeat=" proimage in product.product.images | orderBy:'order' | limitTo: 1">
+                        <img ng-src="{{proimage.image | serverimage}}" alt="{{product.product.name}}" class="get-center img-responsive">
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="pull-right">
-                        <a  class="text-medium dark-blue text-underline" ng-click="editCartProduct(product.product._id)">Edit</a>
+                        <a class="text-medium dark-blue text-underline" ng-click="editCartProduct(product.product._id)">Edit</a>
                     </div>
                     <div class="product-cart-detail clearfix">
                         <h4 class="prd-name">{{product.product.name}}</h4>
