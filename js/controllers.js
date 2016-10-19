@@ -2266,10 +2266,15 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.oneAtATime = true;
         $scope.footerColor = "home-footer";
         $scope.cartCheckout = $.jStorage.get("cartCheckout");
-        NavigationService.getOrderById($stateParams.orderid, function (data) {
-            $scope.orderDetails = data.data;
-            console.log("aaaaaaa", $scope.orderDetails);
-        })
+        NavigationService.emptyCart(function (response) {
+            if (response) {
+                NavigationService.getOrderById($stateParams.orderid, function (data) {
+                    $scope.orderDetails = data.data;
+                    console.log("aaaaaaa", $scope.orderDetails);
+                });
+            }
+        });
+
     })
     .controller('SorryCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         //Used to name the .html file
