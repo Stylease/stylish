@@ -2932,7 +2932,11 @@ line-height: 250%;
  -moz-column-count: 2;
  column-count:2;
 }
-
+.em-cs{
+  .panel-heading{
+    padding: 0px !important;
+  }
+}
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";
