@@ -839,9 +839,14 @@ nav {
     cursor: pointer;
 }
 
-.play {
-    font-size: 50px;
+
+  .play {
+    font-size: 35px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
 }
+
 
 .talk-us {
     padding: 10px 20px;
@@ -2991,6 +2996,14 @@ font-weight: 600;
   .flexslider .slides img {
       width: 100% !important;
   }
+}
+.am{
+  display: inline-block;
+font-size: 20px;
+// text-transform: capitalize;
+font-family: "Work Sans";
+color: #2c2d3c;
+border-bottom: 2px solid #2c2d3c;
 }
 // celebrity page end
 @import "fancybox-override";

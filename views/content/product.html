@@ -210,6 +210,10 @@
                                             <div class="price-rangeslider ">
                                                 <div range-slider min="demo2.range.min " max="demo2.range.max " model-min="filter.pricefrom " model-max="filter.priceto " filter="currency: '‎₹' " step="100 "></div>
                                             </div>
+                                            <div class="money">
+                                                <span class="pull-left change-pinks">₹{{filter.pricefrom}}</span>
+                                                <span class="pull-right change-pinks">₹{{filter.priceto}}</span>
+                                            </div>
                                         </uib-accordion-group>
                                         <uib-accordion-group is-open="status.open5 ">
                                             <uib-accordion-heading>
@@ -274,12 +278,14 @@
                                     <div class="col-md-4 col-sm-6 col-xs-6 " ng-repeat="product in shopping ">
                                         <div class="view-product relate pointer ">
                                             <div class="product-detail text-center ">
-                                                <div class="product-imgholder relate ">
-                                                    <img ui-sref="productdetail({ 'subcatname':sendtoproduct.name ,'id':product._id}) " ng-src="{{product.images[0].image|serverimage}} " alt=" " class="get-center img-responsive ">
+                                              <a ui-sref="productdetail({ 'subcatname':sendtoproduct.name ,'id':product._id}) ">
+                                                 <div class="product-imgholder relate ">
+                                                    <img  ng-src="{{product.images[0].image|serverimage}} " alt=" " class="get-center img-responsive ">
                                                     <div class="wishlist text-right ">
                                                         <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
                                                     </div>
                                                 </div>
+                                                </a>
                                                 <h4 class="product-name ">{{product.name | shorten:55}}</h4>
                                                 <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
                                             </div>
