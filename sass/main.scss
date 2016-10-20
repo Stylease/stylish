@@ -2288,7 +2288,7 @@ flex-slider {
     }
     p {
         margin: 0;
-        font-size: 17px;
+        font-size: 16px;
         word-spacing: 3px;
     }
     .paddab {
@@ -2954,6 +2954,43 @@ line-height: 250%;
 }
 .ngrs-range-slider .ngrs-handle i {
     background-position: 50% 50%;
+}
+.sp{
+  font-size: 16px;
+font-weight: 600;
+}
+.f14{
+  font-size: 14px !important;
+}
+.flexslider-container{
+  .flexslider .slides img {
+      width: auto !important;
+      display: block;
+      height: auto;
+      -moz-user-select: none;
+  }
+}
+
+.padding0{
+  padding: 0;
+}
+.back-color{
+      padding: 10px 0px 0px 0px !important;
+  ul{
+    display: block;
+    list-style: none;
+    padding: 0;
+    li{
+      display:inline-block;
+          padding: 2px 8px;
+    }
+  }
+}
+
+.home-slider{
+  .flexslider .slides img {
+      width: 100% !important;
+  }
 }
 // celebrity page end
 @import "fancybox-override";

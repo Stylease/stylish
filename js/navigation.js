@@ -58,7 +58,7 @@ var navigationservice = angular.module('navigationservice', [])
             subnav: [{
                 name: "Cancellation Policy",
                 classis: "active",
-                link: "cancelation-policy"
+                link: "cancellation-policy"
             }, {
                 name: "Return Policy",
                 classis: "active",

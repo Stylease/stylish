@@ -252,7 +252,7 @@
                     <div class="product-holder ">
                         <div class="sort-product pd10 clearfix ">
                             <img src="img/sort.png " alt=" " class="inline-block mr5 img-responsive ">
-                            <span class="text-uppercase pointer " ng-click="seeSort()">sort</span>
+                            <span class="text-uppercase pointer " ng-click="seeSort()" hide-Login="hideLoginContainer()">sort</span>
                             <div class="sort-filter-dropdown " ng-show="variables.showSortlist"  >
                                 <ul>
                                     <li ng-repeat="sort in productSort" ng-click="applySort(sort.name)"><a>{{sort.name}}</a></li>

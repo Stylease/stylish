@@ -91,8 +91,8 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             templateUrl: "views/template.html",
             controller: 'ReturnPolicyCtrl'
         })
-        .state('cancelation-policy', {
-            url: "/cancelation-policy",
+        .state('cancellation-policy', {
+            url: "/cancellation-policy",
             templateUrl: "views/template.html",
             controller: 'CancelationPolicyCtrl'
         })

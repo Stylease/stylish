@@ -289,8 +289,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     .controller('CancelationPolicyCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
 
-        $scope.template = TemplateService.changecontent("cancelation-policy");
-        $scope.menutitle = NavigationService.makeactive("Cancelation Policy");
+        $scope.template = TemplateService.changecontent("cancellation-policy");
+        $scope.menutitle = NavigationService.makeactive("Cancellation Policy");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
