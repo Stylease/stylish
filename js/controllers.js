@@ -1083,6 +1083,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                                 $.jStorage.set("cartDate", "");
                                 console.log("data", data.data.orderid);
                                 $scope.orderid = data.data.orderid;
+                                 $scope.formdata = data.data;
+                                window.location.href = (adminURL + "payu/payU?_id=" + data.data._id);
                                 // console.log("IN FORM DATA");
                                 // $scope.formdata = data.data;
                                 // console.log($scope.formdata);
