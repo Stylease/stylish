@@ -1083,7 +1083,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                                 $.jStorage.set("cartDate", "");
                                 console.log("data", data.data.orderid);
                                 $scope.orderid = data.data.orderid;
-                                 $scope.formdata = data.data;
+                                $scope.formdata = data.data;
                                 window.location.href = (adminURL + "payu/payU?_id=" + data.data._id);
                                 // console.log("IN FORM DATA");
                                 // $scope.formdata = data.data;
@@ -1528,9 +1528,15 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             NavigationService.getSubcategory(function (data) {
                 $scope.subcategory = data.data;
                 if ($state.params.name) {
-                    $scope.filter.subcategory.push(_.find($scope.subcategory, function (key) {
-                        return key.name == $state.params.name;
-                    })._id);
+
+                    if ($state.params.name === "All") {
+                        $scope.filter.subcategory = [];
+                    } else {
+                        $scope.filter.subcategory.push(_.find($scope.subcategory, function (key) {
+                            return key.name == $state.params.name;
+                        })._id);
+                    }
+
                     _.each($scope.subcategory, function (key) {
                         $scope.checkIt[key.name] = false;
                     });

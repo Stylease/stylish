@@ -12,19 +12,26 @@ var navigationservice = angular.module('navigationservice', [])
             disabled: false,
             anchor: "dresses",
             subnav: []
-
         }, {
             name: "Occasion",
             classis: "active",
             disabled: false,
             anchor: "occasion",
-            subnav: []
+            subnav: [{
+                name: "All",
+                classis: "active",
+                link: ""
+            }]
         }, {
             name: "Accessories",
             classis: "active",
             disabled: false,
             anchor: "accessories",
-            subnav: []
+            subnav: [{
+                name: "All",
+                classis: "active",
+                link: ""
+            }]
         }
         // , {
         //     name: "Celebrities Choice",
@@ -78,9 +85,21 @@ var navigationservice = angular.module('navigationservice', [])
 
     return {
         getnav: function () {
-            var subnavGen = [];
-            var subnavGen1 = [];
-            var subnavGen2 = [];
+            var subnavGen = [{
+                name: "All",
+                classis: "active",
+                link: "product({name:'All'})"
+            }];
+            var subnavGen1 = [{
+                name: "All",
+                classis: "active",
+                link: "product({name:'All'})"
+            }];
+            var subnavGen2 = [{
+                name: "All",
+                classis: "active",
+                link: "product({name:'All'})"
+            }];
             $http({
                 url: adminURL + 'subcategory/getAllCat',
                 method: "POST"
