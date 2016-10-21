@@ -1503,8 +1503,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         // };
         $scope.getDuration = function (data) {
             if (data === 4) {
+                $scope.product.duration = 4;
                 CalenderService.duration = 4;
             } else {
+                $scope.product.duration = 8;
                 CalenderService.duration = 8;
 
             }
@@ -1925,7 +1927,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
 
         $scope.getRentalAmount = function (val) {
-            console.log("rental amt", val);
             if (val == 8) {
                 $scope.product.rentalamount = $scope.product.eightdayrentalamount;
                 $scope.product.securitydeposit = $scope.product.eightdaysecuritydeposit;
@@ -2137,7 +2138,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             opened: false
         };
         //change color
-        $scope.cartpro.timeFrom = tomorrow;
+        $scope.cartpro.timeFrom = new Date();
         // $scope.today = new Date();
         // var afterTomorrow = new Date(tomorrow);
         // afterTomorrow.setDate(tomorrow.getDate() + 1);
