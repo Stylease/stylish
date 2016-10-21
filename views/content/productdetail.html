@@ -33,7 +33,7 @@
         <div class="product-descp">
           <div class="name-section">
             <h3 class="product-name">{{product.name}}</h3>
-            <p>Retail Price : Rs. <span>{{product.price|currency}}</span>/-</p>
+            <p ng-if="product.price">Retail Price : Rs. <span>{{product.price|currency}}</span>/-</p>
             <p ng-if="product.designer.name">By <span>{{product.designer.name}}</span></p>
           </div>
           <div class="product-price">
@@ -72,10 +72,10 @@
               <div class="back-color2" ng-if="cartpro.size">
                 <div class="back-color">
                   <ul>
-                    <li>  <span>Chest : {{select.sizedetail.chest}}</span></li>
-                    <li>  <span>Waist : {{select.sizedetail.waist}}</span></li>
-                    <li>  <span>Hips : {{select.sizedetail.hips}}</span></li>
-                    <li>  <span>Length : {{select.sizedetail.length}}</span></li>
+                    <li> <span>Chest : {{select.sizedetail.chest}}</span></li>
+                    <li> <span>Waist : {{select.sizedetail.waist}}</span></li>
+                    <li> <span>Hips : {{select.sizedetail.hips}}</span></li>
+                    <li> <span>Length : {{select.sizedetail.length}}</span></li>
                   </ul>
 
                   <!--for l-->

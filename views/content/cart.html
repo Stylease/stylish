@@ -20,7 +20,7 @@
                         <h4 class="prd-name">{{product.product.name}}</h4>
                         <h5 ng-if="product.by">by : <span>{{product.by}}</span></h5>
                         <div class="product-all-detail" ng-hide="variables.editCart[product.product._id]">
-                            <p>Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
+                            <p ng-if="product.product.price">Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
                             <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
                             <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span>
                                 <span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="edit-product-detail product-all-detail" ng-show="variables.editCart[product.product._id]">
                             <form>
-                                <p>Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
+                                <p ng-if="product.product.price">Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
                                 <div class="edit-size" ng-if="sizes && sizes.length>0">
                                     <span class="edit-cart">Size</span>
                                     <div class="custom-select">
