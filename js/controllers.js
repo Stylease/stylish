@@ -1421,18 +1421,20 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
                     });
 
-                    CalenderService.duration = $scope.cartProduct[0].duration;
+                    // CalenderService.duration = $scope.cartProduct[0].duration;
                     _.each($scope.cartProduct, function (n) {
                         if (n.duration == 4) {
                             $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.fourdayrentalamount);
                             $scope.totalsecuritydeposit = $scope.totalsecuritydeposit + parseInt(n.product.fourdaysecuritydeposit);
+                            CalenderService.duration = 4;
 
                         } else {
                             $scope.totalrentalamount = $scope.totalrentalamount + parseInt(n.product.eightdayrentalamount);
                             $scope.totalsecuritydeposit = $scope.totalsecuritydeposit + parseInt(n.product.eightdaysecuritydeposit);
+                            CalenderService.duration = 8;
 
                         }
-
+                        console.log("CalenderService.duration", CalenderService.duration);
                     });
 
                 } else {
@@ -1490,16 +1492,28 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         afterTomorrow3.setDate(tomorrow.getDate() + 3);
 
         // $scope.getDuration();
+        // $scope.beTheChange = function (dtdata) {
+        //     CalenderService.selectedDate = dtdata;
+        //     $scope.popup1 = {
+        //         opened: false
+        //     };
+        //     $scope.popup2 = {
+        //         opened: false
+        //     };
+        // };
+        $scope.getDuration = function (data) {
+            if (data === 4) {
+                CalenderService.duration = 4;
+            } else {
+                CalenderService.duration = 8;
+
+            }
+
+        }
+
         $scope.beTheChange = function (dtdata) {
             CalenderService.selectedDate = dtdata;
-            $scope.popup1 = {
-                opened: false
-            };
-            $scope.popup2 = {
-                opened: false
-            };
         };
-
     })
     .controller('ProductCtrl', function ($scope, $filter, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
