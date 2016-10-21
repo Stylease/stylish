@@ -2122,7 +2122,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.popup2 = {
             opened: false
         };
-
         //change color
         $scope.cartpro.timeFrom = tomorrow;
         // $scope.today = new Date();

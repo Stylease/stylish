@@ -33,10 +33,7 @@ calenderService.service('CalenderService', function () {
     this.getDayClass = function (date) {
         var selDate = moment(date.date);
         var returnVal = "";
-
         var selectedDateMo = moment(Cal.selectedDate);
-        var ddd = new Date();
-        console.log("aaaaaa", selectedDateMo, ddd);
         var addDate = moment(Cal.selectedDate).add(Cal.duration, "days");
         var isBetween = selDate.isBetween(selectedDateMo, addDate, "days");
         var isSame1 = selDate.isSame(selectedDateMo, 'day');
