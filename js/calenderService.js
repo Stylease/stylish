@@ -7,8 +7,8 @@ calenderService.service('CalenderService', function () {
     this.console = function () {
         console.log("CalenderService");
     };
-    this.selectedDate = undefined;
-    console.log("blockedDates", Cal.blockedDates);
+    // this.selectedDate = undefined;
+    this.selectedDate = "";
     this.disableDate = function (date, mode) {
         var selDate = moment(date.date);
         var addedSelDate = moment(date.date).add(Cal.duration + Cal.addDuration, "d");
@@ -33,7 +33,10 @@ calenderService.service('CalenderService', function () {
     this.getDayClass = function (date) {
         var selDate = moment(date.date);
         var returnVal = "";
+
         var selectedDateMo = moment(Cal.selectedDate);
+        var ddd = new Date();
+        console.log("aaaaaa", selectedDateMo, ddd);
         var addDate = moment(Cal.selectedDate).add(Cal.duration, "days");
         var isBetween = selDate.isBetween(selectedDateMo, addDate, "days");
         var isSame1 = selDate.isSame(selectedDateMo, 'day');
