@@ -34,7 +34,7 @@
           <div class="name-section">
             <h3 class="product-name">{{product.name}}</h3>
             <p ng-if="product.price">Retail Price : Rs. <span>{{product.price|currency}}</span>/-</p>
-            <p ng-if="product.designer.name">By <span>{{product.designer.name}}</span></p>
+            <p ng-if="product.designer.name"><b>By <span>{{product.designer.name}}</span></b></p>
           </div>
           <div class="product-price">
             <p>Rental amount : Rs. <span>{{product.rentalamount|currency}}</span>/-</p>
