@@ -26,7 +26,7 @@
           <div class="col-md-3">
             <div class="add-billing-add aba-none">
               <div class="relate">
-                <input type="text" only-Digits maxlength="10" minlength="10" name="number" ng-model="userdata.mobile" class="form-control"
+                <input type="text" readonly only-Digits maxlength="10" minlength="10" name="number" ng-model="userdata.mobile" class="form-control"
                   placeholder="Mobile No" required>
                 <div class="form-error" ng-show="formcheckout.number.$error.required && formcheckout.number.$touched">Please enter your Mobile No</div>
               </div>
@@ -35,10 +35,10 @@
           <div class="col-md-3">
             <div class="add-billing-add aba-none">
               <div class="relate">
-                <input ng-if="isLoggedIn==true" readonly type="email" name="email" ng-pattern="emailRegex" ng-model="userdata.email" class="form-control" placeholder="Email-id"
-                  required>
-                  <input ng-if="isLoggedIn!=true" type="email" name="email" ng-pattern="emailRegex" ng-model="userdata.email" class="form-control" placeholder="Email-id"
-                    required>
+                <input ng-if="isLoggedIn==true" readonly type="email" name="email" ng-pattern="emailRegex" ng-model="userdata.email" class="form-control"
+                  placeholder="Email-id" required>
+                <input ng-if="isLoggedIn!=true" type="email" name="email" ng-pattern="emailRegex" ng-model="userdata.email" class="form-control"
+                  placeholder="Email-id" required>
                 <div class="form-error" ng-show="formcheckout.email.$dirty.pattern && formcheckout.email.$error.pattern === true">Please enter valid Email</div>
                 <div class="form-error" ng-if="">Please enter valid Email</div>
                 <div ng-if="invalid">Please enter valid Email.</div>
