@@ -2515,6 +2515,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
     $scope.emailRegex = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
     $scope.validEmail = false;
+    $scope.IsHidden = false;
     $scope.signUpNormal = function (emailSignupForm, signup) {
         if (emailSignupForm.$invalid) {
             $scope.validEmail = true;
@@ -2529,13 +2530,15 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 };
                 NavigationService.signUP($scope.signup, function (data) {
                     if (data.value) {
-                        $scope.closeAllModals();
+                        $scope.IsHidden = true;
+                        $scope.otpdata = $scope.signup;
+                        // $scope.closeAllModals();
                         // $scope.isLoggedIn = true;
-                        removemod = $uibModal.open({
-                            animation: true,
-                            templateUrl: "views/modal/verified.html",
-                            scope: $scope
-                        });
+                        // removemod = $uibModal.open({
+                        //     animation: true,
+                        //     templateUrl: "views/modal/verified.html",
+                        //     scope: $scope
+                        // });
                         // $state.reload();
                         // NavigationService.saveUser(data.data);
                     } else {
@@ -2552,7 +2555,38 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         }
 
     }
-    $scope.goToFunction = function () {
+    $scope.checkOtp = function (data) {
+            var senddata = {};
+            senddata.otp = data.otp1;
+            senddata.mobile = $scope.otpdata.mobile;
+            console.log("chkotp", data)
+            NavigationService.checkOtp(senddata, function (data) {
+                if (data.value == true) {
+                    console.log("done", data);
+                    $scope.closeAllModals();
+                    $scope.isLoggedIn = true;
+                    // $state.reload();
+                    if ($state.current.name === 'checkoutsignin') {
+                        $state.go('address');
+                    } else {
+                        $scope.closeAllModals();
+                        $scope.isLoggedIn = true;
+                        removemod = $uibModal.open({
+                            animation: true,
+                            templateUrl: "views/modal/verified.html",
+                            scope: $scope
+                        });
+                    }
+                } else {
+                    console.log(data.data.message);
+                    $scope.loginmsg.msg = data.data.message;
+                    $scope.loginmsg.class = "text-danger";
+                }
+            }, function (err) {
+                console.log(err);
+            });
+        },
+        $scope.goToFunction = function () {
             if ($state.current.name === 'checkoutsignin') {
                 $state.go('address');
             } else {

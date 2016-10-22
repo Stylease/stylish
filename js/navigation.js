@@ -241,6 +241,13 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback).error(errCallback);
         },
+        checkOtp: function (data, callback, errCallback) {
+            return $http({
+                url: adminURL + "user/checkOtp",
+                method: "POST",
+                data: data
+            }).success(callback).error(errCallback);
+        },
         signUP: function (data, callback, errCallback) {
             console.log(data);
             return $http({
