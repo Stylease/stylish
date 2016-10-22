@@ -248,6 +248,15 @@ var navigationservice = angular.module('navigationservice', [])
                 data: data
             }).success(callback).error(errCallback);
         },
+        resendOTP: function (data, callback, errCallback) {
+            return $http({
+                url: adminURL + "user/resendotp",
+                method: "POST",
+                data: {
+                    mobile: data
+                }
+            }).success(callback).error(errCallback);
+        },
         signUP: function (data, callback, errCallback) {
             console.log(data);
             return $http({

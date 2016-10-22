@@ -2555,6 +2555,30 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         }
 
     }
+    var count = 0;
+    $scope.resendOTP = function () {
+        var mobileno = $scope.otpdata.mobile;
+        $scope.isDisabled = false;
+
+        NavigationService.resendOTP(mobileno, function (data) {
+            if (data.value == true) {
+                console.log("done", data);
+                count++;
+                if (count == 3) {
+                    $scope.isDisabled = true;
+                    $scope.loginmsg.msg = "please try Later";
+                }
+                $scope.loginmsg.msg = data.data.message;
+                $scope.loginmsg.class = "text-danger";
+            } else {
+                console.log(data.data.message);
+                $scope.loginmsg.msg = data.data.message;
+                $scope.loginmsg.class = "text-danger";
+            }
+        }, function (err) {
+            console.log(err);
+        });
+    }
     $scope.checkOtp = function (data) {
             var senddata = {};
             senddata.otp = data.otp1;

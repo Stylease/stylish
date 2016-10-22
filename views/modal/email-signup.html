@@ -67,11 +67,16 @@
 
             <div class="col-md-offset-1 col-md-10" ng-show="IsHidden">
                 <form name="check">
-                    <div class="relate mb10">
+                    <div class="relate mb10 col-md-6">
                         <input type="text" only-Digits maxlength="4" minlength="4" class="form-control inpu-1" name="otp" placeholder="Enter OTP"
                             ng-model="check.otp1" required>
                         <div class="form-error" ng-show="check.otp.$error.required && check.otp.$touched">Please enter your otp.</div>
                     </div>
+                    <div ng-click="resendOTP()" class="relate mb10 col-md-4">
+                        <input ng-disabled="isDisabled" type="button" value="Resend OTP" />
+                    </div>
+                    <label ng-if="loginmsg.msg ==='please try Later'" for="accept" class="{{loginmsg.class}}"><span class="mt10 mb10">please try Later</span></label>
+                    <label ng-if="loginmsg.msg ==='Otp sent'" for="accept" class="{{loginmsg.class}}"><span class="mt10 mb10">OTP sent</span></label>
                     <label ng-if="loginmsg.msg ==='Invalid OTP'" for="accept" class="{{loginmsg.class}}"><span class="mt10 mb10">{{loginmsg.msg}}</span></label>
                     <div class="submit mt10 mb10-1">
                         <button class="btn btn-outline" ng-click="checkOtp(check)" type="submit">Submit</button>
