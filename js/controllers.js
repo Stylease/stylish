@@ -5,6 +5,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     // }])
 
 .controller('HomeCtrl', function ($scope, $uibModal, TemplateService, NavigationService, $timeout) {
+
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("home");
         $scope.menutitle = NavigationService.makeactive("Home");
@@ -920,6 +921,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
 
         $scope.signUp = function () {
+
             globalfunction.emailSignup();
         }
     })
@@ -2366,6 +2368,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.signUp();
     }
     globalfunction.emailSignup = function () {
+        $scope.IsHidden = false;
+        $scope.signup = {};
         $scope.emailSignup();
     }
     globalfunction.logIn = function () {
@@ -2413,6 +2417,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     };
 
     $scope.emailSignup = function () {
+        $scope.signup = {};
+        $scope.IsHidden = false;
         $scope.loginmsg.msg = "";
         $scope.closeAllModals();
         modal2 = $uibModal.open({
