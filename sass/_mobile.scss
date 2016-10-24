@@ -615,6 +615,12 @@
     }
 }
 @media (max-width: 480px) {
+  .submitbtn {
+      margin-top: 15px;
+      button {
+          padding: 6px 20px;
+      }
+  }
   .product-sizes {
     ul {
       li{
