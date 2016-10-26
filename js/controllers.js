@@ -1944,54 +1944,62 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             }
             // $scope.beTheChange(tomorrow);
         }
-
+        $scope.pleaseLogin = false;
         $scope.addToCart = function () {
-            var d = new Date($scope.cartpro.timeFrom);
-            $scope.cartpro.timeFrom = d;
-            var timeto = new Date(d);
-            $scope.cartpro.timeTo = new Date(timeto.setDate(d.getDate() + ($scope.cartpro.duration - 1)));
-            if ($scope.product.designer == null) {
-                $scope.cartpro.by = "";
-            } else {
-                $scope.cartpro.by = $scope.product.designer.name;
-            }
-            if ($.jStorage.get("cartDate")) {
-                $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
-            } else {
-                $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
-            }
-            //check current cart date
-            if (new Date($scope.cartpro.timeFrom).setHours(0, 0, 0, 0) === new Date($scope.cartDate.timeFrom).setHours(0, 0, 0, 0) && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
-                NavigationService.addToCart($scope.cartpro, function (data) {
-                    console.log("response cart", data);
-                    $scope.response = data;
-                    if ($scope.response.value === true) {
-                        //remove product from wishlist
-                        NavigationService.deleteWishlistByProduct($scope.cartpro.product, function (data) {
-                            $scope.response = data;
-                            if ($scope.response.value === true) {
-                                console.log("removed");
-                            }
-                        });
+            $scope.ifLogin = $.jStorage.get("userLoggedIn");
+            if ($scope.ifLogin) {
+                console.log('yes login');
 
-                        $uibModal.open({
-                            animation: true,
-                            templateUrl: "views/modal/shop.html",
-                            scope: $scope
-                        });
-                    } else {}
-                    //TemplateService.removeLoader();
-                }, function (err) {
-                    console.log(err);
-                });
+                var d = new Date($scope.cartpro.timeFrom);
+                $scope.cartpro.timeFrom = d;
+                var timeto = new Date(d);
+                $scope.cartpro.timeTo = new Date(timeto.setDate(d.getDate() + ($scope.cartpro.duration - 1)));
+                if ($scope.product.designer == null) {
+                    $scope.cartpro.by = "";
+                } else {
+                    $scope.cartpro.by = $scope.product.designer.name;
+                }
+                if ($.jStorage.get("cartDate")) {
+                    $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
+                } else {
+                    $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
+                }
+                //check current cart date
+                if (new Date($scope.cartpro.timeFrom).setHours(0, 0, 0, 0) === new Date($scope.cartDate.timeFrom).setHours(0, 0, 0, 0) && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
+                    NavigationService.addToCart($scope.cartpro, function (data) {
+                        console.log("response cart", data);
+                        $scope.response = data;
+                        if ($scope.response.value === true) {
+                            //remove product from wishlist
+                            NavigationService.deleteWishlistByProduct($scope.cartpro.product, function (data) {
+                                $scope.response = data;
+                                if ($scope.response.value === true) {
+                                    console.log("removed");
+                                }
+                            });
+
+                            $uibModal.open({
+                                animation: true,
+                                templateUrl: "views/modal/shop.html",
+                                scope: $scope
+                            });
+                        } else {}
+                        //TemplateService.removeLoader();
+                    }, function (err) {
+                        console.log(err);
+                    });
+                } else {
+                    console.log("please select valid date");
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/cartdate.html",
+                        controller: "ProductdetailCtrl",
+                        scope: $scope
+                    });
+                }
             } else {
-                console.log("please select valid date");
-                $uibModal.open({
-                    animation: true,
-                    templateUrl: "views/modal/cartdate.html",
-                    controller: "ProductdetailCtrl",
-                    scope: $scope
-                });
+                $scope.pleaseLogin = true;
+                console.log('No not login')
             }
         };
         $scope.productFull = function () {

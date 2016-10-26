@@ -163,73 +163,74 @@
               <div class="buttons on-edit text-center">
                 <button class="atc-atw btn btn-outline text-uppercase btn-full m-center" ng-click="addToCart();" ng-disabled="myProduct.$invalid">add to cart</button>
                 <button type="button" class="atc-atw btn btn-outline text-uppercase btn-full m-center" ng-click="addTowishlistProduct(product._id);">add to wishlist</button>
-              </div>
-            </div>
+                <!--</div>
+              <p ng-if="pleaseLogin"> Please login For Shopping</p>
+            </div>-->
           </form>
+          </div>
+          <div class="product-more-detail accordion-custom">
+            <uib-accordion close-others="oneAtATime">
+              <uib-accordion-group is-open="status.open1" ng-if="product.details !== ''">
+                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i>
+                  <span class="block">Details</span>
+                </uib-accordion-heading>
+                <div class="descp">
+                  <p ng-bind-html="product.details"></p>
+                </div>
+              </uib-accordion-group>
+              <uib-accordion-group is-open="status.open2" ng-if="product.care !== ''">
+                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open2, 'fa-angle-down': !status.open2}"></i>
+                  <span class="block">Material &amp; Care</span>
+                </uib-accordion-heading>
+                <div class="descp">
+                  <p ng-bind-html="product.care"></p>
+                </div>
+              </uib-accordion-group>
+              <uib-accordion-group is-open="status.open3" ng-if="product.notes !== ''">
+                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i>
+                  <span class="block">Stylist Notes</span>
+                </uib-accordion-heading>
+                <div class="descp">
+                  <p ng-bind-html="product.notes"></p>
+                </div>
+              </uib-accordion-group>
+              <uib-accordion-group is-open="status.open4" ng-if="product.additionalnotes !== ''">
+                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open4, 'fa-angle-down': !status.open3}"></i>
+                  <span class="block">Additional Notes</span>
+                </uib-accordion-heading>
+                <div class="descp">
+                  <p ng-bind-html="product.additionalnotes"></p>
+                </div>
+              </uib-accordion-group>
+            </uib-accordion>
+          </div>
+          </div>
         </div>
-        <div class="product-more-detail accordion-custom">
-          <uib-accordion close-others="oneAtATime">
-            <uib-accordion-group is-open="status.open1" ng-if="product.details !== ''">
-              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i>
-                <span class="block">Details</span>
-              </uib-accordion-heading>
-              <div class="descp">
-                <p ng-bind-html="product.details"></p>
+      </div>
+      <div class="suggested" ng-if="product.suggestedProduct && product.suggestedProduct.length>0">
+        <h3 class="dark-blue text-center">Suggested</h3>
+        <div class="suggested-slider">
+          <flex-slider class="carousel" flex-slide="sProducts in product.suggestedProduct track by $index" control-nav="false" item-width="260"
+            item-margin="0" animation="slide">
+            <li>
+              <div class="suggested-product">
+                <div class="suggested-imgholder relate">
+                  <img ng-src="{{sProducts.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
+                  <div class="wishlist">
+                    <span class="pointer wishlist-heart " ng-click="addTowishlist(sProducts._id); "><i class="fa" ng-class="{'fa-heart':isInWishlist(sProducts._id),'fa-heart-o':!isInWishlist(sProducts._id)}"></i></span>
+                  </div>
+                </div>
+                <h4 class="name-suggestprd">{{sProducts.name | shorten:50}}</h4>
+                <p class="rent text-medium"><span class="block"> by {{sProducts.designer}}</span>Rent : Rs {{sProducts.fourdayrentalamount |currency}}/-</p>
+                <div class="view-button" ui-sref="productdetail({'id':sProducts._id})">
+                  <button class="btn btn-outline text-medium btn-full">
+                        View Details
+                     </button>
+                </div>
               </div>
-            </uib-accordion-group>
-            <uib-accordion-group is-open="status.open2" ng-if="product.care !== ''">
-              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open2, 'fa-angle-down': !status.open2}"></i>
-                <span class="block">Material &amp; Care</span>
-              </uib-accordion-heading>
-              <div class="descp">
-                <p ng-bind-html="product.care"></p>
-              </div>
-            </uib-accordion-group>
-            <uib-accordion-group is-open="status.open3" ng-if="product.notes !== ''">
-              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i>
-                <span class="block">Stylist Notes</span>
-              </uib-accordion-heading>
-              <div class="descp">
-                <p ng-bind-html="product.notes"></p>
-              </div>
-            </uib-accordion-group>
-            <uib-accordion-group is-open="status.open4" ng-if="product.additionalnotes !== ''">
-              <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open4, 'fa-angle-down': !status.open3}"></i>
-                <span class="block">Additional Notes</span>
-              </uib-accordion-heading>
-              <div class="descp">
-                <p ng-bind-html="product.additionalnotes"></p>
-              </div>
-            </uib-accordion-group>
-          </uib-accordion>
+            </li>
+          </flex-slider>
         </div>
       </div>
     </div>
   </div>
-  <div class="suggested" ng-if="product.suggestedProduct && product.suggestedProduct.length>0">
-    <h3 class="dark-blue text-center">Suggested</h3>
-    <div class="suggested-slider">
-      <flex-slider class="carousel" flex-slide="sProducts in product.suggestedProduct track by $index" control-nav="false" item-width="260"
-        item-margin="0" animation="slide">
-        <li>
-          <div class="suggested-product">
-            <div class="suggested-imgholder relate">
-              <img ng-src="{{sProducts.images[0].image|serverimage}}" alt="" class="get-center img-responsive">
-              <div class="wishlist">
-                <span class="pointer wishlist-heart " ng-click="addTowishlist(sProducts._id); "><i class="fa" ng-class="{'fa-heart':isInWishlist(sProducts._id),'fa-heart-o':!isInWishlist(sProducts._id)}"></i></span>
-              </div>
-            </div>
-            <h4 class="name-suggestprd">{{sProducts.name | shorten:50}}</h4>
-            <p class="rent text-medium"><span class="block"> by {{sProducts.designer}}</span>Rent : Rs {{sProducts.fourdayrentalamount |currency}}/-</p>
-            <div class="view-button" ui-sref="productdetail({'id':sProducts._id})">
-              <button class="btn btn-outline text-medium btn-full">
-                        View Details
-                     </button>
-            </div>
-          </div>
-        </li>
-      </flex-slider>
-    </div>
-  </div>
-</div>
-</div>
