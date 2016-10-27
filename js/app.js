@@ -190,14 +190,16 @@ firstapp.directive('img', function ($compile, $parse) {
 
 firstapp.filter('currency', function () {
     return function (value) {
-        if (value && value !== '') {
+        if (value !== undefined) {
             value = value.toString();
-            var lastThree = value.substring(value.length - 3);
+                var lastThree = value.substring(value.length - 3);
             var otherNumbers = value.substring(0, value.length - 3);
+            
             if (otherNumbers !== '')
                 lastThree = ',' + lastThree;
             var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
             // return "₹ " + res;
+            
             return res;
         }
     };

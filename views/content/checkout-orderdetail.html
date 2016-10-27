@@ -37,6 +37,9 @@
             </div>
           </div>
         </div>
+        
+
+
         <div class="order-detail-summary">
           <div class="order-address">
             <div class="row">
@@ -69,13 +72,46 @@
               </div>
             </div>
           </div>
+
+
+
+         <div style="border-top:1px solid; margin-bottom:20px;">
+            <h4>Promo Code</h4>
+            <div class="row">
+               <form name="formcoupon">
+            <div class="col-md-4 col-sm-6 col-xs-6">
+            <input type="text" class="form-control" style="border: 1px solid;
+    padding: 0 10px;" ng-model="code" name="code" placeholder="Promo Code" required>
+            </div>
+             <div class="col-md-2 col-sm-3 col-xs-3">
+            <button ng-click="checkCoupon(code)" style="background: none;text-transform: uppercase;text-decoration: underline;padding: 0px;font-size: 20px;" class="btn btn-full text-medium">Apply</button>
+            </div>
+
+             <div class="col-md-6 col-sm-6 col-xs-6">
+           <p ng-if="errmsg==false" style="color:green;">promo code applied!</p>
+            <p ng-if="errmsg==true"style="color:red;">promo code invalid!</p>
+            </div>
+            </form>
+            </div>
+          </div>
+
+
+
           <div class="billing-detail">
             <h4>Billing Details</h4>
             <table class="table">
               <tbody>
                 <tr>
-                  <td>Sub Total</td>
+                  <td>Rental Amount</td>
                   <td>Rs <span>{{totalrentalamount|currency}}/-</span></td>
+                </tr>
+                <tr>
+                  <td>Discount</td>
+                  <td>Rs <span>{{discountamount|currency}}/-</span></td>
+                </tr>
+                <tr>
+                  <td>Sub Total</td>
+                  <td>Rs <span>{{subtotal|currency}}/-</span></td>
                 </tr>
                 <tr>
                   <td>

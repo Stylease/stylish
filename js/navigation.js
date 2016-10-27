@@ -410,6 +410,9 @@ var navigationservice = angular.module('navigationservice', [])
         placeOrder: function (data, callback) {
             $http.post(adminURL + "order/save", data).success(callback);
         },
+           checkCoupon: function (data, callback) {
+            $http.post(adminURL + "coupon/checkCoupon", data).success(callback);
+        },
         getWishlistUser: function (callback) {
             $http.post(adminURL + "wishlist/getWishlistUser", {}).success(callback);
         },
