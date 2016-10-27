@@ -1054,7 +1054,7 @@ console.log("in coupon",coupondata);
                                console.log("aaaa",$scope.subtotal ,$scope.discountamount);
                       } else {
                                 $scope.errmsg = true;
-                                 $scope.discountamount = 0;
+                                $scope.discountamount = 0;
                                  console.log($scope.discountamount);
                                $scope.subtotal = $scope.totalrentalamount;
                                 $scope.servicetax = parseFloat($scope.totalrentalamount) * 0.15;
