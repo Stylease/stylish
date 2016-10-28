@@ -1302,8 +1302,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             
             $scope.newcartpro = $scope.cartProduct[0];
             _.each($scope.cartProduct, function (newpro) {
-                console.log("aaa", (newpro.timeFrom.setHours(0,0,0,0)), ($scope.newcartpro.timeFrom.setHours(0,0,0,0)));
-                if (newpro.timeFrom.setHours(0,0,0,0) !== $scope.newcartpro.timeFrom.setHours(0,0,0,0)) {
+                   if (newpro.timeFrom.setHours(0,0,0,0) !== $scope.newcartpro.timeFrom.setHours(0,0,0,0) || newpro.duration !== $scope.newcartpro.duration || newpro.pickupTime !== $scope.newcartpro.pickupTime || newpro.deliveryTime !== $scope.newcartpro.deliveryTime) {
                     $scope.isEqualDate = true;
                 }
             });
@@ -1311,7 +1310,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             if ($scope.isEqualDate) {
                 removemod = $uibModal.open({
                         animation: true,
-                        templateUrl: "views/modal/datemismatch.html",
+                        templateUrl: "views/modal/creat-cart.html",
                         scope: $scope
                     });
             }else{
