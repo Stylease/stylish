@@ -122,6 +122,7 @@ a {
     z-index: 99;
 }
 // classess
+
 .no-border {
     border: none !important;
 }
@@ -322,6 +323,7 @@ a {
     text-decoration: underline;
 }
 // color classess
+
 .dark-blue {
     color: $brand-dark-blue;
     // margin-bottom: 20px;
@@ -447,6 +449,7 @@ a {
     @include box-shadow(none);
 }
 //bootstrap forms
+
 .custom-select {
     position: relative;
 
@@ -574,6 +577,7 @@ a {
 }
 /* Start writing sass here */
 // header
+
 header {
     width: 100%;
     padding: 5px 0;
@@ -1060,6 +1064,7 @@ footer {
     }
 }
 // footer
+
 .heading-bar {
     padding: 65px 0 2px;
     background-color: $brand-pink;
@@ -1131,6 +1136,7 @@ input.form-control {
     }
 }
 // pop ups
+
 .social-btn {
     width: 100%;
     // padding: 12px 0;
@@ -1212,6 +1218,7 @@ input.form-control {
     }
 }
 // thankyou
+
 .thankyou {
     padding: 10% 0;
     background: url('../img/thankyou.png');
@@ -1251,6 +1258,7 @@ input.form-control {
     padding: 12% 0;
 }
 // hello msg
+
 .hello {
     h3 {
         margin: 0 0 20px;
@@ -1272,6 +1280,7 @@ input.form-control {
     }
 }
 // cart pop
+
 .change-delivery-date {
     padding: 20px;
     border: 1px solid $brand-dark-pink;
@@ -1283,6 +1292,7 @@ input.form-control {
     }
 }
 // remove-item
+
 .remove-item {
     p {
         font-size: 20px;
@@ -1298,6 +1308,7 @@ input.form-control {
     }
 }
 // shop
+
 .continue-shop {
     padding: 20px;
     border: 1px solid $brand-dark-pink;
@@ -1379,6 +1390,7 @@ input.form-control {
     margin-top: 60px;
 }
 // orders
+
 .order-heading {
     font-size: 16px;
     font-weight: 600;
@@ -1446,6 +1458,7 @@ input.form-control {
     // button:nth-child(2) { margin-left: -4px; }
 }
 // order-detail
+
 .order-detail-summary {
     .billing-detail {
         border-top: 1px solid $brand-dark-blue;
@@ -1482,6 +1495,7 @@ input.form-control {
     // margin-bottom: 30px;
 }
 // wishlist
+
 .wishlist-product {
     padding: 20px;
     margin: 20px 0;
@@ -1536,6 +1550,7 @@ input.form-control {
     }
 }
 // save address
+
 .billingsave-add {
     h4 {
         font-size: 25px;
@@ -1912,6 +1927,7 @@ input.form-control {
     }
 }
 // product detail page
+
 .a1 {
     .a2 {
         float: left;
@@ -3031,6 +3047,7 @@ ul.mn-list {
     z-index: 3 !important;
 }
 // DATEPICKER
+
 div[uib-datepicker] {
     background: #fdd3be;
     color: #e87b65;
@@ -3264,15 +3281,47 @@ div[uib-datepicker] {
     outline: none !important;
     border-bottom: 2px solid #000 !important;
     padding: 0 !important;
-    border-radius: 0px !important;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
+    border-radius: 0 !important;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
 }
-.colgr{color:green;}
-.colred{color:red;}
-.fonterror p{    padding-left: 43px;
-font-size: 24px;}
+
+.colgr {
+    color: green;
+}
+
+.colred {
+    color: red;
+}
+
+.fonterror p {
+    padding-left: 43px;
+    font-size: 24px;
+}
+
+.addcartpad {
+    padding: 23px 16px;
+}
+
+.addcart {
+    display: inline-block;
+    width: 43%;
+}
+
+.onecart {
+    margin-right: 15px;
+}
+
+.twocart {
+    margin-left: 15px;
+}
+
+.fontsiz {
+    font-size: 20px;
+}
+.addcartpad{    padding-top: 57px;
+    font-size: 16px;}
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";
