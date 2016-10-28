@@ -1300,38 +1300,52 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.isEqualDate = false;
         $scope.gotocheckout = function () {
             $scope.isEqualDate = false;
+            //new code fot cartdates
+            // $scope.newcartpro = $scope.cartProduct[0];
+            // _.each($scope.cartProduct, function (newpro) {
+            //     if (newpro.timeFrom.setHours(0, 0, 0, 0) !== $scope.newcartpro.timeFrom.setHours(0, 0, 0, 0) || newpro.duration !== $scope.newcartpro.duration || newpro.pickupTime !== $scope.newcartpro.pickupTime || newpro.deliveryTime !== $scope.newcartpro.deliveryTime) {
+            //         $scope.isEqualDate = true;
+            //     }
+            // });
+            // console.log(" $scope.isEqualDate", $scope.isEqualDate);
+            // if ($scope.isEqualDate) {
+            //     removemod = $uibModal.open({
+            //         animation: true,
+            //         templateUrl: "views/modal/creat-cart.html",
+            //         scope: $scope
+            //     });
+            // } else {
+            //     if ($scope.totalrentalamount >= 8000) {
+            //         if ($.jStorage.get("userLoggedIn")) {
+            //             $state.go('address');
+            //         } else {
+            //             $state.go(
+            //                 'checkoutsignin');
+            //         }
+            //     } else {
+            //         removemod = $uibModal.open({
+            //             animation: true,
+            //             templateUrl: "views/modal/minimumorder.html",
+            //             scope: $scope
+            //         });
+            //     }
 
-            $scope.newcartpro = $scope.cartProduct[0];
-            _.each($scope.cartProduct, function (newpro) {
-                if (newpro.timeFrom.setHours(0, 0, 0, 0) !== $scope.newcartpro.timeFrom.setHours(0, 0, 0, 0) || newpro.duration !== $scope.newcartpro.duration || newpro.pickupTime !== $scope.newcartpro.pickupTime || newpro.deliveryTime !== $scope.newcartpro.deliveryTime) {
-                    $scope.isEqualDate = true;
+            // }
+
+            if ($scope.totalrentalamount >= 8000) {
+                if ($.jStorage.get("userLoggedIn")) {
+                    $state.go('address');
+                } else {
+                    $state.go(
+                        'checkoutsignin');
                 }
-            });
-            console.log(" $scope.isEqualDate", $scope.isEqualDate);
-            if ($scope.isEqualDate) {
+            } else {
                 removemod = $uibModal.open({
                     animation: true,
-                    templateUrl: "views/modal/creat-cart.html",
+                    templateUrl: "views/modal/minimumorder.html",
                     scope: $scope
                 });
-            } else {
-                if ($scope.totalrentalamount >= 8000) {
-                    if ($.jStorage.get("userLoggedIn")) {
-                        $state.go('address');
-                    } else {
-                        $state.go(
-                            'checkoutsignin');
-                    }
-                } else {
-                    removemod = $uibModal.open({
-                        animation: true,
-                        templateUrl: "views/modal/minimumorder.html",
-                        scope: $scope
-                    });
-                }
-
             }
-
 
         };
 
@@ -1900,6 +1914,16 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             // NavigationService.getSession
         };
         //  $scope.saveWishList();
+
+         $scope.signUp = function () {
+            globalfunction.emailSignup();
+        }
+
+         $scope.Login = function () {
+            globalfunction.logIn();
+        }
+
+
         NavigationService.getProductDetail($state.params.id, function (data) {
             // console.log(data);
             $scope.product = data.data.product;
@@ -2020,7 +2044,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 console.log('No not login')
                 $uibModal.open({
                     animation: true,
-                    templateUrl: "views/modal/login.html",
+                    templateUrl: "views/modal/add-cart.html",
                     controller: "ProductdetailCtrl",
                     scope: $scope
                 });
