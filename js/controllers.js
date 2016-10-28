@@ -1043,28 +1043,29 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             var constraints = {};
             constraints.name = coupondata;
             constraints.amt = $scope.totalrentalamount;
-
-            NavigationService.checkCoupon(constraints, function (data) {
-                if (data.value) {
-                    $scope.errmsg = false;
-                    $scope.coupon = data.data.coupon;
-                    $scope.discount = data.data.discount;
-                    $scope.discountamount = data.data.discountamount;
-                    $scope.subtotal = $scope.totalrentalamount - data.data.discountamount;
-                    $scope.servicetax = parseFloat($scope.subtotal) * 0.15;
-                    $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
-                    console.log("aaaa", $scope.subtotal, $scope.discountamount);
-                } else {
-                    $scope.errmsg = true;
-                    $scope.coupon = "";
-                    $scope.discount = 0;
-                    $scope.discountamount = 0;
-                    console.log($scope.discountamount);
-                    $scope.subtotal = $scope.totalrentalamount;
-                    $scope.servicetax = parseFloat($scope.totalrentalamount) * 0.15;
-                    $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
-                }
-            });
+            if (constraints.name) {
+                NavigationService.checkCoupon(constraints, function (data) {
+                    if (data.value) {
+                        $scope.errmsg = false;
+                        $scope.coupon = data.data.coupon;
+                        $scope.discount = data.data.discount;
+                        $scope.discountamount = data.data.discountamount;
+                        $scope.subtotal = $scope.totalrentalamount - data.data.discountamount;
+                        $scope.servicetax = parseFloat($scope.subtotal) * 0.15;
+                        $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
+                        console.log("aaaa", $scope.subtotal, $scope.discountamount);
+                    } else {
+                        $scope.errmsg = true;
+                        $scope.coupon = "";
+                        $scope.discount = 0;
+                        $scope.discountamount = 0;
+                        console.log($scope.discountamount);
+                        $scope.subtotal = $scope.totalrentalamount;
+                        $scope.servicetax = parseFloat($scope.totalrentalamount) * 0.15;
+                        $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
+                    }
+                });
+            }
         };
 
 
@@ -1296,25 +1297,25 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 }
             });
         };
-         $scope.isEqualDate = false;
+        $scope.isEqualDate = false;
         $scope.gotocheckout = function () {
-         $scope.isEqualDate = false;
-            
+            $scope.isEqualDate = false;
+
             $scope.newcartpro = $scope.cartProduct[0];
             _.each($scope.cartProduct, function (newpro) {
-                   if (newpro.timeFrom.setHours(0,0,0,0) !== $scope.newcartpro.timeFrom.setHours(0,0,0,0) || newpro.duration !== $scope.newcartpro.duration || newpro.pickupTime !== $scope.newcartpro.pickupTime || newpro.deliveryTime !== $scope.newcartpro.deliveryTime) {
+                if (newpro.timeFrom.setHours(0, 0, 0, 0) !== $scope.newcartpro.timeFrom.setHours(0, 0, 0, 0) || newpro.duration !== $scope.newcartpro.duration || newpro.pickupTime !== $scope.newcartpro.pickupTime || newpro.deliveryTime !== $scope.newcartpro.deliveryTime) {
                     $scope.isEqualDate = true;
                 }
             });
             console.log(" $scope.isEqualDate", $scope.isEqualDate);
             if ($scope.isEqualDate) {
                 removemod = $uibModal.open({
-                        animation: true,
-                        templateUrl: "views/modal/creat-cart.html",
-                        scope: $scope
-                    });
-            }else{
-                 if ($scope.totalrentalamount >= 8000) {
+                    animation: true,
+                    templateUrl: "views/modal/creat-cart.html",
+                    scope: $scope
+                });
+            } else {
+                if ($scope.totalrentalamount >= 8000) {
                     if ($.jStorage.get("userLoggedIn")) {
                         $state.go('address');
                     } else {
@@ -1328,7 +1329,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         scope: $scope
                     });
                 }
-               
+
             }
 
 
