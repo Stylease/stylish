@@ -269,6 +269,12 @@
     }
 }
 @media (max-width: $screen-xs-max) {
+  .fonterror p {
+    font-size: 15px;
+    padding-top: 24px;
+    padding-left: 0px;
+
+}
   .add-body .custom-checkbox {
     margin: 0px;
 
