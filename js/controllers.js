@@ -1002,7 +1002,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             }, function (err) {});
         };
 
-      
+
         $scope.getProfile();
         $scope.getCart = function () {
             NavigationService.getcart(function (data) {
@@ -1038,29 +1038,33 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.getCart();
 
 
-  $scope.checkCoupon = function(coupondata){
-console.log("in coupon",coupondata);
-     var constraints = {};
-     constraints.name = coupondata;
-     constraints.amt = $scope.totalrentalamount;
+        $scope.checkCoupon = function (coupondata) {
+            console.log("in coupon", coupondata);
+            var constraints = {};
+            constraints.name = coupondata;
+            constraints.amt = $scope.totalrentalamount;
 
-      NavigationService.checkCoupon(constraints, function (data) {
-                            if (data.value) {
-                               $scope.errmsg = false;
-                               $scope.discountamount = data.data.discountamount;
-                               $scope.subtotal = $scope.totalrentalamount - data.data.discountamount;
-                                $scope.servicetax = parseFloat($scope.subtotal) * 0.15;
-                                 $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
-                               console.log("aaaa",$scope.subtotal ,$scope.discountamount);
-                      } else {
-                                $scope.errmsg = true;
-                                $scope.discountamount = 0;
-                                 console.log($scope.discountamount);
-                               $scope.subtotal = $scope.totalrentalamount;
-                                $scope.servicetax = parseFloat($scope.totalrentalamount) * 0.15;
-                                 $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
-                            }
-                        });
+            NavigationService.checkCoupon(constraints, function (data) {
+                if (data.value) {
+                    $scope.errmsg = false;
+                    $scope.coupon = data.data.coupon;
+                    $scope.discount = data.data.discount;
+                    $scope.discountamount = data.data.discountamount;
+                    $scope.subtotal = $scope.totalrentalamount - data.data.discountamount;
+                    $scope.servicetax = parseFloat($scope.subtotal) * 0.15;
+                    $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
+                    console.log("aaaa", $scope.subtotal, $scope.discountamount);
+                } else {
+                    $scope.errmsg = true;
+                    $scope.coupon = "";
+                    $scope.discount = 0;
+                    $scope.discountamount = 0;
+                    console.log($scope.discountamount);
+                    $scope.subtotal = $scope.totalrentalamount;
+                    $scope.servicetax = parseFloat($scope.totalrentalamount) * 0.15;
+                    $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
+                }
+            });
         };
 
 
@@ -1073,13 +1077,15 @@ console.log("in coupon",coupondata);
             _.each($scope.userdata.billingAddress, function (data, property) {
                 placeorderuser[property] = data;
             });
-             placeorderuser.rentalamount = $scope.totalrentalamount;
-             placeorderuser.discountamount =  $scope.discountamount;
-             placeorderuser.subtotal =  $scope.subtotal;
-           placeorderuser.servicetax = $scope.servicetax;
+            placeorderuser.rentalamount = $scope.totalrentalamount;
+            placeorderuser.coupon = $scope.coupon;
+            placeorderuser.discount = $scope.discount;
+            placeorderuser.discountamount = $scope.discountamount;
+            placeorderuser.subtotal = $scope.subtotal;
+            placeorderuser.servicetax = $scope.servicetax;
             placeorderuser.total = $scope.grandtotal;
             placeorderuser.refundabledeposit = $scope.totalsecuritydeposit;
-             placeorder = placeorderuser;
+            placeorder = placeorderuser;
             placeorder.cartproduct = $scope.cartProduct;
             NavigationService.getProfile(function (data) {
                     if (data.value) {
@@ -1096,18 +1102,6 @@ console.log("in coupon",coupondata);
                                 $scope.orderid = data.data.orderid;
                                 $scope.formdata = data.data;
                                 window.location.href = (adminURL + "payu/payU?_id=" + data.data._id);
-                                // NavigationService.goToPayment(data.data._id, function (data) {
-                                //     console.log("payment ja done");
-                                // });
-                                // NavigationService.emptyCart(function (response) {
-                                //     if (response) {
-                                //         $state.go('thankyou', {
-                                //             orderid: $scope.orderid
-                                //         });
-                                //     } else {
-                                //         $state.go("sorry");
-                                //     }
-                                // });
                             } else {
                                 $state.go("sorry");
                             }
@@ -1120,21 +1114,6 @@ console.log("in coupon",coupondata);
                                 $scope.orderid = data.data.orderid;
                                 $scope.formdata = data.data;
                                 window.location.href = (adminURL + "payu/payU?_id=" + data.data._id);
-                                // console.log("IN FORM DATA");
-                                // $scope.formdata = data.data;
-                                // console.log($scope.formdata);
-                                // $state.go('payment', {
-                                //     'id': data.data._id
-                                // });
-                                // NavigationService.emptyCart(function (response) {
-                                //     if (response) {
-                                //         $state.go('thankyou', {
-                                //             orderid: $scope.orderid
-                                //         });
-                                //     } else {
-                                //         $state.go("sorry");
-                                //     }
-                                // });
                             } else {
                                 $state.go("sorry");
                             }
@@ -1317,39 +1296,45 @@ console.log("in coupon",coupondata);
                 }
             });
         };
+         $scope.isEqualDate = false;
         $scope.gotocheckout = function () {
-            if ($scope.totalrentalamount >= 8000) {
-                if ($.jStorage.get("userLoggedIn")) {
-                    $state.go('address');
-                } else {
-                    $state.go('checkoutsignin');
+         $scope.isEqualDate = false;
+            
+            $scope.newcartpro = $scope.cartProduct[0];
+            _.each($scope.cartProduct, function (newpro) {
+                console.log("aaa", (newpro.timeFrom.setHours(0,0,0,0)), ($scope.newcartpro.timeFrom.setHours(0,0,0,0)));
+                if (newpro.timeFrom.setHours(0,0,0,0) !== $scope.newcartpro.timeFrom.setHours(0,0,0,0)) {
+                    $scope.isEqualDate = true;
                 }
-            } else {
+            });
+            console.log(" $scope.isEqualDate", $scope.isEqualDate);
+            if ($scope.isEqualDate) {
                 removemod = $uibModal.open({
-                    animation: true,
-                    templateUrl: "views/modal/minimumorder.html",
-                    scope: $scope
-                });
+                        animation: true,
+                        templateUrl: "views/modal/datemismatch.html",
+                        scope: $scope
+                    });
+            }else{
+                 if ($scope.totalrentalamount >= 8000) {
+                    if ($.jStorage.get("userLoggedIn")) {
+                        $state.go('address');
+                    } else {
+                        $state.go(
+                            'checkoutsignin');
+                    }
+                } else {
+                    removemod = $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/minimumorder.html",
+                        scope: $scope
+                    });
+                }
+               
             }
 
 
-            // if ($.jStorage.get("userLoggedIn")) {
-            //     $state.go('address');
-            // } else {
-            //     $state.go('checkoutsignin');
-            // }
-
-
-            // NavigationService.getcart(function(data) {
-            //     if (data.value) {
-            //         $scope.cartDetails = data.data.cartcount;
-            //
-            //     }
-            // }, function(err) {
-            //     console.log(err);
-            // });
-
         };
+
         $scope.editCartProduct = function (id) {
             $scope.variables.editCart = _.map($scope.variables.editCart, function (key) {
                 return false;
@@ -2033,6 +2018,12 @@ console.log("in coupon",coupondata);
             } else {
                 $scope.pleaseLogin = true;
                 console.log('No not login')
+                $uibModal.open({
+                    animation: true,
+                    templateUrl: "views/modal/login.html",
+                    controller: "ProductdetailCtrl",
+                    scope: $scope
+                });
             }
         };
         $scope.productFull = function () {

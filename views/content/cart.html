@@ -49,7 +49,7 @@
                                 <p><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span>
                                     <span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span>
                                 </p>
-                                <p><span class="edit-cart">Delivery Date </span>
+                                <p class="calendar"><span class="edit-cart">Delivery Date </span>
                                     <span class="displayinline">
                                         <input type="date" class="form-control" uib-datepicker-popup ng-model="product.timeFrom" ng-change="beTheChange(product.timeFrom)
                                  " is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
