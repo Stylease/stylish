@@ -189,17 +189,30 @@ firstapp.directive('img', function ($compile, $parse) {
 });
 
 firstapp.filter('currency', function () {
-    return function (value) {
-        if (value !== undefined) {
-            value = value.toString();
-                var lastThree = value.substring(value.length - 3);
-            var otherNumbers = value.substring(0, value.length - 3);
-            
-            if (otherNumbers !== '')
+    return function (x) {
+        if (x !== undefined) {
+            // value = value.toString();
+            //     var lastThree = value.substring(value.length - 3);
+            // var otherNumbers = value.substring(0, value.length - 3);
+
+            // if (otherNumbers !== '')
+            //     lastThree = ',' + lastThree;
+            // var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+            // // return "₹ " + res;
+
+            // return res;
+
+            x = x.toString();
+            var afterPoint = '';
+            if (x.indexOf('.') > 0)
+                afterPoint = x.substring(x.indexOf('.'), x.length);
+            x = Math.floor(x);
+            x = x.toString();
+            var lastThree = x.substring(x.length - 3);
+            var otherNumbers = x.substring(0, x.length - 3);
+            if (otherNumbers != '')
                 lastThree = ',' + lastThree;
-            var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-            // return "₹ " + res;
-            
+            var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree + afterPoint;
             return res;
         }
     };
@@ -305,16 +318,16 @@ firstapp.directive('onlyDigits', function () {
         }
     };
 });
-firstapp.directive('hideLogin', function($document){
-  		return {
-    		restrict: 'A',
-    		link: function(scope, elem, attr, ctrl) {
-      			elem.bind('click', function(e) {
-        			e.stopPropagation();
-      			});
-      			$document.bind('click', function() {
-        			scope.$apply(attr.hideLogin);
-      			})
-    		}
-  		}
-	});
+firstapp.directive('hideLogin', function ($document) {
+    return {
+        restrict: 'A',
+        link: function (scope, elem, attr, ctrl) {
+            elem.bind('click', function (e) {
+                e.stopPropagation();
+            });
+            $document.bind('click', function () {
+                scope.$apply(attr.hideLogin);
+            })
+        }
+    }
+});

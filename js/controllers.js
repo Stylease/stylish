@@ -1052,7 +1052,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         $scope.discountamount = data.data.discountamount;
                         $scope.subtotal = $scope.totalrentalamount - data.data.discountamount;
                         $scope.servicetax = parseFloat($scope.subtotal) * 0.15;
-                        $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
+                        $scope.grandtotal = parseFloat($scope.subtotal) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
                         console.log("aaaa", $scope.subtotal, $scope.discountamount);
                     } else {
                         $scope.errmsg = true;
