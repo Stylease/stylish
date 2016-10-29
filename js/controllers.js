@@ -1965,6 +1965,25 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             globalfunction.logIn();
         }
 
+        NavigationService.getCart(function (data) {
+            console.log("aaaaaaaa");
+            if (data.value == true) {
+
+                $scope.cartProductdate = data.data.cartproduct[0];
+                if ($.jStorage.get("cartDate")) {
+                    $scope.cartDate = $.jStorage.get("cartDate", $scope.cartpro);
+                } else {
+                    $scope.cartDate = $.jStorage.set("cartDate", $scope.cartProductdate);
+                }
+                console.log(" $scope.cartProductdate", $scope.cartProductdate);
+            }
+        }, function (err) {
+            console.log(err);
+        });
+
+
+
+
 
         NavigationService.getProductDetail($state.params.id, function (data) {
             // console.log(data);
@@ -2579,6 +2598,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         NavigationService.getCart(function (data) {
             if (data.value == true) {
                 $scope.cartcount = data.data.cartcount;
+                $scope.cartProduct = data.data.cartproduct;
             } else {
                 $scope.cartcount = 0;
             }
