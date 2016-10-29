@@ -1277,6 +1277,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.totalrentalamount = 0;
         $scope.totalsecuritydeposit = 0;
         $scope.variables.editCart = [];
+        $scope.cartdate = {};
         $scope.cartProduct = [];
         $scope.isLoggedIn = false;
         $scope.date = function () {
@@ -1301,52 +1302,81 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.gotocheckout = function () {
             $scope.isEqualDate = false;
             //new code fot cartdates
-            // $scope.newcartpro = $scope.cartProduct[0];
-            // _.each($scope.cartProduct, function (newpro) {
-            //     if (newpro.timeFrom.setHours(0, 0, 0, 0) !== $scope.newcartpro.timeFrom.setHours(0, 0, 0, 0) || newpro.duration !== $scope.newcartpro.duration || newpro.pickupTime !== $scope.newcartpro.pickupTime || newpro.deliveryTime !== $scope.newcartpro.deliveryTime) {
-            //         $scope.isEqualDate = true;
-            //     }
-            // });
-            // console.log(" $scope.isEqualDate", $scope.isEqualDate);
-            // if ($scope.isEqualDate) {
-            //     removemod = $uibModal.open({
-            //         animation: true,
-            //         templateUrl: "views/modal/creat-cart.html",
-            //         scope: $scope
-            //     });
-            // } else {
-            //     if ($scope.totalrentalamount >= 8000) {
-            //         if ($.jStorage.get("userLoggedIn")) {
-            //             $state.go('address');
-            //         } else {
-            //             $state.go(
-            //                 'checkoutsignin');
-            //         }
-            //     } else {
-            //         removemod = $uibModal.open({
-            //             animation: true,
-            //             templateUrl: "views/modal/minimumorder.html",
-            //             scope: $scope
-            //         });
-            //     }
-
-            // }
-
-            if ($scope.totalrentalamount >= 8000) {
-                if ($.jStorage.get("userLoggedIn")) {
-                    $state.go('address');
-                } else {
-                    $state.go(
-                        'checkoutsignin');
+            $scope.newcartpro = $scope.cartProduct[0];
+            _.each($scope.cartProduct, function (newpro) {
+                if (newpro.timeFrom.setHours(0, 0, 0, 0) !== $scope.newcartpro.timeFrom.setHours(0, 0, 0, 0) || newpro.duration !== $scope.newcartpro.duration || newpro.pickupTime !== $scope.newcartpro.pickupTime || newpro.deliveryTime !== $scope.newcartpro.deliveryTime) {
+                    $scope.isEqualDate = true;
                 }
-            } else {
-                removemod = $uibModal.open({
+            });
+            console.log(" $scope.isEqualDate", $scope.isEqualDate);
+            if ($scope.isEqualDate) {
+                cartdate = $uibModal.open({
                     animation: true,
-                    templateUrl: "views/modal/minimumorder.html",
+                    templateUrl: "views/modal/changedate.html",
+                    // templateUrl: "views/modal/creat-cart.html",
                     scope: $scope
                 });
+            } else {
+                NavigationService.checkoutCheck(function (data) {
+                    if (data.value) {
+                        removemod = $uibModal.open({
+                            animation: true,
+                            templateUrl: "views/modal/creat-cart.html",
+                            scope: $scope
+                        });
+                    } else {
+                        if ($scope.totalrentalamount >= 8000) {
+                            if ($.jStorage.get("userLoggedIn")) {
+                                $state.go('address');
+                            } else {
+                                $state.go(
+                                    'checkoutsignin');
+                            }
+                        } else {
+                            removemod = $uibModal.open({
+                                animation: true,
+                                templateUrl: "views/modal/minimumorder.html",
+                                scope: $scope
+                            });
+                        }
+                    }
+                });
+
+                // if ($scope.totalrentalamount >= 8000) {
+                //     if ($.jStorage.get("userLoggedIn")) {
+                //         $state.go('address');
+                //     } else {
+                //         $state.go(
+                //             'checkoutsignin');
+                //     }
+                // } else {
+                //     removemod = $uibModal.open({
+                //         animation: true,
+                //         templateUrl: "views/modal/minimumorder.html",
+                //         scope: $scope
+                //     });
+                // }
+
             }
 
+        };
+
+        $scope.changeCartDate = function (data) {
+            $scope.editProduct = data;
+
+            if ($scope.cartProduct.length == 1) {
+                $scope.editCart(data);
+            } else {
+                $scope.openDateModal = function (data) {
+                    cartdate = $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/changedate.html",
+                        scope: $scope.$new()
+                    });
+                };
+                $scope.openDateModal(data);
+
+            }
         };
 
         $scope.editCartProduct = function (id) {
@@ -1376,6 +1406,18 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         };
 
+
+        $scope.changeallDate = function (data) {
+            console.log("data", data);
+            if (data == undefined) {
+                var newdata = $scope.cartProduct[0];
+                $scope.editCart(newdata);
+
+            } else {
+                $scope.editCart(data);
+            }
+        };
+
         $scope.editCart = function (data) {
             $scope.editcartpro = {};
             $scope.editcartpro.product = data.product._id;
@@ -1385,8 +1427,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.editcartpro.size = data.size;
             $scope.editcartpro.deliveryTime = data.deliveryTime;
             $scope.editcartpro.pickupTime = data.pickupTime;
-            var timeTo = new Date();
-            $scope.editcartpro.timeTo = new Date(timeTo.setDate(d.getDate() + ($scope.editcartpro.duration - 1)));
+            // var timeTod = new Date();
+            // var addedSelDate = moment(date.date).add(Cal.duration + Cal.addDuration, "d");
+            $scope.editcartpro.timeTo = moment(new Date(d)).add(($scope.editcartpro.duration - 1), "d");
+            // $scope.editcartpro.timeTo = new Date(timeTod.setDate(d.getDate() + ($scope.editcartpro.duration - 1)));
             $scope.editcartpro.by = data.by;
 
             NavigationService.editAllCart($scope.editcartpro, function (data) {
@@ -1406,22 +1450,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             });
         };
 
-        $scope.changeCartDate = function (data) {
-            $scope.editProduct = data;
 
-            if ($scope.cartProduct.length == 1) {
-                $scope.editCart(data);
-            } else {
-                $scope.openDateModal = function (data) {
-                    cartdate = $uibModal.open({
-                        animation: true,
-                        templateUrl: "views/modal/changedate.html",
-                        scope: $scope
-                    });
-                };
-                $scope.openDateModal(data);
-            }
-        };
 
         $scope.openRemoveModal = function (productid) {
             $scope.variables.removeitem = productid;
