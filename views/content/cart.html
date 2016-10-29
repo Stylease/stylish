@@ -21,6 +21,8 @@
                         <h5 class="designername" ng-if="product.by">
                             <by : <span>{{product.by}}</span>
                         </h5>
+                        <p style="color:red;font-size:15px;" ng-if="product.available==false">Product Not Available</p>
+
                         <div class="product-all-detail" ng-hide="variables.editCart[product.product._id]">
                             <p ng-if="product.product.price">Retail Price : INR <span>{{product.product.price|currency}}/-</span></p>
                             <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>

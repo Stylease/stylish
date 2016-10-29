@@ -384,6 +384,12 @@ var navigationservice = angular.module('navigationservice', [])
                 method: "POST"
             }).success(callback);
         },
+        checkoutCheck: function (callback) {
+            return $http({
+                url: adminURL + "cart/checkoutCheck",
+                method: "POST"
+            }).success(callback);
+        },
         getSize: function (callback) {
             return $http({
                 url: adminURL + "size/getAll",

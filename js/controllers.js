@@ -1454,7 +1454,20 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     }, function () {
 
                     });
-
+                    NavigationService.checkoutCheck(function (data) {
+                        if (data.value) {
+                            _.each($scope.cartProduct, function (key) {
+                                if (_.includes(data.data, key.product._id)) {
+                                    key.available = false;
+                                } else {
+                                    key.available = true;
+                                }
+                            });
+                        } else {
+                            console.log("in else");
+                        }
+                    });
+                    console.log("$scope.cartProduct", $scope.cartProduct);
                     // CalenderService.duration = $scope.cartProduct[0].duration;
                     _.each($scope.cartProduct, function (n) {
                         if (n.duration == 4) {
@@ -1915,11 +1928,11 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
         //  $scope.saveWishList();
 
-         $scope.signUp = function () {
+        $scope.signUp = function () {
             globalfunction.emailSignup();
         }
 
-         $scope.Login = function () {
+        $scope.Login = function () {
             globalfunction.logIn();
         }
 
