@@ -335,7 +335,7 @@ a {
 }
 
 .dark-pink {
-    color: $brand-dark-pink;
+    color: $brand-dark-pink !important;
     // &:hover{
     //   color: $brand-dark-pink;
     // }
@@ -680,8 +680,7 @@ nav {
 
     .menu-dropdown {
         margin: 0;
-        padding: 0;
-        padding-left:15px;
+        padding: 0 0 0 15px;
 
         li {
             list-style-type: none;
@@ -3321,8 +3320,16 @@ div[uib-datepicker] {
 .fontsiz {
     font-size: 20px;
 }
-.addcartpad{    padding-top: 57px;
-    font-size: 16px;}
+
+.addcartpad {
+    padding-top: 57px;
+    font-size: 16px;
+}
+
+.product-introp {
+    font-size: 14px;
+  
+}
 // celebrity page end
 @import "fancybox-override";
 @import "mobile";
