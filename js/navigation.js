@@ -88,17 +88,22 @@ var navigationservice = angular.module('navigationservice', [])
             var subnavGen = [{
                 name: "All",
                 classis: "active",
-                link: "product({name:'All'})"
+                // link: "product({name:'All'})"
+                link: "product({name:'Occasion'})"
             }];
             var subnavGen1 = [{
                 name: "All",
                 classis: "active",
-                link: "product({name:'All'})"
+                link: "product({name:'Dresses'})"
+                // link: "product({name:'All'})"
+                
             }];
             var subnavGen2 = [{
                 name: "All",
                 classis: "active",
-                link: "product({name:'All'})"
+                link: "product({name:'Accessories'})"
+                // link: "product({name:'All'})"
+                
             }];
             $http({
                 url: adminURL + 'subcategory/getAllCat',

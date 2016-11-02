@@ -1325,7 +1325,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                             scope: $scope
                         });
                     } else {
-                        if ($scope.totalrentalamount >= 8000) {
+                        if ($scope.totalrentalamount >= 5000) {
                             if ($.jStorage.get("userLoggedIn")) {
                                 $state.go('address');
                             } else {
@@ -1408,9 +1408,12 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
 
         $scope.changeallDate = function (data) {
-            console.log("data", data);
+            console.log("data", data, $scope.cartProduct);
             if (data == undefined) {
-                var newdata = $scope.cartProduct[0];
+                var newdata = _.find($scope.cartProduct, function (o) {
+                    return o.available = true;
+                });
+               
                 $scope.editCart(newdata);
 
             } else {
@@ -1621,9 +1624,18 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.subcategory = data.data;
                 if ($state.params.name) {
 
-                    if ($state.params.name === "All") {
-                        $scope.filter.subcategory = [];
-                    } else {
+                    if ($state.params.name === "Occasion") {
+                        // $scope.filter.subcategory = [];
+                        $scope.checkall('Occasion', true);
+                    }
+                     else if ($state.params.name === "Dresses") {
+                        // $scope.filter.subcategory = [];
+                        $scope.checkall('Dresses', true);
+                    } 
+                    else if ($state.params.name === "Accessories") {
+                        // $scope.filter.subcategory = [];
+                        $scope.checkall('Accessories', true);
+                    }  else {
                         $scope.filter.subcategory.push(_.find($scope.subcategory, function (key) {
                             return key.name == $state.params.name;
                         })._id);
@@ -1678,6 +1690,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.size();
 
         $scope.checkall = function (cat, allFlag) {
+            console.log("check all", cat, allFlag);
             var abc = _.filter($scope.subcategory, function (key) {
                 return key.category.name == cat;
             });
