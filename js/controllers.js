@@ -2267,11 +2267,13 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             opened: false
         };
         //change color
-        var abc = new Date();
-        $scope.cartpro.timeFrom = tomorrow;
+        var afterTomorrow = new Date(tomorrow);
+        afterTomorrow.setDate(tomorrow.getDate() + 1);
+
+        $scope.cartpro.timeFrom = afterTomorrow;
         // $scope.today = new Date();
         // var afterTomorrow = new Date(tomorrow);
-        // afterTomorrow.setDate(tomorrow.getDate() + 1);
+
         // var afterTomorrow2 = new Date(tomorrow);
         // afterTomorrow2.setDate(tomorrow.getDate() + 2);
         // var afterTomorrow3 = new Date(tomorrow);
