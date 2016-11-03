@@ -2447,7 +2447,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         })
     })
 
-//header loading twice sorted by this  
+//header loading twice sorted by this
 .controller('titleCtrl', function ($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state) {
     $scope.template = TemplateService;
     // $scope.template = {};
@@ -2555,6 +2555,22 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         console.log("set", $.jStorage.get("location"));
         $scope.closeHello();
     };
+    $scope.formData = {};
+    $scope.formComplete=false;
+   $scope.submitForm = function(formData) {
+       NavigationService.saveCountry(formData, function(data) {
+           console.log("data", data);
+           if (data.value === true) {
+             $scope.formComplete=true;
+             $timeout(function() {
+                 $scope.formComplete = false;
+                 $scope.formData = {};
+                  $scope.saveOutsideIndia();
+             }, 2000);
+
+           }
+       })
+   }
 
     $scope.closeHello = function () {
         console.log("aaaaaaaaa");

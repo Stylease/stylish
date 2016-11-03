@@ -13,11 +13,12 @@
         </div>
         <form class="mt20" ng-submit="submitForm(formData)">
           <input type="email" class="form-control" placeholder="Enter your email-id" ng-model="formData.email">
-          <input type="text" class="form-control" placeholder="Please enter your city" ng-model="formData.country">
+          <input type="text" class="form-control" placeholder="Please enter your city" ng-model="formData.city">
           <button  type="submit" class="btn btn-outline text-medium btn-full mt10">Submit</button>
           <!-- <button ng-click="saveOutsideIndia()" type="submit" class="btn btn-outline text-medium btn-full mt10">Submit</button> -->
         </form>
       </div>
     </div>
   </div>
+  <h3 ng-if="formComplete" class="text-center dark-pink">Thank You</h3>
 </div>
