@@ -47,7 +47,6 @@ templateservicemod.service('TemplateService', function () {
     data.content = "views/content/" + page + ".html";
     return data;
   };
-
   this.init();
 
 });

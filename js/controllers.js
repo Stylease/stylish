@@ -1,4 +1,5 @@
 var globalfunction = {};
+var counter = 0;
 angular.module('phonecatControllers', ['templateservicemod', "calenderService", 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'infinite-scroll', 'angular.filter'])
     // .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     //     cfpLoadingBarProvider.includeSpinner = false;
@@ -1624,16 +1625,11 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.subcategory = data.data;
                 if ($state.params.name) {
 
-                    if ($state.params.name === "Occasion") {
-                        // $scope.filter.subcategory = [];
-                        console.log("$scope.checkIt", $scope.checkIt);
-                        $scope.checkall('Occasion', $scope.checkIt);
-                    } else if ($state.params.name === "Dresses") {
-                        // $scope.filter.subcategory = [];
-                        $scope.checkall('Dresses', true);
-                    } else if ($state.params.name === "Accessories") {
-                        // $scope.filter.subcategory = [];
-                        $scope.checkall('Accessories', true);
+                    if ($state.params.name === "Occasion" || $state.params.name === "Dresses" || $state.params.name === "Accessories") {
+                        // _.each($scope.subcategory,function(key){
+                        //     $scope.checkIt[key.name]= false;
+                        // });
+                        $scope.checkall($state.params.name, true);
                     } else {
                         $scope.filter.subcategory.push(_.find($scope.subcategory, function (key) {
                             return key.name == $state.params.name;
@@ -1697,6 +1693,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             _.each(abc, function (key) {
                 // body...
                 if (allFlag === true) {
+
+                    console.log("emptyyyy");
                     if ($scope.checkIt[key.name]) {
                         //$scope.pushSubCategory(false, key._id, key.name);
                     } else {
@@ -2449,6 +2447,13 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         })
     })
 
+//header loading twice sorted by this  
+.controller('titleCtrl', function ($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state) {
+    $scope.template = TemplateService;
+    // $scope.template = {};
+    // $scope.template.title = TemplateService.giveTitle();
+})
+
 .controller('headerctrl', function ($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state) {
     $scope.template = TemplateService;
     //TemplateService.removeLoaderOn(1);
@@ -2471,14 +2476,14 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     var modal2 = "";
     var modal3 = "";
     var modal4 = "";
-    $scope.cart = function () {
-        $scope.loginmsg.msg = "";
-        $uibModal.open({
-            animation: true,
-            templateUrl: "views/modal/hello.html",
-            scope: $scope
-        });
-    };
+    // $scope.cart = function () {
+    //     $scope.loginmsg.msg = "";
+    //     $uibModal.open({
+    //         animation: true,
+    //         templateUrl: "views/modal/hello.html",
+    //         scope: $scope
+    //     });
+    // };
     $scope.tabActive = function () {
         if ($state.current.name === 'profile') {
             $scope.tabActive1 = true;
@@ -2527,10 +2532,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         });
     };
-
+    console.log($state.current.name);
     $scope.OutsideIndia = function () {
-        console.log("$.jStorage.location", $.jStorage.get("location"));
-        if ($.jStorage.get("location") !== "OutsideIndia") {
+        if ($.jStorage.get("location") === "OutsideIndia") {} else {
+
             NavigationService.localCountry(function (data) {
                 if (data.geoplugin_countryName === "India") {
                     $scope.hello = $uibModal.open({
@@ -2540,18 +2545,21 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     });
                 }
             });
+
         }
     };
 
     $scope.OutsideIndia();
     $scope.saveOutsideIndia = function () {
         $.jStorage.set("location", "OutsideIndia");
-        console.log("set",$.jStorage.get("location"));
+        console.log("set", $.jStorage.get("location"));
         $scope.closeHello();
     };
 
-    $scope.closeHello = function(){
-    $scope.hello.close();
+    $scope.closeHello = function () {
+        console.log("aaaaaaaaa");
+        $scope.hello.close();
+        console.log("$scope.hello", $scope.hello);
     };
 
     $scope.signUp = function () {
