@@ -11,10 +11,11 @@
         <div class="message">
           <p>We currently deliver only in <span class="dark-pink">Mumbai</span>. Leave us your email id for updates on when we’re coming to your city!</p>
         </div>
-        <form class="mt20" >
+        <form class="mt20" ng-submit="submitForm(formData)">
           <input type="email" class="form-control" placeholder="Enter your email-id" ng-model="formData.email">
-          <input type="text" class="form-control" placeholder="Please enter your city" ng-model="formData.city">
-          <button ng-click="saveOutsideIndia()" type="button" class="btn btn-outline text-medium btn-full mt10">Submit</button>
+          <input type="text" class="form-control" placeholder="Please enter your city" ng-model="formData.country">
+          <button  type="submit" class="btn btn-outline text-medium btn-full mt10">Submit</button>
+          <!-- <button ng-click="saveOutsideIndia()" type="submit" class="btn btn-outline text-medium btn-full mt10">Submit</button> -->
         </form>
       </div>
     </div>

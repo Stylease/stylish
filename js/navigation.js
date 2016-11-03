@@ -96,14 +96,14 @@ var navigationservice = angular.module('navigationservice', [])
                 classis: "active",
                 link: "product({name:'Dresses'})"
                 // link: "product({name:'All'})"
-                
+
             }];
             var subnavGen2 = [{
                 name: "All",
                 classis: "active",
                 link: "product({name:'Accessories'})"
                 // link: "product({name:'All'})"
-                
+
             }];
             $http({
                 url: adminURL + 'subcategory/getAllCat',
@@ -349,6 +349,14 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminURL + "contact/save",
                 method: "POST",
                 data: request
+            }).success(callback);
+        },
+        saveCountry: function (formData, callback) {
+            
+            return $http({
+                url: adminURL + "country/save",
+                method: "POST",
+                data: formData
             }).success(callback);
         },
         getOrderDetail: function (id, callback) {
