@@ -2241,13 +2241,15 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         }
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
+        var afterTomorrow = new Date(tomorrow);
+        afterTomorrow.setDate(tomorrow.getDate() + 1);
         //calendar
         $scope.dateOptions = {
             customClass: CalenderService.getDayClass,
             dateDisabled: CalenderService.disableDate,
             formatYear: 'yy',
             maxDate: new Date(2020, 5, 22),
-            minDate: tomorrow,
+            minDate: afterTomorrow,
             startingDay: 1,
             showWeeks: false
         };
@@ -2267,8 +2269,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             opened: false
         };
         //change color
-        var afterTomorrow = new Date(tomorrow);
-        afterTomorrow.setDate(tomorrow.getDate() + 1);
+
 
         $scope.cartpro.timeFrom = afterTomorrow;
         // $scope.today = new Date();
@@ -2539,7 +2540,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         if ($.jStorage.get("location") === "OutsideIndia") {} else {
 
             NavigationService.localCountry(function (data) {
-                if (data.geoplugin_countryName === "India") {
+                if (data.geoplugin_countryName !== "India") {
                     $scope.hello = $uibModal.open({
                         animation: true,
                         templateUrl: "views/modal/hello.html",
@@ -2558,21 +2559,21 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.closeHello();
     };
     $scope.formData = {};
-    $scope.formComplete=false;
-   $scope.submitForm = function(formData) {
-       NavigationService.saveCountry(formData, function(data) {
-           console.log("data", data);
-           if (data.value === true) {
-             $scope.formComplete=true;
-             $timeout(function() {
-                 $scope.formComplete = false;
-                 $scope.formData = {};
-                  $scope.saveOutsideIndia();
-             }, 2000);
+    $scope.formComplete = false;
+    $scope.submitForm = function (formData) {
+        NavigationService.saveCountry(formData, function (data) {
+            console.log("data", data);
+            if (data.value === true) {
+                $scope.formComplete = true;
+                $timeout(function () {
+                    $scope.formComplete = false;
+                    $scope.formData = {};
+                    $scope.saveOutsideIndia();
+                }, 2000);
 
-           }
-       })
-   }
+            }
+        })
+    }
 
     $scope.closeHello = function () {
         console.log("aaaaaaaaa");
