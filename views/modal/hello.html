@@ -1,6 +1,6 @@
 <div class="bg-light-pink pd20 hello">
   <div class="close-header close-popup">
-    <span class="close" ng-click="$close();">
+    <span class="close" ng-click="closeHello()">
       <img src="img/cross.png" alt="" class="img-responsive">
     </span>
   </div>
@@ -14,7 +14,7 @@
         <form action="" class="mt20">
           <input type="email" class="form-control" placeholder="Enter your email-id">
           <input type="text" class="form-control" placeholder="Please enter your city">
-          <button class="btn btn-outline text-medium btn-full mt10">Submit</button>
+          <button ng-click="saveOutsideIndia()" class="btn btn-outline text-medium btn-full mt10">Submit</button>
         </form>
       </div>
     </div>

@@ -450,5 +450,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
 
+        localCountry: function(callback) {
+            $.getJSON("http://www.geoplugin.net/json.gp?jsoncallback=?", callback);
+        },
+
     };
 });

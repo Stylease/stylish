@@ -1413,7 +1413,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 var newdata = _.find($scope.cartProduct, function (o) {
                     return o.available = true;
                 });
-               
+
                 $scope.editCart(newdata);
 
             } else {
@@ -1626,16 +1626,15 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
                     if ($state.params.name === "Occasion") {
                         // $scope.filter.subcategory = [];
-                        $scope.checkall('Occasion', true);
-                    }
-                     else if ($state.params.name === "Dresses") {
+                        console.log("$scope.checkIt", $scope.checkIt);
+                        $scope.checkall('Occasion', $scope.checkIt);
+                    } else if ($state.params.name === "Dresses") {
                         // $scope.filter.subcategory = [];
                         $scope.checkall('Dresses', true);
-                    } 
-                    else if ($state.params.name === "Accessories") {
+                    } else if ($state.params.name === "Accessories") {
                         // $scope.filter.subcategory = [];
                         $scope.checkall('Accessories', true);
-                    }  else {
+                    } else {
                         $scope.filter.subcategory.push(_.find($scope.subcategory, function (key) {
                             return key.name == $state.params.name;
                         })._id);
@@ -1694,7 +1693,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             var abc = _.filter($scope.subcategory, function (key) {
                 return key.category.name == cat;
             });
-
+            console.log("abc", $scope.checkIt);
             _.each(abc, function (key) {
                 // body...
                 if (allFlag === true) {
@@ -2270,7 +2269,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             opened: false
         };
         //change color
-        var abc = new Date(); 
+        var abc = new Date();
         $scope.cartpro.timeFrom = tomorrow;
         // $scope.today = new Date();
         // var afterTomorrow = new Date(tomorrow);
@@ -2466,6 +2465,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $(".logo-view").removeClass("small-logo");
         }
     });
+
+
     var modal1 = "";
     var modal2 = "";
     var modal3 = "";
@@ -2525,6 +2526,32 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         }, function (err) {
 
         });
+    };
+
+    $scope.OutsideIndia = function () {
+        console.log("$.jStorage.location", $.jStorage.get("location"));
+        if ($.jStorage.get("location") !== "OutsideIndia") {
+            NavigationService.localCountry(function (data) {
+                if (data.geoplugin_countryName === "India") {
+                    $scope.hello = $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/hello.html",
+                        scope: $scope
+                    });
+                }
+            });
+        }
+    };
+
+    $scope.OutsideIndia();
+    $scope.saveOutsideIndia = function () {
+        $.jStorage.set("location", "OutsideIndia");
+        console.log("set",$.jStorage.get("location"));
+        $scope.closeHello();
+    };
+
+    $scope.closeHello = function(){
+    $scope.hello.close();
     };
 
     $scope.signUp = function () {

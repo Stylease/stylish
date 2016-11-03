@@ -173,7 +173,7 @@
                                 <form>
                                     <uib-accordion close-others="oneAtATime ">
                                         <uib-accordion-group is-open="status.open1 " ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
-                                            <uib-accordion-heading>
+                                            <uib-accordion-heading id="{{cat}}">
                                                 <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open1, 'fa-angle-down': !status.open1} "></i>
                                                 <span class="block ">{{cat}}</span>
                                             </uib-accordion-heading>
