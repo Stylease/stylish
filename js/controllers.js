@@ -1626,10 +1626,11 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 if ($state.params.name) {
 
                     if ($state.params.name === "Occasion" || $state.params.name === "Dresses" || $state.params.name === "Accessories") {
-                        // _.each($scope.subcategory,function(key){
-                        //     $scope.checkIt[key.name]= false;
-                        // });
-                        $scope.checkall($state.params.name, true);
+                         $scope.checkall($state.params.name, true);
+                        _.each($scope.subcategory,function(key){
+                            $scope.checkIt[key.name]= false;
+                        });
+                       
                     } else {
                         $scope.filter.subcategory.push(_.find($scope.subcategory, function (key) {
                             return key.name == $state.params.name;
@@ -1685,16 +1686,16 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.size();
 
         $scope.checkall = function (cat, allFlag) {
-            console.log("check all", cat, allFlag);
+            console.log("check all", cat, allFlag, $scope.subcategory);
             var abc = _.filter($scope.subcategory, function (key) {
-                return key.category.name == cat;
-            });
-            console.log("abc", $scope.checkIt);
+                console.log("key cat name", key.category.name, cat);
+                     return key.category.name == cat;
+              });
+            console.log("abc", $scope.checkIt, $scope.subcategory);
             _.each(abc, function (key) {
                 // body...
                 if (allFlag === true) {
-
-                    console.log("emptyyyy");
+                        console.log("emptyyyy");
                     if ($scope.checkIt[key.name]) {
                         //$scope.pushSubCategory(false, key._id, key.name);
                     } else {
