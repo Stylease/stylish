@@ -58,7 +58,7 @@
                                                     <h5>Size</h5>
                                                     <div class="product-size product-sizes" ng-init="size=''">
                                                         <ul class="list-inline">
-                                                            <li ng-repeat="size in sizes track by $index "><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click="pushSize(size._id)">{{size.name}}</a></li>
+                                                            <li ng-repeat="size in sizes | orderBy:'order' "><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click="pushSize(size._id)">{{size.name}}</a></li>
                                                         </ul>
                                                     </div>
 
@@ -212,7 +212,7 @@
                                             </uib-accordion-heading>
                                             <div class="product-size" ng-init="size=''">
                                                 <ul class="list-inline">
-                                                    <li ng-repeat="size in sizes track by $index "><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click="pushSize(size._id)">{{size.name}}</a></li>
+                                                    <li ng-repeat="size in sizes  | orderBy:'order' "><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click="pushSize(size._id)">{{size.name}}</a></li>
 
                                                 </ul>
                                             </div>
