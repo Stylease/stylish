@@ -86,6 +86,13 @@
 }
 @media (max-width: $screen-sm-max) {
   .product-introp{font-size: 13px;}
+  .hiw{ .minsize {
+    margin: 0;
+}
+.minsize2 {
+    margin: 0;
+}
+  }
     .how-it-works {
         min-height: 250px;
     }
@@ -260,10 +267,6 @@
         height: 314px;
     }
 
-    .hiw .minsize2 {
-        margin: 8%;
-    }
-
     .hiw .text2 {
         font-size: 21px;
         padding: 5%;
@@ -275,6 +278,14 @@
     padding-top: 24px;
     padding-left: 0px;
 
+}
+.colh {
+    height: auto;
+    margin-bottom: 20px;
+}
+.colh2 {
+    height: auto;
+     margin-bottom: 20px
 }
   .add-body .custom-checkbox {
     margin: 0px;

@@ -628,7 +628,15 @@ header {
 .menu-in {
     @include transform(translateX(0px));
     @include transition(all 300ms linear);
+    overflow: auto;
+    &::-webkit-scrollbar {
+    width: 0px;
 }
+&::-moz-scrollbar {
+width: 0px;
+}
+}
+
 
 .logo h1 {
     margin: 0;
@@ -2991,12 +2999,12 @@ ul.mn-list {
     }
 
     .imgsize {
-        width: 20% !important;
+        height: 50px !important;
     }
 
     .imgsizereturn {
         margin: 5% 0;
-        width: 44% !important;
+        // width: 44% !important;
     }
 
     .text {
