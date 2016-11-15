@@ -132,8 +132,10 @@
                                                     </div>
                                                 </div>
                                                 <h4 class="product-name ">{{product.name | shorten:50}}</h4>
-                                                 <p ng-if="product.designer" class="made-by">By :{{product.designer.name}} </p>
-                                                <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
+                                                <div class="minht">
+                                                    <p ng-if="product.designer">By :{{product.designer.name | shorten:30}} </p>
+                                                    <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -156,8 +158,10 @@
                                                         <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
                                                     </div>
                                                     <h4 class="product-name ">{{product.name | shorten:50}}</h4>
-                                                     <p ng-if="product.designer" class="made-by">By :{{product.designer.name}} </p>
-                                                    <p class="product-namep ">Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
+                                                    <div class="minht">
+                                                        <p ng-if="product.designer">By :{{product.designer.name | shorten:30}} </p>
+                                                        <p class="product-namep ">Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
