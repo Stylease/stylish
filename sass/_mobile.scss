@@ -1,7 +1,4 @@
 @media (max-width: 1200px) {
-  .product-detail h4 {
-    height: 76px;
-}
 
     .order-delivery-time .time {
         margin-bottom: 10px;
@@ -85,6 +82,7 @@
     }
 }
 @media (max-width: $screen-sm-max) {
+  .product-detail h4{height: 36px;}
   .product-introp{font-size: 13px;}
   .hiw{ .minsize {
     margin: 0;
@@ -492,8 +490,9 @@
     }
 
     .product-detail h4 {
-        min-height: 67px;
+
         margin: 15px 0 10px;
+        height: 40px;
     }
 
     .search-product input {
@@ -925,9 +924,6 @@
         }
     }
 
-    .list-view .product-detail h4 {
-        min-height: 25px;
-    }
     // profile
     .adj-padd {
         padding-left: 2px;
@@ -1320,7 +1316,7 @@
 
     .product-detail {
         h4 {
-            min-height: 85px;
+          
             font-size: 15px;
         }
 
