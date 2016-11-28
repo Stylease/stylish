@@ -1326,7 +1326,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                             scope: $scope
                         });
                     } else {
-                        if ($scope.totalrentalamount >= 5000) {
+                        if ($scope.totalrentalamount >= 500) {
                             if ($.jStorage.get("userLoggedIn")) {
                                 $state.go('address');
                             } else {
