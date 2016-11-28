@@ -1,14 +1,14 @@
 <div class="heading-bar">
   <div class="container text-center">
     <div class="relate hidden-md hidden-sm hidden-xs">
-      <div class="search-product">
+      <!--<div class="search-product">
         <form action="">
           <input type="search" placeholder="Find what you're looking for !">
           <button type="submit" class="bg-dark-pink">
             <img src="img/search.png" alt="" class="img-responsive">
           </button>
         </form>
-      </div>
+      </div>-->
     </div>
     <h3 class="heading">CELEBRITIES  CHOICE</h3>
     <!-- <span class="found block">7 items</span> -->
@@ -16,7 +16,7 @@
   </div>
 </div>
 <div class="shop">
-  <div class="container">
+  <!--<div class="container">
     <div class="search-product hidden-md visible-sm visible-xs">
       <form action="">
         <input type="search" placeholder="Find what you're looking for !">
@@ -25,7 +25,7 @@
         </button>
       </form>
     </div>
-  </div>
+  </div>-->
   <!--<div class="sort-by">
     <div class="container">
       <div class=" relate">
@@ -42,6 +42,9 @@
       </div>
     </div>
   </div>-->
+   <div class="celebrity-choice-main" ng-if="celebrityData.length==0">
+     <h3 class="text-center">No data found</h3>
+     </div>
   <div class="celebrity-choice-main">
     <div class="container">
       <div class="row" infinite-scroll='loadMore()' infinite-scroll-disabled="shouldscroll">
