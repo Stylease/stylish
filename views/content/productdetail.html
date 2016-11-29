@@ -19,7 +19,7 @@
             <!-- relate in relatedProduct -->
             <!-- related-imgholder -->
             <flex-slider class="carousel" flex-slide="relate in product.images track by $index" item-width="70" animation="slide" item-margin="20"
-              control-nav="false">
+              control-nav="false" autoscroll="true">
               <li>
                 <div class="related-imgholder pointer">
                   <img ng-src="{{relate.image|serverimage}}" alt="" class="img-responsive" ng-click="selectImage(relate.image)">
