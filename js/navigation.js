@@ -7,31 +7,23 @@ var navigationservice = angular.module('navigationservice', [])
             disabled: true,
             anchor: "home"
         }, {
+            name: "Occasion",
+            classis: "active",
+            disabled: false,
+            anchor: "occasion",
+            subnav: []
+        }, {
             name: "Dresses",
             classis: "active",
             disabled: false,
             anchor: "dresses",
             subnav: []
         }, {
-            name: "Occasion",
-            classis: "active",
-            disabled: false,
-            anchor: "occasion",
-            subnav: [{
-                name: "All",
-                classis: "active",
-                link: ""
-            }]
-        }, {
             name: "Accessories",
             classis: "active",
             disabled: false,
             anchor: "accessories",
-            subnav: [{
-                name: "All",
-                classis: "active",
-                link: ""
-            }]
+            subnav: []
         }
         // , {
         //     name: "Celebrities Choice",
@@ -112,14 +104,14 @@ var navigationservice = angular.module('navigationservice', [])
                 if (data) {
 
                     _.each(data.data, function(key) {
-                        if (key.category.name == 'Occasion') {
+                        if (key.category._id === '57ee51891ca13f065a321606') {
                             // console.log("oc");
                             subnavGen.push({
                                 name: key.name,
                                 classis: "active",
                                 link: "product({name:'" + key.name + "'})"
                             });
-                        } else if (key.category.name == 'Dresses') {
+                        } else if (key.category._id === '57ee51761ca13f065a321605') {
                             subnavGen1.push({
                                 name: key.name,
                                 classis: "active",
@@ -134,8 +126,8 @@ var navigationservice = angular.module('navigationservice', [])
                         }
 
                     });
-                    navigation[1].subnav = subnavGen1;
-                    navigation[2].subnav = subnavGen;
+                    navigation[1].subnav = subnavGen;
+                    navigation[2].subnav = subnavGen1;
                     navigation[3].subnav = subnavGen2;
                 }
             });
