@@ -125,7 +125,7 @@
                                                         <span class="pointer wishlist-heart "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
                                                     </div>
                                                 </div>
-                                                <h4 class="product-name ">{{product.name | shorten:50}}</h4>
+                                                <h4 class="product-name ">{{product.name | shorten:40}}</h4>
                                                 <div class="minht">
                                                     <p ng-if="product.designer">By : {{product.designer.name | shorten:30}} </p>
                                                     <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
@@ -150,7 +150,7 @@
                                                     <div class="wishlist text-right ">
                                                         <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
                                                     </div>
-                                                    <h4 class="product-name ">{{product.name | shorten:50}}</h4>
+                                                    <h4 class="product-name ">{{product.name | shorten:40}}</h4>
                                                     <div class="minht">
                                                         <p ng-if="product.designer">By : {{product.designer.name | shorten:30}} </p>
                                                         <p class="product-namep ">Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
