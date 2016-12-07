@@ -20,11 +20,6 @@
                                 </p>
                             </div>
                             <div class="order-prd-detail">
-                                <!-- <p class="mb5"><span class="edit-cart">RENT</span> <span>Rs. 6,700/-</span></p>
-                <p class="mb5"><span class="edit-cart">Size</span> <span>M</span></p>
-                <p class="mb5"><span class="edit-cart">Delivery Date</span> <span>04 May, 2016</span></p>
-                <p class="mb5"><span class="edit-cart">Duration</span> <span>11 May, 2016</span></p> -->
-                                <!-- <p>Retail Price : INR <span>{{product.product.price}}/-</span></p> -->
                                 <p ng-if="product.size" class="mb5"><span class="edit-cart">Size</span> <span>{{product.size}}</span></p>
                                 <p class="mb5"><span class="edit-cart">Rental</span> <span ng-if="product.duration==4">INR {{product.product.fourdayrentalamount|currency}}/-</span>
                                     <span ng-if="product.duration==8">INR {{product.product.eightdayrentalamount|currency}}/-</span>

@@ -1,47 +1,11 @@
 <div class="heading-bar">
   <div class="container text-center">
     <div class="relate hidden-md hidden-sm hidden-xs">
-      <!--<div class="search-product">
-        <form action="">
-          <input type="search" placeholder="Find what you're looking for !">
-          <button type="submit" class="bg-dark-pink">
-            <img src="img/search.png" alt="" class="img-responsive">
-          </button>
-        </form>
-      </div>-->
     </div>
     <h3 class="heading">CELEBRITIES  CHOICE</h3>
-    <!-- <span class="found block">7 items</span> -->
-    <!--<label class="block text-medium">7 items</label>-->
   </div>
 </div>
 <div class="shop">
-  <!--<div class="container">
-    <div class="search-product hidden-md visible-sm visible-xs">
-      <form action="">
-        <input type="search" placeholder="Find what you're looking for !">
-        <button type="submit" class="bg-dark-pink">
-          <img src="img/search.png" alt="" class="img-responsive">
-        </button>
-      </form>
-    </div>
-  </div>-->
-  <!--<div class="sort-by">
-    <div class="container">
-      <div class=" relate">
-        <img src="img/sort.png" alt="" class="inline-block mr5 img-responsive">
-        <span class="text-uppercase pointer" ng-click="showShortlist = (showShortlist == true)? false:true;">sort</span>
-        <div class="sort-filter-dropdown" ng-show="showShortlist">
-          <ul>
-            <li><a href="">Popularity</a></li>
-            <li><a href="">Price : High - Low</a></li>
-            <li><a href="">Price : Low - High</a></li>
-            <li><a href="">Recent Addition</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>-->
    <div class="celebrity-choice-main" ng-if="celebrityData.length==0">
      <h3 class="text-center">No data found</h3>
      </div>
@@ -59,23 +23,12 @@
               </div>
             </div>
             <div class="celebrity-imgholder relate text-center">
-              <!-- <img ng-src="{{celebrity.img}}" alt="{{celebrity.celebrityName}}" class="get-center img-responsive">
-              <div class="choice">
-                <img ng-src="{{celebrity.secImg}}" alt="{{celebrity.celebrityName}}" class="img-responsive">
-              </div> -->
 <div class="display-inline" ng-repeat="img in celebrity.images track by $index">
   <div class="img-holder" >
-    <img ng-src="{{img.image|serverimage}}" alt="">
+    <img ng-src="{{img.image|serverimage}}" alt="{{celebrity.celebrity}}">
   </div>
-
 </div>
-<!-- <div class="display-inline">
-  <div class="img-holder">
-    <img src="img/celebrities.jpg" alt="">
-  </div>
-</div> -->
             <div class="text-center">
-              <!-- <span class="designer-name inline-block mb5 text-medium">By : {{celebrity.product.name}}</span> -->
               <h3 class="celebrity-price m-clear">Rent : Rs.{{celebrity.product.fourdayrentalamount}}/-</h3>
               <button class="btn btn-outline btn-full text-medium mt20 mb20" ui-sref="productdetail({id:celebrity.product._id})">View Details</button>
             </div>

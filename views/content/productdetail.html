@@ -4,25 +4,16 @@
       <div class="col-md-7">
         <div class="relate">
           <div class="productdetail-slider">
-            <!-- <flex-slider class="carousel" flex-slide="slide in product track by $index" direction-nav="false">
-              <li>
-                <div class="prd-slide-imgholder relate m-center">
-                  <img ng-src="{{slide}}" alt="" class="get-center">
-                </div>
-              </li>
-            </flex-slider> -->
             <div class="prd-slide-imgholder relate m-center">
               <img ng-src="{{mainImage|serverimage}}" alt="" class="get-center img-responsive">
             </div>
           </div>
           <div class="product-related-slider">
-            <!-- relate in relatedProduct -->
-            <!-- related-imgholder -->
             <flex-slider class="carousel" flex-slide="relate in product.images track by $index" item-width="70" animation="slide" item-margin="20"
               control-nav="false" autoscroll="true">
               <li>
                 <div class="related-imgholder pointer">
-                  <img ng-src="{{relate.image|serverimage}}" alt="" class="img-responsive" ng-click="selectImage(relate.image)">
+                  <img ng-src="{{relate.image|serverimage}}" alt="{{product.name}}" class="img-responsive" ng-click="selectImage(relate.image)">
                 </div>
               </li>
             </flex-slider>
@@ -40,31 +31,19 @@
             <p>Rental amount : Rs. <span>{{product.rentalamount|currency}}</span>/-</p>
             <p class="inline-block">Refundable Security Deposit: Rs.<span>{{product.securitydeposit|currency}}</span>/-</p>
             <p class="refund ml5 inline-block" ng-click="tooltipIsOpen = !tooltipIsOpen">
-              <!-- <i class="dark-pink pointer fa fa-question-circle-o"></i> -->
               <img src="img/change.png" alt="" width="15">
               <span class="change" uib-tooltip="Your deposit will be refunded on return of the outfit." tooltip-is-open="tooltipIsOpen"
                 tooltip-placement="bottom"></span></p>
           </div>
-          <!--     <div class="product-size" ng-if="product.size.length > 0">
-            <span class="mr20 text-medium">Size :</span>
-            <ul class="list-inline inline-block m-clear" ng-init="size=''">
-              <li ng-repeat="size in product.size"><a ng-class="{'select-size': cartpro.size==size.name }" ng-click="cartpro.size=size.name">{{size.name}}</a></li>
-              <! - - <li><a href="" ng-class="{'select-size' : filter.size=='m'}" ng-click="filter.size='m'">M</a></li>
-              <li><a href="" ng-class="{'select-size' : filter.size=='l'}" ng-click="filter.size='l'">L</a></li>
-              <li><a href="" ng-class="{'select-size' : filter.size=='xl'}" ng-click="filter.size='xl'">XL</a></li> -->
-          <!--size list-->
           <form name="myProduct">
             <div ng-if="product.size.length>0" class="s1">
               <div>
-                <!-- <form> -->
                 <span class="text-medium">Size:</span>
                 <div ng-repeat="size in product.size | orderBy:'order'" required ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
                   <label class="size-font pointer">
                                  {{size.name}}
                               </label>
                 </div>
-
-                <!-- </form> -->
               </div>
               <div class="back-color2" ng-if="cartpro.size">
                 <div class="back-color">
@@ -157,9 +136,6 @@
               <div class="buttons on-edit text-center">
                 <button class="atc-atw btn btn-outline text-uppercase btn-full m-center" ng-click="addToCart();" ng-disabled="myProduct.$invalid">add to cart</button>
                 <button type="button" class="atc-atw btn btn-outline text-uppercase btn-full m-center" ng-click="addTowishlistProduct(product._id);">add to wishlist</button>
-                <!--</div>
-              <p ng-if="pleaseLogin"> Please login For Shopping</p>
-            </div>-->
           </form>
           </div>
           <div class="product-more-detail accordion-custom">

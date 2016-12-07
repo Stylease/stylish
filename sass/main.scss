@@ -47,7 +47,9 @@ $magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
 .glyphicon {
     font-family: 'Glyphicons Halflings';
 }
-
+.fnt-30{
+    font-size: 30px;
+}
 .font-serif {
     font-family: "fine-serif";
 }
@@ -2459,9 +2461,10 @@ flex-slider {
     padding-right: 5px;
     padding-bottom: 30px;
 
-    h2 {
+    h5 {
         padding: 5% 0;
         margin: 0;
+        font-size: 30px;
     }
 
     p {
@@ -2500,7 +2503,7 @@ flex-slider {
 }
 
 .head-text {
-    h1 {
+    h6 {
         border-bottom: 1px solid #f08168;
         display: inline-block;
         font-size: 25px;
