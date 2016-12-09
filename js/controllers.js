@@ -5,7 +5,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     //     cfpLoadingBarProvider.includeSpinner = false;
     // }])
 
-.controller('HomeCtrl', function ($scope, $uibModal, TemplateService, NavigationService, $timeout) {
+.controller('HomeCtrl', function ($scope, $state, $uibModal, TemplateService, NavigationService, $timeout) {
 
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("home");
@@ -71,6 +71,52 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         }, function (err) {
 
         });
+
+        console.log($state.current.name);
+        $scope.OutsideIndia = function () {
+            if ($.jStorage.get("location") === "OutsideIndia") {} else {
+
+                NavigationService.localCountry(function (data) {
+                    // console.log("data", data);
+                    if (data.geoplugin_countryName !== "India") {
+                        $scope.hello = $uibModal.open({
+                            animation: true,
+                            templateUrl: "views/modal/hello.html",
+                            scope: $scope
+                        });
+                    }
+                });
+            }
+        };
+
+        $scope.OutsideIndia();
+        $scope.saveOutsideIndia = function () {
+            $.jStorage.set("location", "OutsideIndia");
+            console.log("set", $.jStorage.get("location"));
+            $scope.closeHello();
+        };
+        $scope.formData = {};
+        $scope.formComplete = false;
+        $scope.submitForm = function (formData) {
+            NavigationService.saveCountry(formData, function (data) {
+                console.log("data", data);
+                if (data.value === true) {
+                    $scope.formComplete = true;
+                    $timeout(function () {
+                        $scope.formComplete = false;
+                        $scope.formData = {};
+                        $scope.saveOutsideIndia();
+                    }, 2000);
+
+                }
+            })
+        }
+
+        $scope.closeHello = function () {
+            console.log("aaaaaaaaa");
+            $scope.hello.close();
+            console.log("$scope.hello", $scope.hello);
+        };
 
         NavigationService.getTestimonial(function (data) {
             if (data) {
@@ -1626,11 +1672,11 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 if ($state.params.name) {
 
                     if ($state.params.name === "Occasion" || $state.params.name === "Dresses" || $state.params.name === "Accessories") {
-                         $scope.checkall($state.params.name, true);
-                        _.each($scope.subcategory,function(key){
-                            $scope.checkIt[key.name]= false;
+                        $scope.checkall($state.params.name, true);
+                        _.each($scope.subcategory, function (key) {
+                            $scope.checkIt[key.name] = false;
                         });
-                       
+
                     } else {
                         $scope.filter.subcategory.push(_.find($scope.subcategory, function (key) {
                             return key.name == $state.params.name;
@@ -1689,13 +1735,13 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             console.log("check all", cat, allFlag, $scope.subcategory);
             var abc = _.filter($scope.subcategory, function (key) {
                 console.log("key cat name", key.category.name, cat);
-                     return key.category.name == cat;
-              });
+                return key.category.name == cat;
+            });
             console.log("abc", $scope.checkIt, $scope.subcategory);
             _.each(abc, function (key) {
                 // body...
                 if (allFlag === true) {
-                        console.log("emptyyyy");
+                    console.log("emptyyyy");
                     if ($scope.checkIt[key.name]) {
                         //$scope.pushSubCategory(false, key._id, key.name);
                     } else {
@@ -2536,51 +2582,51 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         });
     };
-    console.log($state.current.name);
-    $scope.OutsideIndia = function () {
-        if ($.jStorage.get("location") === "OutsideIndia") {} else {
+    // console.log($state.current.name);
+    // $scope.OutsideIndia = function () {
+    //     if ($.jStorage.get("location") === "OutsideIndia") {} else {
 
-            NavigationService.localCountry(function (data) {
-                if (data.geoplugin_countryName !== "India") {
-                    $scope.hello = $uibModal.open({
-                        animation: true,
-                        templateUrl: "views/modal/hello.html",
-                        scope: $scope
-                    });
-                }
-            });
+    //         NavigationService.localCountry(function (data) {
+    //             if (data.geoplugin_countryName !== "India") {
+    //                 $scope.hello = $uibModal.open({
+    //                     animation: true,
+    //                     templateUrl: "views/modal/hello.html",
+    //                     scope: $scope
+    //                 });
+    //             }
+    //         });
 
-        }
-    };
+    //     }
+    // };
 
-    $scope.OutsideIndia();
-    $scope.saveOutsideIndia = function () {
-        $.jStorage.set("location", "OutsideIndia");
-        console.log("set", $.jStorage.get("location"));
-        $scope.closeHello();
-    };
-    $scope.formData = {};
-    $scope.formComplete = false;
-    $scope.submitForm = function (formData) {
-        NavigationService.saveCountry(formData, function (data) {
-            console.log("data", data);
-            if (data.value === true) {
-                $scope.formComplete = true;
-                $timeout(function () {
-                    $scope.formComplete = false;
-                    $scope.formData = {};
-                    $scope.saveOutsideIndia();
-                }, 2000);
+    // $scope.OutsideIndia();
+    // $scope.saveOutsideIndia = function () {
+    //     $.jStorage.set("location", "OutsideIndia");
+    //     console.log("set", $.jStorage.get("location"));
+    //     $scope.closeHello();
+    // };
+    // $scope.formData = {};
+    // $scope.formComplete = false;
+    // $scope.submitForm = function (formData) {
+    //     NavigationService.saveCountry(formData, function (data) {
+    //         console.log("data", data);
+    //         if (data.value === true) {
+    //             $scope.formComplete = true;
+    //             $timeout(function () {
+    //                 $scope.formComplete = false;
+    //                 $scope.formData = {};
+    //                 $scope.saveOutsideIndia();
+    //             }, 2000);
 
-            }
-        })
-    }
+    //         }
+    //     })
+    // }
 
-    $scope.closeHello = function () {
-        console.log("aaaaaaaaa");
-        $scope.hello.close();
-        console.log("$scope.hello", $scope.hello);
-    };
+    // $scope.closeHello = function () {
+    //     console.log("aaaaaaaaa");
+    //     $scope.hello.close();
+    //     console.log("$scope.hello", $scope.hello);
+    // };
 
     $scope.signUp = function () {
         $scope.loginmsg.msg = "";
