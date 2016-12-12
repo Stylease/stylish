@@ -270,7 +270,7 @@
                                                 </div>
                                                 <a ui-sref="productdetail({ 'subcatname':sendtoproduct.name ,'id':product._id}) ">
                                                     <div class="product-imgholder relate ">
-                                                        <img ng-src="{{product.images[0].image|serverimage}} " alt="" class="get-center img-responsive ">
+                                                        <img ng-src="{{product.images[0].image|serverimage}} " alt="{{product.name}}" class="get-center img-responsive ">
                                                     </div>
                                                 </a>
                                                 <h4 class="product-name ">{{product.name | shorten:55}}</h4>

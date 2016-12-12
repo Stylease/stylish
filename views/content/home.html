@@ -1,7 +1,7 @@
 <div class="mobile-slider relate visible-xs">
 <flex-slider ng-if="mySlides.length>0" flex-slide="s in mySlides track by $index" prev-text="" next-text="" direction-nav="false" >
   <li ng-if="s.mobileimage !==''">
-    <img ng-src="{{s.mobileimage|serverimage}}" class="img-responsive">
+    <img ng-src="{{s.mobileimage|serverimage}}" alt="{{s.title}}" class="img-responsive">
   </li>
 </flex-slider>
 <!-- <div class="talk-us pointer">
@@ -12,7 +12,7 @@
 <div class="home-slider relate hidden-xs">
   <flex-slider ng-if="mySlides.length>0" flex-slide="s in mySlides track by $index" prev-text="" next-text="" direction-nav="false" slideshowSpeed=5000>
     <li>
-      <img ng-src="{{s.image|serverimage}}" class="img-responsive">
+      <img ng-src="{{s.image|serverimage}}"  alt="{{s.title}}" class="img-responsive">
     </li>
   </flex-slider>
   <!-- <div class="talk-us pointer">
