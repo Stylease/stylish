@@ -41,7 +41,7 @@
     <div ng-repeat="subcat in subcategory">
       <div class="row-flex" ng-if=" subcat.length == null">
         <div class="relate mt20 mb20 pointer ban-width" ui-sref="product({'name':subcat.name})">
-          <img ng-src="{{subcat.image|serverimage}}" alt="" class="img-responsive">
+          <img ng-src="{{subcat.image|serverimage}}" alt="{{subcat.name}}" class="img-responsive">
           <div class="tag-name1" style="">
             <label>{{subcat.name}}</label>
           </div>
@@ -52,7 +52,7 @@
         <div class="col-md-6 col-sm-6 col-xs-6 adj-padd" ng-repeat="sub in subc">
           <div class="relate mr10 pointer ban-width" ui-sref="product({'name':sub.name})">
             <!-- <img ng-src="{{sub.image|serverimage}}" alt="" class="img-responsive"> -->
-            <img ng-src="{{sub.image|serverimage}}" alt="" class="img-responsive">
+            <img ng-src="{{sub.image|serverimage}}" alt="{{sub.name}}" class="img-responsive">
             <div class="tag-name" style="">
               <label>{{sub.name}}</label>
             </div>
