@@ -1670,10 +1670,11 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             NavigationService.getSubcategory(function (data) {
                 $scope.subcategory = data.data;
                 if ($state.params.name) {
-
                     if ($state.params.name === "Occasion" || $state.params.name === "Dresses" || $state.params.name === "Accessories") {
                         $scope.checkall($state.params.name, true);
+                        // checkall(cat,checkIt[cat])
                         _.each($scope.subcategory, function (key) {
+                            console.log("keyyyyyy", key);
                             $scope.checkIt[key.name] = false;
                         });
 
@@ -1682,7 +1683,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                             return key.name == $state.params.name;
                         })._id);
                     }
-
                     _.each($scope.subcategory, function (key) {
                         $scope.checkIt[key.name] = false;
                     });
