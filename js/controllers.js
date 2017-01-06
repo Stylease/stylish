@@ -129,11 +129,12 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("about-us");
-        $scope.menutitle = NavigationService.makeactive("About Us");
+        $scope.menutitle = NavigationService.makeactive("Stylease | Rent With Ease Rent With Stylease");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
-
+        TemplateService.description = "Designer dresses on rent, jewellery on rent for cocktails, mehendi, sangeet or wedding; we have it all. ";
+        TemplateService.keywords = "rent designer dresses, designer dresses on rent, rent jewellery, jewellery on rent in Mumbai ";
     })
     .controller('ProfileCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -368,12 +369,13 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("contact");
-        $scope.menutitle = NavigationService.makeactive("Contact");
+        $scope.menutitle = NavigationService.makeactive("Stylease | Find Designer Dresses and Jewellery on Rent");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.oneAtATime = true;
         $scope.formData = {};
-
+        TemplateService.description = "Looking for trendy designer dresses on rent? Want some jewellery on rent? Visit thestylease.com for help! ";
+        TemplateService.keywords = "Contact us, stylease contact us";
         $scope.submitForm = function () {
             //console.log("contact", $scope.formData);
             NavigationService.saveContact($scope.formData, function (data) {
@@ -1647,9 +1649,57 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         //Used to name the .html file
         $scope.letIn = true;
         $scope.template = TemplateService.changecontent("product");
-        $scope.menutitle = NavigationService.makeactive("Product");
+          $scope.menutitle = NavigationService.makeactive("Stylease | Rent Designer Dresses for Mehendi");
+        TemplateService.description = "Trendiest styles, top notch designs and the coolest collection of designer lehengas on rent are available on thestylease.com ";
+        TemplateService.keywords = "rent designer dresses, designer dresses on rent, rent jewellery, jewellery on rent in Mumbai";
+        if($state.params.name==="Mehendi"){
+            $scope.menutitle = NavigationService.makeactive("Stylease | Rent Designer Dresses for Mehendi");
+          TemplateService.description = " Looking for a gorgeous designer dress on rent or maybe some pretty jewellery on rent? Get both on the Stylease!";
+          TemplateService.keywords = "rent designer dresses for mehendi,  rent designer dresses, designer dresses on rent";
+          console.log("in mehendi",$scope.menutitle);
+
+        }
+        if($state.params.name==="Sangeet"){
+            $scope.menutitle = NavigationService.makeactive("Stylease | Find Jewellery on Rent for Sangeet");
+          TemplateService.description = "Sangeet coming up? Want trendy jewellery and designer dresses on rent? Log on to thestylease.com for new styles";
+          TemplateService.keywords = " jewellery on rent for sangeet ,  rent designer dresses, designer dresses on rent";
+          console.log("in mehendi",$scope.menutitle);
+
+        }
+        if($state.params.name==="Reception"){
+            $scope.menutitle = NavigationService.makeactive("Stylease | Reception Ready with Lehengas on Rent");
+          TemplateService.description = "Look your prettiest on your reception with designer lehengas on rent. Choose from designers and rent with ease!";
+          TemplateService.keywords = " rent designer dresses, designer dresses on rent, reception  ready with lehengas on Rent";
+          console.log("in mehendi",$scope.menutitle);
+
+        }
+        if($state.params.name==="Engagement"){
+            $scope.menutitle = NavigationService.makeactive("Stylease | Rent designer dresses for Engagement");
+          TemplateService.description = "Rent designer dresses, find jewellery on rent and look trendy on your engagement! Select outfits from a range of labels!";
+          TemplateService.keywords = "rent designer dresses for Engagement, rent designer dresses, designer dresses on rent";
+          console.log("in mehendi",$scope.menutitle);
+
+        }
+        if($state.params.name==="Cocktail"){
+            $scope.menutitle = NavigationService.makeactive("Stylease | Rental Jewellery for Cocktail ");
+          TemplateService.description = "Choose from a selection of rental jewellery, rental designer dresses and more for cocktail parties on the Stylease!";
+          TemplateService.keywords = "rent jewellery, rental jewellery, jewellery on rent in mumbai, rental jewellery in mumbai, rent jewellery in Mumbai";
+          console.log("in mehendi",$scope.menutitle);
+
+        }
+        if($state.params.name==="Occasion"){
+            $scope.menutitle = NavigationService.makeactive("Stylease | Designer Dresses on Rent for All Occasion");
+          TemplateService.description = "Trendiest styles, top notch designs and the coolest collection of designer lehengas on rent are available on the stylease!";
+          TemplateService.keywords = "designer dresses On rent, rent designer dresses";
+          console.log("in mehendi",$scope.menutitle);
+
+        }
+        // $scope.menutitle = NavigationService.makeactive("Stylease | Get Designer Dresses on Rent ");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        console.log("state", $state.params.name);
+
+
         TemplateService.removeLoaderOn(6);
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
