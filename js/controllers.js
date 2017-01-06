@@ -9,7 +9,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("home");
-        $scope.menutitle = NavigationService.makeactive("Home");
+        $scope.menutitle = NavigationService.makeactive("The Stylease - High-end Fashion on Lease!");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         TemplateService.removeLoaderOn(2);
