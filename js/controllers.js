@@ -1656,42 +1656,112 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.menutitle = NavigationService.makeactive("The Stylease | Rent Designer Dresses for Mehendi");
           TemplateService.description = " Looking for a gorgeous designer dress on rent or maybe some pretty jewellery on rent? Get both on the Stylease!";
           TemplateService.keywords = "rent designer dresses for mehendi,  rent designer dresses, designer dresses on rent";
-          console.log("in mehendi",$scope.menutitle);
+
 
         }
         if($state.params.name==="Sangeet"){
             $scope.menutitle = NavigationService.makeactive("The Stylease | Find Jewellery on Rent for Sangeet");
           TemplateService.description = "Sangeet coming up? Want trendy jewellery and designer dresses on rent? Log on to thestylease.com for new styles";
           TemplateService.keywords = " jewellery on rent for sangeet ,  rent designer dresses, designer dresses on rent";
-          console.log("in mehendi",$scope.menutitle);
+
 
         }
         if($state.params.name==="Reception"){
             $scope.menutitle = NavigationService.makeactive("The Stylease | Reception Ready with Lehengas on Rent");
           TemplateService.description = "Look your prettiest on your reception with designer lehengas on rent. Choose from designers and rent with ease!";
           TemplateService.keywords = " rent designer dresses, designer dresses on rent, reception  ready with lehengas on Rent";
-          console.log("in mehendi",$scope.menutitle);
+
 
         }
         if($state.params.name==="Engagement"){
             $scope.menutitle = NavigationService.makeactive("The Stylease | Rent designer dresses for Engagement");
           TemplateService.description = "Rent designer dresses, find jewellery on rent and look trendy on your engagement! Select outfits from a range of labels!";
           TemplateService.keywords = "rent designer dresses for Engagement, rent designer dresses, designer dresses on rent";
-          console.log("in mehendi",$scope.menutitle);
+
 
         }
         if($state.params.name==="Cocktail"){
             $scope.menutitle = NavigationService.makeactive("The Stylease | Rental Jewellery for Cocktail ");
           TemplateService.description = "Choose from a selection of rental jewellery, rental designer dresses and more for cocktail parties on the Stylease!";
           TemplateService.keywords = "rent jewellery, rental jewellery, jewellery on rent in mumbai, rental jewellery in mumbai, rent jewellery in Mumbai";
-          console.log("in mehendi",$scope.menutitle);
+
 
         }
         if($state.params.name==="Occasion"){
             $scope.menutitle = NavigationService.makeactive("The Stylease | Designer Dresses on Rent for All Occasion");
           TemplateService.description = "Trendiest styles, top notch designs and the coolest collection of designer lehengas on rent are available on the stylease!";
           TemplateService.keywords = "designer dresses On rent, rent designer dresses";
-          console.log("in mehendi",$scope.menutitle);
+
+
+        }
+        if($state.params.name==="Ring"){
+            $scope.menutitle = NavigationService.makeactive("The Stylease | Rent the Trendiest and Prettiest Rings Only on Stylease");
+          TemplateService.description = "Jazz up any outfit with our amazing collection of rings. Rent rings with ease on Stylease today!";
+          TemplateService.keywords = "trendiest & prettiest rings,  rings on rent, diamond ring on rent, diamond ring on rent in Mumbai";
+
+
+        }
+        if($state.params.name==="Bracelets"){
+            $scope.menutitle = NavigationService.makeactive("The Stylease | Rent the Most Beautiful Bracelets only on Stylease");
+          TemplateService.description = "Add that extra touch to your outfit with our beautiful bracelets. Log onto Stylease and rent bracelets now. Your style is in your hands!";
+          TemplateService.keywords = " beautiful bracelets, bracelets on rent, bracelets on rent for women, rent bracelets";
+
+
+        }
+        if($state.params.name==="Headwear"){
+            $scope.menutitle = NavigationService.makeactive("The Stylease |  Rent Trendy and Stylish Headwear Only on Stylease");
+          TemplateService.description = " Stay ahead of the fashion game and rent the latest & trendiest headwear only on Stylease.";
+          TemplateService.keywords = " Designer headwear on Rent, stylish headwear on rent, stylish headwear on rent in Mumbai";
+
+
+        }
+        if($state.params.name==="Necklaces"){
+            $scope.menutitle = NavigationService.makeactive("The Stylease | Rent Pretty and Chic Designer Necklaces Only on Stylease");
+          TemplateService.description = "Let your outfit really pop by wearing our designer necklaces. From delicate to statement pieces, you can rent it all on Stylease";
+          TemplateService.keywords = " party necklaces, party necklaces on Rent, party necklaces on rent in Mumbai";
+
+
+        }
+        if($state.params.name==="Handbags "){
+            $scope.menutitle = NavigationService.makeactive("The Stylease | Rent the Trendiest Designer Handbags Only on Stylease");
+          TemplateService.description = "Complete our outfit with our designer range of handbags. Rent the trendiest handbags from clutches to totes only on Stylease";
+          TemplateService.keywords = " designer handbags, designer handbags on Rent, designer handbags rent, designer handbags ";
+
+
+        }
+        if($state.params.name==="Anklets "){
+            $scope.menutitle = NavigationService.makeactive("The Stylease | Rent the Most Fashionable Anklets Only on Stylease");
+          TemplateService.description = "Add a little sparkle to your outfit with our collection of anklets. Rent the most fashionable anklets from our vast range only on Stylease";
+          TemplateService.keywords = "fashionable anklets, fashionable anklets rent , fashionable anklets on rent , fashionable anklets on rent in Mumbai";
+
+
+        }
+        if($state.params.name==="Earrings "){
+            $scope.menutitle = NavigationService.makeactive("The Stylease | Get Beautiful and Trendy Earrings on Rent  | Stylease");
+          TemplateService.description = "Get Beautiful and Trendy Earrings on Rent  | Stylease";
+          TemplateService.keywords = "earrings on rent, earrings on rent in Mumbai, designer earrings on rent in Mumbai";
+
+
+        }
+        if($state.params.name==="Indo-Western "){
+            $scope.menutitle = NavigationService.makeactive("The Stylease | Rent Designer Indo-Western Wear Only on Stylease");
+          TemplateService.description = "Get the best of both worlds with our collection of Indo-Western wear. Rent trendy designer Indo-Western only on Stylease and make a style statement";
+          TemplateService.keywords = "Indo-Western dresses on rent , Indo-Western dresses  rent, Indo-Western dresses on rent in Mumbai";
+
+
+        }
+        if($state.params.name==="Anarkali"){
+            $scope.menutitle = NavigationService.makeactive("The Stylease | Now Get Designer Anarkali’s on Rent at Stylease");
+          TemplateService.description = "Have a formal Indian function? Want to look your best? Rent gorgeous designer Anarkali’s only on Stylease.";
+          TemplateService.keywords = "Anarkali on rent, designer Anarkali on rent, designer Anarkali on rent in Mumbai";
+
+
+        }
+        if($state.params.name==="Gown "){
+            $scope.menutitle = NavigationService.makeactive("The Stylease |  Rent Elegant and Chic Designer Gowns Only on Stylease");
+          TemplateService.description = "Make heads turn when you wear designer gowns from our collection. Choose between our elegant gowns and rent it with ease on Stylease.";
+          TemplateService.keywords = " designer gowns, designer gowns on rent in Mumbai, designer gowns rent.";
+
 
         }
         // $scope.menutitle = NavigationService.makeactive("Stylease | Get Designer Dresses on Rent ");
