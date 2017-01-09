@@ -1723,7 +1723,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         }
         if($state.params.name==="Handbags"){
-            $scope.menutitle = NavigationService.makeactive("The Stylease | Rent the Trendiest Designer Handbags Only on Stylease");
+            $scope.menutitle = NavigationService.makeactive("The Stylease | Rent the Trendiest Designer Handbags");
           TemplateService.description = "Complete our outfit with our designer range of handbags. Rent the trendiest handbags from clutches to totes only on Stylease";
           TemplateService.keywords = " designer handbags, designer handbags on Rent, designer handbags rent, designer handbags ";
 
