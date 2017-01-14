@@ -2114,7 +2114,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.menutitle = NavigationService.makeactive("Productdetail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        TemplateService.canonical = "productdetail/" + $state.params.subcatname + "/" + $state.params.id;
+        TemplateService.canonical = "productdetail/product/" + $state.params.id;
         TemplateService.removeLoaderOn(1);
         $scope.oneAtATime = true;
         $scope.product = {};
