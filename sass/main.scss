@@ -2138,7 +2138,7 @@ input.form-control {
 
     .name-suggestprd {
         font-size: 15px;
-        // min-height: 70px;
+        min-height: 50px;
     }
 }
 
@@ -2318,7 +2318,6 @@ flex-slider {
     .custom-select {
         @include size(70px, 30px);
         display: inline-block;
-
         select {
             height: 30px;
         }
