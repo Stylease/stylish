@@ -6,7 +6,16 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             disabled: true,
             anchor: "home"
-        }, {
+        },
+        {
+           name: "About",
+           classis: "active",
+           disabled: true,
+           anchor: "about-us",
+           subnav: []
+
+       },
+         {
             name: "Occasion",
             classis: "active",
             disabled: false,
@@ -37,14 +46,15 @@ var navigationservice = angular.module('navigationservice', [])
         //     disabled: true,
         //     anchor: "Media"
         // }
+        // , {
+        //     name: "About",
+        //     classis: "active",
+        //     disabled: true,
+        //     anchor: "about-us",
+        //     subnav: []
+        //
+        // }
         , {
-            name: "About",
-            classis: "active",
-            disabled: true,
-            anchor: "about-us",
-            subnav: []
-
-        }, {
             name: "Contact Us",
             classis: "active",
             disabled: true,
