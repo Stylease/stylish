@@ -191,7 +191,7 @@
                   </div>
                 </div>
                 <h4 class="name-suggestprd">{{sProducts.name | shorten:50}}</h4>
-                <p class="rent text-medium"><span class="block"> by {{sProducts.designer}}</span>Rent : Rs {{sProducts.fourdayrentalamount |currency}}/-</p>
+                <p class="rent text-medium"><span class="block"> by {{sProducts.designer.name}}</span>Rent : Rs {{sProducts.fourdayrentalamount |currency}}/-</p>
                 <div class="view-button" ui-sref="productdetail({'id':sProducts._id})">
                   <button class="btn btn-outline text-medium btn-full">
                         View Details
