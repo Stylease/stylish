@@ -861,10 +861,14 @@ nav {
     }
 
     .client-speak {
+      text-align: left;
         width: 50%;
         margin: 0 auto;
         font-size: 16px;
         font-weight: 400;
+        h3{
+          display: inline;
+        }
 
         h4 {
             font-size: 20px;
@@ -919,8 +923,8 @@ nav {
     &:after {
         content: "\f10e";
         // background: url('../img/comma2.png') no-repeat;
-        right: 0;
-        bottom: 0;
+        right: -20px;
+      bottom: 10px;
         font: normal normal normal 14px/1 FontAwesome;
         font-size: 16px;
     }
