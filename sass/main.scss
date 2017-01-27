@@ -1780,8 +1780,9 @@ input.form-control {
         height: 80px;
         padding: 0 30px;
         // margin: 20px 0 0;
-font-size: 20px;
-        // font-size: 18px;
+font-size: 18px;
+
+
         font-weight: 400;
         text-transform: capitalize;;
     }
@@ -1790,7 +1791,12 @@ font-size: 20px;
         font-size: 18px;
         text-transform: uppercase;
         min-height: 25px;
+        // font-weight: 600;
     }
+}
+
+.rent{
+  font-weight: 600 !important;
 }
 
 .price-rangeslider {
