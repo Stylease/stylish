@@ -124,7 +124,7 @@
                                                     </div>
                                                 </div>
                                                   <p ng-if="product.designer"> {{product.designer.name | shorten:30}} </p>
-                                                <h4 class="product-name ">{{product.name | shorten:40}}</h4>
+                                                <h4 class="product-name ">{{product.name | shorten:30}}</h4>
                                                 <div class="minht">
                                                     <!-- <p ng-if="product.designer"> {{product.designer.name | shorten:30}} </p> -->
                                                     <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
@@ -150,7 +150,7 @@
                                                         <span class="pointer wishlist-heart " ng-click="addTowishlist(product._id); "><i class="fa " ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)} "></i></span>
                                                     </div>
                                                       <p ng-if="product.designer"> {{product.designer.name | shorten:30}} </p>
-                                                    <h4 class="product-name ">{{product.name | shorten:40}}</h4>
+                                                    <h4 class="product-name ">{{product.name | shorten:30}}</h4>
                                                     <div class="minht">
                                                         <!-- <p ng-if="product.designer"> {{product.designer.name | shorten:30}} </p> -->
                                                         <p class="product-namep ">Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
@@ -276,7 +276,7 @@
                                                     </div>
                                                 </a>
                                                     <p class="made-by"><span ng-if="product.designer"> {{product.designer.name}} </span></p>
-                                                <h4 class="product-name ">{{product.name | shorten:55}}</h4>
+                                                <h4 class="product-name ">{{product.name | shorten:45}}</h4>
                                                 <!-- <p class="made-by"><span ng-if="product.designer"> {{product.designer.name}} </span></p> -->
                                                 <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
                                             </div>
