@@ -1,1 +1,215 @@
-<div class=heading-bar><div class="container text-center"><h3 class=heading>Shop</h3><label ng-if="shopping.length>0" class="block text-medium">{{shopping.length}} items</label></div></div><div class=shop><div class=container><div class="products hidden-lg hidden-md hidden-sm"><div class=row><div class=col-md-12><div class=product-holder><div class="sort-product pd10 clearfix"><div class=row><div class="col-xs-7 inline-flex padding320"><div><img src=img/filter.png alt="Stylish Filter" width=20 class="img-responsive inline-block mr5 doneLoading"> <span class="dropdown-toggletext-uppercase filter-heading mb10 pointer" ng-click=seeFilter() ng-class=act-fil-sor:takeMyClass hide-login=hideLoginContainer()>FILTER</span></div><div class=sort-filter-dropdown ng-show="showFilterlist && !variables.showSortlist"><ul><li ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'"><div class="container no-padd"><h5>{{cat}}</h5><div class=magic-form><div class=magic-resize><input class=magic-checkbox type=checkbox name={{cat}} ng-model=checkIt[cat] ng-change=checkall(cat,checkIt[cat]) id={{cat}}> <label class=detail-heading for={{cat}}>All {{cat}}</label></div></div><div class=f-lef style=width:90px; ng-repeat="subcat in value"><div class=magic-form><div class=magic-resize><input class=magic-checkbox type=checkbox name={{cat}} ng-model=checkIt[subcat.name] ng-change=pushSubCategory(checkIt[subcat.name],subcat._id,subcat.name) id={{subcat.name}}> <label class=detail-heading for={{subcat.name}}>{{subcat.name}}</label></div></div></div></div></li><li><div class="container no-padd"><h5>Rental Price</h5><div><div class=price-rangeslider><div range-slider="" min=demo2.range.min max=demo2.range.max model-min=filter.pricefrom model-max=filter.priceto filter="currency: '‎₹'" step=100 class=ngrs-over></div></div><div class=money><span class="pull-left change-pinks">₹{{filter.pricefrom}}</span> <span class="pull-right change-pinks">₹{{filter.priceto}}</span></div></div></div></li><li><div class="container no-padd"><h5>Size</h5><div class="product-size product-sizes" ng-init="size=''"><ul class=list-inline><li ng-repeat="size in sizes | orderBy:'order'"><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click=pushSize(size._id)>{{size.name}}</a></li></ul></div></div></li><li><div class="container no-padd"><h5>Colour</h5><div class=web-count><div class=f-lef style=width:140px; ng-repeat="col in color"><div class=magic-form><div class=magic-resize><input class=magic-checkbox type=checkbox name={{col.name}} ng-model=checkIt[col.name] ng-change=pushColor(checkIt[col.name],col._id) id={{col.name}}> <label class=detail-heading for={{col.name}}>{{col.name}}</label></div></div></div></div></div></li><li><div class="container no-padd"><div class=cla><div class="buttons on-edit text-center"><button class="btn btn-outline text-medium" ng-click=resetFilter()>Reset</button> <button class="btn btn-outline text-medium" ng-click=applyFilter()>Apply</button></div></div></div></li></ul></div><div><img src=img/sort.png alt="Stylish Sort" class="inline-block mr5 img-responsive doneLoading"> <span class="text-uppercase pointer" ng-click=seeSort() ng-class=act-fil-sor:takeMyClass hide-login=hideLoginContainer()>sort</span></div><div class="sort-filter-dropdown ng-hide" ng-show="variables.showSortlist && !showFilterlist"><ul><li ng-repeat="sort in productSort" ng-click=applySort(sort.name)><a>{{sort.name}}</a></li></ul></div></div><div class="col-xs-5 padding320"><div class="product-view pull-right hidden-md hidden-lg" ng-init="viewProduct=true"><i class="fa fa-th-large pointer active-view" ng-class="{ 'active-view': viewProduct==true }" ng-click="viewProduct=true"></i> <i class="fa fa-bars pointer" ng-class="{ 'active-view': viewProduct==false}" ng-click="viewProduct=false"></i> <span class=dark-blue>VIEW</span></div></div></div></div><div infinite-scroll=loadMore() infinite-scroll-disabled=shouldscroll class=ng-isolate-scope><div class="shop-product grid-view" ng-show=viewProduct><div class=row><div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping"><div class="view-product relate pointer"><div class="product-detail text-center"><div class="product-imgholder relate"><img ui-sref="productdetail({'subcatname':sendtoproduct.name ,'id':product._id})" ng-src={{product.images[0].image|serverimage}} alt={{product.name}} class="get-center img-responsive"><div class="wishlist text-right" ng-click=addTowishlist(product._id);><span class="pointer wishlist-heart"><i class=fa ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)}"></i></span></div></div><p ng-if=product.designer>{{product.designer.name | shorten:30}}</p><h4 class=product-name>{{product.name | shorten:40}}</h4><div class=minht><p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p></div></div></div></div></div></div></div><div infinite-scroll=loadMore() infinite-scroll-disabled=shouldscroll class=ng-isolate-scope><div class="shop-product grid-view" ng-hide=viewProduct><div class=row><div class="col-md-4 col-sm-6 col-xs-12 ng-scope" ng-repeat="product in shopping"><div class="view-product relate pointer"><div class=row><div class="col-xs-3 product-img"><img ui-sref="productdetail({ 'subcatname':sendtoproduct.name ,'id':product._id})" ng-src={{product.images[0].image|serverimage}} alt={{product.name}} class=img-responsive></div><div class="col-xs-9 product-rate"><div class="wishlist text-right"><span class="pointer wishlist-heart" ng-click=addTowishlist(product._id);><i class=fa ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)}"></i></span></div><p ng-if=product.designer>{{product.designer.name | shorten:30}}</p><h4 class=product-name>{{product.name | shorten:40}}</h4><div class=minht><p class=product-namep>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p></div></div></div></div></div></div></div></div></div></div></div></div><div class="products hidden-xs"><div class=row><div class=col-md-3><div class=filter-product><img src=img/filter.png alt="Stylish Filter" width=20 class="img-responsive inline-block mr5"> <span class="text-uppercase filter-heading inline-block mt10 mb10 pointer">filter</span><div class="filter-dropdown accordion-customs"><div class=search-by-filter><form><uib-accordion close-others=oneAtATime><uib-accordion-group is-open=status.open ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'"><uib-accordion-heading id={{cat}}><i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open, 'fa-angle-down': !status.open}"></i> <span class=block>{{cat}}</span></uib-accordion-heading><div class=magic-form><div class=magic-resize><input class=magic-checkbox type=checkbox name={{cat}} ng-model=checkIt[cat] ng-change=checkall(cat,checkIt[cat]) id={{cat}}> <label class=detail-heading for={{cat}}>All {{cat}}</label></div><div class=magic-resize ng-repeat="subcat in value"><input class=magic-checkbox type=checkbox name={{cat}} ng-model=checkIt[subcat.name] ng-change=pushSubCategory(checkIt[subcat.name],subcat._id,subcat.name) id={{subcat.name}}> <label class=detail-heading for={{subcat.name}}>{{subcat.name}}</label></div></div></uib-accordion-group><uib-accordion-group is-open=status.open1><uib-accordion-heading><i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i> <span class=block>Rental Price</span></uib-accordion-heading><div class=price-rangeslider><div range-slider="" min=demo2.range.min max=demo2.range.max model-min=filter.pricefrom model-max=filter.priceto filter="currency: '‎₹'" step=100></div></div><div class=money><span class="pull-left change-pinks">₹{{filter.pricefrom}}</span> <span class="pull-right change-pinks">₹{{filter.priceto}}</span></div></uib-accordion-group><uib-accordion-group is-open=status.open2><uib-accordion-heading><i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open2, 'fa-angle-down': !status.open2}"></i> <span class=block>Size</span></uib-accordion-heading><div class=product-size ng-init="size=''"><ul class=list-inline><li ng-repeat="size in sizes | orderBy:'order'"><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click=pushSize(size._id)>{{size.name}}</a></li></ul></div></uib-accordion-group><uib-accordion-group is-open=status.open3><uib-accordion-heading><i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i> <span class=block>Colour</span></uib-accordion-heading><div class=color><div class=magic-form><div class=magic-resize ng-repeat="col in color"><input class=magic-checkbox type=checkbox name={{col.name}} ng-model=checkIt[col.name] ng-change=pushColor(checkIt[col.name],col._id) id={{col.name}}> <label class=detail-heading for={{col.name}}>{{col.name}}</label></div></div></div></uib-accordion-group></uib-accordion><div class="on-edit filter-button"><button class="btn btn-outline text-medium" ng-click=resetFilter()>Reset</button> <button class="btn btn-outline text-medium" ng-click="applyFilter('')">Apply</button></div></form></div></div></div></div><div class=col-md-9><div class=product-holder><div class="sort-product pd10 clearfix"><img src=img/sort.png alt="Stylish Sort" class="inline-block mr5 img-responsive"> <span class="text-uppercase pointer" ng-click=seeSort() hide-login=hideLoginContainer()>sort</span><div class=sort-filter-dropdown ng-show=variables.showSortlist><ul><li ng-repeat="sort in productSort" ng-click=applySort(sort.name)><a>{{sort.name}}</a></li></ul></div></div><div infinite-scroll=loadMore() infinite-scroll-disabled=shouldscroll><div class="shop-product grid-view" ng-show=viewProduct><div class=row><div class="col-md-4 col-sm-6 col-xs-6" ng-repeat="product in shopping"><div class="view-product relate pointer"><div class="product-detail text-center"><div class="wishlist text-right" ng-click=addTowishlist(product._id);><span class="pointer wishlist-heart"><i class=fa ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)}"></i></span></div><a ui-sref="productdetail({ 'subcatname':sendtoproduct.name ,'id':product._id})"><div class="product-imgholder relate"><img ng-src={{product.images[0].image|serverimage}} alt={{product.name}} class="get-center img-responsive"></div></a><p class=made-by><span ng-if=product.designer>{{product.designer.name}}</span></p><h4 class=product-name>{{product.name | shorten:55}}</h4><p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p></div></div></div></div></div></div><div ng-if="shopping.length===0" style=min-height:667px;><h4 class=text-center>{{texts.msg}}</h4></div></div></div></div></div></div></div>
+<div class=heading-bar>
+    <div class="container text-center">
+        <h3 class=heading>Shop</h3><label ng-if="shopping.length>0" class="block text-medium">{{shopping.length}} items</label></div>
+</div>
+<div class=shop>
+    <div class=container>
+        <div class="products hidden-lg hidden-md hidden-sm">
+            <div class=row>
+                <div class=col-md-12>
+                    <div class=product-holder>
+                        <div class="sort-product pd10 clearfix">
+                            <div class=row>
+                                <div class="col-xs-7 inline-flex padding320">
+                                    <div><img src=img/filter.png alt="Stylish Filter" width=20 class="img-responsive inline-block mr5 doneLoading"> <span class="dropdown-toggletext-uppercase filter-heading mb10 pointer" ng-click=seeFilter() ng-class=act-fil-sor:takeMyClass
+                                            hide-login=hideLoginContainer()>FILTER</span></div>
+                                    <div class=sort-filter-dropdown ng-show="showFilterlist && !variables.showSortlist">
+                                        <ul>
+                                            <li ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
+                                                <div class="container no-padd">
+                                                    <h5>{{cat}}</h5>
+                                                    <div class=magic-form>
+                                                        <div class=magic-resize><input class=magic-checkbox type=checkbox name={{cat}} ng-model=checkIt[cat] ng-change=checkall(cat,checkIt[cat]) id={{cat}}> <label class=detail-heading for={{cat}}>All {{cat}}</label></div>
+                                                    </div>
+                                                    <div class=f-lef style=width:90px; ng-repeat="subcat in value">
+                                                        <div class=magic-form>
+                                                            <div class=magic-resize><input class=magic-checkbox type=checkbox name={{cat}} ng-model=checkIt[subcat.name] ng-change=pushSubCategory(checkIt[subcat.name],subcat._id,subcat.name) id={{subcat.name}}> <label class=detail-heading
+                                                                    for={{subcat.name}}>{{subcat.name}}</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="container no-padd">
+                                                    <h5>Rental Price</h5>
+                                                    <div>
+                                                        <div class=price-rangeslider>
+                                                            <div range-slider="" min=demo2.range.min max=demo2.range.max model-min=filter.pricefrom model-max=filter.priceto filter="currency: '‎₹'" step=100 class=ngrs-over></div>
+                                                        </div>
+                                                        <div class=money><span class="pull-left change-pinks">₹{{filter.pricefrom}}</span> <span class="pull-right change-pinks">₹{{filter.priceto}}</span></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="container no-padd">
+                                                    <h5>Size</h5>
+                                                    <div class="product-size product-sizes" ng-init="size=''">
+                                                        <ul class=list-inline>
+                                                            <li ng-repeat="size in sizes | orderBy:'order'"><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click=pushSize(size._id)>{{size.name}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="container no-padd">
+                                                    <h5>Colour</h5>
+                                                    <div class=web-count>
+                                                        <div class=f-lef style=width:140px; ng-repeat="col in color">
+                                                            <div class=magic-form>
+                                                                <div class=magic-resize><input class=magic-checkbox type=checkbox name={{col.name}} ng-model=checkIt[col.name] ng-change=pushColor(checkIt[col.name],col._id) id={{col.name}}> <label class=detail-heading for={{col.name}}>{{col.name}}</label></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="container no-padd">
+                                                    <div class=cla>
+                                                        <div class="buttons on-edit text-center"><button class="btn btn-outline text-medium" ng-click=resetFilter()>Reset</button> <button class="btn btn-outline text-medium" ng-click=applyFilter()>Apply</button></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div><img src=img/sort.png alt="Stylish Sort" class="inline-block mr5 img-responsive doneLoading"> <span class="text-uppercase pointer" ng-click=seeSort() ng-class=act-fil-sor:takeMyClass hide-login=hideLoginContainer()>sort</span></div>
+                                    <div
+                                        class="sort-filter-dropdown ng-hide" ng-show="variables.showSortlist && !showFilterlist">
+                                        <ul>
+                                            <li ng-repeat="sort in productSort" ng-click=applySort(sort.name)><a>{{sort.name}}</a></li>
+                                        </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 padding320">
+                                <div class="product-view pull-right hidden-md hidden-lg" ng-init="viewProduct=true"><i class="fa fa-th-large pointer active-view" ng-class="{ 'active-view': viewProduct==true }" ng-click="viewProduct=true"></i> <i class="fa fa-bars pointer" ng-class="{ 'active-view': viewProduct==false}" ng-click="viewProduct=false"></i>                                    <span class=dark-blue>VIEW</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div infinite-scroll=loadMore() infinite-scroll-disabled=shouldscroll class=ng-isolate-scope>
+                        <div class="shop-product grid-view" ng-show=viewProduct>
+                            <div class=row>
+                                <div class="col-md-4 col-sm-6 col-xs-6 ng-scope" ng-repeat="product in shopping">
+                                    <div class="view-product relate pointer">
+                                        <div class="product-detail text-center">
+                                            <div class="product-imgholder relate"><img ui-sref="productdetail({'subcatname':sendtoproduct.name ,'id':product._id})" ng-src={{product.images[0].image|serverimage}} alt={{product.name}} class="get-center img-responsive">
+                                                <div class="wishlist text-right"
+                                                    ng-click=addTowishlist(product._id);><span class="pointer wishlist-heart"><i class=fa ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)}"></i></span></div>
+                                            </div>
+                                            <p ng-if=product.designer>{{product.designer.name | shorten:30}}</p>
+                                            <h4 class=product-name>{{product.name | shorten:40}}</h4>
+                                            <div class=minht>
+                                                <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div infinite-scroll=loadMore() infinite-scroll-disabled=shouldscroll class=ng-isolate-scope>
+                        <div class="shop-product grid-view" ng-hide=viewProduct>
+                            <div class=row>
+                                <div class="col-md-4 col-sm-6 col-xs-12 ng-scope" ng-repeat="product in shopping">
+                                    <div class="view-product relate pointer">
+                                        <div class=row>
+                                            <div class="col-xs-3 product-img"><img ui-sref="productdetail({ 'subcatname':sendtoproduct.name ,'id':product._id})" ng-src={{product.images[0].image|serverimage}} alt={{product.name}} class=img-responsive></div>
+                                            <div class="col-xs-9 product-rate">
+                                                <div class="wishlist text-right"><span class="pointer wishlist-heart" ng-click=addTowishlist(product._id);><i class=fa ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)}"></i></span></div>
+                                                <p ng-if=product.designer>{{product.designer.name | shorten:30}}</p>
+                                                <h4 class=product-name>{{product.name | shorten:40}}</h4>
+                                                <div class=minht>
+                                                    <p class=product-namep>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="products hidden-xs">
+        <div class=row>
+            <div class=col-md-3>
+                <div class=filter-product><img src=img/filter.png alt="Stylish Filter" width=20 class="img-responsive inline-block mr5"> <span class="text-uppercase filter-heading inline-block mt10 mb10 pointer">filter</span>
+                    <div class="filter-dropdown accordion-customs">
+                        <div class=search-by-filter>
+                            <form>
+                                <uib-accordion close-others=oneAtATime>
+                                    <uib-accordion-group is-open=status.open ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
+                                        <uib-accordion-heading id={{cat}}><i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open, 'fa-angle-down': !status.open}"></i> <span class=block>{{cat}}</span></uib-accordion-heading>
+                                        <div class=magic-form>
+                                            <div class=magic-resize><input class=magic-checkbox type=checkbox name={{cat}} ng-model=checkIt[cat] ng-change=checkall(cat,checkIt[cat]) id={{cat}}> <label class=detail-heading for={{cat}}>All {{cat}}</label></div>
+                                            <div class=magic-resize
+                                                ng-repeat="subcat in value"><input class=magic-checkbox type=checkbox name={{cat}} ng-model=checkIt[subcat.name] ng-change=pushSubCategory(checkIt[subcat.name],subcat._id,subcat.name) id={{subcat.name}}> <label class=detail-heading for={{subcat.name}}>{{subcat.name}}</label></div>
+                                        </div>
+                                    </uib-accordion-group>
+                                    <uib-accordion-group is-open=status.open1>
+                                        <uib-accordion-heading><i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i> <span class=block>Rental Price</span></uib-accordion-heading>
+                                        <div class=price-rangeslider>
+                                            <div range-slider="" min=demo2.range.min max=demo2.range.max model-min=filter.pricefrom model-max=filter.priceto filter="currency: '‎₹'" step=100></div>
+                                        </div>
+                                        <div class=money><span class="pull-left change-pinks">₹{{filter.pricefrom}}</span> <span class="pull-right change-pinks">₹{{filter.priceto}}</span></div>
+                                    </uib-accordion-group>
+                                    <uib-accordion-group is-open=status.open2>
+                                        <uib-accordion-heading><i class="pull-right fa icon" ng-class="{'fa-angle-up': status.open2, 'fa-angle-down': !status.open2}"></i> <span class=block>Size</span></uib-accordion-heading>
+                                        <div class=product-size ng-init="size=''">
+                                            <ul class=list-inline>
+                                                <li ng-repeat="size in sizes | orderBy:'order'"><a ng-class="{'select-size': filter.size[0]==size._id }" ng-click=pushSize(size._id)>{{size.name}}</a></li>
+                                            </ul>
+                                        </div>
+                                    </uib-accordion-group>
+                                    <uib-accordion-group is-open=status.open3>
+                                        <uib-accordion-heading><i class="pull-right fa icon" ng-class="{ 'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i> <span class=block>Colour</span></uib-accordion-heading>
+                                        <div class=color>
+                                            <div class=magic-form>
+                                                <div class=magic-resize ng-repeat="col in color"><input class=magic-checkbox type=checkbox name={{col.name}} ng-model=checkIt[col.name] ng-change=pushColor(checkIt[col.name],col._id) id={{col.name}}> <label class=detail-heading for={{col.name}}>{{col.name}}</label></div>
+                                            </div>
+                                        </div>
+                                    </uib-accordion-group>
+                                </uib-accordion>
+                                <div class="on-edit filter-button"><button class="btn btn-outline text-medium" ng-click=resetFilter()>Reset</button> <button class="btn btn-outline text-medium" ng-click="applyFilter('')">Apply</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=col-md-9>
+                <div class=product-holder>
+                    <div class="sort-product pd10 clearfix"><img src=img/sort.png alt="Stylish Sort" class="inline-block mr5 img-responsive"> <span class="text-uppercase pointer" ng-click=seeSort() hide-login=hideLoginContainer()>sort</span>
+                        <div class=sort-filter-dropdown ng-show=variables.showSortlist>
+                            <ul>
+                                <li ng-repeat="sort in productSort" ng-click=applySort(sort.name)><a>{{sort.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div infinite-scroll=loadMore() infinite-scroll-disabled=shouldscroll>
+                        <div class="shop-product grid-view" ng-show=viewProduct>
+                            <div class=row>
+                                <div class="col-md-4 col-sm-6 col-xs-6" ng-repeat="product in shopping">
+                                    <div class="view-product relate pointer">
+                                        <div class="product-detail text-center">
+                                            <div class="wishlist text-right" ng-click=addTowishlist(product._id);><span class="pointer wishlist-heart"><i class=fa ng-class="{ 'fa-heart':isInWishlist(product._id), 'fa-heart-o':!isInWishlist(product._id)}"></i></span></div>
+                                            <a ui-sref="productdetail({ 'subcatname':sendtoproduct.name ,'id':product._id})">
+                                                <div class="product-imgholder relate"><img ng-src={{product.images[0].image|serverimage}} alt={{product.name}} class="get-center img-responsive"></div>
+                                            </a>
+                                            <p class=made-by>
+                                        <span ng-if=product.designer>{{product.designer.name}}</span></p>
+                                            <h4 class=product-name>{{product.name | shorten:55}}</h4>
+                                            <p>Rent : Rs {{product.fourdayrentalamount|currency}}/-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="shopping.length===0" style=min-height:667px;>
+                        <h4 class=text-center>{{texts.msg}}</h4></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
