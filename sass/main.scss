@@ -1780,7 +1780,7 @@ input.form-control {
         height: 80px;
         padding: 0 30px;
         // margin: 20px 0 0;
-font-size: 18px;
+font-size: 16px;
 
 
         font-weight: 400;
@@ -1788,7 +1788,7 @@ font-size: 18px;
     }
 
     p {
-        font-size: 18px;
+        font-size: 17px;
         text-transform: uppercase;
         min-height: 25px;
         // font-weight: 600;
@@ -3363,5 +3363,7 @@ div[uib-datepicker] {
   opacity: 0;
 }
 // celebrity page end
+
+
 @import "fancybox-override";
 @import "mobile";
