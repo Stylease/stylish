@@ -35,9 +35,13 @@ $magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
     font-family: "Glyphicons Halflings";
     src: url('../fonts/glyphicons-halflings-regular.ttf');
 }
+// @font-face {
+//     font-family: "Georgia";
+//     src: url('../fonts/Georgia.ttff');
+// }
 @font-face {
-    font-family: "Georgia";
-    src: url('../fonts/Georgia.ttff');
+    font-family: "Neutra";
+    src: url('../fonts/Neutra.otf');
 }
 @font-face {
     font-family: "fine-serif";
@@ -69,7 +73,7 @@ $magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
 body {
     padding: 72px 0 0 !important;
     // font-family: "Work Sans";
-font-family: "Georgia";
+font-family: "Neutra";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -3361,7 +3365,7 @@ div[uib-datepicker] {
 }
 .rent1{
   font-weight: 600;
-  font-size: 18px;
+  font-size: 17px;
 }
 .opt{
   opacity: 0;
