@@ -181,7 +181,10 @@
                         <li>
                             <div class="suggested-product">
                                 <div class="suggested-imgholder relate">
-                                    <img ng-src="{{sProducts.images[0].image|serverimage}}" alt="sProducts.name" class="get-center img-responsive">
+                                    <div ng-repeat="proimage in sProducts.images | orderBy:'order' | limitTo:1">
+                                      
+                                    <img ng-src="{{proimage.image|serverimage}}" alt="sProducts.name" class="get-center img-responsive">
+                                    </div>
                                     <div class="wishlist">
                                         <span class="pointer wishlist-heart " ng-click="addTowishlist(sProducts._id); "><i class="fa" ng-class="{'fa-heart':isInWishlist(sProducts._id),'fa-heart-o':!isInWishlist(sProducts._id)}"></i></span>
                                     </div>
