@@ -2912,6 +2912,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         // NavigationService.saveUser(data.data);
                     } else {
                         $scope.loginmsg.msg = data.data;
+                        // $scope.loginmsg.msg = data.data;
                         $scope.loginmsg.class = "text-danger";
                     }
                 }, function(err) {
