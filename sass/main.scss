@@ -55,9 +55,11 @@ $magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
 .glyphicon {
     font-family: 'Glyphicons Halflings';
 }
-.fnt-30{
+
+.fnt-30 {
     font-size: 30px;
 }
+
 .font-serif {
     font-family: "fine-serif";
 }
@@ -73,7 +75,7 @@ $magic-disabled-checked-color: lighten($magic-main-color, 30%) !default;
 body {
     padding: 72px 0 0 !important;
     // font-family: "Work Sans";
-font-family: "Neutra";
+    font-family: "Neutra";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -133,6 +135,7 @@ a {
     z-index: 99;
 }
 // classess
+
 .no-border {
     border: none !important;
 }
@@ -333,6 +336,7 @@ a {
     text-decoration: underline;
 }
 // color classess
+
 .dark-blue {
     color: $brand-dark-blue;
     // margin-bottom: 20px;
@@ -458,6 +462,7 @@ a {
     @include box-shadow(none);
 }
 //bootstrap forms
+
 .custom-select {
     position: relative;
 
@@ -593,6 +598,7 @@ a {
 }
 /* Start writing sass here */
 // header
+
 header {
     width: 100%;
     padding: 5px 0;
@@ -865,13 +871,14 @@ nav {
     }
 
     .client-speak {
-      text-align: left;
+        text-align: left;
         width: 50%;
         margin: 0 auto;
         font-size: 16px;
         font-weight: 400;
-        h3{
-          display: inline;
+
+        h3 {
+            display: inline;
         }
 
         h4 {
@@ -928,7 +935,7 @@ nav {
         content: "\f10e";
         // background: url('../img/comma2.png') no-repeat;
         right: -20px;
-      bottom: 10px;
+        bottom: 10px;
         font: normal normal normal 14px/1 FontAwesome;
         font-size: 16px;
     }
@@ -1092,6 +1099,7 @@ footer {
     }
 }
 // footer
+
 .heading-bar {
     padding: 65px 0 2px;
     background-color: $brand-pink;
@@ -1163,6 +1171,7 @@ input.form-control {
     }
 }
 // pop ups
+
 .social-btn {
     width: 100%;
     // padding: 12px 0;
@@ -1244,6 +1253,7 @@ input.form-control {
     }
 }
 // thankyou
+
 .thankyou {
     padding: 10% 0;
     background: url('../img/thankyou.png');
@@ -1283,6 +1293,7 @@ input.form-control {
     padding: 12% 0;
 }
 // hello msg
+
 .hello {
     h3 {
         margin: 0 0 20px;
@@ -1304,6 +1315,7 @@ input.form-control {
     }
 }
 // cart pop
+
 .change-delivery-date {
     padding: 20px;
     border: 1px solid $brand-dark-pink;
@@ -1315,6 +1327,7 @@ input.form-control {
     }
 }
 // remove-item
+
 .remove-item {
     p {
         font-size: 20px;
@@ -1330,6 +1343,7 @@ input.form-control {
     }
 }
 // shop
+
 .continue-shop {
     padding: 20px;
     border: 1px solid $brand-dark-pink;
@@ -1411,6 +1425,7 @@ input.form-control {
     margin-top: 60px;
 }
 // orders
+
 .order-heading {
     font-size: 16px;
     font-weight: 600;
@@ -1478,6 +1493,7 @@ input.form-control {
     // button:nth-child(2) { margin-left: -4px; }
 }
 // order-detail
+
 .order-detail-summary {
     .billing-detail {
         border-top: 1px solid $brand-dark-blue;
@@ -1514,6 +1530,7 @@ input.form-control {
     // margin-bottom: 30px;
 }
 // wishlist
+
 .wishlist-product {
     padding: 20px;
     margin: 20px 0;
@@ -1568,6 +1585,7 @@ input.form-control {
     }
 }
 // save address
+
 .billingsave-add {
     h4 {
         font-size: 25px;
@@ -1784,11 +1802,9 @@ input.form-control {
         height: 40px;
         padding: 0 30px;
         // margin: 20px 0 0;
-font-size: 16px;
-
-
+        font-size: 16px;
         font-weight: 400;
-        text-transform: capitalize;;
+        text-transform: capitalize;
     }
 
     p {
@@ -1799,8 +1815,8 @@ font-size: 16px;
     }
 }
 
-.rent{
-  font-weight: 600 !important;
+.rent {
+    font-weight: 600 !important;
 }
 
 .price-rangeslider {
@@ -1954,6 +1970,7 @@ font-size: 16px;
     }
 }
 // product detail page
+
 .a1 {
     .a2 {
         float: left;
@@ -2160,8 +2177,15 @@ font-size: 16px;
     text-align: center;
 
     .name-suggestprd {
-        font-size: 15px;
-        min-height: 50px;
+        min-height: 60px;
+        text-transform: uppercase;
+        font-size: 17px;
+
+        span {
+            padding-top: 12px;
+            text-transform: capitalize;
+            font-size: 16px;
+        }
     }
 }
 
@@ -2189,7 +2213,7 @@ font-size: 16px;
     margin-top: 50px;
 
     .rent {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .flexslider:hover .flex-direction-nav .flex-prev {
@@ -2341,6 +2365,7 @@ flex-slider {
     .custom-select {
         @include size(70px, 30px);
         display: inline-block;
+
         select {
             height: 30px;
         }
@@ -3073,6 +3098,7 @@ ul.mn-list {
     z-index: 3 !important;
 }
 // DATEPICKER
+
 div[uib-datepicker] {
     background: #fdd3be;
     color: #e87b65;
@@ -3358,22 +3384,23 @@ div[uib-datepicker] {
 
 .made-by {
     // height: 50px;
-    font-size: 18px;
     margin-bottom: 0;
     // padding-bottom: 25px;
     font-size: 17px;
 }
-.rent1{
-  font-weight: 600;
-  font-size: 17px;
+
+.rent1 {
+    font-weight: 600;
+    font-size: 18px;
 }
-.opt{
-  opacity: 0;
+
+.opt {
+    opacity: 0;
 }
 // celebrity page end
 
-.product-namep{
-  font-weight: 600;
+.product-namep {
+    font-weight: 600;
 }
 @import "fancybox-override";
 @import "mobile";
