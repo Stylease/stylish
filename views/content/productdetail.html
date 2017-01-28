@@ -1,60 +1,58 @@
 <div class="product-info">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7">
-        <div class="relate">
-          <div class="productdetail-slider">
-            <div class="prd-slide-imgholder relate m-center">
-              <img ng-src="{{mainImage|serverimage}}" alt="{{product.name}}" class="get-center img-responsive">
-            </div>
-          </div>
-          <div class="product-related-slider">
-            <flex-slider class="carousel" flex-slide="relate in product.images track by $index" item-width="70" animation="slide" item-margin="20"
-              control-nav="false" autoscroll="true">
-              <li>
-                <div class="related-imgholder pointer">
-                  <img ng-src="{{relate.image|serverimage}}" alt="{{product.name}}" class="img-responsive" ng-click="selectImage(relate.image)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="relate">
+                    <div class="productdetail-slider">
+                        <div class="prd-slide-imgholder relate m-center">
+                            <img ng-src="{{mainImage|serverimage}}" alt="{{product.name}}" class="get-center img-responsive">
+                        </div>
+                    </div>
+                    <div class="product-related-slider">
+                        <flex-slider class="carousel" flex-slide="relate in product.images track by $index" item-width="70" animation="slide" item-margin="20" control-nav="false" autoscroll="true">
+                            <li>
+                                <div class="related-imgholder pointer">
+                                    <img ng-src="{{relate.image|serverimage}}" alt="{{product.name}}" class="img-responsive" ng-click="selectImage(relate.image)">
+                                </div>
+                            </li>
+                        </flex-slider>
+                    </div>
                 </div>
-              </li>
-            </flex-slider>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="product-descp">
-          <div class="name-section">
-            <h3 class="product-name">{{product.name}}</h3>
-            <p ng-if="product.price">Retail Price : Rs. <span>{{product.price|currency}}</span>/-</p>
-            <p class="designername" ng-if="product.designer.name">By <span>{{product.designer.name}}</span></p>
-          </div>
-          <div class="product-price">
-            <p>Rental amount : Rs. <span>{{product.rentalamount|currency}}</span>/-</p>
-            <p class="inline-block">Refundable Security Deposit: Rs.<span>{{product.securitydeposit|currency}}</span>/-</p>
-            <p class="refund ml5 inline-block" ng-click="tooltipIsOpen = !tooltipIsOpen">
-              <img src="img/change.png" alt="" width="15">
-              <span class="change" uib-tooltip="Your deposit will be refunded on return of the outfit." tooltip-is-open="tooltipIsOpen"
-                tooltip-placement="bottom"></span></p>
-          </div>
-          <form name="myProduct">
-            <div ng-if="product.size.length>0" class="s1">
-              <div>
-                <span class="text-medium">Size:</span>
-                <div ng-repeat="size in product.size | orderBy:'order'" required ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
-                  <label class="size-font pointer">
+            </div>
+            <div class="col-md-5">
+                <div class="product-descp">
+                    <div class="name-section">
+                        <h3 class="product-name">{{product.name}}</h3>
+                        <p ng-if="product.price">Retail Price : <i class="fa fa-inr"></i> <span>{{product.price|currency}}</span>/-</p>
+                        <p class="designername" ng-if="product.designer.name">By <span>{{product.designer.name}}</span></p>
+                    </div>
+                    <div class="product-price">
+                        <p>Rental amount : <i class="fa fa-inr"></i> <span>{{product.rentalamount|currency}}</span>/-</p>
+                        <p class="inline-block">Refundable Security Deposit: <i class="fa fa-inr"></i> <span>{{product.securitydeposit|currency}}</span>/-</p>
+                        <p class="refund ml5 inline-block" ng-click="tooltipIsOpen = !tooltipIsOpen">
+                            <img src="img/change.png" alt="" width="15">
+                            <span class="change" uib-tooltip="Your deposit will be refunded on return of the outfit." tooltip-is-open="tooltipIsOpen" tooltip-placement="bottom"></span></p>
+                    </div>
+                    <form name="myProduct">
+                        <div ng-if="product.size.length>0" class="s1">
+                            <div>
+                                <span class="text-medium">Size:</span>
+                                <div ng-repeat="size in product.size | orderBy:'order'" required ng-click="selectSize(size.name)" class=" size-border" ng-class="{'active-size':select.sizeactive[size.name]}">
+                                    <label class="size-font pointer">
                                  {{size.name}}
                               </label>
-                </div>
-              </div>
-              <div class="back-color2" ng-if="cartpro.size">
-                <div class="back-color">
-                  <ul>
-                              <li> <span>Chest : {{select.sizedetail.chest}}</span></li>
-                    <li> <span>Waist : {{select.sizedetail.waist}}</span></li>
-                    <li> <span>Hips : {{select.sizedetail.hips}}</span></li>
-                    <li> <span>Length : {{select.sizedetail.length}}</span></li>
-                  </ul>
-                  <!--for l-->
-                  <!-- <div class="disp-inline">
+                                </div>
+                            </div>
+                            <div class="back-color2" ng-if="cartpro.size">
+                                <div class="back-color">
+                                    <ul>
+                                        <li> <span>Chest : {{select.sizedetail.chest}}</span></li>
+                                        <li> <span>Waist : {{select.sizedetail.waist}}</span></li>
+                                        <li> <span>Hips : {{select.sizedetail.hips}}</span></li>
+                                        <li> <span>Length : {{select.sizedetail.length}}</span></li>
+                                    </ul>
+                                    <!--for l-->
+                                    <!-- <div class="disp-inline">
 
                   </div>
                   <div class="disp-inline  disp-padd">
@@ -66,141 +64,139 @@
                   <div class="disp-inline disp-padd">
 
                            </div> -->
-                </div>
-              </div>
-              <p class="product-introp ">To customise the outfits to a particular size, please email us at <a href="mailto:orders@thestylease.com" class="dark-pink" target="_blank">orders@thestylease.com</a></p>
+                                </div>
+                            </div>
+                            <p class="product-introp ">To customise the outfits to a particular size, please email us at <a href="mailto:orders@thestylease.com" class="dark-pink" target="_blank">orders@thestylease.com</a></p>
 
-            </div>
-            <div>
-              <!-- <form name="myProduct"> -->
-              <!-- </div> -->
-              <div class="delivery-date dates">
-                <span class="text-medium">Delivery / Return Dates :</span>
-                <div class="text-center">
-                  <div class="radio-button">
-                    <input type="radio" name="date" id="four" checked required>
-                    <label for="four" ng-click="getRentalAmount(4)" class="text-medium"><span></span> 4 Days</label>
-                  </div>
-                  <div class="radio-button">
-                    <input type="radio" name="date" id="eight" required>
-                    <label for="eight" ng-click="getRentalAmount(8)" class="text-medium"><span></span> 8 Days</label>
-                  </div>
-                  <div class="calendar inline-block calen-align" ng-click="open2()">
-                    <div class="input-group calen">
-                      <input type="date" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" ng-change="beTheChange(cartpro.timeFrom)
-                                 " is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
-                        ng-class="{today: 'todayDay'}" readonly="readonly" required/>
-                      <span class="cal">
+                        </div>
+                        <div>
+                            <!-- <form name="myProduct"> -->
+                            <!-- </div> -->
+                            <div class="delivery-date dates">
+                                <span class="text-medium">Delivery / Return Dates :</span>
+                                <div class="text-center">
+                                    <div class="radio-button">
+                                        <input type="radio" name="date" id="four" checked required>
+                                        <label for="four" ng-click="getRentalAmount(4)" class="text-medium"><span></span> 4 Days</label>
+                                    </div>
+                                    <div class="radio-button">
+                                        <input type="radio" name="date" id="eight" required>
+                                        <label for="eight" ng-click="getRentalAmount(8)" class="text-medium"><span></span> 8 Days</label>
+                                    </div>
+                                    <div class="calendar inline-block calen-align" ng-click="open2()">
+                                        <div class="input-group calen">
+                                            <input type="date" class="form-control" uib-datepicker-popup ng-model="cartpro.timeFrom" ng-change="beTheChange(cartpro.timeFrom)
+                                 " is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-class="{today: 'todayDay'}" readonly="readonly" required/>
+                                            <span class="cal">
                     <button type="button" class="btn btn-default" ></button>
                   </span>
-                    </div>
-                  </div>
-                </div>
-                <!-- </form> -->
-              </div>
-              <div class="order-time a1">
-                <div class="row">
-                  <div class="col-md-12 col-sm-12">
-                    <div class="">
-                      <label for="delivery-time" class="inline-block a2">Delivery Time</label>
-                      <div class="custom-select inline-block a3">
-                        <select name="" id="delivery-time" ng-model="cartpro.deliveryTime" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- </form> -->
+                            </div>
+                            <div class="order-time a1">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="">
+                                            <label for="delivery-time" class="inline-block a2">Delivery Time</label>
+                                            <div class="custom-select inline-block a3">
+                                                <select name="" id="delivery-time" ng-model="cartpro.deliveryTime" required>
                                          <option ng-selected="true" value="">Select </option>
                                        <option value="10 am - 2 pm">10 am - 2 pm</option>
                                        <option value="2 pm - 6 pm">2 pm - 6 pm</option>
                                     </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="clearfix"></div>
-              <div class="order-time a1">
-                <div class="row">
-                  <div class="col-md-12 col-sm-12">
-                    <div class="">
-                      <label for="pickup-time" class="inline-block a2">Pickup Time</label>
-                      <div class="custom-select inline-block a3">
-                        <select name="" ng-model="cartpro.pickupTime" id="pickup-time" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="order-time a1">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="">
+                                            <label for="pickup-time" class="inline-block a2">Pickup Time</label>
+                                            <div class="custom-select inline-block a3">
+                                                <select name="" ng-model="cartpro.pickupTime" id="pickup-time" required>
                                        <option ng-selected="true" value="">Select </option>
                                        <option value="10 am - 2 pm">10 am - 2 pm</option>
                                        <option value="2 pm - 6 pm">2 pm - 6 pm</option>
                                     </select>
-                      </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div class="clearfix">
+                        </div>
+                        <div class="cla">
+                            <div class="buttons on-edit text-center">
+                                <button class="atc-atw btn btn-outline text-uppercase btn-full m-center" ng-click="addToCart();" ng-disabled="myProduct.$invalid">add to cart</button>
+                                <button type="button" class="atc-atw btn btn-outline text-uppercase btn-full m-center" ng-click="addTowishlistProduct(product._id);">add to wishlist</button>
+                    </form>
                     </div>
-                  </div>
+                    <div class="product-more-detail accordion-custom">
+                        <uib-accordion close-others="oneAtATime">
+                            <uib-accordion-group is-open="status.open1" ng-if="product.details !== ''">
+                                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i>
+                                    <span class="block">Details</span>
+                                </uib-accordion-heading>
+                                <div class="descp">
+                                    <p ng-bind-html="product.details"></p>
+                                </div>
+                            </uib-accordion-group>
+                            <uib-accordion-group is-open="status.open2" ng-if="product.care !== ''">
+                                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open2, 'fa-angle-down': !status.open2}"></i>
+                                    <span class="block">Material &amp; Care</span>
+                                </uib-accordion-heading>
+                                <div class="descp">
+                                    <p ng-bind-html="product.care"></p>
+                                </div>
+                            </uib-accordion-group>
+                            <uib-accordion-group is-open="status.open3" ng-if="product.notes !== ''">
+                                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i>
+                                    <span class="block">Stylist Notes</span>
+                                </uib-accordion-heading>
+                                <div class="descp">
+                                    <p ng-bind-html="product.notes"></p>
+                                </div>
+                            </uib-accordion-group>
+                            <uib-accordion-group is-open="status.open4" ng-if="product.additionalnotes !== ''">
+                                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open4, 'fa-angle-down': !status.open3}"></i>
+                                    <span class="block">Additional Notes</span>
+                                </uib-accordion-heading>
+                                <div class="descp">
+                                    <p ng-bind-html="product.additionalnotes"></p>
+                                </div>
+                            </uib-accordion-group>
+                        </uib-accordion>
+                    </div>
+                    </div>
                 </div>
-              </div class="clearfix">
             </div>
-            <div class="cla">
-              <div class="buttons on-edit text-center">
-                <button class="atc-atw btn btn-outline text-uppercase btn-full m-center" ng-click="addToCart();" ng-disabled="myProduct.$invalid">add to cart</button>
-                <button type="button" class="atc-atw btn btn-outline text-uppercase btn-full m-center" ng-click="addTowishlistProduct(product._id);">add to wishlist</button>
-          </form>
-          </div>
-          <div class="product-more-detail accordion-custom">
-            <uib-accordion close-others="oneAtATime">
-              <uib-accordion-group is-open="status.open1" ng-if="product.details !== ''">
-                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open1, 'fa-angle-down': !status.open1}"></i>
-                  <span class="block">Details</span>
-                </uib-accordion-heading>
-                <div class="descp">
-                  <p ng-bind-html="product.details"></p>
-                </div>
-              </uib-accordion-group>
-              <uib-accordion-group is-open="status.open2" ng-if="product.care !== ''">
-                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open2, 'fa-angle-down': !status.open2}"></i>
-                  <span class="block">Material &amp; Care</span>
-                </uib-accordion-heading>
-                <div class="descp">
-                  <p ng-bind-html="product.care"></p>
-                </div>
-              </uib-accordion-group>
-              <uib-accordion-group is-open="status.open3" ng-if="product.notes !== ''">
-                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open3, 'fa-angle-down': !status.open3}"></i>
-                  <span class="block">Stylist Notes</span>
-                </uib-accordion-heading>
-                <div class="descp">
-                  <p ng-bind-html="product.notes"></p>
-                </div>
-              </uib-accordion-group>
-              <uib-accordion-group is-open="status.open4" ng-if="product.additionalnotes !== ''">
-                <uib-accordion-heading><i class="pull-right fa" ng-class="{'fa-angle-up': status.open4, 'fa-angle-down': !status.open3}"></i>
-                  <span class="block">Additional Notes</span>
-                </uib-accordion-heading>
-                <div class="descp">
-                  <p ng-bind-html="product.additionalnotes"></p>
-                </div>
-              </uib-accordion-group>
-            </uib-accordion>
-          </div>
-          </div>
-        </div>
-      </div>
-      <div class="suggested" ng-if="product.suggestedProduct && product.suggestedProduct.length>0">
-        <h3 class="dark-blue text-center">Suggested</h3>
-        <div class="suggested-slider">
-          <flex-slider class="carousel" flex-slide="sProducts in product.suggestedProduct track by $index" control-nav="false" item-width="260"
-            item-margin="0" animation="slide">
-            <li>
-              <div class="suggested-product">
-                <div class="suggested-imgholder relate">
-                  <img ng-src="{{sProducts.images[0].image|serverimage}}" alt="sProducts.name" class="get-center img-responsive">
-                  <div class="wishlist">
-                    <span class="pointer wishlist-heart " ng-click="addTowishlist(sProducts._id); "><i class="fa" ng-class="{'fa-heart':isInWishlist(sProducts._id),'fa-heart-o':!isInWishlist(sProducts._id)}"></i></span>
-                  </div>
-                </div>
-                <h4 class="name-suggestprd">{{sProducts.name | shorten:50}}</h4>
-                <p class="rent text-medium"><span class="block"> by {{sProducts.designer.name}}</span>Rent : Rs {{sProducts.fourdayrentalamount |currency}}/-</p>
-                <div class="view-button" ui-sref="productdetail({'id':sProducts._id})">
-                  <button class="btn btn-outline text-medium btn-full">
+            <div class="suggested" ng-if="product.suggestedProduct && product.suggestedProduct.length>0">
+                <h3 class="dark-blue text-center">Suggested</h3>
+                <div class="suggested-slider">
+                    <flex-slider class="carousel" flex-slide="sProducts in product.suggestedProduct track by $index" control-nav="false" item-width="260" item-margin="0" animation="slide">
+                        <li>
+                            <div class="suggested-product">
+                                <div class="suggested-imgholder relate">
+                                    <img ng-src="{{sProducts.images[0].image|serverimage}}" alt="sProducts.name" class="get-center img-responsive">
+                                    <div class="wishlist">
+                                        <span class="pointer wishlist-heart " ng-click="addTowishlist(sProducts._id); "><i class="fa" ng-class="{'fa-heart':isInWishlist(sProducts._id),'fa-heart-o':!isInWishlist(sProducts._id)}"></i></span>
+                                    </div>
+                                </div>
+                                <h4 class="name-suggestprd">{{sProducts.name | shorten:50}}</h4>
+                                <p class="rent text-medium"><span class="block"> by {{sProducts.designer.name}}</span>Rent : <i class="fa fa-inr"></i> {{sProducts.fourdayrentalamount |currency}}/-</p>
+                                <div class="view-button" ui-sref="productdetail({'id':sProducts._id})">
+                                    <button class="btn btn-outline text-medium btn-full">
                         View Details
                      </button>
+                                </div>
+                            </div>
+                        </li>
+                    </flex-slider>
                 </div>
-              </div>
-            </li>
-          </flex-slider>
+            </div>
         </div>
-      </div>
     </div>
-  </div>

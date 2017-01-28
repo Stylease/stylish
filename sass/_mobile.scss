@@ -1,5 +1,4 @@
 @media (max-width: 1200px) {
-
     .order-delivery-time .time {
         margin-bottom: 10px;
     }
@@ -82,15 +81,24 @@
     }
 }
 @media (max-width: $screen-sm-max) {
-  .product-detail h4{height: 36px;}
-  .product-introp{font-size: 13px;}
-  .hiw{ .minsize {
-    margin: 0;
-}
-.minsize2 {
-    margin: 0;
-}
-  }
+    .product-detail h4 {
+        height: 36px;
+    }
+
+    .product-introp {
+        font-size: 13px;
+    }
+
+    .hiw {
+        .minsize {
+            margin: 0;
+        }
+
+        .minsize2 {
+            margin: 0;
+        }
+    }
+
     .how-it-works {
         min-height: 250px;
     }
@@ -271,35 +279,49 @@
     }
 }
 @media (max-width: $screen-xs-max) {
-  .fonterror p {
-    font-size: 15px;
-    padding-top: 24px;
-    padding-left: 0px;
+    .font {
+        padding: 40px 0;
 
-}
-.colh {
-    height: auto;
-    margin-bottom: 20px;
-}
-.colh2 {
-    height: auto;
-     margin-bottom: 20px
-}
-  .add-body .custom-checkbox {
-    margin: 0px;
+        h1,
+        h2 {
+              margin-top: 10px;
+            font-size: 16px;
+                display: none;
+        }
+    }
 
-}
+    .fonterror p {
+        font-size: 15px;
+        padding-top: 24px;
+        padding-left: 0;
+    }
+
+    .colh {
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .colh2 {
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .add-body .custom-checkbox {
+        margin: 0;
+    }
+
     .cn .cni {
         font-size: 15px;
-
     }
 
     .ml20 {
         margin-left: 0;
     }
+
     .wd50 {
         width: inherit;
     }
+
     .paddis {
         padding-left: inherit;
     }
@@ -490,7 +512,6 @@
     }
 
     .product-detail h4 {
-
         margin: 15px 0 10px;
         height: 40px;
     }
@@ -632,33 +653,39 @@
     }
 }
 @media (max-width: 480px) {
-  .mob-know{
-    font-size: 20px;
-    margin: 0;
-  }
-  .am{
-    font-size: 18px;
-  }
-  .submitbtn {
-      margin-top: 15px;
-      button {
-          padding: 6px 20px;
-      }
-  }
-  .product-detail p{
-  height: 40px;
-  }
-  .product-sizes {
-    ul {
-      li{
-        &:last-child{
-          padding-left: 0px !important;
-        }
-      }
+    .mob-know {
+        font-size: 20px;
+        margin: 0;
     }
-  }
+
+    .am {
+        font-size: 18px;
+    }
+
+    .submitbtn {
+        margin-top: 15px;
+
+        button {
+            padding: 6px 20px;
+        }
+    }
+
+    .product-detail p {
+        height: 40px;
+    }
+
+    .product-sizes {
+        ul {
+            li {
+                &:last-child {
+                    padding-left: 0 !important;
+                }
+            }
+        }
+    }
+
     .close-popup .close {
-      right: 8px !important;
+        right: 8px !important;
     }
 
     .displayinline {
@@ -933,7 +960,6 @@
             font-size: 15px;
         }
     }
-
     // profile
     .adj-padd {
         padding-left: 2px;
@@ -1326,7 +1352,6 @@
 
     .product-detail {
         h4 {
-
             font-size: 15px;
         }
 

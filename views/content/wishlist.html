@@ -39,7 +39,7 @@
                 </div>
                 <div class="wishlist-prd-detail">
                   <h5 class="wishprd-name">{{prd.product.name}}</h5>
-                  <span>Rent : Rs {{prd.product.fourdayrentalamount|currency}}/-</span>
+                  <span>Rent : <i class="fa fa-inr"></i> {{prd.product.fourdayrentalamount|currency}}/-</span>
                 </div>
                 <button class="btn btn-outline btn-full text-medium" ui-sref="productdetail({id:prd.product._id})">View Detail</button>
               </div>
@@ -58,7 +58,7 @@
           <button class="btn btn-outline btn-full text-medium" ui-sref="product" >Start Shopping</button>
 
           <!-- ngIf: cartProduct.length !== 0 -->
-          <p class="dark-pink m-clear pd10 "><i>The minimum order value on TheStylease.com is Rs.8,000/-</i></p>
+          <p class="dark-pink m-clear pd10 "><i>The minimum order value on TheStylease.com is <i class="fa fa-inr"></i> 8,000/-</i></p>
         </div>
 
       </div>
