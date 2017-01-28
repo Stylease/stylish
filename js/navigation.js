@@ -127,7 +127,7 @@ var navigationservice = angular.module('navigationservice', [])
                                 classis: "active",
                                 link: "product({name:'" + key.name + "'})"
                             });
-                        } else {
+                        } else if (key.category._id === '57ee51a41ca13f065a321607') {
                             subnavGen2.push({
                                 name: key.name,
                                 classis: "active",
@@ -136,9 +136,9 @@ var navigationservice = angular.module('navigationservice', [])
                         }
 
                     });
-                    navigation[1].subnav = subnavGen;
-                    navigation[2].subnav = subnavGen1;
-                    navigation[3].subnav = subnavGen2;
+                    navigation[2].subnav = subnavGen;
+                    navigation[3].subnav = subnavGen1;
+                    navigation[4].subnav = subnavGen2;
                 }
             });
             return navigation;
