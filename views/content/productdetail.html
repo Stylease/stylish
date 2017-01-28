@@ -189,8 +189,8 @@
                                         <span class="pointer wishlist-heart " ng-click="addTowishlist(sProducts._id); "><i class="fa" ng-class="{'fa-heart':isInWishlist(sProducts._id),'fa-heart-o':!isInWishlist(sProducts._id)}"></i></span>
                                     </div>
                                 </div>
-                                <h4 class="name-suggestprd">{{sProducts.name | shorten:50}}</h4>
-                                <p class="rent text-medium"><span class="block"> by {{sProducts.designer.name}}</span>Rent : <i class="fa fa-inr"></i> {{sProducts.fourdayrentalamount |currency}}/-</p>
+                                <h4 class="name-suggestprd">{{sProducts.designer.name}} <span class="block">{{sProducts.name | shorten:30}}</span></h4>
+                                <p class="rent text-medium">RENT : <i class="fa fa-inr"></i> {{sProducts.fourdayrentalamount |currency}}/-</p>
                                 <div class="view-button" ui-sref="productdetail({'id':sProducts._id})">
                                     <button class="btn btn-outline text-medium btn-full">
                         View Details
