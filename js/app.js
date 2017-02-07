@@ -143,7 +143,12 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             controller: 'CheckoutSigninCtrl'
         });
     $urlRouterProvider.otherwise("/home");
-    $locationProvider.html5Mode(isproduction);
+    // $locationProvider.html5Mode(isproduction);
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+
 });
 
 
