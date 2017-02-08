@@ -1413,8 +1413,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 //         templateUrl: "views/modal/minimumorder.html",
                 //         scope: $scope
                 //     });
-                // }
-
+                // }//
             }
 
         };
