@@ -2067,6 +2067,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.letIn = false;
                 NavigationService.getProduct(filter, function (data) {
                     if (data.value) {
+                        console.log('testt');
                         $scope.filterDataLength = data.data.totalpages * 5;
                         console.log('totalpages',data.data.totalpages,data.data.totalpages*5);
                         if (data.data.data.length === 0) {
