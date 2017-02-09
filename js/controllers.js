@@ -1837,7 +1837,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         $scope.checkall($state.params.name, true);
                         // checkall(cat,checkIt[cat])
                         _.each($scope.subcategory, function (key) {
-                            console.log("keyyyyyy", key);
+                            // console.log("keyyyyyy", key);
                             $scope.checkIt[key.name] = false;
                         });
 
