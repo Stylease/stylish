@@ -192,10 +192,12 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     $scope.userdata = data.data;
                     var fullName = [];
                     var fullName = data.data.name.split(' ');
-                    if (fullName.length == 1) {
+                    if (fullName.length == 2) {
+                        console.log('in iffffffff',fullName.length);
                         $scope.userdata.firstname = fullName[0],
                             $scope.userdata.lastname = fullName[1];
                     } else {
+                        console.log('in elseeeeeeee',fullName.length);
                         $scope.userdata.firstname = fullName[0],
                             $scope.userdata.lastname = fullName[2];
                     }
@@ -203,7 +205,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     console.log('fullName111111111', fullName);
 
                     console.log('firstName', $scope.userdata.firstname);
-                    console.log('lastName', $scope.userdatalastname);
+                    console.log('lastName', $scope.userdata.lastname);
                     console.log('userdata1111111111', $scope.userdata);
                 }
                 TemplateService.removeLoader();
