@@ -1832,6 +1832,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.getSubcategory = function () {
             NavigationService.getSubcategory(function (data) {
                 $scope.subcategory = data.data;
+                console.log('aaaaaaaaaaaaaaaaaa',$scope.subcategory)
                 if ($state.params.name) {
                     if ($state.params.name === "Occasion" || $state.params.name === "Dresses" || $state.params.name === "Accessories") {
                         $scope.checkall($state.params.name, true);
@@ -1847,6 +1848,12 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         })._id);
                     }
                     _.each($scope.subcategory, function (key) {
+                            // if (key.category.name.indexOf($state.params.name) != -1) {
+                            //     console.log("keyyyyyy", key.category.name);
+                            //     $scope.checkIt[key.name] = true;
+                            // } else {
+                            //     $scope.checkIt[key.name] = false;
+                            // }
                         $scope.checkIt[key.name] = false;
                     });
                     $scope.checkIt[$state.params.name] = true;
@@ -1923,6 +1930,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             }
 
         };
+
         $scope.pushSubCategory = function (flag, id, subcat) {
             $scope.checkIt[subcat] = flag;
             console.log("flag", flag, id, subcat);
@@ -2068,8 +2076,9 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 NavigationService.getProduct(filter, function (data) {
                     if (data.value) {
                         console.log('testt');
-                        $scope.filterDataLength = data.data.totalpages * 5;
-                        console.log('totalpages',data.data.totalpages,data.data.totalpages*5);
+                        
+                           $scope.filterDataLength = data.data.totalItems;
+
                         if (data.data.data.length === 0) {
                             $scope.texts.msg = "Product Not Found";
                         }
