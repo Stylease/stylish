@@ -1417,20 +1417,20 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                             scope: $scope
                         });
                     } else {
-                        if ($scope.totalrentalamount >= 500) {
+                        // if ($scope.totalrentalamount >= 500) {
                             if ($.jStorage.get("userLoggedIn")) {
                                 $state.go('address');
                             } else {
                                 $state.go(
                                     'checkoutsignin');
                             }
-                        } else {
-                            removemod = $uibModal.open({
-                                animation: true,
-                                templateUrl: "views/modal/minimumorder.html",
-                                scope: $scope
-                            });
-                        }
+                        // } else {
+                        //     removemod = $uibModal.open({
+                        //         animation: true,
+                        //         templateUrl: "views/modal/minimumorder.html",
+                        //         scope: $scope
+                        //     });
+                        // }
                     }
                 });
 
