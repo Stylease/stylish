@@ -2076,7 +2076,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 NavigationService.getProduct(filter, function (data) {
                     if (data.value) {
                         console.log('testt');
-                        
+                        console.log(data.data);
                            $scope.filterDataLength = data.data.totalItems;
 
                         if (data.data.data.length === 0) {
@@ -2222,6 +2222,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             // console.log(data);
             $scope.product = data.data.product;
             $scope.psizes = data.data.product.size;
+            TemplateService.canonical = "productdetail/"+$scope.product.name+"/" + $state.params.id;
             if ($scope.psizes && $scope.psizes.length > 0) {
                 $scope.selectSize($scope.psizes[0].name);
             }
@@ -2539,9 +2540,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         var lastpage = 1;
         $scope.getYourCelebrity = function () {
             NavigationService.getCelebrity($scope.celebrityFilter, function (data) {
-                console.log("aaa", data);
-                // $scope.celebrityData = data.data.data;
-                // console.log($scope.celebrityData);
                 if (data.value == true) {
                     $scope.lastpage = data.data.totalpages;
                     _.each(data.data.data, function (n) {
