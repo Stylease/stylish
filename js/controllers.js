@@ -2222,7 +2222,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             // console.log(data);
             $scope.product = data.data.product;
             $scope.psizes = data.data.product.size;
-            TemplateService.canonical = "productdetail/"+$scope.product.name+"/" + $state.params.id;
+            TemplateService.canonical = "productdetail/"+_.kebabCase($scope.product.name)+"/" + $state.params.id;
             if ($scope.psizes && $scope.psizes.length > 0) {
                 $scope.selectSize($scope.psizes[0].name);
             }
