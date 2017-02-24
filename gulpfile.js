@@ -321,6 +321,13 @@ gulp.task('renamePHP', function () {
         .pipe(gulp.dest("./"));
 });
 
+gulp.task('robots', function () {
+    var gulpCopy = require('gulp-copy');
+    return gulp.src("robots.txt")
+        .pipe(gulpCopy("./production/"));
+});
+
+
 
 
 gulp.task('watch', ["sass:development", "watch:all"]);
@@ -331,4 +338,4 @@ gulp.task('copy', ["copy:img", "copy:fonts"]);
 
 gulp.task('clearimage', ["clean:pImages", "clean:pFont"]);
 gulp.task('productionc', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', 'clean:production', "gzipfile", 'clean:tmp', 'clean:tmp', "zip", 'deploy'));
-gulp.task('production', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', "copy:indexhtml", 'clean:tmp', 'clean:tmp', "zip", 'renamePHP'));
+gulp.task('production', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', "copy:indexhtml", 'clean:tmp', 'clean:tmp', "zip", 'renamePHP', "robots"));
