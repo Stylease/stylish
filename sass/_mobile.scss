@@ -261,6 +261,9 @@
 }
 
 @media (max-width: $screen-xs-max) {
+    .how-it-works h1 {
+        font-size: 16px;
+    }
     .font {
         padding: 40px 0;
         h1,
@@ -580,7 +583,7 @@
         margin: 0;
     }
     .am {
-        font-size: 18px;
+        font-size: 14px;
     }
     .submitbtn {
         margin-top: 15px;
