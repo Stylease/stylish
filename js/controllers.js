@@ -419,7 +419,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.description = "Looking for trendy designer dresses on rent? Want some jewellery on rent? Visit thestylease.com for help! ";
         TemplateService.keywords = " Contact us, stylease contact us, rent designer dresses, designer dresses on rent";
         $scope.submitForm = function () {
-            //console.log("contact", $scope.formData);
+            // console.log("contact", $scope.formData);
             NavigationService.saveContact($scope.formData, function (data) {
                 //console.log("res data ", data);
                 if (data.value) {
@@ -1409,11 +1409,16 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.isEqualDate = false;
         $scope.gotocheckout = function () {
             $scope.isEqualDate = false;
+            $scope.isDateIssue = false;
             //new code fot cartdates
             $scope.newcartpro = $scope.cartProduct[0];
             _.each($scope.cartProduct, function (newpro) {
                 if (newpro.timeFrom.setHours(0, 0, 0, 0) !== $scope.newcartpro.timeFrom.setHours(0, 0, 0, 0) || newpro.duration !== $scope.newcartpro.duration || newpro.pickupTime !== $scope.newcartpro.pickupTime || newpro.deliveryTime !== $scope.newcartpro.deliveryTime) {
                     $scope.isEqualDate = true;
+                }
+                if (newpro.timeFrom.getTime() < new Date()) {
+                    console.log("date range issue");
+                     $scope.isDateIssue = true;
                 }
             });
             console.log(" $scope.isEqualDate", $scope.isEqualDate);
@@ -1424,7 +1429,15 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     // templateUrl: "views/modal/creat-cart.html",
                     scope: $scope
                 });
-            } else {
+            } else if($scope.isDateIssue){
+                 cartdate = $uibModal.open({
+                    animation: true,
+                    templateUrl: "views/modal/datecart.html",
+                    // templateUrl: "views/modal/creat-cart.html",
+                    scope: $scope
+                });
+            }
+            else {
                 NavigationService.checkoutCheck(function (data) {
                     if (data.value) {
                         removemod = $uibModal.open({
@@ -2149,9 +2162,18 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 return false;
             });
             if ($state.params.name) {
-                $scope.filter.subcategory.push(_.find($scope.subcategory, function (key) {
-                    return key.name == $state.params.name;
-                })._id);
+                if (_.find($scope.subcategory, function (key) {
+                        console.log(key.name);
+                        return key.name == $state.params.name;
+
+                    })) {
+                    $scope.filter.subcategory.push(_.find($scope.subcategory, function (key) {
+                        console.log(key.name);
+                        return key.name == $state.params.name;
+
+                    })._id);
+                }
+
                 $scope.checkIt[$state.params.name] = true;
             }
             $scope.letLoad = false;
