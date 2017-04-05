@@ -247,7 +247,8 @@ a {
 }
 
 .tooltip.bottom .tooltip-arrow {
-    margin-left: 22% !important;
+    margin-left: 9% !important;
+    //  margin-left: 22% !important;
 }
 
 .ml10 {
@@ -2023,7 +2024,7 @@ input.form-control {
             margin-left: -10px;
         }
         .tooltip-inner {
-            float: right;
+            // float: right;
             max-width: 228px!important;
             margin: 0 auto;
             border: 1px solid $brand-dark-blue;
@@ -2305,7 +2306,7 @@ flex-slider {
 
 .cn {
     padding: 10px 0 40px;
-    margin: 4% 21%;
+    text-align: right;
     h4 {
         font-weight: 500;
         padding-bottom: 5px;
@@ -3175,6 +3176,30 @@ div[uib-datepicker] {
 // celebrity page end
 .product-namep {
     font-weight: 600;
+}
+
+li {
+    list-style: none;
+}
+
+.menu {
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 65px;
+    padding-left: 7px;
+}
+
+.menu::last-child {
+    padding: 0;
+}
+
+.designers-list {
+    font-size: 12px;
+}
+
+iframe {
+    width: 100%;
 }
 
 @import "fancybox-override";

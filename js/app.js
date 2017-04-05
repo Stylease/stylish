@@ -102,7 +102,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             controller: 'ProductCtrl'
         })
 
-        .state('productdetail', {
+    .state('productdetail', {
             url: "/pd/:subcatname/:id",
             templateUrl: "views/template.html",
             controller: 'ProductdetailCtrl'
@@ -141,7 +141,17 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             url: "/checkout-signin",
             templateUrl: "views/template.html",
             controller: 'CheckoutSigninCtrl'
+        })
+        .state('designers', {
+            url: "/designers",
+            templateUrl: "views/template.html",
+            controller: 'DesignersCtrl'
         });
+    //    .state('contactus', {
+    //     url: "/contactus",
+    //     templateUrl: "views/template.html",
+    //     controller: 'ContactUsCtrl'
+    // });
     $urlRouterProvider.otherwise("/home");
     // $locationProvider.html5Mode(isproduction);
     $locationProvider.html5Mode({

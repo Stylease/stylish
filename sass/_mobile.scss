@@ -81,6 +81,9 @@
 
 @media (max-width: $screen-sm-max) {
     // Know More Moda; Text Css Here
+    .menu {
+        padding-right: 27px;
+    }
     .hiw-padd {
         padding: 34px 30px;
     }
@@ -261,6 +264,13 @@
 }
 
 @media (max-width: $screen-xs-max) {
+    .ul {
+        overflow-x: auto;
+        margin-bottom: 0;
+    }
+    .scroll {
+        white-space: nowrap;
+    }
     .how-it-works h1 {
         font-size: 16px;
     }
