@@ -247,7 +247,7 @@ a {
 }
 
 .tooltip.bottom .tooltip-arrow {
-    margin-left: 9% !important;
+    margin-left: -28% !important;
     //  margin-left: 22% !important;
 }
 
@@ -1944,6 +1944,9 @@ input.form-control {
             font-size: 15px;
             font-weight: 300;
         }
+        h3 {
+            text-transform: capitalize;
+        }
     }
     .back-color {
         width: 100%;
@@ -2010,6 +2013,7 @@ input.form-control {
         }
         .refund {
             margin-left: 5px;
+            position: relative;
         }
         .tooltip.bottom {
             opacity: 1;
@@ -2032,6 +2036,10 @@ input.form-control {
             background-color: $brand-pink;
             color: $brand-dark-blue;
             font-size: 15px;
+            position: absolute;
+            left: -95px;
+            width: 370px;
+            padding: 0px 8px;
         }
     }
 }
@@ -3174,6 +3182,7 @@ div[uib-datepicker] {
 }
 
 // celebrity page end
+//designer page :start
 .product-namep {
     font-weight: 600;
 }
@@ -3188,6 +3197,12 @@ li {
     padding-bottom: 10px;
     padding-right: 65px;
     padding-left: 7px;
+    &:active {
+        color: $brand-google;
+    }
+    &:hover {
+        color: $brand-google;
+    }
 }
 
 .menu::last-child {
@@ -3200,6 +3215,40 @@ li {
 
 iframe {
     width: 100%;
+}
+
+.designer-check {
+    padding: 5px 20px 0px 20px;
+    label {
+        color: black;
+    }
+    label:hover {
+        color: black;
+    }
+}
+
+.menu-designer {
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 65px;
+    padding-left: 7px;
+    &:active {
+        color: $brand-google;
+    }
+    &:hover {
+        color: $brand-google;
+    }
+}
+
+.designer-check-last {
+    padding: 5px 20px 10px 20px;
+    label {
+        color: black;
+    }
+    label:hover {
+        color: black;
+    }
 }
 
 @import "fancybox-override";
