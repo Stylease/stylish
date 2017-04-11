@@ -43,15 +43,15 @@
 				</div>
 			</div>
 		</li>
-		<li class="menu-designer">ABC</li>
-		<li class="menu-designer">DEF</li>
-		<li class="menu-designer">GHI</li>
-		<li class="menu-designer">JKL</li>
-		<li class="menu-designer">MNP</li>
-		<li class="menu-designer">OQR</li>
-		<li class="menu-designer">STU</li>
-		<li class="menu-designer">VWY</li>
-		<li class="menu-designer">XYZ</li>
+		<li class="menu-designer" ng-click="filterMe(0)" >ABC</li>
+		<li class="menu-designer" ng-click="filterMe(1)">DEF</li>
+		<li class="menu-designer" ng-click="filterMe(2)" >GHI</li>
+		<li class="menu-designer" ng-click="filterMe(3)" >JKL</li>
+		<li class="menu-designer" ng-click="filterMe(4)" >MNO</li>
+		<li class="menu-designer" ng-click="filterMe(5)" >PQR</li>
+		<li class="menu-designer" ng-click="filterMe(6)" >STU</li>
+		<li class="menu-designer" ng-click="filterMe(7)" >VWX</li>
+		<li class="menu-designer" ng-click="filterMe(8)" >YZ</li>
 		<li class="menu-designer">#</li>
 	</ul>
 </div>
@@ -61,18 +61,10 @@
 			<div class="col-md-2 col-sm-2 col-xs-12">
 				<ul>
 					<li>
-						<h2>A</h2>
+						<h2>{{filterData.searchText[0] | uppercase}}</h2>
 					</li>
-					<li>Aadi Shop by Shalini</li>
-					<li>Aamaya by Priyanka</li>
-					<li>Aartivijay Gupta</li>
-					<li>Aastha Wadhwa</li>
-					<li>Aaylixir</li>
-					<li>Abhinav Mishra</li>
-					<li>Abhijeet Khanna</li>
-					<li>Abhishek Vermaa</li>
-					<li>Adora/Ankita</li>
-					<li>Aditi Somani</li>
+					<li ng-repeat="f in filteredData.firstObj[0] | limitTo: lim">{{f.name}}</li>
+					
 				</ul>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
@@ -80,34 +72,17 @@
 					<li>
 						<h2 class="hidden-xs" style=" visibility: hidden;">a </h2>
 					</li>
-					<li>Adya</li>
-					<li>Aekatri by Charu Vij</li>
-					<li>Agami by Neha Agarwal</li>
-					<li>AGT by Amit GT</li>
-					<li>Anguj/Gunjan Arora</li>
-					<li>Aharin India</li>
-					<li>Ahilya Jewels</li>
-					<li>Aiman</li>
-					<li>Akshay Wadhwa</li>
-					<li>Akaroo</li>
+					<li ng-repeat="f in filteredData.firstObj[1] | limitTo: lim">{{f.name}}</li>
+					
 				</ul>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
 				<ul>
 					<li>
-						<h2>B</h2>
+						<h2>{{filterData.searchText[1] | uppercase}}</h2>
 					</li>
-					<li>Baavli</li>
-					<li>Babita Malkani</li>
-					<li>Bansri</li>
-					<li>Bhanuni by Jyoti</li>
-					<li>Bhavya Bhatnagar</li>
-					<li>Bhoomika Chouhan</li>
-					<li>Bhumika Grover</li>
-					<li>Bhumika Sharma</li>
-					<li>BIAS</li>
-					<li>BIBA/ Rohit Bal</li>
-					<li>Bina Dua</li>
+					<li ng-repeat="f in filteredData.secondObj[0] | limitTo: lim">{{f.name}}</li>
+				
 				</ul>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
@@ -115,34 +90,17 @@
 					<li>
 						<h2 class="hidden-xs" style=" visibility: hidden;">d</h2>
 					</li>
-					<li>Birdwalk</li>
-					<li>Bling Accessories</li>
-					<li>Blue Lotus by Ritu Kapur</li>
-					<li>Blushing Couture by Shafali</li>
-					<li>BookMyBindi</li>
-					<li>Breathe by Aakansha and Nupur</li>
-					<li>Bubber Couture</li>
-					<li>Bungalow 8</li>
-					<li></li>
-					<li></li>
+					<li ng-repeat="f in filteredData.secondObj[1] | limitTo: lim">{{f.name}}</li>
+					
 				</ul>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
 				<ul>
 					<li>
-						<h2>C</h2>
+						<h2>{{filterData.searchText[2] | uppercase}}</h2>
 					</li>
-					<li>Carousel by Simran Arya</li>
-					<li>Casa Pop</li>
-					<li>Chandrani Singh Flora</li>
-					<li>Cherie D</li>
-					<li>Chhavvi Aggarwal</li>
-					<li>Chhavi's Jewel</li>
-					<li>Chhaya mehrotras</li>
-					<li>Chicory Chai</li>
-					<li>Chique Clothing</li>
-					<li>Christine Aranha</li>
-					<li>Closest Drama</li>
+					<li ng-repeat="f in filteredData.thirdObj[0] | limitTo: lim">{{f.name}}</li>
+					
 				</ul>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
@@ -150,25 +108,18 @@
 					<li>
 						<h2 class="hidden-xs" style=" visibility: hidden;">d</h2>
 					</li>
-					<li>Cita 9/Ritu $ Divvya</li>
-					<li>Coral Haze</li>
-					<li>Coterie Jewels</li>
-					<li>Crazy Palette</li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+					<li ng-repeat="f in filteredData.thirdObj[1] | limitTo: lim">{{f.name}}</li>
+					
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="row text-center" style="padding-top:30px;padding-bottom:30px;margin:0;">
-		<p style="letter-spacing: 1px;"><span style="
+		<p style="letter-spacing: 1px;" >
+	<button style="
     display:inline-block;
     border-bottom:1px solid black;
-    padding-bottom:1px;">VIEW MORE</></p>
+    padding-bottom:1px;" ng-click="loadmoredesigner('loadMore')">VIEW MORE </button></p>
 		
 	</div>
 
