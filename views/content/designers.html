@@ -43,16 +43,16 @@
 				</div>
 			</div>
 		</li>
-		<li class="menu-designer" ng-click="filterMe(0)" >ABC</li>
+		<li class="menu-designer" ng-click="filterMe(0)">ABC</li>
 		<li class="menu-designer" ng-click="filterMe(1)">DEF</li>
-		<li class="menu-designer" ng-click="filterMe(2)" >GHI</li>
-		<li class="menu-designer" ng-click="filterMe(3)" >JKL</li>
-		<li class="menu-designer" ng-click="filterMe(4)" >MNO</li>
-		<li class="menu-designer" ng-click="filterMe(5)" >PQR</li>
-		<li class="menu-designer" ng-click="filterMe(6)" >STU</li>
-		<li class="menu-designer" ng-click="filterMe(7)" >VWX</li>
-		<li class="menu-designer" ng-click="filterMe(8)" >YZ</li>
-		<li class="menu-designer">#</li>
+		<li class="menu-designer" ng-click="filterMe(2)">GHI</li>
+		<li class="menu-designer" ng-click="filterMe(3)">JKL</li>
+		<li class="menu-designer" ng-click="filterMe(4)">MNO</li>
+		<li class="menu-designer" ng-click="filterMe(5)">PQR</li>
+		<li class="menu-designer" ng-click="filterMe(6)">STU</li>
+		<li class="menu-designer" ng-click="filterMe(7)">VWX</li>
+		<li class="menu-designer" ng-click="filterMe(8)">YZ</li>
+
 	</ul>
 </div>
 <div class="designers-list">
@@ -64,7 +64,7 @@
 						<h2>{{filterData.searchText[0] | uppercase}}</h2>
 					</li>
 					<li ng-repeat="f in filteredData.firstObj[0] | limitTo: lim">{{f.name}}</li>
-					
+
 				</ul>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
@@ -73,7 +73,7 @@
 						<h2 class="hidden-xs" style=" visibility: hidden;">a </h2>
 					</li>
 					<li ng-repeat="f in filteredData.firstObj[1] | limitTo: lim">{{f.name}}</li>
-					
+
 				</ul>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
@@ -82,7 +82,7 @@
 						<h2>{{filterData.searchText[1] | uppercase}}</h2>
 					</li>
 					<li ng-repeat="f in filteredData.secondObj[0] | limitTo: lim">{{f.name}}</li>
-				
+
 				</ul>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
@@ -91,7 +91,7 @@
 						<h2 class="hidden-xs" style=" visibility: hidden;">d</h2>
 					</li>
 					<li ng-repeat="f in filteredData.secondObj[1] | limitTo: lim">{{f.name}}</li>
-					
+
 				</ul>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
@@ -100,7 +100,7 @@
 						<h2>{{filterData.searchText[2] | uppercase}}</h2>
 					</li>
 					<li ng-repeat="f in filteredData.thirdObj[0] | limitTo: lim">{{f.name}}</li>
-					
+
 				</ul>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
@@ -109,18 +109,14 @@
 						<h2 class="hidden-xs" style=" visibility: hidden;">d</h2>
 					</li>
 					<li ng-repeat="f in filteredData.thirdObj[1] | limitTo: lim">{{f.name}}</li>
-					
+
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="row text-center" style="padding-top:30px;padding-bottom:30px;margin:0;">
-		<p style="letter-spacing: 1px;" >
-	<button style="
-    display:inline-block;
-    border-bottom:1px solid black;
-    padding-bottom:1px;" ng-click="loadmoredesigner('loadMore')">VIEW MORE </button></p>
-		
+		<button class="btn btn-view">VIEW MORE</button>
+
 	</div>
 
 

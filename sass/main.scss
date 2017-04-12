@@ -3227,12 +3227,26 @@ iframe {
     }
 }
 
+.btn-view {
+    font-family: sans-serif;
+    background: transparent;
+    border-bottom: 1px solid #414250;
+    color: #2c2d3d;
+    padding: 0px 2px;
+    &:focus,
+    &:active {
+        outline: none !important;
+        color: #2c2d3d;
+    }
+}
+
 .menu-designer {
     display: inline-block;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 65px;
     padding-left: 7px;
+    cursor: pointer;
     &:active {
         color: $brand-google;
     }
