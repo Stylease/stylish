@@ -487,12 +487,18 @@ var navigationservice = angular.module('navigationservice', [])
                     data: request
                 }).success(callback);
             },
-            getAllAlphabetically: function (request, callback) {
+            getByDesignerTypeAlpha: function (request, callback) {
                 return $http({
-                    url: adminURL + 'designer/getAllAlphabetically',
+                    url: adminURL + 'designer/getByDesignerTypeAlpha',
                     method: "POST",
                     data: request
                 }).success(callback);
+            },
+             getAllDesignerType: function (callback, errCallback) {
+                return $http({
+                    url: adminURL + "DesignerType/getAll",
+                    method: "POST"
+                }).success(callback).error(errCallback);
             },
             localCountry: function (callback) {
                 $.getJSON("http://www.geoplugin.net/json.gp?jsoncallback=?", callback);
