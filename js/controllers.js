@@ -1927,7 +1927,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     $scope.subcategory = data.data;
                     console.log('aaaaaaaaaaaaaaaaaa', $scope.subcategory)
                     if ($state.params.name) {
-                        if ($state.params.name === "Occasion" || $state.params.name === "Dresses" || $state.params.name === "Accessories") {
+                        if ($state.params.name === "Occasion" || $state.params.name === "Dresses" || $state.params.name === "Accessories" || $state.params.name === "Collections") {
                             $scope.checkall($state.params.name, true);
                             // checkall(cat,checkIt[cat])
                             _.each($scope.subcategory, function (key) {

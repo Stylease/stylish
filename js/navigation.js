@@ -33,6 +33,13 @@ var navigationservice = angular.module('navigationservice', [])
                 disabled: false,
                 anchor: "accessories",
                 subnav: []
+            },
+             {
+                name: "Collections",
+                classis: "active",
+                disabled: false,
+                anchor: "collections",
+                subnav: []
             }
             // , {
             //     name: "Celebrities Choice",
@@ -114,6 +121,13 @@ var navigationservice = angular.module('navigationservice', [])
                     // link: "product({name:'All'})"
 
                 }];
+                 var subnavGen3 = [{
+                    name: "All",
+                    classis: "active",
+                    link: "product({name:'Collections'})"
+                    // link: "product({name:'All'})"
+
+                }];
                 $http({
                     url: adminURL + 'subcategory/getAllCat',
                     method: "POST"
@@ -140,12 +154,19 @@ var navigationservice = angular.module('navigationservice', [])
                                     classis: "active",
                                     link: "product({name:'" + key.name + "'})"
                                 });
+                            }else if (key.category._id === '58ea4d964ef15d3ccb7c3928') {
+                                subnavGen3.push({
+                                    name: key.name,
+                                    classis: "active",
+                                    link: "product({name:'" + key.name + "'})"
+                                });
                             }
 
                         });
                         navigation[2].subnav = subnavGen;
                         navigation[3].subnav = subnavGen1;
                         navigation[4].subnav = subnavGen2;
+                        navigation[5].subnav = subnavGen3;
                     }
                 });
                 return navigation;
