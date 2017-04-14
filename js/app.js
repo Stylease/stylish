@@ -97,7 +97,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             controller: 'CancelationPolicyCtrl'
         })
         .state('product', {
-            url: "/product/:name",
+            url: "/product/:name/:id",
             templateUrl: "views/template.html",
             controller: 'ProductCtrl'
         })

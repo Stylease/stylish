@@ -13,6 +13,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.canonical = "home";
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        console.log("navigation",$scope.navigation );
         TemplateService.removeLoaderOn(2);
         console.log($scope.navigation);
         $scope.footerColor = "home-footer";
@@ -44,7 +45,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         var temp = [];
         NavigationService.getSubcategory(function (data) {
-            console.log(data);
+            console.log("getSubcategory",data);
             _.each(data.data, function (key) {
                 // body...
                 // console.log("aaaaaa", key);
@@ -170,7 +171,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             });
             }
             console.log("$scope.filterDesign.designerTypeArr", $scope.filterDesign.designerTypeArr)
-           
+
         };
         $scope.pushDesignerType = function (flag, id,type) {
            $scope.checkIt[type] = flag;
@@ -188,9 +189,9 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                   document.getElementById('all').checked=false;
             }
             console.log("$scope.filterDesign.designerTypeArr", $scope.filterDesign.designerTypeArr)
-           
+
         };
-      
+
         $scope.AtoZ = [
             ["A", "B", "C"],
             ["d", "e", "f"],
@@ -214,7 +215,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.filterData.searchText = $scope.AtoZ[0];
          $scope.filterData.designerTypeArr=[];
         NavigationService.getByDesignerTypeAlpha($scope.filterData, function (data) {
-            
+
             console.log("by default", data);
             if (data.value) {
                 $scope.filteredData = data.data;
@@ -1965,10 +1966,12 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
         $scope.checkIt = {};
+        $scope.checkIts = {};
         $scope.texts = {};
         $scope.texts.msg = "";
         $scope.filter.subcategory = [];
         $scope.filter.color = [];
+        $scope.filter.designerId = [];
         $scope.filter.size = [];
         $scope.filter.pricefrom = 0;
         $scope.filter.priceto = 100000;
@@ -1982,12 +1985,14 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.subcategory = data.data;
                 console.log('aaaaaaaaaaaaaaaaaa', $scope.subcategory)
                 if ($state.params.name) {
-                    if ($state.params.name === "Occasion" || $state.params.name === "Dresses" || $state.params.name === "Accessories" || $state.params.name === "Collections") {
+                    if ($state.params.name === "Occasion" || $state.params.name === "Dresses" || $state.params.name === "Accessories" || $state.params.name === "Collections" || $state.params.id) {
                         $scope.checkall($state.params.name, true);
+                        $scope.filter.designerId.push($state.params.id);
                         // checkall(cat,checkIt[cat])
                         _.each($scope.subcategory, function (key) {
                             console.log("keyyyyyy", key);
                             $scope.checkIt[key.name] = false;
+                            $scope.checkIts[key.name] = false;
                         });
 
                     } else {
@@ -2003,6 +2008,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         //     $scope.checkIt[key.name] = false;
                         // }
                         $scope.checkIt[key.name] = false;
+                        $scope.checkIts[key.name] = false;
                     });
                     $scope.checkIt[$state.params.name] = true;
                     $scope.filter.pagenumber = 1;
@@ -2131,6 +2137,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             }
         };
 
+
         function getWishlist() {
             NavigationService.getWishlistUser(function (data) {
                 if (data.value === true) {
@@ -2219,6 +2226,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         $scope.getMyProducts = function (filter) {
             console.log("in get products");
+            console.log("filter",filter);
             if ($scope.letIn) {
                 $scope.letIn = false;
                 NavigationService.getProduct(filter, function (data) {
@@ -2261,6 +2269,38 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             }, function (err) {});
         };
         $scope.getColor();
+        // $scope.getDE
+
+        $scope.pushDesigner = function (flag, id) {
+            if (flag) {
+              // $scope.designerId=[];
+                // $scope.designerId.push(id)
+                $scope.filter.designerId.push(id);
+                // NavigationService.getProductByDesigner($scope.designerId,function(data){
+                //   console.log("$scope.designerId",$scope.designerId);
+                //           console.log("getProductByDesigner",data);
+                //           $scope.productDesigner=data.data.data;
+                //           console.log("$scope.productDesigner",$scope.productDesigner);
+                //           _.each($scope.productDesigner,function(n){
+                //                   $scope.shopping.push(n);
+                //                   console.log("$scope.shopping",$scope.shopping);
+                //           })
+                //         })
+              } else {
+                $scope.filter.designerId.splice(_.findIndex($scope.filter.designerId, function (key) {
+                    return key == id;
+                }), 1);
+            }
+        };
+
+
+NavigationService.getAllDesigner(function(data){
+  console.log("getProductByDesigner",data);
+  $scope.getAllDesigner=data.data;
+  console.log("$scope.getAllDesigner",$scope.getAllDesigner);
+})
+
+
         $scope.applyFilter = function (sortName) {
             $scope.filter.pagenumber = 1;
             $scope.filter.sort = sortName;
@@ -2269,6 +2309,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.showFilterlist = false;
         };
         $scope.resetFilter = function () {
+            $scope.filter.designerId = [];
             $scope.filter.subcategory = [];
             $scope.filter.color = [];
             $scope.filter.size = '';
@@ -2278,6 +2319,9 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.filter.sort = '';
             $scope.shopping = [];
             $scope.checkIt = _.map($scope.checkIt, function (key) {
+                return false;
+            });
+            $scope.checkIts = _.map($scope.checkIts, function (key) {
                 return false;
             });
             if ($state.params.name) {
@@ -2309,6 +2353,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.getMyProducts($scope.filter);
             }
         };
+
 
     })
     .controller('ProductdetailCtrl', function ($scope, CalenderService, TemplateService, NavigationService, $timeout, $uibModal, $state) {

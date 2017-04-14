@@ -741,9 +741,9 @@ nav {
         border-radius: 0;
         box-shadow: none;
         background-color: transparent;
-        &:first-child {
-            border-top: none;
-        }
+        // &:first-child {
+        //     border-top: none;
+        // }
     }
     .panel-default>.panel-heading {
         //  padding: 10px 0;
@@ -756,6 +756,10 @@ nav {
         font-size: 22px;
     }
 }
+
+// .accordion-customs :nth-of-type(2){
+//     border-top:none !important;
+// }
 
 .accordion-customs {
     .panel,
@@ -3267,6 +3271,18 @@ iframe {
     label:hover {
         color: black;
     }
+}
+
+.color{
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.accordion-customs{
+  .panel:nth-child(2){
+    border-top:none !important;
+  }
+
 }
 
 @import "fancybox-override";

@@ -187,7 +187,7 @@
                                 <form>
                                     <uib-accordion close-others="oneAtATime ">
                                         <uib-accordion-group is-open="status.open" ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
-                                            <uib-accordion-heading id="{{cat}}">
+                                            <uib-accordion-heading ng-if="value[0].category.status" id="{{cat}}">
                                                 <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open, 'fa-angle-down': !status.open} "></i>
                                                 <span class="block ">{{cat}}</span>
                                             </uib-accordion-heading>
@@ -242,6 +242,24 @@
                                                 <div class="magic-form ">
                                                     <div class="magic-resize" ng-repeat="col in color">
                                                         <input class="magic-checkbox" type="checkbox" name="{{col.name}}" ng-model="checkIt[col.name]" ng-change="pushColor(checkIt[col.name],col._id)"
+                                                            id="{{col.name}}">
+                                                        <label class="detail-heading" for="{{col.name}}">{{col.name}}</label>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="custom-checkbox " ng-repeat="col in color ">
+                          <input type="checkbox " name="{{col.name}} " ng-model="checkIt[col.name] " ng-change="pushColor(checkIt[col.name],col._id) " id="{{col.name}} ">
+                          <label for="{{col.name}} "><span></span> {{col.name}}</label>
+                        </div> -->
+                                            </div>
+                                        </uib-accordion-group>
+                                        <uib-accordion-group is-open="status.open4">
+                                            <uib-accordion-heading>
+                                                <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open4, 'fa-angle-down': !status.open4} "></i>                                                <span class="block ">Designer</span>
+                                            </uib-accordion-heading>
+                                            <div class="color ">
+                                                <div class="magic-form ">
+                                                    <div class="magic-resize" ng-repeat="col in getAllDesigner">
+                                                        <input class="magic-checkbox" type="checkbox" name="{{col.name}}" ng-model="checkIt[col.name]" ng-change="pushDesigner(checkIt[col.name],col._id)"
                                                             id="{{col.name}}">
                                                         <label class="detail-heading" for="{{col.name}}">{{col.name}}</label>
                                                     </div>
