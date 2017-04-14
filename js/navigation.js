@@ -171,6 +171,7 @@ var navigationservice = angular.module('navigationservice', [])
             //     }
             // });
             var data1 = {};
+            if(navigation.length<=2){
             $http({
                 url: adminURL + 'category/getall',
                 method: "POST"
@@ -207,11 +208,13 @@ var navigationservice = angular.module('navigationservice', [])
                                     subnavGen.push(sub);
                                     _.each(subnavData.data, function(key) {
                                         // console.log("oc");
+                                        if (key.status) {
                                         subnavGen.push({
                                             name: key.name,
                                             classis: "active",
                                             link: "product({name:'" + key.name + "'})"
                                         });
+                                      }
                                     });
                                     key.subnav = subnavGen;
                                     subnavGen = [];
@@ -262,7 +265,7 @@ var navigationservice = angular.module('navigationservice', [])
                 navigation.push(c);
                 navigation.push(h);
             });
-
+}
             console.log("navigation", navigation);
             return navigation;
         },
