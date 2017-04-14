@@ -3292,6 +3292,8 @@ iframe {
   border-top: 1px solid #000 !important;
 }
 
-
+.accordion-customs .panel-default>.panel-heading{
+      padding: 10px 15px;
+}
 @import "fancybox-override";
 @import "mobile";
