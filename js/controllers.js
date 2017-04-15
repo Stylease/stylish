@@ -203,16 +203,16 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             ["v", "w", "x"],
             ["y", "z"],
         ];
-        $scope.lim = 10;
+        $scope.lim = 10000;
 
-        $scope.loadmoredesigner = function (val) {
-            if (!_.isEmpty(val)) {
-                $scope.lim = 10000;
-                $scope.viewLess =true;
-            } else {
-                $scope.lim = 10;
-            }
-        }
+        // $scope.loadmoredesigner = function (val) {
+        //     if (!_.isEmpty(val)) {
+        //         $scope.lim = 10000;
+        //         $scope.viewLess =true;
+        //     } else {
+        //         $scope.lim = 3;
+        //     }
+        // }
 
         $scope.filterData = {};
         $scope.filterData.searchText = $scope.AtoZ[0];
@@ -707,6 +707,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.getUserAddress = function () {
             NavigationService.getProfile(function (data) {
                 if (data.value) {
+                  console.log("getProfile",data.data);
                     $scope.userdata = data.data;
                     var fullName = [];
                     var fullName = data.data.name.split(' ');

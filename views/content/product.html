@@ -186,18 +186,20 @@
                             <div class="search-by-filter ">
                                 <form>
                                     <uib-accordion close-others="oneAtATime ">
-                                        <uib-accordion-group ng-class="{'get-border':value[0].category.status }" is-open="status.open" ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
+                                        <uib-accordion-group is-open="status.open" ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                                             <uib-accordion-heading ng-if="value[0].category.status" id="{{cat}}" >
+                                              <div class="new-border">
                                                 <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open, 'fa-angle-down': !status.open} "></i>
                                                 <span class="block ">{{cat}}</span>
+                                              </div>
                                             </uib-accordion-heading>
-                                            <div class="magic-form " ng-if="value[0].category.status">
-                                                <div class="magic-resize">
+                                            <div class="magic-form">
+                                                <div class="magic-resize" ng-if="value[0].category.status">
                                                     <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[cat]" ng-change="checkall(cat,checkIt[cat])"
                                                         id="{{cat}}">
                                                     <label class="detail-heading" for="{{cat}}">All {{cat}}</label>
                                                 </div>
-                                                <div class="magic-resize" ng-repeat="subcat in value" ng-if="value[0].category.status">
+                                                <div class="magic-resize" ng-repeat="subcat in value">
                                                     <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id,subcat.name)"
                                                         id="{{subcat.name}}">
                                                     <label class="detail-heading" for="{{subcat.name}}">{{subcat.name}}</label>
@@ -212,8 +214,10 @@
                                         </uib-accordion-group>
                                         <uib-accordion-group is-open="status.open1 ">
                                             <uib-accordion-heading>
+                                              <div class="new-border" >
                                                 <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open1, 'fa-angle-down': !status.open1} "></i>
                                                 <span class="block ">Rental Price</span>
+                                                </div>
                                             </uib-accordion-heading>
                                             <div class="price-rangeslider ">
                                                 <div range-slider min="demo2.range.min " max="demo2.range.max " model-min="filter.pricefrom " model-max="filter.priceto "
@@ -226,7 +230,9 @@
                                         </uib-accordion-group>
                                         <uib-accordion-group is-open="status.open2 ">
                                             <uib-accordion-heading>
+                                              <div class="new-border">
                                                 <i class="pull-right fa icon " ng-class="{'fa-angle-up': status.open2, 'fa-angle-down': !status.open2}"></i>                                                <span class="block ">Size</span>
+                                              </div>
                                             </uib-accordion-heading>
                                             <div class="product-size" ng-init="size=''">
                                                 <ul class="list-inline">
@@ -236,7 +242,9 @@
                                         </uib-accordion-group>
                                         <uib-accordion-group is-open="status.open3 ">
                                             <uib-accordion-heading>
+                                              <div class="new-border">
                                                 <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open3, 'fa-angle-down': !status.open3} "></i>                                                <span class="block ">Colour</span>
+                                              </div>
                                             </uib-accordion-heading>
                                             <div class="color ">
                                                 <div class="magic-form ">
@@ -254,7 +262,9 @@
                                         </uib-accordion-group>
                                         <uib-accordion-group is-open="status.open4">
                                             <uib-accordion-heading>
+                                              <div class="new-border">
                                                 <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open4, 'fa-angle-down': !status.open4} "></i>                                                <span class="block ">Designer</span>
+                                              </div>
                                             </uib-accordion-heading>
                                             <div class="color ">
                                                 <div class="magic-form ">

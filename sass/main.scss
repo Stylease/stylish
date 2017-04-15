@@ -736,24 +736,25 @@ nav {
 //   border-color: transparent;
 // }
 .accordion-custom {
-
+  .new-border{
+      padding: 10px 15px;
+      border-top: 1px solid lighten($brand-dark-blue , 10%);
+  }
+  .get-border {
+      border-color: transparent !important;
+    }
     .panel,
-    .panel-default>.panel-heading {
+    .panel-heading {
         border: none;
-        border-top: 1px solid lighten($brand-dark-blue , 10%);
+        border-color: transparent;
         border-radius: 0;
         box-shadow: none;
         background-color: transparent;
-    }
-    .panel{
-      border-color: transparent;
-    }
-    .get-border {
-        border-color: transparent !important;
-      }
-    .panel-default>.panel-heading {
-        //  padding: 10px 0;
-    }
+        padding: 0;
+          }
+      // .panel-heading{
+      //       padding: 0;
+      // }
     .panel-default>.panel-heading+.panel-collapse>.panel-body {
         padding: 10px 0 0;
         border: none;
@@ -762,7 +763,6 @@ nav {
         font-size: 22px;
     }
 }
-
 // .accordion-customs :nth-of-type(2){
 //     border-top:none !important;
 // }
@@ -771,7 +771,7 @@ nav {
     .panel,
     .panel-default>.panel-heading {
         border: none;
-        border-top: 1px solid $brand-dark-blue;
+        // border-top: none;
         border-radius: 0;
         box-shadow: none;
         background-color: transparent;
@@ -780,8 +780,15 @@ nav {
         }
     }
     .panel-default>.panel-heading {
-        padding: 10px 0;
+        padding: 0px 0;
     }
+    .new-border{
+        padding: 10px 15px;
+        border-top: 1px solid lighten($brand-dark-blue , 10%);
+    }
+    .get-border {
+        border-color: transparent !important;
+      }
     .panel-default>.panel-heading+.panel-collapse>.panel-body {
         padding: 10px 0 0;
         border: none;
@@ -3296,10 +3303,6 @@ iframe {
 
 .border-top{
   border-top: 1px solid #000 !important;
-}
-
-.accordion-customs .panel-default>.panel-heading{
-      padding: 10px 15px;
 }
 @import "fancybox-override";
 @import "mobile";

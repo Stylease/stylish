@@ -77,16 +77,21 @@
                     <div class="form-error" ng-show="formcheckout.code.$error.required && formcheckout.code.$touched" gmail.com>Please enter your Pin Code.</div>
                   </div>
                   <div class="relate">
-                    <input placeholder="City" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCity" class="bckg form-control fixed-add"
-                       value="Mumbai">
+                    <input placeholder="City" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCity" class="form-control"
+                       value="Mumbai" required name="city">
+                    <!-- <input placeholder="City" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCity" class="bckg form-control fixed-add"
+                       value="Mumbai" required name="city"> -->
+                       <div class="form-error" ng-show="formcheckout.city.$error.required && formcheckout.city.$touched">Please enter your city.</div>
                   </div>
                   <div class="relate">
                     <input placeholder="State" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressState"
-                       class="bckg form-control fixed-add" value="Maharashtra">
+                       class="form-control" value="Maharashtra" name="states" required>
+                          <div class="form-error" ng-show="formcheckout.states.$error.required && formcheckout.states.$touched">Please enter your state.</div>
                   </div>
                   <div class="relate">
                     <input placeholder="Country" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCountry"
-                       class="bckg form-control fixed-add" value="India">
+                       class="form-control" value="India" name="country" required>
+                         <div class="form-error" ng-show="formcheckout.country.$error.required && formcheckout.country.$touched">Please enter your Country.</div>
                   </div>
                 </div>
               </div>
@@ -123,12 +128,12 @@
                       placeholder="Pin Code" name="pincode" ng-model="userdata.shippingAddress.shippingAddressPin" required>
                     <div class="form-error" ng-show="formcheckout.pincode.$error.required && formcheckout.pincode.$touched">Please enter your Pin Code</div>
                   </div>
-                  <input type="text"  class="bckg form-control fixed-add" ng-model="userdata.shippingAddress.shippingAddressCity" placeholder="City"
-                    value="Mumbai">
-                  <input type="text"  class="bckg form-control fixed-add" placeholder="State" ng-model="userdata.shippingAddress.shippingAddressState"
-                    value="Maharashtra">
-                  <input type="text"  class="bckg form-control fixed-add" placeholder="Country" ng-model="userdata.shippingAddress.shippingAddressCountry"
-                    value="India">
+                  <input type="text"  class="form-control" ng-model="userdata.shippingAddress.shippingAddressCity" placeholder="City"
+                    value="Mumbai" required>
+                  <input type="text"  class="form-control" placeholder="State" ng-model="userdata.shippingAddress.shippingAddressState"
+                    value="Maharashtra" required>
+                  <input type="text"  class="form-control" placeholder="Country" ng-model="userdata.shippingAddress.shippingAddressCountry"
+                    value="India" required>
                 </div>
               </div>
             </div>
