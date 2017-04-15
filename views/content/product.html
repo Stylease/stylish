@@ -191,7 +191,7 @@
                                                 <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open, 'fa-angle-down': !status.open} "></i>
                                                 <span class="block ">{{cat}}</span>
                                             </uib-accordion-heading>
-                                            <div class="magic-form ">
+                                            <div class="magic-form " ng-if="value[0].category.status">
                                                 <div class="magic-resize">
                                                     <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[cat]" ng-change="checkall(cat,checkIt[cat])"
                                                         id="{{cat}}">
