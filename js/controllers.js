@@ -213,7 +213,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.lim = 10;
             }
         }
-    
+
         $scope.filterData = {};
         $scope.filterData.searchText = $scope.AtoZ[0];
          $scope.filterData.designerTypeArr=[];
@@ -1988,9 +1988,12 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.subcategory = data.data;
                 console.log('aaaaaaaaaaaaaaaaaa', $scope.subcategory)
                 if ($state.params.name) {
-                    if ($state.params.name === "Occasion" || $state.params.name === "Dresses" || $state.params.name === "Accessories" || $state.params.name === "Collections" || $state.params.id) {
+                    if ($state.params.name === "Occasions" || $state.params.name === "Dresses" || $state.params.name === "Accessories" || $state.params.name === "Collections" || $state.params.id || $state.params.name) {
                         $scope.checkall($state.params.name, true);
-                        $scope.filter.designerId.push($state.params.id);
+                        if ($state.params.id) {
+                            $scope.filter.designerId.push($state.params.id);
+                        }
+
                         // checkall(cat,checkIt[cat])
                         _.each($scope.subcategory, function (key) {
                             console.log("keyyyyyy", key);

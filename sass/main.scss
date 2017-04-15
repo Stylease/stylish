@@ -737,13 +737,16 @@ nav {
     .panel,
     .panel-default>.panel-heading {
         border: none;
-        border-top: 1px solid $brand-dark-blue;
+        border-top: 1px solid lighten($brand-dark-blue , 10%);
         border-radius: 0;
         box-shadow: none;
         background-color: transparent;
         // &:first-child {
         //     border-top: none;
         // }
+    }
+    .panel{
+      border-color: transparent;
     }
     .panel-default>.panel-heading {
         //  padding: 10px 0;
