@@ -5,7 +5,8 @@ var navigationservice = angular.module('navigationservice', [])
             name: "Home",
             classis: "active",
             disabled: true,
-            anchor: "home"
+            anchor: "home",
+            // getborder:"get-border"
         }, {
             name: "About",
             classis: "active",

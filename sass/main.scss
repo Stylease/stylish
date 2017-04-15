@@ -732,8 +732,11 @@ nav {
         }
     }
 }
-
+//   .panel:nth-child(1) {
+//   border-color: transparent;
+// }
 .accordion-custom {
+
     .panel,
     .panel-default>.panel-heading {
         border: none;
@@ -741,13 +744,13 @@ nav {
         border-radius: 0;
         box-shadow: none;
         background-color: transparent;
-        // &:first-child {
-        //     border-top: none;
-        // }
     }
     .panel{
       border-color: transparent;
     }
+    .get-border {
+        border-color: transparent !important;
+      }
     .panel-default>.panel-heading {
         //  padding: 10px 0;
     }
@@ -1983,7 +1986,7 @@ input.form-control {
     .delivery-date,
     .product-size {
         padding: 20px 0;
-        border-bottom: 1px solid $brand-dark-blue;
+        // border-bottom: 1px solid $brand-dark-blue;
     }
     .order-time {
         padding: 10px 0;

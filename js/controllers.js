@@ -753,24 +753,24 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         }
                     }
                     $scope.userdata.shippingaddcopy = _.cloneDeep($scope.userdata.shippingAddress);
-                    $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
-                    $scope.userdata.shippingAddress.shippingAddressState = "Maharashtra";
-                    $scope.userdata.shippingAddress.shippingAddressCountry = "India";
-                    $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
-                    $scope.userdata.billingAddress.billingAddressState = "Maharashtra";
-                    $scope.userdata.billingAddress.billingAddressCountry = "India";
+                    // $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
+                    // $scope.userdata.shippingAddress.shippingAddressState = "Maharashtra";
+                    // $scope.userdata.shippingAddress.shippingAddressCountry = "India";
+                    // $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
+                    // $scope.userdata.billingAddress.billingAddressState = "Maharashtra";
+                    // $scope.userdata.billingAddress.billingAddressCountry = "India";
                 } else {
                     if ($.jStorage.get("userData")) {
                         $scope.userdata = $.jStorage.get("userData");
                     } else {
                         $scope.userdata.shippingAddress = {};
-                        $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
-                        $scope.userdata.shippingAddress.shippingAddressState = "Maharashtra";
-                        $scope.userdata.shippingAddress.shippingAddressCountry = "India";
+                        // $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
+                        // $scope.userdata.shippingAddress.shippingAddressState = "Maharashtra";
+                        // $scope.userdata.shippingAddress.shippingAddressCountry = "India";
                         $scope.userdata.billingAddress = {};
-                        $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
-                        $scope.userdata.billingAddress.billingAddressState = "Maharashtra";
-                        $scope.userdata.billingAddress.billingAddressCountry = "India";
+                        // $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
+                        // $scope.userdata.billingAddress.billingAddressState = "Maharashtra";
+                        // $scope.userdata.billingAddress.billingAddressCountry = "India";
                     }
                 }
                 TemplateService.removeLoader();

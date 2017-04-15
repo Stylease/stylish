@@ -186,7 +186,7 @@
                             <div class="search-by-filter ">
                                 <form>
                                     <uib-accordion close-others="oneAtATime ">
-                                        <uib-accordion-group ng-class="{'get-border':value[0].category.status }" is-open="status.open" ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">                                          
+                                        <uib-accordion-group ng-class="{'get-border':value[0].category.status }" is-open="status.open" ng-repeat="(cat, value) in subcategory | groupBy: 'category.name'">
                                             <uib-accordion-heading ng-if="value[0].category.status" id="{{cat}}" >
                                                 <i class="pull-right fa icon " ng-class="{ 'fa-angle-up': status.open, 'fa-angle-down': !status.open} "></i>
                                                 <span class="block ">{{cat}}</span>
@@ -197,7 +197,7 @@
                                                         id="{{cat}}">
                                                     <label class="detail-heading" for="{{cat}}">All {{cat}}</label>
                                                 </div>
-                                                <div class="magic-resize" ng-repeat="subcat in value">
+                                                <div class="magic-resize" ng-repeat="subcat in value" ng-if="value[0].category.status">
                                                     <input class="magic-checkbox" type="checkbox" name="{{cat}}" ng-model="checkIt[subcat.name]" ng-change="pushSubCategory(checkIt[subcat.name],subcat._id,subcat.name)"
                                                         id="{{subcat.name}}">
                                                     <label class="detail-heading" for="{{subcat.name}}">{{subcat.name}}</label>
@@ -258,7 +258,7 @@
                                             </uib-accordion-heading>
                                             <div class="color ">
                                                 <div class="magic-form ">
-                                                    <div class="magic-resize" ng-repeat="col in getAllDesigner">
+                                                    <div class="magic-resize" ng-repeat="col in getAllDesigner |orderBy:'name'">
                                                         <input class="magic-checkbox" type="checkbox" name="{{col.name}}" ng-model="checkIt[col.name]" ng-change="pushDesigner(checkIt[col.name],col._id)"
                                                             id="{{col.name}}">
                                                         <label class="detail-heading" for="{{col.name}}">{{col.name}}</label>
