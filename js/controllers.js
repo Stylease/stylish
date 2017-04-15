@@ -204,13 +204,16 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             ["y", "z"],
         ];
         $scope.lim = 10;
+
         $scope.loadmoredesigner = function (val) {
             if (!_.isEmpty(val)) {
                 $scope.lim = 10000;
+                $scope.viewLess =true;
             } else {
                 $scope.lim = 10;
             }
         }
+    
         $scope.filterData = {};
         $scope.filterData.searchText = $scope.AtoZ[0];
          $scope.filterData.designerTypeArr=[];
