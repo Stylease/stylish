@@ -761,6 +761,7 @@ nav {
     }
     .icon {
         font-size: 22px;
+        margin-top: 10px;
     }
 }
 // .accordion-customs :nth-of-type(2){
@@ -2330,7 +2331,7 @@ flex-slider {
 }
 
 .cn {
-    padding: 10px 0 40px;
+    padding: 10px 0;
     text-align: right;
     h4 {
         font-weight: 500;
@@ -3228,6 +3229,14 @@ li {
 
 .designers-list {
     font-size: 12px;
+    ul{
+      .designers-name{
+@include transition(all ease 300ms);
+        &:hover{
+        text-decoration: underline;
+      }
+    }
+    }
 }
 
 iframe {
@@ -3300,6 +3309,23 @@ iframe {
 .pointer {
   cursor: pointer;
 }
+.add-field{
+  display: inline-block;
+vertical-align: top;
+}
+.add-field1{
+  display: inline-block;
+      text-align: left;
+}
+.span-addr{
+  display: inline-block;
+width: 260px;
+  font-weight: 400px;
+  font-weight: 500;
+  padding-bottom: 5px;
+  font-size: 17px;
+}
+
 
 .border-top{
   border-top: 1px solid #000 !important;

@@ -48,7 +48,7 @@
 					<li>
 						<h2>{{filterData.searchText[0] | uppercase}}</h2>
 					</li>
-					<li  class="pointer" ng-repeat="f in filteredData.firstObj[0] | limitTo: lim" ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
+					<li  class="pointer designers-name" ng-repeat="f in filteredData.firstObj[0] | limitTo: lim" ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
 
 				</ul>
 			</div>
@@ -57,7 +57,7 @@
 					<li>
 						<h2 class="hidden-xs" style=" visibility: hidden;">a </h2>
 					</li>
-					<li class="pointer" ng-repeat="f in filteredData.firstObj[1] | limitTo: lim" ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
+					<li class="pointer designers-name" ng-repeat="f in filteredData.firstObj[1] | limitTo: lim" ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
 
 				</ul>
 			</div>
@@ -66,7 +66,7 @@
 					<li>
 						<h2>{{filterData.searchText[1] | uppercase}}</h2>
 					</li>
-					<li  class="pointer" ng-repeat="f in filteredData.secondObj[0] | limitTo: lim" ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
+					<li  class="pointer designers-name" ng-repeat="f in filteredData.secondObj[0] | limitTo: lim" ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
 
 				</ul>
 			</div>
@@ -75,7 +75,7 @@
 					<li>
 						<h2 class="hidden-xs" style=" visibility: hidden;">d</h2>
 					</li>
-					<li  class="pointer" ng-repeat="f in filteredData.secondObj[1] | limitTo: lim" ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
+					<li  class="pointer designers-name" ng-repeat="f in filteredData.secondObj[1] | limitTo: lim" ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
 
 				</ul>
 			</div>
@@ -84,7 +84,7 @@
 					<li>
 						<h2>{{filterData.searchText[2] | uppercase}}</h2>
 					</li>
-					<li  class="pointer" ng-repeat="f in filteredData.thirdObj[0] | limitTo: lim"  ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
+					<li  class="pointer designers-name" ng-repeat="f in filteredData.thirdObj[0] | limitTo: lim"  ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
 
 				</ul>
 			</div>
@@ -93,7 +93,7 @@
 					<li>
 						<h2 class="hidden-xs" style=" visibility: hidden;">d</h2>
 					</li>
-					<li  class="pointer" ng-repeat="f in filteredData.thirdObj[1] | limitTo: lim"  ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
+					<li  class="pointer designers-name" ng-repeat="f in filteredData.thirdObj[1] | limitTo: lim"  ui-sref="product({name:f.name,id: f._id})">{{f.name}}</li>
 
 				</ul>
 			</div>

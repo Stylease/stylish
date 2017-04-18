@@ -12,12 +12,14 @@
 <div class="accordion-custom" >
   <uib-accordion close-others="oneAtATime">
     <uib-accordion-group is-open="status.open" ng-repeat="menu in navigation track by $index" class="{{menu.classis}}" is-disabled="menu.disabled">
-      <uib-accordion-heading>
-        <div class="new-border {{menu.getBorder}}">
+      <uib-accordion-heading >
+        <div class="">
         <i class="pull-right fa dark-blue icon" ng-class="{'fa-angle-up':( status.open && !menu.disabled), 'fa-angle-down': (!status.open && !menu.disabled)}"></i>
-        <a ui-sref="{{menu.anchor}}" class="block dark-blue menu-name">{{menu.name}}</a>
+        <a ui-sref="{{menu.anchor}}" ng-if="!menu.showHome" class="block dark-blue menu-name new-border {{menu.getBorder}}">{{menu.name}}</a>
+        <a ui-sref="{{menu.anchor}}"  ng-if="menu.showHome && showOnHome"  class="block dark-blue menu-name new-border {{menu.getBorder}}">{{menu.name}}</a>
       </div>
       </uib-accordion-heading>
+
       <ul class="menu-dropdown" >
         <li ng-repeat="submenu in menu.subnav">
           <a  ui-sref="{{submenu.link}}" class="dark-blue">{{submenu.name}}</a>

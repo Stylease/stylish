@@ -232,6 +232,13 @@ var navigationservice = angular.module('navigationservice', [])
                     disabled: true,
                     anchor: "designers"
                 };
+                var celebrity = {
+                    name: "Celebrities",
+                    classis: "active",
+                    disabled: true,
+                    anchor: "celebritychoice",
+                    showHome:true
+                };
                 var c = {
                     name: "Contact Us",
                     classis: "active",
@@ -263,6 +270,7 @@ var navigationservice = angular.module('navigationservice', [])
                 }
 
                 navigation.push(d);
+                navigation.push(celebrity);
                 navigation.push(c);
                 navigation.push(h);
             });

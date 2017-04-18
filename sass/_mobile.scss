@@ -318,7 +318,9 @@
         margin: 4% 5%;
     }
     .cn {
-        margin: 0 5%;
+      float: left !important;
+        text-align: left;
+margin: 0;
     }
     .bg-color {
         padding: 11px;
@@ -588,6 +590,12 @@
 }
 
 @media (max-width: 480px) {
+
+  .scroll-mobile{
+    height: 150px;
+  overflow-y: scroll;
+  }
+
     .mob-know {
         font-size: 20px;
         margin: 0;
