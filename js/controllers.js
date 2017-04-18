@@ -1999,7 +1999,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         _.each($scope.subcategory, function(key) {
                             console.log("keyyyyyy", key);
                             $scope.checkIt[key.name] = false;
-                            $scope.checkIts[key.name] = false;
+                          
                         });
 
                     } else {
@@ -2020,7 +2020,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         //     $scope.checkIt[key.name] = false;
                         // }
                         $scope.checkIt[key.name] = false;
-                      
+
                     });
                     $scope.checkIt[$state.params.name] = true;
                     $scope.filter.pagenumber = 1;
@@ -2337,9 +2337,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.checkIt = _.map($scope.checkIt, function(key) {
                 return false;
             });
-            $scope.checkIts = _.map($scope.checkIts, function(key) {
-                return false;
-            });
+
             if ($state.params.name) {
                 if (_.find($scope.subcategory, function(key) {
                         console.log(key.name);
