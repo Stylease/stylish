@@ -25,15 +25,16 @@
                   </div>
 
                   <div class="celebrity-imgholder relate text-center">
-                     <div class="display-inline" ng-repeat="img in celebrity.images track by $index">
+                     <div class="display-inline">
+                     <!-- <div class="display-inline" ng-repeat="img in celebrity.images track by $index"> -->
                         <div class="img-holder">
-                           <img ng-src="{{img.image|serverimage}}" alt="{{celebrity.celebrity}}" ui-sref="productdetail({subcatname:celebrity.product.name,id:celebrity.product._id})">
+                           <img ng-src="{{celebrity.image|serverimage}}" alt="{{celebrity.celebrity}}" ui-sref="productdetail({subcatname:celebrity.product.name,id:celebrity.product._id})">
 
 
                         </div>
                      </div>
 
-                     <!-- <p ng-if="product.designer"> {{product.designer.name | shorten:30}} </p> -->
+                     <p> {{celebrity.product.designer.name}} </p>
                      <h4 class="product-name">{{celebrity.product.name}}</h4>
                      <div class="text-center">
                         <h3 class="celebrity-price m-clear">Rent : <i class="fa fa-inr"></i> {{celebrity.product.fourdayrentalamount}}/-</h3>
