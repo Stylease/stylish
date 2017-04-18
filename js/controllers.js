@@ -1970,7 +1970,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
         $scope.checkIt = {};
-        $scope.checkIts = {};
+
         $scope.texts = {};
         $scope.texts.msg = "";
         $scope.filter.subcategory = [];
@@ -2003,11 +2003,16 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         });
 
                     } else {
+                      $scope.filter.designerId=[];
+                      console.log("im in else");
                         $scope.filter.subcategory.push(_.find($scope.subcategory, function(key) {
+                          console.log("key",key);
                             return key.name == $state.params.name;
                         })._id);
+                          console.log("im in else",$scope.filter.subcategory);
                     }
                     _.each($scope.subcategory, function(key) {
+
                         // if (key.category.name.indexOf($state.params.name) != -1) {
                         //     console.log("keyyyyyy", key.category.name);
                         //     $scope.checkIt[key.name] = true;
@@ -2015,12 +2020,13 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         //     $scope.checkIt[key.name] = false;
                         // }
                         $scope.checkIt[key.name] = false;
-                        $scope.checkIts[key.name] = false;
+                      
                     });
                     $scope.checkIt[$state.params.name] = true;
                     $scope.filter.pagenumber = 1;
                 }
                 $scope.getMyProducts($scope.filter);
+                console.log("getMyProducts");
                 TemplateService.removeLoader();
             }, function(err) {
 
@@ -2733,6 +2739,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.removeLoaderOn(2);
         $scope.oneAtATime = true;
 
+
+// $state.go('state1',{new_param: "Going places!"});
         $scope.addCelebrity = function(celebrity) {
             if (celebrity.heart == "fa-heart") {
                 celebrity.heart = "fa-heart-o";
@@ -2913,6 +2921,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.lastpage = data.data.totalpages;
                 console.log("data.data.data", data.data.data);
                 var showCelebrity = _.result(_.find(data.data.data, function(obj) {
+                  console.log("obj",obj);
                     return obj.status === true;
                 }), 'status');
                 console.log("showCelebrity", showCelebrity);
