@@ -1999,7 +1999,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         _.each($scope.subcategory, function(key) {
                             console.log("keyyyyyy", key);
                             $scope.checkIt[key.name] = false;
-                          
+
                         });
 
                     } else {
@@ -2758,13 +2758,17 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.celebrityFilter.pagesize = 2;
         $scope.celebrityData = [];
         $scope.pages = [1]
-        var lastpage = 1;
+        // var lastpage = 1;
+        var lastpage = ''
+
 
         $scope.getYourCelebrity = function() {
             NavigationService.getCelebrity($scope.celebrityFilter, function(data) {
                 if (data.value == true) {
+                  console.log("data",data);
                     $rootScope.showOnHome = true;
-                    $scope.lastpage = data.data.totalpages;
+                    lastpage = data.data.totalpages;
+                    // $scope.lastpage = data.data.totalpages;
                     _.each(data.data.data, function(n) {
                         $scope.celebrityData.push(n);
                     });
@@ -2778,7 +2782,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.loadMore = function() {
             console.log('///////');
             if (lastpage > $scope.celebrityFilter.pagenumber) {
-                console.log('lastpageeee: ', lastpage)
+                // console.log('lastpageeee: ', lastpage)
                     ++$scope.celebrityFilter.pagenumber;
                 $scope.pages.push($scope.celebrityFilter.pagenumber);
                 //         console.log('pages:', $scope.pages);
