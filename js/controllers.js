@@ -756,10 +756,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     $scope.userdata.shippingaddcopy = _.cloneDeep($scope.userdata.shippingAddress);
                     // $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
                     // $scope.userdata.shippingAddress.shippingAddressState = "Maharashtra";
-                    // $scope.userdata.shippingAddress.shippingAddressCountry = "India";
+                    $scope.userdata.shippingAddress.shippingAddressCountry = "India";
                     // $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
                     // $scope.userdata.billingAddress.billingAddressState = "Maharashtra";
-                    // $scope.userdata.billingAddress.billingAddressCountry = "India";
+                    $scope.userdata.billingAddress.billingAddressCountry = "India";
                 } else {
                     if ($.jStorage.get("userData")) {
                         $scope.userdata = $.jStorage.get("userData");
@@ -767,11 +767,11 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         $scope.userdata.shippingAddress = {};
                         // $scope.userdata.shippingAddress.shippingAddressCity = "Mumbai";
                         // $scope.userdata.shippingAddress.shippingAddressState = "Maharashtra";
-                        // $scope.userdata.shippingAddress.shippingAddressCountry = "India";
+                        $scope.userdata.shippingAddress.shippingAddressCountry = "India";
                         $scope.userdata.billingAddress = {};
                         // $scope.userdata.billingAddress.billingAddressCity = "Mumbai";
                         // $scope.userdata.billingAddress.billingAddressState = "Maharashtra";
-                        // $scope.userdata.billingAddress.billingAddressCountry = "India";
+                        $scope.userdata.billingAddress.billingAddressCountry = "India";
                     }
                 }
                 TemplateService.removeLoader();
@@ -979,18 +979,26 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 collection = $scope.userdata.shippingAddress;
                 collection.push({
                     edit: true,
-                    shippingAddressCity: "Mumbai",
-                    shippingAddressState: "Maharashtra",
+                    // shippingAddressCity: "Mumbai",
+                    // shippingAddressState: "Maharashtra",
+                    shippingAddressCity: "",
+                    shippingAddressState: "",
                     shippingAddressCountry: "India"
                 });
             } else {
+              console.log("im en else");
+
                 collection = $scope.userdata.billingAddress;
                 collection.push({
                     edit: true,
-                    billingAddressCity: "Mumbai",
-                    billingAddressState: "Maharashtra",
+                    // billingAddressCity: "Mumbai",
+                    // billingAddressState: "Maharashtra",
+                    billingAddressCity: "",
+                    billingAddressState: "",
                     billingAddressCountry: "India"
                 });
+
+                  console.log("collection",collection);
             }
 
         };

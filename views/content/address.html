@@ -79,8 +79,10 @@
                   <div class="relate">
                     <input placeholder="City" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCity" class="form-control"
                        value="Mumbai" required name="city">
+
                     <!-- <input placeholder="City" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCity" class="bckg form-control fixed-add"
                        value="Mumbai" required name="city"> -->
+
                        <div class="form-error" ng-show="formcheckout.city.$error.required && formcheckout.city.$touched">Please enter your city.</div>
                   </div>
                   <div class="relate">
@@ -90,7 +92,7 @@
                   </div>
                   <div class="relate">
                     <input placeholder="Country" ng-change="sameShipping()" type="text" ng-model="userdata.billingAddress.billingAddressCountry"
-                       class="form-control" value="India" name="country" required>
+                       class="bckg form-control fixed-add" value="India" name="country" readonly required>
                          <div class="form-error" ng-show="formcheckout.country.$error.required && formcheckout.country.$touched">Please enter your Country.</div>
                   </div>
                 </div>
@@ -132,7 +134,7 @@
                     value="Mumbai" required>
                   <input type="text"  class="form-control" placeholder="State" ng-model="userdata.shippingAddress.shippingAddressState"
                     value="Maharashtra" required>
-                  <input type="text"  class="form-control" placeholder="Country" ng-model="userdata.shippingAddress.shippingAddressCountry"
+                  <input type="text"  class="bckg form-control fixed-add" readonly  placeholder="Country" ng-model="userdata.shippingAddress.shippingAddressCountry"
                     value="India" required>
                 </div>
               </div>

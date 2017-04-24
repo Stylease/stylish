@@ -76,8 +76,10 @@
                         <input type="text" class="form-control" placeholder="Pin Code" maxlength="6" ng-model="data.billingAddressPin" minlength="6"
                           required name="pinNo" only-Digits>
                         <div ng-show="saveaddress.pinNo.$error.required && saveaddress.pinNo.$touched">Please enter pin code</div>
-                        <input type="text" readonly class="form-control fixed-add" placeholder="City" ng-model="data.billingAddressCity">
-                        <input type="text" readonly class="form-control fixed-add" placeholder="State" ng-model="data.billingAddressState">
+                        <input type="text"  class="form-control" placeholder="City" ng-model="data.billingAddressCity">
+                        <input type="text"  class="form-control" placeholder="State" ng-model="data.billingAddressState">
+                        <!-- <input type="text" readonly class="form-control fixed-add" placeholder="City" ng-model="data.billingAddressCity">
+                        <input type="text" readonly class="form-control fixed-add" placeholder="State" ng-model="data.billingAddressState"> -->
                         <input type="text" readonly class="form-control fixed-add" placeholder="Country" ng-model="data.billingAddressCountry">
                         <div class="same-billing mg20">
                           <div class="custom-checkbox">
