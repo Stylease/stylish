@@ -154,7 +154,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
     // });
     $urlRouterProvider.otherwise("/home");
     // $locationProvider.html5Mode(isproduction);
-    $locationProvider.html5Mode(isproduction);
+    $locationProvider.html5Mode(true);
 
 });
 
