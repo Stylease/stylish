@@ -142,6 +142,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             templateUrl: "views/template.html",
             controller: 'CheckoutSigninCtrl'
         })
+        .state('blog', {
+            url: "/blog",
+            template:"",
+            controller:'BlogRedirectCtrl'
+        })
         .state('designers', {
             url: "/designers",
             templateUrl: "views/template.html",

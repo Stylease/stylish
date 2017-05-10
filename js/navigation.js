@@ -8,6 +8,12 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "home",
             getBorder:"get-border"
         }, {
+            name: "Our Blog",
+            classis: "active",
+            disabled: true,
+            anchor: "blog"
+        }, 
+        {
             name: "About",
             classis: "active",
             disabled: true,
@@ -172,7 +178,7 @@ var navigationservice = angular.module('navigationservice', [])
             //     }
             // });
             var data1 = {};
-            if(navigation.length<=2){
+            if(navigation.length<=3){
             $http({
                 url: adminURL + 'category/getall',
                 method: "POST"
@@ -180,7 +186,7 @@ var navigationservice = angular.module('navigationservice', [])
                 if (data) {
                     console.log("category/getall", data.data);
                     // navigation
-                    var j = 2;
+                    var j = navigation.length;
                     for (var i = 0; i < data.data.length; i++) {
                         console.log("data ", i, data.data[i]);
                         if (data.data[i].status) {
