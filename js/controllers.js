@@ -530,12 +530,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.canonical = "privacy-policy";
 
     })
-    .controller('BlogRedirectCtrl', function($scope, $window) {
-        //Used to name the .html file
-
-        $window.location.href = "http://www.thestylease.com/blog";
-
-    })
     .controller('ContactCtrl', function($scope, $state, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
 
