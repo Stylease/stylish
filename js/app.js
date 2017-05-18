@@ -254,9 +254,12 @@ firstapp.directive('fancyboxBox', function ($document) {
             }
 
             target.fancybox({
+                width: 600,
+                height: 400,
                 openEffect: 'fade',
                 closeEffect: 'fade',
                 closeBtn: true,
+
                 helpers: {
                     media: {}
                 }

@@ -751,6 +751,7 @@ nav {
         box-shadow: none;
         background-color: transparent;
         padding: 0;
+        // border-bottom: 1px solid #2c2d3d;
           }
       // .panel-heading{
       //       padding: 0;
@@ -890,7 +891,7 @@ nav {
     min-height: 350px;
     margin-top: -40px;
     z-index: 2;
-    background: url('../img/work-bg.jpg');
+    background: url('../img/new/work-bg.jpg');
     cursor: pointer;
     h1 {
         font-family: "Neutra";
@@ -1846,6 +1847,7 @@ input.form-control {
     .icon {
         font-size: 25px;
     }
+
 }
 
 .filter-button {
@@ -3330,5 +3332,41 @@ width: 260px;
 .border-top{
   border-top: 1px solid #000 !important;
 }
+
+//ruchi//
+
+.girl-mirror,.girls-mirror{
+    @include size(350px,auto);
+    @include position(absolute,-70px 21px null null);
+}
+.girls-mirror{
+    @include size(300px,auto);
+    @include position(absolute,-80px  null null 21px);
+}
+
+.cla{
+    .accordion-custom .panel {
+    border-bottom: 1px solid;
+}
+}
+
+.filtering{
+        .accordion-customs .panel, .accordion-customs .panel-default > .panel-heading {
+    border: none;
+    border-top: 1px solid lighten($brand-dark-blue , 10%);
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+.accordion-customs .panel:first-child, .accordion-customs .panel-default > .panel-heading:first-child{
+     border-top: none;
+}
+   .new-border{
+        padding: 10px 15px;
+        border-top: none!important;
+    }
+}
+
+//ruchi//
 @import "fancybox-override";
 @import "mobile";

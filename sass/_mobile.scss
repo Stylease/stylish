@@ -587,6 +587,25 @@ margin: 0;
         font-size: 14px;
         word-spacing: 3px;
     }
+
+    //ruchi//
+    .girls-mirror,.girl-mirror{
+ @include size(60px,auto);
+  img{
+        width: 100% !important;
+    }
+    }
+
+.girls-mirror{
+    @include position(absolute,22px null 0 21px);
+}
+
+
+.girl-mirror{
+    @include position(absolute,inherit 21px  0 null );
+}
+  //ruchi//
+       
 }
 
 @media (max-width: 480px) {
