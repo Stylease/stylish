@@ -3366,6 +3366,16 @@ width: 260px;
         border-top: none!important;
     }
 }
+.italic{
+    p{
+        font-style: italic;
+    }
+}
+.about-data{
+    h5{
+        padding: 2% 0;
+    }
+}
 
 //ruchi//
 @import "fancybox-override";
