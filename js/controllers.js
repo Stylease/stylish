@@ -1853,6 +1853,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.letIn = true;
         $scope.template = TemplateService.changecontent("product");
         $scope.menutitle = NavigationService.makeactive("The Stylease | Get Designer Dresses on Rent");
+           console.log('$state.params.name', $state.params.name)
         TemplateService.canonical = "product/" + $state.params.name;
         TemplateService.description = "Trendiest styles, top notch designs and the coolest collection of designer lehengas on rent are available on thestylease.com ";
         TemplateService.keywords = "rent designer dresses, designer dresses on rent, rent jewellery, jewellery on rent in Mumbai";
@@ -1867,8 +1868,6 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.menutitle = NavigationService.makeactive("The Stylease | Find Jewellery on Rent for Sangeet");
             TemplateService.description = "Sangeet coming up? Want trendy jewellery and designer dresses on rent? Log on to thestylease.com for new styles";
             TemplateService.keywords = " jewellery on rent for sangeet ,  rent designer dresses, designer dresses on rent";
-
-
         }
         if ($state.params.name === "Reception") {
             $scope.menutitle = NavigationService.makeactive("The Stylease | Reception Ready with Lehengas on Rent");
@@ -1967,6 +1966,9 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             TemplateService.keywords = " designer gowns, designer gowns on rent in Mumbai, designer gowns rent.";
 
 
+        }
+           if ($state.params.name === "Accessories") {
+            $scope.menutitle = NavigationService.makeactive("The Stylease | Now Rent Jewelery Designed By Big Names");
         }
         // $scope.menutitle = NavigationService.makeactive("Stylease | Get Designer Dresses on Rent ");
         TemplateService.title = $scope.menutitle;
