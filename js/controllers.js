@@ -2382,7 +2382,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("productdetail");
         $scope.menutitle = NavigationService.makeactive("Productdetail");
-        TemplateService.title = $scope.menutitle;
+        // TemplateService.title = $scope.menuTitleFor;
         $scope.navigation = NavigationService.getnav();
         TemplateService.canonical = "pd/product/" + $state.params.id;
         TemplateService.removeLoaderOn(1);
@@ -2392,6 +2392,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.timestamps = [];
         // $scope.calendertimestamps = [];
         $scope.cartpro = {};
+        $scope.menuTitleFor="";
         $scope.cartpro.product = $state.params.id;
         $scope.cartpro.size = '';
         $scope.cartpro.by = '';
@@ -2449,6 +2450,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.product = data.data.product;
             $scope.psizes = data.data.product.size;
             TemplateService.canonical = "pd/" + _.kebabCase($scope.product.name) + "/" + $state.params.id;
+            TemplateService.title = "The Stylease | " + $scope.product.name; 
             if ($scope.psizes && $scope.psizes.length > 0) {
                 $scope.selectSize($scope.psizes[0].name);
             }
@@ -2475,6 +2477,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         }, function(err) {
 
         });
+
+        // $scope.menuTitleFor
         $scope.selectImage = function(img) {
             $scope.mainImage = img;
         };
