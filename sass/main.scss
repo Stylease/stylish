@@ -732,16 +732,17 @@ nav {
         }
     }
 }
+
 //   .panel:nth-child(1) {
 //   border-color: transparent;
 // }
 .accordion-custom {
-  .new-border{
-      padding: 10px 15px;
-      border-top: 1px solid lighten($brand-dark-blue , 10%);
-  }
-  .get-border {
-      border-color: transparent !important;
+    .new-border {
+        padding: 10px 15px;
+        border-top: 1px solid lighten($brand-dark-blue, 10%);
+    }
+    .get-border {
+        border-color: transparent !important;
     }
     .panel,
     .panel-heading {
@@ -752,10 +753,10 @@ nav {
         background-color: transparent;
         padding: 0;
         // border-bottom: 1px solid #2c2d3d;
-          }
-      // .panel-heading{
-      //       padding: 0;
-      // }
+    }
+    // .panel-heading{
+    //       padding: 0;
+    // }
     .panel-default>.panel-heading+.panel-collapse>.panel-body {
         padding: 10px 0 0;
         border: none;
@@ -765,10 +766,10 @@ nav {
         margin-top: 10px;
     }
 }
+
 // .accordion-customs :nth-of-type(2){
 //     border-top:none !important;
 // }
-
 .accordion-customs {
     .panel,
     .panel-default>.panel-heading {
@@ -784,13 +785,13 @@ nav {
     .panel-default>.panel-heading {
         padding: 0px 0;
     }
-    .new-border{
+    .new-border {
         padding: 10px 15px;
-        border-top: 1px solid lighten($brand-dark-blue , 10%);
+        border-top: 1px solid lighten($brand-dark-blue, 10%);
     }
     .get-border {
         border-color: transparent !important;
-      }
+    }
     .panel-default>.panel-heading+.panel-collapse>.panel-body {
         padding: 10px 0 0;
         border: none;
@@ -1847,7 +1848,6 @@ input.form-control {
     .icon {
         font-size: 25px;
     }
-
 }
 
 .filter-button {
@@ -3231,13 +3231,13 @@ li {
 
 .designers-list {
     font-size: 12px;
-    ul{
-      .designers-name{
-@include transition(all ease 300ms);
-        &:hover{
-        text-decoration: underline;
-      }
-    }
+    ul {
+        .designers-name {
+            @include transition(all ease 300ms);
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }
 
@@ -3297,9 +3297,9 @@ iframe {
     }
 }
 
-.color{
-  height: 200px;
-  overflow-y: scroll;
+.color {
+    height: 200px;
+    overflow-y: scroll;
 }
 
 // .accordion-customs{
@@ -3309,72 +3309,88 @@ iframe {
 //
 // }
 .pointer {
-  cursor: pointer;
-}
-.add-field{
-  display: inline-block;
-vertical-align: top;
-}
-.add-field1{
-  display: inline-block;
-      text-align: left;
-}
-.span-addr{
-  display: inline-block;
-width: 260px;
-  font-weight: 400px;
-  font-weight: 500;
-  padding-bottom: 5px;
-  font-size: 17px;
+    cursor: pointer;
 }
 
+.add-field {
+    display: inline-block;
+    vertical-align: top;
+}
 
-.border-top{
-  border-top: 1px solid #000 !important;
+.add-field1 {
+    display: inline-block;
+    text-align: left;
+}
+
+.span-addr {
+    display: inline-block;
+    width: 260px;
+    font-weight: 400px;
+    font-weight: 500;
+    padding-bottom: 5px;
+    font-size: 17px;
+}
+
+.border-top {
+    border-top: 1px solid #000 !important;
 }
 
 //ruchi//
-
-.girl-mirror,.girls-mirror{
-    @include size(350px,auto);
-    @include position(absolute,-70px 21px null null);
-}
-.girls-mirror{
-    @include size(300px,auto);
-    @include position(absolute,-80px  null null 21px);
+.girl-mirror,
+.girls-mirror {
+    @include size(350px,
+    auto);
+    @include position(absolute,
+    -70px 21px null null);
 }
 
-.product-more-detailing{
+.girls-mirror {
+    @include size(300px,
+    auto);
+    @include position(absolute,
+    -80px null null 21px);
+}
+
+.product-more-detailing {
     .panel {
-    border-bottom: 1px solid;
-}
+        border-bottom: 1px solid;
+    }
 }
 
-.filtering{
-        .accordion-customs .panel, .accordion-customs .panel-default > .panel-heading {
-    border: none;
-    border-top: 1px solid lighten($brand-dark-blue , 10%);
-    border-radius: 0;
-    box-shadow: none;
-    background-color: transparent;
-}
-.accordion-customs .panel:first-child, .accordion-customs .panel-default > .panel-heading:first-child{
-     border-top: none;
-}
-   .new-border{
+.filtering {
+    .accordion-customs .panel,
+    .accordion-customs .panel-default>.panel-heading {
+        border: none;
+        border-top: 1px solid lighten($brand-dark-blue, 10%);
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+    }
+    .accordion-customs .panel:first-child,
+    .accordion-customs .panel-default>.panel-heading:first-child {
+        border-top: none;
+    }
+    .new-border {
         padding: 10px 15px;
         border-top: none!important;
     }
 }
-.italic{
-    p{
+
+.italic {
+    p {
         font-style: italic;
     }
 }
-.about-data{
-    h5{
+
+.about-data {
+    h5 {
         padding: 2% 0;
     }
+}
+
+//Nilesh
+.about-font-size {
+    font-size: 16px;
 }
 
 //ruchi//
