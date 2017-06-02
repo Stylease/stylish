@@ -1981,7 +1981,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.removeLoaderOn(6);
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
-        $scope.checkIt = {};
+        $scope.checkIt = [];
 
         $scope.texts = {};
         $scope.texts.msg = "";
@@ -2002,7 +2002,17 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 console.log('scope.subcategory', $scope.subcategory)
                 if ($state.params.name || $state.params.id) {
                     if ($state.params.name === "Occasions" || $state.params.name === "Dresses" || $state.params.name === "Accessories" || $state.params.name === "Collections" || $state.params.id) {
-                        $scope.checkall($state.params.name, true);
+                        // $scope.checkall($state.params.name, true);
+                        var abc = _.filter($scope.subcategory, function (key) {
+                            // console.log("key cat name", key.category.name, cat);
+                            return key.category.name == $state.params.name;
+                        });
+                        _.each(abc, function (key) {
+                            $scope.pushSubCategory(true, key._id, key.name);
+                        });
+
+                        // $scope.fromHomeFlag = true;
+                        $scope.selectAllfromHome = true;
                         if ($state.params.id) {
                             $scope.filter.designerId.push($state.params.id);
                         }
@@ -2079,6 +2089,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             });
         };
         $scope.size();
+        $scope.previousCat = null;
 
         $scope.checkall = function (cat, allFlag) {
             console.log("check all", cat, allFlag, $scope.subcategory);
@@ -2110,7 +2121,21 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
         };
 
+        /* This function called when select sub cat from menu. $scope.selectAllfromHome is true when called from home menu and defined in $scope.getSubcategory function. 
+        if select from sub cat from product page then make $scope.selectAllfromHome false. this useful in filter for first time.
+
+         Also its used in $scope.pushSubCategory function to make sure filter is empty after first filter applied.
+         */
+        $scope.fromSubCat = function () {
+            if ($scope.selectAllfromHome == true) {
+                $scope.filter.subcategory = [];
+            }
+            $scope.selectAllfromHome = false;
+        }
+
         $scope.pushSubCategory = function (flag, id, subcat) {
+            // $scope.currentCat = null;
+
             $scope.checkIt[subcat] = flag;
             console.log("flag", flag, id, subcat);
             if ($state.params.id) {
@@ -2120,19 +2145,48 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 return key.name == subcat;
             });
             if (flag) {
-                $scope.filter.subcategory.push(id);
-                var notAll = false;
-                _.each($scope.subcategory, function (key) {
-                    if (data.category.name === key.category.name && $scope.checkIt[key.name] === false) {
-                        //$scope.checkIt[key.] = flag;
-                        notAll = true;
+
+                if ($scope.selectAllfromHome == false) {
+                    var temp = _.find($scope.filter.subcategory, function (n) {
+                        if (n == id) {
+                            return n;
+                        }
+                    });
+
+                    if (temp == undefined) {
+                        $scope.filter.subcategory.push(id);
+                    } else {
+                        _.pull($scope.filter.subcategory, temp);
                     }
-                });
-                if (notAll) {
-                    $scope.checkIt[data.category.name] = false;
+                    var notAll = false;
+                    _.each($scope.subcategory, function (key) {
+                        if (data.category.name === key.category.name && $scope.checkIt[key.name] === false) {
+                            //$scope.checkIt[key.] = flag;
+                            notAll = true;
+                        }
+                    });
+                    if (notAll) {
+                        $scope.checkIt[data.category.name] = false;
+                    } else {
+                        $scope.checkIt[data.category.name] = true;
+                    }
                 } else {
-                    $scope.checkIt[data.category.name] = true;
+                    $scope.filter.subcategory.push(id);
+                    var notAll = false;
+                    _.each($scope.subcategory, function (key) {
+                        if (data.category.name === key.category.name && $scope.checkIt[key.name] === false) {
+                            //$scope.checkIt[key.] = flag;
+                            notAll = true;
+                        }
+                    });
+                    if (notAll) {
+                        $scope.checkIt[data.category.name] = false;
+                    } else {
+                        $scope.checkIt[data.category.name] = true;
+                    }
                 }
+
+
             } else {
                 $scope.filter.subcategory.splice(_.findIndex($scope.filter.subcategory, function (key) {
                     return key == id;
@@ -2141,6 +2195,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 //$scope.checkall();
             }
         };
+
+
         $scope.pushSize = function (id) {
             // console.log(flag,id);
             $scope.filter.size = [];
