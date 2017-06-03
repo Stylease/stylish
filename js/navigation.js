@@ -288,19 +288,19 @@ var navigationservice = angular.module('navigationservice', [])
                 }
                 return menuname;
             },
-            // getProduct: function(request, callback, errCallback) {
-            getProduct: function (filter, callback, errCallback) {
-                // var filter = {
-                //     'subcategory': request.subcategory,
-                //     'pricefrom': request.pricefrom,
-                //     'priceto': request.priceto,
-                //     'size': request.size,
-                //     'pagenumber': request.pagenumber,
-                //     'pagesize': 5,
-                //     'color': request.color,
-                //     'sort': request.sort,
-                //     'designerId': request.designerId
-                // };
+            getProduct: function (request, callback, errCallback) {
+                // getProduct: function (filter, callback, errCallback) {
+                var filter = {
+                    'subcategory': request.subcategory,
+                    'pricefrom': request.pricefrom,
+                    'priceto': request.priceto,
+                    'size': request.size,
+                    'pagenumber': request.pagenumber,
+                    'pagesize': 5,
+                    'color': request.color,
+                    'sort': request.sort,
+                    'designerId': request.designerId
+                };
                 return $http({
                     url: adminURL + "product/getProductByCat",
                     method: "POST",

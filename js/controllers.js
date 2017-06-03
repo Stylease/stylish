@@ -1979,6 +1979,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
 
         TemplateService.removeLoaderOn(6);
+        $scope.finalFilter = {};
         $scope.filter = {};
         $scope.filter.pagenumber = 1;
         $scope.checkIt = [];
@@ -2047,7 +2048,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     $scope.checkIt[$state.params.name] = true;
                     $scope.filter.pagenumber = 1;
                 }
-                $scope.getMyProducts($scope.filter);
+                $scope.finalFilter = _.cloneDeep($scope.filter);
+                $scope.getMyProducts($scope.finalFilter);
                 console.log("getMyProducts");
                 TemplateService.removeLoader();
             }, function (err) {
@@ -2311,20 +2313,20 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.getMyProducts = function (filter) {
             console.log("in get products");
             console.log("filter", filter);
-            var filterObj = {
-                'subcategory': filter.subcategory,
-                'pricefrom': filter.pricefrom,
-                'priceto': filter.priceto,
-                'size': filter.size,
-                'pagenumber': filter.pagenumber,
-                'pagesize': 5,
-                'color': filter.color,
-                'sort': filter.sort,
-                'designerId': filter.designerId
-            };
+            // var filterObj = {
+            //     'subcategory': filter.subcategory,
+            //     'pricefrom': filter.pricefrom,
+            //     'priceto': filter.priceto,
+            //     'size': filter.size,
+            //     'pagenumber': filter.pagenumber,
+            //     'pagesize': 5,
+            //     'color': filter.color,
+            //     'sort': filter.sort,
+            //     'designerId': filter.designerId
+            // };
             if ($scope.letIn) {
                 $scope.letIn = false;
-                NavigationService.getProduct(filterObj, function (data) {
+                NavigationService.getProduct(filter, function (data) {
                     if (data.value) {
                         console.log('testt');
                         console.log(data.data);
@@ -2349,8 +2351,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         if (lastpage < $scope.filter.pagenumber) {
                             $scope.letLoad = false;
                         }
+
+                        $scope.finalFilter.pagenumber = $scope.filter.pagenumber;
                     }
-                    filterObj = {};
+                    // filterObj = {};
                     TemplateService.removeLoader();
                 }, function (err) {
 
@@ -2401,7 +2405,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.filter.pagenumber = 1;
             $scope.filter.sort = sortName;
             $scope.shopping = [];
-            $scope.getMyProducts($scope.filter);
+            $scope.finalFilter = _.cloneDeep($scope.filter);
+            $scope.getMyProducts($scope.finalFilter);
             $scope.showFilterlist = false;
         };
         $scope.resetFilter = function () {
@@ -2434,7 +2439,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.checkIt[$state.params.name] = true;
             }
             $scope.letLoad = false;
-            $scope.getMyProducts($scope.filter);
+            $scope.finalFilter = _.cloneDeep($scope.filter);
+            $scope.getMyProducts($scope.finalFilter);
 
         };
         $scope.applySort = function (sort) {
@@ -2444,7 +2450,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         };
         $scope.loadMore = function () {
             if ($scope.letLoad) {
-                $scope.getMyProducts($scope.filter);
+                $scope.getMyProducts($scope.finalFilter);
             }
         };
 
