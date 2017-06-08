@@ -142,6 +142,24 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.description = "Designer dresses on rent, jewellery on rent for cocktails, mehendi, sangeet or weddings; we have it all. ";
         TemplateService.keywords = "rent designer dresses, designer dresses on rent, rent jewellery, jewellery on rent in Mumbai";
     })
+    .controller('BlogRedirectCtrl', function($scope, $window) {
+         //Used to name the .html file
+  
+          $window.location.href = "http://www.thestylease.com/blog";
+  
+    })
+    .controller('FaqsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+
+        $scope.template = TemplateService.changecontent("faqs");
+        $scope.menutitle = NavigationService.makeactive("The Stylease |  FAQs |  Rent With Ease, Rent With Stylease");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.oneAtATime = true;
+        TemplateService.canonical = "faqs";
+        TemplateService.description = "Designer dresses on rent, jewellery on rent for cocktails, mehendi, sangeet or weddings; we have it all. ";
+        TemplateService.keywords = "rent designer dresses, designer dresses on rent, rent jewellery, jewellery on rent in Mumbai";
+    })
     .controller('DesignersCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
 

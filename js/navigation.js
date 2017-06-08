@@ -7,13 +7,19 @@ var navigationservice = angular.module('navigationservice', [])
                 disabled: true,
                 anchor: "home",
                 getBorder: "get-border"
-            }, {
+            },
+            {
+                name: "Our Blog",
+                classis: "active",
+                disabled: true,
+                anchor: "blog"
+            }, 
+            {
                 name: "About",
                 classis: "active",
                 disabled: true,
                 anchor: "about-us",
                 subnav: []
-
             }
             //
             // {
@@ -172,7 +178,7 @@ var navigationservice = angular.module('navigationservice', [])
                 //     }
                 // });
                 var data1 = {};
-                if (navigation.length <= 2) {
+                if (navigation.length <= 3) {
                     $http({
                         url: adminURL + 'category/getall',
                         method: "POST"
@@ -180,7 +186,7 @@ var navigationservice = angular.module('navigationservice', [])
                         if (data) {
                             console.log("category/getall", data.data);
                             // navigation
-                            var j = 2;
+                            var j = navigation.length;
                             for (var i = 0; i < data.data.length; i++) {
                                 console.log("data ", i, data.data[i]);
                                 if (data.data[i].status) {
@@ -226,6 +232,7 @@ var navigationservice = angular.module('navigationservice', [])
                             });
                         }
 
+
                         var d = {
                             name: "Designers",
                             classis: "active",
@@ -245,6 +252,13 @@ var navigationservice = angular.module('navigationservice', [])
                             disabled: true,
                             anchor: "contact"
                         };
+                        var faqs = {
+                            name: "FAQs",
+                            classis: "active",
+                            disabled: true,
+                            anchor: "faqs",
+                            subnav: []
+                        }
                         var h = {
                             name: "Help",
                             classis: "active",
@@ -271,6 +285,7 @@ var navigationservice = angular.module('navigationservice', [])
 
                         navigation.push(d);
                         navigation.push(celebrity);
+                        navigation.push(faqs);
                         navigation.push(c);
                         navigation.push(h);
                     });
