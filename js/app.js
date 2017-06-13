@@ -22,9 +22,9 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             controller: 'FaqsCtrl'
         })
         .state('blog', {
-             url: "/blog",
-             template:"",
-             controller:'BlogRedirectCtrl'
+            url: "/blog",
+            template: "",
+            controller: 'BlogRedirectCtrl'
         })
         .state('about-us', {
             url: "/about-us",
@@ -123,7 +123,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
         //         controller: 'ProductdetailCtrl'
         //     })
         .state('celebritychoice', {
-            url: "/celebrity-choice",
+            url: "/celebrities-choice",
             templateUrl: "views/template.html",
             controller: 'CelebrityChoiceCtrl'
         })

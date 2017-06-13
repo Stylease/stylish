@@ -5,132 +5,132 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     //     cfpLoadingBarProvider.includeSpinner = false;
     // }])
 
-    .controller('HomeCtrl', function ($scope, $state, $uibModal, TemplateService, NavigationService, $timeout, $rootScope) {
+.controller('HomeCtrl', function ($scope, $state, $uibModal, TemplateService, NavigationService, $timeout, $rootScope) {
 
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("home");
-        $scope.menutitle = NavigationService.makeactive("The Stylease - High-end Fashion on Lease!");
-        TemplateService.canonical = "home";
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        console.log("navigation", $scope.navigation);
-        TemplateService.removeLoaderOn(2);
-        console.log($scope.navigation);
-        $scope.footerColor = "home-footer";
-        $scope.subcategory = [];
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("home");
+    $scope.menutitle = NavigationService.makeactive("The Stylease - High-end Fashion on Lease!");
+    TemplateService.canonical = "home";
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    console.log("navigation", $scope.navigation);
+    TemplateService.removeLoaderOn(2);
+    console.log($scope.navigation);
+    $scope.footerColor = "home-footer";
+    $scope.subcategory = [];
 
-        $scope.hiw = function () {
-            modal5 = $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/hiw.html",
-                windowClass: "modal-dialog2",
-                scope: $scope
-            });
-        };
-        $scope.verified = function () {
-            modal6 = $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/verified.html",
-                scope: $scope
-            });
-        };
-
-        NavigationService.getSlider(function (data) {
-            if (data) {
-                $scope.mySlides = data.data;
-                // console.log("aaa", $scope.mySlides);
-            }
-            TemplateService.removeLoader();
+    $scope.hiw = function () {
+        modal5 = $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/hiw.html",
+            windowClass: "modal-dialog2",
+            scope: $scope
         });
-
-
-
-        var temp = [];
-        NavigationService.getSubcategory(function (data) {
-            console.log("getSubcategory", data);
-            _.each(data.data, function (key) {
-                // body...
-                // console.log("aaaaaa", key);
-                if (key.imagetype == 'Big') {
-                    // console.log("aaaa", key);
-                    if (temp.length !== 0) {
-                        temp = _.chunk(temp, 2);
-                        $scope.subcategory.push(temp);
-                        temp = [];
-                    }
-                    $scope.subcategory.push(key);
-                } else if (key.imagetype == 'Small') {
-                    temp.push(key);
-                }
-
-            });
-
-            if (temp.length !== 0) {
-                temp = _.chunk(temp, 2);
-                $scope.subcategory.push(temp);
-                temp = [];
-            }
-            console.log($scope.subcategory);
-
-        }, function (err) {
-
+    };
+    $scope.verified = function () {
+        modal6 = $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/verified.html",
+            scope: $scope
         });
+    };
 
-        // $scope.OutsideIndia = function () {
-        //     if ($.jStorage.get("location") === "OutsideIndia") {} else {
-
-        //         NavigationService.localCountry(function (data) {
-        //             // console.log("data", data);
-        //             if (data.geoplugin_countryName !== "India") {
-        //                 $scope.hello = $uibModal.open({
-        //                     animation: true,
-        //                     templateUrl: "views/modal/hello.html",
-        //                     scope: $scope
-        //                 });
-        //             }
-        //         });
-        //     }
-        // };
-
-        // $scope.OutsideIndia();
-        // $scope.saveOutsideIndia = function () {
-        //     $.jStorage.set("location", "OutsideIndia");
-        //     console.log("set", $.jStorage.get("location"));
-        //     $scope.closeHello();
-        // };
-        $scope.formData = {};
-        $scope.formComplete = false;
-        $scope.submitForm = function (formData) {
-            NavigationService.saveCountry(formData, function (data) {
-                console.log("data", data);
-                if (data.value === true) {
-                    $scope.formComplete = true;
-                    $timeout(function () {
-                        $scope.formComplete = false;
-                        $scope.formData = {};
-                        $scope.saveOutsideIndia();
-                    }, 2000);
-
-                }
-            })
+    NavigationService.getSlider(function (data) {
+        if (data) {
+            $scope.mySlides = data.data;
+            // console.log("aaa", $scope.mySlides);
         }
+        TemplateService.removeLoader();
+    });
 
-        $scope.closeHello = function () {
-            console.log("aaaaaaaaa");
-            $scope.hello.close();
-            console.log("$scope.hello", $scope.hello);
-        };
 
-        NavigationService.getTestimonial(function (data) {
-            if (data) {
-                $scope.testimonials = data.data
+
+    var temp = [];
+    NavigationService.getSubcategory(function (data) {
+        console.log("getSubcategory", data);
+        _.each(data.data, function (key) {
+            // body...
+            // console.log("aaaaaa", key);
+            if (key.imagetype == 'Big') {
+                // console.log("aaaa", key);
+                if (temp.length !== 0) {
+                    temp = _.chunk(temp, 2);
+                    $scope.subcategory.push(temp);
+                    temp = [];
+                }
+                $scope.subcategory.push(key);
+            } else if (key.imagetype == 'Small') {
+                temp.push(key);
             }
-            TemplateService.removeLoader();
+
         });
-    })
+
+        if (temp.length !== 0) {
+            temp = _.chunk(temp, 2);
+            $scope.subcategory.push(temp);
+            temp = [];
+        }
+        console.log($scope.subcategory);
+
+    }, function (err) {
+
+    });
+
+    // $scope.OutsideIndia = function () {
+    //     if ($.jStorage.get("location") === "OutsideIndia") {} else {
+
+    //         NavigationService.localCountry(function (data) {
+    //             // console.log("data", data);
+    //             if (data.geoplugin_countryName !== "India") {
+    //                 $scope.hello = $uibModal.open({
+    //                     animation: true,
+    //                     templateUrl: "views/modal/hello.html",
+    //                     scope: $scope
+    //                 });
+    //             }
+    //         });
+    //     }
+    // };
+
+    // $scope.OutsideIndia();
+    // $scope.saveOutsideIndia = function () {
+    //     $.jStorage.set("location", "OutsideIndia");
+    //     console.log("set", $.jStorage.get("location"));
+    //     $scope.closeHello();
+    // };
+    $scope.formData = {};
+    $scope.formComplete = false;
+    $scope.submitForm = function (formData) {
+        NavigationService.saveCountry(formData, function (data) {
+            console.log("data", data);
+            if (data.value === true) {
+                $scope.formComplete = true;
+                $timeout(function () {
+                    $scope.formComplete = false;
+                    $scope.formData = {};
+                    $scope.saveOutsideIndia();
+                }, 2000);
+
+            }
+        })
+    }
+
+    $scope.closeHello = function () {
+        console.log("aaaaaaaaa");
+        $scope.hello.close();
+        console.log("$scope.hello", $scope.hello);
+    };
+
+    NavigationService.getTestimonial(function (data) {
+        if (data) {
+            $scope.testimonials = data.data
+        }
+        TemplateService.removeLoader();
+    });
+})
 
 
-    .controller('AboutUsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+.controller('AboutUsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("about-us");
@@ -142,11 +142,11 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         TemplateService.description = "Designer dresses on rent, jewellery on rent for cocktails, mehendi, sangeet or weddings; we have it all. ";
         TemplateService.keywords = "rent designer dresses, designer dresses on rent, rent jewellery, jewellery on rent in Mumbai";
     })
-    .controller('BlogRedirectCtrl', function($scope, $window) {
-         //Used to name the .html file
-  
-          $window.location.href = "http://www.thestylease.com/blog";
-  
+    .controller('BlogRedirectCtrl', function ($scope, $window) {
+        //Used to name the .html file
+
+        $window.location.href = "http://www.thestylease.com/blog";
+
     })
     .controller('FaqsCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
@@ -2839,7 +2839,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("celebrity-choice");
-        $scope.menutitle = NavigationService.makeactive("CelebrityChoice");
+        $scope.menutitle = NavigationService.makeactive("Celebrities Choice");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         TemplateService.removeLoaderOn(2);
@@ -2865,7 +2865,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.celebrityFilter.pagesize = 2;
         $scope.celebrityData = [];
         $scope.pages = [1]
-        // var lastpage = 1;
+            // var lastpage = 1;
         var lastpage = ''
 
 
@@ -2971,7 +2971,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
     })
 
-    .controller('ThankyouCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+.controller('ThankyouCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("thankyou");
@@ -3006,514 +3006,514 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         })
     })
 
-    //header loading twice sorted by this
-    .controller('titleCtrl', function ($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state) {
-        $scope.template = TemplateService;
-        // $scope.template = {};
-        // $scope.template.title = TemplateService.giveTitle();
-    })
+//header loading twice sorted by this
+.controller('titleCtrl', function ($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state) {
+    $scope.template = TemplateService;
+    // $scope.template = {};
+    // $scope.template.title = TemplateService.giveTitle();
+})
 
-    .controller('headerctrl', function ($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state, $rootScope) {
-        $scope.template = TemplateService;
-        //TemplateService.removeLoaderOn(1);
-        $scope.celebrityFilter = {};
-        $rootScope.showOnHome = false;
-        $scope.celebrityFilter.pagenumber = 1;
-        $scope.celebrityFilter.pagesize = 2;
-        $scope.celebrityData = [];
-        $scope.pages = [1]
-        var lastpage = 1;
+.controller('headerctrl', function ($scope, TemplateService, $uibModal, NavigationService, $interval, $timeout, $state, $rootScope) {
+    $scope.template = TemplateService;
+    //TemplateService.removeLoaderOn(1);
+    $scope.celebrityFilter = {};
+    $rootScope.showOnHome = false;
+    $scope.celebrityFilter.pagenumber = 1;
+    $scope.celebrityFilter.pagesize = 2;
+    $scope.celebrityData = [];
+    $scope.pages = [1]
+    var lastpage = 1;
 
-        $scope.getYourCelebrity = function () {
-            NavigationService.getCelebrity($scope.celebrityFilter, function (data) {
-                if (data.value == true) {
+    $scope.getYourCelebrity = function () {
+        NavigationService.getCelebrity($scope.celebrityFilter, function (data) {
+            if (data.value == true) {
 
-                    $scope.lastpage = data.data.totalpages;
-                    console.log("data.data.data", data.data.data);
-                    var showCelebrity = _.result(_.find(data.data.data, function (obj) {
-                        console.log("obj", obj);
-                        return obj.status === true;
-                    }), 'status');
-                    console.log("showCelebrity", showCelebrity);
-                    if (showCelebrity) {
-                        $rootScope.showOnHome = true;
-                    } else {
-                        $rootScope.showOnHome = false;
-                    }
-
-                    _.each(data.data.data, function (n) {
-                        $scope.celebrityData.push(n);
-                    });
+                $scope.lastpage = data.data.totalpages;
+                console.log("data.data.data", data.data.data);
+                var showCelebrity = _.result(_.find(data.data.data, function (obj) {
+                    console.log("obj", obj);
+                    return obj.status === true;
+                }), 'status');
+                console.log("showCelebrity", showCelebrity);
+                if (showCelebrity) {
+                    $rootScope.showOnHome = true;
                 } else {
-                    $scope.celebrityData = "";
+                    $rootScope.showOnHome = false;
                 }
-                TemplateService.removeLoader();
-            })
-        }
-        $scope.getYourCelebrity();
-        $scope.template.backClass = "";
-        $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-            $(window).scrollTop(0);
-        });
-        $(window).scroll(function () {
-            var scroll = $(window).scrollTop();
 
-            if (scroll >= 70) {
-                $(".logo-view").addClass("small-logo");
-            } else {
-                $(".logo-view").removeClass("small-logo");
-            }
-        });
-
-
-        var modal1 = "";
-        var modal2 = "";
-        var modal3 = "";
-        var modal4 = "";
-        // $scope.cart = function () {
-        //     $scope.loginmsg.msg = "";
-        //     $uibModal.open({
-        //         animation: true,
-        //         templateUrl: "views/modal/hello.html",
-        //         scope: $scope
-        //     });
-        // };
-        $scope.tabActive = function () {
-            if ($state.current.name === 'profile') {
-                $scope.tabActive1 = true;
-            } else if ($state.current.name === 'orders') {
-                $scope.tabActive2 = true;
-            } else if ($state.current.name === 'wishlist') {
-                $scope.tabActive3 = true;
-            } else if ($state.current.name === 'saveaddress') {
-                $scope.tabActive4 = true;
-            } else if ($state.current.name === 'bankdetail') {
-                $scope.tabActive5 = true;
-            } else if ($state.current.name === 'changepassword') {
-                $scope.tabActive6 = true;
-            }
-        }
-        $scope.tabActive();
-
-        globalfunction.signUp = function () {
-            $scope.signUp();
-        }
-        globalfunction.emailSignup = function () {
-            $scope.IsHidden = false;
-            $scope.signup = {};
-            $scope.emailSignup();
-        }
-        globalfunction.logIn = function () {
-            $scope.logIn();
-        }
-        globalfunction.forgot = function () {
-            $scope.forgot();
-        }
-        globalfunction.logout = function () {
-            $scope.logout();
-        }
-        $scope.logout = function () {
-            console.log("logout as");
-            NavigationService.logout(function (data) {
-                if (data.value) {
-                    console.log("logout");
-                    // NavigationService.saveUser(null);
-
-                    // $scope.isLoggedIn = false;
-                    $state.go("home");
-                }
-            }, function (err) {
-
-            });
-        };
-        // console.log($state.current.name);
-        // $scope.OutsideIndia = function () {
-        //     if ($.jStorage.get("location") === "OutsideIndia") {} else {
-
-        //         NavigationService.localCountry(function (data) {
-        //             if (data.geoplugin_countryName !== "India") {
-        //                 $scope.hello = $uibModal.open({
-        //                     animation: true,
-        //                     templateUrl: "views/modal/hello.html",
-        //                     scope: $scope
-        //                 });
-        //             }
-        //         });
-
-        //     }
-        // };
-
-        // $scope.OutsideIndia();
-        // $scope.saveOutsideIndia = function () {
-        //     $.jStorage.set("location", "OutsideIndia");
-        //     console.log("set", $.jStorage.get("location"));
-        //     $scope.closeHello();
-        // };
-        // $scope.formData = {};
-        // $scope.formComplete = false;
-        // $scope.submitForm = function (formData) {
-        //     NavigationService.saveCountry(formData, function (data) {
-        //         console.log("data", data);
-        //         if (data.value === true) {
-        //             $scope.formComplete = true;
-        //             $timeout(function () {
-        //                 $scope.formComplete = false;
-        //                 $scope.formData = {};
-        //                 $scope.saveOutsideIndia();
-        //             }, 2000);
-
-        //         }
-        //     })
-        // }
-
-        // $scope.closeHello = function () {
-        //     console.log("aaaaaaaaa");
-        //     $scope.hello.close();
-        //     console.log("$scope.hello", $scope.hello);
-        // };
-
-        $scope.signUp = function () {
-            $scope.loginmsg.msg = "";
-            $scope.closeAllModals();
-            modal1 = $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/signup.html",
-                scope: $scope
-            });
-            console.log(modal1);
-        };
-        $scope.logIn = function () {
-            $scope.loginmsg.msg = "";
-            $scope.closeAllModals();
-            modal3 = $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/login.html",
-                scope: $scope
-            });
-        };
-
-        $scope.emailSignup = function () {
-            $scope.signup = {};
-            $scope.IsHidden = false;
-            $scope.loginmsg.msg = "";
-            $scope.closeAllModals();
-            modal2 = $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/email-signup.html",
-                scope: $scope
-            });
-        };
-        $scope.forgot = function () {
-            $scope.loginmsg.msg = "";
-            $scope.closeAllModals();
-            modal4 = $uibModal.open({
-                animation: true,
-                templateUrl: "views/modal/forgotpassword.html",
-                scope: $scope
-            });
-        };
-        $scope.oneAtATime = true;
-        $scope.showCross = "";
-        $scope.showMe = "menu-out";
-        $scope.showMenu = function () {
-            if ($scope.showMe == "menu-in") {
-                $scope.showMe = "menu-out";
-                $scope.showCross = "";
-                $scope.template.backClass = "";
-            } else {
-                $scope.showMe = "menu-in";
-                $scope.showCross = "cross-ham";
-                $scope.template.backClass = "backdrop";
-            }
-        };
-        $scope.checkSession = function () {
-            if ($.jStorage.get("userLoggedIn")) {
-                $scope.isLoggedIn = true;
-            } else {
-                NavigationService.getProfile(function (response) {
-                    if (response.value) {
-                        $scope.username = response.data.firstname;
-                        $scope.isLoggedIn = true;
-                        $.jStorage.set("userLoggedIn", true);
-                    } else {
-                        $scope.isLoggedIn = false;
-                    }
-                    // TemplateService.removeLoader();
-                }, function (err) {
-                    console.log(err);
+                _.each(data.data.data, function (n) {
+                    $scope.celebrityData.push(n);
                 });
+            } else {
+                $scope.celebrityData = "";
             }
-        };
-        $scope.checkSession();
+            TemplateService.removeLoader();
+        })
+    }
+    $scope.getYourCelebrity();
+    $scope.template.backClass = "";
+    $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        $(window).scrollTop(0);
+    });
+    $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
 
-        if ($.jStorage.get("userLoggedIn")) {
-            console.log("logged in");
+        if (scroll >= 70) {
+            $(".logo-view").addClass("small-logo");
         } else {
-            if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
+            $(".logo-view").removeClass("small-logo");
+        }
+    });
+
+
+    var modal1 = "";
+    var modal2 = "";
+    var modal3 = "";
+    var modal4 = "";
+    // $scope.cart = function () {
+    //     $scope.loginmsg.msg = "";
+    //     $uibModal.open({
+    //         animation: true,
+    //         templateUrl: "views/modal/hello.html",
+    //         scope: $scope
+    //     });
+    // };
+    $scope.tabActive = function () {
+        if ($state.current.name === 'profile') {
+            $scope.tabActive1 = true;
+        } else if ($state.current.name === 'orders') {
+            $scope.tabActive2 = true;
+        } else if ($state.current.name === 'wishlist') {
+            $scope.tabActive3 = true;
+        } else if ($state.current.name === 'saveaddress') {
+            $scope.tabActive4 = true;
+        } else if ($state.current.name === 'bankdetail') {
+            $scope.tabActive5 = true;
+        } else if ($state.current.name === 'changepassword') {
+            $scope.tabActive6 = true;
+        }
+    }
+    $scope.tabActive();
+
+    globalfunction.signUp = function () {
+        $scope.signUp();
+    }
+    globalfunction.emailSignup = function () {
+        $scope.IsHidden = false;
+        $scope.signup = {};
+        $scope.emailSignup();
+    }
+    globalfunction.logIn = function () {
+        $scope.logIn();
+    }
+    globalfunction.forgot = function () {
+        $scope.forgot();
+    }
+    globalfunction.logout = function () {
+        $scope.logout();
+    }
+    $scope.logout = function () {
+        console.log("logout as");
+        NavigationService.logout(function (data) {
+            if (data.value) {
+                console.log("logout");
+                // NavigationService.saveUser(null);
+
+                // $scope.isLoggedIn = false;
                 $state.go("home");
             }
+        }, function (err) {
+
+        });
+    };
+    // console.log($state.current.name);
+    // $scope.OutsideIndia = function () {
+    //     if ($.jStorage.get("location") === "OutsideIndia") {} else {
+
+    //         NavigationService.localCountry(function (data) {
+    //             if (data.geoplugin_countryName !== "India") {
+    //                 $scope.hello = $uibModal.open({
+    //                     animation: true,
+    //                     templateUrl: "views/modal/hello.html",
+    //                     scope: $scope
+    //                 });
+    //             }
+    //         });
+
+    //     }
+    // };
+
+    // $scope.OutsideIndia();
+    // $scope.saveOutsideIndia = function () {
+    //     $.jStorage.set("location", "OutsideIndia");
+    //     console.log("set", $.jStorage.get("location"));
+    //     $scope.closeHello();
+    // };
+    // $scope.formData = {};
+    // $scope.formComplete = false;
+    // $scope.submitForm = function (formData) {
+    //     NavigationService.saveCountry(formData, function (data) {
+    //         console.log("data", data);
+    //         if (data.value === true) {
+    //             $scope.formComplete = true;
+    //             $timeout(function () {
+    //                 $scope.formComplete = false;
+    //                 $scope.formData = {};
+    //                 $scope.saveOutsideIndia();
+    //             }, 2000);
+
+    //         }
+    //     })
+    // }
+
+    // $scope.closeHello = function () {
+    //     console.log("aaaaaaaaa");
+    //     $scope.hello.close();
+    //     console.log("$scope.hello", $scope.hello);
+    // };
+
+    $scope.signUp = function () {
+        $scope.loginmsg.msg = "";
+        $scope.closeAllModals();
+        modal1 = $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/signup.html",
+            scope: $scope
+        });
+        console.log(modal1);
+    };
+    $scope.logIn = function () {
+        $scope.loginmsg.msg = "";
+        $scope.closeAllModals();
+        modal3 = $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/login.html",
+            scope: $scope
+        });
+    };
+
+    $scope.emailSignup = function () {
+        $scope.signup = {};
+        $scope.IsHidden = false;
+        $scope.loginmsg.msg = "";
+        $scope.closeAllModals();
+        modal2 = $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/email-signup.html",
+            scope: $scope
+        });
+    };
+    $scope.forgot = function () {
+        $scope.loginmsg.msg = "";
+        $scope.closeAllModals();
+        modal4 = $uibModal.open({
+            animation: true,
+            templateUrl: "views/modal/forgotpassword.html",
+            scope: $scope
+        });
+    };
+    $scope.oneAtATime = true;
+    $scope.showCross = "";
+    $scope.showMe = "menu-out";
+    $scope.showMenu = function () {
+        if ($scope.showMe == "menu-in") {
+            $scope.showMe = "menu-out";
+            $scope.showCross = "";
+            $scope.template.backClass = "";
+        } else {
+            $scope.showMe = "menu-in";
+            $scope.showCross = "cross-ham";
+            $scope.template.backClass = "backdrop";
         }
-        globalfunction.getCartCount = function () {
-            NavigationService.getCart(function (data) {
-                if (data.value == true) {
-                    $scope.cartcount = data.data.cartcount;
-                    $scope.cartProduct = data.data.cartproduct;
+    };
+    $scope.checkSession = function () {
+        if ($.jStorage.get("userLoggedIn")) {
+            $scope.isLoggedIn = true;
+        } else {
+            NavigationService.getProfile(function (response) {
+                if (response.value) {
+                    $scope.username = response.data.firstname;
+                    $scope.isLoggedIn = true;
+                    $.jStorage.set("userLoggedIn", true);
                 } else {
-                    $scope.cartcount = 0;
+                    $scope.isLoggedIn = false;
                 }
+                // TemplateService.removeLoader();
             }, function (err) {
                 console.log(err);
             });
-            // console.log("cartcount", $scope.cartcount);
-            // if($state.current.name == "address"){
-            //     $state.go("home");
-            // }
-        };
-        // if($scope.cartcount == undefined && $state.current.name === "checkoutorder" ){
+        }
+    };
+    $scope.checkSession();
+
+    if ($.jStorage.get("userLoggedIn")) {
+        console.log("logged in");
+    } else {
+        if ($state.current.name == "profile" || $state.current.name == "orders" || $state.current.name == "wishlist" || $state.current.name == "saveaddress" || $state.current.name == "bankdetail" || $state.current.name == "changepassword") {
+            $state.go("home");
+        }
+    }
+    globalfunction.getCartCount = function () {
+        NavigationService.getCart(function (data) {
+            if (data.value == true) {
+                $scope.cartcount = data.data.cartcount;
+                $scope.cartProduct = data.data.cartproduct;
+            } else {
+                $scope.cartcount = 0;
+            }
+        }, function (err) {
+            console.log(err);
+        });
+        // console.log("cartcount", $scope.cartcount);
+        // if($state.current.name == "address"){
         //     $state.go("home");
         // }
+    };
+    // if($scope.cartcount == undefined && $state.current.name === "checkoutorder" ){
+    //     $state.go("home");
+    // }
 
-        globalfunction.getCartCount();
-        $scope.closeAllModals = function () {
-            if (modal1) {
-                modal1.close();
-            }
-            if (modal2) {
-                modal2.close();
-            }
-            if (modal3) {
-                modal3.close();
-            }
-            if (modal4) {
-                modal4.close();
-            }
-        };
-
-        // INTEGRATION CODE
-        $scope.loginmsg = {};
-        $scope.login = {};
-
-        $scope.signup = {};
-        // SIGNUP
-
-        $scope.emailRegex = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
-        $scope.validEmail = false;
-        $scope.IsHidden = false;
-        $scope.signUpNormal = function (emailSignupForm, signup) {
-            if (emailSignupForm.$invalid) {
-                $scope.validEmail = true;
-            } else {
-                console.log("im in else");
-                $scope.loginmsg.msg = "";
-                if ($scope.signup.password === $scope.signup.confirmpswd) {
-
-                    $scope.closeme = function () {
-                        removemod.close();
-                        $state.reload();
-                    };
-                    NavigationService.signUP($scope.signup, function (data) {
-                        if (data.value) {
-                            $scope.IsHidden = true;
-                            $scope.otpdata = $scope.signup;
-                            // $scope.closeAllModals();
-                            // $scope.isLoggedIn = true;
-                            // removemod = $uibModal.open({
-                            //     animation: true,
-                            //     templateUrl: "views/modal/verified.html",
-                            //     scope: $scope
-                            // });
-                            // $state.reload();
-                            // NavigationService.saveUser(data.data);
-                        } else {
-                            $scope.loginmsg.msg = data.data;
-                            // $scope.loginmsg.msg = data.data;
-                            $scope.loginmsg.class = "text-danger";
-                        }
-                    }, function (err) {
-                        console.log(err);
-                    })
-                } else {
-                    $scope.loginmsg.msg = "Password And Confirm Password Should be same";
-                    $scope.loginmsg.class = "text-danger";
-                }
-            }
-
+    globalfunction.getCartCount();
+    $scope.closeAllModals = function () {
+        if (modal1) {
+            modal1.close();
         }
-        var count = 0;
-        $scope.resendOTP = function () {
-            var mobileno = $scope.otpdata.mobile;
-            $scope.isDisabled = false;
-
-            NavigationService.resendOTP(mobileno, function (data) {
-                if (data.value == true) {
-                    console.log("done", data);
-                    count++;
-                    if (count == 3) {
-                        $scope.isDisabled = true;
-                        $scope.loginmsg.msg = "please try Later";
-                    }
-                    $scope.loginmsg.msg = data.data.message;
-                    $scope.loginmsg.class = "text-danger";
-                } else {
-                    console.log(data.data.message);
-                    $scope.loginmsg.msg = data.data.message;
-                    $scope.loginmsg.class = "text-danger";
-                }
-            }, function (err) {
-                console.log(err);
-            });
+        if (modal2) {
+            modal2.close();
         }
-        $scope.checkOtp = function (data) {
-                var senddata = {};
-                senddata.otp = data.otp1;
-                senddata.mobile = $scope.otpdata.mobile;
-                console.log("chkotp", data)
-                NavigationService.checkOtp(senddata, function (data) {
-                    if (data.value == true) {
-                        console.log("done", data);
-                        $scope.closeAllModals();
-                        $scope.isLoggedIn = true;
+        if (modal3) {
+            modal3.close();
+        }
+        if (modal4) {
+            modal4.close();
+        }
+    };
+
+    // INTEGRATION CODE
+    $scope.loginmsg = {};
+    $scope.login = {};
+
+    $scope.signup = {};
+    // SIGNUP
+
+    $scope.emailRegex = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+    $scope.validEmail = false;
+    $scope.IsHidden = false;
+    $scope.signUpNormal = function (emailSignupForm, signup) {
+        if (emailSignupForm.$invalid) {
+            $scope.validEmail = true;
+        } else {
+            console.log("im in else");
+            $scope.loginmsg.msg = "";
+            if ($scope.signup.password === $scope.signup.confirmpswd) {
+
+                $scope.closeme = function () {
+                    removemod.close();
+                    $state.reload();
+                };
+                NavigationService.signUP($scope.signup, function (data) {
+                    if (data.value) {
+                        $scope.IsHidden = true;
+                        $scope.otpdata = $scope.signup;
+                        // $scope.closeAllModals();
+                        // $scope.isLoggedIn = true;
+                        // removemod = $uibModal.open({
+                        //     animation: true,
+                        //     templateUrl: "views/modal/verified.html",
+                        //     scope: $scope
+                        // });
                         // $state.reload();
-                        if ($state.current.name === 'checkoutsignin') {
-                            $state.go('address');
-                        } else {
-                            $scope.closeAllModals();
-                            $scope.isLoggedIn = true;
-                            removemod = $uibModal.open({
-                                animation: true,
-                                templateUrl: "views/modal/verified.html",
-                                scope: $scope
-                            });
-                        }
+                        // NavigationService.saveUser(data.data);
                     } else {
-                        console.log(data.data.message);
-                        $scope.loginmsg.msg = data.data.message;
+                        $scope.loginmsg.msg = data.data;
+                        // $scope.loginmsg.msg = data.data;
                         $scope.loginmsg.class = "text-danger";
                     }
                 }, function (err) {
                     console.log(err);
-                });
-            },
-            $scope.goToFunction = function () {
-                if ($state.current.name === 'checkoutsignin') {
-                    $state.go('address');
-                } else {
-                    $.jStorage.set("userLoggedIn", true);
-                    $state.go('profile');
-                }
+                })
+            } else {
+                $scope.loginmsg.msg = "Password And Confirm Password Should be same";
+                $scope.loginmsg.class = "text-danger";
             }
-        // NORMAL LOGIN
-        $scope.notFound = false;
-        $scope.userLogin = function () {
-            $scope.loginmsg.msg = "";
+        }
 
-            NavigationService.login($scope.login, function (data) {
-                if (data.value) {
-                    console.log("in if");
+    }
+    var count = 0;
+    $scope.resendOTP = function () {
+        var mobileno = $scope.otpdata.mobile;
+        $scope.isDisabled = false;
+
+        NavigationService.resendOTP(mobileno, function (data) {
+            if (data.value == true) {
+                console.log("done", data);
+                count++;
+                if (count == 3) {
+                    $scope.isDisabled = true;
+                    $scope.loginmsg.msg = "please try Later";
+                }
+                $scope.loginmsg.msg = data.data.message;
+                $scope.loginmsg.class = "text-danger";
+            } else {
+                console.log(data.data.message);
+                $scope.loginmsg.msg = data.data.message;
+                $scope.loginmsg.class = "text-danger";
+            }
+        }, function (err) {
+            console.log(err);
+        });
+    }
+    $scope.checkOtp = function (data) {
+            var senddata = {};
+            senddata.otp = data.otp1;
+            senddata.mobile = $scope.otpdata.mobile;
+            console.log("chkotp", data)
+            NavigationService.checkOtp(senddata, function (data) {
+                if (data.value == true) {
+                    console.log("done", data);
                     $scope.closeAllModals();
                     $scope.isLoggedIn = true;
-                    NavigationService.saveUser(data.data);
-                    $state.reload();
+                    // $state.reload();
+                    if ($state.current.name === 'checkoutsignin') {
+                        $state.go('address');
+                    } else {
+                        $scope.closeAllModals();
+                        $scope.isLoggedIn = true;
+                        removemod = $uibModal.open({
+                            animation: true,
+                            templateUrl: "views/modal/verified.html",
+                            scope: $scope
+                        });
+                    }
                 } else {
                     console.log(data.data.message);
                     $scope.loginmsg.msg = data.data.message;
                     $scope.loginmsg.class = "text-danger";
                 }
-            }, function () {
-
-            });
-        };
-
-        $scope.forgotPassword = function (mail) {
-            NavigationService.forgotPassword(mail, function (data) {
-                // console.log("asdas", mail);
-                $scope.err = {};
-                if (data.value == true) {
-                    modal4.close();
-                    $state.go('home');
-                    // console.log("done");
-                } else {
-                    $scope.err.msg = data.error.comment;
-                    $scope.err.class = "text-danger";
-                }
-            });
-        };
-        //GOOGLE LOGIN
-        var checktwitter = function (data, status) {
-            var repdata = {};
-            if (data.value) {
-                $interval.cancel(stopinterval);
-                ref.close();
-                $scope.closeAllModals();
-                // $scope.isLoggedIn = true;
-                $state.reload();
-                // NavigationService.saveUser(data.data);
-            } else {
-
-            }
-        };
-
-        var callAtIntervaltwitter = function () {
-            NavigationService.getProfile(checktwitter, function (err) {
+            }, function (err) {
                 console.log(err);
             });
-        };
-        var authenticatesuccess = function (data, status) {
-            $ionicLoading.hide();
-            if (data.value) {
-                $scope.closeAllModals();
-                // $scope.isLoggedIn = true;
-                // NavigationService.saveUser(data.data);
+        },
+        $scope.goToFunction = function () {
+            if ($state.current.name === 'checkoutsignin') {
+                $state.go('address');
+            } else {
+                $.jStorage.set("userLoggedIn", true);
+                $state.go('profile');
             }
-        };
-        $scope.facebookLogin = function () {
+        }
+        // NORMAL LOGIN
+    $scope.notFound = false;
+    $scope.userLogin = function () {
+        $scope.loginmsg.msg = "";
 
-            ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
-            stopinterval = $interval(callAtIntervaltwitter, 2000);
-            ref.addEventListener('exit', function (event) {
-                NavigationService.getProfile(authenticatesuccess, function (err) {
-                    console.log(err);
-                });
-                $interval.cancel(stopinterval);
+        NavigationService.login($scope.login, function (data) {
+            if (data.value) {
+                console.log("in if");
+                $scope.closeAllModals();
+                $scope.isLoggedIn = true;
+                NavigationService.saveUser(data.data);
+                $state.reload();
+            } else {
+                console.log(data.data.message);
+                $scope.loginmsg.msg = data.data.message;
+                $scope.loginmsg.class = "text-danger";
+            }
+        }, function () {
+
+        });
+    };
+
+    $scope.forgotPassword = function (mail) {
+        NavigationService.forgotPassword(mail, function (data) {
+            // console.log("asdas", mail);
+            $scope.err = {};
+            if (data.value == true) {
+                modal4.close();
+                $state.go('home');
+                // console.log("done");
+            } else {
+                $scope.err.msg = data.error.comment;
+                $scope.err.class = "text-danger";
+            }
+        });
+    };
+    //GOOGLE LOGIN
+    var checktwitter = function (data, status) {
+        var repdata = {};
+        if (data.value) {
+            $interval.cancel(stopinterval);
+            ref.close();
+            $scope.closeAllModals();
+            // $scope.isLoggedIn = true;
+            $state.reload();
+            // NavigationService.saveUser(data.data);
+        } else {
+
+        }
+    };
+
+    var callAtIntervaltwitter = function () {
+        NavigationService.getProfile(checktwitter, function (err) {
+            console.log(err);
+        });
+    };
+    var authenticatesuccess = function (data, status) {
+        $ionicLoading.hide();
+        if (data.value) {
+            $scope.closeAllModals();
+            // $scope.isLoggedIn = true;
+            // NavigationService.saveUser(data.data);
+        }
+    };
+    $scope.facebookLogin = function () {
+
+        ref = window.open(adminURL + 'user/loginFacebook', '_blank', 'location=no');
+        stopinterval = $interval(callAtIntervaltwitter, 2000);
+        ref.addEventListener('exit', function (event) {
+            NavigationService.getProfile(authenticatesuccess, function (err) {
+                console.log(err);
             });
-        };
+            $interval.cancel(stopinterval);
+        });
+    };
 
-        $scope.googleLogin = function () {
-            console.log("googlelogin");
-            ref = window.open(adminURL + 'user/loginGoogle', '_blank', 'location=no');
-            stopinterval = $interval(callAtIntervaltwitter, 2000);
-            ref.addEventListener('exit', function (event) {
-                NavigationService.getProfile(authenticatesuccess, function (err) {
-                    console.log(err);
-                });
-                $interval.cancel(stopinterval);
+    $scope.googleLogin = function () {
+        console.log("googlelogin");
+        ref = window.open(adminURL + 'user/loginGoogle', '_blank', 'location=no');
+        stopinterval = $interval(callAtIntervaltwitter, 2000);
+        ref.addEventListener('exit', function (event) {
+            NavigationService.getProfile(authenticatesuccess, function (err) {
+                console.log(err);
             });
-        };
+            $interval.cancel(stopinterval);
+        });
+    };
 
 
-    })
+})
 
-    .controller('languageCtrl', function ($scope, TemplateService, $translate, $rootScope) {
+.controller('languageCtrl', function ($scope, TemplateService, $translate, $rootScope) {
 
-        $scope.changeLanguage = function () {
-            console.log("Language CLicked");
+    $scope.changeLanguage = function () {
+        console.log("Language CLicked");
 
-            if (!$.jStorage.get("language")) {
+        if (!$.jStorage.get("language")) {
+            $translate.use("hi");
+            $.jStorage.set("language", "hi");
+        } else {
+            if ($.jStorage.get("language") == "en") {
                 $translate.use("hi");
                 $.jStorage.set("language", "hi");
             } else {
-                if ($.jStorage.get("language") == "en") {
-                    $translate.use("hi");
-                    $.jStorage.set("language", "hi");
-                } else {
-                    $translate.use("en");
-                    $.jStorage.set("language", "en");
-                }
+                $translate.use("en");
+                $.jStorage.set("language", "en");
             }
-            //  $rootScope.$apply();
-        };
+        }
+        //  $rootScope.$apply();
+    };
 
 
-    })
+})
 
 ;
