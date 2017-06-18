@@ -2020,7 +2020,14 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 $scope.subcategory = data.data;
                 console.log('scope.subcategory', $scope.subcategory)
                 if ($state.params.name || $state.params.id) {
-                    if ($state.params.name === "Occasions" || $state.params.name === "Dresses" || $state.params.name === "Accessories" || $state.params.name === "Collections" || $state.params.id) {
+                    // TARANG's NOTE
+                    // TODO: Remove this hardcoding and retrieve the category list to compare state.params.name
+                    if ($state.params.name === "Occasions" || 
+                        $state.params.name === "Dresses" || 
+                        $state.params.name === "Accessories" || 
+                        $state.params.name === "Collections" || 
+                        $state.params.name === "Women's Wear" || 
+                        $state.params.id) {
                         // $scope.checkall($state.params.name, true);
                         var abc = _.filter($scope.subcategory, function (key) {
                             // console.log("key cat name", key.category.name, cat);

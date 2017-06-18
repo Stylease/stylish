@@ -177,6 +177,7 @@ var navigationservice = angular.module('navigationservice', [])
             // });
             var data1 = {};
             if (navigation.length <= 3) {
+                // First get a list of all categories
                 $http({
                     url: adminURL + 'category/getall',
                     method: "POST"
@@ -185,6 +186,7 @@ var navigationservice = angular.module('navigationservice', [])
                         console.log("category/getall", data.data);
                         // navigation
                         var j = navigation.length;
+                        // Now add all sub categories to the navigation object
                         for (var i = 0; i < data.data.length; i++) {
                             console.log("data ", i, data.data[i]);
                             if (data.data[i].status) {
@@ -208,7 +210,7 @@ var navigationservice = angular.module('navigationservice', [])
                                             name: "All",
                                             classis: "active",
                                             // link: "product({name:'All'})"
-                                            link: "product({name:'" + key.name + "'})"
+                                            link: "product({name:\"" + key.name + "\"})"
                                         }
                                         subnavGen.push(sub);
                                         _.each(subnavData.data, function (key) {
@@ -217,7 +219,7 @@ var navigationservice = angular.module('navigationservice', [])
                                                 subnavGen.push({
                                                     name: key.name,
                                                     classis: "active",
-                                                    link: "product({name:'" + key.name + "'})"
+                                                    link: "product({name:\"" + key.name + "\"})"
                                                 });
                                             }
                                         });
