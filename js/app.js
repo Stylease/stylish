@@ -12,7 +12,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
     $httpProvider.defaults.withCredentials = true;
     $stateProvider
         .state('home', {
-            url: "/home",
+            url: "/",
             templateUrl: "views/template.html",
             controller: 'HomeCtrl'
         })
@@ -111,6 +111,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             templateUrl: "views/template.html",
             controller: 'ProductCtrl'
         })
+        // .state('product', {
+        //     url: "/:categoryname/:subcategoryname/:id",
+        //     templateUrl: "views/template.html",
+        //     controller: 'CateogoryUrlCtrl'
+        // })
 
     .state('productdetail', {
             url: "/pd/:subcatname/:id",
@@ -162,7 +167,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
     //     templateUrl: "views/template.html",
     //     controller: 'ContactUsCtrl'
     // });
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("/");
     // $locationProvider.html5Mode(isproduction);
     $locationProvider.html5Mode(true);
 
