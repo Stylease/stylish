@@ -51,6 +51,11 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             templateUrl: "views/template.html",
             controller: 'ContactCtrl'
         })
+        .state('contactthankyou', {
+            url: "/thanku",
+            templateUrl: "views/template.html",
+            controller: 'ContactThankyouCtrl'
+        })
         .state('orderdetail', {
             url: "/orderdetail/:id",
             templateUrl: "views/template.html",
@@ -106,16 +111,16 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
             templateUrl: "views/template.html",
             controller: 'CancelationPolicyCtrl'
         })
-        .state('product', {
+       /* .state('product', {
             url: "/product/:name/:id",
             templateUrl: "views/template.html",
             controller: 'ProductCtrl'
-        })
-        // .state('product', {
-        //     url: "/:categoryname/:subcategoryname/:id",
-        //     templateUrl: "views/template.html",
-        //     controller: 'CateogoryUrlCtrl'
-        // })
+        })*/
+         .state('product', {
+             url: "/:category/:name/:id",
+             templateUrl: "views/template.html",
+             controller: 'ProductCtrl'
+         })
 
     .state('productdetail', {
             url: "/pd/:subcatname/:id",

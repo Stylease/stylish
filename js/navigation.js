@@ -215,11 +215,14 @@ var navigationservice = angular.module('navigationservice', [])
                                         subnavGen.push(sub);
                                         _.each(subnavData.data, function (key) {
                                             // console.log("oc");
+                                            console.log(key);
                                             if (key.status) {
+                                                console.log(key);
+                                                
                                                 subnavGen.push({
                                                     name: key.name,
                                                     classis: "active",
-                                                    link: "product({name:\"" + key.name + "\"})"
+                                                    link: "product({category:\""+key.category.name.trim()+"\",name:\"" + key.name.trim() + "\"})"
                                                 });
                                             }
                                         });

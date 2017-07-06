@@ -568,18 +568,26 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 //console.log("res data ", data);
                 if (data.value) {
                     $scope.formData = '';
-                    closeModal = $uibModal.open({
+                    /*closeModal = $uibModal.open({
                         animation: true,
                         templateUrl: 'views/modal/thanks.html',
                     });
                     $timeout(function () {
                         closeModal.close();
-                    }, 2000);
+                    }, 2000);*/
+                    $state.go('contactthankyou');
                 } else {
                     console.log("Error while submiting form");
                 }
             })
         };
+    })
+
+    .controller('ContactThankyouCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("thanku");
+        
+
     })
     .controller('OrderdetailCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         //Used to name the .html file
@@ -1870,6 +1878,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     })
     .controller('ProductCtrl', function ($scope, $filter, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
+        console.log($state.params);
         $scope.letIn = true;
         $scope.template = TemplateService.changecontent("product");
         $scope.menutitle = NavigationService.makeactive("The Stylease | Get Designer Dresses on Rent");
