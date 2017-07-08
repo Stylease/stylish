@@ -2559,6 +2559,21 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             }
             $scope.producttime = data.data.producttime;
             CalenderService.blockedDates = $scope.producttime;
+            var currentSelectionDate = moment(); // gives today's date when called with no arguments
+            if ($scope.producttime.length>0) {
+                //Iterate over all the "toDates" in the producttime array
+                
+                $scope.producttime.forEach(function(productTimeObj) {
+                    var toDate = producttimeObj.timeTo;
+                    if(currentSelectionDate.isBefore(toDate)) {
+                        currentSelectionDate = moment(toDate)
+                    }
+                });
+                console.log(currentSelectionDate);
+            }
+            CalenderService.selectedDate = currentSelectionDate.add(CalenderService.addDuration+1, 'days').toDate(); // Select the next day after the blocking dates
+
+            console.log("SElectedDate",CalenderService.selectedDate)
             $scope.product.images = _.sortBy(data.data.product.images, [function (o) {
                 return o.order;
             }]);
