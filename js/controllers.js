@@ -1883,7 +1883,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.template = TemplateService.changecontent("product");
         $scope.menutitle = NavigationService.makeactive("The Stylease | Get Designer Dresses on Rent");
         console.log('$state.params.name', $state.params.name)
-        TemplateService.canonical = "product/" + $state.params.name;
+        TemplateService.canonical = $state.params.category+"/" + $state.params.name;
         TemplateService.description = "Trendiest styles, top notch designs and the coolest collection of designer lehengas on rent are available on thestylease.com ";
         TemplateService.keywords = "rent designer dresses, designer dresses on rent, rent jewellery, jewellery on rent in Mumbai";
         if ($state.params.name === "Mehendi") {
@@ -2492,11 +2492,12 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
     })
     .controller('ProductdetailCtrl', function ($scope, CalenderService, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         //Used to name the .html file
+        console.log($state.params);
         $scope.template = TemplateService.changecontent("productdetail");
         $scope.menutitle = NavigationService.makeactive("Productdetail");
         // TemplateService.title = $scope.menuTitleFor;
         $scope.navigation = NavigationService.getnav();
-        TemplateService.canonical = "pd/product/" + $state.params.id;
+        TemplateService.canonical = $state.params.subcatname+"/" + $state.params.id;
         TemplateService.removeLoaderOn(1);
         $scope.oneAtATime = true;
         $scope.product = {};
@@ -2558,7 +2559,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
 
 
         NavigationService.getProductDetail($state.params.id, function (data) {
-            // console.log(data);
+             console.log(data);
+             console.log($state.params);
             $scope.product = data.data.product;
             $scope.psizes = data.data.product.size;
             TemplateService.canonical = "pd/" + _.kebabCase($scope.product.name) + "/" + $state.params.id;

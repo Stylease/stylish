@@ -123,7 +123,7 @@ firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $lo
          })
 
     .state('productdetail', {
-            url: "/pd/:subcatname/:id",
+            url: "/:subcatname/:id",
             templateUrl: "views/template.html",
             controller: 'ProductdetailCtrl'
         })
