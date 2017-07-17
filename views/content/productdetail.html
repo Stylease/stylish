@@ -48,8 +48,8 @@
                                     <ul>
                                         <li> <span>Chest : {{select.sizedetail.chest}}</span></li>
                                         <li> <span>Waist : {{select.sizedetail.waist}}</span></li>
-                                        <li> <span>Hips : {{select.sizedetail.hips}}</span></li>
-                                        <li> <span>Length : {{select.sizedetail.length}}</span></li>
+                                        <li ng-hide="select.sizedetail.hips.length < 1"> <span>Hips : {{select.sizedetail.hips}}</span></li>
+                                        <li ng-hide="select.sizedetail.length.length < 1"> <span>Length : {{select.sizedetail.length}}</span></li>
                                     </ul>
                                     <!--for l-->
                                     <!-- <div class="disp-inline">
