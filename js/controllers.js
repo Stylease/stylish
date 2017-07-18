@@ -2026,7 +2026,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         $state.params.name === "Dresses" || 
                         $state.params.name === "Accessories" || 
                         $state.params.name === "Collections" || 
-                        $state.params.name === "Women's Wear" || 
+                        $state.params.name === "Women's Wear" ||
+                        $state.params.name === "Men's Wear" ||
                         $state.params.id) {
                         // $scope.checkall($state.params.name, true);
                         var abc = _.filter($scope.subcategory, function (key) {
