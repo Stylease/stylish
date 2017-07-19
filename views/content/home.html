@@ -49,6 +49,29 @@ Rent. Flaunt.Repeat.</h2>
 </div> -->
 <div class="occasion-main">
   <div class="container-fluid">
+    <div class="row adj-margin">
+      <div class="col-md-6 col-sm-6 col-xs-6 adj-padd">
+        <div class="relate mr10 pointer ban-width" ui-sref="product({'name':'Women\'s Wear'})">
+          <img src="img/ww-banner.png" alt="" class="img-responsive">
+          <div class="tag-name tag-inverted" style="">
+              <label>Women's Wear</label>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6 adj-padd">
+        <div class="relate ml10 pointer ban-width" ui-sref="product({'name':'Men\'s Wear'})">
+          <img src="img/mw-banner.png" alt="" class="img-responsive">
+          <div class="tag-name tag-inverted" style="">
+              <label>Men's Wear</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="occasion-main">
+  <div class="container-fluid">
     <div ng-repeat="subcat in subcategory">
       <div class="row-flex" ng-if=" subcat.length == null">
         <div class="relate mt20 mb20 pointer ban-width" ui-sref="product({'name':subcat.name})">

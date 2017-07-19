@@ -189,11 +189,21 @@ var navigationservice = angular.module('navigationservice', [])
                         // Now add all sub categories to the navigation object
                         for (var i = 0; i < data.data.length; i++) {
                             console.log("data ", i, data.data[i]);
-                            if (data.data[i].status) {
-                                navigation[j] = data.data[i];
-                                j++;
-                            }
+                            navigation.push({});
                         }
+                        var navBarOrder = [
+                            "What's New?",
+                            "Women's Wear",
+                            "Men's Wear",
+                            "Occasions",
+                            "Accessories"
+                        ]; // TODO: REMOVE THIS HARDCODING AND USE THE ORDER VARIABLE
+                        data.data.forEach(function(obj) {
+                            var indx = navBarOrder.indexOf(obj.name)
+                            navigation[j+indx]=obj;
+                        })
+                                // navigation.push(data.data[i]);
+                                // j++;
                         _.each(navigation, function (key) {
                             if (key._id) {
                                 var data2 = _.cloneDeep(data1);

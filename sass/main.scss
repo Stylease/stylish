@@ -2499,6 +2499,15 @@ ul.mn-list {
     }
 }
 
+
+.tag-inverted {
+    label {
+        color:#fdd4c2;
+    }
+    background-image: -webkit-linear-gradient(left, transparent 0, #2c2d3d 26%, #2c2d3d 22%, #2c2d3d 73%, transparent 100%);
+    background-image: linear-gradient(to right, transparent 0, #2c2d3d 26%, #2c2d3d 22%, #2c2d3d 73%, transparent 100%);
+}
+
 .tag-name1 {
     position: absolute;
     bottom: 13%;
@@ -2897,6 +2906,9 @@ ul.mn-list {
         margin: 2px 7%;
         word-spacing: 4px;
         font-size: 15px;
+    }
+    .pop-heading-bar {
+        background: #fff6f1;
     }
 }
 
