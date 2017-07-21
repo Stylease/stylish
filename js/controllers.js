@@ -2083,6 +2083,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     $scope.filter.pagenumber = 1;
                 }
                 $scope.finalFilter = _.cloneDeep($scope.filter);
+                console.log($scope.finalFilter);
                 $scope.getMyProducts($scope.finalFilter);
                 console.log("getMyProducts");
                 TemplateService.removeLoader();
@@ -2497,7 +2498,7 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         $scope.menutitle = NavigationService.makeactive("Productdetail");
         // TemplateService.title = $scope.menuTitleFor;
         $scope.navigation = NavigationService.getnav();
-        TemplateService.canonical = $state.params.subcatname+"/" + $state.params.id;
+        //TemplateService.canonical = $state.params.subcatname+"/" + $state.params.id;
         TemplateService.removeLoaderOn(1);
         $scope.oneAtATime = true;
         $scope.product = {};
@@ -2561,9 +2562,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
         NavigationService.getProductDetail($state.params.id, function (data) {
              console.log(data);
              console.log($state.params);
-            $scope.product = data.data.product;
+             $scope.product = data.data.product;
+             
             $scope.psizes = data.data.product.size;
-            TemplateService.canonical = "pd/" + _.kebabCase($scope.product.name) + "/" + $state.params.id;
+            TemplateService.canonical = $state.params.subcatname+"/" + _.kebabCase($scope.product.name) + "/" + $state.params.id;
             TemplateService.title = "The Stylease | " + $scope.product.name;
             if ($scope.psizes && $scope.psizes.length > 0) {
                 $scope.selectSize($scope.psizes[0].name);
