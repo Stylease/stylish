@@ -1284,7 +1284,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     });
                     $scope.discountamount = 0;
                     $scope.subtotal = $scope.totalrentalamount;
-                    $scope.servicetax = parseFloat($scope.totalrentalamount) * 0.15;
+                    // $scope.servicetax = parseFloat($scope.totalrentalamount) * 0.15;
+                    $scope.servicetax = 0;
                     $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
                 } else {
                     $scope.cartProduct = [];
@@ -1311,7 +1312,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         $scope.discount = data.data.discount;
                         $scope.discountamount = data.data.discountamount;
                         $scope.subtotal = $scope.totalrentalamount - data.data.discountamount;
-                        $scope.servicetax = parseFloat($scope.subtotal) * 0.15;
+                        // $scope.servicetax = parseFloat($scope.subtotal) * 0.15;
+                        $scope.servicetax = 0;
                         $scope.grandtotal = parseFloat($scope.subtotal) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
                         console.log("aaaa", $scope.subtotal, $scope.discountamount);
                     } else {
@@ -1321,7 +1323,8 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                         $scope.discountamount = 0;
                         console.log($scope.discountamount);
                         $scope.subtotal = $scope.totalrentalamount;
-                        $scope.servicetax = parseFloat($scope.totalrentalamount) * 0.15;
+                        // $scope.servicetax = parseFloat($scope.totalrentalamount) * 0.15;
+                        $scope.servicetax = 0;
                         $scope.grandtotal = parseFloat($scope.totalrentalamount) + parseFloat($scope.servicetax) + parseFloat($scope.totalsecuritydeposit);
                     }
                 });
