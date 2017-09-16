@@ -2565,20 +2565,21 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
             $scope.producttime = data.data.producttime;
             CalenderService.blockedDates = $scope.producttime;
             var currentSelectionDate = moment(); // gives today's date when called with no arguments
-            if ($scope.producttime.length>0) {
+            if (angular.isDefined($scope.producttime) && $scope.producttime.length>0) {
                 //Iterate over all the "toDates" in the producttime array
-                
                 $scope.producttime.forEach(function(productTimeObj) {
-                    var toDate = producttimeObj.timeTo;
-                    if(currentSelectionDate.isBefore(toDate)) {
-                        currentSelectionDate = moment(toDate)
-                    }
+                    if(angular.isDefined(productTimeObj)) {
+                        var toDate = productTimeObj.timeTo;
+                        if(currentSelectionDate.isBefore(toDate)) {
+                            currentSelectionDate = moment(toDate)
+                        }
+                    } 
                 });
                 console.log(currentSelectionDate);
             }
             CalenderService.selectedDate = currentSelectionDate.add(CalenderService.addDuration+1, 'days').toDate(); // Select the next day after the blocking dates
 
-            console.log("SElectedDate",CalenderService.selectedDate)
+            // console.log("SelectedDate",CalenderService.selectedDate)
             $scope.product.images = _.sortBy(data.data.product.images, [function (o) {
                 return o.order;
             }]);
@@ -2641,6 +2642,16 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                 console.log('yes login');
 
                 var d = new Date($scope.cartpro.timeFrom);
+                // Check if d is today + 4 days, if not, cancel the add to cart process and show a message
+                if(moment(d).isBefore(moment().add(3, 'days'))) { // HARD Check for order date
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: "views/modal/datemismatch.html",
+                        // controller: "ProductdetailCtrl",
+                        scope: $scope
+                    });
+                    return;
+                }
                 $scope.cartpro.timeFrom = d;
                 var timeto = new Date(d);
                 $scope.cartpro.timeTo = new Date(timeto.setDate(d.getDate() + ($scope.cartpro.duration - 1)));
@@ -2655,7 +2666,10 @@ angular.module('phonecatControllers', ['templateservicemod', "calenderService", 
                     $scope.cartDate = $.jStorage.set("cartDate", $scope.cartpro);
                 }
                 //check current cart date
-                if (new Date($scope.cartpro.timeFrom).setHours(0, 0, 0, 0) === new Date($scope.cartDate.timeFrom).setHours(0, 0, 0, 0) && $scope.cartDate.duration == $scope.cartpro.duration && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
+                if (new Date($scope.cartpro.timeFrom).setHours(0, 0, 0, 0) === new Date($scope.cartDate.timeFrom).setHours(0, 0, 0, 0) 
+                    && $scope.cartDate.duration == $scope.cartpro.duration 
+                    && $scope.cartDate.pickupTime == $scope.cartpro.pickupTime 
+                    && $scope.cartDate.deliveryTime == $scope.cartpro.deliveryTime) {
                     NavigationService.addToCart($scope.cartpro, function (data) {
                         console.log("response cart", data);
                         $scope.response = data;
